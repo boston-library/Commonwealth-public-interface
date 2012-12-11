@@ -10,7 +10,7 @@ class CatalogController < ApplicationController
   # These before_filters apply the hydra access controls
   before_filter :enforce_show_permissions, :only=>:show
   # This applies appropriate access controls to all solr queries
-  CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
+  ##CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
 
@@ -22,12 +22,12 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.show_link = 'title_t'
-    config.index.record_display_type = 'has_model_s'
+    config.index.record_display_type = 'active_fedora_model_s'
 
     # solr field configuration for document/show views
     config.show.html_title = 'title_t'
     config.show.heading = 'title_t'
-    config.show.display_type = 'has_model_s'
+    config.show.display_type = 'active_fedora_model_s'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -48,29 +48,32 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'object_type_facet', :label => 'Format' 
-    config.add_facet_field 'pub_date', :label => 'Publication Year' 
-    config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20 
-    config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'lc_1letter_facet', :label => 'Call Number' 
-    config.add_facet_field 'subject_geo_facet', :label => 'Region' 
-    config.add_facet_field 'subject_era_facet', :label => 'Era'  
+    config.add_facet_field 'collection_label_s', :label => 'Collection'
+    config.add_facet_field 'active_fedora_model_s', :label => 'Format'
+    ##config.add_facet_field 'pub_date', :label => 'Publication Year'
+    ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
+    ##config.add_facet_field 'language_facet', :label => 'Language', :limit => true
+    ##config.add_facet_field 'lc_1letter_facet', :label => 'Call Number'
+    ##config.add_facet_field 'subject_geo_facet', :label => 'Region'
+    ##config.add_facet_field 'subject_era_facet', :label => 'Era'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
-    config.default_solr_params[:'facet.field'] = config.facet_fields.keys
+    # next line deprecated as of BL 3.7.0
+    # config.default_solr_params[:'facet.field'] = config.facet_fields.keys
+    config.add_facet_fields_to_solr_request!
     #use this instead if you don't want to query facets marked :show=>false
     #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
 
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'title_display', :label => 'Title:' 
+    config.add_index_field 'title_t', :label => 'Title:'
     config.add_index_field 'title_vern_display', :label => 'Title:' 
     config.add_index_field 'author_display', :label => 'Author:' 
     config.add_index_field 'author_vern_display', :label => 'Author:' 
-    config.add_index_field 'format', :label => 'Format:' 
+    config.add_index_field 'active_fedora_model_s', :label => 'Format:'
     config.add_index_field 'language_facet', :label => 'Language:'
     config.add_index_field 'published_display', :label => 'Published:'
     config.add_index_field 'published_vern_display', :label => 'Published:'
@@ -78,13 +81,13 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    config.add_show_field 'title_display', :label => 'Title:' 
+    config.add_show_field 'title_t', :label => 'Title:'
     config.add_show_field 'title_vern_display', :label => 'Title:' 
     config.add_show_field 'subtitle_display', :label => 'Subtitle:' 
     config.add_show_field 'subtitle_vern_display', :label => 'Subtitle:' 
     config.add_show_field 'author_display', :label => 'Author:' 
     config.add_show_field 'author_vern_display', :label => 'Author:' 
-    config.add_show_field 'format', :label => 'Format:' 
+    config.add_show_field 'active_fedora_model_s', :label => 'Format:'
     config.add_show_field 'url_fulltext_display', :label => 'URL:'
     config.add_show_field 'url_suppl_display', :label => 'More Information:'
     config.add_show_field 'language_facet', :label => 'Language:'
@@ -164,6 +167,11 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
     config.spell_max = 5
+  end
+
+  def exclude_unwanted_models(solr_parameters, user_parameters)
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq] << "-active_fedora_model_s:\"Bplmodels::ImageFile\""
   end
 
 

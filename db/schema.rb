@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211194308) do
+ActiveRecord::Schema.define(:version => 20121211203248) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(:version => 20121211194308) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "user_type"
+  end
+
+  create_table "folder_items", :force => true do |t|
+    t.integer  "folder_id"
+    t.string   "document_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "folder_items", ["document_id"], :name => "index_folder_items_on_document_id"
+  add_index "folder_items", ["folder_id"], :name => "index_folder_items_on_folder_id"
+
+  create_table "folders", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id",     :null => false
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "searches", :force => true do |t|
@@ -46,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20121211194308) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "guest",                  :default => false
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
