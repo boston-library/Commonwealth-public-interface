@@ -3,3 +3,75 @@
 
 en:
   hello: "Hello world"
+
+  blacklight:
+    application_name: 'Digital Commonwealth'
+
+    header_links:
+          logout: 'Log Out'
+          login: 'Login'
+          profile: 'My Profile'
+          folders: 'Folders'
+          bookmarks: 'Bookmarks'
+          saved_searches: 'Saved Searches'
+          search_history: 'Search History'
+          selected_items: 'Selected Items'
+
+    bookmarks:
+          add:
+            success: 'Added to bookmarks.'
+          no_bookmarks: 'You do not currently have any bookmarks.'
+
+    folders:
+          add:
+            success: 'Added to Selected Items'
+          remove:
+            success: 'Removed from Selected Items'
+          list_title: 'Folders'
+          no_folders: 'You do not currently have any folders.'
+          need_login: 'Please log in to create and view folders.'
+          delete:
+            delete: 'Delete this folder'
+            success: 'Folder deleted.'
+            confirm: 'Are you sure you want to delete this folder?'
+          edit: 'Edit this folder'
+          add_folder: 'Create a New Folder'
+          edit_folder: 'Editing Folder'
+          empty: 'This folder does not currently have any items.'
+          update_items:
+            remove:
+              success: 'Items removed.'
+              failure: 'Items could not be removed. Please try again later.'
+              no_items: 'No items selected!'
+
+    folder_items:
+          add:
+            button: 'Add to Folder'
+            success: 'Added to folder.'
+            failure: 'Item could not be added.'
+            submit: 'Add'
+          remove:
+            button: 'Remove from folder'
+            success: 'Removed from folder.'
+            failure: 'Item could not be removed.'
+          clear:
+            action: 'Remove all items'
+            confirm: 'Are you sure you want to remove all items?'
+            success: 'All items removed.'
+            failure: 'Items could not be removed. Please try again later.'
+
+    images:
+          zoom: 'Click to zoom in on this image.'
+
+    search:
+          pagination_info:
+            no_items_found: 'No items found.'
+          change_view:
+            action: 'View as'
+            submit: 'Update'
+
+
+  devise:
+      sessions:
+        signed_in: ''
+        signed_out: ''

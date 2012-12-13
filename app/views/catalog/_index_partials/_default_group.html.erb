@@ -1,0 +1,5 @@
+<% docs.each_with_index do |document,counter| %>
+    <div class="index_container_grid<%= cycle(" new_row"," middle"," last_in_row") %>">
+      <%= render_document_partial document, "index", :counter => counter %>
+    </div>
+<% end %>

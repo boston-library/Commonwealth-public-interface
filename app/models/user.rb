@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   Devise.add_module(:ldap_hydra_authenticatable,
                     :route => :session,
@@ -14,8 +14,7 @@ class User < ActiveRecord::Base
                     :controller => :sessions,
                     :model => 'devise/models/ldap_hydra_authenticatable')
 
-  devise :ldap_hydra_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+  #devise :ldap_hydra_authenticatable, :registerable, :recoverable, :rememberable, :trackable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
