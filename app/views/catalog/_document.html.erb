@@ -1,0 +1,11 @@
+<% # container for a single doc -%>
+    <div class="document <%= render_document_class document %>
+                         <%= params[:view] ? params[:view] + "-view" : "grid-view" %>
+                         <%= cycle(" new_row"," middle"," last_in_row") %>">
+
+    <%# render :partial => 'document_header', :locals => { :document => document, :document_counter => document_counter } %>
+
+    <% # main container for doc partial view -%>
+    <%= render_document_partial document, :index, :document_counter => document_counter %>
+
+</div>

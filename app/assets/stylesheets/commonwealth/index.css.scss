@@ -1,0 +1,131 @@
+/* styles for index views */
+
+@import 'cmmnwlth_defaults';
+
+div.item_index_title {
+  font-weight: bold;
+  padding-top: .2em;
+}
+
+/* grid view */
+
+#documents div.document.grid-view {
+  clear:none;
+}
+
+#documents div.grid-view {
+  border: 1px solid $light_gray;
+  float:left;
+  width:29%;
+  /* padding: .6em .6em .6em .6em; */
+  /* min-height: 200px; */
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+#documents div.grid-view.new_row {
+  clear: left;
+  margin-right: 3em;
+  margin-left: 1em;
+}
+
+#documents div.grid-view.middle {
+  margin-right: 0;
+}
+
+#documents div.grid-view.last_in_row {
+  margin-right: 0;
+  margin-left: 3em;
+}
+
+#documents div.grid-view div.item_index_thumb {
+  height: 250px;
+  position: relative;
+  /* padding-bottom: .3em; */
+
+}
+
+#documents div.grid-view div.item_index_thumb img {
+  height:auto;
+  width:auto;
+  max-height:250px;
+  max-width:250px;
+  border: 1px solid $light_gray;;
+  position:absolute;
+  bottom:0;
+}
+
+#documents div.grid-view div.item_index_details {
+  display:none;
+}
+
+/* list view */
+
+#documents div.list-view {
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid $light_gray;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+}
+
+#documents div.list-view #selected_ {
+  float: left;
+  margin: 0 .5em 0 0;
+}
+
+#documents div.list-view div.item_index_thumb {
+  height:150px;
+  /* width: 150px; */
+  float:left;
+  width: 23%
+}
+
+#documents div.list-view div.item_index_thumb img {
+  height:auto;
+  width:auto;
+  max-height:150px;
+  max-width:150px;
+  border: 1px solid $light_gray;
+  bottom:0;
+}
+
+#documents div.list-view div.item_index_title {
+  float:left;
+  width: 74%;
+}
+
+#documents div.list-view div.item_index_details {
+  float:left;
+  width:74%;
+}
+
+div.item_index_details dl.index_defList {
+  /*
+  clear: both;
+  overflow: auto;
+  padding: 0.5em 0;
+  */
+}
+
+div.item_index_details dl.index_defList dd {
+  /*
+  float: left;
+  margin: 0;
+  */
+  padding: 2px 0;
+  /*
+  text-align: left;
+  width: 450px;
+  */
+}
+
+div.item_index_details dl.index_defList dt {
+  /* clear: both;
+  color: #888888; */
+  float: left;
+  /* margin: 0; */
+  padding: 2px 1em 2px 0;
+  text-align: right;
+  width: 15%;
+}

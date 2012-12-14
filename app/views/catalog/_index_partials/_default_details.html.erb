@@ -4,14 +4,17 @@
     <%= check_box_tag("selected[]", document[:id]) %>
 <% end %>
 <div class="item_index_thumb">
-  <% thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
+  <%# hide for moment thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
+                       :alt => document[:title_t],
+                       :class => "index_thumb") %>
+  <% thumb = image_tag("rails.png",
                        :alt => document[:title_t],
                        :class => "index_thumb") %>
   <% # bad hack to link to catalog#show rather than image#show %>
   <%= link_to thumb, "/catalog/" + document[:id] %>
 </div>
 <div class="item_index_title">
-  <%= link_to_document(document, :label => :title_t, :counter => (counter + 1 + @response.params[:start].to_i)) %>
+  <%= link_to_document(document, :label => :title_t, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
 </div>
 <div class="item_index_details">
   <dl class="index_defList">
