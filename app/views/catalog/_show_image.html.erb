@@ -1,0 +1,19 @@
+<%# default partial to display solr document fields in catalog show view -%>
+
+<% image_datastream = "http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" %>
+<% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
+<% object_title = document[:title_t] %>
+
+<div id="img_show_container">
+  <% img_element = djatoka_image_tag(image_datastream,
+                                     {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                      :scale => [870,0],
+                                      :alt => object_title,
+                                      :class => "img_show",}) %>
+  <%= img_element  %>
+
+</div>
+
+<div class="<%= params[:action]%>_details">
+  <%= render :partial => "images/show_details", :locals => {:document => document} %>
+</div>

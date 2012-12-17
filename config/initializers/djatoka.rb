@@ -1,0 +1,1 @@
+Rails.configuration.djatoka_resolver = Djatoka::Resolver.new('http://glstfdora001:8080/adore-djatoka/resolver')

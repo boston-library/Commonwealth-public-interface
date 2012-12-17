@@ -1,0 +1,22 @@
+<div id="item_metadata">
+  <h3>Item Information</h3>
+  <dl class="defList">
+    <dt>Title: </dt>
+    <dd><%= render_document_show_field_value(:document=>document, :field=>"title_t") %></dd>
+    <dt>Description: </dt>
+    <dd><%= render_document_show_field_value(:document=>document, :field=>"abstract_t") %></dd>
+    <dt>Document Type: </dt>
+    <dd>
+      <%= render_document_show_field_value(:document=>document, :field=>"active_fedora_model_s").gsub(/[A-Za-z]+::/,"") %>
+    </dd>
+    <dt>Identifier (other): </dt>
+    <dd>
+      <% dspace_uri = render_document_show_field_value(:document=>document, :field=>"mods_0_relatedItem_0_location_0_url_t") %>
+      <%= link_to dspace_uri, dspace_uri, :target => "_blank" %>
+    </dd>
+    <dt>Collection: </dt>
+    <dd>
+      <%= render_document_show_field_value(:document=>document, :field=>"collection_label_s") %>
+    </dd>
+  </dl>
+</div>
