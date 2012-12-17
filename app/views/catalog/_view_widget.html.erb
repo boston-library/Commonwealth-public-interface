@@ -1,0 +1,14 @@
+<% if show_sort_and_per_page? and !blacklight_config.document_index_view_types.blank? %>
+    <div id="view-dropdown" class="dropdown pull-right hidden-phone">
+      <ul class="css-dropdown">
+        <li class="btn">
+          <%= link_to(t('blacklight.search.change_views.label', :view => params[:view] ? params[:view] : blacklight_config.document_index_view_types.first), "#") %> <span class="caret"></span>
+          <ul>
+            <%- blacklight_config.document_index_view_types.each do |view| %>
+                <li><%= link_to(view, url_for(params_for_search.merge(:view => view))) %></li>
+            <%- end -%>
+          </ul>
+        </li>
+      </ul>
+    </div>
+<% end %>

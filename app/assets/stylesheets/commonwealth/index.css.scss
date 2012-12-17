@@ -2,6 +2,10 @@
 
 @import 'cmmnwlth_defaults';
 
+#per_page-dropdown {
+  padding-left: 1em;
+}
+
 div.item_index_title {
   font-weight: bold;
   padding-top: .2em;
@@ -14,7 +18,7 @@ div.item_index_title {
 }
 
 #documents div.grid-view {
-  border: 1px solid $light_gray;
+  border: none;
   float:left;
   width:29%;
   /* padding: .6em .6em .6em .6em; */
@@ -75,29 +79,29 @@ div.item_index_title {
 }
 
 #documents div.list-view div.item_index_thumb {
-  height:150px;
+  height:200px;
   /* width: 150px; */
   float:left;
-  width: 23%
+  width: 25%
 }
 
 #documents div.list-view div.item_index_thumb img {
   height:auto;
   width:auto;
-  max-height:150px;
-  max-width:150px;
+  max-height:200px;
+  max-width:200px;
   border: 1px solid $light_gray;
   bottom:0;
 }
 
 #documents div.list-view div.item_index_title {
   float:left;
-  width: 74%;
+  width: 72%;
 }
 
 #documents div.list-view div.item_index_details {
   float:left;
-  width:74%;
+  width:72%;
 }
 
 div.item_index_details dl.index_defList {
@@ -127,5 +131,5 @@ div.item_index_details dl.index_defList dt {
   /* margin: 0; */
   padding: 2px 1em 2px 0;
   text-align: right;
-  width: 15%;
+  width: 19%;
 }

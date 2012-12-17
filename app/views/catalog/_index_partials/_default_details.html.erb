@@ -7,7 +7,7 @@
   <%# hide for moment thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
                        :alt => document[:title_t],
                        :class => "index_thumb") %>
-  <% thumb = image_tag("rails.png",
+  <% thumb = image_tag("http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" ,
                        :alt => document[:title_t],
                        :class => "index_thumb") %>
   <% # bad hack to link to catalog#show rather than image#show %>
