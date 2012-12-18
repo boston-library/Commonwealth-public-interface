@@ -7,13 +7,9 @@
 <div id="img_show_container">
   <% img_element = djatoka_image_tag(image_datastream,
                                      {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                      :scale => [870,0],
+                                      :scale => [1170,0],
                                       :alt => object_title,
                                       :class => "img_show",}) %>
   <%= img_element  %>
 
-</div>
-
-<div class="<%= params[:action]%>_details">
-  <%= render :partial => "images/show_details", :locals => {:document => document} %>
 </div>

@@ -1,0 +1,57 @@
+/* styles for show view */
+
+@import 'cmmnwlth_defaults';
+
+#img_show_container {
+  width:100%;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+img.img_show {
+  border: 1px solid $light_gray;
+  width:auto;
+  max-width:100%;
+}
+
+div#img_viewer_modal {
+  position:relative;
+}
+
+/* metadata */
+
+#item_metadata {
+  float: left;
+  width:100%;
+  padding: 0;
+}
+
+#item_metadata h3 {
+  padding-left:1em;
+}
+
+#item_metadata dl.defList {
+  float: left;
+  padding-left: 1em;
+  width: 95%;
+}
+
+#item_metadata dl.defList dt {
+  width: 16%;
+  text-align: right;
+  float: left;
+  padding: 2px 1em 2px 0;
+  clear: both;
+}
+
+#item_metadata dl.defList dd {
+  padding: 2px 0;
+  float: left;
+  width: 75%;
+}
+
+/* tools */
+
+.addthis_toolbox {
+  padding-bottom: .5em;
+}
