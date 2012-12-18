@@ -6,6 +6,11 @@
   padding-left: 1em;
 }
 
+.css-dropdown ul {
+  /* make sure dropdowns aren't hidden behind images */
+  z-index:1;
+}
+
 div.item_index_title {
   font-weight: bold;
   padding-top: .2em;
