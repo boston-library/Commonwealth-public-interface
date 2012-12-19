@@ -1,8 +1,10 @@
-<%# default item data to show in index view %>
+<%# default item data to show in index grid view %>
+
 <%# create checkbox for folder actions (delete, move, etc.) %>
 <% if params[:controller] == "folders" %>
     <%= check_box_tag("selected[]", document[:id]) %>
 <% end %>
+
 <div class="item_index_thumb">
   <%# hide for moment thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
                        :alt => document[:title_t],

@@ -1,13 +1,10 @@
 <% # container for all documents in index view -%>
 <div id="documents">
-    <%# if params[:view] == "list" %>
-        <%# render :partial => 'catalog/_index_partials/default_group_list',
-                   :locals => {:docs => @response.docs.map { |x| SolrDocument.new(x) },
-                               :facet_name => nil, :facet_value => nil} %>
-    <%# else %>
-        <%# render :partial => 'catalog/_index_partials/default_group',
-                   :locals => {:docs => @response.docs.map { |x| SolrDocument.new(x) },
-                               :facet_name => nil, :facet_value => nil} %>
-    <%# end %>
-  <%= render documents, :as => :document %>
+    <% if params[:view] == "list" %>
+      <%= render documents, :as => :document %>
+    <% else %>
+      <ul class="thumbnails">
+        <%= render :partial => "document_grid-view", :collection => documents, :as => :document %>
+      </ul>
+    <% end %>
 </div>

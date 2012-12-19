@@ -30,24 +30,13 @@ div#img_viewer_modal {
   padding-left:1em;
 }
 
-#item_metadata dl.defList {
-  float: left;
-  padding-left: 1em;
-  width: 95%;
-}
 
 #item_metadata dl.defList dt {
-  width: 16%;
-  text-align: right;
-  float: left;
-  padding: 2px 1em 2px 0;
-  clear: both;
+  padding: .2em 0;
 }
 
 #item_metadata dl.defList dd {
-  padding: 2px 0;
-  float: left;
-  width: 75%;
+  padding: .2em 0;
 }
 
 /* tools */
