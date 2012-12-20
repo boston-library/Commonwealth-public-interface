@@ -1,0 +1,96 @@
+/* this file overrides styles in the iip.compressed.css or iip.css file */
+
+div#img_viewer{
+    font-family:inherit;
+    /* margin:0; */
+    left:0;
+    top:0;
+    background: none repeat scroll 0 0 gray;
+    position:absolute;
+    overflow:hidden;
+    border:1px solid #555;
+    width:99%;
+    height:99%;
+    /* margin-left:auto;
+    margin-right:auto; */
+}
+
+div#navcontainer {
+  top: auto;
+  bottom:10px;    
+}
+
+div#navcontainer div#toolbar {
+    background: none;
+}
+
+div#navwin {
+  opacity:1;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 4px #555;
+  -moz-box-shadow: 2px 2px 4px #555;
+  -webkit-box-shadow: 2px 2px 4px #555;
+}
+
+
+div#navwin div#zone {
+  border:2px solid black;
+}
+
+div#target img {
+  cursor: move;
+}
+
+
+a#logo:link, a#logo:visited {
+  display:none;
+}
+
+
+div#loadBarContainer {
+  display:none;
+}
+
+div#navbuttons {
+  z-index:2;
+  opacity:1;
+  border-radius: 0px 5px 5px 0px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-topright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  /* Fallback for web browsers that doesn't support RGBa */
+  background: rgb(0, 0, 0);
+  /* RGBa with 0.4 opacity */
+  background: rgba(0, 0, 0, 0.4);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  /*left: 0px;*/
+  top: 10px;
+  position:absolute;
+}
+
+div#navbuttons img {
+  display:block;
+  margin-left: 0px;
+  /* margin-top: 5px;*/
+  margin-bottom: 5px;
+}
+
+div#navbuttons img#shiftLeft, div#navbuttons img#shiftRight {
+  display:none;
+}
+
+div#navbuttons img#shiftUp {
+  display:none;
+}
+
+div#navbuttons img#shiftDown {
+  display:none;
+}
+
+div#navbuttons img#snapshot {
+  display:none;
+}
