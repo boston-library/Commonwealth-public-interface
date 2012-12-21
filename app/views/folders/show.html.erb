@@ -1,0 +1,50 @@
+<% @page_title = @folder.title + " - " + application_name %>
+
+<div id="folder_show_view" class="folder_container">
+
+  <h2>Folder: <%= @folder.title %></h2>
+
+  <% if current_user %>
+
+      <% if @folder.description %>
+          <p><%= @folder.description %></p>
+      <% end %>
+
+      <p>
+        [<%= link_to t('blacklight.folders.edit'),
+                     edit_folder_path(@folder),
+                     :title => "edit this folder" %> |
+        <%= link_to t('blacklight.folders.delete.delete'),
+                    @folder, :method => :delete,
+                    :data => { :confirm => t('blacklight.folders.delete.confirm') },
+                    :title => t('blacklight.folders.delete.delete') %>]</p>
+  <% end %>
+
+  <% unless @folder_items.empty? %>
+
+      <p><%= link_to t('blacklight.folder_items.clear.action'), clear_folder_items_path,
+                     :method => :delete,
+                     :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %></p>
+
+      <div class="pageEntriesInfo">
+        <div id="pageEntries">
+          <%= render_pagination_info @response, :entry_name=>'item' %>
+        </div>
+        <%= render 'catalog/sort_and_per_page' %>
+      </div>
+
+      <%= render 'catalog/results_pagination' %>
+
+      <%= form_tag delete_selected_folder_items_path, :method => :put do %>
+          <%=  submit_tag "Remove" %>
+
+        <%= render :partial => 'catalog/document_list' %>
+
+        <%= render 'catalog/results_pagination' %>
+      <% end %>
+
+  <% else %>
+    <p><strong><%= t('blacklight.folders.empty') %></strong></p>
+  <% end %>
+
+</div>

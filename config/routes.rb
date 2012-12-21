@@ -6,6 +6,13 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   devise_for :users
 
+  resources :folders
+
+  resources :folder_items
+
+  match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
+  match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
