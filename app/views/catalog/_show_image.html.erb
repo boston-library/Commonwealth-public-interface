@@ -16,9 +16,7 @@
   <% else %>
       <%= link_to(img_element, "#", :id => "img_viewer_link",
                   :class => "img_viewer_link",
-                  :title => t('blacklight.images.zoom'),
-                  "data-toggle" => "modal",
-                  "data-target" => "#img_viewer_modal") %>
+                  :title => t('blacklight.images.zoom')) %>
 
       <%= render :partial => "images/image_viewer", :locals => {:object_title => object_title,
                                                                 :image_datastream => image_datastream,

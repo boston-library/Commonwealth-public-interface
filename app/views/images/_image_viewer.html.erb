@@ -8,8 +8,6 @@
     jQuery.noConflict();
     jQuery(document).ready(function() {
 
-
-        /*
         var dialog;
         dialog = jQuery('#img_viewer_modal')
                 .dialog({
@@ -40,42 +38,8 @@
             });
             return false;
         });
-        */
 
-        jQuery('#img_viewer_modal').modal({
-                show:false,
-                width:jQuery(window).width() - 50,
-                height:jQuery(window).height() - 100
-        })
-        /*
-        jQuery('#img_viewer_modal').on('shown', function () {
-            iip = new IIP( "modal-body", {
-                image: '<%= image_datastream %>',
-                server: '<%= Rails.configuration.djatoka_resolver.base_url %>',
-                zoom: 1,
-                render: 'random',
-                showNavButtons: true,
-                levels: <%= image_metadata.levels.to_i %>,
-                max_height: <%= image_metadata.height.to_i %>,
-                max_width: <%= image_metadata.width.to_i %>
-            });
-        })
-
-        jQuery('#img_viewer_modal').on('hidden', function () {
-            jQuery('#img_viewer').remove();
-            alert(jQuery(window).height());
-        })
-        */
     });
 </script>
 
-
-<!-- <div id="img_viewer_modal"></div> -->
-
-<div id="img_viewer_modal" class="modal hide fade">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-    <h3><%= object_title %></h3>
-  </div>
-  <div class="modal-body" id="modal-body"></div>
-</div>
+<div id="img_viewer_modal"></div>
