@@ -17,6 +17,8 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+//= require bootstrap-dropdown
+
 // WARNING: require tree has been disabled to avoid djatoka JS files being automatically included
 //          since the viewer uses mooTools, which causes namespace conflicts with jQuery
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive

@@ -29,6 +29,8 @@ class FoldersController < ApplicationController
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
 
     @response, @document_list = get_solr_response_for_field_values(SolrDocument.unique_key, folder_items_ids)
+    # have to declare this so view uses catalog/index partials
+    @partial_path_templates = ["catalog/%{action_name}_%{index_view_type}_%{format}"]
   end
 
   def new

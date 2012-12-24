@@ -1,16 +1,16 @@
 <div id="sortAndPerPage">
   <div class="page_links">
-    <%= render :partial => "paginate_compact" %>
+    <%= render :partial => "catalog/paginate_compact" %>
   </div>
-  <%= render :partial => 'sort_widget' %>
+  <%= render :partial => 'catalog/sort_widget' %>
 
-  <%= render :partial => 'per_page_widget' %>
+  <%= render :partial => 'catalog/per_page_widget' %>
 
-  <%# add 'hidden-tablet class to per_page_widget %>
+  <%# add 'hidden-tablet' class to per_page_widget %>
   <script type="text/javascript">
     $('#per_page-dropdown').addClass("hidden-tablet");
   </script>
 
-  <%=  render :partial => 'view_widget' %>
+  <%=  render :partial => 'catalog/view_widget' %>
 
 </div>

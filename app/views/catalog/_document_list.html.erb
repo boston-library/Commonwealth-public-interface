@@ -4,7 +4,7 @@
       <%= render documents, :as => :document %>
     <% else %>
       <ul class="thumbnails">
-        <%= render :partial => "document_grid-view", :collection => documents, :as => :document %>
+        <%= render :partial => "catalog/document_grid-view", :collection => documents, :as => :document %>
       </ul>
     <% end %>
 </div>
