@@ -13,6 +13,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
   match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
 
+  match "catalog/create_folder", :to => "catalog#create_folder", :as => "create_folder_catalog"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

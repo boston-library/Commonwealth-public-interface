@@ -178,6 +178,15 @@ class CatalogController < ApplicationController
     solr_parameters[:fq] << "-active_fedora_model_s:\"Bplmodels::ImageFile\""
   end
 
+  def create_folder
+    @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
+  end
+
+
 
 
 end 

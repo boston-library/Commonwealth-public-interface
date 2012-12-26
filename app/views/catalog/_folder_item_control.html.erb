@@ -55,7 +55,7 @@
           <%# end %>
 
           <div class="btn-group folder-item-control">
-            <button class="btn lightboxLink">
+            <button class="btn" data-toggle="modal" data-target="#create-folder-modal">
               <i class="icon-folder-open"></i> <%= t('blacklight.folder_items.add.button') %>
             </button>
           </div>
@@ -72,6 +72,10 @@
               <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
               <button class="btn btn-primary">Save changes</button>
             </div>
+          </div>
+
+          <div class="create_folder">
+            <%= link_to t('blacklight.folder_items.add.button'), create_folder_catalog_path(:id => @document), {:id => 'createfolderLink', :class => 'lightboxLink'} %>
           </div>
 
 
