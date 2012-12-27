@@ -7,6 +7,7 @@ class FolderItemsController < ApplicationController
   end
 
   def create
+    @response, @document = get_solr_response_for_doc_id(params[:id])
     if params[:folder_items]
       @folder_items = params[:folder_items]
     else
@@ -15,42 +16,57 @@ class FolderItemsController < ApplicationController
 
     #current_or_guest_user.save! unless current_or_guest_user.persisted?
 
-    success = @folder_items.all? do |f_item|
+    @folder_items.all? do |f_item|
       current_user.folders.find(f_item[:folder_id]).folder_items.create!(:document_id => f_item[:document_id]) unless current_user.existing_folder_item_for(f_item[:document_id])
     end
 
-    if request.xhr?
-      render :text => "", :status => (success ? "200" : "500" )
-    else
-      if @folder_items.length > 0 && success
-        flash[:notice] = I18n.t('blacklight.folder_items.add.success', :count => @folder_items.length)
-      elsif @folder_items.length > 0
-        flash[:error] = I18n.t('blacklight.folder_items.add.failure', :count => @folder_items.length)
-      end
-
-      redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
+    #
+    #if request.xhr?
+    #  render :text => "", :status => (success ? "200" : "500" )
+    #else
+    #  if @folder_items.length > 0 && success
+    #    flash[:notice] = I18n.t('blacklight.folder_items.add.success', :count => @folder_items.length)
+    #  elsif @folder_items.length > 0
+    #    flash[:error] = I18n.t('blacklight.folder_items.add.failure', :count => @folder_items.length)
+    #  end
+
+    #  redirect_to :back
+    #end
+
+
   end
 
 
   # Beware, :id is the Solr document_id, not the actual Bookmark id.
   # idempotent, as DELETE is supposed to be.
   def destroy
+    @response, @document = get_solr_response_for_doc_id(params[:id])
     folder_item = current_user.existing_folder_item_for(params[:id])
 
-    success = (!folder_item) || FolderItem.find(folder_item).destroy
+    # success = (!folder_item) || FolderItem.find(folder_item).destroy
 
-    unless request.xhr?
-      if success
-        flash[:notice] =  I18n.t('blacklight.folder_items.remove.success')
-      else
-        flash[:error] = I18n.t('blacklight.folder_items.remove.failure')
-      end
-      redirect_to :back
-    else
-      # ajaxy request needs no redirect and should not have flash set
-      render :text => "", :status => (success ? "200" : "500")
+    FolderItem.find(folder_item).destroy
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
     end
+
+    #unless request.xhr?
+    #  if success
+    #    flash[:notice] =  I18n.t('blacklight.folder_items.remove.success')
+    #  else
+    #    flash[:error] = I18n.t('blacklight.folder_items.remove.failure')
+    #  end
+    #  redirect_to :back
+    #else
+      # ajaxy request needs no redirect and should not have flash set
+    #  render :text => "", :status => (success ? "200" : "500")
+    #end
   end
 
   def clear

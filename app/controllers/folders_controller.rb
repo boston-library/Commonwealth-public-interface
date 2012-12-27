@@ -47,6 +47,31 @@ class FoldersController < ApplicationController
     end
   end
 
+  def create_folder_catalog
+    if request.post?
+      unless params[:title].empty?
+        @folder = current_user.folders.build(:title => params[:title], :description => params[:description])
+        if @folder.save
+          flash[:success] = "Folder created; " + t('blacklight.folder_items.add.success')
+          current_user.folders.first.folder_items.create!(:document_id => params['id'].first)
+          redirect_to catalog_path(params['id']) unless request.xhr?
+        else
+          flash[:error] = t('blacklight.folders.create.error.no_save')
+        end
+      else
+        flash[:error] = t('blacklight.folders.create.error.no_title')
+      end
+    end
+
+    unless !request.xhr? && flash[:success]
+      respond_to do |format|
+        format.js { render :layout => false }
+        format.html { redirect_to :action => "new" }
+      end
+    end
+
+  end
+
   def edit
     @folder = Folder.find(params[:id])
   end

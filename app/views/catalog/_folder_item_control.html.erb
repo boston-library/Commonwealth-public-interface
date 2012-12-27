@@ -3,7 +3,18 @@
     <div id="folder_item_toggle">
       <% unless existing_folders.empty? %>
 
+          <% existing_folders.each do |ex_fldr| %>
+              <p><%= ex_fldr.title + ": " + ex_fldr.folder_items.count.to_s %></p>
+              <p><%= ex_fldr.folder_items.to_a.inspect %>
+              <%# ex_fldr.folder_items.each do |ex_fldr_itm| %>
+                <%# ex_fldr_itm.document_id + ";" %>
+              <%# end %>
+              </p>
+          <% end %>
+
           <% existing_folder_item = current_user.existing_folder_item_for(document.id) %>
+
+          <%= existing_folder_item.inspect %>
 
           <% unless existing_folder_item %>
 
@@ -19,7 +30,8 @@
                       <li><%= link_to folder.title,
                                       folder_item_path(document, :folder_id => folder.id),
                                       :method => :put,
-                                      :class=>'folder_item_add' %>
+                                      :class=>'folder_item_add',
+                                      :remote => true %>
                       </li>
                   <% end %>
                 </ul>
@@ -38,7 +50,8 @@
                   <li><%= link_to existing_folder_item.folder.title,
                                   folder_item_path(document),
                                   :method => :delete,
-                                  :class=>'folder_item_add' %>
+                                  :class=>'folder_item_add',
+                                  :remote => true %>
                   </li>
                 </ul>
               </div>
@@ -47,37 +60,10 @@
 
       <% else %>
 
-          <%# folder form for user who has no folders %>
-          <%# form_tag folder_item_path(document), :method=>:put, :class=>'folder_item_add' do %>
-          <%= link_to submit_tag(t('blacklight.folder_items.add.button'),
-                                 :id => "add_no_folders"), "#",
-                      :confirm => t('blacklight.folders.no_folders') %>
-          <%# end %>
-
-          <div class="btn-group folder-item-control">
-            <button class="btn" data-toggle="modal" data-target="#create-folder-modal">
-              <i class="icon-folder-open"></i> <%= t('blacklight.folder_items.add.button') %>
-            </button>
-          </div>
-
-          <div id="create-folder-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h3 id="myModalLabel"><%= t('blacklight.folders.add_folder') %></h3>
-            </div>
-            <div class="modal-body">
-              <%# render 'folders/new_edit_form_fields', :form_object => current_user.folders.new, :submit_button_text => "Create folder" %>
-            </div>
-            <div class="modal-footer">
-              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-              <button class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-
-          <div class="create_folder">
-            <%= link_to t('blacklight.folder_items.add.button'), create_folder_catalog_path(:id => @document), {:id => 'createfolderLink', :class => 'lightboxLink'} %>
-          </div>
-
+         <%# modal create folder form for user who has no folders %>
+          <%= link_to content_tag(:i, "", :class => "icon-folder-open") + " " + t('blacklight.folder_items.add.button'),
+                      create_folder_catalog_path(:id => @document),
+                      {:id => 'createfolderLink', :class => 'lightboxLink btn'} %>
 
       <% end %>
     </div>

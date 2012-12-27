@@ -30,6 +30,14 @@ describe FolderItemsController do
         end.should change(FolderItem, :count).by(1)
       end
 
+      it "should create a new folder item using ajax" do
+        lambda do
+          xhr :post, :create, :folder_items => [{ :document_id => "bpl-development:103", :folder_id => @folder.id }]
+          response.should be_success
+          @test_user.existing_folder_item_for("bpl-development:103").should_not be_false
+        end.should change(FolderItem, :count).by(1)
+      end
+
     end
 
   end
@@ -42,11 +50,18 @@ describe FolderItemsController do
         @folder.folder_items.create!(:document_id => "bpl-development:101")
       end
 
-      it "should delete a new folder item" do
+      it "should delete a folder item" do
         lambda do
           @request.env['HTTP_REFERER'] = '/folder_items'
           delete :destroy, :id => "bpl-development:101"
           response.should be_redirect
+        end.should change(FolderItem, :count).by(-1)
+      end
+
+      it "should delete a folder item using ajax" do
+        lambda do
+          xhr :delete, :destroy, :id => "bpl-development:101"
+          response.should be_success
         end.should change(FolderItem, :count).by(-1)
       end
 

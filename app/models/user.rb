@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     #['public', 'test']
   end
 
-  has_many :folders
+  has_many :folders, :dependent => :destroy
 
   def existing_folder_item_for (document_id)
     self.folders.find do |fldr|

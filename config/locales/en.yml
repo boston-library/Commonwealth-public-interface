@@ -23,6 +23,7 @@ en:
           no_bookmarks: 'You do not currently have any bookmarks.'
 
     folders:
+          intro: 'Folders can be used to create and organize your own personal collections of items.'
           add:
             success: 'Added to Selected Items'
           remove:
@@ -30,6 +31,10 @@ en:
           list_title: 'Folders'
           no_folders: 'You do not currently have any folders.'
           need_login: 'Please log in to create and view folders.'
+          create:
+            error:
+              no_title: 'Title cannot be blank.'
+              no_save: 'The folder could not be created. Please try again later.'
           delete:
             delete: 'Delete this folder'
             success: 'Folder deleted.'
@@ -47,12 +52,12 @@ en:
     folder_items:
           add:
             button: 'Add to Folder'
-            success: 'Added to folder.'
+            success: 'Item added to folder.'
             failure: 'Item could not be added.'
             submit: 'Add'
           remove:
             button: 'Remove from folder'
-            success: 'Removed from folder.'
+            success: 'Item removed from folder.'
             failure: 'Item could not be removed.'
           clear:
             action: 'Remove all items'

@@ -8,7 +8,7 @@
 
 <%- elsif @folders.blank? -%>
 
-    <p>Folders can be used to create your own personal collections of items. Is that cool or what?</p>
+    <p><%= t('blacklight.folders.intro') %></p>
     <p><strong><%= t('blacklight.folders.add_folder') %></strong></p>
     <%= render 'new_edit_form_fields', :form_object => current_user.folders.new, :submit_button_text => "Create folder" %>
 
