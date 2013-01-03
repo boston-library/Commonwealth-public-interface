@@ -1,1 +1,1 @@
-$('#folder_item_toggle').update("<%= escape_javascript(render('catalog/folder_item_control')) %>")
+$('#folder_item_toggle').update("<%= escape_javascript(render('catalog/folder_item_control', :locals => {:document => @document})) %>")

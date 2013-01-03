@@ -2,24 +2,21 @@
 
 <div id="content" class="folder_container span9">
 
-  <h2>Folder: <%= @folder.title %></h2>
-
-  <% if current_user %>
-
-      <% if @folder.description %>
-          <p><%= @folder.description %></p>
-      <% end %>
-
-      <p>
-        [<%= link_to t('blacklight.folders.edit'),
-                     edit_folder_path(@folder),
-                     :title => "edit this folder" %> |
-        <%= link_to t('blacklight.folders.delete.delete'),
-                    @folder, :method => :delete,
-                    :data => { :confirm => t('blacklight.folders.delete.confirm') },
-                    :title => t('blacklight.folders.delete.delete') %>]</p>
+  <h2>Folder: <%= @folder.title %>
+    <% if current_user %>
+    <small>
+      [<%= link_to t('blacklight.folders.edit'),
+                   edit_folder_path(@folder),
+                   :title => "edit this folder" %> |
+      <%= link_to t('blacklight.folders.delete.delete'),
+                  @folder, :method => :delete,
+                  :data => { :confirm => t('blacklight.folders.delete.confirm') },
+                  :title => t('blacklight.folders.delete.delete') %>]</small>
+    <% end %>
+  </h2>
+  <% if @folder.description %>
+      <p><%= @folder.description %></p>
   <% end %>
-
   <% unless @folder_items.empty? %>
 
       <%= form_tag delete_selected_folder_items_path, :method => :put do %>
@@ -34,6 +31,7 @@
 
   <% else %>
     <p><strong><%= t('blacklight.folders.empty') %></strong></p>
+    <p><%= t('blacklight.folders.help.add_items') %></p>
   <% end %>
 
 </div>

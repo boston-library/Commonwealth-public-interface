@@ -1,11 +1,11 @@
 <li>
-  <%= link_to folder.title, folder, :class => "folder_title" %>
+  <h4><%= link_to folder.title, folder, :class => "folder_title" %>
   <% if current_user %>
-        <%= link_to "delete", folder, :method => :delete,
+        <small><%= link_to "delete", folder, :method => :delete,
                     :data => { :confirm => t('blacklight.folders.delete.confirm') },
-                    :title => "delete this folder" %>
-  <% end %>
+                    :title => "delete this folder" %></small>
+  <% end %></h4>
   <% if folder.description %>
-    <br/><%= folder.description %>
+    <%= folder.description %>
   <% end %>
 </li>

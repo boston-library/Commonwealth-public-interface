@@ -5,18 +5,18 @@
 
           <% existing_folders.each do |ex_fldr| %>
               <p><%= ex_fldr.title + ": " + ex_fldr.folder_items.count.to_s %></p>
-              <p><%= ex_fldr.folder_items.to_a.inspect %>
-              <%# ex_fldr.folder_items.each do |ex_fldr_itm| %>
-                <%# ex_fldr_itm.document_id + ";" %>
-              <%# end %>
+              <p><%# ex_fldr.folder_items.inspect %>
+              <% ex_fldr.folder_items.each do |ex_fldr_itm| %>
+                <%= ex_fldr_itm.document_id + ";" %>
+              <% end %>
               </p>
           <% end %>
 
-          <% existing_folder_item = current_user.existing_folder_item_for(document.id) %>
+          <%# existing_folder_item = current_user.existing_folder_item_for(document.id) %>
 
-          <%= existing_folder_item.inspect %>
+          <%# existing_folder_item.inspect %>
 
-          <% unless existing_folder_item %>
+          <% unless current_user.existing_folder_item_for(document.id) %>
 
               <div class="btn-group folder-item-control">
                 <button class="btn">

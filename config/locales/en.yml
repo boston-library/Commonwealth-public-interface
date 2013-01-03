@@ -48,6 +48,9 @@ en:
               success: 'Items removed.'
               failure: 'Items could not be removed. Please try again later.'
               no_items: 'No items selected!'
+          help:
+            add_items: 'To add items to your folder, click the "Add to Folder" button in the "Tools" section
+                        of the item detail page.'
 
     folder_items:
           add:
