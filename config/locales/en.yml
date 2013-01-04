@@ -18,16 +18,34 @@ en:
           selected_items: 'Selected Items'
 
     bookmarks:
+          collection:
+            add:
+              button: 'Add to Bookmarks'
+          title: 'Bookmarks'
+          description: 'The default folder for maintaining a list of items.'
+          no_bookmarks: 'This folder does not currently have any items.'
           add:
-            success: 'Added to bookmarks.'
-          no_bookmarks: 'You do not currently have any bookmarks.'
+            button: 'Bookmark'
+            success:
+              one: 'Item added to folder.'
+              other: 'Items added to folder.'
+            failure:  'Item could not be added.'
+          remove:
+            button: 'Remove bookmark'
+            success: 'Item removed from folder.'
+            failure: 'Item could not be removed.'
+            action_confirm: 'Remove this item?'
+          clear:
+            action_title: 'Remove all items'
+            action_confirm: 'Are you sure you want to remove all items?'
+            success: 'All items removed.'
+            failure: 'Items could not be removed. Please try again later.'
+          need_login: 'Please log in to create and manage folders.'
+          list_title: 'Your Bookmarks'
+          delete: 'Remove'
 
     folders:
           intro: 'Folders can be used to create and organize your own personal collections of items.'
-          add:
-            success: 'Added to Selected Items'
-          remove:
-            success: 'Removed from Selected Items'
           list_title: 'Folders'
           no_folders: 'You do not currently have any folders.'
           need_login: 'Please log in to create and view folders.'
@@ -53,6 +71,7 @@ en:
                         of the item detail page.'
 
     folder_items:
+          item_in_folder: 'In Folder'
           add:
             button: 'Add to Folder'
             success: 'Item added to folder.'

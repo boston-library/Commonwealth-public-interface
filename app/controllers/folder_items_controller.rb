@@ -14,10 +14,12 @@ class FolderItemsController < ApplicationController
       @folder_items = [{ :document_id => params[:id], :folder_id => params[:folder_id] }]
     end
 
-    #current_or_guest_user.save! unless current_or_guest_user.persisted?
-
-    @folder_items.all? do |f_item|
+    success = @folder_items.all? do |f_item|
       current_user.folders.find(f_item[:folder_id]).folder_items.create!(:document_id => f_item[:document_id]) unless current_user.existing_folder_item_for(f_item[:document_id])
+    end
+
+    unless request.xhr?
+      flash[:notice] = t('blacklight.folder_items.add.success')
     end
 
     respond_to do |format|

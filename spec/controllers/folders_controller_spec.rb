@@ -17,14 +17,15 @@ describe FoldersController do
 
     describe "non-logged in user" do
 
-      # it "should redirect to the login page" do
-      #get :index
-      # TODO: neither of the below work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
-      #response.should redirect_to(new_user_session_path)
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
-      #end
+      it "should link to the bookmarks folder" do
+        get :index
+        response.body.should have_selector("a[href='/bookmarks']")
+      end
 
-      # TODO: repeat for create/destroy actions
+      it "should not show any folders" do
+        get :index
+        @folders.should be_nil
+      end
 
     end
 
@@ -36,12 +37,10 @@ describe FoldersController do
 
       describe "user has no folders yet" do
 
-        # TODO can't figure out why @folders is nil
         it "should not show any folders" do
           get :index
-          #controller.current_user.should == @test_user
           @test_user.folders.should be_empty
-          response.body.should have_selector("form[id='new_folder']")
+          @folders.should be_nil
         end
 
       end

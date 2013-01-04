@@ -1,0 +1,20 @@
+<% @page_title = t('blacklight.bookmarks.title') + " - " + application_name %>
+
+<h2>Folder: <%= t('blacklight.bookmarks.title') %></h2>
+
+<p><%= t('blacklight.bookmarks.description') %></p>
+
+<%- if current_or_guest_user.blank? -%>
+
+    <h3><%= t('blacklight.bookmarks.need_login') %></h3>
+
+<%- elsif @document_list.blank? -%>
+
+    <h3><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
+<% else %>
+    <%= render 'sort_and_per_page' %>
+
+    <%= render 'tools' %>
+    <%= render_document_index %>
+    <%= render 'results_pagination' %>
+<% end %>

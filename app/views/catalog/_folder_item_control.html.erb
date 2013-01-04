@@ -1,70 +1,66 @@
-<% if current_user %>
-    <% existing_folders = current_user.folders %>
+<% if current_or_guest_user %>
+
+    <% existing_bookmark = current_or_guest_user.existing_bookmark_for(document.id) %>
+
     <div id="folder_item_toggle">
-      <% unless existing_folders.empty? %>
 
-          <% existing_folders.each do |ex_fldr| %>
-              <p><%= ex_fldr.title + ": " + ex_fldr.folder_items.count.to_s %></p>
-              <p><%# ex_fldr.folder_items.inspect %>
-              <% ex_fldr.folder_items.each do |ex_fldr_itm| %>
-                <%= ex_fldr_itm.document_id + ";" %>
+      <% if current_user %>
+          <% existing_folders = current_user.folders %>
+          <% existing_folder_item = current_user.existing_folder_item_for(document.id) %>
+      <% else %>
+          <% existing_folders = [] %>
+      <% end %>
+
+      <% unless existing_folder_item || existing_bookmark %>
+
+        <% if existing_folders.empty? %>
+
+          <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
+            <button class="btn" type="submit">
+                <%= content_tag(:i, "", :class => "icon-folder-open") + " " + t('blacklight.folder_items.add.button') %>
+            </button>
+          <% end %>
+
+        <% else %>
+
+              <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
+
+                <div class="btn-group folder-item-control">
+                    <button class="btn" type="submit">
+                        <%= content_tag(:i, "", :class => "icon-folder-open") + " " + t('blacklight.folder_items.add.button') %>
+                    </button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><%= link_to t('blacklight.bookmarks.title'),
+                                        bookmark_path( document ),
+                                        :method => :put,
+                                        :class=>'folder_item_add',
+                                        :remote => true %>
+                        </li>
+                        <% existing_folders.each do |folder| %>
+                            <li><%= link_to folder.title,
+                                            folder_item_path(document, :folder_id => folder.id),
+                                            :method => :put,
+                                            :class=>'folder_item_add',
+                                            :remote => true %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </div>
+
               <% end %>
-              </p>
-          <% end %>
 
-          <%# existing_folder_item = current_user.existing_folder_item_for(document.id) %>
-
-          <%# existing_folder_item.inspect %>
-
-          <% unless current_user.existing_folder_item_for(document.id) %>
-
-              <div class="btn-group folder-item-control">
-                <button class="btn">
-                  <i class="icon-folder-open"></i> <%= t('blacklight.folder_items.add.button') %>
-                </button>
-                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <% existing_folders.each do |folder| %>
-                      <li><%= link_to folder.title,
-                                      folder_item_path(document, :folder_id => folder.id),
-                                      :method => :put,
-                                      :class=>'folder_item_add',
-                                      :remote => true %>
-                      </li>
-                  <% end %>
-                </ul>
-              </div>
-
-          <% else %>
-
-              <div class="btn-group folder-item-control">
-                <button class="btn">
-                  <i class="icon-folder-open"></i> <%= t('blacklight.folder_items.remove.button') %>
-                </button>
-                <button class="btn dropdown-toggle" data-toggle="dropdown">
-                  <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                  <li><%= link_to existing_folder_item.folder.title,
-                                  folder_item_path(document),
-                                  :method => :delete,
-                                  :class=>'folder_item_add',
-                                  :remote => true %>
-                  </li>
-                </ul>
-              </div>
-
-          <% end %>
+        <% end %>
 
       <% else %>
 
-         <%# modal create folder form for user who has no folders %>
-          <%= link_to content_tag(:i, "", :class => "icon-folder-open") + " " + t('blacklight.folder_items.add.button'),
-                      create_folder_catalog_path(:id => @document),
-                      {:id => 'createfolderLink', :class => 'lightboxLink btn'} %>
+        <%= render :partial => "folders/in_folder" %>
 
       <% end %>
+
     </div>
+
 <% end %>
+

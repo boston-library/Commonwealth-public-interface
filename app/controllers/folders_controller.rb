@@ -14,12 +14,11 @@ class FoldersController < ApplicationController
   end
   helper_method :search_action_url
 
-  before_filter :verify_user
+  before_filter :verify_user, :except => :index
 
   def index
-    @folders = current_user.folders
-    if @folders.empty?
-      flash[:notice] = t('blacklight.folders.no_folders')
+    if current_user
+      @folders = current_user.folders
     end
   end
 
