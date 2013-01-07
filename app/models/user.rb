@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # the account. 
 
   def to_s
-    self.username
+    self.email
   end
 
   def name

@@ -9,10 +9,10 @@ en:
 
     header_links:
           logout: 'Log Out'
-          login: 'Login'
-          profile: 'My Profile'
+          login: 'Log In'
+          profile: 'Profile'
           folders: 'Folders'
-          bookmarks: 'Bookmarks'
+          bookmarks: 'Folders'
           saved_searches: 'Saved Searches'
           search_history: 'Search History'
           selected_items: 'Selected Items'
@@ -45,7 +45,7 @@ en:
           delete: 'Remove'
 
     folders:
-          intro: 'Folders can be used to create and organize your own personal collections of items.'
+          intro: 'Folders can be used to create, organize, and share your own personal collections of items.'
           list_title: 'Folders'
           no_folders: 'You do not currently have any folders.'
           need_login: 'Please log in to create and view folders.'
