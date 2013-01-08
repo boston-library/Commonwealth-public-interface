@@ -96,6 +96,67 @@ class FolderItemsController < ApplicationController
     end
   end
 
+  def item_actions
+    @folder = Folder.find(params[:id])
+    if params[:selected]
+      sort = params[:sort] ? params[:sort] : ""
+      per_page = params[:per_page] ? params[:per_page] : ""
+      items = params[:selected]
+    else
+      redirect_to :back
+      flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
+    end
+
+    respond_to do |format|
+      format.html {
+        case params[:commit]
+          when "Email"
+            redirect_to email_catalog_path(:sort => sort,
+                                               :per_page => per_page,
+                                               :id => items)
+          when "Cite"
+            redirect_to citation_catalog_path(:sort => sort,
+                                                  :per_page => per_page,
+                                                  :id => items)
+
+          when "Remove"
+            if @folder.folder_items.where(:document_id => items).delete_all
+              flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
+            else
+              flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
+            end
+            redirect_to :controller => "folders", :action => "show", :id => @folder
+        end
+      }
+      format.js {
+        case params[:commit]
+          when "Email"
+            render email_catalog_path(:sort => sort,
+                                           :per_page => per_page,
+                                           :id => items)
+          when "Cite"
+            @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,items)
+            render "shared/citation"
+            #render citation_catalog_path(:sort => sort, :per_page => per_page,:id => items)
+
+          when "Remove"
+            if @folder.folder_items.where(:document_id => items).delete_all
+              flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
+            else
+              flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
+            end
+            redirect_to :controller => "folders", :action => "show", :id => @folder
+        end
+      }
+    end
+
+
+
+  end
+
+
+
+
   protected
   def verify_user
     flash[:notice] = I18n.t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user

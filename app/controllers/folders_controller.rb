@@ -15,6 +15,7 @@ class FoldersController < ApplicationController
   helper_method :search_action_url
 
   before_filter :verify_user, :except => :index
+  before_filter :correct_user, :only => [:show, :update, :destroy]
 
   def index
     if current_user
@@ -23,7 +24,7 @@ class FoldersController < ApplicationController
   end
 
   def show
-    @folder = Folder.find(params[:id])
+    # @folder is set by correct_user
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
 
@@ -77,7 +78,7 @@ class FoldersController < ApplicationController
   end
 
   def update
-    @folder = Folder.find(params[:id])
+    # @folder is set by correct_user
     if @folder.update_attributes(params[:folder])
       flash[:notice] = "Folder updated."
       redirect_to @folder
@@ -87,7 +88,8 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    Folder.find(params[:id]).destroy
+    # @folder is set by correct_user
+    @folder.destroy
     flash[:notice] = t('blacklight.folders.delete.success')
     redirect_to :action => "index"
   end
@@ -95,6 +97,11 @@ class FoldersController < ApplicationController
   protected
   def verify_user
     flash[:notice] = I18n.t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+  end
+
+  def correct_user
+    @folder = Folder.find(params[:id])
+    redirect_to root_path unless current_user.folders.include?(@folder)
   end
 
 end

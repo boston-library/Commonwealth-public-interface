@@ -7,16 +7,6 @@ en:
   blacklight:
     application_name: 'Digital Commonwealth'
 
-    header_links:
-          logout: 'Log Out'
-          login: 'Log In'
-          profile: 'Profile'
-          folders: 'Folders'
-          bookmarks: 'Folders'
-          saved_searches: 'Saved Searches'
-          search_history: 'Search History'
-          selected_items: 'Selected Items'
-
     bookmarks:
           collection:
             add:
@@ -87,6 +77,16 @@ en:
             success: 'All items removed.'
             failure: 'Items could not be removed. Please try again later.'
 
+    header_links:
+          logout: 'Log Out'
+          login: 'Log In'
+          profile: 'Profile'
+          folders: 'Folders'
+          bookmarks: 'Folders'
+          saved_searches: 'Saved Searches'
+          search_history: 'Search History'
+          selected_items: 'Selected Items'
+
     images:
           zoom: 'Click to zoom in on this image.'
 
@@ -97,6 +97,9 @@ en:
             label: 'View as %{view}'
             action: 'View as'
             submit: 'Update'
+
+    tools:
+          remove: 'Remove'
 
 
   devise:
