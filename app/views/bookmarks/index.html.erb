@@ -6,11 +6,12 @@
 
 <%- if current_or_guest_user.blank? -%>
 
-    <h3><%= t('blacklight.bookmarks.need_login') %></h3>
+    <h4><%= t('blacklight.bookmarks.need_login') %></h4>
 
 <%- elsif @document_list.blank? -%>
 
-    <h3><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
+    <h4><%= t('blacklight.bookmarks.no_bookmarks') %></h4>
+    <p><%= t('blacklight.folders.help.add_items') %></p>
 <% else %>
     <%= render 'sort_and_per_page' %>
 

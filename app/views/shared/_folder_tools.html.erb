@@ -1,0 +1,31 @@
+<script language="javascript" type="text/javascript">
+  // render the tool buttons
+  $('#folderTools').html("<%= escape_javascript(render('shared/tools')) %>");
+
+  // remove duplicate buttons from form
+  $(document).ready ( function () {
+    $('#cite_btn').remove();
+    $('#email_btn').remove();
+  });
+
+  // select/unselect all
+  $('#selectAllItems').click( function () {
+      $(':checkbox[name^="selected[]"]').prop('checked', this.checked);
+  });
+
+  // when JS-enabled tool button is clicked, append the ids of all checked items to url
+
+  $('#citeLink,#emailLink').click( function (e) {
+      e.preventDefault();
+      e.attr('href','some_new_value');
+
+
+    /*
+    )
+    $(':checkbox:checked').each( function () {
+        var appendage = this.attr("value");
+
+    }) */
+  });
+
+</script>

@@ -26,19 +26,6 @@ class FolderItemsController < ApplicationController
       format.html { redirect_to :back }
       format.js
     end
-    #
-    #if request.xhr?
-    #  render :text => "", :status => (success ? "200" : "500" )
-    #else
-    #  if @folder_items.length > 0 && success
-    #    flash[:notice] = I18n.t('blacklight.folder_items.add.success', :count => @folder_items.length)
-    #  elsif @folder_items.length > 0
-    #    flash[:error] = I18n.t('blacklight.folder_items.add.failure', :count => @folder_items.length)
-    #  end
-
-    #  redirect_to :back
-    #end
-
 
   end
 
@@ -58,17 +45,6 @@ class FolderItemsController < ApplicationController
       format.js
     end
 
-    #unless request.xhr?
-    #  if success
-    #    flash[:notice] =  I18n.t('blacklight.folder_items.remove.success')
-    #  else
-    #    flash[:error] = I18n.t('blacklight.folder_items.remove.failure')
-    #  end
-    #  redirect_to :back
-    #else
-      # ajaxy request needs no redirect and should not have flash set
-    #  render :text => "", :status => (success ? "200" : "500")
-    #end
   end
 
   def clear
@@ -99,63 +75,30 @@ class FolderItemsController < ApplicationController
   def item_actions
     @folder = Folder.find(params[:id])
     if params[:selected]
-      sort = params[:sort] ? params[:sort] : ""
-      per_page = params[:per_page] ? params[:per_page] : ""
+      #sort = params[:sort] ? params[:sort] : ""
+      #per_page = params[:per_page] ? params[:per_page] : ""
       items = params[:selected]
+
+      case params[:commit]
+            when t('blacklight.tools.email')
+              redirect_to email_catalog_path(:id => items)
+            when t('blacklight.tools.cite')
+              redirect_to citation_catalog_path(:id => items)
+            when t('blacklight.tools.remove')
+              if @folder.folder_items.where(:document_id => items).delete_all
+                flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
+              else
+                flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
+              end
+              redirect_to :controller => "folders", :action => "show", :id => @folder
+
+      end
+
     else
       redirect_to :back
       flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
     end
-
-    respond_to do |format|
-      format.html {
-        case params[:commit]
-          when "Email"
-            redirect_to email_catalog_path(:sort => sort,
-                                               :per_page => per_page,
-                                               :id => items)
-          when "Cite"
-            redirect_to citation_catalog_path(:sort => sort,
-                                                  :per_page => per_page,
-                                                  :id => items)
-
-          when "Remove"
-            if @folder.folder_items.where(:document_id => items).delete_all
-              flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
-            else
-              flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
-            end
-            redirect_to :controller => "folders", :action => "show", :id => @folder
-        end
-      }
-      format.js {
-        case params[:commit]
-          when "Email"
-            render email_catalog_path(:sort => sort,
-                                           :per_page => per_page,
-                                           :id => items)
-          when "Cite"
-            @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,items)
-            render "shared/citation"
-            #render citation_catalog_path(:sort => sort, :per_page => per_page,:id => items)
-
-          when "Remove"
-            if @folder.folder_items.where(:document_id => items).delete_all
-              flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
-            else
-              flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
-            end
-            redirect_to :controller => "folders", :action => "show", :id => @folder
-        end
-      }
-    end
-
-
-
   end
-
-
-
 
   protected
   def verify_user

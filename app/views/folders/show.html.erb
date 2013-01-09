@@ -18,20 +18,25 @@
                   :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %>]</small>
     <% end %>
   </h2>
+  <%# render 'tools' %>
   <% if @folder.description %>
       <p><%= @folder.description %></p>
   <% end %>
   <% unless @folder_items.empty? %>
 
         <%= render 'catalog/sort_and_per_page' %>
-        <%= render 'tools' %>
-      <%= form_tag selected_folder_items_actions_path, :method => :put, :remote => true do %>
+      <div id="folderTools">
+        <%= render :partial => 'shared/folder_tools' %>
+      </div>
+      <%= form_tag selected_folder_items_actions_path, :method => :put do %>
           <%= hidden_field_tag(:per_page, params[:per_page]) %>
           <%= hidden_field_tag(:sort, params[:sort]) %>
           <%=  submit_tag t('blacklight.tools.cite'),
-                          :class => "btn" %>
+                          :class => "btn",
+                          :id => "cite_btn" %>
           <%=  submit_tag t('blacklight.tools.email'),
-                          :class => "btn" %>
+                          :class => "btn",
+                          :id => "email_btn" %>
           <%=  submit_tag t('blacklight.tools.remove'), :class => "btn" %>
 
         <%= render_document_index %>
