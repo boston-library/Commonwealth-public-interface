@@ -98,6 +98,9 @@ class FolderItemsController < ApplicationController
       redirect_to :back
       flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
     end
+
+
+
   end
 
   protected

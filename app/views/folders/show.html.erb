@@ -18,7 +18,7 @@
                   :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %>]</small>
     <% end %>
   </h2>
-  <%# render 'tools' %>
+  <%# render 'shared/tools' %>
   <% if @folder.description %>
       <p><%= @folder.description %></p>
   <% end %>
@@ -28,7 +28,7 @@
       <div id="folderTools">
         <%= render :partial => 'shared/folder_tools' %>
       </div>
-      <%= form_tag selected_folder_items_actions_path, :method => :put do %>
+      <%= form_tag selected_folder_items_actions_path, :method => :put, :id => "item_actions_form" do %>
           <%= hidden_field_tag(:per_page, params[:per_page]) %>
           <%= hidden_field_tag(:sort, params[:sort]) %>
           <%=  submit_tag t('blacklight.tools.cite'),

@@ -2,30 +2,32 @@
   // render the tool buttons
   $('#folderTools').html("<%= escape_javascript(render('shared/tools')) %>");
 
-  // remove duplicate buttons from form
   $(document).ready ( function () {
+    // remove duplicate buttons from form
     $('#cite_btn').remove();
     $('#email_btn').remove();
+    //  add click event for any checkbox in doc list
+    $(':checkbox[name="selected[]"]').click( function () {
+          alert ("here's the alert!");
+    });
   });
 
   // select/unselect all
   $('#selectAllItems').click( function () {
-      $(':checkbox[name^="selected[]"]').prop('checked', this.checked);
+      // $(':checkbox[name="selected[]"]').prop('checked', this.checked);
+      /*
+      var checkboxValues = $('[name="selected[]"]:checked').serialize();
+      checkboxValues = checkboxValues.replace(/selected/g,"id");
+      alert (checkboxValues);
+      $('#citeLink,#emailLink').attr('href', function(index,previousValue) {
+          return previousValue + "?" + checkboxValues;
+      });
+       */
   });
 
-  // when JS-enabled tool button is clicked, append the ids of all checked items to url
-
-  $('#citeLink,#emailLink').click( function (e) {
-      e.preventDefault();
-      e.attr('href','some_new_value');
+  // when any checkbox is selected, append the ids of all checked items to url
 
 
-    /*
-    )
-    $(':checkbox:checked').each( function () {
-        var appendage = this.attr("value");
 
-    }) */
-  });
 
 </script>
