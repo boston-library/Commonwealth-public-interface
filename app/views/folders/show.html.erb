@@ -22,30 +22,26 @@
   <% if @folder.description %>
       <p><%= @folder.description %></p>
   <% end %>
+
   <% unless @folder_items.empty? %>
 
-        <%= render 'catalog/sort_and_per_page' %>
-      <div id="folderTools">
-        <%= render :partial => 'shared/folder_tools' %>
-      </div>
+      <%= render 'catalog/sort_and_per_page' %>
+
       <%= form_tag selected_folder_items_actions_path, :method => :put, :id => "item_actions_form" do %>
-          <%= hidden_field_tag(:per_page, params[:per_page]) %>
-          <%= hidden_field_tag(:sort, params[:sort]) %>
-          <%=  submit_tag t('blacklight.tools.cite'),
-                          :class => "btn",
-                          :id => "cite_btn" %>
-          <%=  submit_tag t('blacklight.tools.email'),
-                          :class => "btn",
-                          :id => "email_btn" %>
-          <%=  submit_tag t('blacklight.tools.remove'), :class => "btn" %>
+
+        <%= render :partial => 'shared/folder_item_actions' %>
 
         <%= render_document_index %>
+
       <% end %>
-        <%= render 'catalog/results_pagination' %>
+
+      <%= render 'catalog/results_pagination' %>
 
   <% else %>
+
     <p><strong><%= t('blacklight.folders.empty') %></strong></p>
     <p><%= t('blacklight.folders.help.add_items') %></p>
+
   <% end %>
 
 </div>

@@ -164,7 +164,28 @@ describe FoldersController do
 
     end
 
+    describe "wrong user" do
 
+      before(:each) do
+        sign_in @test_user
+        @test_folder_attr = {:title => "Test Folder Title"}
+        @folder = @test_user.folders.create!(@test_folder_attr)
+        sign_out @test_user
+        @other_user_attr = {
+            :username => "Testy McOther",
+            :email => "testy@other.com",
+            :password => "password"
+        }
+        @other_user = User.create!(@other_user_attr)
+        sign_in @other_user
+      end
+
+      it "should not allow access to another user's folder" do
+        get :show, :id => @folder.id
+        response.should redirect_to(root_path)
+      end
+
+    end
 
   end
 

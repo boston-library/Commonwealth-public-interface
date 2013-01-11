@@ -1,7 +1,7 @@
 <%# default item data to show in index grid view %>
 
 <%# create checkbox for folder actions (delete, move, etc.) %>
-<% if params[:controller] == "folders" %>
+<% if params[:controller] == "folders" || params[:controller] == "bookmarks" %>
     <%= check_box_tag("selected[]", document[:id]) %>
 <% end %>
 

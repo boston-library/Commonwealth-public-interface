@@ -1,7 +1,7 @@
 <% # container for a single doc -%>
 <li class="span3 <%= cycle("new_row","","") %>">
     <div class="document <%= render_document_class document %>
-                         <%= params[:view] ? params[:view] + "-view" : "grid-view" %> thumbnail">
+                         <%= !params[:view].blank? ? params[:view] + "-view" : "grid-view" %> thumbnail">
 
     <%# render :partial => 'document_header', :locals => { :document => document, :document_counter => document_counter } %>
 

@@ -1,0 +1,18 @@
+<div id="folderTools">
+  <%= render :partial => 'shared/folder_tools' %>
+</div>
+
+<%=  submit_tag t('blacklight.tools.cite'),
+                :class => "btn",
+                :id => "cite_btn" %>
+<%=  submit_tag t('blacklight.tools.email'),
+                :class => "btn",
+                :id => "email_btn" %>
+<%=  submit_tag t('blacklight.tools.remove'),
+                :class => "btn",
+                :id => "remove_btn" %>
+
+<%= hidden_field_tag(:per_page, params[:per_page]) %>
+<%= hidden_field_tag(:sort, params[:sort]) %>
+<%= hidden_field_tag(:view, params[:view]) %>
+<%= hidden_field_tag(:origin, params[:controller]) %>

@@ -11,10 +11,11 @@ CommonwealthPublicInterface::Application.routes.draw do
   resources :folder_items
 
   match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
-  match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
-  match "folder/:id/item_actions", :to => "folder_items#item_actions", :as => "selected_folder_items_actions"
+  #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
+  match "folder/:id/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_folder_items_actions"
+  match "bookmarks/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_bookmarks_actions"
 
-  match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
+  #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
