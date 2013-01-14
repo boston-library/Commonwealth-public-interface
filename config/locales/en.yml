@@ -101,6 +101,8 @@ en:
     tools:
           remove: 'Remove'
 
+    welcome: 'Welcome to the Digital Commonwealth Central Repository'
+
 
   devise:
       sessions:

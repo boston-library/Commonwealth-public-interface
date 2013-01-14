@@ -105,6 +105,11 @@ class BookmarksController < CatalogController
     redirect_to :action => "index"
   end
 
+  def folder_item_actions
+    redirect_to :action => "index"
+
+  end
+
   protected
   def verify_user
     flash[:notice] = I18n.t('blacklight.bookmarks.need_login') and raise Blacklight::Exceptions::AccessDenied  unless current_or_guest_user
