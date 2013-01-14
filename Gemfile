@@ -55,6 +55,7 @@ gem "tzinfo"
 
 # hydra-head
 gem "blacklight"
+gem "blacklight_advanced_search"
 gem "hydra-head"
 
 group :development, :test do

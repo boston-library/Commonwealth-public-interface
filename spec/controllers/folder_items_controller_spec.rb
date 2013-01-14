@@ -86,26 +86,5 @@ describe FolderItemsController do
 
   end
 
-  describe "DELETE delete_selected" do
-
-    before(:each) do
-      @folder.folder_items.create!(:document_id => "bpl-development:100")
-      @folder.folder_items.create!(:document_id => "bpl-development:99")
-      @folder.folder_items.create!(:document_id => "bpl-development:98")
-    end
-
-    describe "success" do
-
-      it "should remove the selected items" do
-        lambda do
-          delete :delete_selected, :id => @folder, :selected => ["bpl-development:100", "bpl-development:99"]
-          response.should be_redirect
-        end.should change(@folder.folder_items, :count).by(-2)
-      end
-
-    end
-
-
-  end
 
 end
