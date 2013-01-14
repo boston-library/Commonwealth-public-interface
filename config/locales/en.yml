@@ -12,7 +12,7 @@ en:
             add:
               button: 'Add to Bookmarks'
           title: 'Bookmarks'
-          description: 'The default folder for maintaining a list of items.'
+          description: 'The default folder for managing a list of items.'
           no_bookmarks: 'This folder does not currently have any items.'
           add:
             button: 'Bookmark'

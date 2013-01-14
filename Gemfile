@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,7 +14,7 @@ gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
 # BPL models gem
 gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'
 
-#gem 'rmagick'
+#gem 'rmagick'          rake db
 gem 'djatoka'
 
 
