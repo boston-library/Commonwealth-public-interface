@@ -90,6 +90,9 @@ en:
     images:
           zoom: 'Click to zoom in on this image.'
 
+    saved_searches:
+          save: 'Save Search'
+
     search:
           pagination_info:
             no_items_found: 'No items found.'

@@ -2,6 +2,17 @@
 
 @import 'cmmnwlth_defaults';
 
+#constraintsLinks {
+  float: right;
+  display: inline;
+  padding-top: .3em;
+}
+
+.catalog_startOverLink {
+  float: none;
+  padding-top: 0;
+}
+
 #per_page-dropdown {
   padding-left: 1em;
 }

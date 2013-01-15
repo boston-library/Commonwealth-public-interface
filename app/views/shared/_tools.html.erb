@@ -1,12 +1,12 @@
 <input type="checkbox" name="selectAll" id="selectAllItems" />
 <ul class="folderTools">
     <li class="cite">
-    <%= link_to t('blacklight.tools.cite'),
+    <%= link_to content_tag(:i, "", :class => "icon-list-alt") + " " + t('blacklight.tools.cite'),
                   citation_catalog_path(:id => ""),
                   {:id => 'citeLink', :name => 'citation', :class => 'lightboxLink btn'} %>
     </li>
     <li class="email">
-    <%= link_to t('blacklight.tools.email'),
+    <%= link_to content_tag(:i, "", :class => "icon-envelope") + " " + t('blacklight.tools.email'),
                 email_catalog_path(:id => ""),
                 :class=>"lightboxLink btn",
                 :id => "emailLink" %>

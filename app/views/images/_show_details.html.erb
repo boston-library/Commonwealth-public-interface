@@ -1,22 +1,41 @@
 <div id="item_metadata" class="well">
   <h3>Item Information</h3>
   <dl class="defList dl-horizontal">
+    <%# title field %>
     <dt>Title:</dt>
-    <dd><%= render_document_show_field_value(:document=>document, :field=>"title_t") %></dd>
-    <dt>Description:</dt>
-    <dd><%= render_document_show_field_value(:document=>document, :field=>"abstract_t") %></dd>
+    <dd>
+      <% document[:title_t].each do |title| %>
+          <%= title %><br />
+      <% end %>
+    </dd>
+    <%# abstract/description field %>
+    <% if document[:abstract_t] %>
+        <dt>Description:</dt>
+        <dd>
+            <% document[:abstract_t].each do |abstract_t| %>
+                <%= abstract_t %><br />
+            <% end %>
+        </dd>
+    <% end %>
+    <%# doctype field %>
     <dt>Document Type:</dt>
     <dd>
-      <%= render_document_show_field_value(:document=>document, :field=>"active_fedora_model_s").gsub(/[A-Za-z]+::/,"") %>
+      <% document[:active_fedora_model_s].each do |type| %>
+          <%= link_to_facet(type, 'active_fedora_model_s') %><br />
+      <% end %>
     </dd>
-    <dt>Identifier (other):</dt>
+    <%# id field %>
+    <dt>URI:</dt>
     <dd>
-      <% dspace_uri = render_document_show_field_value(:document=>document, :field=>"mods_0_relatedItem_0_location_0_url_t") %>
-      <%= link_to dspace_uri, dspace_uri, :target => "_blank" %>
+      <% handle_uri = render_document_show_field_value(:document=>document, :field=>"mods_0_relatedItem_0_location_0_url_t") %>
+      <%= link_to handle_uri, handle_uri, :target => "_blank" %>
     </dd>
+    <%# collex field %>
     <dt>Collection:</dt>
     <dd>
-      <%= render_document_show_field_value(:document=>document, :field=>"collection_label_s") %>
+      <% document[:collection_label_s].each do |collection| %>
+          <%= link_to_facet(collection, 'collection_label_s') %><br />
+      <% end %>
     </dd>
   </dl>
 </div>

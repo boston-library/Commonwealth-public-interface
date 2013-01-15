@@ -2,15 +2,15 @@
   <%= render :partial => 'shared/folder_tools' %>
 </div>
 
-<%=  submit_tag t('blacklight.tools.cite'),
-                :class => "btn",
-                :id => "cite_btn" %>
-<%=  submit_tag t('blacklight.tools.email'),
-                :class => "btn",
-                :id => "email_btn" %>
-<%=  submit_tag t('blacklight.tools.remove'),
-                :class => "btn",
-                :id => "remove_btn" %>
+<%= button_tag(:type => "submit", :class => "btn", :id => "cite_btn", :name => "commit", :value => t('blacklight.tools.cite')) do %>
+    <%= content_tag(:i, "", :class => "icon-list-alt") + " " + t('blacklight.tools.cite') %>
+<% end %>
+<%= button_tag(:type => "submit", :class => "btn", :id => "email_btn", :name => "commit", :value => t('blacklight.tools.email')) do %>
+    <%= content_tag(:i, "", :class => "icon-envelope") + " " + t('blacklight.tools.email') %>
+<% end %>
+<%= button_tag(:type => "submit", :class => "btn", :id => "remove_btn", :name => "commit", :value => t('blacklight.tools.remove')) do %>
+    <%= content_tag(:i, "", :class => "icon-remove") + " " + t('blacklight.tools.remove') %>
+<% end %>
 
 <%= hidden_field_tag(:per_page, params[:per_page]) %>
 <%= hidden_field_tag(:sort, params[:sort]) %>
