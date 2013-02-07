@@ -18,7 +18,7 @@
 
       <ul id="util-links-nologin" class="inline">
         <% if current_or_guest_user %>
-            <li><%= link_to t('blacklight.header_links.folders'), bookmarks_path %></li>
+            <li><%= link_to t('blacklight.header_links.folders'), folders_path %></li>
         <% end %>
         <% unless @searches.blank? && session[:history].blank? %>
             <li><%= link_to t('blacklight.header_links.search_history'), search_history_path %></li>
