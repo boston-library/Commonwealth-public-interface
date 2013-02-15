@@ -1,4 +1,4 @@
-class FoldersController < ApplicationController
+class FoldersController < CatalogController
 
   ##
   # Give Bookmarks access to the CatalogController configuration
