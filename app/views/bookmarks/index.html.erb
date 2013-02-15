@@ -1,5 +1,7 @@
 <% @page_title = t('blacklight.bookmarks.title') + " - " + application_name %>
 
+<%= javascript_include_tag "commonwealth/folder_tools" %>
+
 <h2>Folder: <%= t('blacklight.bookmarks.title') %>
   <% if current_or_guest_user %>
       <small>

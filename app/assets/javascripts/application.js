@@ -22,11 +22,11 @@
 
 //= require bootstrap-dropdown
 
-//= require commonwealth/folder_tools
+// require commonwealth/folder_tools
 
 
-// WARNING: require tree has been disabled to avoid djatoka JS files being automatically included
-//          since the viewer uses mooTools, which causes namespace conflicts with jQuery
+// WARNING: require tree has been disabled to avoid djatoka_viewer JS files being automatically included
+//          since the viewer uses mooTools/Prototype, which causes namespace conflicts with jQuery
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive
 // require_tree .
 
