@@ -62,7 +62,7 @@ class CatalogController < ApplicationController
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     # next line deprecated as of BL 3.7.0
-    # config.default_solr_params[:'facet.field'] = config.facet_fields.keys
+    #config.default_solr_params[:'facet.field'] = config.facet_fields.keys
     config.add_facet_fields_to_solr_request!
     #use this instead if you don't want to query facets marked :show=>false
     #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
@@ -70,32 +70,32 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'title_t', :label => 'Title:'
-    config.add_index_field 'title_vern_display', :label => 'Title:' 
-    config.add_index_field 'author_display', :label => 'Author:' 
-    config.add_index_field 'author_vern_display', :label => 'Author:' 
-    config.add_index_field 'active_fedora_model_s', :label => 'Format:'
-    config.add_index_field 'language_facet', :label => 'Language:'
-    config.add_index_field 'published_display', :label => 'Published:'
-    config.add_index_field 'published_vern_display', :label => 'Published:'
-    config.add_index_field 'lc_callnum_display', :label => 'Call number:'
+    #config.add_index_field 'title_t', :label => 'Title:'
+    #config.add_index_field 'title_vern_display', :label => 'Title:'
+    #config.add_index_field 'author_display', :label => 'Author:'
+    #config.add_index_field 'author_vern_display', :label => 'Author:'
+    #config.add_index_field 'active_fedora_model_s', :label => 'Format:'
+    #config.add_index_field 'language_facet', :label => 'Language:'
+    #config.add_index_field 'published_display', :label => 'Published:'
+    #config.add_index_field 'published_vern_display', :label => 'Published:'
+    #config.add_index_field 'lc_callnum_display', :label => 'Call number:'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    config.add_show_field 'title_t', :label => 'Title:'
-    config.add_show_field 'title_vern_display', :label => 'Title:' 
-    config.add_show_field 'subtitle_display', :label => 'Subtitle:' 
-    config.add_show_field 'subtitle_vern_display', :label => 'Subtitle:' 
-    config.add_show_field 'author_display', :label => 'Author:' 
-    config.add_show_field 'author_vern_display', :label => 'Author:' 
-    config.add_show_field 'active_fedora_model_s', :label => 'Format:'
-    config.add_show_field 'url_fulltext_display', :label => 'URL:'
-    config.add_show_field 'url_suppl_display', :label => 'More Information:'
-    config.add_show_field 'language_facet', :label => 'Language:'
-    config.add_show_field 'published_display', :label => 'Published:'
-    config.add_show_field 'published_vern_display', :label => 'Published:'
-    config.add_show_field 'lc_callnum_display', :label => 'Call number:'
-    config.add_show_field 'isbn_t', :label => 'ISBN:'
+    #config.add_show_field 'title_t', :label => 'Title:'
+    #config.add_show_field 'title_vern_display', :label => 'Title:'
+    #config.add_show_field 'subtitle_display', :label => 'Subtitle:'
+    #config.add_show_field 'subtitle_vern_display', :label => 'Subtitle:'
+    #config.add_show_field 'author_display', :label => 'Author:'
+    #config.add_show_field 'author_vern_display', :label => 'Author:'
+    #config.add_show_field 'active_fedora_model_s', :label => 'Format:'
+    #config.add_show_field 'url_fulltext_display', :label => 'URL:'
+    #config.add_show_field 'url_suppl_display', :label => 'More Information:'
+    #config.add_show_field 'language_facet', :label => 'Language:'
+    #config.add_show_field 'published_display', :label => 'Published:'
+    #config.add_show_field 'published_vern_display', :label => 'Published:'
+    #config.add_show_field 'lc_callnum_display', :label => 'Call number:'
+    #config.add_show_field 'isbn_t', :label => 'ISBN:'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -171,6 +171,15 @@ class CatalogController < ApplicationController
 
     # index views - 'grid' is default
     config.document_index_view_types = ['grid','list']
+
+    # advanced search facet limits
+    config.advanced_search = {
+        :form_solr_parameters => {
+            "facet.field" => ["collection_label_s", "active_fedora_model_s"],
+            "facet.limit" => -1, # return all facet values
+            "facet.sort" => "index" # sort by byte order of values
+        }
+    }
 
   end
 
