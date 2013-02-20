@@ -5,6 +5,7 @@ en:
   hello: "Hello world"
 
   blacklight:
+
     application_name: 'Digital Commonwealth'
 
     bookmarks:
@@ -89,6 +90,12 @@ en:
 
     images:
           zoom: 'Click to zoom in on this image.'
+
+    pages:
+          about:
+            title: 'About'
+          contact:
+            title: 'Contact'
 
     saved_searches:
           save: 'Save Search'

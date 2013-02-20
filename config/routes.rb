@@ -1,4 +1,6 @@
 CommonwealthPublicInterface::Application.routes.draw do
+  get "pages/about"
+
   root :to => "catalog#index"
 
   match "bookmarks/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_bookmarks_actions"
@@ -17,6 +19,9 @@ CommonwealthPublicInterface::Application.routes.draw do
   match "folder/:id/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_folder_items_actions"
 
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
+
+  match '/contact', :to => "pages#contact"
+  match '/about', :to => "pages#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
