@@ -35,6 +35,17 @@ en:
           list_title: 'Your Bookmarks'
           delete: 'Remove'
 
+    feedback:
+          title: 'Contact Us'
+          valid_name: 'Please enter your name.'
+          valid_email: 'Please enter a valid email address.'
+          need_message: 'Please enter a message.'
+          submit: 'Send'
+          errors:
+            title: 'The message could not be sent:'
+          complete:
+            title: 'Your message has been sent. Thank you for contacting us.'
+
     folders:
           intro: 'Folders can be used to create, organize, and share your own personal collections of items.'
           list_title: 'Folders'
