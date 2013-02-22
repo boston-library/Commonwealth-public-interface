@@ -20,9 +20,16 @@ module PagesHelper
     splitNamePartsArray = Array.new
     unless inputstring =~ /[\S]{5}\./
       splitNamePartsArray << inputstring
+    else
+      while inputstring =~ /[\S]{5}\./
+        snip = /[\S]{5}\./.match(inputstring).post_match
+        subpart = inputstring.gsub(snip,"")
+        splitNamePartsArray << subpart.gsub(/\.\z/,"").strip
+        inputstring = snip
+      end
+      splitNamePartsArray << inputstring.gsub(/\.\z/,"").strip
     end
     return splitNamePartsArray
-
   end
 
 end
