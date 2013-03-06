@@ -35,6 +35,13 @@ en:
           list_title: 'Your Bookmarks'
           delete: 'Remove'
 
+    email:
+          reply_to: 'repo-admin@digitalcommonealth.org'
+          record_mailer:
+            name: 'Digital Commonwealth Repository'
+            email: 'repository@repository.digitalcommonwealth.org'
+
+
     feedback:
           title: 'Contact Us'
           valid_name: 'Please enter your name.'
