@@ -1,19 +1,24 @@
 # -*- encoding : utf-8 -*-
 # Only works for documents with a #to_marc right now.
 class RecordMailer < ActionMailer::Base
-  from_email_with_name = t('blacklight.email.record_mailer.name') + " <" + t('blacklight.email.record_mailer.email') + ">"
-  default :from => from_email_with_name,
-          :return_path => t('blacklight.email.reply_to')
+
+  #default :from => 'Digital Commonwealth <repository@repository.digitalcommonwealth.com>',
+  #        :return_path => 'repo-admin@digitalcommonealth.org'
+
   def email_record(documents, details, url_gen_params)
     #raise ArgumentError.new("RecordMailer#email_record only works with documents with a #to_marc") unless document.respond_to?(:to_marc)
 
-    subject = I18n.t('blacklight.email.text.subject', :count => documents.length, :title => (documents.first.to_semantic_values[:title] rescue 'N/A') )
+    # subject = I18n.t('blacklight.email.text.subject', :count => documents.length, :title => (documents.first.to_semantic_values[:title_t] rescue 'N/A') )
+    subject = t('blacklight.email.text.subject.one')
 
     @documents      = documents
     @message        = details[:message]
     @url_gen_params = url_gen_params
 
-    mail(:to => details[:to],  :subject => subject)
+    mail(:from => t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
+         :to => details[:to],
+         :subject => subject,
+         :return_path => t('blacklight.repo-admin.email'))
   end
 
   def sms_record(documents, details, url_gen_params)

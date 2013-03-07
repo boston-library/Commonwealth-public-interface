@@ -1,20 +1,38 @@
 <h2><%= t('blacklight.feedback.title') %></h2>
 
 <% unless @errors.empty? %>
-    <strong><%= t('blacklight.feedback.errors.title') %></strong>
-    <ul class="errors">
-      <% @errors.each do |msg| %>
-          <li><%= msg %></li>
-      <% end %>
-    </ul>
+    <div id="error_explanation" class="alert alert-error">
+        <ul class="errors">
+            <% @errors.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
 <% end %>
 
-<%= form_tag do %>
-    <fieldset>
-      <div class="row"><%= label_tag t('active_record.attributes.feedback.name') %> <%= text_field_tag :name, params[:name] %></div>
-      <div class="row"><%= label_tag t('active_record.attributes.feedback.email') %> <%= text_field_tag :email, params[:email] %></div>
-      <div class="row"><%= label_tag t('active_record.attributes.feedback.message')  %> <%= text_area_tag :message, params[:message] %></div>
-      <%#= show_simple_captcha(:image_style => 'random', :label => "Enter the characters you see into the text field") %>
-      <div class="row"><%= label_tag '' %><%= submit_tag t('blacklight.feedback.submit') %></div>
-    </fieldset>
+<%= form_tag(feedback_path,:class => 'form-horizontal') do %>
+    <div class="control-group">
+      <label class="control-label"><%= t('blacklight.feedback.form.name') %></label>
+      <div class="controls">
+        <%= text_field_tag :name, params[:name] %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><%= t('blacklight.feedback.form.email') %></label>
+      <div class="controls">
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"><%= t('blacklight.feedback.form.message') %></label>
+      <div class="controls">
+        <%= text_area_tag :message, params[:message], :size => '24x6', :class => 'input-xlarge' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <%= submit_tag(t('blacklight.feedback.submit'), :class => 'btn') %>
+      </div>
+    </div>
+
 <% end %>

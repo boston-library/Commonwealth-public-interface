@@ -36,13 +36,24 @@ en:
           delete: 'Remove'
 
     email:
+          form:
+            title: 'Email'
           reply_to: 'repo-admin@digitalcommonealth.org'
           record_mailer:
-            name: 'Digital Commonwealth Repository'
+            name: 'Digital Commonwealth'
             email: 'repository@repository.digitalcommonwealth.org'
-
+          text:
+            subject:
+              one: 'Digital Commonwealth E-mail: link to item'
+              other: 'Item records'
+            url: 'Link: %{url}'
+            message: 'Comments: %{message}'
 
     feedback:
+          form:
+            name: 'Your Name:'
+            email: 'Your Email:'
+            message: 'Your Message:'
           title: 'Contact Us'
           valid_name: 'Please enter your name.'
           valid_email: 'Please enter a valid email address.'
@@ -52,6 +63,13 @@ en:
             title: 'The message could not be sent:'
           complete:
             title: 'Your message has been sent. Thank you for contacting us.'
+          text:
+            subject: 'Digital Commonwealth Repository: contact email'
+            name: 'Name: '
+            email: 'Email: '
+            message: 'Message: '
+
+
 
     folders:
           intro: 'Folders can be used to create, organize, and share your own personal collections of items.'
@@ -114,6 +132,9 @@ en:
             title: 'About'
           contact:
             title: 'Contact'
+
+    repo-admin:
+          email: 'eben@dlry.net'
 
     saved_searches:
           save: 'Save Search'

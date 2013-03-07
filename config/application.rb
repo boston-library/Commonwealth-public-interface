@@ -61,14 +61,5 @@ module CommonwealthPublicInterface
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    #mailer
-    config.action_mailer.default_url_options = {host: 'repository.digitalcommonwealth.com' }
-    config.action_mailer.perform_deliveries = true
-    config.action_mailer.delivery_method = :sendmail
-    config.action_mailer.sendmail_settings = {
-        location: '/usr/sbin/sendmail',
-        arguments: "-i -t -f contact@repository.digitalcommonwealth.com"
-    }
-
   end
 end
