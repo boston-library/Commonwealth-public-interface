@@ -38,6 +38,7 @@ en:
     email:
           form:
             title: 'Email'
+            message: 'Comments:'
           reply_to: 'repo-admin@digitalcommonealth.org'
           record_mailer:
             name: 'Digital Commonwealth'

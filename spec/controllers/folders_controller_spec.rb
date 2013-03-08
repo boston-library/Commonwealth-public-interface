@@ -195,7 +195,8 @@ describe FoldersController do
 
       #it "should deny access to create" do
       #post :create
-      # TODO: below doesn't work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
+      # TODO: below doesn't work due to ?referer=%2Ffolders suffix on end of URL.
+      # not sure how to test for this.
       #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
       #end
 

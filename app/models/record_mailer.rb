@@ -17,8 +17,7 @@ class RecordMailer < ActionMailer::Base
 
     mail(:from => t('blacklight.email.record_mailer.name') + ' <' + t('blacklight.email.record_mailer.email') + '>',
          :to => details[:to],
-         :subject => subject,
-         :return_path => t('blacklight.repo-admin.email'))
+         :subject => subject)
   end
 
   def sms_record(documents, details, url_gen_params)
