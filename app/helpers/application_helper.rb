@@ -14,4 +14,8 @@ module ApplicationHelper
                                                                  :action=> "index"}))
   end
 
+  def simpleimage_file_pid (document)
+    return Bplmodels::Image.find(document[:id]).image_files.first.pid
+  end
+
 end

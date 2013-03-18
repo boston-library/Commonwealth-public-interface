@@ -1,4 +1,5 @@
-# Be sure to restart your server when you modify this file.# Mime Types Added By Hydra Head:
+# Be sure to restart your server when you modify this file.
+# Mime Types Added By Hydra Head:
 
 # Mime::Type.register "text/html", :html
 # Mime::Type.register "application/pdf", :pdf
@@ -18,3 +19,5 @@ Mime::Type.register "application/marcxml+xml", :marcxml,
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
 # Mime::Type.register_alias "text/html", :iphone
+
+Mime::Type.register "image/jpeg", :jpg

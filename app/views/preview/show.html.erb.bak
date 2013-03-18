@@ -1,0 +1,2 @@
+<p><%= @pid %></p>
+<%= image_tag @image_url %>
