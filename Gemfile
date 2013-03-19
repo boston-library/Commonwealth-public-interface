@@ -52,6 +52,7 @@ gem "execjs"
 gem 'libv8', '~> 3.11.8'
 gem "therubyracer"
 gem "tzinfo"
+gem "typhoeus"
 
 # hydra-head
 gem "blacklight"
