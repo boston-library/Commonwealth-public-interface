@@ -14,6 +14,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :folder_items
 
+  resources :preview
+
   match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
   match "folder/:id/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_folder_items_actions"
@@ -23,7 +25,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   match '/contact', :to => "pages#contact"
   match '/about', :to => "pages#about"
 
-  match '/preview/:id', :to => "preview#show"
+  # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
