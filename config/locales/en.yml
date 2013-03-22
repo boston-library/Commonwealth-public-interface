@@ -151,7 +151,7 @@ en:
     tools:
           remove: 'Remove'
 
-    welcome: 'Welcome to the Digital Commonwealth Central Repository'
+    welcome: 'Welcome to the Digital Commonwealth Central Repository (beta)'
 
 
   devise:

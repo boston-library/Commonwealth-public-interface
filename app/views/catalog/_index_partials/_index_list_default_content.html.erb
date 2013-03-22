@@ -9,31 +9,31 @@
   <%# hide for moment thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
                        :alt => document[:title_t],
                        :class => "index_thumb") %>
-  <% thumb = image_tag("http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" ,
+  <%# thumb = image_tag("http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" ,
                        :alt => document[:title_t],
                        :class => "index_thumb media-object") %>
   <% # bad hack to link to catalog#show rather than image#show %>
-  <%= link_to thumb, "/catalog/" + document[:id], :class => "pull-left" %>
+  <%# link_to thumb, "/catalog/" + document[:id], :class => "pull-left" %>
 
   <div class="media-body">
 
     <div class="item_index_title">
-      <%= link_to_document(document, :label => :title_t, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+      <%= link_to_document(document, :label => :label_s, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
     </div>
-
+    <!--
     <div class="item_index_details">
       <dl class="index_defList dl-horizontal">
         <dt>Document Type:</dt>
         <dd>
-          <%= render_document_show_field_value(:document=>document, :field=>"active_fedora_model_s").gsub(/[A-Za-z]+::/,"") %>
+          <%# render_document_show_field_value(:document=>document, :field=>"active_fedora_model_s").gsub(/[A-Za-z]+::/,"") %>
         </dd>
         <dt>Collection:</dt>
         <dd>
-          <%= render_document_show_field_value(:document=>document, :field=>"collection_label_s") %>
+          <%# render_document_show_field_value(:document=>document, :field=>"collection_label_s") %>
         </dd>
       </dl>
     </div>
-
+    -->
   </div>
 
 </div>

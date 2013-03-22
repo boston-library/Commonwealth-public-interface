@@ -1,0 +1,6 @@
+<%# default partial to display solr document fields in catalog index view -%>
+<div class="default_index_container">
+  <%# use generic item index view: %>
+  <%= render :partial => 'catalog/_index_partials/index_list_default_content',
+             :locals => {:document => document, :document_counter => document_counter} %>
+</div>
