@@ -18,8 +18,8 @@ module ApplicationHelper
     return Bplmodels::Image.find(document[:id]).image_files.first.pid
   end
 
-  def datastream_disseminator_url pid, datastream_name
-    ActiveFedora::Base.connection_for_pid(pid).client.url + "/get/#{pid}/#{datastream_name}"
+  def datastream_disseminator_url pid, datastream_id
+    ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
   end
 
 end
