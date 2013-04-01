@@ -49,7 +49,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'collection_label_s', :label => 'Collection'
+    #config.add_facet_field 'collection_label_s', :label => 'Collection'
     config.add_facet_field 'active_fedora_model_s', :label => 'Format'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
@@ -160,7 +160,8 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
+    #config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
+    config.add_sort_field 'score desc', :label => 'relevance'
     config.add_sort_field 'pub_date_sort desc, title_sort asc', :label => 'year'
     config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
     config.add_sort_field 'title_sort asc, pub_date_sort desc', :label => 'title'

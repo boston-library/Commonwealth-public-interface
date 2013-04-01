@@ -1,6 +1,6 @@
 <%# default partial to display solr document fields in catalog show view -%>
 
-<% image_datastream = "http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" %>
+<% image_datastream = datastream_disseminator_url(document[:id],'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
 <% object_title = render_document_show_field_value(:document=>document, :field=>"title_t") %>
 
