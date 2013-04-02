@@ -1,0 +1,13 @@
+<% if document[:has_image_s] %>
+  <%= render :partial => 'catalog/_show_partials/show_default_img', :locals => {:document => @document} %>
+<% end %>
+
+<div class="row">
+
+  <% # metadata display -%>
+  <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+
+  <% # bookmark/folder/sharing functions -%>
+  <%= render_document_sidebar_partial  %>
+
+</div>

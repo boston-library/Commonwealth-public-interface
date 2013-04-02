@@ -1,0 +1,26 @@
+<% image_pid = @document[:has_image_s].first.to_s.gsub(/info:fedora\//,"") %>
+<% image_datastream = datastream_disseminator_url(image_pid,'accessMaster') %>
+<% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
+<% object_title = render_document_show_field_value(:document=>document, :field=>'title_t') %>
+
+<div id="img_show_container">
+  <% img_element = djatoka_image_tag(image_datastream,
+                                     {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                      :scale => [1170,0],
+                                      :alt => object_title,
+                                      :class => 'img_show',}) %>
+
+  <% if image_metadata.width.to_i < 724 && image_metadata.height.to_i < 700 %>
+      <%= img_element  %>
+  <% else %>
+      <%= link_to(img_element, '#', :id => 'img_viewer_link',
+                  :class => 'img_viewer_link',
+                  :title => t('blacklight.images.zoom')) %>
+
+      <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
+                 :locals => {:object_title => object_title,
+                             :image_datastream => image_datastream,
+                             :image_metadata => image_metadata} %>
+  <% end %>
+
+</div>

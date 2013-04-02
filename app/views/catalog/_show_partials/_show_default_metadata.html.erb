@@ -1,0 +1,43 @@
+<div class="<%= params[:action]%>_details span9">
+<div id="item_metadata" class="well">
+  <h3>Item Information</h3>
+  <dl class="defList dl-horizontal">
+    <%# title field %>
+    <dt>Title:</dt>
+    <dd>
+      <% document[:label_s].each do |title| %>
+          <%= title %><br />
+      <% end %>
+    </dd>
+    <%# abstract/description field %>
+    <% if document[:abstract_t] %>
+        <dt>Description:</dt>
+        <dd>
+          <% document[:abstract_t].each do |abstract_t| %>
+              <%= abstract_t %><br />
+          <% end %>
+        </dd>
+    <% end %>
+    <%# doctype field %>
+    <dt>Document Type:</dt>
+    <dd>
+      <% document[:active_fedora_model_s].each do |type| %>
+          <%= link_to_facet(type, 'active_fedora_model_s') %><br />
+      <% end %>
+    </dd>
+    <%# id field %>
+    <dt>URI:</dt>
+    <dd>
+      <%# handle_uri = render_document_show_field_value(:document=>document, :field=>"mods_0_relatedItem_0_location_0_url_t") %>
+      <%# link_to handle_uri, handle_uri, :target => "_blank" %>
+    </dd>
+    <%# collex field %>
+    <dt>Collection:</dt>
+    <dd>
+      <%# document[:collection_label_s].each do |collection| %>
+          <%# link_to_facet(collection, 'collection_label_s') %><br />
+      <%# end %>
+    </dd>
+  </dl>
+</div>
+</div>
