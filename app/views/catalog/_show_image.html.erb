@@ -1,10 +1,14 @@
 <%# default partial to display solr document fields in catalog show view -%>
 
-<%= render :partial => 'catalog/show_partials/show_default_img', :locals => {:document => @document} %>
+<%# render :partial => 'catalog/show_partials/show_default_img', :locals => {:document => @document} %>
 
 <div class="row">
-        <%= render :partial => 'catalog/show_partials/show_default_metadata', :locals => {:document => @document} %>
 
+  <div class="<%= params[:action]%>_details span9">
+    <%= render :partial => 'images/show_details', :locals => {:document => @document} %>
+  </div>
+  <div id="sidebar" class="span3">
         <% # bookmark/folder/sharing functions -%>
         <%= render_document_sidebar_partial  %>
+  </div>
 </div>

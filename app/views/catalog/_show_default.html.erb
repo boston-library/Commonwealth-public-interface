@@ -7,7 +7,9 @@
   <% # metadata display -%>
   <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 
-  <% # bookmark/folder/sharing functions -%>
-  <%= render_document_sidebar_partial  %>
+  <div id="sidebar" class="span3">
+    <% # bookmark/folder/sharing functions -%>
+    <%= render_document_sidebar_partial  %>
+  </div>
 
 </div>
