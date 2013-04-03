@@ -5,7 +5,7 @@
     <%# title field %>
     <dt>Title:</dt>
     <dd>
-      <% document[:label_s].each do |title| %>
+      <% document[:titleInfo_primary_tesim].each do |title| %>
           <%= title %><br />
       <% end %>
     </dd>
@@ -21,8 +21,8 @@
     <%# doctype field %>
     <dt>Document Type:</dt>
     <dd>
-      <% document[:active_fedora_model_s].each do |type| %>
-          <%= link_to_facet(type, 'active_fedora_model_s') %><br />
+      <% document[:active_fedora_model_ssim].each do |type| %>
+          <%= link_to_facet(type, 'active_fedora_model_ssim') %><br />
       <% end %>
     </dd>
     <%# id field %>

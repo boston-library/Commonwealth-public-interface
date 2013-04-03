@@ -22,13 +22,13 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'title_t'
-    config.index.record_display_type = 'active_fedora_model_s'
+    config.index.show_link = 'titleInfo_primary_tesim'
+    config.index.record_display_type = 'active_fedora_model_ssim'
 
     # solr field configuration for document/show views
-    config.show.html_title = 'title_t'
-    config.show.heading = 'title_t'
-    config.show.display_type = 'active_fedora_model_s'
+    config.show.html_title = 'titleInfo_primary_tesim'
+    config.show.heading = 'titleInfo_primary_tesim'
+    config.show.display_type = 'active_fedora_model_ssim'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -50,7 +50,7 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     #config.add_facet_field 'collection_label_s', :label => 'Collection'
-    config.add_facet_field 'active_fedora_model_s', :label => 'Format'
+    config.add_facet_field 'active_fedora_model_ssim', :label => 'Format'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
     ##config.add_facet_field 'language_facet', :label => 'Language', :limit => true
@@ -186,7 +186,7 @@ class CatalogController < ApplicationController
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "-active_fedora_model_s:\"Bplmodels::ImageFile\""
+    solr_parameters[:fq] << "-active_fedora_model_ssim:\"Bplmodels::ImageFile\""
   end
 
   #def create_folder

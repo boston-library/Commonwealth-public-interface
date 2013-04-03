@@ -1,12 +1,12 @@
-<% image_pid = @document[:has_image_s].first.to_s.gsub(/info:fedora\//,"") %>
+<% image_pid = @document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,"") %>
 <% image_datastream = datastream_disseminator_url(image_pid,'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
-<% object_title = render_document_show_field_value(:document=>document, :field=>'title_t') %>
+<% object_title = render_document_show_field_value(:document=>document, :field=>'titleInfo_primary_tesim') %>
 
 <div id="img_show_container">
   <% img_element = djatoka_image_tag(image_datastream,
                                      {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                      :scale => [1170,0],
+                                      :scale => 500,
                                       :alt => object_title,
                                       :class => 'img_show',}) %>
 

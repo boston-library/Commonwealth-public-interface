@@ -6,17 +6,14 @@
 <% end %>
 
 <div class="item_index_thumb">
-  <%# hide for moment thumb = image_tag(datastream_disseminator_url(document[:id], "accessMaster"),
-                       :alt => document[:title_t],
-                       :class => "index_thumb") %>
-  <%# thumb = image_tag("http://glstfdora001:8983/fedora/objects/" + document[:id] + "/datastreams/accessMaster/content" ,
-                       :alt => document[:title_t],
-                       :class => "index_thumb") %>
+  <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,""), "thumbnail300"),
+                       :alt => document[:titleInfo_primary_tesim],
+                       :class => 'index_thumb') %>
   <% # bad hack to link to catalog#show rather than image#show %>
-  <%# link_to thumb, "/catalog/" + document[:id] %>
+  <%= link_to thumb, '/catalog/' + document[:id] %>
 </div>
 <div class="item_index_title">
-  <%= link_to_document(document, :label => :label_s, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+  <%= link_to_document(document, :label => :titleInfo_primary_tesim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
 </div>
 <!--
 <div class="item_index_details">
