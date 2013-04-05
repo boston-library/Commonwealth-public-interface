@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require 'blacklight_advanced_search'
+//= require blacklight_advanced_search/blacklight_advanced_search_javascript
 
 
 //= require jquery_ujs
