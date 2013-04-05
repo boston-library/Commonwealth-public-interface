@@ -5,7 +5,24 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   match "bookmarks/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_bookmarks_actions"
 
-  Blacklight.add_routes(self)
+  Blacklight.add_routes(self, :except => [:solr_document, :catalog])
+
+  # add Blacklight catalog -> search routing
+  # Catalog stuff.
+  match 'search/opensearch', :as => 'opensearch_catalog'
+  match 'search/citation', :as => 'citation_catalog'
+  match 'search/email', :as => 'email_catalog'
+  #match 'search/sms', :as => "sms_catalog"
+  #match 'search/endnote', :as => "endnote_catalog"
+  match 'search/send_email_record', :as => 'send_email_record_catalog'
+  match 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
+  match 'search', :to => 'catalog#index', :as => 'catalog_index'
+  match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+
+  resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
+  # :show and :update are for backwards-compatibility with catalog_url named routes
+  resources :catalog, :only => [:show, :update]
+
   HydraHead.add_routes(self)
 
   devise_for :users
@@ -14,7 +31,7 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :folder_items
 
-  resources :preview
+  resources :preview, :only => :show
 
   match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"

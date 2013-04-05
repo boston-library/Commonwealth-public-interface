@@ -1,8 +1,8 @@
 <%# default item data to show in index view %>
 
 <%# create checkbox for folder actions (delete, move, etc.) %>
-<% if params[:controller] == "folders" || params[:controller] == "bookmarks" %>
-    <%= check_box_tag("selected[]", document[:id]) %>
+<% if params[:controller] == 'folders' || params[:controller] == 'bookmarks' %>
+    <%= check_box_tag('selected[]', document[:id]) %>
 <% end %>
 
 <div class="media">
@@ -10,7 +10,7 @@
                         :alt => document[:titleInfo_primary_tesim],
                         :class => 'index_thumb media-object') %>
   <% # bad hack to link to catalog#show rather than image#show %>
-  <%= link_to thumb, '/catalog/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+  <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
 
   <div class="media-body">
 

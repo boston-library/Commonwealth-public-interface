@@ -10,7 +10,7 @@ class PreviewController < CatalogController
     @response, @document = get_solr_response_for_doc_id
     # the conditionals below don't really work, because a bad id returned by
     # get_solr_response_for_doc_id triggers a rescue action in BL/lib/catalog.rb,
-    # which cases an immediate escape, and all code below isn't evaluated
+    # which causes an immediate escape, and any code below that isn't evaluated
     # need to figure out how to override this
     if @document[:has_image_s]
       thumb_prefix = @document[:id].to_s
