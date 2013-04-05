@@ -30,7 +30,8 @@ class FoldersController < CatalogController
 
     @response, @document_list = get_solr_response_for_field_values(SolrDocument.unique_key, folder_items_ids)
     # have to declare this so view uses catalog/index partials
-    @partial_path_templates = ["catalog/%{action_name}_%{index_view_type}_%{format}"]
+    # uh, maybe not? default templates won't get invoked if below is set
+    #@partial_path_templates = ["catalog/%{action_name}_%{index_view_type}_%{format}"]
   end
 
   def new

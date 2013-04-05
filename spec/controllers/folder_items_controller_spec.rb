@@ -25,17 +25,17 @@ describe FolderItemsController do
       it "should create a new folder item" do
         lambda do
           @request.env['HTTP_REFERER'] = '/folder_items/new'
-          post :create, :id => "bpl-development:102", :folder_id => @folder.id
+          post :create, :id => "bpl-test:ff365549t", :folder_id => @folder.id
           response.should be_redirect
-          @test_user.existing_folder_item_for("bpl-development:102").should_not be_false
+          @test_user.existing_folder_item_for("bpl-test:ff365549t").should_not be_false
         end.should change(FolderItem, :count).by(1)
       end
 
       it "should create a new folder item using ajax" do
         lambda do
-          xhr :post, :create, :id => "bpl-development:100", :folder_id => @folder.id
+          xhr :post, :create, :id => "bpl-test:ff365527s", :folder_id => @folder.id
           response.should be_success
-          @test_user.existing_folder_item_for("bpl-development:100").should_not be_false
+          @test_user.existing_folder_item_for("bpl-test:ff365527s").should_not be_false
         end.should change(FolderItem, :count).by(1)
       end
 
@@ -48,20 +48,20 @@ describe FolderItemsController do
     describe "success" do
 
       before(:each) do
-        @folder.folder_items.create!(:document_id => "bpl-development:101")
+        @folder.folder_items.create!(:document_id => "bpl-test:ff365531c")
       end
 
       it "should delete a folder item" do
         lambda do
           @request.env['HTTP_REFERER'] = '/folder_items'
-          delete :destroy, :id => "bpl-development:101"
+          delete :destroy, :id => "bpl-test:ff365531c"
           response.should be_redirect
         end.should change(FolderItem, :count).by(-1)
       end
 
       it "should delete a folder item using ajax" do
         lambda do
-          xhr :delete, :destroy, :id => "bpl-development:101"
+          xhr :delete, :destroy, :id => "bpl-test:ff365531c"
           response.should be_success
         end.should change(FolderItem, :count).by(-1)
       end
@@ -75,7 +75,7 @@ describe FolderItemsController do
     describe "success" do
 
       before(:each) do
-        @folder.folder_items.create!(:document_id => "bpl-development:101")
+        @folder.folder_items.create!(:document_id => "bpl-test:ff365531c")
       end
 
       it "should clear the folder's folder items" do

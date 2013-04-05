@@ -1,4 +1,8 @@
-class FolderItemsController < ApplicationController
+class FolderItemsController < CatalogController
+
+  # give controller access to useful BL/Solr methods
+  #include Blacklight::Configurable
+  #include Blacklight::SolrHelper
 
   before_filter :verify_user
 

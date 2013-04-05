@@ -152,7 +152,7 @@ describe FoldersController do
       describe "user has folder with items" do
 
         before(:each) do
-          @test_folder_item = @folder.folder_items.create!(:document_id => "bpl-development:107")
+          @test_folder_item = @folder.folder_items.create!(:document_id => "bpl-test:ff365531c")
         end
 
         it "should show a link to the folder item" do
