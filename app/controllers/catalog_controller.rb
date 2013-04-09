@@ -49,8 +49,9 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    #config.add_facet_field 'collection_label_s', :label => 'Collection'
-    config.add_facet_field 'active_fedora_model_ssim', :label => 'Format'
+    config.add_facet_field 'collection_name_ssim', :label => 'Collection'
+    #config.add_facet_field 'mods_0_genre_ssm', :label => 'Genre'
+    config.add_facet_field 'active_fedora_model_ssim', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
     ##config.add_facet_field 'language_facet', :label => 'Language', :limit => true

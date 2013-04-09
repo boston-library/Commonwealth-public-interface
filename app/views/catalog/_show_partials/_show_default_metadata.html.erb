@@ -10,33 +10,41 @@
       <% end %>
     </dd>
     <%# abstract/description field %>
-    <% if document[:abstract_t] %>
+    <% if document[:abstract_ssm] %>
         <dt>Description:</dt>
         <dd>
-          <% document[:abstract_t].each do |abstract_t| %>
-              <%= abstract_t %><br />
+          <% document[:abstract_ssm].each do |abstract_ssm| %>
+              <%= abstract_ssm %><br />
           <% end %>
         </dd>
     <% end %>
     <%# doctype field %>
-    <dt>Document Type:</dt>
+    <dt>Format:</dt>
     <dd>
-      <% document[:active_fedora_model_ssim].each do |type| %>
-          <%= link_to_facet(type, 'active_fedora_model_ssim') %><br />
+      <% document[:genre_ssm].each do |type| %>
+          <%= link_to_facet(type, 'genre_ssm') %><br />
       <% end %>
-    </dd>
-    <%# id field %>
-    <dt>URI:</dt>
-    <dd>
-      <%# handle_uri = render_document_show_field_value(:document=>document, :field=>"mods_0_relatedItem_0_location_0_url_t") %>
-      <%# link_to handle_uri, handle_uri, :target => "_blank" %>
     </dd>
     <%# collex field %>
     <dt>Collection:</dt>
     <dd>
-      <%# document[:collection_label_s].each do |collection| %>
-          <%# link_to_facet(collection, 'collection_label_s') %><br />
-      <%# end %>
+      <% document[:collection_name_ssim].each do |collection| %>
+          <%= link_to_facet(collection, 'collection_name_ssim') %><br />
+      <% end %>
+    </dd>
+    <%# local-other id field %>
+    <% if document[:local_other_id_ssim] %>
+        <dt>ID (local):</dt>
+        <dd>
+          <% document[:local_other_id_ssim].each do |local_other| %>
+              <%= local_other %><br />
+          <% end %>
+        </dd>
+    <% end %>
+    <%# ARK URI field %>
+    <dt>Permalink:</dt>
+    <dd>
+      <%= t('blacklight.ark.prefix') + document[:id] %>
     </dd>
   </dl>
 </div>

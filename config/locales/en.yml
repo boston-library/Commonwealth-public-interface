@@ -8,6 +8,9 @@ en:
 
     application_name: 'Digital Commonwealth'
 
+    ark:
+          prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
+
     bookmarks:
           collection:
             add:

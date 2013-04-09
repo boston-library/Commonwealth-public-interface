@@ -15,17 +15,16 @@
 <div class="item_index_title">
   <%= link_to_document(document, :label => :titleInfo_primary_tesim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
 </div>
-<!--
+
 <div class="item_index_details">
   <dl class="index_defList dl-horizontal">
-    <dt>Document Type: </dt>
+    <dt>Format: </dt>
     <dd>
-      <%# render_document_show_field_value(:document=>document, :field=>"active_fedora_model_s").gsub(/[A-Za-z]+::/,"") %>
+      <%= render_document_show_field_value(:document => document, :field => 'mods_0_genre_ssm') %>
     </dd>
     <dt>Collection: </dt>
     <dd>
-      <%# render_document_show_field_value(:document=>document, :field=>"collection_label_s") %>
+      <%= render_document_show_field_value(:document => document, :field => 'collection_name_ssim') %>
     </dd>
   </dl>
 </div>
--->

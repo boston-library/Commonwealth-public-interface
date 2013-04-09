@@ -124,6 +124,12 @@ div.item_index_title {
 }
 
 #documents div.list-view dl.index_defList dt {
-  color: #666666;
+  color: $darker_gray;
+  width: 80px;
+}
+
+#documents div.list-view dl.index_defList dd {
+  margin-left: 90px;
+  color: $darker_gray;
 }
 
