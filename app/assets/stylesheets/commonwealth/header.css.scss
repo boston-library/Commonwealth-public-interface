@@ -18,12 +18,30 @@
   height: 35px;
 }
 
-
 #header-navbar-fixed-top .navbar-inner {
-  height: 3.7em;
+  height: 3.9em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
 }
+
+/* change the logo for the home page */
+
+body.blacklight-home {
+  padding-top: 8em;
+}
+
+body.blacklight-home .navbar .brand {
+  background:transparent asset_url($logo_image_home,image) no-repeat top left;
+  height: 60px;
+}
+
+body.blacklight-home #header-navbar-fixed-top .navbar-inner {
+  height: 5.5em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
+}
+
+
 
 #user-util-links {
   font-size: 0.9em;

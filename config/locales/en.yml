@@ -150,6 +150,11 @@ en:
             label: 'View as %{view}'
             action: 'View as'
             submit: 'Update'
+          form:
+            collection: 'Search within this collection ...'
+          facets:
+            home: 'Explore the Collections'
+
 
     tools:
           remove: 'Remove'

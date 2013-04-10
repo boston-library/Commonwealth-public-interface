@@ -1,0 +1,25 @@
+/* styles for home page view */
+
+@import 'cmmnwlth_defaults';
+
+body.blacklight-home #facets div.facet_limit {
+  clear: none;
+}
+
+body.blacklight-home .sidenav {
+  float: left;
+  width: 100%;
+}
+
+body.blacklight-home .facets-collapse h5 {
+  cursor: default;
+}
+
+body.blacklight-home .facets-collapse .icon-chevron {
+  display: none;
+}
+
+body.blacklight-home #facets div.facet_limit ul {
+  display: block !important;
+}
+

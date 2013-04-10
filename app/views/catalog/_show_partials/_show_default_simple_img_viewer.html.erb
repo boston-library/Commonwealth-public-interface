@@ -24,7 +24,7 @@
                     }
                 });
 
-        jQuery('#img_show_container').click(function() {
+        jQuery('#img_viewer_link').click(function() {
             dialog.dialog('open').css('overflow', 'hidden');
             iip = new IIP( "img_viewer_modal", {
                 image: '<%= image_datastream %>',

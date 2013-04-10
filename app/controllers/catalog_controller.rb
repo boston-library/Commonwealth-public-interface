@@ -50,7 +50,7 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'collection_name_ssim', :label => 'Collection'
-    #config.add_facet_field 'mods_0_genre_ssm', :label => 'Genre'
+    config.add_facet_field 'mods_0_genre_basic_ssi', :label => 'Format'
     config.add_facet_field 'active_fedora_model_ssim', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
@@ -182,6 +182,9 @@ class CatalogController < ApplicationController
             "facet.sort" => "index" # sort by byte order of values
         }
     }
+
+    # collection name field
+    config.collection_field = 'collection_name_ssim'
 
   end
 

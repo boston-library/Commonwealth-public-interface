@@ -5,7 +5,7 @@
     <%# title field %>
     <dt>Title:</dt>
     <dd>
-      <% document[:titleInfo_primary_tesim].each do |title| %>
+      <% document[:mods_0_title_info_ssm].each do |title| %>
           <%= title %><br />
       <% end %>
     </dd>
@@ -21,9 +21,9 @@
     <%# doctype field %>
     <dt>Format:</dt>
     <dd>
-      <% document[:genre_ssm].each do |type| %>
-          <%= link_to_facet(type, 'genre_ssm') %><br />
-      <% end %>
+      <%# document[:mods_genre_basic_ssi].each do |format| %>
+          <%# link_to_facet(format, 'mods_genre_basic_ssi') %><br />
+      <%# end %>
     </dd>
     <%# collex field %>
     <dt>Collection:</dt>
@@ -44,7 +44,7 @@
     <%# ARK URI field %>
     <dt>Permalink:</dt>
     <dd>
-      <%= t('blacklight.ark.prefix') + document[:id] %>
+      <%= t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
     </dd>
   </dl>
 </div>
