@@ -1,8 +1,35 @@
 <% @page_title = t('blacklight.pages.about.title') + " - " + application_name %>
+<div class="span9" id="about_content">
 <h2><%= t('blacklight.pages.about.title') %></h2>
-<p><em>Here's the place you go / when there's things you want to know / about this repo!</em></p>
-<h4>Personal</h4>
-<p><%= pers_namePartSplitter("Ransom, Fletcher C. (Fletcher Charles), 1870-1943") %></p>
 
-<h4>Corporate</h4>
-<p><%= corp_namePartSplitter("United States. Army. Recruiting Publicity Bureau") %></p>
+<p>Digital Commonwealth provides resources and services to support the creation, management, and dissemination of digital cultural heritage materials held by Massachusetts libraries, museums, historical societies, and archives.</p>
+<ul>
+  <li>
+    <%= link_to 'News & Announcements', 'http://digitalcommonwealth.org/blog/', :target => '_blank' %><br/>
+    The latest current developments.
+  </li>
+  <li>
+    <%= link_to 'Digital Commonwealth Portal', 'http://digitalcommonwealth.org', :target => '_blank' %><br/>
+    The portal site facilitates the searching and browsing of metadata for member institutions' digital assets, allowing the discovery of all kinds of digital resources including manuscripts, images, historical documents, and sound recordings.
+  </li>
+  <li>
+    <%= link_to 'Digital Commonwealth Repository', 'http://repository.digitalcommonwealth.org', :target => '_blank' %><br/>
+    The repository provides centralized storage, management, and discovery of digital collections created Digital Commonwealth member institutions. The metadata stored in the repository is indexed within the portal.
+  </li>
+  <li>
+    <%= link_to 'Members', 'http://digitalcommonwealth.memberlodge.org/directory', :target => '_blank' %><br/>
+    A directory of member institutions.
+  </li>
+  <li>
+    <%= link_to 'Digitization Services', 'http://blog.bpl.org/dcbpl/', :target => '_blank' %><br/>
+    Digital Commonwealth members may apply for free digitization services from the Boston Public Library as part of a grant awarded by the MBLC (Massachusetts Board of Library Commissioners) and funded by the LSTA (Library Services and Technology Act).
+  </li>
+  <li>
+    <%= link_to 'Conference & Events', 'http://digitalcommonwealth.memberlodge.org/Conferences', :target => '_blank' %><br/>
+    Digital Commonwealth sponsors digitization workshops as well as an annual conference.
+  </li>
+</ul>
+</div>
+<%# some stuff being tested for ingest app %>
+<%# pers_namePartSplitter("Ransom, Fletcher C. (Fletcher Charles), 1870-1943") %>
+<%# corp_namePartSplitter("United States. Army. Recruiting Publicity Bureau") %>

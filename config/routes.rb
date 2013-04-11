@@ -39,8 +39,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
-  match '/contact', :to => "pages#contact"
-  match '/about', :to => "pages#about"
+  match '/contact', :to => 'feedback#show', :as => 'contact_path'
+  match '/about', :to => 'pages#about', :as => 'about_path'
 
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 

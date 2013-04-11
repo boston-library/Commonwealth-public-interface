@@ -2,17 +2,27 @@
 
 @import 'cmmnwlth_defaults';
 
-body.blacklight-home #facets div.facet_limit {
-  clear: none;
-}
-
 body.blacklight-home .sidenav {
   float: left;
   width: 100%;
 }
 
+body.blacklight-home .facets h4 {
+  border-bottom: 1px solid $navbarBorder;
+}
+
+body.blacklight-home #facets div.facet_limit {
+  clear: none;
+  border-right: 1px solid $navbarBorder;
+}
+
 body.blacklight-home .facets-collapse h5 {
   cursor: default;
+  padding-bottom: 0;
+}
+
+body.blacklight-home .facets-collapse h5:hover {
+  background-color: #FFFFFF;
 }
 
 body.blacklight-home .facets-collapse .icon-chevron {

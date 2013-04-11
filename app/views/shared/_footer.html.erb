@@ -1,7 +1,18 @@
 <div id="footer" class="container">
   <div class="row">
-    <div id="contact_info" class="span12">
-        <p><%= link_to application_name, root_path %></p>
+    <div id="footer_left" class="span4">
+      <p><%= application_name %></p>
+    </div>
+    <div id="footer_center" class="span4"></div>
+    <div id="footer_right" class="span4">
+      <ul id="footer-links" class="inline">
+        <li class="footer-link">
+          <%= link_to t('blacklight.pages.about.title'), about_path %>
+        </li>
+        <li class="footer-link">
+          <%= link_to t('blacklight.pages.contact.title'), contact_path %>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

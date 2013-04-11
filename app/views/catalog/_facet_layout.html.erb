@@ -1,7 +1,4 @@
-<div class="facet_limit blacklight-<%= facet_field.field.parameterize %>
-  <% unless has_search_parameters? && params[:controller] == 'catalog' %>
-   <%= ' span3' %>
-  <% end %>">
+<div class="facet_limit blacklight-<%= facet_field.field.parameterize %><%= ' span3' unless has_search_parameters? && params[:controller] == 'catalog'%>">
   <h5><%= facet_field.label -%> <i class="icon-chevron"></i></h5>
   <%= yield %>
 </div>
