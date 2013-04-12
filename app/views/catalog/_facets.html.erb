@@ -1,0 +1,21 @@
+<% # main container for facets/limits menu -%>
+<% if has_search_parameters? || params[:controller] != 'catalog' %>
+    <% facet_heading = t('blacklight.search.facets.title') %>
+<% else %>
+    <% facet_heading = t('blacklight.search.facets.home') %>
+    <%= javascript_include_tag 'commonwealth/home_page_facets' %>
+<% end %>
+<% if has_facet_values?  %>
+    <div id="facets" class="facets sidenav">
+      <h4 data-toggle="collapse" data-target=".facets-collapse">
+        <a class="btn btn-navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <%= facet_heading %>
+      </h4>
+      <div class="facets-collapse">
+        <%= render_facet_partials %>
+      </div>
+    </div>
+<% end %>&nbsp;
