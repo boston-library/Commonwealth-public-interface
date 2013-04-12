@@ -21,6 +21,7 @@
 //= require blacklight/blacklight
 
 //= require bootstrap-dropdown
+//= require bootstrap-carousel
 
 // require commonwealth/folder_tools
 
