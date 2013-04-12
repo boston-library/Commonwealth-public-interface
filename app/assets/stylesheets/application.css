@@ -10,7 +10,10 @@
  *
  *= require_self
  *= require_tree .
- 
- *= require 'blacklight_advanced_search'
+
+ * remove blacklight/layout from tree so it doesn't get included twice
+ *= stub blacklight/_layout
+
+ *= require blacklight_advanced_search
 
 */

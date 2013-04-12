@@ -26,9 +26,11 @@
 
 /* change the logo for the home page */
 
+/* set this in bl/layout css instead
 body.blacklight-home {
   padding-top: 8em;
 }
+*/
 
 body.blacklight-home .navbar .brand {
   background:transparent asset_url($logo_image_home,image) no-repeat top left;
