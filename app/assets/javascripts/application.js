@@ -21,9 +21,11 @@
 //= require blacklight/blacklight
 
 //= require bootstrap-dropdown
-//= require bootstrap-carousel
+// NOTE: unlinking bs-carousel because current bootstrap-sass gem version is not up-to-date
+//       due to BL dependency. Will create local file instead. Relink once gem updated.
+// require bootstrap-carousel
 
-// require commonwealth/folder_tools
+//= require commonwealth/bs-carousel-local
 
 
 // WARNING: require tree has been disabled to avoid djatoka_viewer JS files being automatically included

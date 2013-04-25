@@ -1,56 +1,67 @@
 <div id="slideshow" class="carousel slide">
   <ol class="carousel-indicators">
-    <li data-target="#slideshow" data-slide-to="0" data-interval="3000" class="active"></li>
-    <li data-target="#slideshow" data-slide-to="1" data-interval="3000"></li>
-    <li data-target="#slideshow" data-slide-to="2" data-interval="3000"></li>
-    <li data-target="#slideshow" data-slide-to="3" data-interval="3000"></li>
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
   </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <%= djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wk61x','accessMaster'),
+      <% slide0_img = djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wk61x','accessMaster'),
                             {:resolver => Rails.configuration.djatoka_resolver.base_url,
                              :scale => 500,
                              :alt => 'Apparatus outside Washington Square Fire Station',
                              :region => [220,90,300,870]}) %>
+      <%= link_to slide0_img, '/search/' + 'bpl-test:r781wk60n' %>
       <div class="carousel-caption">
-        <h4>Apparatus outside Washington Square Fire Station</h4>
-        <p><em>Brookline Photograph Collection</em></p>
+        <h5>Apparatus outside Washington Square Fire Station</h5>
+        <p><small><em>Brookline Photograph Collection</em></small></p>
       </div>
     </div>
     <div class="item">
-      <%= djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wh098','accessMaster'),
+      <% slide1_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wh098','accessMaster'),
                             {:resolver => Rails.configuration.djatoka_resolver.base_url,
                              :scale => 500,
                              :alt => 'Brookline Village',
                              :region => [560,100,300,870]}) %>
+      <%= link_to slide1_img, '/search/' + 'bpl-test:r781wh080' %>
       <div class="carousel-caption">
-        <h4>Brookline Village</h4>
-        <p><em>Brookline Photograph Collection</em></p>
+        <h5>Brookline Village</h5>
+        <p><small><em>Brookline Photograph Collection</em></small></p>
       </div>
     </div>
     <div class="item">
-      <%= djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wg890','accessMaster'),
+      <% slide2_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wg890','accessMaster'),
                             {:resolver => Rails.configuration.djatoka_resolver.base_url,
                              :scale => 500,
                              :alt => 'Gardner House',
                              :region => [660,50,300,870]}) %>
+      <%= link_to slide2_img, '/search/' + 'bpl-test:r781wg88q' %>
       <div class="carousel-caption">
-        <h4>Gardner House</h4>
-        <p><em>Brookline Photograph Collection</em></p>
+        <h5>Gardner House</h5>
+        <p><small><em>Brookline Photograph Collection</em></small></p>
       </div>
     </div>
     <div class="item">
-      <%= djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wm215','accessMaster'),
+      <% slide3_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wm215','accessMaster'),
                             {:resolver => Rails.configuration.djatoka_resolver.base_url,
                              :scale => 500,
                              :alt => 'Brookline Baseball Team',
                              :region => [260,50,300,870]}) %>
+      <%= link_to slide3_img, '/search/' + 'bpl-test:r781wm20w' %>
       <div class="carousel-caption">
-        <h4>Brookline Baseball Team</h4>
-        <p><em>Brookline Photograph Collection</em></p>
+        <h5>Brookline Baseball Team</h5>
+        <p><small><em>Brookline Photograph Collection</em></small></p>
       </div>
     </div>
   </div>
   <a class="left carousel-control" href="#slideshow" data-slide="prev">&lsaquo;</a>
   <a class="right carousel-control" href="#slideshow" data-slide="next">&rsaquo;</a>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#slideshow').carousel({
+            interval: 5000
+        });
+    });
+</script>
