@@ -18,11 +18,11 @@
           <% end %>
         </dd>
     <% end %>
-    <%# doctype field %>
+    <%# genre field %>
     <dt>Format:</dt>
     <dd>
       <%# document[:mods_genre_basic_ssi].each do |format| %>
-          <%# link_to_facet(format, 'mods_genre_basic_ssi') %><br />
+          <%= link_to_facet(document[:mods_genre_basic_ssi], 'mods_genre_basic_ssi') %><!-- <br /> -->
       <%# end %>
     </dd>
     <%# collex field %>

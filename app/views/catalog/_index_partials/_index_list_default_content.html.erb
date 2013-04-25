@@ -6,12 +6,13 @@
 <% end %>
 
 <div class="media">
-  <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,""), "thumbnail300"),
+  <% if document[:has_image_ssim] %>
+    <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,""), "thumbnail300"),
                         :alt => document[:titleInfo_primary_tesim],
                         :class => 'index_thumb media-object') %>
-  <% # bad hack to link to catalog#show rather than image#show %>
-  <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
-
+    <% # bad hack to link to catalog#show rather than image#show %>
+    <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+  <% end %>
   <div class="media-body">
 
     <div class="item_index_title">

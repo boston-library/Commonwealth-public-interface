@@ -7,5 +7,14 @@
   and archives across Massachusetts.</p>
 <p>This is a beta version; not all collections are available here. For more, go to
   the current <%= link_to 'Digital Commonwealth', 'http://digitalcommonwealth.org' %> site.</p>
+<p>
+  <%= link_to_facet('Bplmodels::Collection', 'active_fedora_model_ssim') %> |
+  <%= link_to('View All Collections',
+              add_facet_params('active_fedora_model_ssim',
+                               'Bplmodels::Collection').merge!({"controller" => 'catalog',
+                                                                :action=> 'index',
+                                                                :per_page => '20',
+                                                                :view => 'list'})) %>
+</p>
 
 
