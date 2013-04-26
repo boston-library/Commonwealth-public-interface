@@ -157,7 +157,7 @@ describe FoldersController do
 
         it "should show a link to the folder item" do
           get :show, :id => @folder.id
-          response.body.should have_selector("a[href='/catalog/" + @test_folder_item.document_id + "']")
+          response.body.should have_selector("a[href='/search/" + @test_folder_item.document_id + "']")
         end
 
       end
