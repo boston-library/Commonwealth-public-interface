@@ -38,6 +38,12 @@ en:
           list_title: 'Your Bookmarks'
           delete: 'Remove'
 
+    citation:
+          chicago: 'Chicago Style:'
+
+    collections:
+          title: 'Collections'
+
     email:
           form:
             title: 'Email'
@@ -130,6 +136,9 @@ en:
 
     images:
           zoom: 'Click to zoom in on this image.'
+
+    institutions:
+          title: 'Institutions'
 
     pages:
           about:

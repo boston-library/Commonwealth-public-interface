@@ -1,0 +1,21 @@
+<% @page_title = t('blacklight.collections.title', :application_name => application_name) %>
+<div id="content" class="span9">
+
+  <h2><%= t('blacklight.collections.title') %></h2>
+
+
+  <% extra_head_content << render_opensearch_response_metadata.html_safe %>
+
+  <%= render 'sort_and_per_page' %>
+
+  <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
+
+  <%= render_document_index %>
+
+  <%= render 'results_pagination' %>
+
+</div>
+
+<div id="sidebar" class="span3">
+  <%# render :partial=>'facets' %>
+</div><!--/well -->

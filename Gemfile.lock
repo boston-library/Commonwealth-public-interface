@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 6c8625af7eb51da4f8632d8bf50bf36904a2983c
+  revision: e88fd9b91545072ac569978ee64ece79ac6eba25
   specs:
-    bplmodels (0.0.37)
+    bplmodels (0.0.42)
       rails (~> 3.2.7)
 
 GIT

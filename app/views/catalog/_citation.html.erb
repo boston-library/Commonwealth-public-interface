@@ -1,0 +1,17 @@
+<% @documents.each do |document| %>
+
+    <h5><%= t('blacklight.citation.chicago') %></h5>
+
+    <div class="citation-content">
+      <p>
+        <%# if creator(s), list them as lastname, firstname; period+space at end %>
+        "<%= document[:mods_title_info_ssm].first %>."&nbsp;
+        <%= document[:mods_genre_basic_ssi] %>.&nbsp;
+        <%# if date, add it here, period+space at end %>
+        <em><%= t('blacklight.application_name') %></em>,&nbsp;
+        <%= t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>&nbsp;
+        (accessed <%= Date.today.strftime('%B %d, %Y') %>).
+      </p>
+    </div>
+
+<% end %>

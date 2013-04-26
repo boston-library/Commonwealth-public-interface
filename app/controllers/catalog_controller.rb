@@ -193,6 +193,28 @@ class CatalogController < ApplicationController
     solr_parameters[:fq] << "-active_fedora_model_ssim:\"Bplmodels::ImageFile\""
   end
 
+  # create an index list of collections
+  def collections
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Collection'},
+                                                     :per_page => 20})
+    params[:view] = 'list'
+
+    respond_to do |format|
+      format.html { save_current_search_params }
+    end
+  end
+
+  # create an index list of institutions
+  def institutions
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Institution'},
+                                                      :per_page => 20})
+    params[:view] = 'list'
+
+    respond_to do |format|
+      format.html { save_current_search_params }
+    end
+  end
+
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
   #  respond_to do |format|

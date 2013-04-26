@@ -1,29 +1,34 @@
 CommonwealthPublicInterface::Application.routes.draw do
   #get "pages/about"
 
-  root :to => "catalog#index"
+  root :to => 'catalog#index'
 
-  match "bookmarks/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_bookmarks_actions"
+  match 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
   Blacklight.add_routes(self, :except => [:solr_document, :catalog])
 
   # add Blacklight catalog -> search routing
   # Catalog stuff.
-  match 'search/opensearch', :as => 'opensearch_catalog'
-  match 'search/citation', :as => 'citation_catalog'
-  match 'search/email', :as => 'email_catalog'
+  match 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
+  match 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
+  match 'search/email', :to => 'catalog#email', :as => 'email_catalog'
   #match 'search/sms', :as => "sms_catalog"
   #match 'search/endnote', :as => "endnote_catalog"
-  match 'search/send_email_record', :as => 'send_email_record_catalog'
+  match 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
   match 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   match 'search', :to => 'catalog#index', :as => 'catalog_index'
   match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+  match 'collections', :to => 'catalog#collections', :as => 'collections'
+  match 'institutions', :to => 'catalog#institutions', :as => 'institutions'
 
   resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
   # :show and :update are for backwards-compatibility with catalog_url named routes
   resources :catalog, :only => [:show, :update]
 
   HydraHead.add_routes(self)
+
+  # for some reason feedback submit won't work w/o this addition
+  match 'feedback', :to => 'feedback#show', :via => :post
 
   devise_for :users
 
@@ -33,14 +38,13 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :preview, :only => :show
 
-  match "folder/:id/clear", :to => "folder_items#clear", :as => "clear_folder_items"
+  match 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
-  match "folder/:id/item_actions", :to => "folder_items_actions#folder_item_actions", :as => "selected_folder_items_actions"
+  match 'folder/:id/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_folder_items_actions'
 
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
-  match '/contact', :to => 'feedback#show', :as => 'contact'
-  match '/about', :to => 'pages#about', :as => 'about'
+  match 'about', :to => 'pages#about', :as => 'about'
 
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
