@@ -11,7 +11,7 @@ gem 'pg'
 # BPL specific:
 
 #gem 'hydra-ldap'
-gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
+#gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
 # BPL models gem
 gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'
 
