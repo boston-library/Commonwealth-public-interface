@@ -59,6 +59,7 @@ ehthumbs.db
 # Directories to ignore #
 #########################
 /public/data/*
+/public/assets/*
 /jetty/*
 /solr_conf/*
 /fedora_conf/*
