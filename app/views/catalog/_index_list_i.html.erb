@@ -1,0 +1,9 @@
+<div class="institution_index_container">
+  <div class="item_index_title">
+    <%# link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+    <%= link_to_facet(document[:label_ssim].first, 'physicalLocation_ssim') %>
+  </div>
+  <%# unless customization needed, use generic item index view %>
+  <%# render :partial => 'catalog/_index_partials/index_list_default_content',
+             :locals => {:document => document, :document_counter => document_counter} %>
+</div>

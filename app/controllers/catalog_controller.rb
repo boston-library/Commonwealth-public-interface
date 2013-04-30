@@ -22,13 +22,13 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'titleInfo_primary_tesim'
-    config.index.record_display_type = 'active_fedora_model_ssim'
+    config.index.show_link = 'mods_title_info_ssm'
+    config.index.record_display_type = 'active_fedora_model_suffix_ssi'
 
     # solr field configuration for document/show views
-    config.show.html_title = 'titleInfo_primary_tesim'
-    config.show.heading = 'titleInfo_primary_tesim'
-    config.show.display_type = 'active_fedora_model_ssim'
+    config.show.html_title = 'mods_title_info_ssm'
+    config.show.heading = 'mods_title_info_ssm'
+    config.show.display_type = 'active_fedora_model_suffix_ssi'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -49,9 +49,12 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'collection_name_ssim', :label => 'Collection'
-    config.add_facet_field 'mods_genre_basic_ssi', :label => 'Format'
-    config.add_facet_field 'active_fedora_model_ssim', :label => 'AF Model'
+    # config.add_facet_field 'collection_name_ssim', :label => 'Collection'
+    config.add_facet_field 'mods_genre_basic_ssim', :label => 'Format'
+    config.add_facet_field 'subject_topic_ssim', :label => 'Topic', :limit => 5
+    config.add_facet_field 'subject_geographic_ssim', :label => 'Location', :limit => 5
+    config.add_facet_field 'physicalLocation_ssim', :label => 'Institution'
+    #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
     ##config.add_facet_field 'language_facet', :label => 'Language', :limit => true
@@ -190,12 +193,12 @@ class CatalogController < ApplicationController
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "-active_fedora_model_ssim:\"Bplmodels::ImageFile\""
+    solr_parameters[:fq] << "-active_fedora_model_ssi:\"Bplmodels::ImageFile\""
   end
 
   # create an index list of collections
   def collections
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Collection'},
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
                                                      :per_page => 20})
     params[:view] = 'list'
 
@@ -206,7 +209,7 @@ class CatalogController < ApplicationController
 
   # create an index list of institutions
   def institutions
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Institution'},
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Institution'},
                                                       :per_page => 20})
     params[:view] = 'list'
 
