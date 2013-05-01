@@ -3,12 +3,14 @@
   <h3>Item Information</h3>
   <dl class="defList dl-horizontal">
     <%# title field %>
-    <dt>Title:</dt>
-    <dd>
-      <% document[:mods_title_info_ssm].each do |title| %>
-          <%= title %><br />
-      <% end %>
-    </dd>
+    <% if document[:mods_title_info_ssm] %>
+      <dt>Title:</dt>
+      <dd>
+        <% document[:mods_title_info_ssm].each do |title| %>
+            <%= title %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# abstract/description field %>
     <% if document[:abstract_ssm] %>
         <dt>Description:</dt>
@@ -26,12 +28,14 @@
         </dd>
     <% end %>
     <%# genre field - basic %>
+    <% if document[:mods_genre_basic_ssim] %>
     <dt>Format:</dt>
     <dd>
       <% document[:mods_genre_basic_ssim].each do |format| %>
           <%= link_to_facet(format, 'mods_genre_basic_ssim') %><br />
       <% end %>
     </dd>
+  <% end %>
     <%# genre field - specific %>
     <% if document[:mods_genre_specific_ssim] %>
         <dt>Genre:</dt>
@@ -42,19 +46,23 @@
         </dd>
     <% end %>
     <%# collex field %>
+    <% if document[:mods_genre_basic_ssim] %>
     <dt>Collection:</dt>
     <dd>
-      <% document[:collection_name_ssim].each do |collection| %>
+      <% document[:mods_genre_basic_ssim].each do |collection| %>
           <%= link_to_facet(collection, 'collection_name_ssim') %><br />
       <% end %>
     </dd>
+  <% end %>
     <%# institution field %>
+    <% if document[:physicalLocation_ssim] %>
     <dt>Institution:</dt>
     <dd>
       <% document[:physicalLocation_ssim].each do |institution| %>
           <%= link_to_facet(institution, 'physicalLocation_ssim') %><br />
       <% end %>
     </dd>
+  <% end %>
     <%# topic field %>
     <% if document[:subject_topic_ssim] %>
         <dt>Subject (topic):</dt>
@@ -126,18 +134,22 @@
         </dd>
     <% end %>
     <%# ARK URI field %>
-    <dt>Permalink:</dt>
-    <dd>
-      <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
-      <%= document[:identifier_uri_ssim].first %>
-    </dd>
+    <% if document[:identifier_uri_ssim] %>
+      <dt>Permalink:</dt>
+      <dd>
+        <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
+        <%= document[:identifier_uri_ssim].first %>
+      </dd>
+    <% end %>
     <%# rights field %>
-    <dt>Terms of Use:</dt>
-    <dd>
-      <% document[:mods_use_and_reproduction_ssim].each do |terms| %>
-          <%= terms %><br />
-      <% end %>
-    </dd>
+    <% if document[:mods_use_and_reproduction_ssim] %>
+      <dt>Terms of Use:</dt>
+      <dd>
+        <% document[:mods_use_and_reproduction_ssim].each do |terms| %>
+            <%= terms %><br />
+        <% end %>
+      </dd>
+    <% end %>
   </dl>
 </div>
 </div>
