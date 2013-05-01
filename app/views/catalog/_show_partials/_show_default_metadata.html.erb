@@ -22,7 +22,13 @@
     <% end %>
     <%# creator field - need to figure out handling of multiple creators %>
     <% if document[:name_personal_ssim] %>
-        <dt><%= document[:name_personal_role_ssim].first.strip %>:</dt>
+        <dt>
+          <% if document[:name_personal_role_ssim] %>
+            <%= document[:name_personal_role_ssim].first.strip %>:
+          <% else %>
+            Creator:
+          <% end %>
+        </dt>
         <dd>
           <%= document[:name_personal_ssim].first.strip  %>
         </dd>
