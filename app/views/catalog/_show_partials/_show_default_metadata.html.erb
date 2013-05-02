@@ -52,10 +52,10 @@
         </dd>
     <% end %>
     <%# collex field %>
-    <% if document[:mods_genre_basic_ssim] %>
+    <% if document[:collection_name_ssim] %>
     <dt>Collection:</dt>
     <dd>
-      <% document[:mods_genre_basic_ssim].each do |collection| %>
+      <% document[:collection_name_ssim].each do |collection| %>
           <%= link_to_facet(collection, 'collection_name_ssim') %><br />
       <% end %>
     </dd>

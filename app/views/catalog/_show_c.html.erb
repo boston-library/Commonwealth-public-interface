@@ -1,1 +1,19 @@
-<p>Hello, world!</p>
+<div id="img_show_container">
+
+</div>
+
+<div id="collection_desc">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
+</div>
+
+<div id="collection_search_form">
+    <%= render :partial => 'catalog/search_form_collection', :locals => {:document => @document} %>
+</div>
+
+<div id="collection_browse">
+  <ul>
+    <li>
+      <%= link_to_facet(document[:label_ssim], 'collection_name_ssim') %>
+    </li>
+  </ul>
+</div>

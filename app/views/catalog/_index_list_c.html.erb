@@ -1,11 +1,38 @@
 <%# index list view template  %>
 <div class="collection_index_container">
 
-  <%# image_tag('collection_index.png', :alt => document[:label_ssim].first, :class => 'index_thumb') %>
-  <div class="item_index_title">
-    <%= link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+  <div class="media">
+    <%# if document[:has_image_ssim] %>
+        <% thumb = image_tag('collection_index.png',
+                             :alt => document[:label_ssim],
+                             :class => 'index_thumb media-object') %>
+        <% # bad hack to link to catalog#show rather than image#show %>
+        <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+    <%# end %>
+    <div class="media-body">
+
+      <div class="item_index_title">
+        <%= link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+      </div>
+
+      <div class="item_index_details">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
+        <!--
+        <dl class="index_defList dl-horizontal">
+          <dt>Format:</dt>
+          <dd>
+            <%# render_document_show_field_value(:document => document, :field => 'mods_genre_basic_ssim').gsub(/s\z/,"") %>
+          </dd>
+          <dt>Collection:</dt>
+          <dd>
+            <%# render_document_show_field_value(:document => document, :field => 'collection_name_ssim') %>
+          </dd>
+        </dl>
+        -->
+      </div>
+
+    </div>
+
   </div>
-  <%# unless customization needed, use generic item index view %>
-  <%# render :partial => 'catalog/_index_partials/index_list_default_content',
-             :locals => {:document => document, :document_counter => document_counter} %>
+
 </div>

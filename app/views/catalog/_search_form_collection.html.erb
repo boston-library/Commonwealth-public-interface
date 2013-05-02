@@ -1,6 +1,6 @@
 <%= form_tag search_action_url, :method => :get, :class => 'search-query-form form-inline clearfix' do %>
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page],
-                                :f => {blacklight_config.collection_field => [document[:collection_name_ssim]]}).html_safe %>
+                                :f => {blacklight_config.collection_field => [document[:label_ssim]]}).html_safe %>
 
     <div class="input-append pull-left">
       <label for="q" class="hide-text"><%= t('blacklight.search.form.collection') %></label>
