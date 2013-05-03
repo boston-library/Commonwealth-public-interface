@@ -38,6 +38,9 @@ en:
           list_title: 'Your Bookmarks'
           delete: 'Remove'
 
+    browse:
+          collection_show: 'View All Items in this Collection'
+
     citation:
           chicago: 'Chicago Style:'
 

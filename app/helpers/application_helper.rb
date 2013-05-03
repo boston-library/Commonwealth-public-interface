@@ -14,6 +14,12 @@ module ApplicationHelper
                                                                  :action=> "index"}))
   end
 
+  def link_to_facet_labeled(link_text, field, field_string)
+    link_to(link_text,
+            add_facet_params(field_string, field).merge!({"controller" => "catalog",
+                                                                 :action=> "index"}))
+  end
+
   def simpleimage_file_pid (document)
     return Bplmodels::Image.find(document[:id]).image_files.first.pid
   end

@@ -13,7 +13,9 @@
 <div id="collection_browse">
   <ul>
     <li>
-      <%= link_to_facet(document[:label_ssim], 'collection_name_ssim') %>
+      <%= link_to_facet_labeled(t('blacklight.browse.collection_show'),
+                                   document[:label_ssim].first,
+                                   'collection_name_ssim') %>
     </li>
   </ul>
 </div>
