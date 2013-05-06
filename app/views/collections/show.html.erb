@@ -1,0 +1,65 @@
+<div id="content" class="span12 show-document">
+
+  <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name) %>
+  <% extra_head_content << render_link_rel_alternates %>
+  <% sidebar_items << render_document_sidebar_partial %>
+
+  <%# this should be in a partial -%>
+  <div id="document" class="<%= render_document_class %>">
+
+    <div id="doc_<%= @document.id.to_s.parameterize %>">
+
+      <%= render_document_heading(:h1).html_safe %>
+
+      <div class="document">
+
+        <div id="img_show_container">
+        </div>
+
+        <div class="row">
+
+          <div class="span9">
+
+            <div id="collection_desc">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
+            </div>
+
+            <div id="collection_search_form">
+                <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
+            </div>
+
+            <div id="collection_browse">
+                <ul>
+                    <li>
+                        <%= link_to_facet_labeled(t('blacklight.browse.collection_show'),
+                                        @document[:label_ssim].first,
+                                        'collection_name_ssim') %>
+                    </li>
+                </ul>
+            </div>
+
+          </div>
+
+          <div id="sidebar" class="span3">
+            <%= has_facet_values? %>
+            <%# render :partial=>'facets' %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
+      <!--
+           // COinS, for Zotero among others.
+           // This document_partial_name(@document) business is not quite right,
+           // but has been there for a while.
+      -->
+      <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_partial_name(@document)) %>"></span>
+  <% end %>
+
+</div>

@@ -1,10 +1,12 @@
 <%# index grid view template  %>
 <div class="collection_index_container">
   <div class="item_index_thumb">
-    <%= image_tag('collection_index.png', :alt => document[:label_ssim].first, :class => 'index_thumb') %>
+    <% thumb = image_tag('collection_index.png', :alt => document[:label_ssim].first, :class => 'index_thumb') %>
+    <%= link_to thumb, '/collections/' + document[:id] %>
   </div>
   <div class="item_index_title">
-    <%= link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+    <%# link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
     <%# link_to_facet(document[:label_ssim].first, 'collection_name_ssim') %>
+    <%= link_to document[:label_ssim].first, '/collections/' + document[:id] %>
   </div>
 </div>

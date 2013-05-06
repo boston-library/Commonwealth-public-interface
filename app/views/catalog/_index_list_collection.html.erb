@@ -7,12 +7,13 @@
                              :alt => document[:label_ssim],
                              :class => 'index_thumb media-object') %>
         <% # bad hack to link to catalog#show rather than image#show %>
-        <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+        <%= link_to thumb, '/collections/' + document[:id], :class => 'pull-left' %>
     <%# end %>
     <div class="media-body">
 
       <div class="item_index_title">
-        <%= link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+        <%= link_to document[:label_ssim].first, '/collections/' + document[:id] %>
+        <%# link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
       </div>
 
       <div class="item_index_details">
