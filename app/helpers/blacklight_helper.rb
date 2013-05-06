@@ -1,6 +1,20 @@
 module BlacklightHelper
   include Hydra::BlacklightHelperBehavior
 
+  # override Hydra::BL-helper-behavior definition; reset to default BL def
+  # Return a normalized partial name that can be used to construct view partial path
+  def document_partial_name(document)
+    # .to_s is necessary otherwise the default return value is not always a string
+    # using "_" as sep. to more closely follow the views file naming conventions
+    # parameterize uses "-" as the default sep. which throws errors
+    display_type = document[blacklight_config.show.display_type]
+
+    return 'default' unless display_type
+    display_type = display_type.join(" ") if display_type.respond_to?(:join)
+
+    "#{display_type.gsub("-"," ")}".parameterize("_").to_s
+  end
+
   # add extra tools to show view -- folders, social sharing, etc.
   def render_show_doc_actions(document=@document, options={})
     wrapping_class = options.delete(:documentFunctions) || "documentFunctions"
