@@ -27,6 +27,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   HydraHead.add_routes(self)
 
   resources :collections, :only => [:index, :show]
+  match 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post

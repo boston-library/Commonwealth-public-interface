@@ -20,18 +20,30 @@ class CollectionsController < CatalogController
     params[:view] = 'list'
 
     respond_to do |format|
-      format.html { save_current_search_params }
+      format.html
     end
   end
 
   def show
-    @response, @document = get_solr_response_for_doc_id
+    @show_response, @document = get_solr_response_for_doc_id
+    #(@response, @document_list) = get_search_results
+    (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @document[:label_ssim]}})
 
     respond_to do |format|
-      format.html {setup_next_and_previous_documents}
+      format.html
 
     end
 
+  end
+
+  # displays values and pagination links for a single facet field
+  def facet
+    @pagination = get_facet_pagination(params[:id], params)
+
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
 
 end

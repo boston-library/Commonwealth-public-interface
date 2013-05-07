@@ -41,8 +41,10 @@
           </div>
 
           <div id="sidebar" class="span3">
-            <%= has_facet_values? %>
-            <%# render :partial=>'facets' %>
+            <%# has_facet_values? %>
+            <%# @response.inspect %>
+            <%# solr_fields %>
+            <%= render :partial=>'facets' %>
           </div>
 
         </div>
