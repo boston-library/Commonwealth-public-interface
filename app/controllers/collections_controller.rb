@@ -26,16 +26,19 @@ class CollectionsController < CatalogController
 
   def show
     @show_response, @document = get_solr_response_for_doc_id
-    #(@response, @document_list) = get_search_results
-    (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @document[:label_ssim]}})
+    @collection_title = @document[:label_ssim].first
+    # add params[:f] for proper facet links
+    params[:f] = {blacklight_config.collection_field => [@collection_title]}
+    # get the response for the facets representing items in collection
+    (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
 
     respond_to do |format|
       format.html
-
     end
 
   end
 
+  # copied from Blacklight::Catalog
   # displays values and pagination links for a single facet field
   def facet
     @pagination = get_facet_pagination(params[:id], params)
@@ -45,5 +48,6 @@ class CollectionsController < CatalogController
       format.js { render :layout => false }
     end
   end
+
 
 end

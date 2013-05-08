@@ -1,5 +1,11 @@
 module CollectionsHelper
 
+  # link to view all items in a collection
+  def link_to_all_col_items
+    link_to(t('blacklight.collections.browse.all'),
+            catalog_index_path(:f => {blacklight_config.collection_field => [@collection_title]}))
+  end
+
   # overriding to allow use in collections/show
   # so facet links point to catalog/index
   def add_facet_params_and_redirect(field, item)
@@ -15,10 +21,9 @@ module CollectionsHelper
     end
     new_params.delete(:id)
 
-    # Force action to be index.
+    # Force controller#action to be catalog#index.
     new_params[:action] = "index"
     new_params[:controller] = "catalog"
-    #new_params[:f] = {blacklight_config.collection_field => [@document[:label_ssim].first]}
     new_params
   end
 

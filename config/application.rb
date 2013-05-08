@@ -62,7 +62,7 @@ module CommonwealthPublicInterface
     config.assets.version = '1.0'
 
     # Don't automatically make all helpers available to all controllers
-    #config.action_controller.include_all_helpers = true
+    config.action_controller.include_all_helpers = false
 
   end
 end

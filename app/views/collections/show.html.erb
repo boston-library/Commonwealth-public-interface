@@ -21,6 +21,7 @@
           <div class="span9">
 
             <div id="collection_desc">
+              <p><%=  %></p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
             </div>
 
@@ -31,9 +32,7 @@
             <div id="collection_browse">
                 <ul>
                     <li>
-                        <%= link_to_facet_labeled(t('blacklight.browse.collection_show'),
-                                        @document[:label_ssim].first,
-                                        'collection_name_ssim') %>
+                        <%= link_to_all_col_items %>
                     </li>
                 </ul>
             </div>
