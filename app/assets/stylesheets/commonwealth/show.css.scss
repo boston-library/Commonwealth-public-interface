@@ -58,3 +58,21 @@ div#img_viewer_modal {
 .addthis_toolbox {
   padding-bottom: .5em;
 }
+
+/* collections */
+
+#collection_search_form {
+  margin-bottom: 1em;
+  float: left;
+  width: 51%;
+}
+
+.view-all-col {
+  margin-left: 1em;
+}
+
+img.collection_img_show {
+  max-width: 44%;
+  float: left;
+  margin: 0 1em 1em 0;
+}

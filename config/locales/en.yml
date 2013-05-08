@@ -43,10 +43,12 @@ en:
 
     collections:
           browse:
-            all: 'View All Items in this Collection'
-          title: 'Collections'
+            all: 'View All Items'
           facets:
             title: 'Explore this collection'
+          index:
+            page_title: 'Collections - %{application_name}'
+            title: 'Collections'
 
     email:
           form:
@@ -157,16 +159,17 @@ en:
           save: 'Save Search'
 
     search:
-          pagination_info:
-            no_items_found: 'No items found.'
           change_views:
             label: 'View as %{view}'
             action: 'View as'
             submit: 'Update'
           form:
-            collection: 'Search within this collection ...'
+            collection: 'Search within this collection...'
           facets:
             home: 'Explore the Collections'
+          pagination_info:
+            no_items_found: 'No items found.'
+          title: 'Search Results - %{application_name}'
 
 
     tools:

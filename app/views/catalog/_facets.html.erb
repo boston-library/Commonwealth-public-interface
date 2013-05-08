@@ -3,6 +3,7 @@
     <% facet_heading = t('blacklight.search.facets.title') %>
 <% elsif params[:controller] == 'collections' %>
     <% facet_heading = t('blacklight.collections.facets.title') %>
+    <%= javascript_include_tag 'commonwealth/home_page_facets' %>
 <% else %>
     <% facet_heading = t('blacklight.search.facets.home') %>
     <%= javascript_include_tag 'commonwealth/home_page_facets' %>

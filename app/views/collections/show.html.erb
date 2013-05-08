@@ -9,40 +9,45 @@
 
     <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-      <%= render_document_heading(:h1).html_safe %>
+      <%= content_tag(:h1, @collection_title, :class => 'collection-title') %>
+      <%# render_document_heading(:h1).html_safe %>
 
       <div class="document">
-
-        <div id="img_show_container">
-        </div>
 
         <div class="row">
 
           <div class="span9">
 
+
+
             <div id="collection_desc">
-              <p><%=  %></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
-            </div>
-
-            <div id="collection_search_form">
+              <% image_datastream = datastream_disseminator_url('bpl-test:w6634493v','accessMaster') %>
+              <%= djatoka_image_tag(image_datastream,
+                                                 {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                                  :scale => 300,
+                                                  :alt => 'TK',
+                                                  :class => 'collection_img_show',}) %>
+              <div id="collection_search_form" class="well well-small">
                 <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
-            </div>
-
-            <div id="collection_browse">
-                <ul>
-                    <li>
-                        <%= link_to_all_col_items %>
-                    </li>
-                </ul>
+                <%= link_to_all_col_items('btn btn-info view-all-col') %>
+              </div>
+                <p>Donated by this owner of a Columbus Avenue saloon, the collection consists of
+                  photographs of professional baseball in Boston and personal scrapbooks from the 1890's to
+                  1912. Originally displayed at McGreevey's tavern, Third Base, the photographs form the
+                  largest collection of its kind. It consists of early Boston baseball photographs dating from
+                  1875 to 1916 and many of the most important ballplayers of the 19th and early 20th century
+                  are represented, including Cy Young, Ty Cobb, Mike "King" Kelly, Kid Nichols and many
+                  others. Also included are panoramic photos of the ballparks of the era including the
+                  Huntington Avenue Grounds in Boston and the Polo Grounds in New York. The centerpiece of the
+                  collection is a series of photographs related to the first World Series in 1903 between
+                  Boston and Pittsburgh. Featured are photographs of the fans of the Boston team, the "Royal
+                  Rooters" and their leader Michael T. "Nuf Ced" McGreevey. The scrapbooks have been microfilmed and are on call number:
+                  GV865.M29A3.</p>
             </div>
 
           </div>
 
           <div id="sidebar" class="span3">
-            <%# has_facet_values? %>
-            <%# @response.inspect %>
-            <%# solr_fields %>
             <%= render :partial=>'facets' %>
           </div>
 

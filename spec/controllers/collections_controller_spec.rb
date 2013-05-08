@@ -25,6 +25,12 @@ describe CollectionsController do
       response.body.should have_selector("div.blacklight-collection")
       assigns(:document).should_not be_nil
     end
+
+    it "should show some facets" do
+      get :show, :id => @collection_id
+      response.body.should have_selector("#facets")
+    end
+
   end
 
 end

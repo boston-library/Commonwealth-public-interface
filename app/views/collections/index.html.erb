@@ -1,10 +1,9 @@
-<% @page_title = t('blacklight.collections.title', :application_name => application_name) %>
-<div id="content" class="span9">
+<% @page_title = t('blacklight.collections.index.page_title', :application_name => application_name) %>
+<% extra_head_content << render_opensearch_response_metadata.html_safe %>
 
-  <h2><%= t('blacklight.collections.title') %></h2>
+<div id="content" class="span9 collections-list">
 
-
-  <% extra_head_content << render_opensearch_response_metadata.html_safe %>
+  <h2><%= t('blacklight.collections.index.title') %></h2>
 
   <%= render 'sort_and_per_page_collection' %>
 

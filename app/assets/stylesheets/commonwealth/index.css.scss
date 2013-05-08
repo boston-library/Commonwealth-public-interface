@@ -123,6 +123,11 @@ div.item_index_title {
   bottom:0;
 }
 
+div.collections-list #documents div.media img {
+  max-height:130px;
+  max-width:130px;
+}
+
 #documents div.list-view dl.index_defList {
   padding-top: .5em;
 }
