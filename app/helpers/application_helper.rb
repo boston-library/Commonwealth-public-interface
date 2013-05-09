@@ -9,9 +9,18 @@ module ApplicationHelper
   end
 
   #from psu scholarsphere
+  #def link_to_facet(field, field_string)
+  #  link_to(field, add_facet_params(field_string, field).merge!({"controller" => "catalog",
+  #                                                               :action=> "index"}))
+  #end
+
   def link_to_facet(field, field_string)
-    link_to(field, add_facet_params(field_string, field).merge!({"controller" => "catalog",
-                                                                 :action=> "index"}))
+    new_params = add_facet_params(field_string, field)
+    new_params.delete(:id)
+    new_params.delete(:view)
+    new_params[:action] = "index"
+    new_params[:controller] = "catalog"
+    link_to(field, new_params)
   end
 
   def link_to_facet_labeled(link_text, field, field_string)

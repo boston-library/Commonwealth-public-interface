@@ -63,8 +63,14 @@ div#img_viewer_modal {
 
 #collection_search_form {
   margin-bottom: 1em;
-  float: left;
-  width: 51%;
+}
+
+#collection_search_form input {
+  width: 175px;
+}
+
+#collection_search_form .submit-search-text {
+  display: none;
 }
 
 .view-all-col {
@@ -72,7 +78,4 @@ div#img_viewer_modal {
 }
 
 img.collection_img_show {
-  max-width: 44%;
-  float: left;
-  margin: 0 1em 1em 0;
 }

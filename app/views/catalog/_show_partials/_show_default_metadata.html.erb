@@ -3,122 +3,120 @@
   <h3>Item Information</h3>
   <dl class="defList dl-horizontal">
     <%# title field %>
-    <% if document[:mods_title_info_ssm] %>
+    <% if document[blacklight_config.index.show_link.to_sym] %>
       <dt>Title:</dt>
       <dd>
-        <% document[:mods_title_info_ssm].each do |title| %>
-            <%= title %><br />
-        <% end %>
+        <%# document[blacklight_config.index.show_link.to_sym].each do |title| %>
+            <%= document[blacklight_config.index.show_link.to_sym] %>
+        <%# end %>
       </dd>
     <% end %>
     <%# abstract/description field %>
-    <% if document[:abstract_ssm] %>
+    <% if document[:abstract_tsi] %>
         <dt>Description:</dt>
         <dd>
-          <% document[:abstract_ssm].each do |abstract_ssm| %>
-              <%= abstract_ssm %><br />
-          <% end %>
+          <%# document[:abstract_tsi].each do |abstract| %>
+              <%= document[:abstract_tsi] %>
+          <%# end %>
         </dd>
     <% end %>
-    <%# creator field - need to figure out handling of multiple creators %>
-    <% if document[:name_personal_ssim] %>
+    <%# creator field - need to figure out handling of multiple creators/roles %>
+    <% if document[:name_personal_tsim] %>
         <dt>
-          <% if document[:name_personal_role_ssim] %>
-            <%= document[:name_personal_role_ssim].first.strip %>:
+          <% if document[:name_personal_role_tsim] %>
+            <%= document[:name_personal_role_tsim].first.strip %>:
           <% else %>
             Creator:
           <% end %>
         </dt>
         <dd>
-          <%= document[:name_personal_ssim].first.strip  %>
+          <%= document[:name_personal_tsim].first  %>
         </dd>
     <% end %>
     <%# genre field - basic %>
-    <% if document[:mods_genre_basic_ssim] %>
+    <% if document[:mods_genre_basic_tsim] %>
     <dt>Format:</dt>
     <dd>
-      <% document[:mods_genre_basic_ssim].each do |format| %>
-          <%= link_to_facet(format, 'mods_genre_basic_ssim') %><br />
+      <% document[:mods_genre_basic_tsim].each do |format| %>
+          <%= link_to_facet(format, 'mods_genre_basic_tsim') %><br />
       <% end %>
     </dd>
   <% end %>
     <%# genre field - specific %>
-    <% if document[:mods_genre_specific_ssim] %>
+    <% if document[:mods_genre_specific_tsim] %>
         <dt>Genre:</dt>
         <dd>
-          <% document[:mods_genre_specific_ssim].each do |genre| %>
-              <%= link_to_facet(genre, 'mods_genre_specific_ssim') %><br />
+          <% document[:mods_genre_specific_tsim].each do |genre| %>
+              <%= link_to_facet(genre, 'mods_genre_specific_tsim') %><br />
           <% end %>
         </dd>
     <% end %>
     <%# collex field %>
-    <% if document[:collection_name_ssim] %>
+    <% if document[blacklight_config.collection_field.to_sym] %>
     <dt>Collection:</dt>
     <dd>
-      <% document[:collection_name_ssim].each do |collection| %>
+      <% document[blacklight_config.collection_field.to_sym].each do |collection| %>
           <%= link_to_facet(collection, 'collection_name_ssim') %><br />
       <% end %>
     </dd>
   <% end %>
     <%# institution field %>
-    <% if document[:physicalLocation_ssim] %>
+    <% if document[:physical_location_ssim] %>
     <dt>Institution:</dt>
     <dd>
-      <% document[:physicalLocation_ssim].each do |institution| %>
+      <% document[:physical_location_ssim].each do |institution| %>
           <%= link_to_facet(institution, 'physicalLocation_ssim') %><br />
       <% end %>
     </dd>
   <% end %>
     <%# topic field %>
-    <% if document[:subject_topic_ssim] %>
+    <% if document[:subject_topic_tsim] %>
         <dt>Subject (topic):</dt>
         <dd>
-            <% document[:subject_topic_ssim].each do |topic| %>
-                <%= link_to_facet(topic, 'subject_topic_ssim') %><br />
+            <% document[:subject_topic_tsim].each do |topic| %>
+                <%= link_to_facet(topic, 'subject_topic_tsim') %><br />
             <% end %>
         </dd>
     <% end %>
     <%# name subject field %>
-    <% if document[:subject_name_corporate_ssim] || document[:subject_name_personal_ssim] %>
+    <% if document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] %>
         <dt>Subject (name):</dt>
         <dd>
-          <% if document[:subject_name_corporate_ssim] %>
-            <% document[:subject_name_corporate_ssim].each do |corp_name| %>
-                  <%= link_to_facet(corp_name, 'subject_name_corporate_ssim') %><br />
+          <% if document[:subject_name_corporate_tsim] %>
+            <% document[:subject_name_corporate_tsim].each do |corp_name| %>
+                  <%= link_to_facet(corp_name, 'subject_name_corporate_tsim') %><br />
             <% end %>
           <% end %>
-          <% if document[:subject_name_personal_ssim] %>
-              <% document[:subject_name_personal_ssim].each do |pers_name| %>
-                  <%= link_to_facet(pers_name, 'subject_name_personal_ssim') %><br />
+          <% if document[:subject_name_personal_tsim] %>
+              <% document[:subject_name_personal_tsim].each do |pers_name| %>
+                  <%= link_to_facet(pers_name, 'subject_name_personal_tsim') %><br />
               <% end %>
           <% end %>
         </dd>
     <% end %>
     <%# geo subject field %>
-    <% if document[:subject_geographic_ssim] %>
+    <% if document[:subject_geographic_tsim] %>
         <dt>Subject (geographic):</dt>
         <dd>
-            <% document[:subject_geographic_ssim].each do |subject_geo| %>
-                <%= link_to_facet(subject_geo, 'subject_geographic_ssim') %><br />
+            <% document[:subject_geographic_tsim].each do |subject_geo| %>
+                <%= link_to_facet(subject_geo, 'subject_geographic_tsim') %><br />
             <% end %>
         </dd>
     <% end %>
     <%# note field %>
-    <% if document[:mods_note_ssi] %>
+    <% if document[:mods_note_tsi] %>
         <dt>Notes:</dt>
         <dd>
           <%# document[:mods_note_ssi].each do |note| %>
-          <%= document[:mods_note_ssi] %>
+          <%= document[:mods_note_tsi] %>
           <%# end %>
         </dd>
     <% end %>
     <%# extent field %>
-    <% if document[:extent_ssim] %>
+    <% if document[:extent_tsi] %>
         <dt>Extent:</dt>
         <dd>
-          <% document[:extent_ssim].each do |extent| %>
-              <%= extent %><br />
-          <% end %>
+          <%= document[:extent_tsi] %>
         </dd>
     <% end %>
     <%# local-accession id field %>
@@ -131,27 +129,27 @@
         </dd>
     <% end %>
     <%# local-other id field %>
-    <% if document[:local_other_id_ssim] %>
+    <% if document[:identifier_local_other_ssim] %>
         <dt>Identifier (local):</dt>
         <dd>
-          <% document[:local_other_id_ssim].each do |local_other| %>
+          <% document[:identifier_local_other_ssim].each do |local_other| %>
               <%= local_other %><br />
           <% end %>
         </dd>
     <% end %>
     <%# ARK URI field %>
-    <% if document[:identifier_uri_ssim] %>
+    <% if document[:identifier_uri_ssi] %>
       <dt>Permalink:</dt>
       <dd>
         <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
-        <%= document[:identifier_uri_ssim].first %>
+        <%= document[:identifier_uri_ssi] %>
       </dd>
     <% end %>
     <%# rights field %>
-    <% if document[:mods_use_and_reproduction_ssim] %>
+    <% if document[:use_and_reproduction_ssm] %>
       <dt>Terms of Use:</dt>
       <dd>
-        <% document[:mods_use_and_reproduction_ssim].each do |terms| %>
+        <% document[:use_and_reproduction_ssm].each do |terms| %>
             <%= terms %><br />
         <% end %>
       </dd>

@@ -45,7 +45,7 @@ en:
           browse:
             all: 'View All Items'
           facets:
-            title: 'Explore this collection'
+            title: 'Browse by:'
           index:
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
@@ -164,7 +164,7 @@ en:
             action: 'View as'
             submit: 'Update'
           form:
-            collection: 'Search within this collection...'
+            collection: 'Search in this collection...'
           facets:
             home: 'Explore the Collections'
           pagination_info:

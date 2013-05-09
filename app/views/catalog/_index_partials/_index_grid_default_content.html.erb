@@ -8,25 +8,25 @@
 <div class="item_index_thumb">
   <% if document[:has_image_ssim] %>
     <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,""), "thumbnail300"),
-                           :alt => document[:mods_title_info_ssm],
+                           :alt => document[blacklight_config.index.show_link.to_sym],
                            :class => 'index_thumb') %>
     <% # bad hack to link to catalog#show rather than image#show %>
     <%= link_to thumb, '/search/' + document[:id], :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
   <% end %>
 </div>
 <div class="item_index_title">
-  <%= link_to_document(document, :label => :mods_title_info_ssm, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+  <%= link_to_document(document, :label => blacklight_config.index.show_link.to_sym, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
 </div>
 
 <div class="item_index_details">
   <dl class="index_defList dl-horizontal">
     <dt>Format: </dt>
     <dd>
-      <%= render_document_show_field_value(:document => document, :field => 'mods_genre_basic_ssim') %>
+      <%= render_document_show_field_value(:document => document, :field => 'mods_genre_basic_tsim') %>
     </dd>
     <dt>Collection: </dt>
     <dd>
-      <%= render_document_show_field_value(:document => document, :field => 'collection_name_ssim') %>
+      <%= render_document_show_field_value(:document => document, :field => blacklight_config.collection_field) %>
     </dd>
   </dl>
 </div>
