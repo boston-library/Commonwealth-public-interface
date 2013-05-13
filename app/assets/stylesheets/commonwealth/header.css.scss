@@ -57,3 +57,28 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 #user-util-links ul.dropdown-menu {
   text-align: left;
 }
+
+#nav-links-search {
+  float: right;
+  padding-top: 1.8em;
+}
+
+#nav-links {
+  display: inline;
+}
+
+#header-search {
+  display: inline;
+  float: left;
+  padding-top: .4em;
+}
+
+#header-search input {
+  padding: 0 0 0 0.2em;
+  width: 10em;
+}
+
+#header-search .submit-search-text {
+  display: none;
+}
+
