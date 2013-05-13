@@ -15,7 +15,7 @@
 
 
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.dialog
 //
 // Required by Blacklight
 //= require blacklight/blacklight

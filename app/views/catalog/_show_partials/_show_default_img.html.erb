@@ -1,7 +1,7 @@
 <% image_pid = @document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,"") %>
 <% image_datastream = datastream_disseminator_url(image_pid,'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
-<% object_title = render_document_show_field_value(:document=>document, :field=>blacklight_config.index.show_link) %>
+<% object_title = document[blacklight_config.index.show_link.to_sym] %>
 
 <div id="img_show_container">
   <% img_element = djatoka_image_tag(image_datastream,

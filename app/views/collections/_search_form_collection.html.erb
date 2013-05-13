@@ -1,3 +1,4 @@
+<div id="collection_search_form">
 <%= form_tag search_action_url, :method => :get, :class => 'search-query-form form-inline collection-search' do %>
     <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page],
                                 :f => {blacklight_config.collection_field => [document[:label_ssim].first]}).html_safe %>
@@ -8,7 +9,7 @@
                          :placeholder => t('blacklight.search.form.collection'),
                          :class => 'search_q q input-large',
                          :id => 'q'%>
-      <button type="submit" class="btn btn-primary search-btn" id="search">
+      <button type="submit" class="btn btn-primary search-btn" id="collection-search">
         <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
         <i class="icon-search icon-white"></i>
       </button>
@@ -16,3 +17,4 @@
     </div>
 
 <% end %>
+</div>

@@ -11,6 +11,8 @@ body.blacklight-catalog-show {
 body.blacklight-catalog-show .navbar-fixed-top {
   position: relative;
   margin-bottom: 1em;
+  // don't cover image viewer modal
+  z-index: 100;
 }
 
 #img_show_container {
@@ -61,8 +63,13 @@ div#img_viewer_modal {
 
 /* collections */
 
-#collection_search_form {
+#collection_search_tools{
   margin-bottom: 1em;
+}
+
+#collection_search_form {
+  padding: 0 1em .5em 0;
+  float: left;
 }
 
 #collection_search_form input {

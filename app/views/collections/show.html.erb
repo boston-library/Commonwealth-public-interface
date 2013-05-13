@@ -29,9 +29,11 @@
 
           <div class="span5">
 
-            <div id="collection_search_form" class="well well-small">
+            <div id="collection_search_tools" class="well well-small">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
-              <%= link_to_all_col_items('btn btn-info view-all-col') %>
+              <div id="collection_view_all">
+                <%= link_to_all_col_items('btn btn-info view-all-col') %>
+              </div>
             </div>
 
             <div id="collection_desc">

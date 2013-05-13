@@ -11,6 +11,8 @@
  *= require_self
  *= require_tree .
 
+ *= require jquery.ui.dialog
+
  * remove blacklight/layout from tree so it doesn't get included twice
  *= stub blacklight/_layout
 
