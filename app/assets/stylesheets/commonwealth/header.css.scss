@@ -6,7 +6,7 @@
 
 .navbar .brand {
   width: 205px;
-  background:transparent asset_url($logo_image,image) no-repeat top left;
+  background:transparent asset_url($logo_image_home,image) no-repeat top left;
   display: inline-block;
   text-indent: 100%;
   white-space: nowrap;
@@ -15,11 +15,11 @@
   margin-left: 0;
   margin-right:20px;
   padding-left: 0;
-  height: 35px;
+  height: 60px;
 }
 
 #header-navbar-fixed-top .navbar-inner {
-  height: 3.9em;
+  height: 5.5em;
   padding-bottom: 0.5em;
   padding-top: 0.5em;
 }
@@ -30,7 +30,7 @@
 body.blacklight-home {
   padding-top: 8em;
 }
-*/
+
 
 body.blacklight-home .navbar .brand {
   background:transparent asset_url($logo_image_home,image) no-repeat top left;
@@ -43,7 +43,7 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
   padding-top: 0.5em;
 }
 
-
+*/
 
 #user-util-links {
   font-size: 0.9em;

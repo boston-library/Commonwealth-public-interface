@@ -34,20 +34,20 @@
         </dd>
     <% end %>
     <%# genre field - basic %>
-    <% if document[:mods_genre_basic_tsim] %>
+    <% if document[:genre_basic_tsim] %>
     <dt>Format:</dt>
     <dd>
-      <% document[:mods_genre_basic_tsim].each do |format| %>
-          <%= link_to_facet(format, 'mods_genre_basic_tsim') %><br />
+      <% document[:genre_basic_tsim].each do |format| %>
+          <%= link_to_facet(format, 'genre_basic_tsim') %><br />
       <% end %>
     </dd>
   <% end %>
     <%# genre field - specific %>
-    <% if document[:mods_genre_specific_tsim] %>
+    <% if document[:genre_specific_tsim] %>
         <dt>Genre:</dt>
         <dd>
-          <% document[:mods_genre_specific_tsim].each do |genre| %>
-              <%= link_to_facet(genre, 'mods_genre_specific_tsim') %><br />
+          <% document[:genre_specific_tsim].each do |genre| %>
+              <%= link_to_facet(genre, 'genre_specific_tsim') %><br />
           <% end %>
         </dd>
     <% end %>
@@ -104,12 +104,12 @@
         </dd>
     <% end %>
     <%# note field %>
-    <% if document[:mods_note_tsi] %>
+    <% if document[:note_tsim] %>
         <dt>Notes:</dt>
         <dd>
-          <%# document[:mods_note_ssi].each do |note| %>
-          <%= document[:mods_note_tsi] %>
-          <%# end %>
+          <% document[:note_tsim].each do |note| %>
+            <%= note %><br/>
+          <% end %>
         </dd>
     <% end %>
     <%# extent field %>

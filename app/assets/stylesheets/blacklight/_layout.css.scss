@@ -6,16 +6,12 @@
 
 /* This provides a fixed distance between the header and the main content */
 body {
-  padding-top: 6em;
-}
-
-/* header a bit bigger on home page, adjust accordingly */
-body.blacklight-home {
   padding-top: 8em;
 }
 
+
 @media (max-width: 979px) {
-  body.blacklight-home {
+  body {
     padding-top: 0;
   }
 
