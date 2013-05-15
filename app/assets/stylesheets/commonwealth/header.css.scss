@@ -48,9 +48,16 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 #user-util-links {
   font-size: 12px;
   text-align: right;
+  height: 42px;
 }
 
 #util-links-nologin, #user-nav-btn {
+  display: inline-block;
+  vertical-align: super;
+}
+
+#user-nav-btn {
+  vertical-align: top;
   display: inline-block;
 }
 
@@ -60,7 +67,7 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 
 #header-search {
   display: inline-block;
-  padding: .5em 0 0 .7em;
+  padding: 0.4em 0 0 0.7em;
 }
 
 #header-search input {
@@ -75,6 +82,29 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 #header_main_nav {
   float: right;
   margin-bottom: 0;
+  padding-top: .5em;
+}
+
+/* styles for un-collapsed nav */
+
+.nav-collapse.collapse {
+  background-color: #f2f2f2;
+  @include rounded-corners(0 0 5px 5px);
+  box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid $light_gray;
+  border-left: 1px solid $light_gray;
+  border-right: 1px solid $light_gray;
+  /* float: right; */
+  padding-right: .5em;
+  top: 4px;
+}
+
+.nav-collapse .btn {
+  padding: 0 6px;
+}
+
+.nav-collapse .nav > li {
+  float: left;
 }
 
 

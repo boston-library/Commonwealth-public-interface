@@ -17,6 +17,16 @@
   @include rounded-corners(5px);
 }
 
+#footer a {
+  font-size: 12px;
+}
+
+#footer .footer-logo {
+  -moz-opacity: 0.50;
+  opacity: 0.50;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+
 #footer_right {
   text-align: right;
 }

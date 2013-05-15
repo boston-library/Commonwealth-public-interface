@@ -1,17 +1,12 @@
 <div id="footer" class="container">
   <div class="row">
-    <div id="footer_left" class="span4">
+    <div id="footer_left" class="span3">
       <%= image_tag('dc-logo_notag_xsm_bw.png', :alt => application_name, :class => 'footer-logo')  %>
     </div>
-    <div id="footer_center" class="span4"></div>
-    <div id="footer_right" class="span4">
+    <div id="footer_center" class="span3"></div>
+    <div id="footer_right" class="span6">
       <ul id="footer-links" class="inline">
-        <li class="footer-link">
-          <%= link_to t('blacklight.pages.about.title'), about_path %>
-        </li>
-        <li class="footer-link">
-          <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
-        </li>
+        <%= render :partial=>'shared/nav_links' %>
       </ul>
     </div>
   </div>
