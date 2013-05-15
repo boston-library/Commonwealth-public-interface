@@ -1,36 +1,24 @@
 <div id="header-navbar-fixed-top" class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
+
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <%= link_to application_name, root_path, :class => "brand" %>
-      <div class="nav-collapse" id="header-nav-search">
-        <%= render :partial=>'/user_util_links' %>
-        <div id="nav-links-search">
-          <div id="nav-links">
-            <ul class="nav">
-                <li>
-                    <%= link_to 'Institutions', institutions_path %>
-                </li>
-                <li>
-                    <%= link_to 'Collections', collections_path %>
-                </li>
-                <li>
-                    <%= link_to t('blacklight.pages.about.title'), about_path %>
-                </li>
-                <li>
-                    <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
-                </li>
-            </ul>
-          </div>
-          <div id="header-search">
-            <%= render :partial=>'shared/search_form_header'  %>
-          </div>
-        </div>
+
+      <%= link_to application_name, root_path, :class => "brand" %>
+
+      <div id="header-nav-search-util" class="nav-collapse">
+
+        <%= render :partial=>'shared/user_util_links' %>
+
+        <%= render :partial=>'shared/header_main_nav' %>
+
       </div>
+
+
     </div>
   </div>
 </div>

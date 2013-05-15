@@ -46,31 +46,21 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 */
 
 #user-util-links {
-  font-size: 0.9em;
+  font-size: 12px;
   text-align: right;
 }
 
-#util-links-nav, #util-links-nologin {
-  display: inline;
+#util-links-nologin, #user-nav-btn {
+  display: inline-block;
 }
 
 #user-util-links ul.dropdown-menu {
   text-align: left;
 }
 
-#nav-links-search {
-  float: right;
-  padding-top: 1.8em;
-}
-
-#nav-links {
-  display: inline;
-}
-
 #header-search {
-  display: inline;
-  float: left;
-  padding-top: .5em;
+  display: inline-block;
+  padding: .5em 0 0 .7em;
 }
 
 #header-search input {
@@ -81,4 +71,10 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 #header-search .submit-search-text {
   display: none;
 }
+
+#header_main_nav {
+  float: right;
+  margin-bottom: 0;
+}
+
 
