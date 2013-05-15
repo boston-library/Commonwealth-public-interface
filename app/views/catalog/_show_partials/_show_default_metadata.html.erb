@@ -33,6 +33,14 @@
           <%= document[:name_personal_tsim].first  %>
         </dd>
     <% end %>
+    <%# date field %>
+    <% if document[:dates_created_dtsim] %>
+        <% date = Time.new(document[:dates_created_dtsim].first) %>
+        <dt>Date:</dt>
+        <dd>
+          <%= date.year %>
+        </dd>
+    <% end %>
     <%# genre field - basic %>
     <% if document[:genre_basic_tsim] %>
     <dt>Format:</dt>
@@ -59,7 +67,7 @@
           <%= link_to_facet(collection, 'collection_name_ssim') %><br />
       <% end %>
     </dd>
-  <% end %>
+    <% end %>
     <%# institution field %>
     <% if document[:physical_location_ssim] %>
     <dt>Institution:</dt>

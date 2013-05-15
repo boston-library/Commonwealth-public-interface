@@ -53,6 +53,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'genre_basic_ssim', :label => 'Format'
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 5
     config.add_facet_field 'subject_geographic_ssim', :label => 'Location', :limit => 5
+    config.add_facet_field 'dates_created_facet_ssim', :label => 'Date', :limit => 5
     config.add_facet_field 'physical_location_ssim', :label => 'Institution'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
@@ -166,9 +167,9 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     #config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
     config.add_sort_field 'score desc', :label => 'relevance'
-    config.add_sort_field 'pub_date_sort desc, title_sort asc', :label => 'year'
+    config.add_sort_field 'date_created_start_dtsi desc, title_info_primary_tsi asc', :label => 'year'
     #config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
-    config.add_sort_field 'title_sort asc, pub_date_sort desc', :label => 'title'
+    config.add_sort_field 'title_info_primary_tsi asc, date_created_start_dtsi desc', :label => 'title'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
