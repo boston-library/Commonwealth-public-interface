@@ -1,11 +1,10 @@
 <div id="footer" class="container">
   <div class="row">
-    <div id="footer_left" class="span3">
+    <div id="footer_logo" class="span3">
       <%= image_tag('dc-logo_notag_xsm_bw.png', :alt => application_name, :class => 'footer-logo')  %>
     </div>
-    <div id="footer_center" class="span3"></div>
-    <div id="footer_right" class="span6">
-      <ul id="footer-links" class="inline">
+    <div id="footer_nav" class="span9 visible-desktop">
+      <ul id="footer_nav_links" class="inline">
         <%= render :partial=>'shared/nav_links' %>
       </ul>
     </div>

@@ -82,7 +82,11 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
 #header_main_nav {
   float: right;
   margin-bottom: 0;
-  padding-top: .5em;
+  padding-top: .2em;
+}
+
+.navbar .nav > li > a {
+  padding: 10px 0 10px 60px;
 }
 
 /* styles for un-collapsed nav */
