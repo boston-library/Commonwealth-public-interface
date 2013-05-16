@@ -1,7 +1,7 @@
 CommonwealthPublicInterface::Application.routes.draw do
   #get "pages/about"
 
-  root :to => 'catalog#index'
+  root :to => 'pages#home'
 
   match 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 

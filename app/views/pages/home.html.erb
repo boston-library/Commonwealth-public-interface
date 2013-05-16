@@ -1,0 +1,67 @@
+<div id="content_home" class="span12">
+  <div class="row">
+
+    <div id="carousel_wrapper" class="span6">
+      <%= render :partial => 'pages/carousel' %>
+    </div>
+
+    <div id="hero_search" class="span6">
+      <div id="hero_search_headline">
+        <h2>
+          <%= t('blacklight.home.hero_unit') %>
+        </h2>
+      </div>
+      <div id="hero_search_form">
+        <%= render_search_bar %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="span4">
+      <div id="collections_browse" class="well well-small media">
+        <%= link_to(image_tag('dc-home_collections_thumb.jpg', :class => 'media-object'),
+                              collections_path,
+                              :alt => 'Browse All Collections',
+                              :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading">Collections</h4>
+          <%= link_to 'Browse All Collections', collections_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div id="institutions_browse" class="well well-small media">
+        <%= link_to(image_tag('dc-home_institutions_thumb.jpg', :class => 'media-object'),
+                    institutions_path,
+                    :alt => 'Browse All Institutions',
+                    :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading">Institutions</h4>
+          <%= link_to 'Browse All Institutions', institutions_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
+      <div id="locations_browse" class="well well-small media">
+        <%= link_to(image_tag('dc-home_locations_thumb.jpg', :class => 'media-object'),
+                    'search/facet/subject_geographic_ssim',
+                    :alt => 'Browse All Locations',
+                    :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading">Locations</h4>
+          <%= link_to 'Browse All Locations', 'search/facet/subject_geographic_ssim' %>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>

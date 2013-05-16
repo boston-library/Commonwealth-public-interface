@@ -1,0 +1,67 @@
+<div id="slideshow" class="carousel slide carousel-fade">
+  <ol class="carousel-indicators">
+    <li class="active"></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <% slide0_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:q811kj674','accessMaster'),
+                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                          :scale => 300,
+                                          :alt => "Women's Suffrage Hikers c.1912-1914",
+                                          :region => [160,30,370,715]}) %>
+      <%= link_to slide0_img, '/search/' + 'bpl-test:q811kj66v' %>
+      <div class="carousel-caption">
+        <h5>Women's Suffrage Hikers c.1912-1914</h5>
+        <p><small><em>Framingham State University</em></small></p>
+      </div>
+    </div>
+    <div class="item">
+      <% slide1_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:w6634635c','accessMaster'),
+                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                          :scale => 500,
+                                          :alt => 'Slide, Kelly, Slide',
+                                          :region => [1170,700,370,715]}) %>
+      <%= link_to slide1_img, '/search/' + 'bpl-test:w66346343' %>
+      <div class="carousel-caption">
+        <h5>Slide, Kelly, Slide</h5>
+        <p><small><em>Boston Public Library</em></small></p>
+      </div>
+    </div>
+    <div class="item">
+      <% slide2_img =  djatoka_image_tag(datastream_disseminator_url('bpl-test:r781wg890','accessMaster'),
+                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                          :scale => 500,
+                                          :alt => 'Gardner House',
+                                          :region => [500,50,370,715]}) %>
+      <%= link_to slide2_img, '/search/' + 'bpl-test:r781wg88q' %>
+      <div class="carousel-caption">
+        <h5>Gardner House</h5>
+        <p><small><em>Public Library of Brookline</em></small></p>
+      </div>
+    </div>
+    <div class="item">
+      <% slide3_img = djatoka_image_tag(datastream_disseminator_url('bpl-test:rx913q63t','accessMaster'),
+                            {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                             :scale => 700,
+                             :alt => 'Football team.',
+                             :region => [280,180,370,715]}) %>
+      <%= link_to slide3_img, '/search/' + 'bpl-test:rx913q62j' %>
+      <div class="carousel-caption">
+        <h5>Football team.</h5>
+        <p><small><em>Beverly High School</em></small></p>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#slideshow" data-slide="prev">&lsaquo;</a>
+  <a class="right carousel-control" href="#slideshow" data-slide="next">&rsaquo;</a>
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#slideshow').carousel({
+            interval: 5000
+        });
+    });
+</script>

@@ -2,52 +2,90 @@
 
 @import 'cmmnwlth_defaults';
 
-/* don't want fixed navbar on home page */
-
-body.blacklight-home {
-  padding-top: 0;
+#content_home {
+  padding-top:.5em;
 }
 
-body.blacklight-home .navbar-fixed-top {
-  position: relative;
-  margin-bottom: 1.2em;
+#hero_search {
+  @include rounded-corners(5px);
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 10px 0 25px 0;
+  height: 204px;
 }
 
-h3.home_text {
-  margin-top: -.3em;
+#hero_search_headline {
+  width:90%;
+  margin: auto;
+  text-align: left;
 }
 
-/* deprecated horizontal facet layout
-
-body.blacklight-home .sidenav {
-  float: left;
-  width: 100%;
+#hero_search h2 {
+  font-size: 24px;
+  line-height: 30px;
+  padding: 15px 0 10px 5px;
 }
 
-body.blacklight-home .facets h4 {
-  border-bottom: 1px solid $navbarBorder;
+#hero_search_form {
+  padding-top:20px;
+  display: inline-block;
 }
 
-body.blacklight-home #facets div.facet_limit {
-  clear: none;
-  border-right: 1px solid $navbarBorder;
+#content_home img.media-object {
+  width:100px;
+  border: 1px solid $light_gray;
 }
 
-body.blacklight-home .facets-collapse h5 {
-  cursor: default;
-  padding-bottom: 0;
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  #hero_search {
+    height: 261px;
+  }
+
+  #hero_search h2 {
+    font-size: 31.5px;
+    line-height: 35px;
+    padding: 20px 0 10px 10px;
+  }
+
 }
 
-body.blacklight-home .facets-collapse h5:hover {
-  background-color: #FFFFFF;
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #hero_search {
+    height: 150px;
+  }
+
+  #hero_search h2 {
+    font-size: 17.5px;
+    line-height: 20px;
+    padding: 10px 0 0 7px;
+  }
+
 }
 
-body.blacklight-home .facets-collapse .icon-chevron {
-  display: none;
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #hero_search {
+    margin-bottom: 20px;
+    height: auto;
+  }
+
 }
 
-body.blacklight-home #facets div.facet_limit ul {
-  display: block !important;
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  #hero_search {
+    margin-bottom: 20px;
+    height: auto;
+  }
+
 }
-*/
+
+
+
 

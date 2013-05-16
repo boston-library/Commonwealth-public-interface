@@ -140,6 +140,9 @@ en:
           search_history: 'Search History'
           selected_items: 'Selected Items'
 
+    home:
+          hero_unit: 'Digital collections from libraries, museums, historical societies, and archives across Massachusetts'
+
     images:
           zoom: 'Click to zoom in on this image.'
 
