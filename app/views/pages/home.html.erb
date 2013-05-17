@@ -62,6 +62,30 @@
 
   </div>
 
+  <div class="row">
+
+    <div id="content_home_about" class="span6">
+      <h5>About This Site</h5>
+      <p>This repository provides access to digital collections belonging to members of Digital Commonwealth, a statewide consortium of libraries, museums, historical societies, and archives across Massachusetts.</p>
+      <p>This is a beta version; not all collections are available here. For more, go to the current <%= link_to 'Digital Commonwealth', 'http://digitalcommonwealth.org' %> site.</p>
+      <p class="more-info-link">
+        <%= link_to 'Learn more >>', about_path %>
+      </p>
+    </div>
+
+    <div id="content_home_news" class="span6">
+      <h5>News &amp; Announcements</h5>
+      <%= render_dc_blog_feed %>
+      <p class="more-info-link">
+        <%= link_to 'More news >>',
+                    'http://digitalcommonwealth.org/blog/',
+                    :target => '_blank' %>
+      </p>
+
+    </div>
+
+  </div>
+
 
 
 </div>

@@ -3,7 +3,7 @@
       <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
       <ul id="constraintsLinks" class="inline">
         <li><%=link_to t('blacklight.search.start_over'),
-                 url_for(:action=>'index'),
+                 root_path,
                  :class => "catalog_startOverLink",
                  :id=>"startOverLink" %>
         </li>

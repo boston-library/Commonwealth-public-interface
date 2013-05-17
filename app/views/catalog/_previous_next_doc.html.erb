@@ -10,7 +10,9 @@
       <div class="pull-right">
         <%= link_back_to_catalog %>
         |
-        <%=link_to "#{t('blacklight.search.start_over')}", catalog_index_path, :id=>"startOverLink" %>
+        <%=link_to "#{t('blacklight.search.start_over')}",
+                   root_path,
+                   :id=>"startOverLink" %>
       </div>
     </div>
 <% end %>

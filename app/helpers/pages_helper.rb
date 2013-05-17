@@ -1,4 +1,25 @@
+require 'rss'
+
 module PagesHelper
+
+  def render_dc_blog_feed
+    source = 'http://digitalcommonwealth.org/blog/?feed=rss2'
+    feed = Rails.cache.fetch('dc_rss_feed', :expires_in => 60.minutes) do
+      RSS::Parser.parse(open(source).read, false).items[0..3]
+    end
+    #
+    content = []
+    feed.each do |item|
+      content << content_tag(:li,
+                             link_to(item.title,
+                                     item.link,
+                                     :class => 'feed_item_link',
+                                     :target => '_blank'),
+                             :class => 'feed_item')
+    end
+    content_tag('ul', content.join().html_safe, :class => 'feed_items')
+  end
+
 
   def pers_namePartSplitter(inputstring)
     splitNamePartsHash = Hash.new
