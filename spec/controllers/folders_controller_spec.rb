@@ -6,7 +6,7 @@ describe FoldersController do
 
   before(:each) do
     @test_user_attr = {
-        :username => "Testy McGee",
+        #:username => "Testy McGee",
         :email => "testy@example.com",
         :password => "password"
     }
@@ -172,7 +172,7 @@ describe FoldersController do
         @folder = @test_user.folders.create!(@test_folder_attr)
         sign_out @test_user
         @other_user_attr = {
-            :username => "Testy McOther",
+            #:username => "Testy McOther",
             :email => "testy@other.com",
             :password => "password"
         }

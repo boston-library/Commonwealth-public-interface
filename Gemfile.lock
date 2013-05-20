@@ -1,23 +1,24 @@
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: e88fd9b91545072ac569978ee64ece79ac6eba25
+  revision: ffcfc2000438409b648a9fd995cbef10b483354b
   specs:
-    bplmodels (0.0.42)
-      rails (~> 3.2.7)
+    bplmodels (0.0.64)
+      mods
+      rails (~> 3.2.13)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    actionmailer (3.2.11)
-      actionpack (= 3.2.11)
-      mail (~> 2.4.4)
-    actionpack (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    actionmailer (3.2.13)
+      actionpack (= 3.2.13)
+      mail (~> 2.5.3)
+    actionpack (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
       erubis (~> 2.7.0)
       journey (~> 1.0.4)
-      rack (~> 1.4.0)
+      rack (~> 1.4.5)
       rack-cache (~> 1.2)
       rack-test (~> 0.6.1)
       sprockets (~> 2.2.1)
@@ -33,19 +34,19 @@ GEM
       rdf-rdfxml (~> 1.0.0)
       rsolr
       rubydora (~> 1.5)
-    activemodel (3.2.11)
-      activesupport (= 3.2.11)
+    activemodel (3.2.13)
+      activesupport (= 3.2.13)
       builder (~> 3.0.0)
-    activerecord (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
+    activerecord (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activeresource (3.2.11)
-      activemodel (= 3.2.11)
-      activesupport (= 3.2.11)
-    activesupport (3.2.11)
-      i18n (~> 0.6)
+    activeresource (3.2.13)
+      activemodel (= 3.2.13)
+      activesupport (= 3.2.13)
+    activesupport (3.2.13)
+      i18n (= 0.6.1)
       multi_json (~> 1.0)
     addressable (2.3.3)
     arel (3.0.2)
@@ -110,7 +111,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.6.0)
     hashie (2.0.3)
-    hike (1.2.1)
+    hike (1.2.2)
     hooks (0.2.2)
     hydra-access-controls (6.0.0)
       active-fedora (>= 6.0.0)
@@ -130,7 +131,8 @@ GEM
       hydra-access-controls (= 6.0.0)
       hydra-core (= 6.0.0)
       rails (>= 3.2.6)
-    i18n (0.6.4)
+    i18n (0.6.1)
+    iso-639 (0.1.0)
     jettywrapper (1.4.1)
       activesupport (>= 3.0.0)
       childprocess
@@ -144,20 +146,23 @@ GEM
     jquery-ui-rails (4.0.2)
       jquery-rails
       railties (>= 3.1.0)
-    json (1.7.7)
+    json (1.8.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     libv8 (3.11.8.17)
     logger (1.2.8)
-    mail (2.4.4)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     marc (0.5.0)
     mediashelf-loggable (0.4.9)
-    mime-types (1.22)
-    multi_json (1.7.2)
+    mime-types (1.23)
+    mods (0.0.22)
+      iso-639
+      nokogiri
+      nom-xml
+    multi_json (1.7.3)
     nokogiri (1.5.9)
     nom-xml (0.5.1)
       activesupport
@@ -182,17 +187,17 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.11)
-      actionmailer (= 3.2.11)
-      actionpack (= 3.2.11)
-      activerecord (= 3.2.11)
-      activeresource (= 3.2.11)
-      activesupport (= 3.2.11)
+    rails (3.2.13)
+      actionmailer (= 3.2.13)
+      actionpack (= 3.2.13)
+      activerecord (= 3.2.13)
+      activeresource (= 3.2.13)
+      activesupport (= 3.2.13)
       bundler (~> 1.0)
-      railties (= 3.2.11)
-    railties (3.2.11)
-      actionpack (= 3.2.11)
-      activesupport (= 3.2.11)
+      railties (= 3.2.13)
+    railties (3.2.13)
+      actionpack (= 3.2.13)
+      activesupport (= 3.2.13)
       rack-ssl (~> 1.3.2)
       rake (>= 0.8.7)
       rdoc (~> 3.4)
@@ -268,7 +273,7 @@ GEM
       libv8 (~> 3.11.8.12)
       ref
     thor (0.18.1)
-    tilt (1.3.6)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -307,7 +312,7 @@ DEPENDENCIES
   jquery-ui-rails
   libv8 (~> 3.11.8)
   pg
-  rails (= 3.2.11)
+  rails (= 3.2.13)
   rspec
   rspec-rails
   sass-rails (~> 3.2.3)

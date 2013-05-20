@@ -4,7 +4,7 @@ describe Folder do
 
   before(:each) do
     @user_attr = {
-        :username => "Testy McGee",
+        #:username => "Testy McGee",
         :email => "testy@example.com",
         :password => "password"
     }
