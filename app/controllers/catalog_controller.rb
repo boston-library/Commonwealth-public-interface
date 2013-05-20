@@ -4,7 +4,8 @@ require 'blacklight/catalog'
 class CatalogController < ApplicationController  
 
   include Blacklight::Catalog
-  include BlacklightAdvancedSearch::ParseBasicQ
+  # not using BLAdvSearch (below) as it doesn't allow wildcards (*)
+  #include BlacklightAdvancedSearch::ParseBasicQ
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Controller::ControllerBehavior
 
@@ -18,7 +19,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     config.default_solr_params = { 
       :qt => 'search',
-      :rows => 10 
+      :rows => 20
     }
 
     # solr field configuration for search results/index views
@@ -166,10 +167,11 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     #config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
-    config.add_sort_field 'score desc', :label => 'relevance'
-    config.add_sort_field 'date_created_start_dtsi desc, title_info_primary_tsi asc', :label => 'year'
+    config.add_sort_field 'score desc, title_info_primary_tsi asc', :label => 'relevance'
+    config.add_sort_field 'title_info_primary_tsi asc, date_created_start_dtsi asc', :label => 'title'
+    config.add_sort_field 'system_create_dtsi asc, title_info_primary_tsi asc', :label => 'date (asc)'
+    config.add_sort_field 'system_create_dtsi desc, title_info_primary_tsi asc', :label => 'date (desc)'
     #config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
-    config.add_sort_field 'title_info_primary_tsi asc, date_created_start_dtsi desc', :label => 'title'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.

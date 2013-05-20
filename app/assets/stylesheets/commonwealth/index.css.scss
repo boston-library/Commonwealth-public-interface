@@ -68,13 +68,7 @@ div.item_index_title {
 */
 
 #documents div.grid-view div.item_index_thumb {
-  height: 250px;
-  position: relative;
-  margin-bottom: .2em;
-}
-
-#documents div.grid-view div.item_index_thumb {
-  height: 250px;
+  height: 200px;
   position: relative;
   margin-bottom: .2em;
 }
@@ -82,7 +76,7 @@ div.item_index_title {
 #documents div.grid-view div.item_index_thumb img {
   height:auto;
   width:auto;
-  max-height:250px;
+  max-height:200px;
   max-width:100%;
   border: 1px solid $light_gray;;
   position:absolute;
@@ -93,6 +87,35 @@ div.item_index_title {
 #documents div.grid-view div.item_index_details {
   display:none;
 }
+
+/* grid view responsive styles */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  #documents div.grid-view div.item_index_thumb {
+    height: 250px;
+  }
+
+  #documents div.grid-view div.item_index_thumb img {
+    max-height: 250px;
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #documents div.grid-view div.item_index_thumb {
+    height: 150px;
+  }
+
+  #documents div.grid-view div.item_index_thumb img {
+    max-height: 150px;
+  }
+
+}
+
 
 /* list view */
 
@@ -107,11 +130,8 @@ div.item_index_title {
   margin: 0 .5em 0 0;
 }
 
-#documents div.list-view div.item_index_thumb {
-  /* height:200px;
-   width: 150px;
-  float:left;
-  width: 25% */
+#documents div.list-view a.pull-left {
+  min-width: 220px;
 }
 
 #documents div.list-view div.media img {
