@@ -132,7 +132,7 @@ en:
 
     header_links:
           logout: 'Log Out'
-          login: 'Log In'
+          login: 'Sign Up / Log In'
           profile: 'Profile'
           folders: 'Folders'
           bookmarks: 'Folders'
