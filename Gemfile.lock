@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: ffcfc2000438409b648a9fd995cbef10b483354b
+  revision: cd436eb901f8d1b739772ce135470896462a9668
   specs:
-    bplmodels (0.0.64)
+    bplmodels (0.0.65)
       mods
       rails (~> 3.2.13)
 
@@ -162,7 +162,7 @@ GEM
       iso-639
       nokogiri
       nom-xml
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     nokogiri (1.5.9)
     nom-xml (0.5.1)
       activesupport
