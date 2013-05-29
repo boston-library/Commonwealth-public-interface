@@ -15,7 +15,7 @@ class CollectionsController < CatalogController
   helper_method :search_action_url
 
   def index
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Collection'},
                                                       :per_page => 20})
     params[:view] = 'list'
 
@@ -26,7 +26,7 @@ class CollectionsController < CatalogController
 
   def show
     @show_response, @document = get_solr_response_for_doc_id
-    @collection_title = @document[:label_ssim].first
+    @collection_title = @document[blacklight_config.index.show_link.to_sym]
     # add params[:f] for proper facet links
     params[:f] = {blacklight_config.collection_field => [@collection_title]}
     # get the response for the facets representing items in collection

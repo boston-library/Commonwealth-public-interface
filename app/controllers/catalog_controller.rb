@@ -196,12 +196,12 @@ class CatalogController < ApplicationController
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "-active_fedora_model_ssi:\"Bplmodels::ImageFile\""
+    solr_parameters[:fq] << "-active_fedora_model_ssim:\"Bplmodels::ImageFile\""
   end
 
   # create an index list of collections
   def collections
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Collection'},
                                                      :per_page => 20})
     params[:view] = 'list'
 
@@ -212,9 +212,10 @@ class CatalogController < ApplicationController
 
   # create an index list of institutions
   def institutions
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Institution'},
-                                                      :per_page => 20})
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Institution'},
+                                                      :per_page => 20,})
     params[:view] = 'list'
+    # params[:sort] = ??? NEED HELP -- HOW TO ACCESS CONFIG'D SORT FIELDS?
 
     respond_to do |format|
       format.html { save_current_search_params }

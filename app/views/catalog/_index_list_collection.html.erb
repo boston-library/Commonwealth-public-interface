@@ -4,7 +4,7 @@
   <div class="media">
     <%# if document[:has_image_ssim] %>
         <% thumb = image_tag('collection_index.png',
-                             :alt => document[:label_ssim],
+                             :alt => document[blacklight_config.index.show_link.to_sym],
                              :class => 'index_thumb media-object') %>
         <% # bad hack to link to catalog#show rather than image#show %>
         <%= link_to thumb, '/collections/' + document[:id], :class => 'pull-left' %>
@@ -12,12 +12,27 @@
     <div class="media-body">
 
       <div class="item_index_title">
-        <%= link_to document[:label_ssim].first, '/collections/' + document[:id] %>
+        <%= link_to document[blacklight_config.index.show_link.to_sym], '/collections/' + document[:id] %>
         <%# link_to_document(document, :label => :label_ssim, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
+      </div>
+      <div class="collection_host">
+        <%# for some reason, calling .first on below returns an error %>
+        <%= document[:physical_location_ssim].to_s %>
       </div>
 
       <div class="item_index_details">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean metus mauris, lobortis et hendrerit cursus, consectetur viverra tellus. Pellentesque scelerisque, tellus vitae tempor mollis, libero nulla semper urna, eget venenatis nisl dui sed orci. Mauris justo justo, varius non convallis nec, porta id leo.</p>
+        <% if document[:abstract_tsim] %>
+            <% abstract_index = document[:abstract_tsim].first %>
+            <%= truncate(abstract_index,
+                         :length => 400,
+                         :separator => ' ',
+                         :omission => '... ') %>
+            <% if abstract_index.length > 400 %>
+                <%= link_to('more',
+                            '/collections/' + document[:id],
+                            :class => 'read-more-link') %>
+            <% end %>
+        <% end %>
         <!--
         <dl class="index_defList dl-horizontal">
           <dt>Format:</dt>

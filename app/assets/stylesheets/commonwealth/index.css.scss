@@ -143,9 +143,17 @@ div.item_index_title {
   bottom:0;
 }
 
+div.collections-list #documents div.list-view a.pull-left {
+  min-width: 150px;
+}
+
 div.collections-list #documents div.media img {
   max-height:130px;
   max-width:130px;
+}
+
+#documents div.blacklight-collection.list-view a.pull-left {
+  min-width: 150px;
 }
 
 #documents div.list-view dl.index_defList {

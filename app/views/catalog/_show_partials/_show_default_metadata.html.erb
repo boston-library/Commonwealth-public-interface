@@ -12,12 +12,12 @@
       </dd>
     <% end %>
     <%# abstract/description field %>
-    <% if document[:abstract_tsi] %>
+    <% if document[:abstract_tsim] %>
         <dt>Description:</dt>
         <dd>
-          <%# document[:abstract_tsi].each do |abstract| %>
-              <%= document[:abstract_tsi] %>
-          <%# end %>
+          <% document[:abstract_tsim].each do |abstract| %>
+            <%= abstract %>
+          <% end %>
         </dd>
     <% end %>
     <%# creator field - need to figure out handling of multiple creators/roles %>

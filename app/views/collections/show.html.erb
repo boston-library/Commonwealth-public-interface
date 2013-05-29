@@ -9,10 +9,11 @@
 
     <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-      <h2>
-        <%= @collection_title %>
-        <small>Boston Public Library</small>
-      </h2>
+      <h2 class="collection-title"><%= @collection_title %></h2>
+
+      <h4 class="collection-provenance">
+        <%= @document[:physical_location_ssim].first %>
+      </h4>
 
       <div class="document">
 
@@ -37,18 +38,12 @@
             </div>
 
             <div id="collection_desc">
-              <p>Donated by this owner of a Columbus Avenue saloon, the collection consists of
-                photographs of professional baseball in Boston and personal scrapbooks from the 1890's to
-                1912. Originally displayed at McGreevey's tavern, Third Base, the photographs form the
-                largest collection of its kind. It consists of early Boston baseball photographs dating from
-                1875 to 1916 and many of the most important ballplayers of the 19th and early 20th century
-                are represented, including Cy Young, Ty Cobb, Mike "King" Kelly, Kid Nichols and many
-                others. Also included are panoramic photos of the ballparks of the era including the
-                Huntington Avenue Grounds in Boston and the Polo Grounds in New York. The centerpiece of the
-                collection is a series of photographs related to the first World Series in 1903 between
-                Boston and Pittsburgh. Featured are photographs of the fans of the Boston team, the "Royal
-                Rooters" and their leader Michael T. "Nuf Ced" McGreevey. The scrapbooks have been microfilmed and are on call number:
-                GV865.M29A3.</p>
+                <% if @document[:abstract_tsim] %>
+                      <% @document[:abstract_tsim].each do |abstract| %>
+                          <p><%= abstract %></p>
+                      <% end %>
+                    </dd>
+                <% end %>
             </div>
 
           </div>
