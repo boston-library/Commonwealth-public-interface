@@ -29,6 +29,8 @@ hydra-ldap.yml
 database.yml
 fedora.yml
 solr.yml
+omniauth-facebook.yml
+omniauth-polaris.yml
 role_map_cucumber.yml
 role_map_development.yml
 role_map_production.yml

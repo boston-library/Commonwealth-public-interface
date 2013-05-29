@@ -2,9 +2,11 @@
 
   <div class="span9">
 
-    <p>
-
-    </p>
+    <% if document[:abstract_tsim] %>
+          <% document[:abstract_tsim].each do |abstract| %>
+              <p><%= abstract %></p>
+          <% end %>
+    <% end %>
 
   </div>
 
