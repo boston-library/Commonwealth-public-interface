@@ -1,0 +1,18 @@
+/* styles for institution show view */
+
+@import 'cmmnwlth_defaults';
+
+/* collections */
+
+#institution_location {
+  color: $darker_gray;
+  font-size: 16px;
+}
+
+#inst_collex {
+
+  h4, ul {
+    padding-left:1em;
+  }
+
+}

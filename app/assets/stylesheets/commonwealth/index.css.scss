@@ -152,12 +152,16 @@ div.collections-list #documents div.media img {
   max-width:130px;
 }
 
-div.collections-list #documents div.collection-location {
+#documents div.collection-location {
   color: $darker_gray;
 }
 
 div.collections-list #documents div.item_index_details {
   font-size: 13px;
+}
+
+body.blacklight-catalog-institutions a.pull-left {
+  display: none;
 }
 
 

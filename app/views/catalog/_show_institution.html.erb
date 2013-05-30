@@ -1,6 +1,8 @@
 <div class="row">
 
-  <div class="span9">
+  <div class="span8">
+
+    <div id="institution_abstract">
 
     <% if document[:abstract_tsim] %>
           <% document[:abstract_tsim].each do |abstract| %>
@@ -8,10 +10,28 @@
           <% end %>
     <% end %>
 
+      <div id="institution_location">
+        <%= document[:subject_geo_state_tsim].first + ' > ' + document[:subject_geo_county_tsim].first + ' County > ' + document[:subject_geo_city_tsim].first %><br/>
+        <%= link_to 'Visit Site', document[:institution_url_ss], :target => '_blank' %>
+      </div>
+
+    </div>
+
   </div>
 
 
-  <div id="sidebar" class="span3">
+  <div id="sidebar" class="span4">
+    <%= render :partial => 'catalog/search_form_institution',
+               :locals => {:document => document} %>
+    <div id="inst_collex" class="well">
+      <h4>Collections</h4>
+      <ul id="inst_collex_list">
+        <% collex_list = Bplmodels::Institution.find(document[:id]).collections %>
+        <% collex_list.each do |coll| %>
+            <li><%= link_to(coll.descMetadata.title.first, '/collections/' + coll.pid) %></li>
+        <% end %>
+      </ul>
+    </div>
 
   </div>
 
