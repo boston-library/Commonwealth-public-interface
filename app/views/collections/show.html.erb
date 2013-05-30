@@ -19,16 +19,14 @@
 
         <div class="row">
 
-          <div class="span4">
+          <div class="span9">
+
             <% image_datastream = datastream_disseminator_url('bpl-test:w6634493v','accessMaster') %>
             <%= djatoka_image_tag(image_datastream,
                                   {:resolver => Rails.configuration.djatoka_resolver.base_url,
                                    :scale => 300,
                                    :alt => @collection_title,
-                                   :class => 'collection_img_show',}) %>
-          </div>
-
-          <div class="span5">
+                                   :class => 'collection_img_show'}) %>
 
             <div id="collection_search_tools" class="well well-small">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
@@ -45,6 +43,9 @@
                     </dd>
                 <% end %>
             </div>
+
+            <% # full metadata display -%>
+            <%= render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>
 
           </div>
 

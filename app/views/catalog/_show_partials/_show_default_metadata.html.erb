@@ -21,16 +21,24 @@
         </dd>
     <% end %>
     <%# creator field - need to figure out handling of multiple creators/roles %>
-    <% if document[:name_personal_tsim] %>
+    <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
         <dt>
-          <% if document[:name_personal_role_tsim] %>
-            <%= document[:name_personal_role_tsim].first.strip %>:
+          <% if document[:name_personal_role_tsim]  || document[:name_corporate_role_tsim] %>
+              <% if document[:name_personal_role_tsim] %>
+                  <%= document[:name_personal_role_tsim].first.strip %>:
+              <% else %>
+                  <%= document[:name_corporate_role_tsim].first.strip %>:
+              <% end %>
           <% else %>
-            Creator:
+              Creator:
           <% end %>
         </dt>
         <dd>
-          <%= document[:name_personal_tsim].first  %>
+          <% if document[:name_personal_tsim] %>
+              <%= document[:name_personal_tsim].first %>
+          <% else %>
+              <%= document[:name_corporate_tsim].first %>
+          <% end %>
         </dd>
     <% end %>
     <%# date field %>

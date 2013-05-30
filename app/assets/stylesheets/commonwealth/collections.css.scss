@@ -1,0 +1,110 @@
+/* styles for collection show view */
+
+@import 'cmmnwlth_defaults';
+
+/* collections */
+
+h2.collection-title {
+  line-height:25px;
+}
+
+h4.collection-provenance {
+  font-size: 17.5px;
+  color: $dark_gray;
+  font-weight: normal;
+  line-height: 1;
+}
+
+img.collection_img_show {
+  float: left;
+  width: 44%;
+  margin: 0 1em 1em 0;
+}
+
+#collection_search_tools {
+  margin-bottom: 1em;
+  width:51%;
+  float:right;
+}
+
+#collection_search_form {
+  padding: 0 1em 0 0;
+  float: left;
+
+  input {
+    width: 175px;
+  }
+
+  .submit-search-text {
+    display: none;
+  }
+
+}
+
+#collection_metadata_wrapper {
+  margin-top: 1.5em;
+}
+
+#item_metadata h4 {
+  padding-left:1em;
+}
+
+/* responsive styles */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  #collection_search_tools {
+    width:52%;
+  }
+
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  img.collection_img_show {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+
+  #collection_search_tools {
+    width:97%;
+    float:left;
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  img.collection_img_show {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+
+  #collection_search_tools {
+    width:97%;
+    float:left;
+  }
+
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  img.collection_img_show {
+    width: 100%;
+    margin: 0 0 1em 0;
+  }
+
+  #collection_search_tools {
+    width:95%;
+    float:left;
+  }
+
+
+
+}
+

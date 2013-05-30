@@ -1,0 +1,78 @@
+<div class="<%= params[:action]%>_details" id="collection_metadata_wrapper">
+  <div id="item_metadata" class="well">
+    <h4>More Information</h4>
+    <dl class="defList dl-horizontal">
+      <%# creator field - need to figure out handling of multiple creators/roles %>
+      <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
+          <dt>
+            <% if document[:name_personal_role_tsim]  || document[:name_corporate_role_tsim] %>
+                <% if document[:name_personal_role_tsim] %>
+                    <%= document[:name_personal_role_tsim].first.strip %>:
+                <% else %>
+                    <%= document[:name_corporate_role_tsim].first.strip %>:
+                <% end %>
+            <% else %>
+                Creator:
+            <% end %>
+          </dt>
+          <dd>
+            <% if document[:name_personal_tsim] %>
+                <%= document[:name_personal_tsim].first %>
+            <% else %>
+                <%= document[:name_corporate_tsim].first %>
+            <% end %>
+          </dd>
+      <% end %>
+      <%# date field %>
+      <% if document[:dates_created_dtsim] %>
+          <% date = Time.new(document[:dates_created_dtsim].first) %>
+          <dt>Date:</dt>
+          <dd>
+            <%= date.year %>
+          </dd>
+      <% end %>
+      <%# genre field - specific %>
+      <% if document[:genre_specific_ssim] %>
+          <dt>Genres:</dt>
+          <dd>
+            <% document[:genre_specific_ssim].each do |genre| %>
+                <%= link_to_facet(genre, 'genre_specific_ssim') %><br />
+            <% end %>
+          </dd>
+      <% end %>
+      <%# note field %>
+      <% if document[:note_tsim] %>
+          <dt>Notes:</dt>
+          <dd>
+            <% document[:note_tsim].each do |note| %>
+                <%= note %><br/>
+            <% end %>
+          </dd>
+      <% end %>
+      <%# extent field %>
+      <% if document[:extent_tsi] %>
+          <dt>Extent:</dt>
+          <dd>
+            <%= document[:extent_tsi] %>
+          </dd>
+      <% end %>
+      <%# ARK URI field %>
+      <% if document[:identifier_uri_ssi] %>
+          <dt>Permalink:</dt>
+          <dd>
+            <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
+            <%= document[:identifier_uri_ssi] %>
+          </dd>
+      <% end %>
+      <%# rights field %>
+      <% if document[:restriction_on_access_ssm] %>
+          <dt>Terms of Use:</dt>
+          <dd>
+            <% document[:restriction_on_access_ssm].each do |terms| %>
+                <%= terms %><br />
+            <% end %>
+          </dd>
+      <% end %>
+    </dl>
+  </div>
+</div>
