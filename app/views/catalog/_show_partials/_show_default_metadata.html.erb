@@ -42,11 +42,10 @@
         </dd>
     <% end %>
     <%# date field %>
-    <% if document[:dates_created_dtsim] %>
-        <% date = Time.new(document[:dates_created_dtsim].first) %>
+    <% if document[:date_start_tsim] %>
         <dt>Date:</dt>
         <dd>
-          <%= date.year %>
+          <%= document[:date_start_tsim] %>
         </dd>
     <% end %>
     <%# genre field - basic %>
@@ -84,7 +83,16 @@
           <%= link_to_facet(institution, 'physical_location_ssim') %><br />
       <% end %>
     </dd>
-  <% end %>
+    <% end %>
+    <%# sublocation field %>
+    <% if document[:sub_location_ssim] %>
+        <dt>Sub-location:</dt>
+        <dd>
+          <% document[:sub_location_ssim].each do |subloc| %>
+              <%= subloc %><br />
+          <% end %>
+        </dd>
+    <% end %>
     <%# topic field %>
     <% if document[:subject_topic_tsim] %>
         <dt>Subject (topic):</dt>
@@ -145,10 +153,10 @@
         </dd>
     <% end %>
     <%# local-other id field %>
-    <% if document[:identifier_local_other_ssim] %>
+    <% if document[:identifier_local_other_tsim] %>
         <dt>Identifier (local):</dt>
         <dd>
-          <% document[:identifier_local_other_ssim].each do |local_other| %>
+          <% document[:identifier_local_other_tsim].each do |local_other| %>
               <%= local_other %><br />
           <% end %>
         </dd>

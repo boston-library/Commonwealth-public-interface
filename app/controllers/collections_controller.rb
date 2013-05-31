@@ -15,7 +15,7 @@ class CollectionsController < CatalogController
   helper_method :search_action_url
 
   def index
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssim'=> 'Bplmodels::Collection'},
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection'},
                                                       :per_page => 20})
     params[:view] = 'list'
 
