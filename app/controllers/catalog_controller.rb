@@ -196,7 +196,7 @@ class CatalogController < ApplicationController
 
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "-active_fedora_model_ssi:\"Bplmodels::ImageFile\""
+    solr_parameters[:fq] << "-active_fedora_model_ssi:\"Bplmodels::File\""
   end
 
   # create an index list of collections
