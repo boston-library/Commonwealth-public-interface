@@ -45,7 +45,10 @@
     <% if document[:date_start_tsim] %>
         <dt>Date:</dt>
         <dd>
-          <%= document[:date_start_tsim] %>
+          <%= document[:date_start_tsim].first %>
+          <% if document[:date_end_tsim] %>
+            <%= ' - ' + document[:date_end_tsim].first %>
+          <% end %>
         </dd>
     <% end %>
     <%# genre field - basic %>

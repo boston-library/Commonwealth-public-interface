@@ -60,3 +60,27 @@ div#img_viewer_modal {
 .addthis_toolbox {
   padding-bottom: .5em;
 }
+
+/* institutions */
+
+div.blacklight-institution {
+
+  h1 {
+    line-height: 25px;
+    font-size: 31.5px;
+  }
+
+  #institution_location {
+    padding-bottom: .5em;
+  }
+
+  #institution_search_form {
+    padding: .5em 0 3em 1.2em;
+
+    .submit-search-text {
+      display: none;
+    }
+
+  }
+
+}
