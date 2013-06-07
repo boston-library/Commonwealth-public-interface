@@ -15,6 +15,7 @@ module ApplicationHelper
   #end
 
   def link_to_facet(field, field_string)
+    params.delete(:f)
     new_params = add_facet_params(field_string, field)
     new_params.delete(:id)
     new_params.delete(:view)

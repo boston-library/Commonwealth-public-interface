@@ -27,10 +27,14 @@ class CollectionsController < CatalogController
   def show
     @show_response, @document = get_solr_response_for_doc_id
     @collection_title = @document[blacklight_config.index.show_link.to_sym]
+
     # add params[:f] for proper facet links
     params[:f] = {blacklight_config.collection_field => [@collection_title]}
+
     # get the response for the facets representing items in collection
     (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
+
+    # get an image for the collection
     @collection_image_pid = collection_image(@document)
 
     respond_to do |format|
@@ -53,10 +57,10 @@ class CollectionsController < CatalogController
   private
 
   def collection_image(document)
-    coll_image_object = document[:has_collection_member_ssim].first
+    coll_image_object = document[:has_collection_member_ssim].first.gsub(/info:fedora\//,"")
     @coll_image_response, @coll_image_document = get_solr_response_for_doc_id(coll_image_object)
     if @coll_image_document[:has_image_ssim]
-      collection_image_pid = @coll_image_document[:has_image_ssim].first
+      return @coll_image_document[:has_image_ssim].first.gsub(/info:fedora\//,"")
     end
 
   end

@@ -22,10 +22,10 @@
         <% if document[:abstract_tsim] %>
             <% abstract_index = document[:abstract_tsim].first %>
             <%= truncate(abstract_index,
-                        :length => 400,
+                        :length => 300,
                         :separator => ' ',
                         :omission => '... ') %>
-            <% if abstract_index.length > 400 %>
+            <% if abstract_index.length > 300 %>
                 <%= link_to('more',
                            '/collections/' + document[:id],
                            :class => 'read-more-link') %>

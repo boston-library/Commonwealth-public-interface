@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: cd436eb901f8d1b739772ce135470896462a9668
+  revision: f78deab57a5644d24289181dd6579040c2e0ddc3
   specs:
-    bplmodels (0.0.65)
+    bplmodels (0.0.70)
       mods
       rails (~> 3.2.13)
 
@@ -111,7 +111,7 @@ GEM
     fastercsv (1.5.5)
     ffi (1.6.0)
     hashie (2.0.3)
-    hike (1.2.2)
+    hike (1.2.3)
     hooks (0.2.2)
     hydra-access-controls (6.0.0)
       active-fedora (>= 6.0.0)
@@ -162,7 +162,7 @@ GEM
       iso-639
       nokogiri
       nom-xml
-    multi_json (1.7.4)
+    multi_json (1.7.6)
     nokogiri (1.5.9)
     nom-xml (0.5.1)
       activesupport
@@ -274,7 +274,7 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
-    treetop (1.4.12)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
     trollop (2.0)

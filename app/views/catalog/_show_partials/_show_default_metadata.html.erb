@@ -59,7 +59,7 @@
           <%= link_to_facet(format, 'genre_basic_ssim') %><br />
       <% end %>
     </dd>
-  <% end %>
+    <% end %>
     <%# genre field - specific %>
     <% if document[:genre_specific_ssim] %>
         <dt>Genre:</dt>
@@ -165,11 +165,11 @@
         </dd>
     <% end %>
     <%# ARK URI field %>
-    <% if document[:identifier_uri_ssi] %>
+    <% if document[:identifier_uri_ss] %>
       <dt>Permalink:</dt>
       <dd>
         <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
-        <%= document[:identifier_uri_ssi] %>
+        <%= document[:identifier_uri_ss] %>
       </dd>
     <% end %>
     <%# rights field %>

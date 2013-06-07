@@ -21,14 +21,33 @@
 
     <div class="item_index_details">
       <dl class="index_defList dl-horizontal">
-        <dt>Format:</dt>
-        <dd>
-          <%= render_document_show_field_value(:document => document, :field => 'genre_basic_ssim').gsub(/s\z/,"") %>
-        </dd>
-        <dt>Collection:</dt>
-        <dd>
-          <%= render_document_show_field_value(:document => document, :field => blacklight_config.collection_field) %>
-        </dd>
+        <%# genre field - basic %>
+        <% if document[:genre_basic_ssim] %>
+            <dt>Format:</dt>
+            <dd>
+              <% document[:genre_basic_ssim].each do |format| %>
+                  <%= format %><br />
+              <% end %>
+            </dd>
+        <% end %>
+        <%# collex field %>
+        <% if document[blacklight_config.collection_field.to_sym] %>
+            <dt>Collection:</dt>
+            <dd>
+              <% document[blacklight_config.collection_field.to_sym].each do |collection| %>
+                  <%= link_to_facet(collection, 'collection_name_ssim') %><br />
+              <% end %>
+            </dd>
+        <% end %>
+        <%# institution field %>
+        <% if document[:physical_location_ssim] %>
+            <dt>Institution:</dt>
+            <dd>
+              <% document[:physical_location_ssim].each do |institution| %>
+                  <%= link_to_facet(institution, 'physical_location_ssim') %><br />
+              <% end %>
+            </dd>
+        <% end %>
       </dl>
     </div>
 

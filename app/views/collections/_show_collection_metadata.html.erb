@@ -24,11 +24,22 @@
           </dd>
       <% end %>
       <%# date field %>
-      <% if document[:dates_created_dtsim] %>
-          <% date = Time.new(document[:dates_created_dtsim].first) %>
+      <% if document[:date_start_tsim] %>
           <dt>Date:</dt>
           <dd>
-            <%= date.year %>
+            <%= document[:date_start_tsim].first %>
+            <% if document[:date_end_tsim] %>
+                <%= ' - ' + document[:date_end_tsim].first %>
+            <% end %>
+          </dd>
+      <% end %>
+      <%# genre field - basic %>
+      <% if document[:genre_basic_ssim] %>
+          <dt>Format:</dt>
+          <dd>
+            <% document[:genre_basic_ssim].each do |format| %>
+                <%= link_to_facet(format, 'genre_basic_ssim') %><br />
+            <% end %>
           </dd>
       <% end %>
       <%# genre field - specific %>

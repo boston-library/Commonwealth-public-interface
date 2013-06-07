@@ -21,12 +21,14 @@
 
           <div class="span9">
 
-            <% image_datastream = datastream_disseminator_url('bpl-test:v118s843j','accessMaster') %>
-            <%= djatoka_image_tag(image_datastream,
-                                  {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                   :scale => 300,
-                                   :alt => @collection_title,
-                                   :class => 'collection_img_show'}) %>
+            <% if @collection_image_pid %>
+              <% image_datastream = datastream_disseminator_url(@collection_image_pid,'accessMaster') %>
+              <%= djatoka_image_tag(image_datastream,
+                                    {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                    :scale => 300,
+                                    :alt => @collection_title,
+                                    :class => 'collection_img_show'}) %>
+            <% end %>
 
             <div id="collection_search_tools" class="well well-small">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
