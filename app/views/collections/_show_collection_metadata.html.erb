@@ -23,6 +23,24 @@
             <% end %>
           </dd>
       <% end %>
+      <%# institution field %>
+      <% if document[:physical_location_ssim] && document[:physical_location_ssim] != document[:name_corporate_tsim] %>
+          <dt>Holding Institution:</dt>
+          <dd>
+            <% document[:physical_location_ssim].each do |institution| %>
+                <%= institution %><br />
+            <% end %>
+          </dd>
+      <% end %>
+      <%# sublocation field %>
+      <% if document[:sub_location_ssim] %>
+          <dt>Sub-location:</dt>
+          <dd>
+            <% document[:sub_location_ssim].each do |subloc| %>
+                <%= subloc %><br />
+            <% end %>
+          </dd>
+      <% end %>
       <%# date field %>
       <% if document[:date_start_tsim] %>
           <dt>Date:</dt>
