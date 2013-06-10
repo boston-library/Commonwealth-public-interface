@@ -3,7 +3,9 @@
   <div class="span8">
 
     <div id="institution_location">
-      <%= document[:subject_geo_state_tsim].first + ' &nbsp;>&nbsp; ' + document[:subject_geo_county_tsim].first + ' County &nbsp;>&nbsp; ' + document[:subject_geo_city_tsim].first %>
+      <%= document[:subject_geo_state_tsim].first %> &nbsp; &gt; &nbsp;
+      <%= document[:subject_geo_county_tsim].first %> County &nbsp; &gt; &nbsp;
+      <%= document[:subject_geo_city_tsim].first %>
     </div>
 
     <div id="institution_abstract">
@@ -14,7 +16,7 @@
           <% end %>
       <% end %>
 
-      <%= link_to 'Visit Site', document[:institution_url_ss], :target => '_blank' %>
+      <%= link_to 'Visit institution web site', document[:institution_url_ss], :target => '_blank' %>
 
     </div>
 

@@ -15,12 +15,12 @@ module ApplicationHelper
   #end
 
   def link_to_facet(field, field_string)
-    params.delete(:f)
     new_params = add_facet_params(field_string, field)
     new_params.delete(:id)
     new_params.delete(:view)
     new_params[:action] = "index"
     new_params[:controller] = "catalog"
+    new_params[:f] = {field_string => [field]}
     link_to(field, new_params)
   end
 
