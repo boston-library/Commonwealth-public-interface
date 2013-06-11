@@ -35,7 +35,11 @@ class CollectionsController < CatalogController
     (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
 
     # get an image for the collection
-    @collection_image_pid = collection_image(@document)
+    if @document[:has_image_ssim]
+      @collection_image_pid = @document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,'')
+    else
+      @collection_image_pid = collection_image(@document)
+    end
 
     respond_to do |format|
       format.html
@@ -56,6 +60,7 @@ class CollectionsController < CatalogController
 
   private
 
+  # use the first member object of the collection as the collection image
   def collection_image(document)
     coll_image_object = document[:has_collection_member_ssim].first.gsub(/info:fedora\//,"")
     @coll_image_response, @coll_image_document = get_solr_response_for_doc_id(coll_image_object)
