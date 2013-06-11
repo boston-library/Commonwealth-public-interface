@@ -1,7 +1,13 @@
 <%# index grid view template  %>
 <div class="collection_index_container">
   <div class="item_index_thumb">
-    <% thumb = image_tag('collection_index.png', :alt => document[blacklight_config.index.show_link.to_sym], :class => 'index_thumb') %>
+    <% if document[:has_image_ssim] %>
+        <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,''), 'thumbnail300'),
+                             :alt => document[blacklight_config.index.show_link.to_sym],
+                             :class => 'index_thumb') %>
+    <% else %>
+        <% thumb = image_tag('collection_index.png', :alt => document[blacklight_config.index.show_link.to_sym], :class => 'index_thumb') %>
+    <% end %>
     <%= link_to thumb, '/collections/' + document[:id] %>
   </div>
   <div class="item_index_title">
