@@ -41,6 +41,15 @@
           <% end %>
         </dd>
     <% end %>
+    <%# publisher field %>
+    <% if document[:publisher_tsim] %>
+    <dt>Publisher:</dt>
+    <dd>
+      <% document[:publisher_tsim].each do |publisher| %>
+          <%= publisher %><br />
+      <% end %>
+    </dd>
+    <% end %>
     <%# date field %>
     <% if document[:date_start_tsim] %>
         <dt>Date:</dt>
@@ -130,6 +139,15 @@
             <% end %>
         </dd>
     <% end %>
+    <%# lang field %>
+    <% if document[:lang_val_uri_ssim] %>
+        <dt>Language:</dt>
+        <dd>
+          <% document[:lang_val_uri_ssim].each do |lang| %>
+            <%= lang.gsub(/http:\/\/id.loc.gov\/vocabulary\/iso639-2\//,'') %><br/>
+          <% end %>
+        </dd>
+    <% end %>
     <%# note field %>
     <% if document[:note_tsim] %>
         <dt>Notes:</dt>
@@ -162,6 +180,33 @@
           <% document[:identifier_local_other_tsim].each do |local_other| %>
               <%= local_other %><br />
           <% end %>
+        </dd>
+    <% end %>
+    <%# related item host field -- DC legacy data %>
+    <% if document[:related_item_host_tsim] %>
+        <dt>Related Collections:</dt>
+        <dd>
+            <% document[:related_item_host_tsim].each do |related_host| %>
+                <%= related_host %><br />
+            <% end %>
+        </dd>
+    <% end %>
+    <%# related item series field -- DC legacy data %>
+    <% if document[:related_item_series_tsim] %>
+        <dt>Related Series:</dt>
+        <dd>
+            <% document[:related_item_series_tsim].each do |related_series| %>
+                <%= related_series %><br />
+            <% end %>
+        </dd>
+    <% end %>
+    <%# related item reference field -- DC legacy data %>
+    <% if document[:related_item_isreferencedby_ssm] %>
+        <dt>Referenced By:</dt>
+        <dd>
+            <% document[:related_item_isreferencedby_ssm].each do |reference| %>
+                <%= link_to(reference, reference, :target => '_blank') %><br />
+            <% end %>
         </dd>
     <% end %>
     <%# ARK URI field %>

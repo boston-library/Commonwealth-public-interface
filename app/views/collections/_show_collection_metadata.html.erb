@@ -23,6 +23,15 @@
             <% end %>
           </dd>
       <% end %>
+      <%# publisher field %>
+      <% if document[:publisher_tsim] %>
+        <dt>Publisher:</dt>
+        <dd>
+          <% document[:publisher_tsim].each do |publisher| %>
+            <%= publisher %><br />
+          <% end %>
+        </dd>
+      <% end %>
       <%# institution field %>
       <% if document[:physical_location_ssim] && document[:physical_location_ssim] != document[:name_corporate_tsim] %>
           <dt>Holding Institution:</dt>
@@ -66,6 +75,15 @@
           <dd>
             <% document[:genre_specific_ssim].each do |genre| %>
                 <%= link_to_facet(genre, 'genre_specific_ssim') %><br />
+            <% end %>
+          </dd>
+      <% end %>
+      <%# lang field %>
+      <% if document[:lang_val_uri_ssim] %>
+          <dt>Language:</dt>
+          <dd>
+            <% document[:lang_val_uri_ssim].each do |lang| %>
+              <%= lang.gsub(/http:\/\/id.loc.gov\/vocabulary\/iso639-2\//,'') %><br/>
             <% end %>
           </dd>
       <% end %>
