@@ -48,6 +48,71 @@
               <% end %>
             </dd>
         <% end %>
+        <%# date field - terrible code layout below necessary to avoid spaces?!?%>
+        <%# PUT THIS IN A HELPER %>
+        <% if document[:date_start_tsim] %>
+            <% @date_start = document[:date_start_tsim].first %>
+            <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
+            <% @date_start_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm].first : nil %>
+            <% @date_end_qualifier = document[:date_end_qualifier_ssm] ? document[:date_end_qualifier_ssm].first : nil %>
+            <dt>Date:</dt>
+            <dd>
+              <% if @date_start_qualifier %>
+                  <%=
+                      case @date_start_qualifier
+                        when 'approximate' then '[ca. '
+                        else '['
+                      end
+                  %>
+              <% end %>
+              <%= @date_start %>
+              <% if @date_end %>
+                  <% if @date_start_qualifier && @date_end_qualifier.nil? %>
+                      <%=
+                          case @date_start_qualifier
+                            when 'questionable' then '?]–'
+                            else ']–'
+                          end
+                      %>
+                  <% elsif @date_start_qualifier.nil? && @date_end_qualifier %>
+                      <%= '–' %>
+                      <%=
+                          case @date_end_qualifier
+                            when 'approximate' then '[ca. '
+                            else '['
+                          end
+                      %>
+                  <% elsif @date_start_qualifier && @date_end_qualifier %>
+                      <%=
+                          case @date_start_qualifier
+                            when 'questionable' then '?–'
+                            else '–'
+                          end
+                      %>
+                  <% else %>
+                      <%= '–' %>
+                  <% end %>
+                  <%= @date_end %>
+                  <% if @date_end_qualifier %>
+                      <%=
+                          case @date_end_qualifier
+                            when 'questionable' then '?]'
+                            else ']'
+                          end
+                      %>
+                  <% end %>
+              <% else %>
+                  <% if @date_start_qualifier %>
+                      <%=
+                          case @date_start_qualifier
+                            when 'questionable' then '?]'
+                            else ']'
+                          end
+                      %>
+                  <% end %>
+              <% end %>
+            </dd>
+        <% end %>
       </dl>
     </div>
 

@@ -18,6 +18,7 @@ class CollectionsController < CatalogController
     (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection'},
                                                       :per_page => 20})
     params[:view] = 'list'
+    params[:sort] = 'title_info_primary_ssort asc'
 
     respond_to do |format|
       format.html

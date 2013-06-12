@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: f78deab57a5644d24289181dd6579040c2e0ddc3
+  revision: 128edac42f0b796ca13fc88f1942328ca663fb30
   specs:
-    bplmodels (0.0.70)
+    bplmodels (0.0.74)
       mods
       rails (~> 3.2.13)
 
@@ -158,12 +158,14 @@ GEM
     marc (0.5.0)
     mediashelf-loggable (0.4.9)
     mime-types (1.23)
+    mini_portile (0.5.0)
     mods (0.0.22)
       iso-639
       nokogiri
       nom-xml
     multi_json (1.7.6)
-    nokogiri (1.5.9)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     nom-xml (0.5.1)
       activesupport
       i18n

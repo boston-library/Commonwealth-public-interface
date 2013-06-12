@@ -51,6 +51,7 @@
     </dd>
     <% end %>
     <%# date field - terrible code layout below necessary to avoid spaces?!?%>
+    <%# PUT THIS IN A HELPER %>
     <% if document[:date_start_tsim] %>
         <% @date_start = document[:date_start_tsim].first %>
         <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
@@ -151,10 +152,10 @@
     </dd>
     <% end %>
     <%# sublocation field %>
-    <% if document[:sub_location_ssim] %>
+    <% if document[:sub_location_tsim] %>
         <dt>Sub-location:</dt>
         <dd>
-          <% document[:sub_location_ssim].each do |subloc| %>
+          <% document[:sub_location_tsim].each do |subloc| %>
               <%= subloc %><br />
           <% end %>
         </dd>

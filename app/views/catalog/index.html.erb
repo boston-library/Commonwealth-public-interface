@@ -1,12 +1,6 @@
 <% unless has_search_parameters? %>
-    <%# if there are no input/search related params, display the "home" layout -%>
-    <div id="content" class="span12">
-      <%= render 'home' %>
-    </div>
-
-    <div id="sidebar" class="span12">
-      <%= render :partial=>'facets_home' %>
-    </div>
+    <%# if there are no input/search related params, redirect to the "home" layout -%>
+    <%= render :partial => 'pages/home_content' %>
 
 <% else %>
 

@@ -54,7 +54,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'genre_basic_ssim', :label => 'Format'
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 5
     config.add_facet_field 'subject_geographic_ssim', :label => 'Location', :limit => 5
-    config.add_facet_field 'dates_created_facet_ssim', :label => 'Date', :limit => 5, :sort => 'index'
+    config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 5, :sort => 'index'
     config.add_facet_field 'physical_location_ssim', :label => 'Institution'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
@@ -167,10 +167,10 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     #config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
-    config.add_sort_field 'score desc, title_info_primary_tsi asc', :label => 'relevance'
-    config.add_sort_field 'title_info_primary_tsi asc, date_created_start_dtsi asc', :label => 'title'
-    config.add_sort_field 'system_create_dtsi asc, title_info_primary_tsi asc', :label => 'date (asc)'
-    config.add_sort_field 'system_create_dtsi desc, title_info_primary_tsi asc', :label => 'date (desc)'
+    config.add_sort_field 'score desc, title_info_primary_ssort asc', :label => 'relevance'
+    config.add_sort_field 'title_info_primary_ssort asc, date_start_dtsi asc', :label => 'title'
+    config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', :label => 'date (asc)'
+    config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', :label => 'date (desc)'
     #config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
 
     # If there are more than this many search results, no spelling ("did you 
@@ -215,7 +215,8 @@ class CatalogController < ApplicationController
     (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Institution'},
                                                       :per_page => 20,})
     params[:view] = 'list'
-    # params[:sort] = ??? NEED HELP -- HOW TO ACCESS CONFIG'D SORT FIELDS?
+    # would prefer to use config'd sort fields below, not sure how
+    params[:sort] = 'title_info_primary_ssort asc'
 
     respond_to do |format|
       format.html { save_current_search_params }
