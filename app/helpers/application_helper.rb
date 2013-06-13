@@ -38,4 +38,20 @@ module ApplicationHelper
     ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
   end
 
+  def render_mods_dates (date_start, date_end = nil, date_qualifier = nil)
+    prefix = ''
+    suffix = ''
+    connector = ''
+    if date_qualifier
+      date_qualifier == 'approximate' ? prefix = '[ca. ' : prefix = '['
+      date_qualifier == 'questionable' ? suffix = '?]' : suffix =']'
+    end
+    if date_end
+      date_qualifier == 'questionable' ? connector = '?–' : connector = '–'
+      prefix + date_start + connector + date_end + suffix
+    else
+      prefix + date_start + suffix
+    end
+  end
+
 end
