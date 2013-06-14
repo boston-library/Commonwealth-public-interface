@@ -52,8 +52,8 @@ GEM
     arel (3.0.2)
     backports (3.1.1)
     bcrypt-ruby (3.0.1)
-    blacklight (4.2.0)
-      bootstrap-sass (~> 2.2.0)
+    blacklight (4.2.1)
+      bootstrap-sass (>= 2.2.0, < 2.4)
       kaminari (~> 0.13)
       marc (>= 0.4.3, < 1.1)
       nokogiri (~> 1.5)
@@ -67,7 +67,7 @@ GEM
     blankslate (2.1.2.4)
     block_helpers (0.3.3)
       activesupport (>= 2.0)
-    bootstrap-sass (2.2.2.0)
+    bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
@@ -247,7 +247,7 @@ GEM
       nokogiri
       rest-client
     rubyzip (0.9.9)
-    sass (3.2.7)
+    sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -301,7 +301,7 @@ PLATFORMS
 DEPENDENCIES
   blacklight
   blacklight_advanced_search
-  bootstrap-sass
+  bootstrap-sass (~> 2.3.2)
   bplmodels!
   capybara
   coffee-rails (~> 3.2.1)

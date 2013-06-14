@@ -70,4 +70,4 @@ end
 gem "unicode", :platforms => [:mri_18, :mri_19]
 gem "devise-guests", "~> 0.3"
 gem "devise"
-gem "bootstrap-sass"
+gem "bootstrap-sass", "~> 2.3.2"
