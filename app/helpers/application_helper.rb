@@ -41,17 +41,23 @@ module ApplicationHelper
   def render_mods_dates (date_start, date_end = nil, date_qualifier = nil)
     prefix = ''
     suffix = ''
-    connector = ''
+    date_start_suffix = ''
     if date_qualifier
-      date_qualifier == 'approximate' ? prefix = '[ca. ' : prefix = '['
-      date_qualifier == 'questionable' ? suffix = '?]' : suffix =']'
+      prefix = date_qualifier == 'approximate' ? '[ca. ' : '['
+      suffix = date_qualifier == 'questionable' ? '?]' : ']'
     end
     if date_end
-      date_qualifier == 'questionable' ? connector = '?–' : connector = '–'
-      prefix + date_start + connector + date_end + suffix
+      date_start_suffix = '?' if date_qualifier == 'questionable'
+      prefix + date_start + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + date_end + suffix
     else
       prefix + date_start + suffix
     end
+  end
+
+  def render_mods_xml_record(document_id)
+    mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
+    mods_response = Typhoeus::Request.get(mods_xml_file_path)
+    mods_xml_text = REXML::Document.new(mods_response.body)
   end
 
 end

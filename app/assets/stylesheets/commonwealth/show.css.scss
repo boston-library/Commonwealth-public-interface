@@ -37,28 +37,48 @@ div#img_viewer_modal {
   float: left;
   width:100%;
   padding: 0 0 1.5em 0;
-}
 
-#item_metadata h3 {
-  padding-left:1em;
+  h3 {
+    padding-left:1em;
+  }
 }
 
 #item_metadata dl.defList {
   width: 97%;
+
+  dt {
+    padding: .2em 0;
+  }
+
+  dd {
+    padding: .2em 0;
+  }
 }
 
-#item_metadata dl.defList dt {
-  padding: .2em 0;
-}
-
-#item_metadata dl.defList dd {
-  padding: .2em 0;
-}
 
 /* tools */
 
 .addthis_toolbox {
   padding-bottom: .5em;
+}
+
+/* MODS view */
+
+.mods_link_wrapper {
+  float: right;
+  margin: 1em 1em 0 0;
+
+  a {
+    color:$dark_gray;
+  }
+
+}
+
+.mods_xml_display pre {
+  margin: 10px;
+  padding: 5px;
+  word-break: normal;
+  font-size: 12px;
 }
 
 /* institutions */

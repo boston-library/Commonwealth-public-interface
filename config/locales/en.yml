@@ -149,6 +149,11 @@ en:
     institutions:
           title: 'Institutions'
 
+    metadata_display:
+          fields:
+            date:
+              date_range_connector: '–'
+
     pages:
           about:
             title: 'About'
@@ -178,6 +183,10 @@ en:
 
     tools:
           remove: 'Remove'
+          librarian_view:
+            link: 'View MODS XML'
+            title: 'View MODS XML metadata'
+
 
     welcome: 'Welcome to the Digital Commonwealth Central Repository (beta)'
 

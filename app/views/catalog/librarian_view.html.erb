@@ -1,11 +1,7 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-  <h1><%= t('blacklight.search.librarian_view.title') %></h1>
+  <h1><%= t('blacklight.tools.librarian_view.title') %></h1>
 </div>
 <div class="mods_xml_display">
-<% mods_xml_file_path = datastream_disseminator_url(@document[:id], 'descMetadata') %>
-<% response = Typhoeus::Request.get(mods_xml_file_path) %>
-<%=
-    render :text => response.body, :content_type => 'application/xml'
-%>
+    <%= content_tag(:pre, render_mods_xml_record(@document[:id])) %>
 </div>

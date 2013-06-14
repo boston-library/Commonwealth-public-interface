@@ -12,6 +12,12 @@
   text-align: center;
   padding: 10px 0 25px 0;
   height: 204px;
+
+  h2 {
+    font-size: 24px;
+    line-height: 30px;
+    padding: 15px 0 10px 5px;
+  }
 }
 
 #hero_search_headline {
@@ -20,15 +26,14 @@
   text-align: left;
 }
 
-#hero_search h2 {
-  font-size: 24px;
-  line-height: 30px;
-  padding: 15px 0 10px 5px;
-}
-
 #hero_search_form {
   padding-top:20px;
   display: inline-block;
+
+  .search_field {
+    width: 100px;
+  }
+
 }
 
 #content_home_browse {
