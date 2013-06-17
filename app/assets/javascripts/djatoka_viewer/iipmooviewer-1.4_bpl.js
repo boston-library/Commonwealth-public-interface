@@ -69,16 +69,28 @@ var TargetDrag = new Class({
 
     // Simply copy the parent class initialize function
     initialize: function(){
-        var params = Array.link(arguments, {'options': Object.type, 'element': $defined});
-        this.element = $(params.element);
+        var params = Array.link(arguments, {
+            'options': Type.isObject,
+            'element': function(obj){
+                return obj != null;
+            }
+        });
+
+        this.element = document.id(params.element);
         this.document = this.element.getDocument();
         this.setOptions(params.options || {});
-        var htype = $type(this.options.handle);
-        this.handles = (htype == 'array' || htype == 'collection') ? $$(this.options.handle) : $(this.options.handle) || this.element;
+        var htype = typeOf(this.options.handle);
+        this.handles = ((htype == 'array' || htype == 'collection') ? $$(this.options.handle) : document.id(this.options.handle)) || this.element;
         this.mouse = {'now': {}, 'pos': {}};
         this.value = {'start': {}, 'now': {}};
 
-        this.selection = (Browser.Engine.trident) ? 'selectstart' : 'mousedown';
+        this.selection = (Browser.ie) ? 'selectstart' : 'mousedown';
+
+
+        if (Browser.ie && !Drag.ondragstartFixed){
+            document.ondragstart = Function.from(false);
+            Drag.ondragstartFixed = true;
+        }
 
         this.bound = {
             start: this.start.bind(this),
@@ -86,13 +98,9 @@ var TargetDrag = new Class({
             drag: this.drag.bind(this),
             stop: this.stop.bind(this),
             cancel: this.cancel.bind(this),
-            eventStop: $lambda(false)
+            eventStop: Function.from(false)
         };
         this.attach();
-
-        // To fix a problem with IE not dragging properly
-        if(Browser.Engine.trident) this.handles.ondragstart = function(){ return false; };
-
     },
 
     // Create our own drag implementation
@@ -168,11 +176,11 @@ var IIP = new Class({
      */
     initialize: function( main_id, options ) {
 
-        var viewer_container = new Element("div",{'id': 'img_viewer'}).injectInside(main_id);
+        var viewer_container = new Element("div",{'id': 'img_viewer'}).inject(main_id);
 
         this.source = viewer_container; // main_id || alert( 'No element ID given to IIP constructor' );
 
-        this.server = options['server'] || '/fcgi-bin/iipsrv.fcgi';
+        this.server = options['server']; // || '/fcgi-bin/iipsrv.fcgi';
 
         this.render = options['render'] || 'random';
 
@@ -254,7 +262,7 @@ var IIP = new Class({
         }
 
         // Set our cursor
-        $('target').setStyle( 'cursor', 'wait' );
+        document.id('target').setStyle( 'cursor', 'wait' );
 
         // Load our image mosaic
         this.loadGrid();
@@ -270,13 +278,13 @@ var IIP = new Class({
      */
     loadGrid: function(){
 
-        var pos = $(this.source).getPosition();
+        var pos = document.id(this.source).getPosition();
 
         // Delete our old image mosaic
-        $('target').getChildren().each( function(el){
+        document.id('target').getChildren().each( function(el){
             el.destroy();
         } );
-        $('target').setStyles({
+        document.id('target').setStyles({
             left: 0,
             top: 0
         });
@@ -412,7 +420,7 @@ var IIP = new Class({
                     // We set the source at the end so that the 'load' function is properly fired
                     //var src = this.server+"?FIF="+this.images[n].src+"&cnt="+this.contrast+"&sds="+this.images[n].sds+"&jtl="+this.res+"," + k;
                     tile.set( 'src', src );
-                    tile.injectInside('target');
+                    tile.inject('target');
                 }
             } else
                 this.nTilesLoaded++
@@ -471,7 +479,7 @@ var IIP = new Class({
 
         var unloaded = 0;
 
-        $('target').getChildren().each( function(el){
+        document.id('target').getChildren().each( function(el){
             // If our tile has not yet been loaded, give it a prod ;-)
             if( el.width == 0 || el.height == 0 ){
                 el.src = el.src;
@@ -525,13 +533,13 @@ var IIP = new Class({
         var xmove = 0;
         var ymove = 0;
 
-        var zone_size = $("zone").getSize();
+        var zone_size = document.id("zone").getSize();
         var zone_w = zone_size.x;
         var zone_h = zone_size.y;
 
         if( e.event ){
             // From a mouse click
-            var pos = $("navwin").getPosition();
+            var pos = document.id("navwin").getPosition();
             xmove = e.event.clientX - pos.x - zone_w/2;
             ymove = e.event.clientY - pos.y - zone_h/2;
         }
@@ -559,8 +567,8 @@ var IIP = new Class({
     /* Scroll from a target drag event
      */
     scroll: function() {
-        var xmove =  - $('target').offsetLeft;
-        var ymove =  - $('target').offsetTop;
+        var xmove =  - document.id('target').offsetLeft;
+        var ymove =  - document.id('target').offsetTop;
         this.scrollTo( xmove, ymove );
     },
 
@@ -706,7 +714,7 @@ var IIP = new Class({
         var ty = this.max_height;
         var thumb = 100;
 
-        var target_size = $(this.source).getSize();
+        var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
         var winHeight = target_size.y;
 
@@ -753,7 +761,7 @@ var IIP = new Class({
         // Get our window size - subtract some pixels to make sure the browser never
         // adds scrollbars
 
-        var target_size = $(this.source).getSize();
+        var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
         var winHeight = target_size.y;
 
@@ -772,7 +780,7 @@ var IIP = new Class({
         new TargetDrag( el, {onComplete: this.scroll.bind(this)} );
 
 
-        el.injectInside( this.source );
+        el.inject( this.source );
         el.addEvent( 'mousewheel', this.zoom.bind(this) );
         el.addEvent( 'dblclick', this.zoom.bind(this) );
         if( this.targetclick ) el.addEvent( 'click', this.targetclick.bindWithEvent(this) );
@@ -786,10 +794,10 @@ var IIP = new Class({
         document.addEvent( 'keydown', this.key.bindWithEvent(this) );
 
         // Add our logo and a tooltip explaining how to use the viewer
-        // new Element( 'a', {href: 'http://iipimage.sourceforge.net', id:'logo'} ).injectInside(this.source);
+        // new Element( 'a', {href: 'http://iipimage.sourceforge.net', id:'logo'} ).inject(this.source);
         // use custom viewerHelp.png image as help/info icon
         // hide for now, as tips don't show in jQuery modal
-        // new Element('img', {src: '../assets/djatoka_viewer/viewerHelp.png', id: 'info'} ).injectInside('navbuttons');
+        // new Element('img', {src: '../assets/djatoka_viewer/viewerHelp.png', id: 'info'} ).inject('navbuttons');
         /*
          // Fix IE7 PNG transparency problem
          if( Browser.Engine.trident5 ){
@@ -810,12 +818,12 @@ var IIP = new Class({
 
         // Add some info
         if( this.credit ){
-            new Element( 'div', {id: 'credit', html: this.credit} ).injectInside(this.source);
+            new Element( 'div', {id: 'credit', html: this.credit} ).inject(this.source);
         }
 
         // Add a scale if we have one
         if( this.scale ){
-            new Element( 'div', {id: 'scale'} ).injectInside(this.source);
+            new Element( 'div', {id: 'scale'} ).inject(this.source);
         }
 
 
@@ -858,7 +866,7 @@ var IIP = new Class({
         });
         // removing tip as it won't show in jQuery modal
         // toolbar.store( 'tip:text', '* Drag to move<br/>* Double Click to show/hide navigation buttons' );
-        toolbar.injectInside( navcontainer );
+        toolbar.inject( navcontainer );
 
         // Create our navigation div and inject it inside our frame
         var navwin = new Element( 'div', {
@@ -868,7 +876,7 @@ var IIP = new Class({
                 height: this.min_y
             }
         });
-        navwin.injectInside( navcontainer );
+        navwin.inject( navcontainer );
 
         // Create our navigation image and inject inside the div we just created
         // djatoka mods
@@ -887,7 +895,7 @@ var IIP = new Class({
 
         });
 
-        navimage.injectInside( navwin );
+        navimage.inject( navwin );
 
         // Create our navigation zone and inject inside the navigation div
         var zone = new Element( 'div', {
@@ -902,7 +910,7 @@ var IIP = new Class({
                 transition: Fx.Transitions.Quad.easeInOut
             }
         });
-        zone.injectInside( navwin );
+        zone.inject( navwin );
 
 
         // Create our progress bar
@@ -923,30 +931,40 @@ var IIP = new Class({
 
         // Create our nav buttons
         var navbuttons = new Element('div', {
-            id: 'navbuttons',
-            html: '<img id="zoomIn" src="../assets/djatoka_viewer/zoomIn.png"/><img id="zoomOut" src="../assets/djatoka_viewer/zoomOut.png"/><img id="reset" src="../assets/djatoka_viewer/reset.png"/>'
+            id: 'navbuttons'
         });
-        // inject navbuttons into container div rather than navcontainer
-        navbuttons.injectInside(this.source);
-        navbuttons.set('slide', {duration: 300, transition: Fx.Transitions.Quad.easeInOut, mode:'horizontal'});
 
-        loadBarContainer.injectInside(navcontainer);
-        navcontainer.injectInside( this.source );
+        var button_imgs = new Array('zoomIn','zoomOut','reset');
+        for (var i = 0; i < button_imgs.length; i++) {
+            var button_img = new Element('img',{
+                id:button_imgs[i],
+                src:'../assets/djatoka_viewer/' + button_imgs[i] + '.png'}
+            );
+            button_img.inject(navbuttons);
+        }
+
+        // inject navbuttons into container div rather than navcontainer
+        navbuttons.inject( this.source );
+
+        // navbuttons.set('slide', {duration: 300, transition: Fx.Transitions.Quad.easeInOut, mode:'horizontal'});
+
+        loadBarContainer.inject(navcontainer);
+        navcontainer.inject( this.source );
 
         // Hide our navigation buttons if requested
-        if( this.showNavButtons == false ) navbuttons.slide('out');
+        // if( this.showNavButtons == false ) navbuttons.slide('out');
 
         // Needed as IE doesn't take CSS opacity into account
-        if( Browser.Engine.trident ){
+        if( Browser.ie ){
             $$('div#navbuttons, div#navbuttons img').setStyle( 'opacity', 0.75 );
         }
 
         navcontainer.makeDraggable( {container:this.source, handle:toolbar} );
 
-        $('zoomIn').addEvent( 'click', this.zoomIn.bindWithEvent(this) );
-        $('zoomOut').addEvent( 'click', this.zoomOut.bindWithEvent(this) );
+        document.id('zoomIn').addEvent( 'click', this.zoomIn.bindWithEvent(this) );
+        document.id('zoomOut').addEvent( 'click', this.zoomOut.bindWithEvent(this) );
         // need to fix reset function in JQuery modal context
-        $('reset').addEvent( 'click', function(){ $('img_viewer').empty(); this.createWindows();}.bind(this)  );
+        document.id('reset').addEvent( 'click', function(){ document.id('img_viewer').empty(); this.createWindows();}.bind(this)  );
         /* not using need these
          $('snapshot').addEvent('click', function() { this.openOpenURL();}.bind(this));
          $('shiftLeft').addEvent( 'click', function(){ this.scrollTo(-this.rgn_w/3,0); }.bind(this) );
@@ -955,20 +973,20 @@ var IIP = new Class({
          $('shiftRight').addEvent( 'click', function(){ this.scrollTo(this.rgn_w/3,0); }.bind(this) );
          */
 
-        $('zone').makeDraggable({
+        document.id('zone').makeDraggable({
             container: 'navwin',
             // Take a note of the starting coords of our drag zone
             onStart: function() {
-                this.navpos = [$('zone').offsetLeft, $('zone').offsetTop-10];
+                this.navpos = [document.id('zone').offsetLeft, document.id('zone').offsetTop-10];
             }.bind(this),
             onComplete: this.scrollNavigation.bindWithEvent(this)
         });
 
         // Add our events
-        $('navigation').addEvent( 'click', this.scrollNavigation.bindWithEvent(this) );
-        $('navigation').addEvent( 'mousewheel', this.zoom.bindWithEvent(this) );
-        $('zone').addEvent( 'mousewheel', this.zoom.bindWithEvent(this) );
-        $('zone').addEvent( 'dblclick', this.zoom.bindWithEvent(this) );
+        document.id('navigation').addEvent( 'click', this.scrollNavigation.bindWithEvent(this) );
+        document.id('navigation').addEvent( 'mousewheel', this.zoom.bindWithEvent(this) );
+        document.id('zone').addEvent( 'mousewheel', this.zoom.bindWithEvent(this) );
+        document.id('zone').addEvent( 'dblclick', this.zoom.bindWithEvent(this) );
 
     },
 
@@ -978,20 +996,20 @@ var IIP = new Class({
 
         // Update the loaded tiles number, grow the loadbar size
         var w = (this.nTilesLoaded / this.nTilesToLoad) * this.min_x;
-        $('loadBar').setStyle( 'width', w );
+        document.id('loadBar').setStyle( 'width', w );
 
         // Display the % in the progress bar
-        $('loadBar').set( 'html', 'loading&nbsp;:&nbsp;'+Math.round(this.nTilesLoaded/this.nTilesToLoad*100) + '%' );
+        document.id('loadBar').set( 'html', 'loading&nbsp;:&nbsp;'+Math.round(this.nTilesLoaded/this.nTilesToLoad*100) + '%' );
 
-        if( $('loadBarContainer').style.opacity != 0.85 ){
-            $('loadBarContainer').setStyle( 'opacity', 0.85 );
+        if( document.id('loadBarContainer').style.opacity != 0.85 ){
+            document.id('loadBarContainer').setStyle( 'opacity', 0.85 );
         }
 
         // If we're done with loading, fade out the load bar
         if( this.nTilesLoaded == this.nTilesToLoad ){
             // Fade out our progress bar and loading animation in a chain
-            $('target').setStyle( 'cursor', 'default' );
-            $('loadBarContainer').fade('out');
+            document.id('target').setStyle( 'cursor', 'default' );
+            document.id('loadBarContainer').fade('out');
         }
 
     },
@@ -1012,7 +1030,7 @@ var IIP = new Class({
             label = '10cm';
         }
 
-        $('scale').set({
+        document.id('scale').set({
             styles: {width: pixels},
             html: label
         });
@@ -1111,10 +1129,10 @@ var IIP = new Class({
         if( height < this.min_y ) this.yfit = 0;
         else this.yfit = 1;
 
-        var border = $('zone').offsetHeight - $('zone').clientHeight;
+        var border = document.id('zone').offsetHeight - document.id('zone').clientHeight;
 
         // Move the zone to the new size and position
-        $('zone').morph({
+        document.id('zone').morph({
             left: pleft,
             top: ptop + 10, // 10px for the toolbar
             width: width - border/2,
