@@ -800,7 +800,7 @@ var IIP = new Class({
         // new Element('img', {src: '../assets/djatoka_viewer/viewerHelp.png', id: 'info'} ).inject('navbuttons');
         /*
          // Fix IE7 PNG transparency problem
-         if( Browser.Engine.trident5 ){
+         if( Browser.ie ){
          $('info').setStyle( 'filter', 'progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,src="images/djatoka.32x32.png",sizingMethod=scale)' );
          }
          */
