@@ -247,9 +247,28 @@ var IIP = new Class({
         /* Load us up when the DOM is fully loaded!
          */
         window.addEvent( 'domready', function(){ this.load() }.bind(this) );
+
+        // debug
+        this.debugImageViewer();
+
     },
 
+    debugImageViewer: function () {
+        alert(
+            'initalZoom:' + this.initialZoom + '; \n' +
+            'this.max_width:' + this.max_width + '; \n' +
+            'this.max_height:' + this.max_height + '; \n' +
+                'this.rgn_w:' + this.rgn_w + '; \n' +
+                'this.rgn_h:' + this.rgn_h + '; \n' +
+                'this.res:' + this.res + '; \n' +
+                'this.min_x:' + this.min_x + '; \n' +
+                'this.min_y:' + this.min_y + '; \n' +
+                'this.wid:' + this.wid + '; \n' +
+                'this.hei:' + this.hei + '; \n'
 
+        );
+
+    },
 
     /* Create the appropriate CGI strings and change the image sources
      */
@@ -713,26 +732,33 @@ var IIP = new Class({
         var tx = this.max_width;
         var ty = this.max_height;
         var thumb = 100;
+        var thumb_axis = tx;
+        var thumb_lower_bound = 1;
 
         var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
         var winHeight = target_size.y;
 
-        if( winWidth>winHeight ){
+        if( tx > ty ){
             // For panoramic images, use a large navigation window
             if( tx > 2*ty ) thumb = winWidth / 2;
             else thumb = winWidth / 4;
         }
-        else thumb = winHeight / 4;
-        // alert(winWidth + ', ' + winHeight + ', ' + thumb);
+        else {
+            thumb_axis = ty;
+            thumb_lower_bound = 0;
+            thumb = winHeight / 4;
+        }
+        alert('thumb:' + thumb);
 
-        var r = this.res;
-        // alert(this.res);
-        while( tx > thumb ){
+
+        //alert('true res:' + this.res);
+
+        while( thumb_axis > thumb ){
             tx = parseInt(tx / 2);
             ty = parseInt(ty / 2);
             // Make sure we don't set our navigation image too small!
-            if( --r == 1 ) break;
+            if( --r == thumb_lower_bound ) break;
         }
         this.min_x = tx;
         this.min_y = ty;
@@ -741,7 +767,7 @@ var IIP = new Class({
         // Determine the resolution for this image view
         tx = this.max_width;
         ty = this.max_height;
-        while( tx > winWidth && ty > winHeight ){
+        while( tx > winWidth || ty > winHeight ){
             tx = parseInt(tx / 2);
             ty = parseInt(ty / 2);
             this.res--;
@@ -749,7 +775,7 @@ var IIP = new Class({
         this.wid = tx;
         this.hei = ty;
         // commenting out line below so images with full res smaller than window don't appear too small on load
-        // this.res--;
+        //this.res--;
     },
 
 
@@ -764,7 +790,8 @@ var IIP = new Class({
         var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
         var winHeight = target_size.y;
-
+        // debug
+        // alert(winWidth + ';' + winHeight);
 
         // Calculate some sizes and create the navigation window
         this.calculateMinSizes();
@@ -1093,7 +1120,7 @@ var IIP = new Class({
 
     // bpl mod
     // don't need AJAX call as in above since we are getting metadata using Rails Djatoka call
-    load : function() {
+    load: function() {
         this.createWindows();
     },
 
