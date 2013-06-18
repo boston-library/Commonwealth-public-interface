@@ -249,13 +249,14 @@ var IIP = new Class({
         window.addEvent( 'domready', function(){ this.load() }.bind(this) );
 
         // debug
-        this.debugImageViewer();
+        // this.debugImageViewer();
 
     },
 
+    /* useful debugging info
     debugImageViewer: function () {
         alert(
-            'initalZoom:' + this.initialZoom + '; \n' +
+            'initialZoom:' + this.initialZoom + '; \n' +
             'this.max_width:' + this.max_width + '; \n' +
             'this.max_height:' + this.max_height + '; \n' +
                 'this.rgn_w:' + this.rgn_w + '; \n' +
@@ -269,7 +270,7 @@ var IIP = new Class({
         );
 
     },
-
+    */
     /* Create the appropriate CGI strings and change the image sources
      */
     requestImages: function() {
@@ -751,7 +752,7 @@ var IIP = new Class({
         }
 
         var r = this.res;
-        // alert(this.res);
+
         while( thumb_axis > thumb ){
             thumb_axis = parseInt(thumb_axis / 1.5);
             tx = parseInt(tx / 1.5);
@@ -788,8 +789,6 @@ var IIP = new Class({
         var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
         var winHeight = target_size.y;
-        // debug
-        // alert(winWidth + ';' + winHeight);
 
         // Calculate some sizes and create the navigation window
         this.calculateMinSizes();
@@ -813,7 +812,10 @@ var IIP = new Class({
         this.rgn_w = winWidth;
         this.rgn_h = winHeight;
 
-        this.reCenter();
+        // commenting out this.reCenter() below seems to resolve mis-centering
+        // of smaller images, no loss of functionality otherwise
+        // (have tested thoroughly, everything seems OK)
+        //this.reCenter();
 
         window.addEvent( 'resize', function(){ window.location=window.location; } );
         document.addEvent( 'keydown', this.key.bindWithEvent(this) );
@@ -994,7 +996,6 @@ var IIP = new Class({
             // reset this.res or it keeps getting smaller
             this.res = this.num_resolutions;
             this.createWindows();
-            this.debugImageViewer();
         }.bind(this)  );
         /* not using need these
          $('snapshot').addEvent('click', function() { this.openOpenURL();}.bind(this));
