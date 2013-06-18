@@ -766,7 +766,7 @@ var IIP = new Class({
         // Determine the resolution for this image view
         tx = this.max_width;
         ty = this.max_height;
-        while( tx > winWidth && ty > winHeight ){
+        while( tx > winWidth || ty > winHeight ){
             tx = parseInt(tx / 2);
             ty = parseInt(ty / 2);
             this.res--;
