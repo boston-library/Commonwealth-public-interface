@@ -200,15 +200,15 @@ class CatalogController < ApplicationController
   end
 
   # create an index list of collections
-  def collections
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
-                                                     :per_page => 20})
-    params[:view] = 'list'
+  #def collections
+  #  (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
+  #                                                   :per_page => 20})
+  #  params[:view] = 'list'
 
-    respond_to do |format|
-      format.html { save_current_search_params }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html { save_current_search_params }
+  #  end
+  #end
 
   # create an index list of institutions
   def institutions
