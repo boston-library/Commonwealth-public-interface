@@ -19,6 +19,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   match 'search', :to => 'catalog#index', :as => 'catalog_index'
   match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
   match 'institutions', :to => 'catalog#institutions', :as => 'institutions'
+  match 'search/facet/subject_geographic_ssim', :to => 'catalog#facet', :as => 'locations_facet'
 
   resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
   # :show and :update are for backwards-compatibility with catalog_url named routes
