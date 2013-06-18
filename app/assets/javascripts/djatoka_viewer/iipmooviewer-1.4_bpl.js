@@ -989,7 +989,13 @@ var IIP = new Class({
         document.id('zoomIn').addEvent( 'click', this.zoomIn.bindWithEvent(this) );
         document.id('zoomOut').addEvent( 'click', this.zoomOut.bindWithEvent(this) );
         // need to fix reset function in JQuery modal context
-        document.id('reset').addEvent( 'click', function(){ document.id('img_viewer').empty(); this.createWindows();}.bind(this)  );
+        document.id('reset').addEvent( 'click', function(){
+            document.id('img_viewer').empty();
+            // reset this.res or it keeps getting smaller
+            this.res = this.num_resolutions;
+            this.createWindows();
+            this.debugImageViewer();
+        }.bind(this)  );
         /* not using need these
          $('snapshot').addEvent('click', function() { this.openOpenURL();}.bind(this));
          $('shiftLeft').addEvent( 'click', function(){ this.scrollTo(-this.rgn_w/3,0); }.bind(this) );
