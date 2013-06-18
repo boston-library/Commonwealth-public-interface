@@ -13,7 +13,7 @@
       <%= img_element  %>
   <% else %>
       <%= link_to(img_element, '#', :id => 'img_viewer_link',
-                  :class => 'img_viewer_link',
+                  :class => 'img_viewer_link hidden-phone',
                   :title => t('blacklight.images.zoom')) %>
 
       <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
