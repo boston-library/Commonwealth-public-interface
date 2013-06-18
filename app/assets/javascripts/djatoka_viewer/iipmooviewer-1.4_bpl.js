@@ -732,8 +732,8 @@ var IIP = new Class({
         var tx = this.max_width;
         var ty = this.max_height;
         var thumb = 100;
-        var thumb_axis = tx;
-        var thumb_lower_bound = 1;
+        var thumb_axis = this.max_width;
+        // var thumb_lower_bound = 1;
 
         var target_size = document.id(this.source).getSize();
         var winWidth = target_size.x;
@@ -743,31 +743,29 @@ var IIP = new Class({
             // For panoramic images, use a large navigation window
             if( tx > 2*ty ) thumb = winWidth / 2;
             else thumb = winWidth / 4;
-        }
-        else {
+        } else {
             thumb_axis = ty;
-            thumb_lower_bound = 0;
-            thumb = winHeight / 4;
+            // thumb_lower_bound = 0;
+            if( ty > 2*tx ) thumb = winHeight / 2;
+            else thumb = winHeight / 4;
         }
-        alert('thumb:' + thumb);
 
-
-        //alert('true res:' + this.res);
-
+        var r = this.res;
+        // alert(this.res);
         while( thumb_axis > thumb ){
-            tx = parseInt(tx / 2);
-            ty = parseInt(ty / 2);
+            thumb_axis = parseInt(thumb_axis / 1.5);
+            tx = parseInt(tx / 1.5);
+            ty = parseInt(ty / 1.5);
             // Make sure we don't set our navigation image too small!
-            if( --r == thumb_lower_bound ) break;
+            //if( --r == thumb_lower_bound ) break;
         }
         this.min_x = tx;
         this.min_y = ty;
-        //alert(this.min_x + ', ' + this.min_y + '; ' + this.max_width + ', ' + this.max_height);
 
         // Determine the resolution for this image view
         tx = this.max_width;
         ty = this.max_height;
-        while( tx > winWidth || ty > winHeight ){
+        while( tx > winWidth && ty > winHeight ){
             tx = parseInt(tx / 2);
             ty = parseInt(ty / 2);
             this.res--;
@@ -775,7 +773,7 @@ var IIP = new Class({
         this.wid = tx;
         this.hei = ty;
         // commenting out line below so images with full res smaller than window don't appear too small on load
-        //this.res--;
+        // this.res--;
     },
 
 
