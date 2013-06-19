@@ -164,10 +164,10 @@
         </dd>
     <% end %>
     <%# local-accession id field %>
-    <% if document[:local_accession_id_ssim] %>
+    <% if document[:local_accession_id_tsim] %>
         <dt>Accession # (local):</dt>
         <dd>
-          <% document[:local_accession_id_ssim].each do |accession| %>
+          <% document[:local_accession_id_tsim].each do |accession| %>
               <%= accession %><br />
           <% end %>
         </dd>
