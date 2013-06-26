@@ -1,5 +1,5 @@
 <%= form_tag search_action_url, :method => :get, :class => 'header-search-form form-inline' do %>
-    <%= search_as_hidden_fields(:omit_keys => [:q, :qt, :page, :f], :search_field => 'all_fields').html_safe %>
+    <%= search_as_hidden_fields(:omit_keys => [:q, :qt, :page, :f, :sort], :search_field => 'all_fields').html_safe %>
 
     <% unless search_fields.empty? %>
         <div class="pull-left">

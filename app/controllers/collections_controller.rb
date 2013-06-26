@@ -14,9 +14,14 @@ class CollectionsController < CatalogController
   end
   helper_method :search_action_url
 
+  def collections_filter(solr_parameters, user_parameters)
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Collection\""
+  end
+
   def index
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection'},
-                                                      :per_page => 20})
+    self.solr_search_params_logic += [:collections_filter]
+    (@response, @document_list) = get_search_results
     params[:view] = 'list'
     params[:sort] = 'title_info_primary_ssort asc'
 

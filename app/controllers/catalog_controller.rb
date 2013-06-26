@@ -201,8 +201,7 @@ class CatalogController < ApplicationController
 
   # create an index list of collections
   #def collections
-  #  (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'},
-  #                                                   :per_page => 20})
+  #  (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'}})
   #  params[:view] = 'list'
 
   #  respond_to do |format|
@@ -212,8 +211,7 @@ class CatalogController < ApplicationController
 
   # create an index list of institutions
   def institutions
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Institution'},
-                                                      :per_page => 20,})
+    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Institution'}})
     params[:view] = 'list'
     # would prefer to use config'd sort fields below, not sure how
     params[:sort] = 'title_info_primary_ssort asc'
