@@ -46,8 +46,9 @@
                 <% end %>
             </div>
 
-            <% # full metadata display -%>
-            <%= render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>
+            <%# full metadata display - DEPRECATED - no longer creating collection metadata %>
+            <%# besides title and abstract %>
+            <%# render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>
 
           </div>
 
