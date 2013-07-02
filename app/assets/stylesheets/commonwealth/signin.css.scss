@@ -14,13 +14,33 @@
       margin-left: 100px;
     }
 
+    .help-inline {
+      padding-left: 2em;
+    }
+
   }
 
   #alt_signins {
-    padding-bottom: 1em;
+    padding: 1em 0 2em 0;
 
     .alt_signin_btn {
       padding-right: 1em;
+    }
+
+  }
+
+}
+
+#signup_wrapper {
+
+  .form-horizontal {
+
+    .control-label {
+      width: 122px;
+    }
+
+    .controls {
+      margin-left: 150px;
     }
 
   }
