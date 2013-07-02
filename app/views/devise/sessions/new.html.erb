@@ -1,17 +1,65 @@
-<h2>Sign in</h2>
+<div class="span12">
+  <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <div><%= f.label "Email: " %><br />
-      <%= f.text_field :uid %></div>
+  <div id="signin_wrapper">
 
-    <div><%= f.label :password %><br />
-      <%= f.password_field :password %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-    <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
+      <div class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="inputEmail">Email</label>
+          <div class="controls">
+            <%= f.text_field :uid %>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputPassword">Password</label>
+          <div class="controls">
+            <%= f.password_field :password %>
+            <span class="help-inline">
+              <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+              <% end -%>
+            </span>
+          </div>
+        </div>
+        <% if devise_mapping.rememberable? -%>
+            <div class="control-group">
+              <div class="controls">
+                <label id="remember_me" class="checkbox">
+                  <%= f.check_box :remember_me %>
+                  Remember me on this computer
+                </label>
+              </div>
+            </div>
 
-    <div><%= f.submit "Sign in" %></div>
-<% end %>
+        <% end -%>
+        <div class="control-group">
+          <div class="controls">
+            <%= f.submit "Sign in" %>
+          </div>
+        </div>
+      </div>
 
-<%= render "devise/shared/links" %>
+
+
+
+
+  <% end %>
+
+    <div id="alt_signins">
+      <%= link_to( image_tag('facebookLoginButton.png',
+                             :alt => 'Log in with Facebook',
+                             :class => 'alt_signin_btn'),
+                   omniauth_authorize_path(resource_name, 'facebook')) %>
+      <%= link_to( image_tag('bplLoginButton.png',
+                             :alt => 'Log in with your BPL library card',
+                             :class => 'alt_signin_btn'),
+                   omniauth_authorize_path(resource_name, 'polaris')) %>
+      <%# omniauth_authorize_path(resource_name, provider) %>
+    </div>
+
+  <%= render "devise/shared/links" %>
+
+  </div>
+</div>

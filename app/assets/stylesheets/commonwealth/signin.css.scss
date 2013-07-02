@@ -1,0 +1,28 @@
+/* styles for signin/auth views */
+
+@import 'cmmnwlth_defaults';
+
+#signin_wrapper {
+
+  .form-horizontal {
+
+    .control-label {
+      width: 65px;
+    }
+
+    .controls {
+      margin-left: 100px;
+    }
+
+  }
+
+  #alt_signins {
+    padding-bottom: 1em;
+
+    .alt_signin_btn {
+      padding-right: 1em;
+    }
+
+  }
+
+}
