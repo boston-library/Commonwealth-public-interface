@@ -52,7 +52,7 @@ class FolderItemsController < CatalogController
   end
 
   def clear
-    @folder = Folder.find(params[:id])
+    @folder = Bpluser::Folder.find(params[:id])
     if current_user.folders.find(@folder).folder_items.clear
       flash[:notice] = I18n.t('blacklight.folder_items.clear.success')
     else
@@ -62,7 +62,7 @@ class FolderItemsController < CatalogController
   end
 
   def delete_selected
-    @folder = Folder.find(params[:id])
+    @folder = Bpluser::Folder.find(params[:id])
     if params[:selected]
       if @folder.folder_items.where(:document_id => params[:selected]).delete_all
         flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')

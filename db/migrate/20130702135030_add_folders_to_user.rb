@@ -1,6 +1,6 @@
-class AddFolders < ActiveRecord::Migration
+class AddFoldersToUser < ActiveRecord::Migration
   def self.up
-    create_table :folders do |t|
+    create_table :bpluser_folders do |t|
       t.string :title
       t.integer :user_id, :null=>false
       t.string :description
@@ -9,6 +9,6 @@ class AddFolders < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :folders
+    drop_table :bpluser_folders
   end
 end

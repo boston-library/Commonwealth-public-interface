@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211203248) do
+ActiveRecord::Schema.define(:version => 20130702140634) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id",     :null => false
@@ -22,23 +22,48 @@ ActiveRecord::Schema.define(:version => 20121211203248) do
     t.string   "user_type"
   end
 
-  create_table "folder_items", :force => true do |t|
+  create_table "bpluser_folder_items", :force => true do |t|
     t.integer  "folder_id"
     t.string   "document_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "folder_items", ["document_id"], :name => "index_folder_items_on_document_id"
-  add_index "folder_items", ["folder_id"], :name => "index_folder_items_on_folder_id"
+  add_index "bpluser_folder_items", ["document_id"], :name => "index_bpluser_folder_items_on_document_id"
+  add_index "bpluser_folder_items", ["folder_id"], :name => "index_bpluser_folder_items_on_folder_id"
 
-  create_table "folders", :force => true do |t|
+  create_table "bpluser_folders", :force => true do |t|
     t.string   "title"
     t.integer  "user_id",     :null => false
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "institutions", :force => true do |t|
+    t.string "name"
+    t.string "pid"
+  end
+
+  create_table "institutions_users", :id => false, :force => true do |t|
+    t.integer "institution_id"
+    t.integer "user_id"
+  end
+
+  add_index "institutions_users", ["institution_id", "user_id"], :name => "index_institutions_users_on_institution_id_and_user_id"
+  add_index "institutions_users", ["user_id", "institution_id"], :name => "index_institutions_users_on_user_id_and_institution_id"
+
+  create_table "roles", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "roles_users", :id => false, :force => true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  add_index "roles_users", ["role_id", "user_id"], :name => "index_roles_users_on_role_id_and_user_id"
+  add_index "roles_users", ["user_id", "role_id"], :name => "index_roles_users_on_user_id_and_role_id"
 
   create_table "searches", :force => true do |t|
     t.text     "query_params"
@@ -65,9 +90,15 @@ ActiveRecord::Schema.define(:version => 20121211203248) do
     t.datetime "updated_at",                                :null => false
     t.boolean  "guest",                  :default => false
     t.string   "username"
+    t.string   "provider"
+    t.string   "display_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["uid", "provider"], :name => "index_users_on_uid_and_provider"
 
 end

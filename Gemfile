@@ -10,10 +10,12 @@ gem 'pg'
 
 # BPL specific:
 
-#gem 'hydra-ldap'
+gem 'hydra-ldap'
 #gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
 # BPL models gem
 gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'
+gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
+
 
 #gem 'rmagick'          rake db
 gem 'djatoka'
@@ -71,3 +73,11 @@ gem "unicode", :platforms => [:mri_18, :mri_19]
 gem "devise-guests", "~> 0.3"
 gem "devise"
 gem "bootstrap-sass", "~> 2.3.2"
+gem "omniauth"
+gem "omniauth-ldap"
+gem "omniauth-facebook"
+gem "omniauth-polaris", :git => "https://github.com/boston-library/omniauth-polaris.git"
+gem "omniauth-password"
+gem "bootstrap_forms"
+gem "hydra-role-management"
+gem "bpl-institution-management", :git => "https://github.com/boston-library/bpl-institution-management.git"

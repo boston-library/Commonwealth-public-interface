@@ -2,7 +2,7 @@
 class FolderItemsActionsController < ApplicationController
 
   def folder_item_actions
-    @folder = Folder.find(params[:id]) if params[:origin] == "folders"
+    @folder = Bpluser::Folder.find(params[:id]) if params[:origin] == "folders"
     @user = current_or_guest_user
     if params[:selected]
       sort = params[:sort] ? params[:sort] : ""

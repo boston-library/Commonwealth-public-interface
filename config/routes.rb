@@ -1,4 +1,14 @@
 CommonwealthPublicInterface::Application.routes.draw do
+  Bpluser.add_routes(self)
+
+  mount Bpluser::Engine => '/bpluser'
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
+
+  mount Bpl::InstitutionManagement::Engine => '/'
+
+  mount Hydra::RoleManagement::Engine => '/'
+
   #get "pages/about"
 
   root :to => 'pages#home'
@@ -33,7 +43,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post
 
-  devise_for :users
+  
 
   resources :folders
 

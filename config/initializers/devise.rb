@@ -23,7 +23,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [ :email ]
+  config.authentication_keys = [ :uid, :provider ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -35,12 +35,12 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :email ]
+  config.case_insensitive_keys = [ :uid, :provider ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :email ]
+  config.strip_whitespace_keys = [ :uid, :provider ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -82,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "64d762d0798672dc8ac95b1185c6189154928b82c7b9dc9414ad7da275d61b37e1f3bfa841ee9aa3530688e7eacbb09a9b0585c9b5f055f2b8e8668bd1a49054"
+  # config.pepper = "9f1215eee7c0a54ea396a8127aa2b80279e6d60d7df395f39d01ea32db6e073c9617d18c098817a3a60bda550f07feab9ceed36d2f66c9294725d74b3c8b645d"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -125,7 +125,7 @@ Devise.setup do |config|
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
-  
+
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
 
@@ -206,6 +206,26 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
+  config.omniauth :ldap, :title => 'BPL admin ldap',
+                  :host => Hydra::LDAP.ldap_config[:host],
+                  :base => Hydra::LDAP.ldap_config[:base],
+                  :uid => Hydra::LDAP.ldap_config[:uid],
+                  :port => Hydra::LDAP.ldap_config[:port],
+                  :bind_dn => Hydra::LDAP.ldap_config[:username],
+                  :password => Hydra::LDAP.ldap_config[:password]
+
+  config.omniauth :password, :title => 'BPL local account login',
+                  :login_field => :username
+
+  OMNIAUTH_POLARIS_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-polaris.yml'))[Rails.env]
+  config.omniauth :polaris, :title => OMNIAUTH_POLARIS_GLOBAL['title'],
+                  :http_uri => OMNIAUTH_POLARIS_GLOBAL['http_uri'],
+                  :access_key => OMNIAUTH_POLARIS_GLOBAL['access_key'],
+                  :access_id => OMNIAUTH_POLARIS_GLOBAL['access_id'],
+                  :method => OMNIAUTH_POLARIS_GLOBAL['method']
+
+  OMNIAUTH_FACEBOOK_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-facebook.yml'))[Rails.env]
+  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'], OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'], :scope=>OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

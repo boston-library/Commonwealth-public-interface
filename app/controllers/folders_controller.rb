@@ -75,7 +75,7 @@ class FoldersController < CatalogController
   #end
 
   def edit
-    @folder = Folder.find(params[:id])
+    @folder = Bpluser::Folder.find(params[:id])
   end
 
   def update
@@ -101,7 +101,7 @@ class FoldersController < CatalogController
   end
 
   def correct_user
-    @folder = Folder.find(params[:id])
+    @folder = Bpluser::Folder.find(params[:id])
     redirect_to root_path unless current_user.folders.include?(@folder)
   end
 
