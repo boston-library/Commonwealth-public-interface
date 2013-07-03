@@ -1,0 +1,23 @@
+<% @page_title = t('blacklight.institutions.index.page_title', :application_name => application_name) %>
+<% extra_head_content << render_opensearch_response_metadata.html_safe %>
+
+<div id="content" class="span9 institutions-list">
+
+  <h2><%= t('blacklight.institutions.title') %></h2>
+
+  <p>This is a list of institutions that have content in this repository. For the full list of member institutions, and information on how to join,  see the <a href="http://digitalcommonwealth.memberlodge.org/directory" target="_blank">Member Directory.</a></p>
+
+  <%= render 'collections/sort_and_per_page_collection' %>
+
+  <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
+
+  <%= render_document_index %>
+
+  <%= render 'catalog/results_pagination' %>
+
+</div>
+
+<%# not using facets at the moment %>
+<div id="sidebar" class="span3">
+  <%# render :partial=>'facets' %>
+</div><!--/well -->

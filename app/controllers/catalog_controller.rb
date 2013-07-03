@@ -210,16 +210,16 @@ class CatalogController < ApplicationController
   #end
 
   # create an index list of institutions
-  def institutions
-    (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Institution'}})
-    params[:view] = 'list'
+  #def institutions
+  #  (@response, @document_list) = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Institution'}})
+  #  params[:view] = 'list'
     # would prefer to use config'd sort fields below, not sure how
-    params[:sort] = 'title_info_primary_ssort asc'
+  #  params[:sort] = 'title_info_primary_ssort asc'
 
-    respond_to do |format|
-      format.html { save_current_search_params }
-    end
-  end
+  #  respond_to do |format|
+  #    format.html { save_current_search_params }
+  #  end
+  #end
 
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])

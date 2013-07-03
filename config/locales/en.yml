@@ -148,6 +148,8 @@ en:
 
     institutions:
           title: 'Institutions'
+          index:
+            page_title: 'Institutions - %{application_name}'
 
     metadata_display:
           fields:
@@ -173,7 +175,7 @@ en:
             submit: 'Update'
           form:
             collection: 'Search in this collection...'
-            institution: "Search this library's collections..."
+            institution: "Search this institution's collections..."
           facets:
             home: 'Explore the Collections'
           pagination_info:

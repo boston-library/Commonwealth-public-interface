@@ -2,7 +2,11 @@
 
 @import 'cmmnwlth_defaults';
 
-/* collections */
+/* institutions */
+
+div.institutions-list img.index_thumb {
+  display: none;
+}
 
 #institution_location {
   color: $darker_gray;
@@ -15,4 +19,8 @@
     padding-left:1em;
   }
 
+}
+
+#institution_abstract {
+  padding-bottom: 2em;
 }

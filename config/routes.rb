@@ -28,7 +28,6 @@ CommonwealthPublicInterface::Application.routes.draw do
   match 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   match 'search', :to => 'catalog#index', :as => 'catalog_index'
   match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
-  match 'institutions', :to => 'catalog#institutions', :as => 'institutions'
   match 'search/facet/subject_geographic_ssim', :to => 'catalog#facet', :as => 'locations_facet'
 
   resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
@@ -39,6 +38,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :collections, :only => [:index, :show]
   match 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
+
+  resources :institutions, :only => [:index, :show]
 
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post

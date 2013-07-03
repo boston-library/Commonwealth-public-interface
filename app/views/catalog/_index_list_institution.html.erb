@@ -4,13 +4,13 @@
     <% thumb = image_tag('institution_index.png',
                          :alt => document[blacklight_config.index.show_link.to_sym],
                          :class => 'index_thumb media-object') %>
-    <%= link_to(thumb, '/search/' + document[:id], :class => 'pull-left') %>
+    <%= link_to(thumb, '/institutions/' + document[:id], :class => 'pull-left') %>
 
     <div class="media-body">
 
       <div class="item_index_title">
         <%= link_to(document[blacklight_config.index.show_link.to_sym],
-                    '/search/' + document[:id]) %>
+                    '/institutions/' + document[:id]) %>
       </div>
 
     </div>
