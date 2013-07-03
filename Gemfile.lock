@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/boston-library/bpl-institution-management.git
-  revision: f3458635643f45732d7de373e7789fdb040707d0
-  specs:
-    bpl-institution-management (0.0.1)
-      bootstrap_forms
-      cancan
-
-GIT
   remote: https://github.com/boston-library/bplmodels.git
   revision: 128edac42f0b796ca13fc88f1942328ca663fb30
   specs:
@@ -370,7 +362,6 @@ DEPENDENCIES
   blacklight_advanced_search
   bootstrap-sass (~> 2.3.2)
   bootstrap_forms
-  bpl-institution-management!
   bplmodels!
   bpluser!
   capybara

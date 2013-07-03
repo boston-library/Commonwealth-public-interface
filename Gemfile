@@ -80,4 +80,4 @@ gem "omniauth-polaris", :git => "https://github.com/boston-library/omniauth-pola
 gem "omniauth-password"
 gem "bootstrap_forms"
 gem "hydra-role-management"
-gem "bpl-institution-management", :git => "https://github.com/boston-library/bpl-institution-management.git"
+# gem "bpl-institution-management", :git => "https://github.com/boston-library/bpl-institution-management.git"

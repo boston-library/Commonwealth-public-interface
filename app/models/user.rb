@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   include Hydra::RoleManagement::UserRoles
 
   # Connects this user object to Institution-management behaviors.
-  include Bpl::InstitutionManagement::UserInstitutions
+  #include Bpl::InstitutionManagement::UserInstitutions
 
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
