@@ -18,9 +18,15 @@
   <div class="span7">
 
     <div id="institution_location">
-      <%= @document[:subject_geo_state_tsim].first %> &nbsp; &gt; &nbsp;
-      <%= @document[:subject_geo_county_tsim].first %> County &nbsp; &gt; &nbsp;
-      <%= @document[:subject_geo_city_tsim].first %>
+      <% if @document[:subject_geo_state_tsim] %>
+          <%= @document[:subject_geo_state_tsim].first %>
+          <% if @document[:subject_geo_county_tsim] %>
+              &nbsp; &gt; &nbsp; <%= @document[:subject_geo_county_tsim].first %> County
+              <% if @document[:subject_geo_city_tsim] %>
+                  &nbsp; &gt; &nbsp; <%= @document[:subject_geo_city_tsim].first %>
+              <% end %>
+          <% end %>
+      <% end %>
     </div>
 
     <div id="institution_abstract">
@@ -31,10 +37,12 @@
           <% end %>
       <% end %>
 
-      <%= link_to 'Visit institution web site',
-                  @document[:institution_url_ss],
-                  :class => 'institution_site_link',
-                  :target => '_blank' %>
+      <% if @document[:institution_url_ss] %>
+          <%= link_to 'Visit institution web site',
+                      @document[:institution_url_ss],
+                      :class => 'institution_site_link',
+                      :target => '_blank' %>
+      <% end %>
 
     </div>
 
@@ -45,12 +53,14 @@
     <div id="inst_collex" class="well">
       <%= render :partial => 'search_form_institution',
                  :locals => {:document => @document} %>
-      <h4>Digital Collections</h4>
-      <ul id="inst_collex_list">
-        <% @collex_documents.each do |coll| %>
-            <li><%= link_to(coll[blacklight_config.index.show_link.to_sym], '/collections/' + coll[:id]) %></li>
-        <% end %>
-      </ul>
+      <% if @collex_documents %>
+          <h4>Digital Collections</h4>
+          <ul id="inst_collex_list">
+            <% @collex_documents.each do |coll| %>
+                <li><%= link_to(coll[blacklight_config.index.show_link.to_sym], '/collections/' + coll[:id]) %></li>
+            <% end %>
+          </ul>
+      <% end %>
     </div>
 
   </div>

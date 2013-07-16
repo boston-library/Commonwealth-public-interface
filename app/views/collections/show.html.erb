@@ -28,6 +28,10 @@
                                     :scale => 300,
                                     :alt => @collection_title,
                                     :class => 'collection_img_show'}) %>
+            <% else %>
+              <%= image_tag('collection_index.png',
+                            :alt => @collection_title,
+                            :class => 'collection_img_show') %>
             <% end %>
 
             <div id="collection_search_tools" class="well well-small">

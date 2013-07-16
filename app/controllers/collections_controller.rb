@@ -43,7 +43,7 @@ class CollectionsController < CatalogController
     # get an image for the collection
     if @document[:has_image_ssim]
       @collection_image_pid = @document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,'')
-    else
+    elsif @document[:has_collection_member_ssim]
       @collection_image_pid = collection_image(@document)
     end
 
