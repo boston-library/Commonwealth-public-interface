@@ -45,7 +45,7 @@
     <div id="inst_collex" class="well">
       <%= render :partial => 'search_form_institution',
                  :locals => {:document => @document} %>
-      <h4>Collections</h4>
+      <h4>Digital Collections</h4>
       <ul id="inst_collex_list">
         <% @collex_documents.each do |coll| %>
             <li><%= link_to(coll[blacklight_config.index.show_link.to_sym], '/collections/' + coll[:id]) %></li>
