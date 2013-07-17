@@ -25,9 +25,9 @@
 //       due to BL dependency. Will create local file instead. Relink once gem updated.
 //= require bootstrap-carousel
 
+//= require blacklight_google_analytics/blacklight_google_analytics
 
 // WARNING: require tree has been disabled to avoid djatoka_viewer JS files being automatically included
 //          since the viewer uses mooTools/Prototype, which causes namespace conflicts with jQuery
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive
 // require_tree .
-

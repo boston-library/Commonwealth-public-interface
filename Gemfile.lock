@@ -84,6 +84,7 @@ GEM
       blacklight (~> 4.0)
       parslet
       rails (~> 3.0)
+    blacklight_google_analytics (0.0.1.pre3)
     blankslate (2.1.2.4)
     block_helpers (0.3.3)
       activesupport (>= 2.0)
@@ -360,6 +361,7 @@ PLATFORMS
 DEPENDENCIES
   blacklight
   blacklight_advanced_search
+  blacklight_google_analytics
   bootstrap-sass (~> 2.3.2)
   bootstrap_forms
   bplmodels!
