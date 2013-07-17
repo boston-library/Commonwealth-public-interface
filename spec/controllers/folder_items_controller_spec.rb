@@ -28,7 +28,7 @@ describe FolderItemsController do
           post :create, :id => "bpl-test:ff365549t", :folder_id => @folder.id
           response.should be_redirect
           @test_user.existing_folder_item_for("bpl-test:ff365549t").should_not be_false
-        end.should change(FolderItem, :count).by(1)
+        end.should change(Bpluser::FolderItem, :count).by(1)
       end
 
       it "should create a new folder item using ajax" do
@@ -36,7 +36,7 @@ describe FolderItemsController do
           xhr :post, :create, :id => "bpl-test:ff365527s", :folder_id => @folder.id
           response.should be_success
           @test_user.existing_folder_item_for("bpl-test:ff365527s").should_not be_false
-        end.should change(FolderItem, :count).by(1)
+        end.should change(Bpluser::FolderItem, :count).by(1)
       end
 
     end
@@ -56,14 +56,14 @@ describe FolderItemsController do
           @request.env['HTTP_REFERER'] = '/folder_items'
           delete :destroy, :id => "bpl-test:ff365531c"
           response.should be_redirect
-        end.should change(FolderItem, :count).by(-1)
+        end.should change(Bpluser::FolderItem, :count).by(-1)
       end
 
       it "should delete a folder item using ajax" do
         lambda do
           xhr :delete, :destroy, :id => "bpl-test:ff365531c"
           response.should be_success
-        end.should change(FolderItem, :count).by(-1)
+        end.should change(Bpluser::FolderItem, :count).by(-1)
       end
 
     end

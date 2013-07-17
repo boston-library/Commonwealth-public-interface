@@ -52,33 +52,34 @@ gem 'jquery-ui-rails'
 # gem 'debugger'
 
 #various utilities
-gem "execjs"
+gem 'execjs'
 gem 'libv8', '~> 3.11.8'
-gem "therubyracer"
-gem "tzinfo"
-gem "typhoeus"
+gem 'therubyracer'
+gem 'tzinfo'
+gem 'typhoeus'
+gem 'paperclip'
 
 # hydra-head
-gem "blacklight"
-gem "blacklight_advanced_search"
-gem "hydra-head"
+gem 'blacklight'
+gem 'blacklight_advanced_search'
+gem 'hydra-head'
 
 group :development, :test do
-  gem "rspec"
-  gem "rspec-rails"
-  gem "capybara"
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
-gem "unicode", :platforms => [:mri_18, :mri_19]
-gem "devise-guests", "~> 0.3"
-gem "devise"
-gem "bootstrap-sass", "~> 2.3.2"
-gem "omniauth"
-gem "omniauth-ldap"
-gem "omniauth-facebook"
-gem "omniauth-polaris", :git => "https://github.com/boston-library/omniauth-polaris.git"
-gem "omniauth-password"
-gem "bootstrap_forms"
-gem "hydra-role-management"
-# gem "bpl-institution-management", :git => "https://github.com/boston-library/bpl-institution-management.git"
+gem 'unicode', :platforms => [:mri_18, :mri_19]
+gem 'devise-guests', '~> 0.3'
+gem 'devise'
+gem 'bootstrap-sass', '~> 2.3.2'
+gem 'omniauth'
+gem 'omniauth-ldap'
+gem 'omniauth-facebook'
+gem 'omniauth-polaris', :git => 'https://github.com/boston-library/omniauth-polaris.git'
+gem 'omniauth-password'
+gem 'bootstrap_forms'
+gem 'hydra-role-management'
+# gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
 gem 'blacklight_google_analytics'

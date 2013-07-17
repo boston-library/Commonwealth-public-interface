@@ -42,7 +42,7 @@ class FolderItemsController < CatalogController
 
     # success = (!folder_item) || FolderItem.find(folder_item).destroy
 
-    FolderItem.find(folder_item).destroy
+    Bpluser::FolderItem.find(folder_item).destroy
 
     respond_to do |format|
       format.html { redirect_to :back }

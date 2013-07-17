@@ -90,7 +90,7 @@ describe FoldersController do
       it "should delete the folder" do
         lambda do
           delete :destroy, :id => @test_user.folders.first.id
-        end.should change(Folder, :count).by(-1)
+        end.should change(Bpluser::Folder, :count).by(-1)
       end
 
       it "should redirect to the folders page" do
@@ -213,7 +213,7 @@ describe FoldersController do
         it "should not create a folder" do
           lambda do
             post :create, :folder => {:title => ""}
-          end.should_not change(Folder, :count)
+          end.should_not change(Bpluser::Folder, :count)
         end
 
         it "should re-render the create page" do
@@ -228,7 +228,7 @@ describe FoldersController do
         it "should create a folder" do
           lambda do
             post :create, :folder => {:title => "Whatever, man"}
-          end.should change(Folder, :count).by(1)
+          end.should change(Bpluser::Folder, :count).by(1)
         end
 
         it "should redirect to the folders page" do
