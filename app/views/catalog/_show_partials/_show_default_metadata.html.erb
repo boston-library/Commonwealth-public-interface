@@ -139,11 +139,11 @@
         </dd>
     <% end %>
     <%# lang field %>
-    <% if document[:lang_val_uri_ssim] %>
+    <% if document[:lang_term_ssim] %>
         <dt>Language:</dt>
         <dd>
-          <% document[:lang_val_uri_ssim].each do |lang| %>
-            <%= lang.gsub(/http:\/\/id.loc.gov\/vocabulary\/iso639-2\//,'') %><br/>
+          <% document[:lang_term_ssim].each do |lang| %>
+            <%= lang %><br/>
           <% end %>
         </dd>
     <% end %>
