@@ -80,27 +80,3 @@ div#img_viewer_modal {
   word-break: normal;
   font-size: 12px;
 }
-
-/* institutions */
-
-div.blacklight-institution {
-
-  h1 {
-    line-height: 25px;
-    font-size: 31.5px;
-  }
-
-  #institution_location {
-    padding-bottom: .5em;
-  }
-
-  #institution_search_form {
-    padding: .5em 0 3em 1.2em;
-
-    .submit-search-text {
-      display: none;
-    }
-
-  }
-
-}
