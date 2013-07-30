@@ -13,6 +13,12 @@
 
       <div id="doc_<%= @document.id.to_s.parameterize %>">
 
+        <div id ="item_breadcrumb">
+          <%= link_to(@document[:institution_name_ssim].first,
+                      institutions_path + '/' + @document[:institution_pid_ssi]) + ' > ' + link_to(@document[:collection_name_ssim].first,
+          collections_path + '/' + @document[:collection_pid_ssm].first) %>
+        </div>
+
         <%= render_document_heading(:h1).html_safe %>
 
         <div class="document">

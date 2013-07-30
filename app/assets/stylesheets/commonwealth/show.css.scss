@@ -15,6 +15,21 @@ body.blacklight-catalog-show .navbar-fixed-top, body.blacklight-collections-show
   z-index: 100;
 }
 
+#item_breadcrumb {
+  font-size: 13px;
+  color: $light_gray;
+
+  a {
+    color: $dark_gray;
+  }
+
+  a:hover {
+    color:$darker_gray;
+    text-decoration: none;
+  }
+
+}
+
 #img_show_container {
   width:100%;
   text-align: center;
