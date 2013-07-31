@@ -18,13 +18,14 @@ body.blacklight-catalog-show .navbar-fixed-top, body.blacklight-collections-show
 #item_breadcrumb {
   font-size: 13px;
   color: $light_gray;
+  padding-bottom: .7em;
 
   a {
     color: $dark_gray;
   }
 
   a:hover {
-    color:$darker_gray;
+    color:$bl_link;
     text-decoration: none;
   }
 

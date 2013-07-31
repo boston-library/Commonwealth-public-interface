@@ -3,7 +3,7 @@
                :method => :get,
                :class => 'search-query-form form-inline institution-search' do %>
       <%= search_as_hidden_fields(:omit_keys => [:q, :search_field, :qt, :page],
-                                  :f => {'physical_location_ssim' => [document[blacklight_config.index.show_link.to_sym]]}).html_safe %>
+                                  :f => {'institution_name_ssim' => [document[blacklight_config.index.show_link.to_sym]]}).html_safe %>
 
       <div class="input-append pull-left">
         <label for="q" class="hide-text"><%= t('blacklight.search.form.institution') %></label>
