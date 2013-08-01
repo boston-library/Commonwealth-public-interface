@@ -13,6 +13,16 @@ h4.collection-provenance {
   color: $dark_gray;
   font-weight: normal;
   line-height: 1;
+
+  a {
+    color: $darker_gray;
+  }
+
+  a:hover {
+    color:$bl_link;
+    text-decoration: none;
+  }
+
 }
 
 img.collection_img_show {
