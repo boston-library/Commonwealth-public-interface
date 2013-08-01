@@ -15,6 +15,10 @@ body.blacklight-catalog-show .navbar-fixed-top, body.blacklight-collections-show
   z-index: 100;
 }
 
+div.show-document #previousNextDocument.well {
+  margin-bottom: 0;
+}
+
 #item_breadcrumb {
   font-size: 13px;
   color: $light_gray;
@@ -27,6 +31,12 @@ body.blacklight-catalog-show .navbar-fixed-top, body.blacklight-collections-show
   a:hover {
     color:$bl_link;
     text-decoration: none;
+  }
+
+  .icon-arrow-right {
+    -moz-opacity: 0.17;
+    opacity: 0.17;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=17)";
   }
 
 }

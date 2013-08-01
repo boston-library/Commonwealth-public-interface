@@ -34,6 +34,18 @@ module ApplicationHelper
     return Bplmodels::Image.find(document[:id]).image_files.first.pid
   end
 
+  def render_item_breadcrumb(document)
+    if document[:institution_pid_ssi] && document[:collection_pid_ssm]
+      inst_link = link_to(document[:institution_name_ssim].first,
+                          institutions_path + '/' + document[:institution_pid_ssi])
+      connector = content_tag(:i, '',
+                              :class => 'icon-arrow-right item-breadcrumb-separator')
+      coll_link = link_to(document[:collection_name_ssim].first,
+                          collections_path + '/' + document[:collection_pid_ssm].first)
+      inst_link + connector + coll_link
+    end
+  end
+
   def datastream_disseminator_url pid, datastream_id
     ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
   end

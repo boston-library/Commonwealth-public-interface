@@ -88,10 +88,10 @@
     <% end %>
     <%# institution field %>
     <% if document[:physical_location_ssim] %>
-    <dt>Institution:</dt>
+    <dt>Location:</dt>
     <dd>
-      <% document[:physical_location_ssim].each do |institution| %>
-          <%= link_to_facet(institution, 'physical_location_ssim') %><br />
+      <% document[:physical_location_ssim].each do |location| %>
+          <%= link_to_facet(location, 'physical_location_ssim') %><br />
       <% end %>
     </dd>
     <% end %>
