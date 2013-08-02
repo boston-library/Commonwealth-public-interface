@@ -14,7 +14,7 @@
       <h4 class="collection-provenance">
         <% if @document[:institution_pid_ssi] %>
             <%= link_to(@document[:institution_name_ssim].first,
-                        institutions_path + '/' + document[:institution_pid_ssi]) %>
+                        institutions_path + '/' + @document[:institution_pid_ssi]) %>
         <% elsif @document[:physical_location_ssim] %>
             <%= @document[:physical_location_ssim].first %>
         <% end %>
