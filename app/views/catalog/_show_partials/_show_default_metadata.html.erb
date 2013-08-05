@@ -78,14 +78,16 @@
         </dd>
     <% end %>
     <%# collex field %>
-    <% if document[blacklight_config.collection_field.to_sym] %>
-    <dt>Collection:</dt>
+    <%# if document[blacklight_config.collection_field.to_sym] %>
+    <!--
+    <dt>Digital Collection:</dt>
     <dd>
-      <% document[blacklight_config.collection_field.to_sym].each do |collection| %>
-          <%= link_to_facet(collection, 'collection_name_ssim') %><br />
-      <% end %>
+      <%# document[blacklight_config.collection_field.to_sym].each do |collection| %>
+          <%# link_to_facet(collection, 'collection_name_ssim') %><br />
+      <%# end %>
     </dd>
-    <% end %>
+    -->
+    <%# end %>
     <%# physical location field %>
     <% if document[:physical_location_ssim] %>
     <dt>Location:</dt>
@@ -181,25 +183,25 @@
           <% end %>
         </dd>
     <% end %>
-    <%# related item host field -- DC legacy data %>
-    <% if document[:related_item_host_tsim] %>
+    <%# related item host field (physical collection) %>
+    <% if document[:related_item_host_ssim] %>
         <dt>Related Collections:</dt>
         <dd>
-            <% document[:related_item_host_tsim].each do |related_host| %>
-                <%= related_host %><br />
+            <% document[:related_item_host_ssim].each do |related_host| %>
+                <%= link_to_facet(related_host, 'related_item_host_ssim') %><br />
             <% end %>
         </dd>
     <% end %>
-    <%# related item series field -- DC legacy data %>
-    <% if document[:related_item_series_tsim] %>
+    <%# related item series field (series) %>
+    <% if document[:related_item_series_ssim] %>
         <dt>Related Series:</dt>
         <dd>
-            <% document[:related_item_series_tsim].each do |related_series| %>
-                <%= related_series %><br />
+            <% document[:related_item_series_ssim].each do |related_series| %>
+                <%= link_to_facet(related_series, 'related_item_series_ssim') %><br />
             <% end %>
         </dd>
     <% end %>
-    <%# related item reference field -- DC legacy data %>
+    <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
         <dt>Referenced By:</dt>
         <dd>
@@ -213,7 +215,7 @@
       <dt>Permalink:</dt>
       <dd>
         <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
-        <%= document[:identifier_uri_ss] %>
+        <%= link_to(document[:identifier_uri_ss],document[:identifier_uri_ss]) %>
       </dd>
     <% end %>
     <%# rights field %>
