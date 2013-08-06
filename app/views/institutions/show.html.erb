@@ -24,6 +24,9 @@
               &nbsp; &gt; &nbsp; <%= @document[:subject_geo_county_tsim].first %> County
               <% if @document[:subject_geo_city_tsim] %>
                   &nbsp; &gt; &nbsp; <%= @document[:subject_geo_city_tsim].first %>
+                  <% if @document[:subject_geo_citysection_tsim] %>
+                      &nbsp; &gt; &nbsp; <%= @document[:subject_geo_citysection_tsim].first %>
+                  <% end %>
               <% end %>
           <% end %>
       <% end %>
