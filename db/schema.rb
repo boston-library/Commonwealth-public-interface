@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628144126) do
+ActiveRecord::Schema.define(:version => 20130807204536) do
 
   create_table "batch_uploads", :force => true do |t|
     t.string   "upload_file_name"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(:version => 20130628144126) do
     t.string   "title"
     t.integer  "user_id",     :null => false
     t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "carousel_slides", :force => true do |t|
+    t.integer  "sequence"
+    t.string   "object_pid"
+    t.string   "image_pid"
+    t.integer  "scale"
+    t.string   "region"
+    t.string   "title"
+    t.string   "institution"
+    t.string   "context"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
