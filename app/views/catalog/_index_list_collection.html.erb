@@ -21,7 +21,7 @@
 
       <div class="collection-location">
         <%# WTF! can't call .first on below unless "if" conditional is used %>
-        <%= document[:physical_location_ssim].first if document[:physical_location_ssim] %>
+        <%= document[:institution_name_ssim].first if document[:institution_name_ssim] %>
       </div>
 
       <div class="item_index_details">
