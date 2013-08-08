@@ -6,12 +6,11 @@
 <% end %>
 
 <div class="media">
-  <% if document[:has_image_ssim] %>
-    <% thumb = image_tag(datastream_disseminator_url(document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,''), 'thumbnail300'),
+  <% if document[:exemplary_image_ss] %>
+    <% thumb = image_tag(datastream_disseminator_url(document[:exemplary_image_ss], 'thumbnail300'),
                         :alt => document[blacklight_config.index.show_link.to_sym],
                         :class => 'index_thumb media-object') %>
-    <% # bad hack to link to catalog#show rather than image#show %>
-    <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left', :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+    <%= link_to thumb, '/search/' + document[:id], :class => 'pull-left',:'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
   <% end %>
   <div class="media-body">
 
@@ -34,18 +33,16 @@
         <% if document[blacklight_config.collection_field.to_sym] %>
             <dt>Collection:</dt>
             <dd>
-              <% document[blacklight_config.collection_field.to_sym].each do |collection| %>
-                  <%= link_to_facet(collection, 'collection_name_ssim') %><br />
-              <% end %>
+              <%= link_to(document[blacklight_config.collection_field.to_sym].first,
+                          collection_path(:id => document[:collection_pid_ssm].first)) %><br />
             </dd>
         <% end %>
         <%# institution field %>
-        <% if document[:physical_location_ssim] %>
+        <% if document[:institution_name_ssim] %>
             <dt>Institution:</dt>
             <dd>
-              <% document[:physical_location_ssim].each do |institution| %>
-                  <%= link_to_facet(institution, 'physical_location_ssim') %><br />
-              <% end %>
+              <%= link_to(document[:institution_name_ssim].first,
+                          institution_path(:id => document[:institution_pid_ssi])) %><br />
             </dd>
         <% end %>
         <%# date field  %>
