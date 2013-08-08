@@ -22,7 +22,7 @@
                                              :scale => slide.scale,
                                              :alt => slide.title,
                                              :region => slide.region}) %>
-          <%= link_to slide_img, catalog_path(:id => slide.object_pid) %>
+          <%= link_to slide_img, catalog_show_path(:id => slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
             <p><small><em><%= slide.institution %></em></small></p>
