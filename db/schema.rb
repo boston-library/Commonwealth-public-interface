@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20130807204536) do
     t.string   "object_pid"
     t.string   "image_pid"
     t.integer  "scale"
-    t.string   "region"
+    t.text     "region"
     t.string   "title"
     t.string   "institution"
     t.string   "context"

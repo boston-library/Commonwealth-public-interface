@@ -1,59 +1,35 @@
 <div id="slideshow" class="carousel slide carousel-fade">
   <ol class="carousel-indicators">
-    <li class="active"></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <% 0.upto @carousel_slides.length-1 do |index| %>
+        <% if index == 0 %>
+            <li class="active"></li>
+        <% else %>
+            <li></li>
+        <% end %>
+    <% end %>
   </ol>
   <div class="carousel-inner">
-    <div class="item active">
-      <% slide0_img =  djatoka_image_tag(datastream_disseminator_url('commonwealth:5425kn074','accessMaster'),
-                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                          :scale => 300,
-                                          :alt => "Women's Suffrage Hikers c.1912-1914",
-                                          :region => [250,90,295,570]}) %>
-      <%= link_to slide0_img, '/search/' + 'commonwealth:5425kn06v' %>
-      <div class="carousel-caption">
-        <h5>Women's Suffrage Hikers c.1912-1914</h5>
-        <p><small><em>Framingham State University</em></small></p>
-      </div>
-    </div>
-    <div class="item">
-      <% slide1_img =  djatoka_image_tag(datastream_disseminator_url('commonwealth:sf2687839','accessMaster'),
-                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                          :scale => 500,
-                                          :alt => 'Slide, Kelly, Slide',
-                                          :region => [1570,800,295,570]}) %>
-      <%= link_to slide1_img, '/search/' + 'commonwealth:sf2687821' %>
-      <div class="carousel-caption">
-        <h5>Slide, Kelly, Slide</h5>
-        <p><small><em>Boston Public Library</em></small></p>
-      </div>
-    </div>
-    <div class="item">
-      <% slide2_img =  djatoka_image_tag(datastream_disseminator_url('commonwealth:5425kc618','accessMaster'),
-                                         {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                          :scale => 500,
-                                          :alt => 'Gardner House',
-                                          :region => [650,200,295,570]}) %>
-      <%= link_to slide2_img, '/search/' + 'commonwealth:5425kc600' %>
-      <div class="carousel-caption">
-        <h5>Gardner House</h5>
-        <p><small><em>Public Library of Brookline</em></small></p>
-      </div>
-    </div>
-    <div class="item">
-      <% slide3_img = djatoka_image_tag(datastream_disseminator_url('commonwealth:5425kb434','accessMaster'),
-                            {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                             :scale => 700,
-                             :alt => 'Football team.',
-                             :region => [380,260,295,570]}) %>
-      <%= link_to slide3_img, '/search/' + 'commonwealth:5425kb42v' %>
-      <div class="carousel-caption">
-        <h5>Football team.</h5>
-        <p><small><em>Beverly High School</em></small></p>
-      </div>
-    </div>
+
+    <% @carousel_slides.each do |slide| %>
+        <% if @carousel_slides.index(slide) == 0 %>
+            <% status = "item active" %>
+        <% else %>
+            <% status = "item" %>
+        <% end %>
+        <div class="<%= status %>">
+          <% slide_img =  djatoka_image_tag(datastream_disseminator_url(slide.image_pid,'accessMaster'),
+                                            {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                                             :scale => slide.scale,
+                                             :alt => slide.title,
+                                             :region => slide.region}) %>
+          <%= link_to slide_img, catalog_path(:id => slide.object_pid) %>
+          <div class="carousel-caption">
+            <h5><%= slide.title %></h5>
+            <p><small><em><%= slide.institution %></em></small></p>
+          </div>
+        </div>
+    <% end %>
+
   </div>
   <a class="left carousel-control" href="#slideshow" data-slide="prev">&lsaquo;</a>
   <a class="right carousel-control" href="#slideshow" data-slide="next">&rsaquo;</a>
