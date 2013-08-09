@@ -10,23 +10,26 @@
     <% thumb = image_tag(datastream_disseminator_url(document[:exemplary_image_ss], 'thumbnail300'),
                            :alt => document[blacklight_config.index.show_link.to_sym],
                            :class => 'index_thumb') %>
-    <% # bad hack to link to catalog#show rather than image#show %>
-    <%= link_to thumb, '/search/' + document[:id], :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+    <%= link_to thumb,
+                catalog_show_path(:id => document[:id]),
+                :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
   <% end %>
 </div>
 <div class="item_index_title">
   <%= link_to_document(document, :label => blacklight_config.index.show_link.to_sym, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
 </div>
 
+<!--
 <div class="item_index_details">
   <dl class="index_defList dl-horizontal">
     <dt>Format: </dt>
     <dd>
-      <%= render_document_show_field_value(:document => document, :field => 'mods_genre_basic_tsim') %>
+      <%# render_document_show_field_value(:document => document, :field => 'mods_genre_basic_tsim') %>
     </dd>
     <dt>Collection: </dt>
     <dd>
-      <%= render_document_show_field_value(:document => document, :field => blacklight_config.collection_field) %>
+      <%# render_document_show_field_value(:document => document, :field => blacklight_config.collection_field) %>
     </dd>
   </dl>
 </div>
+-->
