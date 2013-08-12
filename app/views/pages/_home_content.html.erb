@@ -4,7 +4,11 @@
   <div id="content_home_banner" class="row">
 
     <div id="carousel_wrapper" class="span6">
-      <%= render :partial => 'pages/carousel' %>
+      <% if params[:controller] == 'catalog' %>
+        <%= render :partial => 'pages/carousel', :locals => {:carousel_slides => carousel_slides} %>
+      <% else %>
+          <%= render :partial => 'pages/carousel', :locals => {:carousel_slides => @carousel_slides} %>
+      <% end %>
     </div>
 
     <div id="hero_search" class="span6">

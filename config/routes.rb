@@ -27,7 +27,6 @@ CommonwealthPublicInterface::Application.routes.draw do
   match 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
   match 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   match 'search', :to => 'catalog#index', :as => 'catalog_index'
-  match 'search/:id', :to => 'catalog#show', :as => 'catalog_show'
   match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
   match 'search/facet/subject_geographic_ssim', :to => 'catalog#facet', :as => 'locations_facet'
 

@@ -1,6 +1,6 @@
 <div id="slideshow" class="carousel slide carousel-fade">
   <ol class="carousel-indicators">
-    <% 0.upto @carousel_slides.length-1 do |index| %>
+    <% 0.upto carousel_slides.length-1 do |index| %>
         <% if index == 0 %>
             <li class="active"></li>
         <% else %>
@@ -10,8 +10,8 @@
   </ol>
   <div class="carousel-inner">
 
-    <% @carousel_slides.each do |slide| %>
-        <% if @carousel_slides.index(slide) == 0 %>
+    <% carousel_slides.each do |slide| %>
+        <% if carousel_slides.index(slide) == 0 %>
             <% status = "item active" %>
         <% else %>
             <% status = "item" %>
@@ -22,7 +22,7 @@
                                              :scale => slide.scale,
                                              :alt => slide.title,
                                              :region => slide.region}) %>
-          <%= link_to slide_img, catalog_show_path(:id => slide.object_pid) %>
+          <%= link_to slide_img, solr_document_path(:id => slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
             <p><small><em><%= slide.institution %></em></small></p>
