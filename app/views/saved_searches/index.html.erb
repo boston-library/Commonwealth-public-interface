@@ -1,0 +1,41 @@
+<div class="span9" id="searches_content">
+<h2><%= t('blacklight.saved_searches.title') %></h2>
+
+<%- if current_or_guest_user.blank? -%>
+
+    <h4><%= t('blacklight.saved_searches.need_login') %></h4>
+
+<%- elsif @searches.blank? -%>
+
+    <h4><%= t('blacklight.saved_searches.no_searches') %></h4>
+
+    <p>To save a search, click the "Save Search" link on the search results page.</p>
+
+<%- else -%>
+    <h3>
+      <%= t('blacklight.saved_searches.list_title') %>
+      <small>
+        [<%= link_to t('blacklight.saved_searches.clear.action_title'),
+                    clear_saved_searches_path,
+                    :method => :delete,
+                    :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') } %>]
+      </small>
+    </h3>
+    <table class="table">
+      <%- @searches.each do |search| -%>
+          <tr>
+            <td><%= link_to_previous_search(search.query_params) %></td>
+            <td><%# button_to content_tag(:i, '', :class => 'icon-remove'),
+                              forget_search_path(search.id) %>
+                <%= link_to(content_tag(:i, '',:class => 'icon-remove'),
+                            forget_search_path(search.id),
+                            :method => 'post',
+                            :title => t('blacklight.saved_searches.delete'))
+                %>
+            </td>
+          </tr>
+      <%- end -%>
+    </table>
+
+<%- end -%>
+</div>

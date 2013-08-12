@@ -166,7 +166,14 @@ en:
           email: 'eben@dlry.net'
 
     saved_searches:
+          clear:
+                  action_title: 'clear all'
+          delete: 'Delete this search.'
+          no_searches: "You don't have any saved searches at the moment."
+          remove:
+                  success: 'Search removed.'
           save: 'Save Search'
+
 
     search:
           change_views:
