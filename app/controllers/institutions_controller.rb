@@ -24,7 +24,6 @@ class InstitutionsController < CatalogController
     (@response, @document_list) = get_search_results
     params[:view] = 'list'
     params[:sort] = 'title_info_primary_ssort asc'
-    params[:q] = 'nofocus' # dummy value to prevent autofocus of header search field
 
     respond_to do |format|
       format.html
