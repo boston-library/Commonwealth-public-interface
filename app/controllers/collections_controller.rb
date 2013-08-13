@@ -41,8 +41,8 @@ class CollectionsController < CatalogController
     (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
 
     # get an image for the collection
-    if @document[:has_image_ssim]
-      @collection_image_pid = @document[:has_image_ssim].first.to_s.gsub(/info:fedora\//,'')
+    if @document[:exemplary_image_ss]
+      @collection_image_pid = @document[:exemplary_image_ss]
     end
 
     respond_to do |format|
