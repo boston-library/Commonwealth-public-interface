@@ -189,6 +189,8 @@ en:
             no_items_found: 'No items found.'
           title: 'Search Results - %{application_name}'
 
+    search_history:
+          no_history: 'You have no search history for this session yet.'
 
     tools:
           remove: 'Remove'

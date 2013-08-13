@@ -13,3 +13,20 @@
   }
 
 }
+
+#search_history_content {
+
+  .search_history .filterName, .search_history .filterSeparator {
+    color: inherit;
+  }
+
+  td.query {
+    width: 70%;
+  }
+
+  form {
+    margin: 0;
+  }
+
+}
+
