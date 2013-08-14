@@ -6,7 +6,7 @@ en:
 
   blacklight:
 
-    application_name: 'Digital Commonwealth'
+    application_name: 'Digital Commonwealth (beta)'
 
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
