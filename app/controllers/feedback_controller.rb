@@ -6,6 +6,7 @@ class FeedbackController < ApplicationController
 
   # show the feedback form
   def show
+    @nav_li_active = 'contact'
     @errors=[]
     if request.post?
       if validate

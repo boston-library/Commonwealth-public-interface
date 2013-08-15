@@ -199,6 +199,16 @@ class CatalogController < ApplicationController
     solr_parameters[:fq] << '-active_fedora_model_ssi:"Bplmodels::ImageFile"'
   end
 
+  # displays values and pagination links locations facet field
+  def locations_facet
+    @nav_li_active = 'locations'
+    params[:id] = 'subject_geographic_ssim'
+    @pagination = get_facet_pagination(params[:id], params)
+
+    render :facet
+
+  end
+
   # create an index list of collections
   #def collections
   #  (@response, @document_list) = get_search_results({:f => {'active_fedora_model_ssi'=> 'Bplmodels::Collection'}})

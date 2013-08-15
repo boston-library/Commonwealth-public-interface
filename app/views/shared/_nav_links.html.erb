@@ -1,16 +1,20 @@
-<li>
-  <%= link_to 'Collections', collections_path %>
-</li>
-<li>
-  <%= link_to 'Institutions', institutions_path %>
-</li>
-<li>
-  <%= link_to 'Locations', locations_facet_path %>
-</li>
-<li>
-  <%= link_to t('blacklight.pages.about.title'), about_path %>
-</li>
-<li>
-  <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
-</li>
+<% @nav_links = {
+        :collections => {:nav_link_title => 'Collections',
+                         :nav_link_path => collections_path},
+        :institutions => {:nav_link_title => 'Institutions',
+                          :nav_link_path => institutions_path},
+        :locations => {:nav_link_title => 'Locations',
+                       :nav_link_path => locations_facet_path},
+        :about => {:nav_link_title => t('blacklight.pages.about.title'),
+                   :nav_link_path => about_path},
+        :contact => {:nav_link_title => t('blacklight.pages.contact.title'),
+                     :nav_link_path => feedback_path}
+        } %>
+
+<% @nav_links.each do |k,v| %>
+    <% nav_li_class = @nav_li_active == k.to_s ? 'active' : '' %>
+    <%= content_tag(:li,
+                    link_to(v[:nav_link_title], v[:nav_link_path]),
+                    :class => nav_li_class) %>
+<% end %>
 

@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def about
+    @nav_li_active = 'about'
   end
 
 end
