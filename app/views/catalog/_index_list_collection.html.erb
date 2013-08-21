@@ -27,7 +27,7 @@
 
       <div class="item_index_details">
         <% if document[:abstract_tsim] %>
-            <% abstract_index = document[:abstract_tsim].first %>
+            <% abstract_index = strip_tags(document[:abstract_tsim].first.gsub(/<\/p><p>/,' ')).html_safe %>
             <%= truncate(abstract_index,
                         :length => 300,
                         :separator => ' ',
