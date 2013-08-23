@@ -121,7 +121,10 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise. 
     
-    config.add_search_field 'all_fields', :label => 'All Fields'
+    config.add_search_field('all_fields') do |field|
+      field.label = 'All Fields'
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+    end
     
 
     # Now we see how to over-ride Solr request handler defaults, in this
@@ -130,7 +133,7 @@ class CatalogController < ApplicationController
     
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params. 
-      #field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
@@ -143,7 +146,7 @@ class CatalogController < ApplicationController
     end
     
     config.add_search_field('author') do |field|
-      #field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
       field.solr_local_parameters = { 
         :qf => '$author_qf',
         :pf => '$author_pf'
@@ -154,7 +157,7 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
     config.add_search_field('subject') do |field|
-      #field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
       field.qt = 'search'
       field.solr_local_parameters = { 
         :qf => '$subject_qf',
