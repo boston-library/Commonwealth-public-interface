@@ -50,6 +50,8 @@ en:
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
 
+    did_you_mean: 'Search for %{options} instead?'
+
     email:
           form:
             title: 'Email'
