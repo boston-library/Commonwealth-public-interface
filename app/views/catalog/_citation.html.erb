@@ -6,18 +6,21 @@
       <p>
         <%# TODO: If there is a preferred citation note, render it here %>
 
-        <% if document[:name_personal_tsim] %>
+        <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
+            <% names = [] %>
+            <% names = names + document[:name_personal_tsim] if document[:name_personal_tsim] %>
+            <% names = names + document[:name_corporate_tsim] if document[:name_corporate_tsim] %>
             <%# if multiple creators, put ', ' between each, but ', and ' before last one %>
-            <% if document[:name_personal_tsim].length > 1 %>
-                <% 0.upto document[:name_personal_tsim].length-1 do |index| %>
-                    <% if index == document[:name_personal_tsim].length-1 %>
-                        and&nbsp;<%= document[:name_personal_tsim][index] %>.&nbsp;
+            <% if names.length > 1 %>
+                <% 0.upto names.length-1 do |index| %>
+                    <% if index == names.length-1 %>
+                        and&nbsp;<%= names[index] %>.&nbsp;
                     <% else %>
-                        <%= document[:name_personal_tsim][index] %>,&nbsp;
+                        <%= names[index] %>,&nbsp;
                     <% end %>
                 <% end %>
             <% else %>
-                <%= document[:name_personal_tsim].first %>.&nbsp;
+                <%= names.first %>.&nbsp;
             <% end %>
         <% end %>
         <% if document[blacklight_config.index.show_link.to_sym] %>

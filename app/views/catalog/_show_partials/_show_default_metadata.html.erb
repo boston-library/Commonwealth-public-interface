@@ -20,26 +20,36 @@
           <% end %>
         </dd>
     <% end %>
-    <%# creator field - need to figure out handling of multiple creators/roles %>
+    <%# creator field - assumes equal # of roles and creator names %>
     <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
-        <dt>
-          <% if document[:name_personal_role_tsim]  || document[:name_corporate_role_tsim] %>
-              <% if document[:name_personal_role_tsim] %>
-                  <%= document[:name_personal_role_tsim].first.strip %>:
-              <% else %>
-                  <%= document[:name_corporate_role_tsim].first.strip %>:
-              <% end %>
-          <% else %>
-              Creator:
+      <% if document[:name_personal_tsim] %>
+        <% 0.upto document[:name_personal_tsim].length-1 do |index| %>
+            <dt>
+                <% if document[:name_personal_role_tsim][index] %>
+                    <%= document[:name_personal_role_tsim][index].strip %>:
+                <% else %>
+                    Creator:
+                <% end %>
+            </dt>
+            <dd>
+              <%= document[:name_personal_tsim][index] %>
+            </dd>
+        <% end %>
+      <% end %>
+      <% if document[:name_corporate_tsim] %>
+          <% 0.upto document[:name_corporate_tsim].length-1 do |index| %>
+              <dt>
+                <% if document[:name_corporate_role_tsim][index] %>
+                    <%= document[:name_corporate_role_tsim][index].strip %>:
+                <% else %>
+                    Creator:
+                <% end %>
+              </dt>
+              <dd>
+                <%= document[:name_corporate_tsim][index] %>
+              </dd>
           <% end %>
-        </dt>
-        <dd>
-          <% if document[:name_personal_tsim] %>
-              <%= document[:name_personal_tsim].first %>
-          <% else %>
-              <%= document[:name_corporate_tsim].first %>
-          <% end %>
-        </dd>
+      <% end %>
     <% end %>
     <%# publisher field %>
     <% if document[:publisher_tsim] %>
