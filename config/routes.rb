@@ -40,11 +40,10 @@ CommonwealthPublicInterface::Application.routes.draw do
   match 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
   resources :institutions, :only => [:index, :show]
+  match 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
 
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post
-
-  
 
   resources :folders
 

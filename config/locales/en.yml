@@ -149,9 +149,13 @@ en:
           zoom: 'Click to zoom in on this image.'
 
     institutions:
-          title: 'Institutions'
+          browse:
+            all: 'View all items'
+          facets:
+            title: 'Browse by:'
           index:
             page_title: 'Institutions - %{application_name}'
+          title: 'Institutions'
 
     metadata_display:
           fields:
@@ -183,8 +187,8 @@ en:
             action: 'View as'
             submit: 'Update'
           form:
-            collection: 'Search in this collection...'
-            institution: "Search this institution's collections..."
+            collection: 'Search this collection...'
+            institution: "Search this institution..."
           facets:
             home: 'Explore the Collections'
           pagination_info:

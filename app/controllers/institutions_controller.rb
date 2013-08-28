@@ -35,12 +35,31 @@ class InstitutionsController < CatalogController
     @nav_li_active = 'institutions'
     @show_response, @document = get_solr_response_for_doc_id
     @institution_title = @document[blacklight_config.index.show_link.to_sym]
+
+    # get the response for collection objects
     @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection','institution_pid_ssi'=> params[:id]}},{:sort=> 'title_info_primary_ssort asc'})
+
+    # add params[:f] for proper facet links
+    params[:f] = {blacklight_config.collection_field => [@collection_title]}
+
+    # get the response for the facets representing items in collection
+    (@response, @document_list) = get_search_results({:f => {'institution_pid_ssi' => params[:id]}})
 
     respond_to do |format|
       format.html
     end
 
+  end
+
+  # copied from Blacklight::Catalog
+  # displays values and pagination links for a single facet field
+  def facet
+    @pagination = get_facet_pagination(params[:id], params)
+
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
   end
 
 end

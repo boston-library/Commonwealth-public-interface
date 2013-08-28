@@ -9,53 +9,66 @@
 
     <div id="doc_<%= @document.id.to_s.parameterize %>">
 
-      <h2 class="institution-title"><%= @institution_title %></h2>
+      <h2 class="institution-title">
+        <%= @institution_title %>
+      </h2>
+
+      <div id="institution_location">
+        <% if @document[:subject_geo_state_tsim] %>
+            <%= @document[:subject_geo_state_tsim].first %>
+            <% if @document[:subject_geo_county_tsim] %>
+                &nbsp; &gt; &nbsp; <%= @document[:subject_geo_county_tsim].first %> County
+                <% if @document[:subject_geo_city_tsim] %>
+                    &nbsp; &gt; &nbsp; <%= @document[:subject_geo_city_tsim].first %>
+                    <% if @document[:subject_geo_citysection_tsim] %>
+                        &nbsp; &gt; &nbsp; <%= @document[:subject_geo_citysection_tsim].first %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+      </div>
 
       <div class="document">
 
 <div class="row">
 
-  <div class="span7">
+  <div class="span9">
 
-    <div id="institution_location">
-      <% if @document[:subject_geo_state_tsim] %>
-          <%= @document[:subject_geo_state_tsim].first %>
-          <% if @document[:subject_geo_county_tsim] %>
-              &nbsp; &gt; &nbsp; <%= @document[:subject_geo_county_tsim].first %> County
-              <% if @document[:subject_geo_city_tsim] %>
-                  &nbsp; &gt; &nbsp; <%= @document[:subject_geo_city_tsim].first %>
-                  <% if @document[:subject_geo_citysection_tsim] %>
-                      &nbsp; &gt; &nbsp; <%= @document[:subject_geo_citysection_tsim].first %>
-                  <% end %>
-              <% end %>
-          <% end %>
-      <% end %>
-    </div>
+    <% if @institution_image_pid %>
+        <% image_datastream = datastream_disseminator_url(@institution_image_pid,'accessMaster') %>
+        <%= djatoka_image_tag(image_datastream,
+                              {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                               :scale => 300,
+                               :alt => @institution_title,
+                               :class => 'institution_img_show'}) %>
+    <% else %>
+        <%= image_tag('institution_index.png',
+                      :alt => @institution_title,
+                      :class => 'institution_img_show') %>
+    <% end %>
 
-    <div id="institution_abstract">
+      <div id="institution_search_tools" class="well well-small">
+        <%= render :partial => 'search_form_institution',
+                   :locals => {:document => @document} %>
+        <div id="collection_view_all">
+          <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
+        </div>
+      </div>
 
       <% if @document[:abstract_tsim] %>
           <% @document[:abstract_tsim].each do |abstract| %>
-              <p><%= abstract %></p>
+              <p>
+                <%= abstract %>&nbsp;
+                <% if @document[:institution_url_ss] %>
+                    <%= link_to 'Visit institution web site',
+                                @document[:institution_url_ss],
+                                :class => 'institution_site_link',
+                                :target => '_blank' %>
+                <% end %>
+              </p>
           <% end %>
       <% end %>
 
-      <% if @document[:institution_url_ss] %>
-          <%= link_to 'Visit institution web site',
-                      @document[:institution_url_ss],
-                      :class => 'institution_site_link',
-                      :target => '_blank' %>
-      <% end %>
-
-    </div>
-
-  </div>
-
-
-  <div id="sidebar" class="span5">
-    <div id="inst_collex" class="well">
-      <%= render :partial => 'search_form_institution',
-                 :locals => {:document => @document} %>
       <% if @collex_documents %>
           <h4>Digital Collections</h4>
           <ul id="inst_collex_list">
@@ -64,8 +77,12 @@
             <% end %>
           </ul>
       <% end %>
-    </div>
 
+  </div>
+
+
+  <div id="sidebar" class="span3">
+    <%= render :partial=>'facets' %>
   </div>
 
 </div>
