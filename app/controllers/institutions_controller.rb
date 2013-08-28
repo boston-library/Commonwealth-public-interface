@@ -35,7 +35,7 @@ class InstitutionsController < CatalogController
     @nav_li_active = 'institutions'
     @show_response, @document = get_solr_response_for_doc_id
     @institution_title = @document[blacklight_config.index.show_link.to_sym]
-    @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection','physical_location_ssim'=> @institution_title}},{:sort=> 'title_info_primary_ssort asc'})
+    @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection','institution_pid_ssi'=> params[:id]}},{:sort=> 'title_info_primary_ssort asc'})
 
     respond_to do |format|
       format.html

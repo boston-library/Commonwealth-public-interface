@@ -8,11 +8,11 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 128edac42f0b796ca13fc88f1942328ca663fb30
+  revision: 79bff5de208422c01e1f7a11a9e24a3bb9a2a455
   specs:
-    bplmodels (0.0.74)
+    bplmodels (0.0.87)
       mods
-      rails (~> 3.2.13)
+      rails
 
 GIT
   remote: https://github.com/boston-library/bpluser.git
