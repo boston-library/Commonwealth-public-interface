@@ -9,7 +9,7 @@
         <%# document[blacklight_config.index.show_link.to_sym].each do |title| %>
             <%= document[blacklight_config.index.show_link.to_sym] %>
             <% if document[:subtitle_tsim] %>
-                :&nbsp;<%= document[:subtitle_tsim].first %>
+                <br/><%= document[:subtitle_tsim].first %>
             <% end %>
         <%# end %>
       </dd>

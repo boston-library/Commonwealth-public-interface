@@ -188,7 +188,7 @@ en:
             submit: 'Update'
           form:
             collection: 'Search this collection...'
-            institution: "Search this institution..."
+            institution: "Search this institution's collections..."
           facets:
             home: 'Explore the Collections'
           pagination_info:

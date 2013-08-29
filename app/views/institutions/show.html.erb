@@ -34,6 +34,14 @@
 
   <div class="span9">
 
+    <div id="institution_search_tools" class="well well-small">
+      <%= render :partial => 'search_form_institution',
+                 :locals => {:document => @document} %>
+      <div id="collection_view_all">
+        <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
+      </div>
+    </div>
+
     <% if @institution_image_pid %>
         <% image_datastream = datastream_disseminator_url(@institution_image_pid,'accessMaster') %>
         <%= djatoka_image_tag(image_datastream,
@@ -47,13 +55,7 @@
                       :class => 'institution_img_show') %>
     <% end %>
 
-      <div id="institution_search_tools" class="well well-small">
-        <%= render :partial => 'search_form_institution',
-                   :locals => {:document => @document} %>
-        <div id="collection_view_all">
-          <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
-        </div>
-      </div>
+
 
       <% if @document[:abstract_tsim] %>
           <% @document[:abstract_tsim].each do |abstract| %>

@@ -18,74 +18,105 @@ div.blacklight-institution {
   }
 
   #institution_location {
-    padding-bottom: .5em;
+    padding-bottom: .7em;
     color: $darker_gray;
     font-size: 16px;
+    position: relative;
+    top: -5px;
   }
 
-  #institution_abstract {
-    padding-bottom: 2em;
+  img.institution_img_show {
+    float: left;
+    max-width: 25%;
+    margin: 0 1.4em 1em 0;
+    border: 1px solid $light_gray;
   }
 
-  #institution_search_form {
-    padding: .5em 0 3em 1.2em;
+  #institution_search_tools {
+    margin-bottom: 1em;
+    width:69%;
+    float: right;
 
-    .submit-search-text {
-      display: none;
+    #institution_search_form {
+      padding: 0 1em 0 0;
+      float: left;
+
+      input {
+        width: 250px;
+      }
+
+      .submit-search-text {
+        display: none;
+      }
+
     }
 
   }
 
   #inst_collex {
 
-    h4, ul {
-      padding-left:1em;
-    }
-
   }
 
   /* responsive styles */
 
+  /* Large desktop */
+  /*
+  @media (min-width: 1200px) {
+
+    #institution_search_tools {
+      width:52%;
+    }
+
+  }
+  */
   /* Portrait tablet to landscape and desktop */
+  /*
   @media (min-width: 768px) and (max-width: 979px) {
 
-    #institution_search_form {
-      padding: .5em 0 3em .7em;
+    img.institution_img_show {
+      width: 100%;
+      margin: 0 0 1em 0;
+    }
 
-      .input-xlarge {
-        width: 215px;
-      }
-
+    #institution_search_tools {
+      width:97%;
+      float:left;
     }
 
   }
-
+  */
   /* Landscape phone to portrait tablet */
+  /*
   @media (max-width: 767px) {
 
-    #institution_search_form {
+    img.institution_img_show {
+      width: 100%;
+      margin: 0 0 1em 0;
+    }
 
-      .input-xlarge {
-        width: 270px;
-      }
-
+    #institution_search_tools {
+      width:97%;
+      float:left;
     }
 
   }
-
+  */
   /* Landscape phones and down */
+  /*
   @media (max-width: 480px) {
 
-    #institution_search_form {
+    img.institution_img_show {
+      width: 100%;
+      margin: 0 0 1em 0;
+    }
 
-      .input-xlarge {
-        width: 270px;
-      }
-
+    #institution_search_tools {
+      width:95%;
+      float:left;
     }
 
   }
-
+  */
 }
 
 
