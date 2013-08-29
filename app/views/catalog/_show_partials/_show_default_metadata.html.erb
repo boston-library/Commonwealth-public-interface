@@ -8,6 +8,9 @@
       <dd>
         <%# document[blacklight_config.index.show_link.to_sym].each do |title| %>
             <%= document[blacklight_config.index.show_link.to_sym] %>
+            <% if document[:subtitle_tsim] %>
+                :&nbsp;<%= document[:subtitle_tsim].first %>
+            <% end %>
         <%# end %>
       </dd>
     <% end %>
@@ -60,6 +63,15 @@
       <% end %>
     </dd>
     <% end %>
+    <%# place of publication field %>
+    <% if document[:pubplace_tsim] %>
+      <dt>Place of Publication:</dt>
+      <dd>
+        <% document[:pubplace_tsim].each do |pubplace| %>
+            <%= pubplace %><br />
+        <% end %>
+      </dd>
+  <% end %>
     <%# date field  %>
     <% if document[:date_start_tsim] %>
         <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
