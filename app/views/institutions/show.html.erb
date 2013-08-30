@@ -60,12 +60,14 @@
       <% if @document[:abstract_tsim] %>
           <% @document[:abstract_tsim].each do |abstract| %>
               <p>
-                <%= abstract %>&nbsp;
+                <%= abstract %>
                 <% if @document[:institution_url_ss] %>
-                    <%= link_to 'Visit institution web site',
+                    <span id="institution_site_link">
+                      <%= link_to 'Visit institution web site',
                                 @document[:institution_url_ss],
                                 :class => 'institution_site_link',
                                 :target => '_blank' %>
+                    </span>
                 <% end %>
               </p>
           <% end %>
