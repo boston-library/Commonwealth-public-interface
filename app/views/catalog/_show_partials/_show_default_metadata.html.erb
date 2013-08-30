@@ -58,20 +58,14 @@
     <% if document[:publisher_tsim] %>
     <dt>Publisher:</dt>
     <dd>
-      <% document[:publisher_tsim].each do |publisher| %>
-          <%= publisher %><br />
+      <% 0.upto document[:publisher_tsim].length-1 do |index| %>
+          <%= document[:publisher_tsim][index] %>
+          <% if document[:pubplace_tsim] %>
+              <%# (if pubplace, assumes equal number of publishers and pubplaces)  %>                   : <%= document[:pubplace_tsim][index] %>
+          <% end %>
       <% end %>
     </dd>
     <% end %>
-    <%# place of publication field %>
-    <% if document[:pubplace_tsim] %>
-      <dt>Place of Publication:</dt>
-      <dd>
-        <% document[:pubplace_tsim].each do |pubplace| %>
-            <%= pubplace %><br />
-        <% end %>
-      </dd>
-  <% end %>
     <%# date field  %>
     <% if document[:date_start_tsim] %>
         <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
