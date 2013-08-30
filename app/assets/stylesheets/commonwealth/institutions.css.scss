@@ -63,66 +63,64 @@ div.blacklight-institution {
 
   }
 
-  /* responsive styles */
-
-  /* Large desktop */
-  /*
-  @media (min-width: 1200px) {
-
-    #institution_search_tools {
-      width:52%;
-    }
-
-  }
-  */
   /* Portrait tablet to landscape and desktop */
-  /*
+
   @media (min-width: 768px) and (max-width: 979px) {
 
     img.institution_img_show {
-      width: 100%;
-      margin: 0 0 1em 0;
+      max-width: 35%;
     }
 
     #institution_search_tools {
-      width:97%;
-      float:left;
+      width:96%;
     }
 
   }
-  */
+
   /* Landscape phone to portrait tablet */
-  /*
+
   @media (max-width: 767px) {
 
-    img.institution_img_show {
-      width: 100%;
-      margin: 0 0 1em 0;
+    #institution_search_tools {
+      width:65%;
+
+      #institution_search_form {
+        padding: 0 1em .5em 0;
+      }
+
     }
 
-    #institution_search_tools {
-      width:97%;
-      float:left;
+    #institution_collections {
+      float: none;
+      margin-top: 2em;
     }
 
   }
-  */
+
   /* Landscape phones and down */
-  /*
+
   @media (max-width: 480px) {
 
     img.institution_img_show {
-      width: 100%;
-      margin: 0 0 1em 0;
+      max-width: 35%;
     }
 
     #institution_search_tools {
-      width:95%;
-      float:left;
+      width:97%;
+
+      #institution_search_form {
+        padding: 0 1em .5em 0;
+      }
+
+    }
+
+    #institution_collections {
+      float: none;
+      margin-top: 2em;
     }
 
   }
-  */
+
 }
 
 
