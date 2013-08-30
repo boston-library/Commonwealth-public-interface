@@ -72,12 +72,13 @@
       <% end %>
 
       <% if @collex_documents %>
-          <h4>Digital Collections</h4>
-          <ul id="inst_collex_list">
-            <% @collex_documents.each do |coll| %>
-                <li><%= link_to(coll[blacklight_config.index.show_link.to_sym], '/collections/' + coll[:id]) %></li>
-            <% end %>
-          </ul>
+        <div id="institution_collections">
+            <h4>Digital Collections:</h4>
+
+            <%= render :partial => 'catalog/document_list',
+                       :locals => {:documents => @collex_documents} %>
+
+        </div>
       <% end %>
 
   </div>
