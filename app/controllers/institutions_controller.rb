@@ -43,7 +43,7 @@ class InstitutionsController < CatalogController
     params[:f] = {'institution_name_ssim' => [@institution_title]}
 
     # get the response for the facets representing items in collection
-    (@response, @document_list) = get_search_results({:f => {'institution_pid_ssi' => params[:id]}})
+    (@response, @document_list) = get_search_results({:f => {'institution_name_ssim' => @institution_title}})
 
     respond_to do |format|
       format.html
