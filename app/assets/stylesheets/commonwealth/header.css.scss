@@ -4,7 +4,7 @@
  The main logo image for the Blacklight instance
 */
 
-.navbar .brand {
+#header-navbar-fixed-top .brand {
   width: 205px;
   background:transparent asset_url($logo_image_home,image) no-repeat top left;
   display: inline-block;

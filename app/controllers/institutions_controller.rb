@@ -40,7 +40,7 @@ class InstitutionsController < CatalogController
     @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection','institution_pid_ssi'=> params[:id]}},{:sort=> 'title_info_primary_ssort asc'})
 
     # add params[:f] for proper facet links
-    params[:f] = {blacklight_config.collection_field => [@collection_title]}
+    params[:f] = {'institution_name_ssim' => [@institution_title]}
 
     # get the response for the facets representing items in collection
     (@response, @document_list) = get_search_results({:f => {'institution_pid_ssi' => params[:id]}})

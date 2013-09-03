@@ -55,25 +55,30 @@
                       :class => 'institution_img_show') %>
     <% end %>
 
-
+    <div id="institution_desc">
 
       <% if @document[:abstract_tsim] %>
           <% @document[:abstract_tsim].each do |abstract| %>
               <p>
                 <%= abstract %>
-                <% if @document[:institution_url_ss] %>
-                    <span id="institution_site_link">
-                      <%= link_to 'Visit institution web site',
-                                @document[:institution_url_ss],
-                                :class => 'institution_site_link',
-                                :target => '_blank' %>
-                    </span>
-                <% end %>
               </p>
           <% end %>
       <% end %>
 
-      <% if @collex_documents %>
+      <% if @document[:institution_url_ss] %>
+        <ul>
+        <li id="institution_site_link">
+          <%= link_to 'Visit institution web site',
+                      @document[:institution_url_ss],
+                      :class => 'institution_site_link',
+                      :target => '_blank' %>
+        </li>
+        </ul>
+      <% end %>
+
+    </div>
+
+      <% if @collex_documents.length > 0 %>
         <div id="institution_collections">
             <h4>Digital Collections:</h4>
 

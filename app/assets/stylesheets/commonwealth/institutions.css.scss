@@ -52,10 +52,15 @@ div.blacklight-institution {
 
   }
 
-  #institution_site_link {
-    float: left;
-    margin-top: .3em;
+  #institution_desc {
+
+    ol,ul {
+      left: 2em;
+      position: relative;
+    }
+
   }
+
 
   #institution_collections {
     width: 100%;
