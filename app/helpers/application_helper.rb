@@ -98,7 +98,7 @@ module ApplicationHelper
       date_start_suffix = '?' if date_qualifier == 'questionable'
       prefix + date_start + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + date_end + suffix
     else
-      prefix + date_start + suffix
+      prefix + normalize_date(date_start) + suffix
     end
   end
 
@@ -106,6 +106,16 @@ module ApplicationHelper
     mods_xml_file_path = datastream_disseminator_url(document_id, 'descMetadata')
     mods_response = Typhoeus::Request.get(mods_xml_file_path)
     mods_xml_text = REXML::Document.new(mods_response.body)
+  end
+
+  def normalize_date(date)
+    if date.length == 10
+      Date.parse(date).strftime('%B %-d, %Y')
+    elsif date.length == 7
+      Date.parse(date + '-01').strftime('%B %Y')
+    else
+      date
+    end
   end
 
 end
