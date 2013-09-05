@@ -1,5 +1,37 @@
 module ApplicationHelper
 
+  # show the display-friendly value for the Format facet
+  def render_format value
+    case value
+      when 'Albums'
+        'Albums/Scrapbooks'
+      when 'Drawings'
+        'Drawings/Illustrations'
+      when 'Maps'
+        'Maps/Atlases'
+      when 'Documents'
+        'Documents (other)'
+      when 'Motion Pictures'
+        'Film/Video'
+      when 'Music'
+        'Music (recordings)'
+      when 'Objects'
+        'Objects/Artifacts'
+      when 'Prints'
+        'Prints (other)'
+      when 'Musical notation'
+        'Sheet music'
+      when 'Sound recordings'
+        'Audio recordings (nonmusical)'
+      when 'Cards'
+        'Postcards/Cards'
+      when 'Correspondence'
+        'Letters/Correspondence'
+      else
+        value
+    end
+  end
+
   #from psu scholarsphere
   def link_to_field(fieldname, fieldvalue, displayvalue = nil)
     p = {:search_field => fieldname, :q => '"'+fieldvalue+'"'}
@@ -18,16 +50,20 @@ module ApplicationHelper
     new_params = add_facet_params(field_string, field)
     new_params.delete(:id)
     new_params.delete(:view)
-    new_params[:action] = "index"
-    new_params[:controller] = "catalog"
+    new_params[:action] = 'index'
+    new_params[:controller] = 'catalog'
     new_params[:f] = {field_string => [field]}
-    link_to(field, new_params)
+    if field_string == 'genre_basic_ssim'
+      link_to(render_format(field), new_params)
+    else
+      link_to(field, new_params)
+    end
   end
 
   def link_to_facet_labeled(link_text, field, field_string)
     link_to(link_text,
-            add_facet_params(field_string, field).merge!({"controller" => "catalog",
-                                                                 :action=> "index"}))
+            add_facet_params(field_string, field).merge!({'controller' => 'catalog',
+                                                                 :action=> 'index'}))
   end
 
   def simpleimage_file_pid (document)

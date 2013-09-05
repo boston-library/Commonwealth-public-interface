@@ -51,7 +51,7 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     # config.add_facet_field 'collection_name_ssim', :label => 'Collection'
-    config.add_facet_field 'genre_basic_ssim', :label => 'Format'
+    config.add_facet_field 'genre_basic_ssim', :label => 'Format', :helper_method => :render_format
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 5
     config.add_facet_field 'subject_geographic_ssim', :label => 'Location', :limit => 5
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 5, :sort => 'index'
