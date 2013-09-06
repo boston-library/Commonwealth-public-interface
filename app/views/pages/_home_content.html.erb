@@ -53,14 +53,14 @@
     </div>
 
     <div class="span4">
-      <div id="locations_browse" class="well well-small media">
-        <%= link_to(image_tag('dc-home_locations_thumb.jpg', :class => 'media-object'),
-                    'search/facet/subject_geographic_ssim',
-                    :alt => 'Browse All Locations',
+      <div id="places_browse" class="well well-small media">
+        <%= link_to(image_tag('dc-home_places_thumb.jpg', :class => 'media-object'),
+                    places_facet_path,
+                    :alt => 'Browse All Places',
                     :class => 'pull-left') %>
         <div class="media-body">
-          <h4 class="media-heading">Locations</h4>
-          <%= link_to 'Browse All Locations', 'search/facet/subject_geographic_ssim' %>
+          <h4 class="media-heading">Places</h4>
+          <%= link_to 'Browse All Places', places_facet_path %>
         </div>
       </div>
     </div>

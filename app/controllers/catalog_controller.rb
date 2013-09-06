@@ -53,7 +53,7 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'collection_name_ssim', :label => 'Collection'
     config.add_facet_field 'genre_basic_ssim', :label => 'Format', :helper_method => :render_format
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 5
-    config.add_facet_field 'subject_geographic_ssim', :label => 'Location', :limit => 5
+    config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 5
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 5, :sort => 'index'
     config.add_facet_field 'physical_location_ssim', :label => 'Institution'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
@@ -205,8 +205,8 @@ class CatalogController < ApplicationController
   end
 
   # displays values and pagination links locations facet field
-  def locations_facet
-    @nav_li_active = 'locations'
+  def places_facet
+    @nav_li_active = 'places'
     params[:id] = 'subject_geographic_ssim'
     @pagination = get_facet_pagination(params[:id], params)
 
