@@ -108,37 +108,23 @@
     <% if document[:physical_location_ssim] %>
     <dt>Location:</dt>
     <dd>
-      <% document[:physical_location_ssim].each do |location| %>
-          <%= link_to_facet(location, 'physical_location_ssim') %><br />
-      <% end %>
+      <%= link_to_facet(document[:physical_location_ssim].first,
+                        'physical_location_ssim') %><%= ', ' + document[:sub_location_tsim].first if document[:sub_location_tsim] %>
     </dd>
     <% end %>
-    <%# sublocation field %>
-    <% if document[:sub_location_tsim] %>
-        <dt>Sub-location:</dt>
-        <dd>
-          <% document[:sub_location_tsim].each do |subloc| %>
-              <%= subloc %><br />
-          <% end %>
-        </dd>
-    <% end %>
     <%# topic field %>
-    <% if document[:subject_topic_tsim] %>
-        <dt>Subject (topic):</dt>
+    <% if document[:subject_topic_tsim] || document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] %>
+        <dt>Subjects:</dt>
         <dd>
+          <% if document[:subject_topic_tsim] %>
             <% document[:subject_topic_tsim].each do |topic| %>
                 <%= link_to_facet(topic, 'subject_facet_ssim') %><br />
             <% end %>
-        </dd>
-    <% end %>
-    <%# name subject field %>
-    <% if document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] %>
-        <dt>Subject (name):</dt>
-        <dd>
+          <% end %>
           <% if document[:subject_name_corporate_tsim] %>
-            <% document[:subject_name_corporate_tsim].each do |corp_name| %>
+              <% document[:subject_name_corporate_tsim].each do |corp_name| %>
                   <%= link_to_facet(corp_name, 'subject_facet_ssim') %><br />
-            <% end %>
+              <% end %>
           <% end %>
           <% if document[:subject_name_personal_tsim] %>
               <% document[:subject_name_personal_tsim].each do |pers_name| %>
@@ -148,21 +134,12 @@
         </dd>
     <% end %>
     <%# geo subject field %>
-    <% if document[:subject_geographic_tsim] %>
-        <dt>Subject (geographic):</dt>
+    <% if document[:subject_geographic_ssim] %>
+        <dt>Places:</dt>
         <dd>
-            <% document[:subject_geographic_tsim].each do |subject_geo| %>
+            <% document[:subject_geographic_ssim].each do |subject_geo| %>
                 <%= link_to_facet(subject_geo, 'subject_geographic_ssim') %><br />
             <% end %>
-        </dd>
-    <% end %>
-    <%# lang field %>
-    <% if document[:lang_term_ssim] %>
-        <dt>Language:</dt>
-        <dd>
-          <% document[:lang_term_ssim].each do |lang| %>
-            <%= lang %><br/>
-          <% end %>
         </dd>
     <% end %>
     <%# note field %>
@@ -174,34 +151,9 @@
           <% end %>
         </dd>
     <% end %>
-    <%# extent field %>
-    <% if document[:extent_tsi] %>
-        <dt>Extent:</dt>
-        <dd>
-          <%= document[:extent_tsi] %>
-        </dd>
-    <% end %>
-    <%# local-accession id field %>
-    <% if document[:local_accession_id_tsim] %>
-        <dt>Accession # (local):</dt>
-        <dd>
-          <% document[:local_accession_id_tsim].each do |accession| %>
-              <%= accession %><br />
-          <% end %>
-        </dd>
-    <% end %>
-    <%# local-other id field %>
-    <% if document[:identifier_local_other_tsim] %>
-        <dt>Identifier (local):</dt>
-        <dd>
-          <% document[:identifier_local_other_tsim].each do |local_other| %>
-              <%= local_other %><br />
-          <% end %>
-        </dd>
-    <% end %>
     <%# related item host field (physical collection) %>
     <% if document[:related_item_host_ssim] %>
-        <dt>Related Collections:</dt>
+        <dt>Provenance:</dt>
         <dd>
             <% document[:related_item_host_ssim].each do |related_host| %>
                 <%= link_to_facet(related_host, 'related_item_host_ssim') %><br />
@@ -210,12 +162,46 @@
     <% end %>
     <%# related item series field (series) %>
     <% if document[:related_item_series_ssim] %>
-        <dt>Related Series:</dt>
+        <dt>Series:</dt>
         <dd>
             <% document[:related_item_series_ssim].each do |related_series| %>
                 <%= link_to_facet(related_series, 'related_item_series_ssim') %><br />
             <% end %>
         </dd>
+    <% end %>
+    <%# extent field %>
+    <% if document[:extent_tsi] %>
+      <dt>Extent:</dt>
+      <dd>
+        <%= document[:extent_tsi] %>
+      </dd>
+    <% end %>
+    <%# lang field %>
+    <% if document[:lang_term_ssim] %>
+      <dt>Language:</dt>
+      <dd>
+        <% document[:lang_term_ssim].each do |lang| %>
+            <%= lang %><br/>
+        <% end %>
+      </dd>
+    <% end %>
+    <%# local-accession id field %>
+    <% if document[:local_accession_id_tsim] %>
+      <dt>Accession # (local):</dt>
+      <dd>
+        <% document[:local_accession_id_tsim].each do |accession| %>
+            <%= accession %><br />
+        <% end %>
+      </dd>
+    <% end %>
+    <%# local-other id field %>
+    <% if document[:identifier_local_other_tsim] %>
+      <dt>Identifier (local):</dt>
+      <dd>
+        <% document[:identifier_local_other_tsim].each do |local_other| %>
+            <%= local_other %><br />
+        <% end %>
+      </dd>
     <% end %>
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
