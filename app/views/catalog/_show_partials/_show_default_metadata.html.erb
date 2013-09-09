@@ -131,6 +131,11 @@
                   <%= link_to_facet(pers_name, 'subject_facet_ssim') %><br />
               <% end %>
           <% end %>
+          <% if document[:subject_name_conference_tsim] %>
+              <% document[:subject_name_conference_tsim].each do |conf_name| %>
+                  <%= link_to_facet(conf_name, 'subject_facet_ssim') %><br />
+              <% end %>
+          <% end %>
         </dd>
     <% end %>
     <%# geo subject field %>
