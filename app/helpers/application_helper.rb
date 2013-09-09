@@ -96,7 +96,7 @@ module ApplicationHelper
     end
     if date_end
       date_start_suffix = '?' if date_qualifier == 'questionable'
-      prefix + date_start + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + date_end + suffix
+      prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + normalize_date(date_end) + suffix
     else
       prefix + normalize_date(date_start) + suffix
     end
