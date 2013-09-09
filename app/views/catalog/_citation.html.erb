@@ -8,8 +8,14 @@
 
         <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
             <% names = [] %>
-            <% names = names + document[:name_personal_tsim] if document[:name_personal_tsim] %>
-            <% names = names + document[:name_corporate_tsim] if document[:name_corporate_tsim] %>
+            <% if document[:name_personal_tsim] %>
+                <% pers_names = [] %>
+                <% document[:name_personal_tsim].each do |pers_name| %>
+                    <% pers_names << pers_name.gsub(/, \d.*/,'') %>
+                <% end %>
+                <% names.concat(pers_names) %>
+            <% end %>
+            <% names.concat(document[:name_corporate_tsim]) if document[:name_corporate_tsim] %>
             <%# if multiple creators, put ', ' between each, but ', and ' before last one %>
             <% if names.length > 1 %>
                 <% 0.upto names.length-1 do |index| %>
