@@ -54,15 +54,24 @@
           <% end %>
       <% end %>
     <% end %>
+    <%# note type=statement of responsibility field %>
+    <% if document[:note_resp_tsim] %>
+      <dt>Statement of Resp.:</dt>
+      <dd>
+        <% document[:note_resp_tsim].each do |resp| %>
+            <%= resp %><br />
+        <% end %>
+      </dd>
+     <% end %>
     <%# publisher field %>
     <% if document[:publisher_tsim] %>
     <dt>Publisher:</dt>
     <dd>
       <% 0.upto document[:publisher_tsim].length-1 do |index| %>
-          <%= document[:publisher_tsim][index] %>
           <% if document[:pubplace_tsim] %>
-              <%# (if pubplace, assumes equal number of publishers and pubplaces)  %>                   : <%= document[:pubplace_tsim][index] %>
+            <%# (if pubplace, assumes equal number of publishers and pubplaces)  %>                     <%= document[:pubplace_tsim][index] %> :
           <% end %>
+          <%= document[:publisher_tsim][index] %>
       <% end %>
     </dd>
     <% end %>
@@ -158,7 +167,7 @@
     <% end %>
     <%# related item host field (physical collection) %>
     <% if document[:related_item_host_ssim] %>
-        <dt>Provenance:</dt>
+        <dt>Physical Collection:</dt>
         <dd>
             <% document[:related_item_host_ssim].each do |related_host| %>
                 <%= link_to_facet(related_host, 'related_item_host_ssim') %><br />
