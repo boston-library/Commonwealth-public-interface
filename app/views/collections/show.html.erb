@@ -53,6 +53,11 @@
                 <% end %>
             </div>
 
+            <div id="series_wrapper">
+              <%# blacklight_config.facet_fields.keys.class %>
+              <%= render :partial=> 'catalog/facets_series' %>
+            </div>
+
             <%# full metadata display - DEPRECATED - no longer creating collection metadata %>
             <%# besides title and abstract %>
             <%# render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>

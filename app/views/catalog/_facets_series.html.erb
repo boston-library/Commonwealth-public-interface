@@ -3,7 +3,7 @@
 <% if has_facet_values?  %>
     <div id="series_facet" class="facets sidenav">
       <div class="facets-collapse">
-        <%= render_facet_partials('related_item_series_ssim') %>
+        <%= render_facet_partials(['related_item_series_ssim'], :partial => 'facet_limit_series') %>
       </div>
     </div>
 <% end %>

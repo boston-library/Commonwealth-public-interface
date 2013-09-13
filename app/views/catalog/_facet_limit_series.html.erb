@@ -1,0 +1,17 @@
+<ul>
+  <% display_facet.items.each do |item| -%>
+      <li>
+        <%# render_series_facet_value(solr_field, item) %>
+        <% series_title = facet_display_value(solr_field, item) %>
+        <% get_series_item(series_title) %>
+        <%# render :partial => 'index_grid_default', :locals => {:document => get_series_image_pid(series_title)} %>
+        <%# series_img = image_tag(datastream_disseminator_url(get_series_image_pid(series_title),'thumbnail300'),
+        :alt => series_title,
+        :class => 'index_thumb') %>
+        <%# link_to(series_img, add_facet_params_and_redirect(solr_field, item)) %>
+        <%# (link_to(series_title, add_facet_params_and_redirect(solr_field, item), :class=>"facet_select") + " (" + render_facet_count(item.hits) + " items)").html_safe %>
+      </li>
+  <% end %>
+</ul>
+<%= render :partial => 'catalog/document_list',
+           :locals => {:documents => @series_items} %>

@@ -56,6 +56,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 5
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 5, :sort => 'index'
     config.add_facet_field 'physical_location_ssim', :label => 'Institution'
+    config.add_facet_field 'related_item_series_ssim', :label => 'Series'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
     ##config.add_facet_field 'pub_date', :label => 'Publication Year'
     ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20

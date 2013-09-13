@@ -47,6 +47,9 @@ class CollectionsController < CatalogController
       @collection_image_pid = @document[:exemplary_image_ss]
     end
 
+    # create an array to hold the series info
+    @series_items = []
+
     respond_to do |format|
       format.html
     end
@@ -63,6 +66,16 @@ class CollectionsController < CatalogController
       format.js { render :layout => false }
     end
   end
+
+  # find a representative image for a series
+  def get_series_item(series_title)
+    (@series_response, @series_doc_list) = get_solr_response_for_field_values(
+        'related_item_series_ssim',
+        series_title) # need to add collection title here too
+    #@series_doc_list.first[:exemplary_image_ss]
+    @series_items << @series_doc_list.first
+  end
+  helper_method :get_series_item
 
   private
 
