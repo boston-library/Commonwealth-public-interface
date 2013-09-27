@@ -7,6 +7,11 @@ class CollectionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
+  # add series facet for collections#show
+  configure_blacklight do |config|
+    config.add_facet_field 'related_item_series_ssim', :label => 'Series in this Collection:'
+  end
+
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url
@@ -68,14 +73,14 @@ class CollectionsController < CatalogController
   end
 
   # find a representative image for a series
-  def get_series_item(series_title)
+  def get_series_image_pid(series_title)
     (@series_response, @series_doc_list) = get_solr_response_for_field_values(
         'related_item_series_ssim',
         series_title) # need to add collection title here too
-    #@series_doc_list.first[:exemplary_image_ss]
-    @series_items << @series_doc_list.first
+    @series_doc_list.first[:exemplary_image_ss]
+    #@series_items << @series_doc_list.first
   end
-  helper_method :get_series_item
+  helper_method :get_series_image_pid
 
   private
 
