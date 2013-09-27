@@ -52,9 +52,6 @@ class CollectionsController < CatalogController
       @collection_image_pid = @document[:exemplary_image_ss]
     end
 
-    # create an array to hold the series info
-    @series_items = []
-
     respond_to do |format|
       format.html
     end
@@ -73,12 +70,13 @@ class CollectionsController < CatalogController
   end
 
   # find a representative image for a series
-  def get_series_image_pid(series_title)
-    (@series_response, @series_doc_list) = get_solr_response_for_field_values(
-        'related_item_series_ssim',
-        series_title) # need to add collection title here too
+  # TODO better exception handling for items which don't have exemplary_image
+  def get_series_image_pid(series_title,collection_title)
+    (@series_response, @series_doc_list) = get_search_results(
+        {:f => {'related_item_series_ssim' => series_title,
+                blacklight_config.collection_field => collection_title}
+        })
     @series_doc_list.first[:exemplary_image_ss]
-    #@series_items << @series_doc_list.first
   end
   helper_method :get_series_image_pid
 

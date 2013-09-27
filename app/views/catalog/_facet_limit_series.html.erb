@@ -7,7 +7,7 @@
             <div class="default_index_container">
               <div class="item_index_thumb">
                 <%# if document[:exemplary_image_ss] %>
-                    <% thumb = image_tag(datastream_disseminator_url(get_series_image_pid(series_title), 'thumbnail300'),
+                    <% thumb = image_tag(datastream_disseminator_url(get_series_image_pid(series_title,@collection_title), 'thumbnail300'),
                                          :alt => series_title,
                                          :class => 'index_thumb') %>
                     <%= link_to thumb,
@@ -26,6 +26,3 @@
   <% end %>
   </ul>
 </div>
-
-<%# render :partial => 'catalog/document_list',
-           :locals => {:documents => @series_items} %>
