@@ -50,7 +50,7 @@ en:
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
           series:
-            title: 'Series in this Collection'
+            title: 'Series in this Collection:'
 
     did_you_mean: 'Search for %{options} instead?'
 
