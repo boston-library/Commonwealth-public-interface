@@ -53,10 +53,11 @@
                 <% end %>
             </div>
 
-            <div id="series_wrapper">
-              <%# blacklight_config.facet_fields.keys.class %>
-              <%= render :partial=> 'catalog/facets_series' %>
-            </div>
+            <% if has_facet_values? %w[related_item_series_ssim] %>
+                <div id="series_wrapper">
+                    <%= render :partial=> 'catalog/facets_series' %>
+                </div>
+            <% end %>
 
             <%# full metadata display - DEPRECATED - no longer creating collection metadata %>
             <%# besides title and abstract %>

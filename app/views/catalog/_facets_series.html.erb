@@ -1,6 +1,4 @@
 <% # container for series facet -%>
-
-<% if has_facet_values? %w('related_item_series_ssim') %>
-      <h5><%= t('blacklight.collections.series.title') %></h5>
-        <%= render_facet_partials(['related_item_series_ssim'], :partial => 'facet_limit_series') %>
-  <% end %>
+<h5><%= t('blacklight.collections.series.title') %></h5>
+<%= render_facet_partials(['related_item_series_ssim'],
+                          :partial => 'facet_limit_series') %>
