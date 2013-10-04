@@ -19,3 +19,8 @@ $navbarBorder: #D4D4D4;
   -webkit-border-radius: $radius;
   border-radius: $radius;
 }
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}

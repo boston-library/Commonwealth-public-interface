@@ -53,6 +53,11 @@
                 <% end %>
             </div>
 
+            <div id="series_wrapper">
+              <%# blacklight_config.facet_fields.keys.class %>
+              <%= render :partial=> 'catalog/facets_series' %>
+            </div>
+
             <%# full metadata display - DEPRECATED - no longer creating collection metadata %>
             <%# besides title and abstract %>
             <%# render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>
@@ -60,6 +65,7 @@
           </div>
 
           <div id="sidebar" class="span3">
+            <%= javascript_include_tag 'commonwealth/collection_facets' %>
             <%= render :partial=>'facets' %>
           </div>
 

@@ -10,7 +10,4 @@ $(document).ready(function() {
     $('#facets h5').addClass('twiddle-open');
     $('div.facet_limit ul').show();
 
-    /* remove the institution facet */
-    $('div.blacklight-physical_location_ssim').remove();
-
 });

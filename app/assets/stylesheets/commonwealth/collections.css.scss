@@ -60,6 +60,38 @@ img.collection_img_show {
 
 }
 
+#series_wrapper {
+  float:left;
+  clear: left;
+
+  .blacklight-related_item_series_ssim h5 {
+    display: none;
+  }
+
+  #documents div.grid-view {
+    margin-top: 0;
+
+    div.item_index_thumb {
+      height: 127px;
+
+      img {
+        max-height:127px;
+      }
+
+    }
+
+    div.item_index_title {
+      font-weight: normal;
+    }
+
+  }
+
+}
+
+#facets div.blacklight-related_item_series_ssim {
+  display: none;
+}
+
 #collection_metadata_wrapper {
   margin-top: 1.5em;
 }
@@ -77,6 +109,23 @@ img.collection_img_show {
     width:52%;
   }
 
+  #series_wrapper {
+
+    #documents div.grid-view {
+
+      div.item_index_thumb {
+        height: 159px;
+
+        img {
+          max-height:159px;
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -92,6 +141,23 @@ img.collection_img_show {
     float:left;
   }
 
+  #series_wrapper {
+
+    #documents div.grid-view {
+
+      div.item_index_thumb {
+        height: 95px;
+
+        img {
+          max-height:95px;
+        }
+
+      }
+
+    }
+
+  }
+
 }
 
 /* Landscape phone to portrait tablet */
@@ -100,13 +166,21 @@ img.collection_img_show {
   img.collection_img_show {
     width: 100%;
     margin: 0 0 1em 0;
+    float: none;
   }
 
   #collection_search_tools {
     width:97%;
-    float:left;
+    float:none;
   }
 
+  #series_wrapper {
+    display: none;
+  }
+
+  #facets div.blacklight-related_item_series_ssim {
+    display: block;
+  }
 
 }
 
@@ -116,14 +190,21 @@ img.collection_img_show {
   img.collection_img_show {
     width: 100%;
     margin: 0 0 1em 0;
+    float: none;
   }
 
   #collection_search_tools {
     width:95%;
-    float:left;
+    float:none;
   }
 
+  #series_wrapper {
+    display: none;
+  }
 
+  #facets div.blacklight-related_item_series_ssim {
+    display: block;
+  }
 
 }
 

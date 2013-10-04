@@ -7,6 +7,11 @@ class CollectionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
+  # add series facet for collections#show
+  configure_blacklight do |config|
+    config.add_facet_field 'related_item_series_ssim', :label => 'Series'
+  end
+
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url
@@ -63,6 +68,17 @@ class CollectionsController < CatalogController
       format.js { render :layout => false }
     end
   end
+
+  # find a representative image for a series
+  # TODO better exception handling for items which don't have exemplary_image
+  def get_series_image_pid(series_title,collection_title)
+    (@series_response, @series_doc_list) = get_search_results(
+        {:f => {'related_item_series_ssim' => series_title,
+                blacklight_config.collection_field => collection_title}
+        })
+    @series_doc_list.first[:exemplary_image_ss]
+  end
+  helper_method :get_series_image_pid
 
   private
 
