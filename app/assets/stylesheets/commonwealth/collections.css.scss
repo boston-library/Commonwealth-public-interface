@@ -64,31 +64,6 @@ img.collection_img_show {
   float:left;
   clear: left;
 
-  .btn-navbar {
-    // copied from blacklight/app/assets/stylesheets/blacklight/_facets
-    // Navbar button for toggling navbar items in responsive layouts
-    // These definitions need to come after '.navbar .btn'
-    display: none;
-    float: right;
-    padding: 7px 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-    // @include buttonBackground(darken($navbarBackgroundHighlight, 5%), darken($navbarBackground, 5%));
-    // @include box-shadow(#{inset 0 1px 0 rgba(255,255,255,.1), 0 1px 0 rgba(255,255,255,.075)});
-    & .icon-bar {
-      display: block;
-      width: 18px;
-      height: 2px;
-      background-color: #f5f5f5;
-      //@include rounded-corners(1px);
-      @include box-shadow(0 1px 0 rgba(0,0,0,.25));
-    }
-    & .icon-bar + .icon-bar {
-      margin-top: 3px;
-    }
-
-  }
-
   .blacklight-related_item_series_ssim h5 {
     display: none;
   }
@@ -111,6 +86,10 @@ img.collection_img_show {
 
   }
 
+}
+
+#facets div.blacklight-related_item_series_ssim {
+  display: none;
 }
 
 #collection_metadata_wrapper {
@@ -187,21 +166,20 @@ img.collection_img_show {
   img.collection_img_show {
     width: 100%;
     margin: 0 0 1em 0;
+    float: none;
   }
 
   #collection_search_tools {
     width:97%;
-    float:left;
+    float:none;
   }
 
   #series_wrapper {
-    float:none;
+    display: none;
+  }
 
-    // copied from blacklight/app/assets/stylesheets/blacklight/responsive_partials/_facets
-    .btn-navbar {
-      display: block;
-    }
-
+  #facets div.blacklight-related_item_series_ssim {
+    display: block;
   }
 
 }
@@ -212,15 +190,20 @@ img.collection_img_show {
   img.collection_img_show {
     width: 100%;
     margin: 0 0 1em 0;
+    float: none;
   }
 
   #collection_search_tools {
     width:95%;
-    float:left;
+    float:none;
   }
 
   #series_wrapper {
-    float:none;
+    display: none;
+  }
+
+  #facets div.blacklight-related_item_series_ssim {
+    display: block;
   }
 
 }

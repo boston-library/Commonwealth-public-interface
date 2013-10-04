@@ -1,16 +1,6 @@
 <% # container for series facet -%>
 
 <% if has_facet_values?  %>
-    <!-- <div id="series_facet" class="facets sidenav"> -->
-    <h4 data-toggle="collapse" data-target="#series-accord">
-      <a class="btn btn-navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <%= t('blacklight.collections.series.title') %>
-    </h4>
-      <div id="series-accord" class="collapse">
+      <h5><%= t('blacklight.collections.series.title') %></h5>
         <%= render_facet_partials(['related_item_series_ssim'], :partial => 'facet_limit_series') %>
-      </div>
-  <!-- </div> -->
   <% end %>
