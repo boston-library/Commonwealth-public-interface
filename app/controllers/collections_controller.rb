@@ -9,7 +9,7 @@ class CollectionsController < CatalogController
 
   # add series facet for collections#show
   configure_blacklight do |config|
-    config.add_facet_field 'related_item_series_ssim', :label => 'Series'
+    config.add_facet_field 'related_item_series_ssim', :label => 'Series', :limit => false, :sort => 'index'
   end
 
   # Blacklight uses #search_action_url to figure out the right URL for
