@@ -11,6 +11,10 @@ module CatalogHelper
     end
   end
 
+  #def should_autofocus_on_search_box?
+  #  controller.is_a? Blacklight::Catalog
+  #end
+
   # might need this ?
   # def simpleimage_file_pid (document)
   #   return Bplmodels::Image.find(document[:id]).image_files.first.pid

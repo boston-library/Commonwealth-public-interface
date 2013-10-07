@@ -7,4 +7,8 @@ module CollectionsHelper
             :class => link_class)
   end
 
+  def should_autofocus_on_search_box?
+    action_name == 'show' ? true : false
+  end
+
 end

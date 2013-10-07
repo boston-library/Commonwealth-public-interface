@@ -2,6 +2,10 @@ require 'rss'
 
 module PagesHelper
 
+  def should_autofocus_on_search_box?
+    action_name == 'home' ? true : false
+  end
+
   def render_dc_blog_feed
     source = 'http://digitalcommonwealth.org/blog/?feed=rss2'
     feed = Rails.cache.fetch('dc_rss_feed', :expires_in => 60.minutes) do
