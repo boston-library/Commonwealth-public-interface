@@ -8,11 +8,14 @@ body.blacklight-catalog-show, body.blacklight-collections-show, body.blacklight-
   padding-top: 0;
 }
 
+body.blacklight-catalog-show #header-navbar-fixed-top {
+  // don't cover image viewer modal
+  z-index: 100;
+}
+
 body.blacklight-catalog-show .navbar-fixed-top, body.blacklight-collections-show  .navbar-fixed-top, body.blacklight-institutions-show .navbar-fixed-top {
   position: relative;
   margin-bottom: 1em;
-  // don't cover image viewer modal
-  z-index: 100;
 }
 
 div.show-document #previousNextDocument.well {
