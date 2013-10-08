@@ -11,9 +11,13 @@ module CatalogHelper
     end
   end
 
-  #def should_autofocus_on_search_box?
-  #  controller.is_a? Blacklight::Catalog
-  #end
+  def should_autofocus_on_search_box?
+    (controller.is_a? Blacklight::Catalog and
+        action_name == "index" and
+        params[:q].to_s.empty? and
+        params[:f].to_s.empty?) or
+    (controller.is_a? PagesController and action_name == 'home')
+  end
 
   # might need this ?
   # def simpleimage_file_pid (document)
