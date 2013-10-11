@@ -37,7 +37,7 @@ class InstitutionsController < CatalogController
     @institution_title = @document[blacklight_config.index.show_link.to_sym]
 
     # get the response for collection objects
-    @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi'=> 'Collection','institution_pid_ssi'=> params[:id]}},{:sort=> 'title_info_primary_ssort asc'})
+    @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi' => 'Collection','institution_pid_ssi' => params[:id]},:rows => 100},{:sort => 'title_info_primary_ssort asc'})
 
     # add params[:f] for proper facet links
     params[:f] = {'institution_name_ssim' => [@institution_title]}
