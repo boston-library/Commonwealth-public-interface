@@ -74,7 +74,8 @@ class CollectionsController < CatalogController
   def get_series_image_pid(series_title,collection_title)
     (@series_response, @series_doc_list) = get_search_results(
         {:f => {'related_item_series_ssim' => series_title,
-                blacklight_config.collection_field => collection_title}
+                blacklight_config.collection_field => collection_title},
+         :rows => 1
         })
     @series_doc_list.first[:exemplary_image_ss]
   end
