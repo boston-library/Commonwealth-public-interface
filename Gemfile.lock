@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 53e146b867d3dc789e89dec917532fb450cc237a
+  revision: be56b9eb3cd2b5266f454ca02bd85f3bf77ec048
   specs:
-    bplmodels (0.0.87)
+    bplmodels (0.0.88)
       mods
       rails
 
@@ -173,7 +173,7 @@ GEM
       bootstrap_forms
       cancan
     i18n (0.6.1)
-    iso-639 (0.1.0)
+    iso-639 (0.2.3)
     jettywrapper (1.4.1)
       activesupport (>= 3.0.0)
       childprocess
