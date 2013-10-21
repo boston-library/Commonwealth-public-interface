@@ -54,9 +54,9 @@
           <% end %>
       <% end %>
     <% end %>
-    <%# note type=statement of responsibility field %>
+    <%# note @type="statement of responsibility" field %>
     <% if document[:note_resp_tsim] %>
-      <dt>Statement of Resp.:</dt>
+      <dt>Name on Item:</dt>
       <dd>
         <% document[:note_resp_tsim].each do |resp| %>
             <%= resp %><br />
@@ -113,12 +113,18 @@
     </dd>
     -->
     <%# end %>
-    <%# physical location field %>
+    <%# physical location field (including sub_location and shelf_locator) %>
     <% if document[:physical_location_ssim] %>
     <dt>Location:</dt>
     <dd>
       <%= link_to_facet(document[:physical_location_ssim].first,
-                        'physical_location_ssim') %><%= ', ' + document[:sub_location_tsim].first if document[:sub_location_tsim] %>
+                        'physical_location_ssim') %>
+      <% if document[:sub_location_tsim] %>
+          <br/><%= document[:sub_location_tsim].first %>
+      <% end %>
+      <% if document[:shelf_locator_tsim] %>
+          <br/><%= document[:shelf_locator_tsim].first %>
+      <% end %>
     </dd>
     <% end %>
     <%# topic field %>
