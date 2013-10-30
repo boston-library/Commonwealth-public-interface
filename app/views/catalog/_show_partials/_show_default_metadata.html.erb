@@ -79,9 +79,10 @@
     <% if document[:date_start_tsim] %>
         <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
         <% @date_start_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm].first : nil %>
+        <% @date_type = document[:date_type_ssm] ? document[:date_type_ssm].first : nil %>
         <dt>Date:</dt>
         <dd>
-          <%= render_mods_dates(document[:date_start_tsim].first, @date_end, @date_start_qualifier) %>
+          <%= render_mods_dates(document[:date_start_tsim].first, @date_end, @date_start_qualifier, @date_type) %>
         </dd>
     <% end %>
     <%# genre field - basic %>

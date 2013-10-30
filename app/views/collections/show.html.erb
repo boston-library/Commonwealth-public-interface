@@ -26,12 +26,17 @@
           <div class="span9">
 
             <% if @collection_image_pid %>
+              <% image_title = @collection_image_info[:title] %>
               <% image_datastream = datastream_disseminator_url(@collection_image_pid,'accessMaster') %>
-              <%= djatoka_image_tag(image_datastream,
+              <% img_element = djatoka_image_tag(image_datastream,
                                     {:resolver => Rails.configuration.djatoka_resolver.base_url,
                                     :scale => 300,
-                                    :alt => @collection_title,
+                                    :alt => image_title,
                                     :class => 'collection_img_show'}) %>
+              <%= link_to(img_element,
+                          solr_document_path(@collection_image_info[:pid])) %><br/>
+              <%= link_to(image_title,
+                          solr_document_path(@collection_image_info[:pid])) %>
             <% else %>
               <%= image_tag('collection_index.png',
                             :alt => @collection_title,

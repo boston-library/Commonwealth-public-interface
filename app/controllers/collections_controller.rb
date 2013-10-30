@@ -50,6 +50,7 @@ class CollectionsController < CatalogController
     # get an image for the collection
     if @document[:exemplary_image_ssi]
       @collection_image_pid = @document[:exemplary_image_ssi]
+      @collection_image_info = get_collection_image_info(@collection_image_pid)
     end
 
     respond_to do |format|
@@ -69,6 +70,8 @@ class CollectionsController < CatalogController
     end
   end
 
+  private
+
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
   def get_series_image_pid(series_title,collection_title)
@@ -81,7 +84,16 @@ class CollectionsController < CatalogController
   end
   helper_method :get_series_image_pid
 
-  private
+  # find the title and pid for the object representing the collection image
+  def get_collection_image_info(image_pid)
+    (@col_img_response, @col_img_doc_list) = get_search_results(
+        {:f => {'exemplary_image_ssi' => image_pid},
+         :fq => '-active_fedora_model_ssi:"Bplmodels::Collection"'})
+    col_img_info = {
+        :title => @col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
+        :pid => @col_img_doc_list.first[:id]
+    }
+  end
 
   # DEPRECATED -- document[:has_collection_member_ssim] is going away
   # use the first member object of the collection as the collection image

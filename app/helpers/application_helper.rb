@@ -86,7 +86,7 @@ module ApplicationHelper
     ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
   end
 
-  def render_mods_dates (date_start, date_end = nil, date_qualifier = nil)
+  def render_mods_dates (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
     prefix = ''
     suffix = ''
     date_start_suffix = ''
@@ -94,6 +94,7 @@ module ApplicationHelper
       prefix = date_qualifier == 'approximate' ? '[ca. ' : '['
       suffix = date_qualifier == 'questionable' ? '?]' : ']'
     end
+    prefix << 'c' if date_type == 'copyrightDate'
     if date_end
       date_start_suffix = '?' if date_qualifier == 'questionable'
       prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + normalize_date(date_end) + suffix
