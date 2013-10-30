@@ -12,9 +12,9 @@ class PreviewController < CatalogController
     # get_solr_response_for_doc_id triggers a rescue action in BL/lib/catalog.rb,
     # which causes an immediate escape, and any code below that isn't evaluated
     # need to figure out how to override this
-    if @document[:exemplary_image_ss]
+    if @document[:exemplary_image_ssi]
       thumb_prefix = @document[:id].to_s
-      @image_pid = @document[:exemplary_image_ss]
+      @image_pid = @document[:exemplary_image_ssi]
       @thumb_datastream_url = view_context.datastream_disseminator_url(@image_pid, 'thumbnail300')
       response = Typhoeus::Request.get(@thumb_datastream_url)
       if response.headers[/404 Not Found/]

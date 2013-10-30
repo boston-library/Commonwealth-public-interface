@@ -6,8 +6,8 @@
 <% end %>
 
 <div class="media">
-  <% if document[:exemplary_image_ss] %>
-    <% thumb = image_tag(datastream_disseminator_url(document[:exemplary_image_ss], 'thumbnail300'),
+  <% if document[:exemplary_image_ssi] %>
+    <% thumb = image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
                         :alt => document[blacklight_config.index.show_link.to_sym],
                         :class => 'index_thumb media-object') %>
     <%= link_to thumb,

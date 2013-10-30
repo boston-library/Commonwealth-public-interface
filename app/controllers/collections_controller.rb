@@ -48,8 +48,8 @@ class CollectionsController < CatalogController
     (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
 
     # get an image for the collection
-    if @document[:exemplary_image_ss]
-      @collection_image_pid = @document[:exemplary_image_ss]
+    if @document[:exemplary_image_ssi]
+      @collection_image_pid = @document[:exemplary_image_ssi]
     end
 
     respond_to do |format|
@@ -77,7 +77,7 @@ class CollectionsController < CatalogController
                 blacklight_config.collection_field => collection_title},
          :rows => 1
         })
-    @series_doc_list.first[:exemplary_image_ss]
+    @series_doc_list.first[:exemplary_image_ssi]
   end
   helper_method :get_series_image_pid
 

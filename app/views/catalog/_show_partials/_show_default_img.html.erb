@@ -1,4 +1,4 @@
-<% image_pid = @document[:exemplary_image_ss] %>
+<% image_pid = @document[:exemplary_image_ssi] %>
 <% image_datastream = datastream_disseminator_url(image_pid,'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
 <% object_title = document[blacklight_config.index.show_link.to_sym] %>

@@ -6,7 +6,7 @@
           <div class="document grid-view thumbnail">
             <div class="default_index_container">
               <div class="item_index_thumb">
-                <%# if document[:exemplary_image_ss] %>
+                <%# if document[:exemplary_image_ssi] %>
                     <% thumb = image_tag(datastream_disseminator_url(get_series_image_pid(series_title,@collection_title), 'thumbnail300'),
                                          :alt => series_title,
                                          :class => 'index_thumb') %>
