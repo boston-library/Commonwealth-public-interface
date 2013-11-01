@@ -54,6 +54,12 @@ div.show-document #previousNextDocument.well {
   margin-bottom: 1em;
 }
 
+#oai_img_show_container {
+  text-align: center;
+  margin-bottom: 1em;
+  float:right;
+}
+
 img.img_show {
   border: 1px solid $light_gray;
   width:auto;
@@ -75,11 +81,6 @@ div#img_viewer_modal {
     padding-left:1em;
   }
 
-  #oai_item_link {
-    float: right;
-    margin: 1em 1em .5em .5em;
-  }
-
 }
 
 #item_metadata dl.defList {
@@ -92,6 +93,12 @@ div#img_viewer_modal {
   dd {
     padding: .2em 0;
   }
+}
+
+#oai_item_link a {
+  width: 88%;
+  text-align: center;
+  margin-bottom: 0.5em;
 }
 
 

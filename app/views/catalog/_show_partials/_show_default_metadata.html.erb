@@ -4,8 +4,6 @@
   <% if document[:active_fedora_model_suffix_ssi] == 'OAIObject' %>
     <% link_label = t('blacklight.oai_objects.link_to_item_label') %>
     <% link_target = '_blank' %>
-    <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
-               :locals => {:document => @document} %>
   <% else %>
     <% link_label = 'Permalink' %>
     <% link_target = '_self' %>
