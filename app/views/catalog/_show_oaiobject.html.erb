@@ -1,0 +1,27 @@
+<div class="row">
+
+  <% # metadata display -%>
+  <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+
+  <div id="sidebar" class="span3">
+
+    <% if document[:exemplary_image_ssi] %>
+        <div id="img_show_container">
+          <% img_element =  image_tag(datastream_disseminator_url(
+                                              @document[:exemplary_image_ssi],
+                                              'thumbnail300'),
+                                      :class => 'img_show',
+                                      :alt => document[blacklight_config.index.show_link.to_sym]
+              ) %>
+          <%= link_to(img_element,
+                      @document[:identifier_uri_ss],
+                      :target => '_blank',
+                      :title => t('blacklight.oai_objects.link_to_item')) %>
+        </div>
+    <% end %>
+
+    <% # bookmark/folder/sharing functions -%>
+    <%= render_document_sidebar_partial  %>
+  </div>
+
+</div>

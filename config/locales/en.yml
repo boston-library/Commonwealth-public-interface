@@ -164,6 +164,10 @@ en:
             date:
               date_range_connector: '–'
 
+    oai_objects:
+          link_to_item: 'View this item'
+          link_to_item_label: 'Link to Item'
+
     pages:
           about:
             title: 'About'
