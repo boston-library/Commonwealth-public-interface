@@ -25,11 +25,27 @@ h4.collection-provenance {
 
 }
 
-img.collection_img_show {
+#collection_img {
   float: left;
   width: 43%;
-  margin: 0 1.4em 1em 0;
-  border: 1px solid $light_gray;
+  margin: 0 1.4em .5em 0;
+
+  img.collection_img_show {
+    border: 1px solid $light_gray;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  #collection_img_caption {
+    font-size: 12px;
+    padding-top: .3em;
+
+    a, a:hover {
+      color:$darker_gray;
+      text-decoration: none;
+    }
+
+  }
+
 }
 
 #collection_search_tools {
@@ -131,7 +147,7 @@ img.collection_img_show {
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
 
-  img.collection_img_show {
+  #collection_img {
     width: 100%;
     margin: 0 0 1em 0;
   }
@@ -163,7 +179,7 @@ img.collection_img_show {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
-  img.collection_img_show {
+  #collection_img {
     width: 100%;
     margin: 0 0 1em 0;
     float: none;
@@ -178,8 +194,13 @@ img.collection_img_show {
     display: none;
   }
 
-  #facets div.blacklight-related_item_series_ssim {
-    display: block;
+  #facets {
+    margin-top: 1em;
+
+    div.blacklight-related_item_series_ssim {
+      display: block;
+    }
+
   }
 
 }
@@ -187,7 +208,7 @@ img.collection_img_show {
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
-  img.collection_img_show {
+  #collection_img {
     width: 100%;
     margin: 0 0 1em 0;
     float: none;
@@ -196,6 +217,11 @@ img.collection_img_show {
   #collection_search_tools {
     width:95%;
     float:none;
+
+    #collection_view_all {
+      padding-top: 2.5em;
+    }
+
   }
 
   #series_wrapper {
