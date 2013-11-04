@@ -1,7 +1,7 @@
 <div class="row">
 
-  <% if document[:exemplary_image_ssi] %>
-      <div id="oai_img_show_container" class="span3">
+  <div id="oai_img_show_container" class="span3">
+    <% if document[:exemplary_image_ssi] %>
         <% img_element =  image_tag(datastream_disseminator_url(
                                             @document[:exemplary_image_ssi],
                                             'thumbnail300'),
@@ -12,12 +12,12 @@
                     @document[:identifier_uri_ss],
                     :target => '_blank',
                     :title => t('blacklight.oai_objects.link_to_item')) %>
-      </div>
-  <% else %>
-      <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
-                 :locals => {:document => @document} %>
-  <% end %>
-
+    <% else %>
+      <%# TK render_object_icon(document[:type_of_resource_ssim].first) %>
+    <% end %>
+    <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
+               :locals => {:document => @document} %>
+  </div>
   <% # metadata display -%>
   <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 

@@ -58,6 +58,21 @@ div.show-document #previousNextDocument.well {
   text-align: center;
   margin-bottom: 1em;
   float:right;
+
+  #oai_item_link {
+
+    a {
+      font-weight: bold;
+      color: #222;
+    }
+
+    a:hover {
+      color: $bl_link;
+      text-decoration: none;
+    }
+
+  }
+
 }
 
 img.img_show {
@@ -95,13 +110,6 @@ div#img_viewer_modal {
   }
 }
 
-#oai_item_link a {
-  width: 88%;
-  text-align: center;
-  margin-bottom: 0.5em;
-}
-
-
 /* tools */
 
 .addthis_toolbox {
@@ -125,4 +133,17 @@ div#img_viewer_modal {
   padding: 5px;
   word-break: normal;
   font-size: 12px;
+}
+
+/* responsive styles */
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #img_show_container,#oai_img_show_container,#sidebar {
+    float:left;
+  }
+
+
+
 }
