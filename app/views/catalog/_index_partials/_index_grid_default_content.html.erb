@@ -10,10 +10,13 @@
     <% thumb = image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
                            :alt => document[blacklight_config.index.show_link.to_sym],
                            :class => 'index_thumb') %>
-    <%= link_to thumb,
-                solr_document_path(:id => document[:id]),
-                :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
+  <% else %>
+     <% thumb = render_object_icon(document[:type_of_resource_ssim].first,
+                                   'index_thumb media-object') %>
   <% end %>
+  <%= link_to thumb,
+              solr_document_path(:id => document[:id]),
+              :'data-counter' => (document_counter + 1 + @response.params[:start].to_i) %>
 </div>
 <div class="item_index_title">
   <%= link_to_document(document, :label => blacklight_config.index.show_link.to_sym, :counter => (document_counter + 1 + @response.params[:start].to_i)) %>
