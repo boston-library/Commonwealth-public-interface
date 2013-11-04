@@ -32,6 +32,21 @@ module ApplicationHelper
     end
   end
 
+  # show the icon for objects with no thumbnail
+  def render_object_icon(format, img_class)
+    case format
+      when 'sound recording'
+        icon = 'audio'
+      when 'still image'
+        icon = 'image'
+      when 'moving image'
+        icon = 'moving-image'
+      else
+        icon = 'text'
+    end
+    image_tag('dc_' + icon +'-icon.png', :class => img_class, :alt => icon + ' icon')
+  end
+
   #from psu scholarsphere
   def link_to_field(fieldname, fieldvalue, displayvalue = nil)
     p = {:search_field => fieldname, :q => '"'+fieldvalue+'"'}
