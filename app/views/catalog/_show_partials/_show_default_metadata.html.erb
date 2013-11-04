@@ -172,6 +172,15 @@
             <% end %>
         </dd>
     <% end %>
+    <%# note @type="date" field %>
+    <% if document[:note_date_tsim] %>
+      <dt>Notes (date):</dt>
+      <dd>
+        <% document[:note_date_tsim].each do |date_note| %>
+            <%= date_note %><br />
+        <% end %>
+      </dd>
+  <% end %>
     <%# note field %>
     <% if document[:note_tsim] %>
         <dt>Notes:</dt>
@@ -183,7 +192,7 @@
     <% end %>
     <%# related item host field (physical collection) %>
     <% if document[:related_item_host_ssim] %>
-        <dt>Physical Collection:</dt>
+        <dt>Collection (local):</dt>
         <dd>
             <% document[:related_item_host_ssim].each do |related_host| %>
                 <%= link_to_facet(related_host, 'related_item_host_ssim') %><br />
