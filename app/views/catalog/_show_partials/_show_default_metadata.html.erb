@@ -33,32 +33,52 @@
         </dd>
     <% end %>
     <%# creator field - assumes equal # of roles and creator names %>
-    <% if document[:name_personal_tsim] || document[:name_corporate_tsim] %>
+    <% if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim] %>
       <% if document[:name_personal_tsim] %>
-        <% 0.upto document[:name_personal_tsim].length-1 do |index| %>
+          <% 0.upto document[:name_personal_tsim].length-1 do |index| %>
             <dt>
-                <% if document[:name_personal_role_tsim][index] %>
+              <% if document[:name_personal_role_tsim] %>
+                  <% if document[:name_personal_role_tsim][index] %>
                     <%= document[:name_personal_role_tsim][index].strip %>:
-                <% else %>
-                    Creator:
-                <% end %>
+                  <% end %>
+              <% else %>
+                  Creator:
+              <% end %>
             </dt>
             <dd>
               <%= document[:name_personal_tsim][index] %>
             </dd>
-        <% end %>
+          <% end %>
       <% end %>
       <% if document[:name_corporate_tsim] %>
           <% 0.upto document[:name_corporate_tsim].length-1 do |index| %>
               <dt>
-                <% if document[:name_corporate_role_tsim][index] %>
-                    <%= document[:name_corporate_role_tsim][index].strip %>:
+                <% if document[:name_corporate_role_tsim] %>
+                    <% if document[:name_corporate_role_tsim][index] %>
+                        <%= document[:name_corporate_role_tsim][index].strip %>:
+                    <% end %>
                 <% else %>
                     Creator:
                 <% end %>
               </dt>
               <dd>
                 <%= document[:name_corporate_tsim][index] %>
+              </dd>
+          <% end %>
+      <% end %>
+      <% if document[:name_generic_tsim] %>
+          <% 0.upto document[:name_generic_tsim].length-1 do |index| %>
+              <dt>
+                <% if document[:name_generic_role_tsim] %>
+                    <% if document[:name_generic_role_tsim][index] %>
+                        <%= document[:name_generic_role_tsim][index].strip %>:
+                    <% end %>
+                <% else %>
+                    Creator:
+                <% end %>
+              </dt>
+              <dd>
+                <%= document[:name_generic_tsim][index] %>
               </dd>
           <% end %>
       <% end %>
