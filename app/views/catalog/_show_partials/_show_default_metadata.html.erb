@@ -181,6 +181,11 @@
                   <%= link_to_facet(conf_name, 'subject_facet_ssim') %><br />
               <% end %>
           <% end %>
+          <% if document[:subject_temporal_facet_ssim] %>
+              <% document[:subject_temporal_facet_ssim].each do |temporal_subj| %>
+                  <%= link_to_facet(temporal_subj, 'subject_facet_ssim') %><br />
+              <% end %>
+          <% end %>
         </dd>
     <% end %>
     <%# geo subject field %>

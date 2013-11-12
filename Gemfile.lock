@@ -8,11 +8,12 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 83ede2ea2cda05a45a85d2e623f0a4695dbce46f
+  revision: 6d8c2523b1ada98f4b6d2c72c8c996771385a3c3
   specs:
     bplmodels (0.0.88)
       mods
       rails
+      timeliness
 
 GIT
   remote: https://github.com/boston-library/bpluser.git
@@ -173,7 +174,7 @@ GEM
       bootstrap_forms
       cancan
     i18n (0.6.1)
-    iso-639 (0.2.3)
+    iso-639 (0.2.4)
     jettywrapper (1.4.1)
       activesupport (>= 3.0.0)
       childprocess
@@ -344,6 +345,7 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    timeliness (0.3.7)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
