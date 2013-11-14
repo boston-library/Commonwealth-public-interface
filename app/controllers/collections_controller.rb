@@ -72,6 +72,17 @@ class CollectionsController < CatalogController
 
   private
 
+  # find the title and pid for the object representing the collection image
+  def get_collection_image_info(image_pid)
+    (@col_img_response, @col_img_doc_list) = get_search_results(
+        {:f => {'exemplary_image_ssi' => image_pid,
+                'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
+    col_img_info = {
+        :title => @col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
+        :pid => @col_img_doc_list.first[:id]
+    }
+  end
+
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
   def get_series_image_pid(series_title,collection_title)
@@ -84,28 +95,17 @@ class CollectionsController < CatalogController
   end
   helper_method :get_series_image_pid
 
-  # find the title and pid for the object representing the collection image
-  def get_collection_image_info(image_pid)
-    (@col_img_response, @col_img_doc_list) = get_search_results(
-        {:f => {'exemplary_image_ssi' => image_pid,
-                'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
-    col_img_info = {
-        :title => @col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
-        :pid => @col_img_doc_list.first[:id]
-    }
-  end
-
-  # DEPRECATED -- document[:has_collection_member_ssim] is going away
-  # use the first member object of the collection as the collection image
-  #def collection_image(document)
-  #  coll_image_object = document[:has_collection_member_ssim].first.gsub(/info:fedora\//,"")
-  #  @coll_image_response, @coll_image_document = get_solr_response_for_doc_id(coll_image_object)
-  #  if @coll_image_document[:has_image_ssim]
-  #    return @coll_image_document[:has_image_ssim].first.gsub(/info:fedora\//,"")
-  #  end
-  #
+  # Not using this for now
+  # find a representative image for a collection if none is assigned
+  # TODO better exception handling for items which don't have exemplary_image
+  #def get_collection_image_pid(collection_title)
+  #  (@default_coll_img_resp, @default_coll_img_doc_list) = get_search_results(
+  #      {:f => {blacklight_config.collection_field => collection_title,
+  #              'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'},
+  #       :rows => 1
+  #      })
+  #  @default_coll_img_doc_list.first[:exemplary_image_ssi]
   #end
-
-
+  #helper_method :get_collection_image_pid
 
 end
