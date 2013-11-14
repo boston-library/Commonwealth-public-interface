@@ -1,31 +1,3 @@
-// Carousel indicator pips
-// -----------------------------
-// should be able to delete this once BL is updated to use bootstrap-sass ~>2.3.1
-
-.carousel-indicators {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 5;
-  margin: 0;
-  list-style: none;
-
-  li {
-    display: block;
-    float: left;
-    width: 10px;
-    height: 10px;
-    margin-left: 5px;
-    text-indent: -999px;
-    background-color: #ccc;
-    background-color: rgba(255,255,255,.25);
-    border-radius: 5px;
-  }
-  .active {
-    background-color: #fff;
-  }
-
-}
 
 .carousel-caption {
   padding: 0 0 10px 10px;
@@ -36,40 +8,25 @@
   }
 }
 
-// styles to make transitions fade rather than slide
+/* responsive styles */
 
-.carousel-fade {
-  .carousel-inner {
-    .item {
-      opacity: 0;
-      -webkit-transition-property: opacity;
-      -moz-transition-property: opacity;
-      -ms-transition-property: opacity;
-      -o-transition-property: opacity;
-      transition-property: opacity;
+@media (max-width: 480px) {
+
+  #carousel_wrapper {
+    /* display: none; */
+
+    .carousel-caption {
+      padding: 1px 0 10px 10px;
+
+      h4, h5, p {
+        font-size: 12px;
+      }
     }
 
-    .active {
-      opacity: 1;
-    }
 
-    .active.left,
-    .active.right {
-      left: 0;
-      opacity: 0;
-      z-index: 1;
-    }
 
-    .next.left,
-    .prev.right {
-      opacity: 1;
-    }
   }
 
-  .carousel-control {
-    z-index: 2;
-  }
 }
-
 
 

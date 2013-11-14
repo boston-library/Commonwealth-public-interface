@@ -78,14 +78,18 @@
 
   #hero_search {
     height: 150px;
-  }
 
-  #hero_search h2 {
-    font-size: 17.5px;
-    line-height: 20px;
-    padding: 10px 0 0 7px;
-  }
+    h2 {
+      font-size: 17.5px;
+      line-height: 20px;
+      padding: 10px 0 0 7px;
+    }
 
+    select {
+      display:none;
+    }
+
+  }
 }
 
 /* Landscape phone to portrait tablet */
@@ -104,6 +108,17 @@
   #hero_search {
     margin-bottom: 20px;
     height: auto;
+
+    h2 {
+      font-size: 14px;
+      line-height: 20px;
+      padding: 0 0 0 5px;
+    }
+
+    #hero_search_form {
+      padding-top: 0;
+    }
+
   }
 
 }
