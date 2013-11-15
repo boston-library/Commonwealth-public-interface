@@ -3,102 +3,81 @@
 #header-navbar-fixed-top {
   min-width: 320px;
 
-  /* The main logo image for the Blacklight instance */
-  .brand {
-    width: 205px;
-    background:transparent asset_url($logo_image_home,image) no-repeat top left;
-    display: inline-block;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    padding-right:0;
-    margin-left: 0;
-    margin-right:20px;
-    padding-left: 0;
-    height: 60px;
-  }
-
   .navbar-inner {
     height: 5.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
+
+    /* The main logo image for the Blacklight instance */
+    .brand {
+      width: 205px;
+      background:transparent asset_url($logo_image_home,image) no-repeat top left;
+      display: inline-block;
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      padding-right:0;
+      margin-left: 0;
+      margin-right:20px;
+      padding-left: 0;
+      height: 60px;
+    }
+
+    #user-util-links {
+      font-size: 12px;
+      text-align: right;
+      height: 42px;
+
+      #util-links-nologin, #user-nav-btn {
+        display: inline-block;
+        vertical-align: super;
+      }
+
+      #user-nav-btn {
+        vertical-align: top;
+        display: inline-block;
+      }
+
+      ul.dropdown-menu {
+        text-align: left;
+      }
+
+      #header-search {
+        display: inline-block;
+        padding: 0.4em 0 0 0.7em;
+
+        input {
+          padding: 0 0 0 0.2em;
+          width: 8em;
+        }
+
+        .submit-search-text {
+          display: none;
+        }
+
+      }
+
+    }
+
+    #header_main_nav {
+      float: right;
+      margin-bottom: 0;
+      padding-top: .2em;
+    }
+
+    .navbar .nav > li > a {
+      padding: 10px 0 10px 60px;
+    }
+
+    .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+      background-color: inherit;
+      box-shadow: none;
+      color: #333333;
+    }
+
+
   }
 
-}
-
-
-
-
-
-/* change the logo for the home page */
-
-/* set this in bl/layout css instead
-body.blacklight-home {
-  padding-top: 8em;
-}
-
-
-body.blacklight-home .navbar .brand {
-  background:transparent asset_url($logo_image_home,image) no-repeat top left;
-  height: 60px;
-}
-
-body.blacklight-home #header-navbar-fixed-top .navbar-inner {
-  height: 5.5em;
-  padding-bottom: 0.5em;
-  padding-top: 0.5em;
-}
-
-*/
-
-#user-util-links {
-  font-size: 12px;
-  text-align: right;
-  height: 42px;
-}
-
-#util-links-nologin, #user-nav-btn {
-  display: inline-block;
-  vertical-align: super;
-}
-
-#user-nav-btn {
-  vertical-align: top;
-  display: inline-block;
-}
-
-#user-util-links ul.dropdown-menu {
-  text-align: left;
-}
-
-#header-search {
-  display: inline-block;
-  padding: 0.4em 0 0 0.7em;
-}
-
-#header-search input {
-  padding: 0 0 0 0.2em;
-  width: 8em;
-}
-
-#header-search .submit-search-text {
-  display: none;
-}
-
-#header_main_nav {
-  float: right;
-  margin-bottom: 0;
-  padding-top: .2em;
-}
-
-.navbar .nav > li > a {
-  padding: 10px 0 10px 60px;
-}
-
-.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
-  background-color: inherit;
-  box-shadow: none;
-  color: #333333;
 }
 
 /* styles for expanded nav */
@@ -116,12 +95,36 @@ body.blacklight-home #header-navbar-fixed-top .navbar-inner {
   z-index: 2;
 }
 
-.nav-collapse .btn {
-  padding: 0 6px;
+.nav-collapse {
+
+  .btn {
+    padding: 0 6px;
+  }
+
+  .nav > li {
+    float: left;
+  }
+
 }
 
-.nav-collapse .nav > li {
-  float: left;
+
+/* responsive styles */
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #header-navbar-fixed-top {
+
+    .navbar-inner {
+
+      .navbar .nav > li > a {
+        padding: 10px 0 10px 40px;
+      }
+
+    }
+
+  }
+
 }
 
 
