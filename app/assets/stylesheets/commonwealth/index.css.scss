@@ -131,42 +131,68 @@ div.item_index_title {
   border-bottom: 1px solid $light_gray;
   margin-bottom: 1em;
   padding-bottom: 1em;
+
+  #selected_ {
+    float: left;
+    margin: 0 .5em 0 0;
+  }
+
+  a.pull-left {
+    min-width: 220px;
+  }
+
+  div.media img {
+    height:auto;
+    width:auto;
+    max-height:200px;
+    max-width:200px;
+    border: 1px solid $light_gray;
+    bottom:0;
+  }
+
 }
 
-#documents div.list-view #selected_ {
-  float: left;
-  margin: 0 .5em 0 0;
+div.collections-list #documents {
+
+  div.view_all_link {
+    float:right;
+    font-size: 12px;
+
+    a {
+      color: $darker_gray;
+      &:hover {
+        color: $bl_link;
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  div.list-view a.pull-left {
+    min-width: 150px;
+  }
+
+  div.media img {
+    max-height:130px;
+    max-width:130px;
+  }
+
+  div.item_index_details {
+    font-size: 13px;
+  }
+
+  div.collection-location {
+    a {
+      color: $darker_gray;
+      &:hover {
+        color: $bl_link;
+        text-decoration: none;
+      }
+    }
+  }
+
 }
 
-#documents div.list-view a.pull-left {
-  min-width: 220px;
-}
-
-#documents div.list-view div.media img {
-  height:auto;
-  width:auto;
-  max-height:200px;
-  max-width:200px;
-  border: 1px solid $light_gray;
-  bottom:0;
-}
-
-div.collections-list #documents div.list-view a.pull-left {
-  min-width: 150px;
-}
-
-div.collections-list #documents div.media img {
-  max-height:130px;
-  max-width:130px;
-}
-
-#documents div.collection-location {
-  color: $darker_gray;
-}
-
-div.collections-list #documents div.item_index_details {
-  font-size: 13px;
-}
 
 body.blacklight-catalog-institutions a.pull-left {
   display: none;

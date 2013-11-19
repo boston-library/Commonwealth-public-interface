@@ -48,7 +48,8 @@
             <div id="collection_search_tools" class="well well-small">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
               <div id="collection_view_all">
-                <%= link_to_all_col_items('btn btn-info view-all-col') %>
+                <%= link_to_all_col_items(@collection_title,
+                                          'btn btn-info view-all-col') %>
               </div>
             </div>
 
