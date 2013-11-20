@@ -52,6 +52,34 @@ div.item_index_title {
   min-height: 200px;*/
   margin-top: 1em;
   margin-bottom: 2em;
+
+  div.item_index_thumb {
+    height: 200px;
+    position: relative;
+    margin-bottom: .2em;
+
+    img {
+      height:auto;
+      width:auto;
+      max-height:200px;
+      max-width:100%;
+      border: 1px solid $light_gray;
+      position:absolute;
+      bottom:0;
+      float:left;
+    }
+
+  }
+
+  img.collection-icon {
+    width: 20px;
+    border: none;
+  }
+
+  div.item_index_details {
+    display:none;
+  }
+
 }
 
 #documents ul.thumbnails .thumbnail {
@@ -75,27 +103,6 @@ div.item_index_title {
 }
 */
 
-#documents div.grid-view div.item_index_thumb {
-  height: 200px;
-  position: relative;
-  margin-bottom: .2em;
-}
-
-#documents div.grid-view div.item_index_thumb img {
-  height:auto;
-  width:auto;
-  max-height:200px;
-  max-width:100%;
-  border: 1px solid $light_gray;
-  position:absolute;
-  bottom:0;
-  float:left;
-}
-
-#documents div.grid-view div.item_index_details {
-  display:none;
-}
-
 /* grid view responsive styles */
 
 /* Large desktop */
@@ -103,10 +110,11 @@ div.item_index_title {
 
   #documents div.grid-view div.item_index_thumb {
     height: 250px;
-  }
 
-  #documents div.grid-view div.item_index_thumb img {
-    max-height: 250px;
+    img {
+      max-height: 250px;
+    }
+
   }
 
 }
@@ -116,10 +124,11 @@ div.item_index_title {
 
   #documents div.grid-view div.item_index_thumb {
     height: 150px;
-  }
 
-  #documents div.grid-view div.item_index_thumb img {
-    max-height: 150px;
+    img {
+      max-height: 150px;
+    }
+
   }
 
 }
@@ -148,18 +157,20 @@ div.item_index_title {
     max-width:200px;
     border: 1px solid $light_gray;
     bottom:0;
+
+    &.collection-icon {
+      width: 20px;
+      border: none;
+    }
+
   }
-
-}
-
-div.collections-list #documents {
 
   div.view_all_link {
     float:right;
     font-size: 12px;
 
     a {
-      color: $darker_gray;
+      color: $dark_gray;
       &:hover {
         color: $bl_link;
         text-decoration: none;
@@ -167,6 +178,35 @@ div.collections-list #documents {
     }
 
   }
+
+  div.collection-location {
+    a {
+      color: $darker_gray;
+      &:hover {
+        color: $bl_link;
+        text-decoration: none;
+      }
+    }
+  }
+
+  dl.index_defList {
+    padding-top: .5em;
+
+    dt {
+      color: $darker_gray;
+      width: 80px;
+    }
+
+    dd {
+      margin-left: 90px;
+      color: $darker_gray;
+    }
+
+  }
+
+}
+
+div.collections-list #documents {
 
   div.list-view a.pull-left {
     min-width: 150px;
@@ -181,16 +221,6 @@ div.collections-list #documents {
     font-size: 13px;
   }
 
-  div.collection-location {
-    a {
-      color: $darker_gray;
-      &:hover {
-        color: $bl_link;
-        text-decoration: none;
-      }
-    }
-  }
-
 }
 
 
@@ -198,18 +228,4 @@ body.blacklight-catalog-institutions a.pull-left {
   display: none;
 }
 
-
-#documents div.list-view dl.index_defList {
-  padding-top: .5em;
-}
-
-#documents div.list-view dl.index_defList dt {
-  color: $darker_gray;
-  width: 80px;
-}
-
-#documents div.list-view dl.index_defList dd {
-  margin-left: 90px;
-  color: $darker_gray;
-}
 
