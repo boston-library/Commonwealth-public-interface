@@ -1,1 +1,1 @@
-Rails.configuration.djatoka_resolver = Djatoka::Resolver.new('http://fedoratest.bpl.org/adore-djatoka/resolver')
+Rails.configuration.djatoka_resolver = Djatoka::Resolver.new('https://fedoratest.bpl.org/adore-djatoka/resolver')

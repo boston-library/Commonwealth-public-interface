@@ -17,7 +17,7 @@
             <% status = "item" %>
         <% end %>
         <div class="<%= status %>">
-          <% slide_img =  djatoka_image_tag(datastream_disseminator_url(slide.image_pid,'accessMaster'),
+          <% slide_img =  djatoka_image_tag(nonssl_image_uri(slide.image_pid,'accessMaster'),
                                             {:resolver => Rails.configuration.djatoka_resolver.base_url,
                                              :scale => slide.scale,
                                              :alt => slide.title,

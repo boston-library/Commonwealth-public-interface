@@ -101,6 +101,11 @@ module ApplicationHelper
     ActiveFedora::Base.connection_for_pid(pid).client.url + "/objects/#{pid}/datastreams/#{datastream_id}/content"
   end
 
+  # create djatoka-friendly non-ssl image path
+  def nonssl_image_uri(pid,datastream_id)
+    datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
+  end
+
   def render_mods_dates (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
     prefix = ''
     suffix = ''
