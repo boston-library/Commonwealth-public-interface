@@ -292,6 +292,9 @@
       <dd>
         <% document[:use_and_reproduction_ssm].each do |terms| %>
             <%= terms %><br />
+            <% if terms.match(/\(CC\s/) %>
+                <%= render_cc_license(terms) %><br />
+            <% end %>
         <% end %>
       </dd>
     <% end %>
