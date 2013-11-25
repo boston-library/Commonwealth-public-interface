@@ -18,10 +18,19 @@ div.blacklight-institution {
 
   #institution_location {
     padding-bottom: .7em;
-    color: $darker_gray;
     font-size: 16px;
     position: relative;
     top: -5px;
+    color: $dark_gray;
+
+    a {
+      color: $darker_gray;
+      &:hover {
+        color: $bl_link;
+        text-decoration: none;
+      }
+    }
+
   }
 
   img.institution_img_show {

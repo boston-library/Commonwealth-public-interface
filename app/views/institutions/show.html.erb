@@ -14,13 +14,17 @@
 
       <div id="institution_location">
         <% if @document[:subject_geo_state_tsim] %>
-            <%= @document[:subject_geo_state_tsim].first %>
+            <%= link_to_facet(@document[:subject_geo_state_tsim][0],
+                              'subject_geographic_ssim') %>
             <% if @document[:subject_geo_county_tsim] %>
-                &nbsp; &gt; &nbsp; <%= @document[:subject_geo_county_tsim].first %> County
+                &nbsp; &gt; &nbsp; <%= link_to_county_facet(@document[:subject_geo_county_tsim][0],
+                                                     'subject_geographic_ssim') %>
                 <% if @document[:subject_geo_city_tsim] %>
-                    &nbsp; &gt; &nbsp; <%= @document[:subject_geo_city_tsim].first %>
+                    &nbsp; &gt; &nbsp; <%= link_to_facet(@document[:subject_geo_city_tsim][0],
+                                                         'subject_geographic_ssim') %>
                     <% if @document[:subject_geo_citysection_tsim] %>
-                        &nbsp; &gt; &nbsp; <%= @document[:subject_geo_citysection_tsim].first %>
+                        &nbsp; &gt; &nbsp; <%= link_to_facet(                                                       @document[:subject_geo_citysection_tsim][0],
+                                'subject_geographic_ssim') %>
                     <% end %>
                 <% end %>
             <% end %>

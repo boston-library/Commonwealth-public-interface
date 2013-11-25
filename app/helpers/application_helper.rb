@@ -81,6 +81,16 @@ module ApplicationHelper
                                                                  :action=> 'index'}))
   end
 
+  def link_to_county_facet(field, field_string)
+    new_params = add_facet_params(field_string, field + ' (county)')
+    new_params.delete(:id)
+    new_params.delete(:view)
+    new_params[:action] = 'index'
+    new_params[:controller] = 'catalog'
+    new_params[:f] = {field_string => [field + ' (county)']}
+    link_to(field + ' County', new_params)
+  end
+
   def simpleimage_file_pid (document)
     return Bplmodels::Image.find(document[:id]).image_files.first.pid
   end
