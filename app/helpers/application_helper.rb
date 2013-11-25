@@ -144,7 +144,7 @@ module ApplicationHelper
     terms_code = terms.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase
     link_to(
         image_tag('//i.creativecommons.org/l/' + terms_code + '/3.0/80x15.png',
-                  :alt => 'CC' + terms_code.upcase + 'icon',
+                  :alt => 'CC' + terms_code.upcase + ' icon',
                   :class => 'cc_license_icon'),
         'http://creativecommons.org/licenses/' + terms_code + '/3.0',
         :class => 'cc_license_link',
