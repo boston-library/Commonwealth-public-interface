@@ -2,6 +2,7 @@
   <%= link_to(document[:identifier_uri_ss],
               :class => 'view_oai_item',
               :target => '_blank' ) do %>
-      <%= t('blacklight.oai_objects.link_to_item') %> <i class="icon-share"></i>
+      <%= t('blacklight.oai_objects.link_to_item',
+            :institution_name => document[:institution_name_ssim].first) %> <i class="icon-share"></i>
   <% end %>
 </div>
