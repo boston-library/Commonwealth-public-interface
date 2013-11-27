@@ -23,6 +23,15 @@
         <%# end %>
       </dd>
     <% end %>
+    <%# alternative title field %>
+    <% if document[:title_info_alternative_tsim] %>
+      <dt>Title (alternative):</dt>
+      <dd>
+        <% document[:title_info_alternative_tsim].each do |alt_title| %>
+            <%= alt_title %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# abstract/description field %>
     <% if document[:abstract_tsim] %>
         <dt>Description:</dt>
@@ -295,6 +304,15 @@
             <% if terms.match(/\(CC\s/) %>
                 <%= render_cc_license(terms) %><br />
             <% end %>
+        <% end %>
+      </dd>
+    <% end %>
+    <%# additional rights/use info field %>
+    <% if document[:restrictions_on_access_ssm] %>
+      <dt>Access Restrictions:</dt>
+      <dd>
+        <% document[:restrictions_on_access_ssm].each do |restrictions| %>
+            <%= restrictions %><br />
         <% end %>
       </dd>
     <% end %>
