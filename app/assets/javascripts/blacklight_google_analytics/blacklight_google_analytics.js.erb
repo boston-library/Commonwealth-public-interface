@@ -32,6 +32,38 @@ jQuery(function () {
         return identifier;
     };
 
+    jQuery('a').click(function () {
+    // tell analytics to save event
+        try {
+            var category = jQuery('body').attr('class').split(' ').slice(-1).toString().replace(/blacklight-/,'').replace(/-/,'#');
+            var action = BlacklightGoogleAnalytics.this_or_parent_id(jQuery(this));
+            // for facets we make the action the facet heading
+            if (action === 'facets') {
+                var action = jQuery(this).parents("div:first").find("h3:first").text() + '_facet';
+            }
+            var label = (jQuery(this).text() || jQuery(this).children('img:first').attr('alt'));
+            ga('send', 'event', category, action, label);
+        } catch (err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+        //BlacklightGoogleAnalytics.pause();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   /*
 // all links get tracked
    jQuery('a').click(function () {
 // tell analytics to save event
@@ -62,7 +94,7 @@ jQuery(function () {
         }
         BlacklightGoogleAnalytics.pause();
     });
-
+    */
     // the two event-tracking functions below don't have any relevance in this app
     /*
     //facet expand/collapse
