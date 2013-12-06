@@ -32,21 +32,48 @@ jQuery(function () {
         return identifier;
     };
 
+    BlacklightGoogleAnalytics.rails_category = function () {
+        return jQuery('body').attr('class').split(' ').slice(-1).toString().replace(/blacklight-/,'').replace(/-/,'#');
+    };
+
     jQuery('a').click(function () {
     // tell analytics to save event
         try {
-            var category = jQuery('body').attr('class').split(' ').slice(-1).toString().replace(/blacklight-/,'').replace(/-/,'#');
+            var category = BlacklightGoogleAnalytics.rails_category();
             var action = BlacklightGoogleAnalytics.this_or_parent_id(jQuery(this));
+            var label = (jQuery(this).text() || jQuery(this).children('img:first').attr('alt'));
             // for facets we make the action the facet heading
             if (action === 'facets-collapse') {
                 var action = 'facet_' + jQuery(this).parents("div:first").find("h5:first").text().trim();
+            } else if (action === 'documents') {
+                var action = 'result_' + jQuery(this).parents("div:first").attr('class');
+                if (jQuery(this).data('counter')) {
+                    var label = jQuery(this).data('counter');
+                }
+            } else if (action === 'item_metadata') {
+                var label = jQuery(this).parent().prev("dt").text().replace(/:/,'');
+            } else if (action === 'item_breadcrumb') {
+                var label = jQuery(this).attr('class');
+
             }
-            var label = (jQuery(this).text() || jQuery(this).children('img:first').attr('alt'));
+
             ga('send', 'event', category, action, label);
         } catch (err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
         }
         //BlacklightGoogleAnalytics.pause();
+    });
+
+    // OAI item clicks
+    jQuery("#oai_img_show_container").find("a").click(function(){
+        try{
+            var category = BlacklightGoogleAnalytics.rails_category();
+            var action = 'oai_item_link';
+            var label = jQuery('#item_breadcrumb').find("a.institution_breadcrumb").text();
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
     });
 
 
