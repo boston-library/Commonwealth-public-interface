@@ -8,7 +8,7 @@
         <button class="btn dropdown-toggle btn-mini" data-toggle="dropdown">
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu btn-mini">
+        <ul id="user-util-links-list" class="dropdown-menu btn-mini">
           <li><%= link_to t('blacklight.header_links.folders'), folders_path %></li>
           <li><%= link_to t('blacklight.header_links.saved_searches'), saved_searches_path %></li>
           <li><%= link_to t('blacklight.header_links.search_history'), search_history_path %></li>
@@ -18,7 +18,7 @@
 
   <% else %>
       <div id="util-links-nologin">
-      <ul class="inline">
+      <ul id="user-util-links-list" class="inline">
         <% unless @searches.blank? && session[:history].blank? %>
             <% if current_or_guest_user %>
                 <li><%= link_to t('blacklight.header_links.folders'), folders_path %></li>

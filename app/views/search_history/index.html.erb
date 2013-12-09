@@ -13,7 +13,10 @@
     <h3>
       <%=t('blacklight.search_history.recent')%>
       <small>
-        [<%= link_to t('blacklight.search_history.clear.action_title'), clear_search_history_path, :method => :delete, :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
+        [<%= link_to t('blacklight.search_history.clear.action_title'),
+                     clear_search_history_path,
+                     :method => :delete,
+                     :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
       </small>
     </h3>
     <table class="table search_history">

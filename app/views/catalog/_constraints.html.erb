@@ -12,6 +12,7 @@
           <%= link_to t('blacklight.saved_searches.save'),
                       save_search_path( session[:history].first ),
                       :method => :put,
+                      :id=>"saveSearchLink",
                       :class=>'catalog_saveSearchLink' %>
         </li>
         <% end %>

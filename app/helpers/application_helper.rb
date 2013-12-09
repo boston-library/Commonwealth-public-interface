@@ -159,7 +159,7 @@ module ApplicationHelper
                       :class => 'cc_license_icon'),
             'http://creativecommons.org/licenses/' + terms_code + '/3.0',
             :rel => 'license',
-            :class => 'cc_license_link',
+            :id => 'cc_license_link',
             :target => '_blank')
   end
 
