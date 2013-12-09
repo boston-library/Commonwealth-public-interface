@@ -12,7 +12,7 @@
         <%= @institution_title %>
       </h2>
 
-      <div id="institution_location">
+      <div id="institution_geolocation">
         <% if @document[:subject_geo_state_tsim] %>
             <%= link_to_facet(@document[:subject_geo_state_tsim][0],
                               'subject_geographic_ssim') %>
@@ -40,7 +40,7 @@
     <div id="institution_search_tools" class="well well-small">
       <%= render :partial => 'search_form_institution',
                  :locals => {:document => @document} %>
-      <div id="collection_view_all">
+      <div id="institution_view_all">
         <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
       </div>
     </div>
