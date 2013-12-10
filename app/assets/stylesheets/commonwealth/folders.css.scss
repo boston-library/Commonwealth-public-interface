@@ -2,11 +2,11 @@
 
 @import 'cmmnwlth_defaults';
 
-#folderTools {
+#folderItemTools {
   display: inline;
 }
 
-ul.folderTools
+ul.folderItemToolsList
   {
   /* @include rounded-corners(0 0 4px 4px); */
   background-color: $well_bg_color;

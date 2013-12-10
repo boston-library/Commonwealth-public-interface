@@ -83,8 +83,19 @@ jQuery(function () {
             if (jQuery(this).attr('class')) {
                 var action = jQuery(this).attr('class');
             } else {
-                var action = 'link_to_previous_search';
+                var action = 'link_to_saved_search';
             }
+            ga('send', 'event', category, action);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action]);
+        }
+    });
+
+    // search history clicks
+    jQuery("#searches_list").find("a").click(function(){
+        try{
+            var category = BlacklightGoogleAnalytics.rails_category();
+            var action = 'link_to_previous_search';
             ga('send', 'event', category, action);
         } catch(err) {
             BlacklightGoogleAnalytics.console_log_error(err, [category, action]);

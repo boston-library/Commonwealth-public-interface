@@ -4,22 +4,23 @@
 
 <div id="content" class="folder_container span9">
 
-  <h2>Folder: <%= @folder.title %>
-    <% if current_user %>
-    <small>
-      [<%= link_to t('blacklight.folders.edit'),
-                   edit_folder_path(@folder),
-                   :title => "edit this folder" %> |
-      <%= link_to t('blacklight.folders.delete.delete'),
-                  @folder, :method => :delete,
-                  :data => { :confirm => t('blacklight.folders.delete.confirm') },
-                  :title => t('blacklight.folders.delete.delete') %> |
-      <%= link_to t('blacklight.folder_items.clear.action'),
-                  clear_folder_items_path,
-                  :method => :delete,
-                  :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %>]</small>
-    <% end %>
-  </h2>
+  <h2>Folder: <%= @folder.title %></h2>
+  <% if current_user %>
+      <div id="folder_tools">
+        <%= link_to t('blacklight.folders.edit'),
+                    edit_folder_path(@folder),
+                    :title => "edit this folder" %> |
+        <%= link_to t('blacklight.folders.delete.delete'),
+                    @folder, :method => :delete,
+                    :data => { :confirm => t('blacklight.folders.delete.confirm') },
+                    :title => t('blacklight.folders.delete.delete') %> |
+        <%= link_to t('blacklight.folder_items.clear.action'),
+                    clear_folder_items_path,
+                    :method => :delete,
+                    :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %>
+      </div>
+  <% end %>
+
   <%# render 'shared/tools' %>
   <% if @folder.description %>
       <p><%= @folder.description %></p>

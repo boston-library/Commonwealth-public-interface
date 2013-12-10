@@ -10,7 +10,9 @@
 
     <div id="user_folders" class="folder_container">
       <p><%= t('blacklight.folders.intro') %></p>
-      <p><%= link_to "Create a new folder", new_folder_path %></p>
+      <p><%= link_to "Create a new folder",
+                     new_folder_path,
+                     :id => 'create_folder_link' %></p>
       <ul id="user_folder_list">
         <li>
           <h4><%= link_to t('blacklight.bookmarks.title'), bookmarks_path, :class => "folder_title" %></h4>

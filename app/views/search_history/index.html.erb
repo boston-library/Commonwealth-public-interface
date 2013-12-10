@@ -15,11 +15,12 @@
       <small>
         [<%= link_to t('blacklight.search_history.clear.action_title'),
                      clear_search_history_path,
+                     :id => 'clear_search_history',
                      :method => :delete,
                      :data => { :confirm => t('blacklight.search_history.clear.action_confirm') } %>]
       </small>
     </h3>
-    <table class="table search_history">
+    <table id="searches_list" class="table search_history">
       <%-  @searches.each_with_index do |search,index| -%>
           <%= content_tag :tr, :id => "document_#{index + 1}" do %>
               <td class="query"><%= link_to_previous_search(search.query_params) %></td>
