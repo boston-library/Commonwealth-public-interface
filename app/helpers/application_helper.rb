@@ -11,7 +11,7 @@ module ApplicationHelper
         'Maps/Atlases'
       when 'Documents'
         'Documents (other)'
-      when 'Motion Pictures'
+      when 'Motion pictures'
         'Film/Video'
       when 'Music'
         'Music (recordings)'
