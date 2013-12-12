@@ -98,11 +98,13 @@ module ApplicationHelper
   def render_item_breadcrumb(document)
     if document[:institution_pid_ssi] && document[:collection_pid_ssm]
       inst_link = link_to(document[:institution_name_ssim].first,
-                          institution_path(:id => document[:institution_pid_ssi]))
+                          institution_path(:id => document[:institution_pid_ssi]),
+                          :class => 'institution_breadcrumb')
       connector = content_tag(:i, '',
                               :class => 'icon-arrow-right item-breadcrumb-separator')
       coll_link = link_to(document[:collection_name_ssim].first,
-                          collection_path(:id => document[:collection_pid_ssm].first))
+                          collection_path(:id => document[:collection_pid_ssm].first),
+                          :class => 'collection_breadcrumb')
       inst_link + connector + coll_link
     end
   end
@@ -157,7 +159,7 @@ module ApplicationHelper
                       :class => 'cc_license_icon'),
             'http://creativecommons.org/licenses/' + terms_code + '/3.0',
             :rel => 'license',
-            :class => 'cc_license_link',
+            :id => 'cc_license_link',
             :target => '_blank')
   end
 

@@ -18,8 +18,11 @@ Blacklight.setup_modal = function(link_selector, form_selector, launch_modal) {
             if (launch_modal) {
                 jQuery('#ajax-modal').modal();
             }
+            BlacklightGoogleAnalytics.track_modal_facet_clicks();
+            BlacklightGoogleAnalytics.track_modal_form();
             Blacklight.check_close_ajax_modal();
         });
+
     });
 
 

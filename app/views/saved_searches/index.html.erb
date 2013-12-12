@@ -18,6 +18,7 @@
       <small>
         [<%= link_to t('blacklight.saved_searches.clear.action_title'),
                     clear_saved_searches_path,
+                    :class => 'clear_all',
                     :method => :delete,
                     :data => { :confirm => t('blacklight.saved_searches.clear.action_confirm') } %>]
       </small>
@@ -30,6 +31,7 @@
                               forget_search_path(search.id) %>
                 <%= link_to(content_tag(:i, '',:class => 'icon-remove'),
                             forget_search_path(search.id),
+                            :class => 'delete_search',
                             :method => 'post',
                             :title => t('blacklight.saved_searches.delete'))
                 %>
