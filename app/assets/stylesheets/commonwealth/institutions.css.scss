@@ -75,6 +75,12 @@ div.blacklight-institution {
     float: left;
     margin-top: 1em;
 
+    #collections_count {
+      font-size:14px;
+      color:$dark_gray;
+      vertical-align: top;
+    }
+
     #documents {
       margin-top: 0;
     }

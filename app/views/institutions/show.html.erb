@@ -81,7 +81,7 @@
 
       <% if @collex_documents.length > 0 %>
         <div id="institution_collections">
-            <h4>Digital Collections:</h4>
+            <h4>Digital Collections: <span id="collections_count">(<%= @collex_documents.length %>)</span></h4>
 
             <%= render :partial => 'catalog/document_list',
                        :locals => {:documents => @collex_documents} %>
