@@ -4,22 +4,11 @@ jQuery(function() {
 
     BlacklightGoogleAnalytics = {}
 
-    // Necessary to leave some time for the async GA code to run before the browser
-    // stops javascript execution and sends the user to the new page.
-    BlacklightGoogleAnalytics.pause = function(){
-        // pause to allow google script to run before going to new page
-        var date = new Date();
-        var curDate = null;
-        do {
-            curDate = new Date();
-        } while(curDate-date < 300);
-    };
-
     BlacklightGoogleAnalytics.console_log_error = function(err, values){
         <% if Rails.env == 'development' %>
-        // good place to log in development
-        console.log(err);
-        console.log(values);
+            // good place to log in development
+            console.log(err);
+            console.log(values);
         <% end %>
     };
 
@@ -87,7 +76,7 @@ jQuery(function() {
     };
 
     // OAI item clicks
-    jQuery("#oai_img_show_container").find("a").click(function(){
+    jQuery("#oai_img_show_container").find("a").off("click").click(function(){
         try{
             var action = 'oai_item_link';
             var label = jQuery('#item_breadcrumb').find("a.institution_breadcrumb").text();
@@ -98,7 +87,7 @@ jQuery(function() {
     });
 
     // saved searches clicks
-    jQuery("#searches_content").find("a").click(function(){
+    jQuery("#searches_content").find("a").off("click").click(function(){
         try{
             if (jQuery(this).attr('class')) {
                 var action = jQuery(this).attr('class');
@@ -112,7 +101,7 @@ jQuery(function() {
     });
 
     // search history clicks
-    jQuery("#searches_list").find("a").click(function(){
+    jQuery("#searches_list").find("a").off("click").click(function(){
         try{
             var action = 'link_to_previous_search';
             ga('send', 'event', category, action);
@@ -122,7 +111,7 @@ jQuery(function() {
     });
 
     // collections#show series clicks
-    jQuery("#series_wrapper").find("a").click(function(){
+    jQuery("#series_wrapper").find("a").off("click").click(function(){
         try{
             var action = 'series_' + jQuery(this).parents("div:first").attr('class');
             var label = (jQuery(this).text() || jQuery(this).children('img:first').attr('alt'));
@@ -133,7 +122,7 @@ jQuery(function() {
     });
 
     // institutions#show collection clicks
-    jQuery("#institution_collections").find("a").click(function(){
+    jQuery("#institution_collections").find("a").off("click").click(function(){
         try{
             var action = 'collections_' + jQuery(this).parents("div:first").attr('class');
             var label = (jQuery(this).text() || jQuery(this).children('img:first').attr('alt'));
@@ -153,7 +142,7 @@ jQuery(function() {
             } else if (action === "item_actions_form") { // bookmarks/folders item delete
                 var action = "removeLink";
                 var label = "Remove"
-            } else if (action === "hero_search_form") {
+            } else if (action === "hero_search_form") { // home page search
                 var label = jQuery("#search_field").val();
             }
             ga('send', 'event', category, action, label);
