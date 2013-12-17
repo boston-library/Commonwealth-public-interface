@@ -194,10 +194,11 @@ class CatalogController < ApplicationController
 
     # advanced search facet limits
     config.advanced_search = {
+        :qt => 'search',
         :form_solr_parameters => {
-            "facet.field" => ["collection_label_s", "active_fedora_model_s"],
-            "facet.limit" => -1, # return all facet values
-            "facet.sort" => "index" # sort by byte order of values
+            'facet.field' => ['genre_basic_ssim', 'physical_location_ssim'],
+            'facet.limit' => -1, # return all facet values
+            'facet.sort' => 'index' # sort by byte order of values
         }
     }
 
