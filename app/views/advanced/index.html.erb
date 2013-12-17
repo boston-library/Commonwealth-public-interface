@@ -1,0 +1,15 @@
+<% @page_title = t('blacklight.advanced_search.title', :application_name => application_name) %>
+
+<script type="text/javascript">
+    $(document).ready(function(){$("form.advanced input:first").focus();});
+</script>
+
+<div id="content" class="span12 show-document">
+
+  <h2 class="advanced"><%= t('blacklight.advanced_search.page_title') %></h2>
+
+  <%= render 'advanced_search_form' %>
+
+  <%= render 'advanced_search_help' %>
+
+</div>

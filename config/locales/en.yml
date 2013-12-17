@@ -6,6 +6,10 @@ en:
 
   blacklight:
 
+    advanced_search:
+          page_title: 'Search'
+          title: 'Search - %{application_name}'
+
     application_name: 'Digital Commonwealth (beta)'
 
     ark:
