@@ -15,6 +15,13 @@ en:
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
 
+    basic_search:
+          form:
+            label: 'Search for'
+            q: 'Enter search terms...'
+            search_indexes: 'Search by title, subject, place, etc.'
+            select: 'in'
+
     bookmarks:
           collection:
             add:

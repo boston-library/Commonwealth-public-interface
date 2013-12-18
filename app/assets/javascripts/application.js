@@ -21,8 +21,6 @@
 //= require blacklight/blacklight
 
 //= require bootstrap-dropdown
-// NOTE: unlinking bs-carousel because current bootstrap-sass gem version is not up-to-date
-//       due to BL dependency. Will create local file instead. Relink once gem updated.
 //= require bootstrap-carousel
 
 //= require blacklight_google_analytics/blacklight_google_analytics
