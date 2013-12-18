@@ -1,6 +1,21 @@
-<% search_fields_for_advanced_search.each do |key, field_def| %>
+<% search_fields_for_advanced_search.take(2).each_with_index do |(key, field_def), index| %>
     <div class="advanced_search_field">
-      <%= label_tag key, "#{field_def.label }:" %>
-      <%= text_field_tag key, label_tag_default_for(key), :class => 'input-block-level' %>
+      <%= select_tag('search_field[]',
+                     options_for_select(search_fields,
+                                        h(params[:search_field])),
+                     :title => t('blacklight.basic_search.form.search_indexes'),
+                     :class=> 'btn search_index_select') %>
+      <%= label_tag('input' + index.to_s,
+                    t('blacklight.basic_search.form.q') + ' (' + index.to_s + ')',
+                    :class => 'hide-text')
+      %>
+      <%= text_field_tag 'q[]', nil, :class => 'input-xlarge' %>
     </div>
 <% end %>
+
+<%# search_fields_for_advanced_search.each do |key, field_def| -%>
+    <div class="advanced_search_field">
+      <%# label_tag key, "#{field_def.label }:" %>
+      <%# text_field_tag key, label_tag_default_for(key), :class => 'input-block-level' %>
+    </div>
+<%# end -%>
