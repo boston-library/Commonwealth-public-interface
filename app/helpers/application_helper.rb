@@ -127,7 +127,7 @@ module ApplicationHelper
       suffix = date_qualifier == 'questionable' ? '?]' : ']'
     end
     prefix << 'c' if date_type == 'copyrightDate'
-    if date_end
+    if date_end && date_end != 'nil'
       date_start_suffix = '?' if date_qualifier == 'questionable'
       prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + normalize_date(date_end) + suffix
     else
