@@ -7,7 +7,6 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
   def index
     unless request.method==:post
       @response = get_advanced_search_facets
-      @whatever = "using my custm controller"
     end
   end
 
@@ -42,18 +41,14 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
             k =~ /f\..+\.facet\.sort/
         )
       end
-    else
-      puts "ADVANCED SEARCH CONTEXT IS EMPTY!"
-
     end
-    puts search_context_params.inspect
+
     input = HashWithIndifferentAccess.new
     input.merge!( search_context_params )
 
     input.merge!( :qt => blacklight_config.advanced_search[:qt] || blacklight_config.default_qt , :per_page => 0)
     input.merge!( blacklight_config.advanced_search[:form_solr_parameters] ) if blacklight_config.advanced_search[:form_solr_parameters]
     input[:q] ||= '{!lucene}*:*'
-    puts "INPUT = " + input.inspect
 
     find(0,input.to_hash)
 
