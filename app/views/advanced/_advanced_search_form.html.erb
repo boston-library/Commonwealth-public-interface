@@ -25,10 +25,24 @@
   </div>
   <div class="row">
     <div class="span9">
+
+      <div id="advanced_search_limits">
+        <h4><%= t('blacklight.advanced_search.limit') %></h4>
+
+        <%= render 'advanced/advanced_search_date' %>
+
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="span9">
     <div class="sort_submit_buttons well clearfix">
       <div class="pull-left">
-        <%= label_tag(:sort, "Sort results by") %>
-        <%= select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
+        <%# label_tag(:sort, "Sort results by") %>
+        <%# select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
         <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
       </div>
       <div class="pull-right">

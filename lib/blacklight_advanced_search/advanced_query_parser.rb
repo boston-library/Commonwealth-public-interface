@@ -4,7 +4,7 @@ module BlacklightAdvancedSearch
     include FilterParser
     attr_reader :config, :params
 
-    # change params to be what's expected by gem
+    # LOCAL ADDITION change params to be what's expected by gem
     def prepare_params(params)
       if params[:search_index]
         params[:search_index].each_with_index do |field,index|
@@ -16,14 +16,13 @@ module BlacklightAdvancedSearch
       params
     end
 
+    # LOCAL OVERRIDE
     def initialize(params,config)
-      puts "INITIALIZE called"
       @params = HashWithIndifferentAccess.new(prepare_params(params))
       @config = config
     end
 
     def to_solr
-      puts "TO_SOLR called"
       @to_solr ||= begin
         {
             :q => process_query(params,config),
@@ -34,12 +33,11 @@ module BlacklightAdvancedSearch
 
     # Returns "AND" or "OR", how #keyword_queries will be combined
     def keyword_op
-      puts "KEYWORD_OP called"
       @params["op"] || "AND"
     end
+
     # returns advanced-type keyword queries, see also keyword_op
     def keyword_queries
-      puts "KEYWORD_QUERIES called"
       unless(@keyword_queries)
         @keyword_queries = {}
 
@@ -53,9 +51,9 @@ module BlacklightAdvancedSearch
       end
       return @keyword_queries
     end
+
     # returns just advanced-type filters
     def filters
-      puts "FILTERS called"
       unless (@filters)
         @filters = {}
         return @filters unless @params[:f_inclusive]
