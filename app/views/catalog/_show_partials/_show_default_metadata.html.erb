@@ -107,7 +107,7 @@
     <dd>
       <% 0.upto document[:publisher_tsim].length-1 do |index| %>
           <% if document[:pubplace_tsim] %>
-            <%# (if pubplace, assumes equal number of publishers and pubplaces)  %>                     <%= document[:pubplace_tsim][index] %> :
+              <%= document[:pubplace_tsim][index] + ' : ' if document[:pubplace_tsim][index] %>
           <% end %>
           <%= document[:publisher_tsim][index] %><br />
       <% end %>
