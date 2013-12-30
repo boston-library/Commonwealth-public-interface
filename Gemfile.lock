@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 6d8c2523b1ada98f4b6d2c72c8c996771385a3c3
+  revision: ce733b68048eaf3d5c1afb7c569f5959aa200edd
   specs:
     bplmodels (0.0.88)
       mods

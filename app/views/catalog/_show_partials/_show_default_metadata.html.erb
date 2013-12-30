@@ -220,6 +220,13 @@
         <% end %>
       </dd>
   <% end %>
+    <%# TOC field %>
+    <% if document[:table_of_contents_tsi] %>
+      <dt>Table of Contents:</dt>
+      <dd>
+        <%= document[:table_of_contents_tsi] %>
+      </dd>
+    <% end %>
     <%# note field %>
     <% if document[:note_tsim] %>
         <dt>Notes:</dt>
