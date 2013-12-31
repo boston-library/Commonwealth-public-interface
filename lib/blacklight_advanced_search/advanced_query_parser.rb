@@ -8,7 +8,11 @@ module BlacklightAdvancedSearch
     def prepare_params(params)
       if params[:search_index]
         params[:search_index].each_with_index do |field,index|
-          params[field.to_sym] = params[:query][index]
+          if params[field.to_sym] # check if field is set
+            params[field.to_sym] = params[field.to_sym] + ' ' + params[:query][index]
+          else
+            params[field.to_sym] = params[:query][index]
+          end
         end
         params.delete(:search_index)
         params.delete(:query)

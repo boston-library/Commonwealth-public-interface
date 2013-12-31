@@ -1,4 +1,4 @@
-<%= form_tag catalog_index_path, :class => 'advanced', :method => :get do  %>
+<%= form_tag catalog_index_path, :class => 'advanced form-horizontal', :method => :get do  %>
   <%= search_as_hidden_fields(:params => advanced_search_context,
                                 :op => 'AND' ) %>
   <div class="row">
@@ -31,6 +31,7 @@
 
         <%= render 'advanced/advanced_search_date' %>
 
+        <%= render 'advanced/advanced_search_facets' %>
 
       </div>
 

@@ -25,9 +25,9 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
       trimmed_params.delete(:f_inclusive) # adv facets
 
       search_context_params = solr_search_params(trimmed_params)
-                                          # Don't want to include the 'q' from basic search in our search
-                                          # context. Kind of hacky becuase solr_search_params insists on
-                                          # using controller.params, not letting us over-ride.
+      # Don't want to include the 'q' from basic search in our search
+      # context. Kind of hacky becuase solr_search_params insists on
+      # using controller.params, not letting us over-ride.
       search_context_params.delete(:q)
       search_context_params.delete("q")
 

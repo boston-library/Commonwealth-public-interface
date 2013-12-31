@@ -13,9 +13,9 @@ module BlacklightAdvancedSearch::ParsingNestingParser
 
   # LOCAL ADDITION
   def add_date_range_to_queries(params)
-    range_start = params[:date_start].blank? ? '*' : params[:date_start]
-    range_end = params[:date_end].blank? ? '*' : params[:date_end]
-    date_query = 'date_start_tsim:[' + range_start + ' TO ' + range_end + ']'
+    range_start = params[:date_start].blank? ? '*' : params[:date_start] + '-01-01T00:00:00.000Z'
+    range_end = params[:date_end].blank? ? '*' : params[:date_end] + '-12-31T23:59:59.999Z'
+    date_query = 'date_start_dtsi:[' + range_start + ' TO ' + range_end + ']'
     date_query
   end
 
