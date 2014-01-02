@@ -1,0 +1,60 @@
+/* styles for advanced search view */
+
+@import 'cmmnwlth_defaults';
+
+#advanced_search {
+
+  #advanced_search_fields {
+
+    .advanced_search_field {
+      padding-bottom:5px;
+      margin-left: 0;
+
+      .search_index_select {
+        text-align: left;
+      }
+
+    }
+
+  }
+
+  #advanced_search_limits {
+
+    margin-top: 10px;
+
+    label.control-label {
+      font-weight: bold;
+    }
+
+    .facet_scrollbox_wrapper {
+      padding: 10px 19px 10px 0;
+
+    }
+
+    .facet_limit_scrollbox {
+      max-height: 130px;
+      min-height: 50px;
+      overflow-y: auto;
+      width: 345px;
+
+      ul {
+        padding-top: 0;
+
+        li {
+          padding-bottom: .2em;
+
+          label.checkbox {
+            font-size: 12px;
+            margin-bottom: 0;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+
+}

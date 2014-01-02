@@ -5,14 +5,11 @@
 
     <div class="span9">
     <div class="input_columns">
-
-      <div class="query_column">
-        <p>Enter search terms in the fields below.</p>
-
-        <div id="advanced_search">
-          <%= render 'advanced/advanced_search_fields' %>
-        </div>
+      <p>Enter search terms in the fields below.</p>
+      <div id="advanced_search_fields">
+        <%= render 'advanced/advanced_search_fields' %>
       </div>
+
     </div>
     </div>
 
@@ -26,7 +23,7 @@
   <div class="row">
     <div class="span9">
 
-      <div id="advanced_search_limits">
+      <div id="advanced_search_limits" class="well">
         <h4><%= t('blacklight.advanced_search.limit') %></h4>
 
         <%= render 'advanced/advanced_search_date' %>
@@ -40,14 +37,14 @@
   </div>
   <div class="row">
     <div class="span9">
-    <div class="sort_submit_buttons well clearfix">
+    <div class="sort_submit_buttons clearfix">
       <div class="pull-left">
         <%# label_tag(:sort, "Sort results by") %>
         <%# select_tag(:sort, options_for_select(sort_fields, h(params[:sort]))) %>
         <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
       </div>
       <div class="pull-right">
-        <%= submit_tag 'Search', :class=>'btn btn-primary', :id=>'advanced_search' %>
+        <%= submit_tag 'Search', :class=>'btn btn-primary' %>
         <%= link_to "Start over", {:controller => "advanced", :action => "index"}, :class =>"reset btn" %>
       </div>
     </div>
