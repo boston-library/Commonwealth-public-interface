@@ -19,16 +19,39 @@
   }
 
   #advanced_search_limits {
-
-    margin-top: 10px;
+    margin-top: 20px;
+    padding: 5px 19px 0px 15px;
 
     label.control-label {
       font-weight: bold;
     }
 
+    #date_range_limit {
+      padding-bottom: 20px;
+
+      #date_range_start_label, #date_range_end_label {
+        font-weight: normal;
+        padding-right: 4px;
+        font-size: 12px;
+      }
+
+      #date_range_start_label {
+        width: 25px;
+      }
+
+      #date_range_end_label {
+        width: 30px;
+      }
+
+      .input-append input, .input-prepend input {
+        @include rounded-corners(4px);
+      }
+
+    }
+
     .facet_scrollbox_wrapper {
       padding: 10px 19px 10px 0;
-
+      width: 345px;
     }
 
     .facet_limit_scrollbox {
