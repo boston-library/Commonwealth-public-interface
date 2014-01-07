@@ -9,9 +9,15 @@
     .advanced_search_field {
       padding-bottom:5px;
       margin-left: 0;
+      float: left;
 
       .search_index_select {
         text-align: left;
+        width: 120px;
+      }
+
+      #advanced_operators {
+        padding-left:125px;
       }
 
     }
@@ -21,6 +27,8 @@
   #advanced_search_limits {
     margin-top: 20px;
     padding: 5px 19px 0px 15px;
+    float: left;
+    width: 95%;
 
     label.control-label {
       font-weight: bold;
