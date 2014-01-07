@@ -9,7 +9,15 @@ module BlacklightAdvancedSearch
       if params[:search_index]
         params[:search_index].each_with_index do |field,index|
           if params[field.to_sym] # check if field is set
-            params[field.to_sym] = params[field.to_sym] + ' ' + params[:query][index]
+            unless params[:query][index].empty?
+              if params[:op] == 'OR'
+                params[field.to_sym] = params[field.to_sym] + ' OR ' + params[:query][index]
+              else
+                params[field.to_sym] = params[field.to_sym] + ' AND ' + params[:query][index]
+              end
+            else
+              params[field.to_sym] = params[field.to_sym]
+            end
           else
             params[field.to_sym] = params[:query][index]
           end

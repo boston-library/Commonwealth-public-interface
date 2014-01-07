@@ -187,7 +187,7 @@ en:
             title: 'Contact'
 
     repo-admin:
-          email: 'eben@dlry.net'
+          email: 'eenglish@bpl.org'
 
     saved_searches:
           clear:
@@ -210,7 +210,7 @@ en:
           facets:
             home: 'Explore the Collections'
           pagination_info:
-            no_items_found: 'No items found.'
+            no_items_found: 'No items found. Please go back and try a different search.'
           title: 'Search Results - %{application_name}'
 
     search_history:

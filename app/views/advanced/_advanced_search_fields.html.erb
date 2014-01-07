@@ -9,7 +9,10 @@
                     t('blacklight.basic_search.form.q') + ' (' + (index+1).to_s + ')',
                     :class => 'hide-text')
       %>
-      <%= text_field_tag 'query[]', nil, :class => 'input-xlarge' %>
+      <%= text_field_tag 'query[]',
+                         nil,
+                         :class => 'input-xlarge',
+                         :autofocus => index == 0 ? true : false %>
     </div>
 <% end %>
 <div class="advanced_search_field">

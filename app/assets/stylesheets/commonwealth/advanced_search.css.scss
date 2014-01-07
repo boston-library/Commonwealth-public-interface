@@ -2,6 +2,16 @@
 
 @import 'cmmnwlth_defaults';
 
+body.blacklight-advanced-index {
+  padding-top: 0;
+
+  .navbar-fixed-top {
+    position: relative;
+    margin-bottom: 1em;
+  }
+
+}
+
 #advanced_search {
 
   #advanced_search_fields {
@@ -83,6 +93,20 @@
 
       }
 
+    }
+
+  }
+
+  #advanced_search_help {
+    @include rounded-corners(8px);
+    border: 1px solid $light_gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20px;
+    opacity: .8;
+
+    ul.advanced_help {
+      font-size: 12px;
     }
 
   }

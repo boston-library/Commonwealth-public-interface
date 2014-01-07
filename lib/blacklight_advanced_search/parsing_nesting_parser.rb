@@ -7,8 +7,11 @@ module BlacklightAdvancedSearch::ParsingNestingParser
     keyword_queries.each do |field,query|
       queries << ParsingNesting::Tree.parse(query).to_query( local_param_hash(field, config)  )
     end
-    queries << add_date_range_to_queries(params) unless params[:date_start].blank? && params[:date_end].blank?
-    queries.join( ' ' + keyword_op + ' ')
+    if params[:date_start].blank? && params[:date_end].blank?
+      queries.join( ' ' + keyword_op + ' ')
+    else
+      queries.join( ' ' + keyword_op + ' ') + ' AND ' + add_date_range_to_queries(params)
+    end
   end
 
   # LOCAL ADDITION

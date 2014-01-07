@@ -2,6 +2,16 @@
 
 @import 'cmmnwlth_defaults';
 
+body.blacklight-catalog-index {
+  padding-top: 8em;
+}
+
+#search_mode_tabs {
+  li.active a {
+    font-weight: bold;
+  }
+}
+
 #constraintsLinks {
   float: right;
   display: inline;
