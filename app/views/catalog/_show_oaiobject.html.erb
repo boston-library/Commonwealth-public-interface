@@ -1,16 +1,18 @@
 <div class="row">
-
   <div id="oai_img_show_container" class="span3">
     <% if document[:exemplary_image_ssi] %>
         <% img_element = image_tag(datastream_disseminator_url(
-                                            @document[:exemplary_image_ssi],
-                                            'thumbnail300'),
+                                           @document[:exemplary_image_ssi],
+                                           'thumbnail300'),
                                     :class => 'img_show',
                                     :alt => document[blacklight_config.index.show_link.to_sym]
         ) %>
     <% else %>
-      <% img_element = render_object_icon(document[:type_of_resource_ssim].first,
-                                           'img_show') %>
+        <% if document[:type_of_resource_ssim] %>
+            <% img_element = render_object_icon(document[:type_of_resource_ssim].first,'img_show') %>
+        <% else %>
+            <% img_element = render_object_icon(nil,'img_show') %>
+        <% end %>
     <% end %>
     <%= link_to(img_element,
                 @document[:identifier_uri_ss],
@@ -27,5 +29,4 @@
     <% # bookmark/folder/sharing functions -%>
     <%= render_document_sidebar_partial  %>
   </div>
-
 </div>
