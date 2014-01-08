@@ -77,10 +77,13 @@ class CollectionsController < CatalogController
     (@col_img_response, @col_img_doc_list) = get_search_results(
         {:f => {'exemplary_image_ssi' => image_pid,
                 'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
-    col_img_info = {
-        :title => @col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
-        :pid => @col_img_doc_list.first[:id]
-    }
+    if @col_img_doc_list.length > 0
+      col_img_info = {
+          :title => @col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
+          :pid => @col_img_doc_list.first[:id]
+      }
+    end
+
   end
 
   # find a representative image for a series
