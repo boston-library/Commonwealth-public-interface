@@ -7,8 +7,7 @@
                      :class=> 'btn search_index_select') %>
       <%= label_tag('input' + (index+1).to_s,
                     t('blacklight.basic_search.form.q') + ' (' + (index+1).to_s + ')',
-                    :class => 'hide-text')
-      %>
+                    :class => 'hide-text') %>
       <%= text_field_tag 'query[]',
                          nil,
                          :class => 'input-xlarge',
@@ -21,7 +20,7 @@
       <%= radio_button_tag(:op, 'AND', :checked) %> find all terms
     </label>
     <label class="radio inline">
-      <%= radio_button_tag(:op, 'OR') %>find any terms
+      <%= radio_button_tag(:op, 'OR') %> find any terms
     </label>
   </div>
 </div>
