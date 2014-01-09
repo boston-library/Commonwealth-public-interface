@@ -1,4 +1,4 @@
-<%= form_tag catalog_index_path, :class => 'advanced form-horizontal', :method => :get do  %>
+<%= form_tag catalog_index_path, :id => 'advanced_search_form', :class => 'advanced form-horizontal', :method => :get do  %>
   <%# search_as_hidden_fields(:params => advanced_search_context,
                                 :op => 'AND' ) %>
   <div class="row">
@@ -26,7 +26,7 @@
           <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
         </div>
         <div class="pull-right">
-          <%= submit_tag 'Search', :class=>'btn btn-primary' %>
+          <%= submit_tag 'Search', :class=>'btn btn-primary advanced_submit' %>
           <%= link_to 'Start over',
                       {:controller => 'advanced', :action => 'index'},
                       :class => 'reset btn' %>

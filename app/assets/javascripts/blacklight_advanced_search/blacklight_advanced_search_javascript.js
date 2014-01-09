@@ -45,5 +45,29 @@ jQuery(document).ready(function() {
         updateSelectedDisplay( jQuery(this).closest(".facet_item"));
     });
 
+    // validate date field input
+    jQuery("#advanced_search_form").find(".advanced_submit").click(function(event){
+        var date_start_input = jQuery("#date_range_start").val();
+        var date_end_input = jQuery("#date_range_end").val();
+        if ((date_start_input) || (date_end_input)) {
+            var date_input = new Array(date_start_input,date_end_input);
+            var date_error = false;
+            jQuery.each(date_input, function(key,val) {
+                if ((val.length != 0) && (!val.match(/[12]+\d\d\d/))) {
+                    date_error = true;
+                }
+            });
+            if (date_error == false) {
+                if (((date_input[0].length != 0) && (date_input[1].length != 0)) && (parseInt(date_input[1]) < parseInt(date_input[0]))) {
+                    date_error = true;
+                }
+            }
+            if (date_error == true) {
+                alert("Please enter a valid date range, doofus!");
+                event.preventDefault();
+            }
+        }
+    });
+
 
 });
