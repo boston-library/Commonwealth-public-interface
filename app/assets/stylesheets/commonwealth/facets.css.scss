@@ -1,7 +1,26 @@
 /* styles for facets */
 
-#facets li {
-  font-size: 13px;
-  line-height:15px;
-  padding-bottom: .5em;
+#facets {
+
+  li {
+    font-size: 13px;
+    line-height:15px;
+    padding-bottom: .5em;
+  }
+
+  /* advanced search results facets */
+  .advanced_facet_limit ul {
+    border-bottom: medium none;
+    padding-bottom: 0;
+    padding-top: 0;
+    margin-bottom: 4px;
+  }
+
+  .facet_limit .inclusive_or h4 {
+    margin-bottom: 0;
+    margin-left: 3px;
+    font-size: 12px;
+  }
+
 }
+
