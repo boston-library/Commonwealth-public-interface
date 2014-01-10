@@ -6,10 +6,22 @@ en:
 
   blacklight:
 
+    advanced_search:
+          page_title: 'Search'
+          title: 'Search - %{application_name}'
+          limit: 'Narrow your search:'
+
     application_name: 'Digital Commonwealth (beta)'
 
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
+
+    basic_search:
+          form:
+            label: 'Search for'
+            q: 'Enter search terms...'
+            search_indexes: 'Search by title, subject, place, etc.'
+            select: 'in'
 
     bookmarks:
           collection:
@@ -175,7 +187,7 @@ en:
             title: 'Contact'
 
     repo-admin:
-          email: 'eben@dlry.net'
+          email: 'eenglish@bpl.org'
 
     saved_searches:
           clear:
@@ -198,7 +210,7 @@ en:
           facets:
             home: 'Explore the Collections'
           pagination_info:
-            no_items_found: 'No items found.'
+            no_items_found: 'No items found. Please go back and try a different search.'
           title: 'Search Results - %{application_name}'
 
     search_history:

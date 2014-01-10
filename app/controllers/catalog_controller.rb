@@ -146,14 +146,6 @@ class CatalogController < ApplicationController
       }
     end
     
-    config.add_search_field('author') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = { 
-        :qf => '$author_qf',
-        :pf => '$author_pf'
-      }
-    end
-    
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as 
     # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
@@ -171,6 +163,14 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
           :qf => '$place_qf',
           :pf => '$place_pf'
+      }
+    end
+
+    config.add_search_field('creator') do |field|
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+          :qf => '$author_qf',
+          :pf => '$author_pf'
       }
     end
 
@@ -194,10 +194,11 @@ class CatalogController < ApplicationController
 
     # advanced search facet limits
     config.advanced_search = {
+        :qt => 'search',
         :form_solr_parameters => {
-            "facet.field" => ["collection_label_s", "active_fedora_model_s"],
-            "facet.limit" => -1, # return all facet values
-            "facet.sort" => "index" # sort by byte order of values
+            'facet.field' => ['genre_basic_ssim', 'physical_location_ssim'],
+            'facet.limit' => -1, # return all facet values
+            'facet.sort' => 'index' # sort by byte order of values
         }
     }
 

@@ -1,7 +1,6 @@
 <% unless has_search_parameters? %>
-    <%# if there are no input/search related params, render the "home" partial -%>
-    <%= render :partial => 'pages/home_content',
-               :locals => {:carousel_slides => CarouselSlide.where(:context=>'root').order(:sequence)} %>
+    <%# if no input/search params, render basic_search partial %>
+    <%= render :partial => 'catalog/basic_search' %>
 <% else %>
 
 <div id="sidebar" class="span3">

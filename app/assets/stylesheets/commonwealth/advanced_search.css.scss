@@ -1,0 +1,115 @@
+/* styles for advanced search view */
+
+@import 'cmmnwlth_defaults';
+
+body.blacklight-advanced-index {
+  padding-top: 0;
+
+  .navbar-fixed-top {
+    position: relative;
+    margin-bottom: 1em;
+  }
+
+}
+
+#advanced_search {
+
+  #advanced_search_fields {
+
+    .advanced_search_field {
+      padding-bottom:5px;
+      margin-left: 0;
+      float: left;
+
+      .search_index_select {
+        text-align: left;
+        width: 120px;
+      }
+
+      #advanced_operators {
+        padding-left:125px;
+      }
+
+    }
+
+  }
+
+  #advanced_search_limits {
+    margin-top: 20px;
+    padding: 5px 19px 0px 15px;
+    float: left;
+    width: 95%;
+
+    label.control-label {
+      font-weight: bold;
+    }
+
+    #date_range_limit {
+      padding-bottom: 20px;
+
+      #date_range_start_label, #date_range_end_label {
+        font-weight: normal;
+        padding-right: 4px;
+        font-size: 12px;
+      }
+
+      #date_range_start_label {
+        width: 25px;
+      }
+
+      #date_range_end_label {
+        width: 30px;
+      }
+
+      .input-append input, .input-prepend input {
+        @include rounded-corners(4px);
+      }
+
+    }
+
+    .facet_scrollbox_wrapper {
+      padding: 10px 19px 10px 0;
+      width: 345px;
+    }
+
+    .facet_limit_scrollbox {
+      max-height: 130px;
+      min-height: 50px;
+      overflow-y: auto;
+      width: 345px;
+
+      ul {
+        padding-top: 0;
+
+        li {
+          padding-bottom: .2em;
+
+          label.checkbox {
+            font-size: 12px;
+            margin-bottom: 0;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  #advanced_search_help {
+    @include rounded-corners(8px);
+    border: 1px solid $light_gray;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 20px;
+    opacity: .8;
+
+    ul.advanced_help {
+      font-size: 12px;
+    }
+
+  }
+
+
+}

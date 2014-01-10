@@ -2,6 +2,12 @@
 
 @import 'cmmnwlth_defaults';
 
+#search_mode_tabs {
+  li.active a {
+    font-weight: bold;
+  }
+}
+
 #constraintsLinks {
   float: right;
   display: inline;
