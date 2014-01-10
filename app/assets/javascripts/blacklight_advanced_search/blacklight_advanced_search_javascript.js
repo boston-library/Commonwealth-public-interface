@@ -63,7 +63,7 @@ jQuery(document).ready(function() {
                 }
             }
             if (date_error == true) {
-                alert("Please enter a valid date range, doofus!");
+                alert("You entered an invalid date range in the 'Year' section.\nPlease change the dates and try again.");
                 event.preventDefault();
             }
         }
