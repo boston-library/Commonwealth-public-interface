@@ -196,7 +196,7 @@ class CatalogController < ApplicationController
     config.advanced_search = {
         :qt => 'search',
         :form_solr_parameters => {
-            'facet.field' => ['genre_basic_ssim', 'physical_location_ssim'],
+            'facet.field' => ['genre_basic_ssim', 'institution_name_ssim'],
             'facet.limit' => -1, # return all facet values
             'facet.sort' => 'index' # sort by byte order of values
         }
