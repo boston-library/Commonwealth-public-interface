@@ -50,6 +50,9 @@ en:
           list_title: 'Your Bookmarks'
           delete: 'Remove'
 
+    breadcrumb:
+          separator: ' > '
+
     citation:
           chicago: 'Chicago Style:'
 

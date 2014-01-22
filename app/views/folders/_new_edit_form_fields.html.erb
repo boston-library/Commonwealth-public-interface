@@ -1,12 +1,21 @@
-<%= form_for(form_object) do |f| %>
+<%= form_for(form_object, :html => {:class => 'form-horizontal'}) do |f| %>
     <%= render 'shared/error_messages', :object => f.object %>
-    <div class="form_field">
-      <%= f.label :title %><br/><%= f.text_field :title %>
+    <div class="control-group">
+      <label class="control-label"><%= f.label :title %></label>
+      <div class="controls">
+        <%= f.text_field :title %>
+      </div>
     </div>
-    <div class="form_field">
-      <%= f.label :description %><br/><%= f.text_area :description, :size => "24x4" %>
+    <div class="control-group">
+      <label class="control-label"><%= f.label :description %></label>
+      <div class="controls">
+        <%= f.text_area :description, :size => '24x4' %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit submit_button_text %>
+    <div class="control-group">
+      <label class="control-label"></label>
+      <div class="controls">
+        <%= f.submit submit_button_text, :class => 'btn btn-primary' %>
+      </div>
     </div>
 <% end %>
