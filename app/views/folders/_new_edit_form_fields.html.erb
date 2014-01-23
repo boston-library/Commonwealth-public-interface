@@ -1,13 +1,13 @@
-<%= form_for(form_object, :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(form_object, :html => {:id => 'edit_folder_form', :class => 'form-horizontal'}) do |f| %>
     <%= render 'shared/error_messages', :object => f.object %>
     <div class="control-group">
-      <label class="control-label"><%= f.label :title %></label>
+      <%= f.label :title, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :title %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label"><%= f.label :description %></label>
+      <%= f.label :description, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :description, :size => '24x4' %>
       </div>
@@ -16,6 +16,11 @@
       <label class="control-label"></label>
       <div class="controls">
         <%= f.submit submit_button_text, :class => 'btn btn-primary' %>
+        <% if @folder.id %>
+            <%= link_to 'Cancel', folder_path(@folder.id), :class=>'btn' %>
+        <% else %>
+            <%= link_to 'Cancel', folders_path, :class=>'btn' %>
+        <% end %>
       </div>
     </div>
 <% end %>

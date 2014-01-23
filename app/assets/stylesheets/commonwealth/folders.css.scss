@@ -2,6 +2,17 @@
 
 @import 'cmmnwlth_defaults';
 
+/* don't use fixed navbar on bookmark/folder pages */
+
+body.blacklight-folders, body.blacklight-bookmarks {
+  padding-top: 0;
+}
+
+body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fixed-top {
+  position: relative;
+  margin-bottom: 1em;
+}
+
 #user_folders {
 
   #folder_actions_wrapper {
@@ -18,6 +29,7 @@
   }
 
   #user_folder_list {
+    padding-top:15px;
 
     h4 {
       margin:15px 0 2px 0;
@@ -27,46 +39,66 @@
 
 }
 
-#folderItemTools {
-  display: inline;
+#edit_folder_form {
+
+  label.control-label {
+    font-weight: bold;
+  }
 }
 
-ul.folderItemToolsList
-  {
-  /* @include rounded-corners(0 0 4px 4px); */
-  background-color: $well_bg_color;
-  border-color: $well_bg_color;
-  margin:0;
-  display: inline;
+div.folder_show_container {
 
-  li
-    {
-    display:inline-block;
+  h2 {
+    margin-bottom:0px;
+
+    #folder_tools {
+      float: right;
+      margin-top: 5px;
+    }
+
   }
 
-  li form
-    {
-    display:inline;
+
+  #folder_description {
+    font-size: 16px;
   }
 
-}
+  #empty_folder {
+    margin-top:20px;
+  }
 
-#item_actions_form {
+  #sortAndPerPage {
+    margin: 10px 0;
+  }
 
-}
-
-
-ul.tools
-  {
-  margin:0;
-  padding:0;
-  list-style: none;
-
-  li
-    {
+  #folderItemTools {
     display: inline;
-    list-style: none;
-    margin: 0;
-    margin-right: 10px;
+
+    ul.folderItemToolsList
+    {
+      /* @include rounded-corners(0 0 4px 4px); */
+      background-color: $well_bg_color;
+      border-color: $well_bg_color;
+      margin:0;
+      display: inline;
+
+      li
+      {
+        display:inline-block;
+      }
+
+      li form
+      {
+        display:inline;
+      }
+
+    }
+
   }
+
+  #selected_ {
+    margin-bottom: 1px;
+  }
+
 }
+

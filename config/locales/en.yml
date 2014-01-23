@@ -116,12 +116,12 @@ en:
               no_title: 'Title cannot be blank.'
               no_save: 'The folder could not be created. Please try again later.'
           delete:
-            delete: 'Delete this folder'
+            delete: 'Delete folder'
             success: 'Folder deleted.'
             confirm: 'Are you sure you want to delete this folder?'
-          edit: 'Edit this folder'
+          edit: 'Edit folder'
           add_folder: 'Create a New Folder'
-          edit_folder: 'Editing Folder'
+          edit_folder: 'Edit Folder'
           empty: 'This folder does not currently have any items.'
           update_items:
             remove:
