@@ -38,11 +38,10 @@
         </div>
       </div>
       <div class="control-group">
+        <label class="control-label"></label>
         <div class="controls">
-          <%# f.submit 'Sign up' %>
-          <button type="submit" class="btn">
-            <span>Sign up</span>
-          </button>
+          <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
+          <%= link_to 'Cancel', root_path, :class => 'btn' %>
         </div>
       </div>
     </div>

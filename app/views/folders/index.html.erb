@@ -1,7 +1,15 @@
 <% @page_title = t('blacklight.folders.list_title') + " - " + application_name %>
-<div class="span12">
+<div class="span9">
 <h2>
   <%= t('blacklight.folders.list_title') %>
+  <small id="add_folder">
+    <%= link_to(
+                content_tag(:i, '', :class=>'icon-plus') + ' add folder',
+                new_folder_path,
+                :id => 'create_folder_link',
+                :class => 'btn btn-small'
+        ) %>
+  </small>
 </h2>
 
 <% if current_or_guest_user.blank? %>
@@ -12,12 +20,6 @@
 
     <div id="user_folders" class="folder_container">
       <p><%= t('blacklight.folders.intro') %></p>
-          <%= link_to(
-                      content_tag(:i, '', :class=>'icon-plus') + ' add folder',
-                      new_folder_path,
-                      :id => 'create_folder_link',
-                      :class => 'btn btn-small'
-              ) %>
       <ul id="user_folder_list">
         <li>
           <h4>

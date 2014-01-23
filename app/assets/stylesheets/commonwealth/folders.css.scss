@@ -13,6 +13,11 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
   margin-bottom: 1em;
 }
 
+#add_folder {
+  float: right;
+  margin-top: 5px;
+}
+
 #user_folders {
 
   #folder_actions_wrapper {
@@ -29,7 +34,7 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
   }
 
   #user_folder_list {
-    padding-top:15px;
+    padding-top:0px;
 
     h4 {
       margin:15px 0 2px 0;
