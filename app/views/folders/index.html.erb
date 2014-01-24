@@ -3,10 +3,12 @@
 
   <div id="breadcrumb">
     <ul class="breadcrumb">
-      <li>
-        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
-        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
-      </li>
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
       <li class="active">
         <%= t('blacklight.folders.list_title') %>
       </li>
@@ -38,6 +40,12 @@
           <h4>
             <%= link_to t('blacklight.bookmarks.title'), bookmarks_path, :class => "folder_title" %>
             <small>
+              <div class="folder_visibility">
+                <% if current_user %>
+                    <%= content_tag(:i, '', :class => 'icon-lock') %>
+                    <span class="visibility_private">private</span>
+                <% end %>
+              </div>
               <%= pluralize(current_or_guest_user.bookmarks.length.to_s,
                             'item') %>
             </small>

@@ -123,6 +123,7 @@ en:
           add_folder: 'Create a New Folder'
           edit_folder: 'Edit Folder'
           empty: 'This folder does not currently have any items.'
+          private: 'You do not have access to this folder.'
           update_items:
             remove:
               success: 'Items removed.'

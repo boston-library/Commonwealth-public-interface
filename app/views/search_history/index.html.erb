@@ -5,10 +5,12 @@
 <%# end %>
   <div id="breadcrumb">
     <ul class="breadcrumb">
-      <li>
-        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
-        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
-      </li>
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
       <li class="active">
         <%=t('blacklight.search_history.title')%>
       </li>

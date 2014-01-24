@@ -14,8 +14,9 @@ class FoldersController < CatalogController
   end
   helper_method :search_action_url
 
-  before_filter :verify_user, :except => :index
-  before_filter :correct_user, :only => [:show, :update, :destroy]
+  before_filter :verify_user, :except => [:index, :show]
+  before_filter :check_visibility, :only => [:show]
+  before_filter :correct_user, :only => [:update, :destroy]
 
   def index
     if current_user
@@ -97,12 +98,24 @@ class FoldersController < CatalogController
 
   protected
   def verify_user
-    flash[:notice] = I18n.t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+    flash[:notice] = t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+  end
+
+  def check_visibility
+    @folder = Bpluser::Folder.find(params[:id])
+    if @folder.visibility != 'public'
+      correct_user
+    end
   end
 
   def correct_user
-    @folder = Bpluser::Folder.find(params[:id])
-    redirect_to root_path unless current_user.folders.include?(@folder)
+    @folder ||= Bpluser::Folder.find(params[:id])
+    if current_user
+      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
+    else
+      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
+    end
+
   end
 
 end
