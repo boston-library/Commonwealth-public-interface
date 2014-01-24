@@ -40,6 +40,33 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
       margin:15px 0 2px 0;
     }
 
+    div.folder_status {
+
+      .folder_item_count {
+        color: $dark_gray;
+        display: inline-block;
+        width: 55px;
+      }
+
+      div.folder_visibility {
+        display:inline;
+
+        i {
+          opacity: .7;
+        }
+
+        .visibility_private {
+          color: $dark_gray;
+        }
+
+        .visibility_public {
+          color: green;
+        }
+
+      }
+
+    }
+
   }
 
 }
