@@ -235,6 +235,10 @@ en:
 
 
   devise:
+
+      registrations:
+        edit: 'Edit My Account'
+
       sessions:
         signed_in: ''
         signed_out: ''

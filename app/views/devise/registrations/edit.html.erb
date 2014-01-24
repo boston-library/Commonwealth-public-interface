@@ -1,5 +1,18 @@
 <div class="span9">
-  <h2>Edit My Account</h2>
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('devise.registrations.edit') %>
+      </li>
+    </ul>
+  </div>
+
+  <h2><%= t('devise.registrations.edit') %></h2>
 
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
