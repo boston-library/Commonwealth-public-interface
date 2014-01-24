@@ -1,6 +1,7 @@
 <% @page_title = t('blacklight.saved_searches.title') + " - " + application_name %>
 <div class="span9" id="searches_content">
 <h2><%= t('blacklight.saved_searches.title') %></h2>
+  <%= t('blacklight.saved_searches.intro') %>
 
 <%- if current_or_guest_user.blank? -%>
 

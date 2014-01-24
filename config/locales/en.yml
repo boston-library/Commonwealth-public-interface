@@ -196,6 +196,7 @@ en:
           clear:
                   action_title: 'clear all'
           delete: 'Delete this search.'
+          intro: 'Saved searches allow you to quickly re-search for items of interest.'
           no_searches: "You don't have any saved searches at the moment."
           remove:
                   success: 'Search removed.'
@@ -217,6 +218,7 @@ en:
           title: 'Search Results - %{application_name}'
 
     search_history:
+          intro: 'View and save your recent searches.'
           no_history: 'You have no search history for this session yet.'
 
     tools:
@@ -225,6 +227,9 @@ en:
             link: 'View MODS XML'
             title: 'View MODS XML metadata'
 
+
+    users:
+          account_heading: 'My Account'
 
     welcome: 'Welcome to the Digital Commonwealth Central Repository (beta)'
 

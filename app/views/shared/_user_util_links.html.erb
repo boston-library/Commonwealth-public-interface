@@ -4,7 +4,7 @@
 
       <div id="user-nav-btn" class="btn-group">
         <%= "#{ link_to content_tag(:i, '', :class => 'icon-user') + ' ' + current_user.first_name,
-                        edit_user_registration_path, :class =>'btn btn-mini' }".html_safe unless current_user.to_s.blank? %>
+                        current_user, :class =>'btn btn-mini' }".html_safe unless current_user.to_s.blank? %>
         <button class="btn dropdown-toggle btn-mini" data-toggle="dropdown">
           <span class="caret"></span>
         </button>

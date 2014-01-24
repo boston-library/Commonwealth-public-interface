@@ -59,6 +59,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   match 'about', :to => 'pages#about', :as => 'about'
 
+  resources :users, :only => :show
+
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
   # The priority is based upon order of creation:
