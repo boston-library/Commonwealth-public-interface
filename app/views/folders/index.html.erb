@@ -1,5 +1,18 @@
 <% @page_title = t('blacklight.folders.list_title') + " - " + application_name %>
 <div class="span9">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.folders.list_title') %>
+      </li>
+    </ul>
+  </div>
+
 <h2>
   <%= t('blacklight.folders.list_title') %>
   <small id="add_folder">

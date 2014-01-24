@@ -1,5 +1,18 @@
 <% @page_title = t('blacklight.saved_searches.title') + " - " + application_name %>
 <div class="span9" id="searches_content">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%= t('blacklight.saved_searches.title') %>
+      </li>
+    </ul>
+  </div>
+
 <h2><%= t('blacklight.saved_searches.title') %></h2>
   <%= t('blacklight.saved_searches.intro') %>
 
@@ -9,9 +22,10 @@
 
 <%- elsif @searches.blank? -%>
 
-    <h4><%= t('blacklight.saved_searches.no_searches') %></h4>
-
-    <p>To save a search, click the "Save Search" link on the search results page.</p>
+      <div id="empty_saved_searches" class="well">
+        <h4><%= t('blacklight.saved_searches.no_searches') %></h4>
+        <p>To save a search, click the "Save Search" link on the search results page.</p>
+      </div>
 
 <%- else -%>
     <h3>

@@ -3,13 +3,26 @@
 <%# sidebar_items << capture do %>
     <!-- <p><%# link_back_to_catalog %></p> -->
 <%# end %>
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li>
+        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <li class="active">
+        <%=t('blacklight.search_history.title')%>
+      </li>
+    </ul>
+  </div>
 
 
 <h2><%=t('blacklight.search_history.title')%></h2>
   <%= t('blacklight.search_history.intro') %>
 <%- if @searches.blank? -%>
-    <h4><%=t('blacklight.search_history.no_history')%></h4>
-      <p>Search for items by entering keywords in the search bar at the top right.</p>
+      <div id="empty_search_history" class="well">
+        <h4><%=t('blacklight.search_history.no_history')%></h4>
+        <p>Search for items by entering keywords in the search bar at the top right.</p>
+      </div>
 <%- else -%>
     <h3>
       <%=t('blacklight.search_history.recent')%>

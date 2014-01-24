@@ -4,6 +4,14 @@
 
 #searches_content {
 
+  h2 {
+    margin-bottom:0px;
+  }
+
+  #empty_saved_searches {
+    margin-top:20px;
+  }
+
   .constraint {
     padding-right: .5em;
   }
@@ -16,9 +24,18 @@
 
 #search_history_content {
 
+  h2 {
+    margin-bottom:0px;
+  }
+
   .search_history .filterName, .search_history .filterSeparator {
     color: inherit;
   }
+
+  #empty_search_history {
+    margin-top:20px;
+  }
+
 
   td.query {
     width: 70%;
