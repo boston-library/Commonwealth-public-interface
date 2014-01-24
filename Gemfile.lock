@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bpluser.git
-  revision: afd24ccb1c23f38d26fb09129618c77cb3497526
+  revision: 584579b53d611fc3bcbbd3db368d7697043cc458
   specs:
     bpluser (0.0.3)
       bootstrap_forms

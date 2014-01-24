@@ -48,7 +48,7 @@ describe FoldersController do
       describe "user has folders" do
 
         before(:each) do
-          @test_folder_attr = {:title => "Test Folder Title"}
+          @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
           @test_user.folders.create!(@test_folder_attr)
         end
 
@@ -66,18 +66,16 @@ describe FoldersController do
   describe "DELETE destroy" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title"}
+      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
       @test_user.folders.create!(@test_folder_attr)
     end
 
     describe "non-logged in user" do
 
-      #it "should redirect to the login page" do
-      #delete :destroy, :id => @test_user.folders.first.id
-      # TODO: neither of the below work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
-      #response.should redirect_to(new_user_session_path)
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
-      #end
+      it "should redirect to the login page" do
+        delete :destroy, :id => @test_user.folders.first.id
+        response.should be_redirect
+      end
 
     end
 
@@ -115,7 +113,7 @@ describe FoldersController do
 
     it "should display the form" do
       get :new
-      response.body.should have_selector("form[id='new_folder']")
+      response.body.should have_selector("form[id='edit_folder_form']")
     end
 
   end
@@ -123,18 +121,35 @@ describe FoldersController do
   describe "GET show" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title"}
+      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
       @folder = @test_user.folders.create!(@test_folder_attr)
     end
 
     describe "non-logged in user" do
 
-      #it "should redirect to the login page" do
-      #delete :destroy, :id => @test_user.folders.first.id
-      # TODO: neither of the below work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
-      #response.should redirect_to(new_user_session_path)
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
-      #end
+      describe 'private folder' do
+
+        it "should redirect to the login page" do
+          get :show, :id => @folder.id
+          response.should be_redirect
+        end
+
+      end
+
+      describe 'public folder' do
+
+        before(:each) do
+          @public_test_folder_attr = {:title => "Public Test Folder Title",:visibility => 'public'}
+          @public_folder = @test_user.folders.create!(@public_test_folder_attr)
+        end
+
+        #TODO get this test to pass
+        it "should show the folder" do
+          get :show, :id => @public_folder.id
+          response.body.should have_selector("h2", :text => @public_folder.title)
+        end
+
+      end
 
     end
 
@@ -168,7 +183,7 @@ describe FoldersController do
 
       before(:each) do
         sign_in @test_user
-        @test_folder_attr = {:title => "Test Folder Title"}
+        @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
         @folder = @test_user.folders.create!(@test_folder_attr)
         sign_out @test_user
         @other_user_attr = {
@@ -227,12 +242,12 @@ describe FoldersController do
 
         it "should create a folder" do
           lambda do
-            post :create, :folder => {:title => "Whatever, man"}
+            post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
           end.should change(Bpluser::Folder, :count).by(1)
         end
 
         it "should redirect to the folders page" do
-          post :create, :folder => {:title => "Whatever, man"}
+          post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
           response.should redirect_to(:controller => 'folders', :action => 'index')
         end
 
@@ -246,7 +261,7 @@ describe FoldersController do
   describe "GET edit" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title"}
+      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
       @folder = @test_user.folders.create!(@test_folder_attr)
     end
 
@@ -278,7 +293,7 @@ describe FoldersController do
   describe "PUT update" do
 
     before(:each) do
-      @test_folder_attr = {:title => "Test Folder Title"}
+      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
       @folder = @test_user.folders.create!(@test_folder_attr)
     end
 
