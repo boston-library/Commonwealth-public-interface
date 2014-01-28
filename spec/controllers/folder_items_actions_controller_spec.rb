@@ -12,7 +12,7 @@ describe FolderItemsActionsController do
     }
     @test_user = User.create!(@test_user_attr)
     sign_in @test_user
-    @test_folder_attr = {:title => "Test Folder Title"}
+    @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
     @folder = @test_user.folders.create!(@test_folder_attr)
     @folder.folder_items.create!(:document_id => "bpl-development:100")
     @folder.folder_items.create!(:document_id => "bpl-development:99")
