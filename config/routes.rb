@@ -45,6 +45,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post
 
+  match 'folders/public', :to => 'folders#public_list', :as => 'public_folders'
+
   resources :folders
 
   resources :folder_items

@@ -96,6 +96,10 @@ class FoldersController < CatalogController
     redirect_to :action => "index"
   end
 
+  def public_list
+    @folders = Bpluser::Folder.where(:visibility => 'public')
+  end
+
   protected
   def verify_user
     flash[:notice] = t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user

@@ -124,6 +124,9 @@ en:
           edit_folder: 'Edit Folder'
           empty: 'This folder does not currently have any items.'
           private: 'You do not have access to this folder.'
+          public_list:
+            intro: 'Folders created by everyone.'
+            title: 'All Folders'
           update_items:
             remove:
               success: 'Items removed.'
