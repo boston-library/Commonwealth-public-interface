@@ -26,6 +26,15 @@
     <%= @folder.title %>
     <% if current_user %>
         <small id="folder_tools">
+          <div class="folder_visibility">
+            <% if @folder.visibility == 'public' %>
+                <%= content_tag(:i, '', :class => 'icon-eye-open') %>
+                <span class="visibility_public"><%= @folder.visibility %></span>
+            <% else %>
+                <%= content_tag(:i, '', :class => 'icon-lock') %>
+                <span class="visibility_private"><%= @folder.visibility %></span>
+            <% end %>
+          </div>
           <%= link_to(content_tag(:i,'',:class=>'icon-pencil') + ' ' + t('blacklight.folders.edit'),
                       edit_folder_path(@folder),
                       :class => 'btn btn-small',

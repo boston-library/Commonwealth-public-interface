@@ -1,9 +1,20 @@
 <%= form_for(form_object, :html => {:id => 'edit_folder_form', :class => 'form-horizontal'}) do |f| %>
+    <p class="form_intro_text">Add a title and description for your folder. If the visibility is set to "public," other users will be able to view the items in the folder. (Items can only be added or removed by you.)</p>
     <%= render 'shared/error_messages', :object => f.object %>
     <div class="control-group">
-      <%= f.label :title, :class => 'control-label' %>
+      <%= label_tag(:title,
+                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Title',
+                    :class => 'control-label') %>
       <div class="controls">
         <%= f.text_field :title %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= label_tag(:visibility,
+                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Visibility',
+                    :class => 'control-label') %>
+      <div class="controls">
+        <%= f.select(:visibility, %w(private public)) %>
       </div>
     </div>
     <div class="control-group">

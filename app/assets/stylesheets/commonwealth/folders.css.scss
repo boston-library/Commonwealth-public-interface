@@ -48,30 +48,34 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
         width: 55px;
       }
 
-      div.folder_visibility {
-        display:inline;
-
-        i {
-          opacity: .7;
-        }
-
-        .visibility_private {
-          color: $dark_gray;
-        }
-
-        .visibility_public {
-          color: green;
-        }
-
-      }
-
     }
 
   }
 
 }
 
+div.folder_visibility {
+  display:inline;
+
+  i {
+    opacity: .7;
+  }
+
+  .visibility_private {
+    color: $dark_gray;
+  }
+
+  .visibility_public {
+    color: green;
+  }
+
+}
+
 #edit_folder_form {
+
+  .required_field_indicator {
+    color: red;
+  }
 
   label.control-label {
     font-weight: bold;
@@ -86,6 +90,12 @@ div.folder_show_container {
     #folder_tools {
       float: right;
       margin-top: 5px;
+
+      div.folder_visibility {
+        margin-right:5px;
+        font-size: 14px;
+      }
+
     }
 
   }
