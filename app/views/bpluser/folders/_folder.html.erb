@@ -1,6 +1,15 @@
 <li class="folders_index_list_item">
   <h4>
     <%= link_to folder.title, folder, :class => "folder_title" %>
+    <small class="folder_visibility">
+      <% if folder.visibility == 'public' %>
+          <%= content_tag(:i, '', :class => 'icon-eye-open') %>
+          <span class="visibility_public"><%= folder.visibility %></span>
+      <% else %>
+          <%= content_tag(:i, '', :class => 'icon-lock') %>
+          <span class="visibility_private"><%= folder.visibility %></span>
+      <% end %>
+    </small>
   </h4>
   <% if current_user %>
       <!--
@@ -17,15 +26,9 @@
     <span class="folder_item_count">
       <%= pluralize(folder.folder_items.length.to_s,'item') %>
     </span>
-    <div class="folder_visibility">
-      <% if folder.visibility == 'public' %>
-          <%= content_tag(:i, '', :class => 'icon-eye-open') %>
-          <span class="visibility_public"><%= folder.visibility %></span>
-      <% else %>
-          <%= content_tag(:i, '', :class => 'icon-lock') %>
-          <span class="visibility_private"><%= folder.visibility %></span>
-      <% end %>
-    </div>
+    <span class="folder_updated_at">
+      updated <%= time_ago_in_words(folder.updated_at) %> ago
+    </span>
   </div>
   <% if folder.description %>
       <%= folder.description %>

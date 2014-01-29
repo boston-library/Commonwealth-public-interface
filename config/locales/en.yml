@@ -125,8 +125,8 @@ en:
           empty: 'This folder does not currently have any items.'
           private: 'You do not have access to this folder.'
           public_list:
-            intro: 'Folders created by everyone.'
-            title: 'All Folders'
+            intro: 'Lists of items created and shared by Digital Commonwealth users.'
+            title: 'Shared Folders'
           update_items:
             remove:
               success: 'Items removed.'

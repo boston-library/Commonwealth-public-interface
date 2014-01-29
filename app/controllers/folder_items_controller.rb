@@ -19,7 +19,8 @@ class FolderItemsController < CatalogController
     end
 
     success = @folder_items.all? do |f_item|
-      current_user.folders.find(f_item[:folder_id]).folder_items.create!(:document_id => f_item[:document_id]) unless current_user.existing_folder_item_for(f_item[:document_id])
+      folder_to_update = current_user.folders.find(f_item[:folder_id])
+      folder_to_update.folder_items.create!(:document_id => f_item[:document_id]) and folder_to_update.touch unless current_user.existing_folder_item_for(f_item[:document_id])
     end
 
     unless request.xhr?
@@ -42,6 +43,7 @@ class FolderItemsController < CatalogController
 
     # success = (!folder_item) || FolderItem.find(folder_item).destroy
 
+    Bpluser::Folder.find(folder_item.folder_id).touch
     Bpluser::FolderItem.find(folder_item).destroy
 
     respond_to do |format|
@@ -54,6 +56,7 @@ class FolderItemsController < CatalogController
   def clear
     @folder = Bpluser::Folder.find(params[:id])
     if current_user.folders.find(@folder).folder_items.clear
+      @folder.touch
       flash[:notice] = I18n.t('blacklight.folder_items.clear.success')
     else
       flash[:error] = I18n.t('blacklight.folder_items.clear.failure')
@@ -65,14 +68,15 @@ class FolderItemsController < CatalogController
     @folder = Bpluser::Folder.find(params[:id])
     if params[:selected]
       if @folder.folder_items.where(:document_id => params[:selected]).delete_all
-        flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
+        @folder.touch
+        flash[:notice] = t('blacklight.folders.update_items.remove.success')
       else
-        flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
+        flash[:error] = t('blacklight.folders.update_items.remove.failure')
       end
       redirect_to :controller => "folders", :action => "show", :id => @folder
     else
       redirect_to :back
-      flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
+      flash[:error] = t('blacklight.folders.update_items.remove.no_items')
     end
   end
 

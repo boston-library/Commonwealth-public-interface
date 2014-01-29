@@ -41,9 +41,10 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
     }
 
     div.folder_status {
+      color: $dark_gray;
+      font-size: 12px;
 
       .folder_item_count {
-        color: $dark_gray;
         display: inline-block;
         width: 55px;
       }
@@ -52,9 +53,21 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
 
   }
 
+  #user_folder_list.public_folders {
+
+    small.folder_visibility {
+      display:none;
+    }
+
+  }
+
 }
 
-div.folder_visibility {
+#public_folders_sidebar {
+  margin-top:34px;
+}
+
+.folder_visibility {
   display:inline;
 
   i {

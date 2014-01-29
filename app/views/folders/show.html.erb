@@ -16,6 +16,12 @@
         <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
         <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
       </li>
+      <% unless current_user and current_user.folders.include?(@folder) %>
+          <li>
+            <%= link_to(t('blacklight.folders.public_list.title'), public_folders_path) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
       <li class="active">
         <%= @folder.title %>
       </li>

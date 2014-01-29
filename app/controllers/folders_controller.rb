@@ -14,7 +14,7 @@ class FoldersController < CatalogController
   end
   helper_method :search_action_url
 
-  before_filter :verify_user, :except => [:index, :show]
+  before_filter :verify_user, :except => [:index, :show, :public_list]
   before_filter :check_visibility, :only => [:show]
   before_filter :correct_user, :only => [:update, :destroy]
 
@@ -96,8 +96,9 @@ class FoldersController < CatalogController
     redirect_to :action => "index"
   end
 
+  # return a list of publicly visible folders that have items
   def public_list
-    @folders = Bpluser::Folder.where(:visibility => 'public')
+    @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).where('bpluser_folder_items.folder_id IS NOT NULL').order('updated_at DESC')
   end
 
   protected
