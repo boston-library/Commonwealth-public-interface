@@ -6,6 +6,12 @@
 
 body.blacklight-folders, body.blacklight-bookmarks {
   padding-top: 0;
+
+  /* don't show useless 'relevance' sort option in folders */
+  #sort-dropdown ul.css-dropdown li.btn ul li:first-child {
+    display: none;
+  }
+
 }
 
 body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fixed-top {

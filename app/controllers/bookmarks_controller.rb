@@ -25,7 +25,7 @@ class BookmarksController < CatalogController
   def index
     @bookmarks = current_or_guest_user.bookmarks
     bookmark_ids = @bookmarks.collect { |b| b.document_id.to_s }
-
+    params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
     @response, @document_list = get_solr_response_for_field_values(SolrDocument.unique_key, bookmark_ids)
   end
 
