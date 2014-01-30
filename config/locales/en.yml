@@ -128,6 +128,9 @@ en:
             intro: 'Lists of items created and shared by Digital Commonwealth users.'
             title: 'Shared Folders'
           update_items:
+            copy:
+              success: 'Items copied'
+              failure: 'Items could not be removed. Please try again later.'
             remove:
               success: 'Items removed.'
               failure: 'Items could not be removed. Please try again later.'
@@ -226,11 +229,11 @@ en:
           no_history: 'You have no search history for this session yet.'
 
     tools:
-          remove: 'Remove'
+          copy_to: 'Copy to'
           librarian_view:
             link: 'View MODS XML'
             title: 'View MODS XML metadata'
-
+          remove: 'Remove'
 
     users:
           account_heading: 'My Account'

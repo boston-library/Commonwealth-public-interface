@@ -8,6 +8,7 @@ class FolderItemsActionsController < ApplicationController
       sort = params[:sort] ? params[:sort] : ""
       per_page = params[:per_page] ? params[:per_page] : ""
       view = params[:view] ? params[:view] : ""
+      destination = params[:folder_id]
       items = params[:selected]
 
       case params[:commit]
@@ -35,6 +36,24 @@ class FolderItemsActionsController < ApplicationController
             redirect_to bookmarks_path(:sort => sort,
                                       :per_page => per_page,
                                       :view => view)
+          end
+        when t('blacklight.tools.copy_to')
+          if destination == t('blacklight.bookmarks.title')
+            success = items.all? do |bookmark|
+              current_or_guest_user.bookmarks.create(bookmark) unless current_or_guest_user.existing_bookmark_for(item)
+            end
+          else
+            folder_to_update = current_user.folders.find(destination)
+            success = items.all? do |f_item|
+              folder_to_update.folder_items.create!(:document_id => f_item) and folder_to_update.touch unless current_user.existing_folder_item_for(f_item)
+            end
+
+          end
+          redirect_to :back
+          if success
+            flash[:notice] = t('blacklight.folders.update_items.copy.success')
+          else
+            flash[:error] = t('blacklight.folders.update_items.copy.failure')
           end
       end
 

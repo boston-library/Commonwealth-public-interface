@@ -11,6 +11,31 @@
 <%= button_tag(:type => "submit", :class => "btn", :id => "remove_btn", :name => "commit", :value => t('blacklight.tools.remove')) do %>
     <%= content_tag(:i, "", :class => "icon-remove") + " " + t('blacklight.tools.remove') %>
 <% end %>
+<% if current_user %>
+      <% existing_folders = current_user.folders %>
+      <div class="btn-group folder-item-control">
+        <button class="btn" type="submit">
+          <%= content_tag(:i, '', :class => 'icon-random') + ' ' + t('blacklight.tools.copy_to') %>
+        </button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% unless params[:controller] == 'bookmarks' %>
+              <li><%= link_to t('blacklight.bookmarks.title'),
+                              bookmark_path(:id => ''),
+                              :class=>'folder_item_add' %>
+              </li>
+          <% end %>
+          <% existing_folders.each do |folder| %>
+              <li><%= link_to folder.title,
+                              folder_item_path(:id => '', :folder_id => folder.id),
+                              :class=>'folder_item_add' %>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+<% end %>
 
 <%= hidden_field_tag(:per_page, params[:per_page]) %>
 <%= hidden_field_tag(:sort, params[:sort]) %>
