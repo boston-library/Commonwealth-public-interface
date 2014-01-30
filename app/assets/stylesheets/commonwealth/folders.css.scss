@@ -37,7 +37,12 @@ body.blacklight-folders .navbar-fixed-top, body.blacklight-bookmarks .navbar-fix
     padding-top:0px;
 
     h4 {
-      margin:15px 0 2px 0;
+      margin:15px 0 0 0;
+
+      .folder_visibility {
+        margin-left:5px;
+      }
+
     }
 
     div.folder_status {

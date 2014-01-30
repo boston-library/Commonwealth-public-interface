@@ -39,18 +39,18 @@
         <li>
           <h4>
             <%= link_to t('blacklight.bookmarks.title'), bookmarks_path, :class => "folder_title" %>
+            <small class="folder_visibility">
+              <% if current_user %>
+                  <%= content_tag(:i, '', :class => 'icon-lock') %>
+                  <span class="visibility_private">private</span>
+              <% end %>
+            </small>
           </h4>
           <div class="folder_status">
             <span class="folder_item_count">
               <%= pluralize(current_or_guest_user.bookmarks.length.to_s,
                     'item') %>
             </span>
-            <div class="folder_visibility">
-              <% if current_user %>
-                  <%= content_tag(:i, '', :class => 'icon-lock') %>
-                  <span class="visibility_private">private</span>
-              <% end %>
-            </div>
           </div>
           <%= t('blacklight.bookmarks.description') %>
         </li>
@@ -67,7 +67,7 @@
 <div class="span3">
   <div id="public_folders_sidebar" class="well">
     <ul>
-      <li><%= link_to 'View all public folders', public_folders_path %></li>
+      <li><%= link_to 'View all shared folders', public_folders_path %></li>
     </ul>
   </div>
 </div>

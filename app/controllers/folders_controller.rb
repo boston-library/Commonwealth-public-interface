@@ -98,7 +98,8 @@ class FoldersController < CatalogController
 
   # return a list of publicly visible folders that have items
   def public_list
-    @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).where('bpluser_folder_items.folder_id IS NOT NULL').order('updated_at DESC')
+    # TODO create a named scope for this query in Bplmodels::Folder?
+    @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).uniq.order('updated_at DESC')
   end
 
   protected
