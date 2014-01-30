@@ -143,7 +143,6 @@ describe FoldersController do
           @public_folder = @test_user.folders.create!(@public_test_folder_attr)
         end
 
-        #TODO get this test to pass
         it "should show the folder" do
           get :show, :id => @public_folder.id
           response.body.should have_selector("h2", :text => @public_folder.title)
@@ -343,6 +342,27 @@ describe FoldersController do
 
       end
 
+    end
+
+  end
+
+  describe 'GET public_list' do
+
+    before(:each) do
+      @test_folder_attr = {:title => "Test Folder Title",:visibility => 'public'}
+      @folder = @test_user.folders.create!(@test_folder_attr)
+      @folder.folder_items.create!(:document_id => 'bpl-test:gq67js019')
+    end
+
+    it 'should show the public list' do
+      get :public_list
+      response.should be_success
+      response.body.should have_css('body.blacklight-folders-public_list')
+    end
+
+    it 'should show the public folder in the list' do
+      get :public_list
+      response.body.should have_selector('a', :text => @folder.title)
     end
 
   end
