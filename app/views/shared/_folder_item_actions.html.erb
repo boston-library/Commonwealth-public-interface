@@ -14,7 +14,7 @@
 <% if current_user %>
       <% existing_folders = current_user.folders %>
       <div class="btn-group folder-item-control">
-        <button class="btn" type="submit">
+        <button class="btn">
           <%= content_tag(:i, '', :class => 'icon-random') + ' ' + t('blacklight.tools.copy_to') %>
         </button>
         <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -22,9 +22,18 @@
         </button>
         <ul class="dropdown-menu">
           <% unless params[:controller] == 'bookmarks' %>
-              <li><%= link_to t('blacklight.bookmarks.title'),
+              <li><%# link_to t('blacklight.bookmarks.title'),
                               bookmark_path(:id => ''),
                               :class=>'folder_item_add' %>
+                <%# button_tag(:type => "submit", :class => "btn", :id => "copy_btn", :name => "commit", :value => t('blacklight.tools.copy_to'), params[:folder_id] => t('blacklight.bookmarks.title') ) do %>
+                    <%# t('blacklight.bookmarks.title') %>
+                <%# end %>
+                <%= link_to t('blacklight.bookmarks.title'),
+                            selected_folder_items_actions_path,
+                            :folder_id => t('blacklight.bookmarks.title'),
+                            :commit => t('blacklight.tools.copy_to'),
+                            :method => :put
+                %>
               </li>
           <% end %>
           <% existing_folders.each do |folder| %>
