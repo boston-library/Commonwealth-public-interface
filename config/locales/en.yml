@@ -129,8 +129,8 @@ en:
             title: 'Shared Folders'
           update_items:
             copy:
-              success: 'Items copied'
-              failure: 'Items could not be removed. Please try again later.'
+              success: 'Items copied to %{folder_name} folder.'
+              failure: 'Items could not be copied. Make sure the destination folder does not already include the items. If you are still unable to copy the items, please use the Contact link to report the problem.'
             remove:
               success: 'Items removed.'
               failure: 'Items could not be removed. Please try again later.'

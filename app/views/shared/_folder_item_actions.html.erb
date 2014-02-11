@@ -23,24 +23,35 @@
         <ul class="dropdown-menu">
           <% unless params[:controller] == 'bookmarks' %>
               <li><%# link_to t('blacklight.bookmarks.title'),
-                              bookmark_path(:id => ''),
-                              :class=>'folder_item_add' %>
-                <%# button_tag(:type => "submit", :class => "btn", :id => "copy_btn", :name => "commit", :value => t('blacklight.tools.copy_to'), params[:folder_id] => t('blacklight.bookmarks.title') ) do %>
-                    <%# t('blacklight.bookmarks.title') %>
-                <%# end %>
-                <%= link_to t('blacklight.bookmarks.title'),
-                            selected_folder_items_actions_path,
-                            :folder_id => t('blacklight.bookmarks.title'),
-                            :commit => t('blacklight.tools.copy_to'),
-                            :method => :put
-                %>
+                              selected_folder_items_actions_path(:id => ""),
+                              :id => 'copyLink',
+                              :folder_id => t('blacklight.bookmarks.title'),
+                              :commit => t('blacklight.tools.copy_to') %>
+                <%= button_tag(:type => 'submit',
+                               :class => 'btn',
+                               :id => 'copy_btn',
+                               :name => 'commit',
+                               :value => t('blacklight.tools.copy_to') + ' ' + t('blacklight.bookmarks.title')) do %>
+                    <%= t('blacklight.bookmarks.title') %>
+                <% end %>
+
               </li>
           <% end %>
           <% existing_folders.each do |folder| %>
-              <li><%= link_to folder.title,
+              <% unless folder.id == @folder.id %>
+
+              <li><%# link_to folder.title,
                               folder_item_path(:id => '', :folder_id => folder.id),
                               :class=>'folder_item_add' %>
+                <%= button_tag(:type => 'submit',
+                               :class => 'btn',
+                               :id => 'copy_btn',
+                               :name => 'commit',
+                               :value => t('blacklight.tools.copy_to') + ' ' + folder.id.to_s) do %>
+                    <%= folder.title %>
+                <% end %>
               </li>
+              <% end %>
           <% end %>
         </ul>
       </div>
