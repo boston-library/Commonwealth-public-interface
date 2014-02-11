@@ -122,7 +122,6 @@ class FoldersController < CatalogController
     else
       flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
     end
-
   end
 
 end

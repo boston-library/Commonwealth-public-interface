@@ -140,22 +140,43 @@ div.folder_show_container {
   #folderItemTools {
     display: inline;
 
-    ul.folderItemToolsList
-    {
+    ul.folderItemToolsList {
       /* @include rounded-corners(0 0 4px 4px); */
       background-color: $well_bg_color;
       border-color: $well_bg_color;
       margin:0;
       display: inline;
 
-      li
-      {
+      li {
         display:inline-block;
       }
 
-      li form
-      {
+      li form {
         display:inline;
+      }
+
+    }
+
+  }
+
+  #copy_folder_item_control {
+
+    /* mimic bootstrap button dropdown groups */
+    button.copy_btn {
+      color: #333333;
+      line-height: 20px;
+      padding: 3px 20px;
+      white-space: nowrap;
+      border: 0;
+      background: none;
+      width: 100%;
+      text-align: left;
+
+      &:hover {
+        background-color: #0081C2;
+        background-image: linear-gradient(to bottom, #0088CC, #0077B3);
+        background-repeat: repeat-x;
+        color: #FFFFFF;
       }
 
     }
