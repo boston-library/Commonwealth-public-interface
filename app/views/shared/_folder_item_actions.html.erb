@@ -2,14 +2,62 @@
   <%= render :partial => 'shared/folder_tools' %>
 </div>
 
-<%= button_tag(:type => "submit", :class => "btn", :id => "cite_btn", :name => "commit", :value => t('blacklight.tools.cite')) do %>
-    <%= content_tag(:i, "", :class => "icon-list-alt") + " " + t('blacklight.tools.cite') %>
+<%# for users with JS, the email_btn and cite_btn below are replaced by
+    code from shared/folder_tools %>
+<%= button_tag(:type => 'submit', :class => 'btn', :id => 'cite_btn', :name => 'commit', :value => t('blacklight.tools.cite')) do %>
+    <%= content_tag(:i, '', :class => 'icon-list-alt') + ' ' + t('blacklight.tools.cite') %>
 <% end %>
-<%= button_tag(:type => "submit", :class => "btn", :id => "email_btn", :name => "commit", :value => t('blacklight.tools.email')) do %>
-    <%= content_tag(:i, "", :class => "icon-envelope") + " " + t('blacklight.tools.email') %>
+<%= button_tag(:type => 'submit', :class => 'btn', :id => 'email_btn', :name => 'commit', :value => t('blacklight.tools.email')) do %>
+    <%= content_tag(:i, '', :class => 'icon-envelope') + ' ' + t('blacklight.tools.email') %>
 <% end %>
-<%= button_tag(:type => "submit", :class => "btn", :id => "remove_btn", :name => "commit", :value => t('blacklight.tools.remove')) do %>
-    <%= content_tag(:i, "", :class => "icon-remove") + " " + t('blacklight.tools.remove') %>
+
+<% if folder_belongs_to_user %>
+    <%= button_tag(:type => 'submit', :class => 'btn', :id => 'remove_btn', :name => 'commit', :value => t('blacklight.tools.remove')) do %>
+        <%= content_tag(:i, '', :class => 'icon-remove') + ' ' + t('blacklight.tools.remove') %>
+    <% end %>
+<% end %>
+
+<% if current_user && !current_user.folders.empty? %>
+      <% existing_folders = current_user.folders %>
+      <div class="btn-group folder-item-control" id="copy_folder_item_control">
+        <span class="btn dropdown-toggle" data-toggle="dropdown">
+          <%= content_tag(:i, '', :class => 'icon-random') + ' ' + t('blacklight.tools.copy_to') %> <span class="caret"></span>
+        </span>
+        <ul class="dropdown-menu folder_copy_list">
+          <% unless params[:controller] == 'bookmarks' %>
+              <li class="folder_copy_option">
+                <%# link_to t('blacklight.bookmarks.title'),
+                            selected_folder_items_actions_path(:id => ""),
+                            :id => 'copyLink',
+                            :folder_id => t('blacklight.bookmarks.title'),
+                            :commit => t('blacklight.tools.copy_to') %>
+                <%= button_tag(:type => 'submit',
+                               :class => 'copy_btn',
+                               :name => 'commit',
+                               :value => t('blacklight.tools.copy_to') + ' ' + t('blacklight.bookmarks.title')) do %>
+                    <%= t('blacklight.bookmarks.title') %>
+                <% end %>
+              </li>
+          <% end %>
+          <% existing_folders.each do |folder| %>
+              <% if @folder && folder.id == @folder.id %>
+                <%# do nothing %>
+              <% else %>
+                  <li class="folder_copy_option">
+                    <%# link_to folder.title,
+                                folder_item_path(:id => '', :folder_id => folder.id),
+                                :class=>'folder_item_add' %>
+                    <%= button_tag(:type => 'submit',
+                                   :class => 'copy_btn',
+                                   :name => 'commit',
+                                   :value => t('blacklight.tools.copy_to') + ' ' + folder.id.to_s) do %>
+                        <%= folder.title %>
+                    <% end %>
+                  </li>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
 <% end %>
 
 <%= hidden_field_tag(:per_page, params[:per_page]) %>

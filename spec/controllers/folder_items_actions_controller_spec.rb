@@ -12,7 +12,7 @@ describe FolderItemsActionsController do
     }
     @test_user = User.create!(@test_user_attr)
     sign_in @test_user
-    @test_folder_attr = {:title => "Test Folder Title"}
+    @test_folder_attr = {:title => "Test Folder Title",:visibility => 'private'}
     @folder = @test_user.folders.create!(@test_folder_attr)
     @folder.folder_items.create!(:document_id => "bpl-development:100")
     @folder.folder_items.create!(:document_id => "bpl-development:99")
@@ -32,6 +32,31 @@ describe FolderItemsActionsController do
               :selected => ["bpl-development:100", "bpl-development:99"]
           response.should be_redirect
         end.should change(@folder.folder_items, :count).by(-2)
+      end
+
+    end
+
+  end
+
+  describe "folder_item_actions: copy" do
+
+    before(:each) do
+      @test_folder2_attr = {:title => "Other Test Folder Title",:visibility => 'private'}
+      @folder2 = @test_user.folders.create!(@test_folder2_attr)
+    end
+
+    describe "success" do
+
+      it "should copy the selected items to folder2" do
+        lambda do
+          @request.env['HTTP_REFERER'] = '/folders/' + @folder.id.to_s
+          put :folder_item_actions,
+              :commit => "Copy to " + @folder2.id.to_s,
+              :origin => "folders",
+              :id => @folder,
+              :selected => ["bpl-development:100", "bpl-development:99"]
+          response.should be_redirect
+        end.should change(@folder2.folder_items, :count).by(2)
       end
 
     end

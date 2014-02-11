@@ -14,8 +14,9 @@ class FoldersController < CatalogController
   end
   helper_method :search_action_url
 
-  before_filter :verify_user, :except => :index
-  before_filter :correct_user, :only => [:show, :update, :destroy]
+  before_filter :verify_user, :except => [:index, :show, :public_list]
+  before_filter :check_visibility, :only => [:show]
+  before_filter :correct_user, :only => [:update, :destroy]
 
   def index
     if current_user
@@ -27,8 +28,9 @@ class FoldersController < CatalogController
     # @folder is set by correct_user
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
-
+    params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
     @response, @document_list = get_solr_response_for_field_values(SolrDocument.unique_key, folder_items_ids)
+
     # have to declare this so view uses catalog/index partials
     # uh, maybe not? default templates won't get invoked if below is set
     #@partial_path_templates = ["catalog/%{action_name}_%{index_view_type}_%{format}"]
@@ -95,14 +97,31 @@ class FoldersController < CatalogController
     redirect_to :action => "index"
   end
 
+  # return a list of publicly visible folders that have items
+  def public_list
+    # TODO create a named scope for this query in Bplmodels::Folder?
+    @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).uniq.order('updated_at DESC')
+  end
+
   protected
   def verify_user
-    flash[:notice] = I18n.t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+    flash[:notice] = t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
+  end
+
+  def check_visibility
+    @folder = Bpluser::Folder.find(params[:id])
+    if @folder.visibility != 'public'
+      correct_user
+    end
   end
 
   def correct_user
-    @folder = Bpluser::Folder.find(params[:id])
-    redirect_to root_path unless current_user.folders.include?(@folder)
+    @folder ||= Bpluser::Folder.find(params[:id])
+    if current_user
+      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
+    else
+      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
+    end
   end
 
 end

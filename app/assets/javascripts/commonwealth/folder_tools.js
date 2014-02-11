@@ -20,7 +20,7 @@ $(document).ready ( function () {
 function addCheckedToURL () {
     var checkboxValues = $('[name="selected[]"]:checked').serialize();
     checkboxValues = checkboxValues.replace(/selected/g,"id");
-    $('#citeLink,#emailLink').attr('href', function(index,previousValue) {
+    $('#citeLink,#emailLink,#copyLink').attr('href', function(index,previousValue) {
         return previousValue.replace(/\?.*/,"?" + checkboxValues);
     });
 }

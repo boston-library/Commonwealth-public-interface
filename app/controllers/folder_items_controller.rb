@@ -19,7 +19,8 @@ class FolderItemsController < CatalogController
     end
 
     success = @folder_items.all? do |f_item|
-      current_user.folders.find(f_item[:folder_id]).folder_items.create!(:document_id => f_item[:document_id]) unless current_user.existing_folder_item_for(f_item[:document_id])
+      folder_to_update = current_user.folders.find(f_item[:folder_id])
+      folder_to_update.folder_items.create!(:document_id => f_item[:document_id]) and folder_to_update.touch unless folder_to_update.has_folder_item(f_item[:document_id])
     end
 
     unless request.xhr?
@@ -36,12 +37,14 @@ class FolderItemsController < CatalogController
 
   # Beware, :id is the Solr document_id, not the actual Bookmark id.
   # idempotent, as DELETE is supposed to be.
+  # PRETTY SURE THIS METHOD IS NEVER USED!
   def destroy
     @response, @document = get_solr_response_for_doc_id(params[:id])
     folder_item = current_user.existing_folder_item_for(params[:id])
 
     # success = (!folder_item) || FolderItem.find(folder_item).destroy
 
+    Bpluser::Folder.find(folder_item.folder_id).touch
     Bpluser::FolderItem.find(folder_item).destroy
 
     respond_to do |format|
@@ -54,6 +57,7 @@ class FolderItemsController < CatalogController
   def clear
     @folder = Bpluser::Folder.find(params[:id])
     if current_user.folders.find(@folder).folder_items.clear
+      @folder.touch
       flash[:notice] = I18n.t('blacklight.folder_items.clear.success')
     else
       flash[:error] = I18n.t('blacklight.folder_items.clear.failure')
@@ -61,50 +65,22 @@ class FolderItemsController < CatalogController
     redirect_to :controller => "folders", :action => "show", :id => @folder
   end
 
+  # PRETTY SURE THIS METHOD IS NEVER USED!
   def delete_selected
     @folder = Bpluser::Folder.find(params[:id])
     if params[:selected]
       if @folder.folder_items.where(:document_id => params[:selected]).delete_all
-        flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
+        @folder.touch
+        flash[:notice] = t('blacklight.folders.update_items.remove.success')
       else
-        flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
+        flash[:error] = t('blacklight.folders.update_items.remove.failure')
       end
       redirect_to :controller => "folders", :action => "show", :id => @folder
     else
       redirect_to :back
-      flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
+      flash[:error] = t('blacklight.folders.update_items.remove.no_items')
     end
   end
-
-  #def item_actions
-  #  @folder = Folder.find(params[:id])
-  #  if params[:selected]
-  #    sort = params[:sort] ? params[:sort] : ""
-  #    per_page = params[:per_page] ? params[:per_page] : ""
-  #    view = params[:view] ? params[:view] : ""
-  #    items = params[:selected]
-  #
-  #   case params[:commit]
-  #          when t('blacklight.tools.email')
-  #            redirect_to email_catalog_path(:id => items)
-  #          when t('blacklight.tools.cite')
-  #           redirect_to citation_catalog_path(:id => items)
-  #          when t('blacklight.tools.remove')
-  #            if @folder.folder_items.where(:document_id => items).delete_all
-  #              flash[:notice] = I18n.t('blacklight.folders.update_items.remove.success')
-  #            else
-  #              flash[:error] = I18n.t('blacklight.folders.update_items.remove.failure')
-  #            end
-  #            redirect_to folder_path(:id => @folder,
-  #                                    :sort => sort,
-  #                                    :per_page => per_page,
-  #                                    :view => view)
-  #    end
-  #  else
-  #    redirect_to :back
-  #    flash[:error] = I18n.t('blacklight.folders.update_items.remove.no_items')
-  #  end
-  #end
 
   protected
   def verify_user

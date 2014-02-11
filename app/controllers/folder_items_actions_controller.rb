@@ -11,10 +11,13 @@ class FolderItemsActionsController < ApplicationController
       items = params[:selected]
 
       case params[:commit]
+        # email
         when t('blacklight.tools.email')
           redirect_to email_catalog_path(:id => items)
+        # cite
         when t('blacklight.tools.cite')
           redirect_to citation_catalog_path(:id => items)
+        # remove
         when t('blacklight.tools.remove')
           if params[:origin] == "folders"
             if @folder.folder_items.where(:document_id => items).delete_all
@@ -35,6 +38,26 @@ class FolderItemsActionsController < ApplicationController
             redirect_to bookmarks_path(:sort => sort,
                                       :per_page => per_page,
                                       :view => view)
+          end
+        # copy
+        when /#{t('blacklight.tools.copy_to')}/
+          destination = params[:commit].split(t('blacklight.tools.copy_to') + ' ')[1]
+          if destination == t('blacklight.bookmarks.title')
+            success = items.all? do |item_id|
+              current_or_guest_user.bookmarks.create(:document_id => item_id) unless current_or_guest_user.existing_bookmark_for(item_id)
+            end
+          else
+            folder_to_update = current_user.folders.find(destination)
+            success = items.all? do |item_id|
+              folder_to_update.folder_items.create!(:document_id => item_id) and folder_to_update.touch unless folder_to_update.has_folder_item(item_id)
+            end
+          end
+          redirect_to :back
+          if success
+            flash[:notice] = t('blacklight.folders.update_items.copy.success',
+                               :folder_name => folder_to_update.title)
+          else
+            flash[:error] = t('blacklight.folders.update_items.copy.failure')
           end
       end
 

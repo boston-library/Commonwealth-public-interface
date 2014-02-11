@@ -1,29 +1,72 @@
 <% @page_title = @folder.title + " - " + application_name %>
 
-<%= javascript_include_tag "commonwealth/folder_tools" %>
+<%= javascript_include_tag 'commonwealth/folder_tools' %>
 
-<div id="content" class="folder_container span9">
+<div id="content" class="folder_show_container span9">
 
-  <h2>Folder: <%= @folder.title %></h2>
-  <% if current_user %>
-      <div id="folder_tools">
-        <%= link_to t('blacklight.folders.edit'),
-                    edit_folder_path(@folder),
-                    :title => "edit this folder" %> |
-        <%= link_to t('blacklight.folders.delete.delete'),
-                    @folder, :method => :delete,
-                    :data => { :confirm => t('blacklight.folders.delete.confirm') },
-                    :title => t('blacklight.folders.delete.delete') %> |
-        <%= link_to t('blacklight.folder_items.clear.action'),
-                    clear_folder_items_path,
-                    :method => :delete,
-                    :data => { :confirm => t('blacklight.folder_items.clear.confirm') } %>
-      </div>
-  <% end %>
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li>
+        <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <% unless current_user and current_user.folders.include?(@folder) %>
+          <li>
+            <%= link_to(t('blacklight.folders.public_list.title'), public_folders_path) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
+      <li class="active">
+        <%= @folder.title %>
+      </li>
+    </ul>
+  </div>
+
+  <h2>
+    <%= @folder.title %>
+    <% if current_user && folder_belongs_to_user %>
+        <small id="folder_tools">
+          <div class="folder_visibility">
+            <% if @folder.visibility == 'public' %>
+                <%= content_tag(:i, '', :class => 'icon-eye-open') %>
+                <span class="visibility_public"><%= @folder.visibility %></span>
+            <% else %>
+                <%= content_tag(:i, '', :class => 'icon-lock') %>
+                <span class="visibility_private"><%= @folder.visibility %></span>
+            <% end %>
+          </div>
+          <%= link_to(content_tag(:i,'',:class=>'icon-pencil') + ' ' + t('blacklight.folders.edit'),
+                      edit_folder_path(@folder),
+                      :class => 'btn btn-small',
+                      :title => 'edit this folder') %>
+          <%= link_to(content_tag(:i,'',:class=>'icon-trash') + ' ' + t('blacklight.folders.delete.delete'),
+                      @folder,
+                      :class => 'btn btn-small',
+                      :method => :delete,
+                      :data => { :confirm => t('blacklight.folders.delete.confirm') },
+                      :title => t('blacklight.folders.delete.delete')) %>
+          <%# if @folder_items.length > 0 %>
+              <%# link_to(content_tag(:i,'',:class=>'icon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
+                          clear_folder_items_path,
+                          :class => 'btn btn-small',
+                          :method => :delete,
+                          :data => { :confirm => t('blacklight.folder_items.clear.confirm') }) %>
+          <%# end %>
+        </small>
+    <% end %>
+  </h2>
 
   <%# render 'shared/tools' %>
   <% if @folder.description %>
-      <p><%= @folder.description %></p>
+      <div id="folder_description">
+        <%= @folder.description %>
+      </div>
   <% end %>
 
   <% unless @folder_items.empty? %>
@@ -41,9 +84,10 @@
       <%= render 'catalog/results_pagination' %>
 
   <% else %>
-
-    <p><strong><%= t('blacklight.folders.empty') %></strong></p>
-    <p><%= t('blacklight.folders.help.add_items') %></p>
+    <div id="empty_folder" class="well">
+      <h5><%= t('blacklight.folders.empty') %></h5>
+      <p><%= t('blacklight.folders.help.add_items') %></p>
+    </div>
 
   <% end %>
 

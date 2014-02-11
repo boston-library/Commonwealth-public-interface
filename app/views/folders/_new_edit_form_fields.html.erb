@@ -1,12 +1,37 @@
-<%= form_for(form_object) do |f| %>
+<%= form_for(form_object, :html => {:id => 'edit_folder_form', :class => 'form-horizontal'}) do |f| %>
+    <p class="form_intro_text">Add a title and description for your folder. If the visibility is set to "public," other users will be able to view the items in the folder. (Items can only be added or removed by you.)</p>
     <%= render 'shared/error_messages', :object => f.object %>
-    <div class="form_field">
-      <%= f.label :title %><br/><%= f.text_field :title %>
+    <div class="control-group">
+      <%= label_tag(:title,
+                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Title',
+                    :class => 'control-label') %>
+      <div class="controls">
+        <%= f.text_field :title %>
+      </div>
     </div>
-    <div class="form_field">
-      <%= f.label :description %><br/><%= f.text_area :description, :size => "24x4" %>
+    <div class="control-group">
+      <%= label_tag(:visibility,
+                    content_tag(:span, '*', :class => 'required_field_indicator') + ' Visibility',
+                    :class => 'control-label') %>
+      <div class="controls">
+        <%= f.select(:visibility, %w(private public)) %>
+      </div>
     </div>
-    <div class="actions">
-      <%= f.submit submit_button_text %>
+    <div class="control-group">
+      <%= f.label :description, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :description, :size => '24x4' %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label"></label>
+      <div class="controls">
+        <%= f.submit submit_button_text, :class => 'btn btn-primary' %>
+        <% if @folder.id %>
+            <%= link_to 'Cancel', folder_path(@folder.id), :class=>'btn' %>
+        <% else %>
+            <%= link_to 'Cancel', folders_path, :class=>'btn' %>
+        <% end %>
+      </div>
     </div>
 <% end %>
