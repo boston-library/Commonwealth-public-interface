@@ -11,7 +11,7 @@
     <%= content_tag(:i, '', :class => 'icon-envelope') + ' ' + t('blacklight.tools.email') %>
 <% end %>
 
-<% if folder_belongs_to_user %>
+<% if params[:controller] == 'bookmarks' || folder_belongs_to_user %>
     <%= button_tag(:type => 'submit', :class => 'btn', :id => 'remove_btn', :name => 'commit', :value => t('blacklight.tools.remove')) do %>
         <%= content_tag(:i, '', :class => 'icon-remove') + ' ' + t('blacklight.tools.remove') %>
     <% end %>
