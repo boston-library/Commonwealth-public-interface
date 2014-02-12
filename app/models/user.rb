@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   require 'openssl'
   require 'rest_client'
   # Connects this user object to Hydra behaviors.
-  include Hydra::User# Connects this user object to Role-management behaviors. 
+  include Hydra::User
+  # Connects this user object to Role-management behaviors.
   include Hydra::RoleManagement::UserRoles
 
   # Connects this user object to Institution-management behaviors.

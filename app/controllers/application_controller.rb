@@ -13,4 +13,25 @@ class ApplicationController < ActionController::Base
   layout 'blacklight'
 
   protect_from_forgery
+
+  after_filter :store_location
+
+  # redirect after login to previous non-login page
+  # TODO figure out why it doesn't work for Polaris or Facebook logins
+  def store_location
+    # store last url - this is needed for post-login redirect to whatever the user last visited.
+    if (request.fullpath != "/users/sign_in" &&
+        request.fullpath != "/users/sign_up" &&
+        request.fullpath != "/users/password" &&
+        request.fullpath != "/users/sign_out" &&
+        !request.fullpath.match(/\/users\/auth\//) &&
+        !request.xhr?) # don't store ajax calls
+      session[:previous_url] = request.fullpath
+    end
+  end
+
+  def after_sign_in_path_for(resource)
+    session[:previous_url] || root_path
+  end
+
 end

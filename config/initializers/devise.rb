@@ -23,7 +23,10 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  config.authentication_keys = [ :uid, :provider ]
+
+  # fix-login fix!
+  # config.authentication_keys = [ :uid, :provider ]
+  config.authentication_keys = [ :uid ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -35,12 +38,18 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  config.case_insensitive_keys = [ :uid, :provider ]
+
+  # fix-login fix!
+  # config.case_insensitive_keys = [ :uid, :provider ]
+  config.case_insensitive_keys = [ :uid ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
   # modifying a user and when used to authenticate or find a user. Default is :email.
-  config.strip_whitespace_keys = [ :uid, :provider ]
+
+  # fix-login fix!
+  # config.strip_whitespace_keys = [ :uid, :provider ]
+  config.strip_whitespace_keys = [ :uid ]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -114,7 +123,10 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
+
+  # fix-login fix
   # config.password_length = 6..128
+  config.password_length = 6..128
 
   # Email regex used to validate email formats. It simply asserts that
   # an one (and only one) @ exists in the given string. This is mainly
@@ -214,8 +226,9 @@ Devise.setup do |config|
                   :bind_dn => Hydra::LDAP.ldap_config[:username],
                   :password => Hydra::LDAP.ldap_config[:password]
 
-  config.omniauth :password, :title => 'BPL local account login',
-                  :login_field => :username
+  # fix-login fix
+  #config.omniauth :password, :title => 'BPL local account login',
+  #                :login_field => :username
 
   OMNIAUTH_POLARIS_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-polaris.yml'))[Rails.env]
   config.omniauth :polaris, :title => OMNIAUTH_POLARIS_GLOBAL['title'],
