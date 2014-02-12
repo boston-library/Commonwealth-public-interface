@@ -151,6 +151,22 @@ module ApplicationHelper
     end
   end
 
+  # render geographic subjects
+  def render_geographic_subjects(document)
+    all_geo_subjects = document[:subject_geographic_ssim]
+    subject_geo_facet_field = 'subject_geographic_ssim'
+    document[:subject_geo_country_ssim].each_with_index do |country,index|
+      all_geo_subjects.delete(country)
+      link_to_facet(country, subject_geo_facet_field)
+      if document[:subject_geo_state_ssim][index]
+        all_geo_subjects.delete(document[:subject_geo_state_ssim][index])
+        ' ' + t('blacklight.breadcrumb.separator') + ' '
+        link_to_facet(document[:subject_geo_state_ssim][index], subject_geo_facet_field)
+
+      end
+    end
+  end
+
   # insert an icon and link to CC licenses
   def render_cc_license(terms)
     terms_code = terms.match(/\s[BYNCDSA-]{2,}/).to_s.strip.downcase
