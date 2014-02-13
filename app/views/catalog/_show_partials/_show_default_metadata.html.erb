@@ -198,10 +198,8 @@
     <% if document[:subject_geographic_ssim] %>
         <dt>Places:</dt>
         <dd>
-            <%= render_geographic_subjects(document) %>
-            <%# document[:subject_geographic_ssim].each do |subject_geo| %>
-                <%# link_to_facet(subject_geo, 'subject_geographic_ssim') %><br />
-            <%# end %>
+            <%= render :partial => 'catalog/_show_partials/show_geographic_subjects',
+                       :locals => {:document => document} %>
         </dd>
     <% end %>
     <%# note @type="date" field %>
