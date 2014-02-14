@@ -95,18 +95,24 @@ div#img_viewer_modal {
     padding-left:1em;
   }
 
-}
+  dl.defList {
+    width: 97%;
 
-#item_metadata dl.defList {
-  width: 97%;
+    dt {
+      padding: .2em 0;
+    }
 
-  dt {
-    padding: .2em 0;
+    dd {
+      padding: .2em 0;
+
+      .geo_breadcrumb_separator {
+        color: $dark_gray;
+        padding: 0 2px;
+      }
+
+    }
   }
 
-  dd {
-    padding: .2em 0;
-  }
 }
 
 /* tools */
