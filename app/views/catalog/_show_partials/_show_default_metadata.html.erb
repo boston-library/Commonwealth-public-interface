@@ -241,7 +241,8 @@
         <dt>Series:</dt>
         <dd>
             <% document[:related_item_series_ssim].each_with_index do |related_series,index| %>
-              <%= link_to_facet(related_series, 'related_item_series_ssim') %>
+              <%= link_to_facets([related_series, document[:related_item_host_ssim].first],
+                                 %w[related_item_series_ssim related_item_host_ssim]) %>
               <% if document[:related_item_subseries_ssim] && document[:related_item_subseries_ssim][index] %>
                   <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
                   <%= link_to_facets(
