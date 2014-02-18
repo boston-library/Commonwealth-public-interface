@@ -240,8 +240,26 @@
     <% if document[:related_item_series_ssim] %>
         <dt>Series:</dt>
         <dd>
-            <% document[:related_item_series_ssim].each do |related_series| %>
-                <%= link_to_facet(related_series, 'related_item_series_ssim') %><br />
+            <% document[:related_item_series_ssim].each_with_index do |related_series,index| %>
+              <%= link_to_facet(related_series, 'related_item_series_ssim') %>
+              <% if document[:related_item_subseries_ssim] && document[:related_item_subseries_ssim][index] %>
+                  <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+                  <%= link_to_facets(
+                              [document[:related_item_subseries_ssim][index],
+                               related_series],
+                              %w[related_item_subseries_ssim related_item_series_ssim]) %>
+              <% end %>
+              <% if document[:related_item_subsubseries_ssim] && document[:related_item_subsubseries_ssim][index] %>
+                  <%= content_tag(:span, t('blacklight.breadcrumb.separator'), :class => 'metadata_breadcrumb') %>
+                  <%= link_to_facets(
+                              [document[:related_item_subsubseries_ssim][index],
+                               document[:related_item_subseries_ssim][index],
+                               related_series],
+                              %w[related_item_subsubseries_ssim
+                                 related_item_subseries_ssim
+                                 related_item_series_ssim]) %>
+              <% end %>
+              <br />
             <% end %>
         </dd>
     <% end %>
@@ -279,6 +297,15 @@
         <% end %>
       </dd>
     <% end %>
+    <%# local-call id field %>
+    <% if document[:identifier_local_call_tsim] %>
+      <dt>Call # (local):</dt>
+      <dd>
+        <% document[:identifier_local_call_tsim].each do |local_call| %>
+            <%= local_call %><br />
+        <% end %>
+      </dd>
+  <% end %>
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
         <dt>Referenced By:</dt>

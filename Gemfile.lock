@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: ce733b68048eaf3d5c1afb7c569f5959aa200edd
+  revision: 864868d909116292a24e2d25b04fbcd988ade38b
   specs:
     bplmodels (0.0.88)
       mods
@@ -203,7 +203,7 @@ GEM
     mediashelf-loggable (0.4.9)
     mime-types (1.25)
     mini_portile (0.5.1)
-    mods (0.0.22)
+    mods (0.0.23)
       iso-639
       nokogiri
       nom-xml

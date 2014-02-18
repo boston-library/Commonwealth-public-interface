@@ -14,6 +14,7 @@ gem 'hydra-ldap'
 #gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
 # BPL models gem
 gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'
+#gem 'bplmodels', :path => '/home/eenglish/bplmodels'
 gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 
 
