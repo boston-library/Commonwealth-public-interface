@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,17 +22,10 @@ gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 gem 'djatoka'
 
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+gem 'sass-rails',   '~> 4.0.1'
+gem 'coffee-rails', '~> 4.0.1'
+gem 'uglifier', '>= 1.3.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -54,16 +47,16 @@ gem 'jquery-ui-rails'
 
 #various utilities
 gem 'execjs'
-gem 'libv8', '~> 3.11.8'
+gem 'libv8', '~> 3.16.14.3'
 gem 'therubyracer'
 gem 'tzinfo'
 gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight'
-gem 'blacklight_advanced_search'
-gem 'hydra-head'
+gem 'blacklight', '4.4.2'
+gem 'blacklight_advanced_search', '2.1.1'
+gem 'hydra-head', '6.3.4'
 
 group :development, :test do
   gem 'rspec'
@@ -79,8 +72,11 @@ gem 'omniauth'
 gem 'omniauth-ldap'
 gem 'omniauth-facebook'
 gem 'omniauth-polaris', :git => 'https://github.com/boston-library/omniauth-polaris.git'
-gem 'omniauth-password'
+# gem 'omniauth-password'  # no Rails4 version
 gem 'bootstrap_forms'
 gem 'hydra-role-management'
 gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
 gem 'blacklight_google_analytics'
+
+# smooth upgrade to Rails 4
+gem 'protected_attributes'

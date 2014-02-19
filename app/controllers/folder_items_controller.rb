@@ -4,7 +4,7 @@ class FolderItemsController < CatalogController
   #include Blacklight::Configurable
   #include Blacklight::SolrHelper
 
-  before_filter :verify_user
+  before_action :verify_user
 
   def update
     create

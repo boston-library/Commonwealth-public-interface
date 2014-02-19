@@ -9,26 +9,24 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   mount Hydra::RoleManagement::Engine => '/'
 
-  #get "pages/about"
-
   root :to => 'pages#home'
 
-  match 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
+  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
   Blacklight.add_routes(self, :except => [:solr_document, :catalog])
 
   # add Blacklight catalog -> search routing
   # Catalog stuff.
-  match 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
-  match 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
-  match 'search/email', :to => 'catalog#email', :as => 'email_catalog'
+  get 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
+  get 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
+  match 'search/email', :to => 'catalog#email', :as => 'email_catalog', :via => [:get, :post]
   #match 'search/sms', :as => "sms_catalog"
   #match 'search/endnote', :as => "endnote_catalog"
-  match 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
-  match 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
-  match 'search', :to => 'catalog#index', :as => 'catalog_index'
-  match 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
-  match 'places', :to => 'catalog#places_facet', :as => 'places_facet'
+  post 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
+  get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
+  get 'search', :to => 'catalog#index', :as => 'catalog_index'
+  get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+  get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
 
   resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
   # :show and :update are for backwards-compatibility with catalog_url named routes
@@ -37,15 +35,15 @@ CommonwealthPublicInterface::Application.routes.draw do
   HydraHead.add_routes(self)
 
   resources :collections, :only => [:index, :show]
-  match 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
+  get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
   resources :institutions, :only => [:index, :show]
-  match 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
+  get 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
 
   # for some reason feedback submit won't work w/o this addition
   match 'feedback', :to => 'feedback#show', :via => :post
 
-  match 'folders/public', :to => 'folders#public_list', :as => 'public_folders'
+  get 'folders/public', :to => 'folders#public_list', :as => 'public_folders'
 
   resources :folders
 
@@ -53,13 +51,13 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :preview, :only => :show
 
-  match 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
+  delete 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
-  match 'folder/:id/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_folder_items_actions'
+  put 'folder/:id/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_folder_items_actions'
 
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
-  match 'about', :to => 'pages#about', :as => 'about'
+  get 'about', :to => 'pages#about', :as => 'about'
 
   resources :users, :only => :show
 
