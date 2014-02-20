@@ -54,8 +54,9 @@ class FolderItemsActionsController < ApplicationController
           end
           redirect_to :back
           if success
+            folder_display_name = destination == t('blacklight.bookmarks.title') ? t('blacklight.bookmarks.title') : folder_to_update.title
             flash[:notice] = t('blacklight.folders.update_items.copy.success',
-                               :folder_name => folder_to_update.title)
+                               :folder_name => folder_display_name)
           else
             flash[:error] = t('blacklight.folders.update_items.copy.failure')
           end
