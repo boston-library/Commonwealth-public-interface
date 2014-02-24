@@ -58,6 +58,9 @@ CommonwealthPublicInterface::Application.routes.draw do
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
   get 'about', :to => 'pages#about', :as => 'about'
+  get 'lesson_plans', :to => 'pages#lesson_plans', :as => 'lesson_plans'
+  get 'copyright', :to => 'pages#copyright', :as => 'copyright'
+  get 'partners', :to => 'pages#partners', :as => 'partners'
 
   resources :users, :only => :show
 

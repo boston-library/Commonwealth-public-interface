@@ -13,9 +13,24 @@ body.blacklight-pages .navbar-fixed-top, body.blacklight-feedback .navbar-fixed-
   margin-bottom: 1em;
 }
 
+div.about_content {
 
-#about_content ul li {
-  padding-bottom: 1em;
+  h5.section_heading {
+    padding-top: 10px;
+  }
+
+  ul li {
+    padding-bottom: 1em;
+  }
+
+  #lesson_plan_list {
+    padding-top: 5px;
+  }
+
+  #partner_list li {
+    padding: 20px 0;
+  }
+
 }
 
 .breadcrumb {

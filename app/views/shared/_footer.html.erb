@@ -3,10 +3,15 @@
     <div id="footer_logo" class="span3">
       <%= image_tag('dc-logo_notag_xsm_bw.png', :alt => application_name, :class => 'footer-logo')  %>
     </div>
-    <div id="footer_nav" class="span9 visible-desktop">
+    <div id="footer_address" class="span9 hidden-phone">
+      <!--
       <ul id="footer_nav_links" class="inline">
-        <%= render :partial=>'shared/nav_links' %>
+        <%# render :partial=>'shared/nav_links' %>
       </ul>
+      -->
+      <strong>Digital Commonwealth, Inc.</strong><br />
+      321 Walnut Street &nbsp; Newton, MA 02460<br />
+      <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
     </div>
   </div>
 </div>

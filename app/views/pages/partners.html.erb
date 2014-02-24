@@ -1,0 +1,31 @@
+<% @page_title = t('blacklight.pages.partners.title') + " - " + application_name %>
+<div class="span9 about_content">
+  <h2><%= t('blacklight.pages.partners.title') %></h2>
+
+  <p>Digital Commonwealth is proud to work in partnership with the following organizations:</p>
+
+  <ul id="partner_list" class="unstyled">
+    <li class="partner_list_item">
+      <%= link_to(
+                  image_tag('dpla-logo.png', :alt => 'Digital Public Library of America logo', :class => 'partner_logo'),
+                  'http://dp.la',
+                  :class => 'partner_logo_link',
+                  :target => '_blank') %>
+    </li>
+    <li class="partner_list_item">
+      <%= link_to(
+                  image_tag('mblc-logo.gif', :alt => 'Massachusetts Board of Library Commissioners logo', :class => 'partner_logo'),
+                  'http://mblc.state.ma.us/',
+                  :class => 'partner_logo_link',
+                  :target => '_blank') %>
+    </li>
+    <li class="partner_list_item">
+      <%= link_to(
+                  image_tag('imls-logo.gif', :alt => 'Institute of Museum and Library Services logo', :class => 'partner_logo'),
+                  'http://www.imls.gov/',
+                  :class => 'partner_logo_link',
+                  :target => '_blank') %>
+    </li>
+  </ul>
+
+</div>

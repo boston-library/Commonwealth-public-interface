@@ -1,20 +1,60 @@
 <% @nav_links = {
-        :collections => {:nav_link_title => 'Collections',
-                         :nav_link_path => collections_path},
-        :institutions => {:nav_link_title => 'Institutions',
-                          :nav_link_path => institutions_path},
-        :places => {:nav_link_title => 'Places',
-                       :nav_link_path => places_facet_path},
-        :about => {:nav_link_title => t('blacklight.pages.about.title'),
-                   :nav_link_path => about_path},
-        :contact => {:nav_link_title => t('blacklight.pages.contact.title'),
-                     :nav_link_path => feedback_path}
-        } %>
+        :search => {
+                :basic => {:nav_link_title => 'Basic',
+                           :nav_link_path => catalog_index_path},
+                :advanced => {:nav_link_title => 'Advanced',
+                              :nav_link_path => advanced_path}
+        },
+        :explore => {
+                :collections => {:nav_link_title => 'Collections',
+                                 :nav_link_path => collections_path},
+                :places => {:nav_link_title => 'Places',
+                            :nav_link_path => places_facet_path},
+                :institutions => {:nav_link_title => 'Institutions',
+                                  :nav_link_path => institutions_path}
+        },
+        :for_libraries => {
+                :membership => {:nav_link_title => 'Become a Member',
+                               :nav_link_path => ''},
+                :contribute => {:nav_link_title => 'Contribute Your Collections',
+                                :nav_link_path => ''},
+                :conference => {:nav_link_title => 'Conferences & Events',
+                                :nav_link_path => ''},
+                :training => {:nav_link_title => 'Training & Workshops',
+                              :nav_link_path => ''}
+        },
+        :for_educators => {
+                :lesson_plans => {:nav_link_title => t('blacklight.pages.lesson_plans.title'),
+                                  :nav_link_path => lesson_plans_path}
+        },
+        :about => {
+                :overview => {:nav_link_title => t('blacklight.pages.about.title'),
+                         :nav_link_path => about_path},
+                :news=> {:nav_link_title => 'News & Announcements',
+                         :nav_link_path => ''},
+                :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),
+                               :nav_link_path => copyright_path},
+                :partners => {:nav_link_title => t('blacklight.pages.partners.title'),
+                              :nav_link_path => partners_path},
+                :contact => {:nav_link_title => t('blacklight.pages.contact.title'),
+                             :nav_link_path => feedback_path}
+        }
+} %>
 
 <% @nav_links.each do |k,v| %>
-    <% nav_li_class = @nav_li_active == k.to_s ? 'active' : '' %>
-    <%= content_tag(:li,
-                    link_to(v[:nav_link_title], v[:nav_link_path]),
-                    :class => nav_li_class) %>
+    <li class="dropdown">
+      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle <%= @nav_li_active == k.to_s ? 'active' : '' %>" href="#" role="button" data-toggle="dropdown">
+        <%= k.to_s.humanize %><b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="<%= k.to_s + '_dropdown' %>">
+        <% v.each do |k,v| %>
+            <%= content_tag(:li,
+                    link_to(v[:nav_link_title],
+                            v[:nav_link_path]),
+                            :tabindex => '-1') %>
+        <% end %>
+      </ul>
+    </li>
+
 <% end %>
 

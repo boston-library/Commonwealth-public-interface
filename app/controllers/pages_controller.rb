@@ -8,4 +8,16 @@ class PagesController < ApplicationController
     @nav_li_active = 'about'
   end
 
+  def lesson_plans
+    @nav_li_active = 'for_educators'
+  end
+
+  def copyright
+    @nav_li_active = 'about'
+  end
+
+  def partners
+    @nav_li_active = 'about'
+  end
+
 end

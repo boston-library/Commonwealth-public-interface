@@ -192,9 +192,15 @@ en:
 
     pages:
           about:
-            title: 'About'
+            title: 'About DC'
           contact:
-            title: 'Contact'
+            title: 'Contact Us'
+          copyright:
+            title: 'Copyright & Terms of Use'
+          lesson_plans:
+            title: 'Lesson Plans'
+          partners:
+            title: 'Partners'
 
     repo-admin:
           email: 'eben@dlry.net'
