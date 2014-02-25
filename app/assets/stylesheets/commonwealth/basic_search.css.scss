@@ -20,5 +20,24 @@
 
 }
 
+/* responsive styles */
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #basic_search_wrapper {
+
+    #basic_search_form {
+
+      #basic_search_indexes, #search {
+        margin: 10px 5px 0 0;
+      }
+
+    }
+
+  }
+
+}
+
 
 

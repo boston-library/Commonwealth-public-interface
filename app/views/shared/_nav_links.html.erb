@@ -15,13 +15,13 @@
         },
         :for_libraries => {
                 :membership => {:nav_link_title => 'Become a Member',
-                               :nav_link_path => ''},
+                               :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/jointhedc'},
                 :contribute => {:nav_link_title => 'Contribute Your Collections',
-                                :nav_link_path => ''},
+                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/'},
                 :conference => {:nav_link_title => 'Conferences & Events',
-                                :nav_link_path => ''},
+                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/events'},
                 :training => {:nav_link_title => 'Training & Workshops',
-                              :nav_link_path => ''}
+                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/'}
         },
         :for_educators => {
                 :lesson_plans => {:nav_link_title => t('blacklight.pages.lesson_plans.title'),
@@ -41,12 +41,12 @@
         }
 } %>
 
-<% @nav_links.each do |k,v| %>
-    <li class="dropdown">
-      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle <%= @nav_li_active == k.to_s ? 'active' : '' %>" href="#" role="button" data-toggle="dropdown">
-        <%= k.to_s.humanize %><b class="caret"></b>
+<% @nav_links.each_with_index do |(k, v), index| %>
+    <li class="dropdown<%= ' last_nav' if index == @nav_links.length-1 %>">
+      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle<%= @nav_li_active == k.to_s ? ' active' : '' %>" href="<%= catalog_index_path %>" role="button" data-toggle="dropdown">
+        <%= k.to_s.titleize %><!-- <b class="caret visible-phone"></b> -->
       </a>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="<%= k.to_s + '_dropdown' %>">
+      <ul class="dropdown-menu<%= ' pull-right' if index == @nav_links.length-1 %>" role="menu" aria-labelledby="<%= k.to_s + '_dropdown' %>">
         <% v.each do |k,v| %>
             <%= content_tag(:li,
                     link_to(v[:nav_link_title],

@@ -113,3 +113,34 @@ body.blacklight-advanced-index {
 
 
 }
+
+/* responsive styles */
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #advanced_search {
+
+    #advanced_search_fields {
+
+      .advanced_search_field {
+
+        .advanced_input_text {
+          width:200px;
+        }
+
+        .search_index_select {
+          width: 102px;
+        }
+
+        #advanced_operators {
+          padding-left:0px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -25,6 +25,8 @@
 
 //= require blacklight_google_analytics/blacklight_google_analytics
 
+//= require commonwealth/disable_dropdown_nav.js
+
 // WARNING: require tree has been disabled to avoid djatoka_viewer JS files being automatically included
 //          since the viewer uses mooTools/Prototype, which causes namespace conflicts with jQuery
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive
