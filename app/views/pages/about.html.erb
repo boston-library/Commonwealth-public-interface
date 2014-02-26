@@ -2,7 +2,11 @@
 <div class="span9 about_content">
   <h2><%= t('blacklight.pages.about.title') %></h2>
 
-  <ul>
-    <li>TK</li>
+  <ul class="page_list">
+    <li><%= link_to t('blacklight.pages.about_dc.title'), about_dc_path %></li>
+    <li><%= link_to t('blacklight.pages.news.title'), 'http://digitalcommonwealth.org/blog' %></li>
+    <li><%= link_to t('blacklight.pages.copyright.title'), copyright_path %></li>
+    <li><%= link_to t('blacklight.pages.partners.title'), partners_path %></li>
+    <li><%= link_to t('blacklight.pages.contact.title'), feedback_path %></li>
   </ul>
 </div>

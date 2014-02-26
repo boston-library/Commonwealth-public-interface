@@ -203,6 +203,8 @@ en:
             title: 'Explore'
           lesson_plans:
             title: 'Lesson Plans'
+          news:
+            title: 'News & Announcements'
           partners:
             title: 'Partners'
 

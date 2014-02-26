@@ -34,8 +34,9 @@
                     collections_path,
                     :class => 'pull-left') %>
         <div class="media-body">
-          <h4 class="media-heading">Collections</h4>
-          <%= link_to 'Browse All Collections', collections_path %>
+          <h4 class="media-heading"><%= t('blacklight.collections.index.title') %></h4>
+          <%= link_to 'Browse All ' + t('blacklight.collections.index.title'),
+                      collections_path %>
         </div>
       </div>
     </div>
@@ -48,8 +49,9 @@
                     institutions_path,
                     :class => 'pull-left') %>
         <div class="media-body">
-          <h4 class="media-heading">Institutions</h4>
-          <%= link_to 'Browse All Institutions', institutions_path %>
+          <h4 class="media-heading"><%= t('blacklight.institutions.title') %></h4>
+          <%= link_to 'Browse All ' + t('blacklight.institutions.title'),
+                      institutions_path %>
         </div>
       </div>
     </div>

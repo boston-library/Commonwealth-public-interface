@@ -6,11 +6,11 @@
                               :nav_link_path => advanced_path}
         },
         :explore => {
-                :collections => {:nav_link_title => 'Collections',
+                :collections => {:nav_link_title => t('blacklight.collections.index.title'),
                                  :nav_link_path => collections_path},
                 :places => {:nav_link_title => 'Places',
                             :nav_link_path => places_facet_path},
-                :institutions => {:nav_link_title => 'Institutions',
+                :institutions => {:nav_link_title => t('blacklight.institutions.title'),
                                   :nav_link_path => institutions_path}
         },
         :for_libraries => {
@@ -30,7 +30,7 @@
         :about => {
                 :overview => {:nav_link_title => t('blacklight.pages.about_dc.title'),
                          :nav_link_path => about_dc_path},
-                :news=> {:nav_link_title => 'News & Announcements',
+                :news=> {:nav_link_title => t('blacklight.pages.news.title'),
                          :nav_link_path => 'http://digitalcommonwealth.org/blog'},
                 :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),
                                :nav_link_path => copyright_path},
