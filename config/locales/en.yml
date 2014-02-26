@@ -192,11 +192,15 @@ en:
 
     pages:
           about:
-            title: 'About DC'
+            title: 'About'
+          about_dc:
+            title: 'About Digital Commonwealth'
           contact:
             title: 'Contact Us'
           copyright:
             title: 'Copyright & Terms of Use'
+          explore:
+            title: 'Explore'
           lesson_plans:
             title: 'Lesson Plans'
           partners:

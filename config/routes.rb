@@ -57,7 +57,11 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   #match "folder/create_folder_catalog", :to => "folders#create_folder_catalog", :as => "create_folder_catalog"
 
+  get 'explore', :to => 'pages#explore', :as => 'explore'
   get 'about', :to => 'pages#about', :as => 'about'
+  get 'about_dc', :to => 'pages#about_dc', :as => 'about_dc'
+  get 'for_libraries' => redirect('http://digitalcommonwealth.memberlodge.org/')
+  get 'for_educators', :to => 'pages#lesson_plans', :as => 'for_educators'
   get 'lesson_plans', :to => 'pages#lesson_plans', :as => 'lesson_plans'
   get 'copyright', :to => 'pages#copyright', :as => 'copyright'
   get 'partners', :to => 'pages#partners', :as => 'partners'

@@ -8,6 +8,10 @@ class PagesController < ApplicationController
     @nav_li_active = 'about'
   end
 
+  def about_dc
+    @nav_li_active = 'about'
+  end
+
   def lesson_plans
     @nav_li_active = 'for_educators'
   end

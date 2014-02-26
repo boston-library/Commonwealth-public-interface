@@ -21,17 +21,17 @@
                 :conference => {:nav_link_title => 'Conferences & Events',
                                 :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/events'},
                 :training => {:nav_link_title => 'Training & Workshops',
-                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/'}
+                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/events'}
         },
         :for_educators => {
                 :lesson_plans => {:nav_link_title => t('blacklight.pages.lesson_plans.title'),
                                   :nav_link_path => lesson_plans_path}
         },
         :about => {
-                :overview => {:nav_link_title => t('blacklight.pages.about.title'),
-                         :nav_link_path => about_path},
+                :overview => {:nav_link_title => t('blacklight.pages.about_dc.title'),
+                         :nav_link_path => about_dc_path},
                 :news=> {:nav_link_title => 'News & Announcements',
-                         :nav_link_path => ''},
+                         :nav_link_path => 'http://digitalcommonwealth.org/blog'},
                 :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),
                                :nav_link_path => copyright_path},
                 :partners => {:nav_link_title => t('blacklight.pages.partners.title'),
@@ -43,7 +43,7 @@
 
 <% @nav_links.each_with_index do |(k, v), index| %>
     <li class="dropdown<%= ' last_nav' if index == @nav_links.length-1 %>">
-      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle<%= @nav_li_active == k.to_s ? ' active' : '' %>" href="<%= catalog_index_path %>" role="button" data-toggle="dropdown">
+      <a id="<%= k.to_s + '_dropdown' %>" class="dropdown-toggle<%= @nav_li_active == k.to_s ? ' active' : '' %>" href="/<%= k.to_s %>" role="button" data-toggle="dropdown">
         <%= k.to_s.titleize %><!-- <b class="caret visible-phone"></b> -->
       </a>
       <ul class="dropdown-menu<%= ' pull-right' if index == @nav_links.length-1 %>" role="menu" aria-labelledby="<%= k.to_s + '_dropdown' %>">
