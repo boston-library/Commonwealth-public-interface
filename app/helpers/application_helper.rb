@@ -132,6 +132,28 @@ module ApplicationHelper
     datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
   end
 
+  # create a hash of files to be displayed
+  def find_files_for_object pid
+    files = Bplmodels::Finder.getFiles(pid)
+    files_for_object = {}
+    files.each do |file|
+      case file['active_fedora_model_ssi']
+        when 'Bplmodels::ImageFile'
+          files_for_object[:images] ||= []
+          files_for_object[:images] << file['id']
+        when 'Bplmodels::AudioFile'
+          files_for_object[:audio] ||= []
+          files_for_object[:audio] << file['id']
+        when 'Bplmodels::DocumentFile'
+          files_for_object[:texts] ||= []
+          files_for_object[:texts] << file['id']
+        when 'Bplmodels::VideoFile'
+          files_for_object[:videos] ||= []
+          files_for_object[:videos] << file['id']
+      end
+    end
+  end
+
   def render_mods_dates (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
     prefix = ''
     suffix = ''
