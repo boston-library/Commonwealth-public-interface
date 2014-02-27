@@ -59,6 +59,24 @@
 
     }
 
+    #nav_collapse_button {
+      padding: 7px 8px 7px 5px;
+
+      i {
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        -moz-opacity: 0.3;
+        opacity: 0.3;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+      }
+
+      #icon-bar-wrapper {
+        display: inline-block;
+      }
+
+    }
+
     #header_main_nav {
       float: right;
       margin-bottom: 0;
@@ -67,28 +85,35 @@
 
     .navbar .nav {
       margin: 0;
-    }
 
-    .navbar .nav > li > a {
-      padding: 10px 60px 10px 0;
-    }
+      > li > a {
+        padding: 10px 60px 10px 0;
+      }
 
-    .navbar .nav > li.last_nav > a {
-      padding: 10px 0;
-    }
+      > li.last_nav > a {
+        padding: 10px 0;
+      }
 
-    .navbar .nav > li.dropdown > a.active,
-    .navbar .nav > li.dropdown > .active > a:hover,
-    .navbar .nav > li.dropdown > .active > a:focus {
-      background-color: inherit;
-      box-shadow: none;
-      color: #333333;
-    }
+      > li.dropdown > a.active  {
+        background-color: inherit;
+        box-shadow: none;
+        color: #333333;
+      }
 
-    .navbar .nav li.dropdown.open > .dropdown-toggle,
-    .navbar .nav li.dropdown.active > .dropdown-toggle,
-    .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-      background-color: inherit;
+      li.dropdown.open > .dropdown-toggle,
+      li.dropdown.active > .dropdown-toggle,
+      li.dropdown.open.active > .dropdown-toggle {
+        background-color: inherit;
+      }
+
+      li.dropdown .dropdown-menu {
+        margin: 0;
+      }
+
+      li.dropdown:hover .dropdown-menu {
+        display: block;
+      }
+
     }
 
   }
@@ -170,6 +195,43 @@
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+
+  #header-navbar-fixed-top {
+
+    .navbar-inner {
+
+      #user-util-links {
+
+        #util-links-nologin, #header-search {
+          display: block;
+        }
+
+        #header-search {
+          form.header-search-form {
+            float: right;
+            margin: 0 0 12px 200px;
+          }
+        }
+
+      }
+
+      .navbar .nav {
+        text-align: right;
+
+        > li, li.last_nav {
+          float: none;
+
+          > a {
+            padding: 4px 0;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
 
 }
 
