@@ -132,24 +132,25 @@ module ApplicationHelper
     datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
   end
 
-  # create a hash of files to be displayed
-  def find_files_for_object pid
-    files = Bplmodels::Finder.getFiles(pid)
-    files_for_object = {}
-    files.each do |file|
-      case file['active_fedora_model_ssi']
-        when 'Bplmodels::ImageFile'
-          files_for_object[:images] ||= []
-          files_for_object[:images] << file['id']
-        when 'Bplmodels::AudioFile'
-          files_for_object[:audio] ||= []
-          files_for_object[:audio] << file['id']
-        when 'Bplmodels::DocumentFile'
-          files_for_object[:texts] ||= []
-          files_for_object[:texts] << file['id']
-        when 'Bplmodels::VideoFile'
-          files_for_object[:videos] ||= []
-          files_for_object[:videos] << file['id']
+  def has_image_files? files_hash
+    unless files_hash[:images].empty?
+      @image_files = []
+      files_hash[:images].each do |image_file|
+        @image_files << image_file['id']
+      end
+    end
+  end
+
+  def create_thumb_img_element(thumb_pid, resource_type, doc_title, img_class)
+    if thumb_pid
+      image_tag(datastream_disseminator_url(thumb_pid,'thumbnail300'),
+                              :class => img_class,
+                              :alt => doc_title)
+    else
+      if resource_type
+        render_object_icon(resource_type.first, img_class)
+      else
+        render_object_icon(nil, img_class)
       end
     end
   end
@@ -197,6 +198,28 @@ module ApplicationHelper
             :rel => 'license',
             :id => 'cc_license_link',
             :target => '_blank')
+  end
+
+  def has_downloadable_files? files_hash
+    files_hash[:documents].present? ||
+    files_hash[:audio].present? ||
+    files_hash[:generic].present?
+  end
+
+  def create_download_links(files_hash, link_class)
+    file_types = [files_hash[:documents], files_hash[:audio], files_hash[:generic]]
+    download_links = []
+    file_types.each do |file_type|
+      file_type.each do |file|
+        object_profile_json = JSON.parse(file['object_profile_ssm'].first)
+        file_name_ext = object_profile_json["objLabel"].split('.')
+        download_links << link_to(file_name_ext[0],
+                                  datastream_disseminator_url(file['id'],
+                                                              'productionMaster'),
+                                  :class => link_class) + ' (' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')'
+      end
+    end
+    download_links
   end
 
 end
