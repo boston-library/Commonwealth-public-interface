@@ -109,7 +109,7 @@
       li.dropdown .dropdown-menu {
         margin: 0;
       }
-
+      /* display nav dropdown menus on hover */
       li.dropdown:hover .dropdown-menu {
         display: block;
       }
@@ -178,15 +178,20 @@
   #header-navbar-fixed-top {
 
     .navbar-inner {
-      /*
-      .navbar .nav > li > a {
-        padding: 10px 20px 10px 0;
+
+      .navbar .nav {
+
+        > li.dropdown > a.active  {
+          color: #777777;
+        }
+
+        /* don't display nav dropdown menus on hover */
+        li.dropdown:hover .dropdown-menu {
+          display: none;
+        }
+
       }
 
-      .navbar .nav > li.last_nav > a {
-        padding: 10px 0;
-      }
-      */
     }
 
   }
