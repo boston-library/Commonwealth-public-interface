@@ -214,8 +214,8 @@ module ApplicationHelper
         object_profile_json = JSON.parse(file['object_profile_ssm'].first)
         file_name_ext = object_profile_json["objLabel"].split('.')
         download_links << link_to(file_name_ext[0],
-                                  datastream_disseminator_url(file['id'],
-                                                              'productionMaster'),
+                                  download_path(file['id'],:datastream_id => 'productionMaster')                                  ,
+                                  :target => '_blank',
                                   :class => link_class) + ' (' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')'
       end
     end

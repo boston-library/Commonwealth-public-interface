@@ -34,6 +34,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   HydraHead.add_routes(self)
 
+  resources :downloads
+
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
