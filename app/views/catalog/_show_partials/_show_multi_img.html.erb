@@ -1,0 +1,28 @@
+<%= javascript_include_tag('commonwealth/multi_img_viewer') %>
+<div id="multi_img_show_container">
+  <div class="row">
+    <div class="span3">
+      <div id="thumbnail_list_wrapper" class="well">
+      <ul id="thumbnail_list" class="unstyled">
+        <% @image_files.each_with_index do |image_file, index| %>
+            <li>
+              <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
+                          catalog_path(@document.id,:in_viewer => image_file),
+                          :class => ('in_viewer' if params[:in_viewer] == image_file || (params[:in_viewer].nil? && index == 0)),
+                          :title => 'image ' + (index+1).to_s,
+                          :data => { :viewer => image_file }
+                  ) %>
+            </li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+    <div class="span9">
+      <%= render :partial => 'catalog/_show_partials/show_default_img',
+                 :locals => {:document => @document,
+                             :image_pid => params[:in_viewer].presence || @image_files.first} %>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+/* replace the main image when user clicks on a thumbnail */
+jQuery(document).ready(function() {
+    var link_to_fuck_with = jQuery('#thumbnail_list').find('a')
+    link_to_fuck_with.click( function () {
+        alert('HEY BLOCKHEAD' + this.data("viewer"));
+
+    });
+});
