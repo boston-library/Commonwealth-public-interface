@@ -1,8 +1,21 @@
 /* replace the main image when user clicks on a thumbnail */
 jQuery(document).ready(function() {
-    var link_to_fuck_with = jQuery('#thumbnail_list').find('a')
-    link_to_fuck_with.click( function () {
-        alert('HEY BLOCKHEAD' + this.data("viewer"));
+    // var links_to_fuck_with = jQuery('#thumbnail_list').find('a')
+    jQuery('#thumbnail_list').find('a').click( function (e) {
+        // alert('HEY BLOCKHEAD' + jQuery(this).data("viewer"));
+        e.preventDefault();
+        var new_img = jQuery(this).data("viewer");
+        var jqxhr = jQuery.ajax({
+            url: '/images?in_viewer=' + new_img,
+            dataType: 'script'
+        });
 
+        /*
+        jQuery('#img_show_container').replaceWith("<%# escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
+                   :locals => {:document => @document,
+                               :image_pid => 'bpl-test:xg94hp64n'}) %>");
+        jQuery('#thumbnail_list').find('a.in_viewer').removeClass('in_viewer');
+        jQuery(this).addClass('in_viewer');
+        */
     });
 });
