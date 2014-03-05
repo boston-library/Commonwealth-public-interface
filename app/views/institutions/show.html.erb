@@ -62,7 +62,7 @@
 
       <% if @document[:abstract_tsim] %>
           <% @document[:abstract_tsim].each do |abstract| %>
-              <%= abstract %><br/><br/>
+              <%= abstract.html_safe %><br/><br/>
           <% end %>
       <% end %>
 
