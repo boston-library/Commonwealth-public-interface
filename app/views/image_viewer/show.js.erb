@@ -1,0 +1,16 @@
+// jQuery('div.ui-dialog').remove();
+// jQuery('#thumbnail_list').find('a.in_viewer').removeClass('in_viewer');
+
+jQuery('#thumbnail_list').find('a').each(function() {
+    if (this.hasClass('in_viewer')) {
+        this.removeClass('in_viewer');
+    }
+    if (jQuery(this).data('viewer') === 'bpl-test:xg94hp801') {
+        this.addClass('in_viewer');
+    }
+});
+
+jQuery('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
+                   :locals => {:image_pid => @img_to_show}) %>");
+
+

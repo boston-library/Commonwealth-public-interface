@@ -1,1 +1,1 @@
-jQuery('#folder_item_toggle').update("<%= escape_javascript(render('catalog/folder_item_control', :locals => {:document => @document})) %>")
+jQuery('#folder_item_toggle').replaceWith("<%= escape_javascript(render(:partial => 'folders/in_folder')) %>");

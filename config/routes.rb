@@ -70,6 +70,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :users, :only => :show
 
+  get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
+
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
   # The priority is based upon order of creation:
