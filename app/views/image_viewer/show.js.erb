@@ -11,6 +11,6 @@ jQuery('#thumbnail_list').find('a').each(function() {
 });
 
 jQuery('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:image_pid => @img_to_show, :title => @title}) %>");
+                   :locals => {:image_pid => @img_to_show, :document => @document}) %>");
 
 

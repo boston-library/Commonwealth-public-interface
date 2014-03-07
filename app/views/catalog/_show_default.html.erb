@@ -7,7 +7,7 @@
     <% if @image_files.length > 1 %>
         <%= render :partial => 'catalog/_show_partials/show_multi_img', :locals => {:document => @document} %>
     <% else %>
-          <%= render :partial => 'catalog/_show_partials/show_default_img', :locals => {:title => @document[blacklight_config.index.show_link.to_sym], :image_pid => @image_files.first} %>
+          <%= render :partial => 'catalog/_show_partials/show_default_img', :locals => {:document => @document, :image_pid => @image_files.first} %>
     <% end %>
 <% else %>
     <%# "no full Images!" %>

@@ -141,6 +141,32 @@ module ApplicationHelper
     end
   end
 
+  def render_prev_next_img_links(document_id, current_img_pid)
+    prev_next_img_links = []
+    prev_img = Bplmodels::Finder.getPrevImageFile(current_img_pid)
+    next_img = Bplmodels::Finder.getNextImageFile(current_img_pid)
+    if prev_img
+      puts "PREV IMG: " + prev_img['id'] + "; CURRENT: " + current_img_pid
+      prev_next_img_links << link_to('&lsaquo;'.html_safe,
+                                     image_viewer_path(document_id,
+                                                       :view => prev_img['id']),
+                                     :class => 'left carousel-control',
+                                     :remote => true
+      )
+    end
+    if next_img
+      puts "NEXT IMG: " + next_img['id'] + "; CURRENT: " + current_img_pid
+      prev_next_img_links << link_to('&rsaquo;'.html_safe,
+                                     image_viewer_path(document_id,
+                                                       :view => next_img['id']),
+                                     :class => 'right carousel-control',
+                                     :remote => true
+      )
+    end
+    render :partial => 'catalog/_show_partials/show_prev_next_img_links',
+           :locals => {:prev_next_img_links => prev_next_img_links}
+  end
+
   def create_thumb_img_element(thumb_pid, resource_type, doc_title, img_class)
     if thumb_pid
       image_tag(datastream_disseminator_url(thumb_pid,'thumbnail300'),

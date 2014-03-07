@@ -1,7 +1,7 @@
 <div id="img_show_container">
 <% image_datastream = nonssl_image_uri(image_pid,'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
-<% object_title = title %>
+<% object_title = document[blacklight_config.index.show_link.to_sym] %>
   <% img_element = djatoka_image_tag(image_datastream,
                                      {:resolver => Rails.configuration.djatoka_resolver.base_url,
                                       :scale => 500,
@@ -20,4 +20,5 @@
                              :image_datastream => image_datastream,
                              :image_metadata => image_metadata} %>
   <% end %>
+  <%= render_prev_next_img_links(document.id,image_pid) %>
 </div>

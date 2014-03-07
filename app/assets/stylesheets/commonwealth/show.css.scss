@@ -57,15 +57,18 @@ div.show-document #previousNextDocument.well {
       max-height: 600px;
       min-height: 200px;
       overflow-y: auto;
+      margin-bottom: 0px;
+      text-align: center;
 
       li {
-        padding-bottom: 20px;
+        padding-bottom: 15px;
 
         a {
 
           img {
             border: 1px solid $light_gray;
-            max-width: 170px;
+            max-width: 94%;
+            max-height:180px;
           }
 
         }
@@ -83,9 +86,8 @@ div.show-document #previousNextDocument.well {
 
     }
 
-
-
   }
+
 }
 
 #img_show_container {
@@ -98,7 +100,35 @@ div.show-document #previousNextDocument.well {
     width:auto;
     max-width:100%;
   }
+  /* */
+  .carousel-control {
+    border: 2px solid #FFFFFF;
+    top: 48%;
+    opacity: 0.15;
+    line-height: 24px;
+    height: 30px;
+    width: 30px;
+    font-size:50px;
+    left: 5px;
 
+    &.right {
+      left: auto;
+      right: 5px;
+    }
+
+    // Hover/focus state
+    &:hover,
+    &:focus {
+      opacity: 0.4;
+    }
+
+
+
+  }
+
+
+
+ /* */
 }
 
 div#img_viewer_modal {

@@ -1,25 +1,28 @@
 <div id="multi_img_show_container">
   <div class="row">
+    <div class="span9 carousel">
+        <%= render :partial => 'catalog/_show_partials/show_default_img',
+                   :locals => {:document => @document,
+                               :image_pid => params[:view].presence || @image_files.first} %>
+    </div>
     <div class="span3">
       <div id="thumbnail_list_wrapper" class="well">
-      <ul id="thumbnail_list" class="unstyled">
-        <% @image_files.each_with_index do |image_file, index| %>
-            <li>
-              <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
-                          image_viewer_path(@document.id, :view => image_file),
-                          :class => ('in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)),
-                          :title => 'image ' + (index+1).to_s,
-                          :data => { :viewer => image_file },
-                          :remote => true) %>
-            </li>
+        <%= content_tag :ul,
+                        :id => 'thumbnail_list',
+                        :class => 'unstyled',
+                        :style => ('text-align:left' if @image_files.length > 3) do %>
+          <% @image_files.each_with_index do |image_file, index| %>
+              <li>
+                <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
+                            image_viewer_path(@document.id, :view => image_file),
+                            :class => ('in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)),
+                            :title => 'image ' + (index+1).to_s,
+                            :data => { :viewer => image_file },
+                            :remote => true) %>
+              </li>
+          <% end %>
         <% end %>
-      </ul>
       </div>
-    </div>
-    <div class="span9">
-        <%= render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:title => @document[blacklight_config.index.show_link.to_sym],
-                               :image_pid => params[:view].presence || @image_files.first} %>
     </div>
   </div>
 </div>
