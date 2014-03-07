@@ -18,7 +18,7 @@
     </div>
     <div class="span9">
         <%= render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:document => @document,
+                   :locals => {:title => @document[blacklight_config.index.show_link.to_sym],
                                :image_pid => params[:view].presence || @image_files.first} %>
     </div>
   </div>

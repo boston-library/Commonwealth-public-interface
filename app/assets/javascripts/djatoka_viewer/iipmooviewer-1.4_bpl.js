@@ -244,9 +244,13 @@ var IIP = new Class({
         // end djatoka add
 
 
-        /* Load us up when the DOM is fully loaded!
-         */
-        window.addEvent( 'domready', function(){ this.load() }.bind(this) );
+        // bpl mod
+        // domready doesn't execute in multi-image ajax call
+        // so just fire the load function
+        /* Load us up when the DOM is fully loaded! */
+        // window.addEvent( 'domready', function(){ this.load() }.bind(this) );
+        this.load();
+        // end bpl mod
 
         // debug
         // this.debugImageViewer();
