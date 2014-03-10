@@ -1,0 +1,6 @@
+/* show loading gif while waiting for selected image to load */
+//jQuery(document).ready(function() {
+    jQuery('#multi_img_show_container').find('a.prev_next').click( function () {
+        jQuery('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading') %>');
+    });
+//});

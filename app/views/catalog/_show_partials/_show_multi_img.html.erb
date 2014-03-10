@@ -15,7 +15,7 @@
               <li>
                 <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
                             image_viewer_path(@document.id, :view => image_file),
-                            :class => ('in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)),
+                            :class => 'prev_next' + (' in_viewer' if params[:view] == image_file || (params[:view].nil? && index == 0)).to_s,
                             :title => 'image ' + (index+1).to_s,
                             :data => { :viewer => image_file },
                             :remote => true) %>

@@ -95,12 +95,17 @@ div.show-document #previousNextDocument.well {
   text-align: center;
   margin-bottom: 1em;
 
+  #loading {
+    position: relative;
+    top: 150px;
+  }
+
   img.img_show {
     border: 1px solid $light_gray;
     width:auto;
     max-width:100%;
   }
-  /* */
+
   .carousel-control {
     border: 2px solid #FFFFFF;
     top: 48%;
@@ -126,9 +131,6 @@ div.show-document #previousNextDocument.well {
 
   }
 
-
-
- /* */
 }
 
 div#img_viewer_modal {

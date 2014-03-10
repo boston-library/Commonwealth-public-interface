@@ -150,7 +150,7 @@ module ApplicationHelper
       prev_next_img_links << link_to('&lsaquo;'.html_safe,
                                      image_viewer_path(document_id,
                                                        :view => prev_img['id']),
-                                     :class => 'left carousel-control',
+                                     :class => 'left carousel-control prev_next',
                                      :remote => true
       )
     end
@@ -159,7 +159,7 @@ module ApplicationHelper
       prev_next_img_links << link_to('&rsaquo;'.html_safe,
                                      image_viewer_path(document_id,
                                                        :view => next_img['id']),
-                                     :class => 'right carousel-control',
+                                     :class => 'right carousel-control prev_next',
                                      :remote => true
       )
     end
