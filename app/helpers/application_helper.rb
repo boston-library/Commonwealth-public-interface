@@ -146,7 +146,6 @@ module ApplicationHelper
     prev_img = Bplmodels::Finder.getPrevImageFile(current_img_pid)
     next_img = Bplmodels::Finder.getNextImageFile(current_img_pid)
     if prev_img
-      puts "PREV IMG: " + prev_img['id'] + "; CURRENT: " + current_img_pid
       prev_next_img_links << link_to('&lsaquo;'.html_safe,
                                      image_viewer_path(document_id,
                                                        :view => prev_img['id']),
@@ -155,7 +154,6 @@ module ApplicationHelper
       )
     end
     if next_img
-      puts "NEXT IMG: " + next_img['id'] + "; CURRENT: " + current_img_pid
       prev_next_img_links << link_to('&rsaquo;'.html_safe,
                                      image_viewer_path(document_id,
                                                        :view => next_img['id']),
