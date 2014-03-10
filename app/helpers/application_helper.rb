@@ -133,12 +133,14 @@ module ApplicationHelper
   end
 
   def has_image_files? files_hash
+    image_file_pids = nil
     unless files_hash[:images].empty?
-      @image_files = []
+      image_file_pids = []
       files_hash[:images].each do |image_file|
-        @image_files << image_file['id']
+        image_file_pids << image_file['id']
       end
     end
+    image_file_pids
   end
 
   def render_prev_next_img_links(document_id, current_img_pid)

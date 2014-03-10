@@ -141,6 +141,10 @@ div#img_viewer_modal {
   margin-bottom: 1em;
   float:right;
 
+  .thumb_img_show {
+    border: 1px solid $light_gray;
+  }
+
   #oai_item_link {
 
     a {

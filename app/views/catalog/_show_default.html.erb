@@ -1,27 +1,29 @@
-<%# if document[:exemplary_image_ssi] %>
-  <%# render :partial => 'catalog/_show_partials/show_default_img', :locals => {:document => @document} %>
-<%# end %>
+<%# show the object image(s)/file(s) and metadata %>
 
-<% if has_image_files?(@object_files) %>
-    <%# @image_files.inspect %>
-    <% if @image_files.length > 1 %>
-        <%= render :partial => 'catalog/_show_partials/show_multi_img', :locals => {:document => @document} %>
-    <% else %>
-          <%= render :partial => 'catalog/_show_partials/show_default_img', :locals => {:document => @document, :image_pid => @image_files.first} %>
+<% @image_files = has_image_files?(@object_files) %>
+<% if @image_files %>
+    <% case @image_files.length %>
+        <% when 1 %>
+            <%= render :partial => 'catalog/_show_partials/show_default_img',
+                       :locals => {:document => @document,
+                                   :image_pid => @image_files.first} %>
+        <% when 2..7 %>
+            <%= render :partial => 'catalog/_show_partials/show_multi_img',
+                       :locals => {:document => @document} %>
+        <% else %>
+            <%= "PAGE TURNER [TK]" %>
     <% end %>
-<% else %>
-    <%# "no full Images!" %>
 <% end %>
 
 <div class="row">
 
   <%# show thumbnail or icon if object has no images %>
-  <% unless has_image_files?(@object_files) %>
+  <% unless @image_files %>
       <div id="thumb_img_show_container" class="span3">
         <%= create_thumb_img_element(@document[:exemplary_image_ssi],
                                      @document[:type_of_resource_ssim],
                                      @document[blacklight_config.index.show_link.to_sym],
-                                     'img_show') %>
+                                     'thumb_img_show') %>
       </div>
   <% end %>
 
