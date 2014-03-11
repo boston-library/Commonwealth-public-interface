@@ -34,6 +34,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   HydraHead.add_routes(self)
 
+  resources :downloads
+
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'
 
@@ -67,6 +69,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'partners', :to => 'pages#partners', :as => 'partners'
 
   resources :users, :only => :show
+
+  get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
 
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 

@@ -69,6 +69,10 @@ en:
 
     did_you_mean: 'Search for %{options} instead?'
 
+    downloads:
+          link_info: '(links open in new window)'
+          title: 'Downloads'
+
     email:
           form:
             title: 'Email'

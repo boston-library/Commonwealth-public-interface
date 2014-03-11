@@ -132,6 +132,55 @@ module ApplicationHelper
     datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
   end
 
+  def has_image_files? files_hash
+    image_file_pids = nil
+    unless files_hash[:images].empty?
+      image_file_pids = []
+      files_hash[:images].each do |image_file|
+        image_file_pids << image_file['id']
+      end
+    end
+    image_file_pids
+  end
+
+  def render_prev_next_img_links(document_id, current_img_pid)
+    prev_next_img_links = []
+    prev_img = Bplmodels::Finder.getPrevImageFile(current_img_pid)
+    next_img = Bplmodels::Finder.getNextImageFile(current_img_pid)
+    if prev_img
+      prev_next_img_links << link_to('&lsaquo;'.html_safe,
+                                     image_viewer_path(document_id,
+                                                       :view => prev_img['id']),
+                                     :class => 'left carousel-control prev_next',
+                                     :remote => true
+      )
+    end
+    if next_img
+      prev_next_img_links << link_to('&rsaquo;'.html_safe,
+                                     image_viewer_path(document_id,
+                                                       :view => next_img['id']),
+                                     :class => 'right carousel-control prev_next',
+                                     :remote => true
+      )
+    end
+    render :partial => 'catalog/_show_partials/show_prev_next_img_links',
+           :locals => {:prev_next_img_links => prev_next_img_links}
+  end
+
+  def create_thumb_img_element(thumb_pid, resource_type, doc_title, img_class)
+    if thumb_pid
+      image_tag(datastream_disseminator_url(thumb_pid,'thumbnail300'),
+                              :class => img_class,
+                              :alt => doc_title)
+    else
+      if resource_type
+        render_object_icon(resource_type.first, img_class)
+      else
+        render_object_icon(nil, img_class)
+      end
+    end
+  end
+
   def render_mods_dates (date_start, date_end = nil, date_qualifier = nil, date_type = nil)
     prefix = ''
     suffix = ''
@@ -175,6 +224,28 @@ module ApplicationHelper
             :rel => 'license',
             :id => 'cc_license_link',
             :target => '_blank')
+  end
+
+  def has_downloadable_files? files_hash
+    files_hash[:documents].present? ||
+    files_hash[:audio].present? ||
+    files_hash[:generic].present?
+  end
+
+  def create_download_links(files_hash, link_class)
+    file_types = [files_hash[:documents], files_hash[:audio], files_hash[:generic]]
+    download_links = []
+    file_types.each do |file_type|
+      file_type.each do |file|
+        object_profile_json = JSON.parse(file['object_profile_ssm'].first)
+        file_name_ext = object_profile_json["objLabel"].split('.')
+        download_links << link_to(file_name_ext[0],
+                                  download_path(file['id'],:datastream_id => 'productionMaster')                                  ,
+                                  :target => '_blank',
+                                  :class => link_class) + ' (' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')'
+      end
+    end
+    download_links
   end
 
 end

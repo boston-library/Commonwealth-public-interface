@@ -1,0 +1,16 @@
+// remove the previous image zoom viewer modal
+jQuery('div.ui-dialog').remove();
+
+jQuery('#thumbnail_list').find('a').each(function() {
+    if (this.hasClass('in_viewer')) {
+        this.removeClass('in_viewer');
+    }
+    if (jQuery(this).data('viewer') === '<%= escape_javascript(@img_to_show) %>') {
+        this.addClass('in_viewer');
+    }
+});
+
+jQuery('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
+                   :locals => {:image_pid => @img_to_show, :document => @document}) %>");
+
+
