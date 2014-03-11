@@ -7,7 +7,7 @@
             <%= render :partial => 'catalog/_show_partials/show_default_img',
                        :locals => {:document => @document,
                                    :image_pid => @image_files.first} %>
-        <% when 2..7 %>
+        <% when 2..50 %>
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
                        :locals => {:document => @document} %>
         <% else %>
