@@ -59,6 +59,9 @@ div.show-document #previousNextDocument.well {
       overflow-y: auto;
       margin-bottom: 0px;
       text-align: center;
+      -webkit-overflow-scrolling:touch;
+      display: block;
+
 
       li {
         padding-bottom: 15px;
@@ -76,7 +79,7 @@ div.show-document #previousNextDocument.well {
         a.in_viewer {
 
           img {
-            border: 2px solid $dark_gray;
+            border: 2px solid $darker_gray;
             box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
           }
 

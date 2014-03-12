@@ -6,10 +6,12 @@
 
   <div id="breadcrumb">
     <ul class="breadcrumb">
-      <li>
-        <%= link_to(t('blacklight.users.account_heading'), current_user) %>
-        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
-      </li>
+      <% if current_user %>
+          <li>
+            <%= link_to(t('blacklight.users.account_heading'), current_user) %>
+            <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+          </li>
+      <% end %>
       <li>
         <%= link_to(t('blacklight.folders.list_title'), folders_path) %>
         <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
