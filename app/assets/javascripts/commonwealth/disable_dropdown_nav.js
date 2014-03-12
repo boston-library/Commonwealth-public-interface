@@ -5,15 +5,15 @@ function disable_dropdown_nav() {
 }
 
 jQuery(document).ready(function() {
-
+    /*
     var nav_collapse_link = jQuery('#nav_collapse_button');
 
     nav_collapse_link.click( function () {
         disable_dropdown_nav();
     });
-
+    */
     // for iPad
-    nav_collapse_link.bind("touchstart", function () {
+    jQuery('#nav_collapse_button').on("click touchstart", function () {
         disable_dropdown_nav();
     });
 
