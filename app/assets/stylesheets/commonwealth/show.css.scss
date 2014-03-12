@@ -130,8 +130,6 @@ div.show-document #previousNextDocument.well {
       opacity: 0.4;
     }
 
-
-
   }
 
 }
@@ -238,13 +236,49 @@ div#img_viewer_modal {
 
 /* responsive styles */
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #multi_img_show_container {
+
+    #thumbnail_list_wrapper {
+
+      #thumbnail_list {
+        max-height: 400px;
+      }
+
+    }
+
+  }
+
+}
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
-  #img_show_container,#oai_img_show_container,#sidebar {
+  #multi_img_pane,#oai_img_show_container,#sidebar {
     float:left;
   }
 
+  #img_show_container {
+    min-height: 300px;
+  }
 
+  #multi_img_show_container {
+
+    #thumbnail_list_wrapper {
+      display: none;
+    }
+
+  }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  #img_show_container {
+    min-height: 200px;
+  }
 
 }

@@ -1,6 +1,6 @@
 <div id="multi_img_show_container">
   <div class="row">
-    <div class="span9 carousel">
+    <div id="multi_img_pane" class="span9 carousel">
         <%= render :partial => 'catalog/_show_partials/show_default_img',
                    :locals => {:document => @document,
                                :image_pid => params[:view].presence || @image_files.first} %>
