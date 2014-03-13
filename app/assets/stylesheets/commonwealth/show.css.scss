@@ -236,8 +236,8 @@ div#img_viewer_modal {
 
 /* responsive styles */
 
-/* greater than Portrait tablet (iPad) to landscape and desktop */
-@media (min-width: 769px) and (max-width: 979px) {
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
 
   #multi_img_show_container {
 
@@ -253,8 +253,8 @@ div#img_viewer_modal {
 
 }
 
-/* Landscape phone to portrait tablet (iPad) */
-@media (max-width: 768px) {
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
 
   #multi_img_pane,#oai_img_show_container,#sidebar {
     float:left;
