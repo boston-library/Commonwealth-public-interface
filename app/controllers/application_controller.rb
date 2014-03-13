@@ -34,4 +34,15 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def create_img_sequence(image_files, current_img_pid)
+    page_sequence = {}
+    page_sequence[:current] = current_img_pid
+    page_sequence[:index] = image_files.index(current_img_pid) + 1
+    page_sequence[:total] = image_files.length
+    page_sequence[:prev] = page_sequence[:index]-2 > -1 ? image_files[page_sequence[:index]-2] : nil
+    page_sequence[:next] = image_files[page_sequence[:index]].presence
+    page_sequence
+  end
+  helper_method :create_img_sequence
+
 end

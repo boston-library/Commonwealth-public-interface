@@ -98,6 +98,25 @@ div.show-document #previousNextDocument.well {
   text-align: center;
   margin-bottom: 1em;
 
+  #page_sequence {
+    color: $dark_gray;
+    font-size: 12px;
+    padding: 7px 5px 0px 5px;
+    margin-bottom: 15px;
+    text-align: left;
+
+    #page_sequence_pagination {
+      display: inline;
+      float: right;
+
+      a {
+        margin-left: 10px;
+      }
+
+    }
+
+  }
+
   #loading {
     position: relative;
     top: 150px;

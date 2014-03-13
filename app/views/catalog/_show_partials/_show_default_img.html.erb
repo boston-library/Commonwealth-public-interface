@@ -1,4 +1,10 @@
 <div id="img_show_container">
+
+  <% unless page_sequence[:total] == 1 %>
+      <%= render :partial => 'catalog/_show_partials/show_multi_img_pagination',
+                 :locals => {:page_sequence => page_sequence} %>
+  <% end %>
+
 <% image_datastream = nonssl_image_uri(image_pid,'accessMaster') %>
 <% image_metadata = Rails.configuration.djatoka_resolver.metadata(image_datastream).perform %>
 <% object_title = document[blacklight_config.index.show_link.to_sym] %>
@@ -20,6 +26,10 @@
                              :image_datastream => image_datastream,
                              :image_metadata => image_metadata} %>
   <% end %>
-  <%= render_prev_next_img_links(document.id,image_pid) %>
+
+  <% unless page_sequence[:total] == 1 %>
+      <%= render :partial => 'catalog/_show_partials/show_prev_next_carousel_links',
+                 :locals => {:page_sequence => page_sequence} %>
+  <% end %>
 </div>
 <%= javascript_include_tag('commonwealth/multi_img_viewer') %>

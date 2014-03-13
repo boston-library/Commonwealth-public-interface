@@ -1,9 +1,12 @@
 <div id="multi_img_show_container">
   <div class="row">
     <div id="multi_img_pane" class="span9 carousel">
+      <% current_img = params[:view].presence || @image_files.first %>
         <%= render :partial => 'catalog/_show_partials/show_default_img',
                    :locals => {:document => @document,
-                               :image_pid => params[:view].presence || @image_files.first} %>
+                               :image_pid => current_img,
+                               :page_sequence => create_img_sequence(@image_files,current_img)
+                   } %>
     </div>
     <div class="span3">
       <div id="thumbnail_list_wrapper" class="well">

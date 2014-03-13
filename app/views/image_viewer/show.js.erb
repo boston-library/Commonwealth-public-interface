@@ -5,12 +5,12 @@ jQuery('#thumbnail_list').find('a').each(function() {
     if (this.hasClass('in_viewer')) {
         this.removeClass('in_viewer');
     }
-    if (jQuery(this).data('viewer') === '<%= escape_javascript(@img_to_show) %>') {
+    if (jQuery(this).data('viewer') === '<%= escape_javascript(@page_sequence[:current]) %>') {
         this.addClass('in_viewer');
     }
 });
 
 jQuery('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
-                   :locals => {:image_pid => @img_to_show, :document => @document}) %>");
+                   :locals => {:image_pid => @page_sequence[:current], :document => @document, :page_sequence => @page_sequence}) %>");
 
 
