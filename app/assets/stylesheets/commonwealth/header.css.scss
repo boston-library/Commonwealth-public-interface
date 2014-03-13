@@ -151,8 +151,8 @@
 
 /* responsive styles */
 
-/* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+/* greater than Portrait tablet (iPad) to landscape and desktop */
+@media (min-width: 769px) and (max-width: 979px) {
 
   #header-navbar-fixed-top {
 
@@ -172,8 +172,8 @@
 
 }
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
+/* Landscape phone to portrait tablet (iPad) */
+@media (max-width: 768px) {
 
   #header-navbar-fixed-top {
 

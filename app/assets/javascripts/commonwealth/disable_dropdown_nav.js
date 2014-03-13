@@ -1,9 +1,9 @@
 /* disable nav item dropdowns for nav-collapse */
-
+/*
 function disable_dropdown_nav() {
     $('#header_main_nav').find('a.dropdown-toggle').addClass('disabled');
 }
-
+*/
 jQuery(document).ready(function() {
     /*
     var nav_collapse_link = jQuery('#nav_collapse_button');
@@ -14,7 +14,8 @@ jQuery(document).ready(function() {
     */
     // for iPad
     jQuery('#nav_collapse_button').on("click touchstart", function () {
-        disable_dropdown_nav();
+        //disable_dropdown_nav();
+        $('#header_main_nav').find('a.dropdown-toggle').addClass('disabled');
     });
 
 });

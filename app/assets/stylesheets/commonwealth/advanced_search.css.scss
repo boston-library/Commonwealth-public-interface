@@ -77,6 +77,7 @@ body.blacklight-advanced-index {
       min-height: 50px;
       overflow-y: auto;
       width: 345px;
+      -webkit-overflow-scrolling:touch;
 
       ul {
         padding-top: 0;
@@ -116,8 +117,8 @@ body.blacklight-advanced-index {
 
 /* responsive styles */
 
-/* Landscape phone to portrait tablet */
-@media (max-width: 767px) {
+/* Landscape phone to portrait tablet (iPad) */
+@media (max-width: 768px) {
 
   #advanced_search {
 
@@ -137,6 +138,14 @@ body.blacklight-advanced-index {
           padding-left:0px;
         }
 
+      }
+
+    }
+
+    #advanced_search_limits {
+
+      .facet_limit_scrollbox {
+        width: 225px;
       }
 
     }
