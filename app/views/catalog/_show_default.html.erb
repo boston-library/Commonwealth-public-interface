@@ -8,11 +8,12 @@
                        :locals => {:document => @document,
                                    :image_pid => @image_files.first,
                                    :page_sequence => {:total => 1}} %>
-        <% when 2..50 %>
+        <%# when 2..7 %>
+        <% else %>
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
                        :locals => {:document => @document} %>
-        <% else %>
-            <%= "PAGE TURNER [TK]" %>
+        <%# else %>
+            <%# "PAGE TURNER [TK]" %>
     <% end %>
 <% end %>
 

@@ -1,4 +1,18 @@
 /* show loading gif while waiting for selected image to load */
+
+var scrollingContainer = jQuery('#thumbnail_list');
+var scrollTop = scrollingContainer.scrollTop();
+
 jQuery('#multi_img_show_container').find('a.prev_next').click( function () {
+
+    // display the loading icon
     jQuery('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading') %>');
+
+    // scroll the thumbnail
+    var selected_img = scrollingContainer.find("[data-viewer='" + jQuery(this).data('viewer') + "']");
+    var position = selected_img.position().top;
+    scrollingContainer.animate({
+        scrollTop: (position + scrollTop) - 200
+    }, 200);
+
 });

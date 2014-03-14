@@ -3,9 +3,11 @@
             image_viewer_path(@document.id,
                               :view => page_sequence[:prev]),
             :class => 'left carousel-control prev_next',
+            :data => { :viewer => page_sequence[:prev] },
             :remote => true) if page_sequence[:prev] %>
 <%= link_to('&rsaquo;'.html_safe,
             image_viewer_path(@document.id,
                               :view => page_sequence[:next]),
             :class => 'right carousel-control prev_next',
+            :data => { :viewer => page_sequence[:next] },
             :remote => true) if page_sequence[:next] %>

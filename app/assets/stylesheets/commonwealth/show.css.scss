@@ -50,8 +50,33 @@ div.show-document #previousNextDocument.well {
 
 #multi_img_show_container {
 
+  #page_sequence_wrapper {
+    padding: 3px 7px 2px 7px;
+    margin-bottom: 15px;
+    text-align: left;
+
+    #page_sequence {
+      color: $dark_gray;
+      font-size: 12px;
+
+      #page_sequence_pagination {
+        display: inline;
+        float: right;
+
+        a {
+          margin-left: 10px;
+        }
+
+      }
+
+    }
+
+  }
+
   #thumbnail_list_wrapper {
     padding: 10px;
+    //overflow-y: auto;
+    //position: relative;
 
     #thumbnail_list {
       max-height: 600px;
@@ -61,7 +86,7 @@ div.show-document #previousNextDocument.well {
       text-align: center;
       -webkit-overflow-scrolling:touch;
       display: block;
-
+      position: relative;
 
       li {
         padding-bottom: 15px;
@@ -80,7 +105,7 @@ div.show-document #previousNextDocument.well {
 
           img {
             border: 2px solid $darker_gray;
-            box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+            box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.4);
           }
 
         }
@@ -98,25 +123,6 @@ div.show-document #previousNextDocument.well {
   text-align: center;
   margin-bottom: 1em;
 
-  #page_sequence {
-    color: $dark_gray;
-    font-size: 12px;
-    padding: 7px 5px 0px 5px;
-    margin-bottom: 10px;
-    text-align: left;
-
-    #page_sequence_pagination {
-      display: inline;
-      float: right;
-
-      a {
-        margin-left: 10px;
-      }
-
-    }
-
-  }
-
   #loading {
     position: relative;
     top: 150px;
@@ -126,6 +132,7 @@ div.show-document #previousNextDocument.well {
     border: 1px solid $light_gray;
     width:auto;
     max-width:100%;
+    max-height: 600px;
   }
 
   .carousel-control {
@@ -266,6 +273,14 @@ div#img_viewer_modal {
         max-height: 400px;
       }
 
+    }
+
+  }
+
+  #img_show_container {
+
+    img.img_show {
+      max-height: 400px;
     }
 
   }
