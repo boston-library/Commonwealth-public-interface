@@ -75,6 +75,8 @@ div.show-document #previousNextDocument.well {
 
   #thumbnail_list_wrapper {
     padding: 10px;
+    //overflow-y: auto;
+    //position: relative;
 
     #thumbnail_list {
       max-height: 600px;
@@ -84,7 +86,7 @@ div.show-document #previousNextDocument.well {
       text-align: center;
       -webkit-overflow-scrolling:touch;
       display: block;
-
+      position: relative;
 
       li {
         padding-bottom: 15px;

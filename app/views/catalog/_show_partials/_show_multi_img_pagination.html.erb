@@ -6,11 +6,13 @@
                 image_viewer_path(@document.id,
                                   :view => page_sequence[:prev]),
                 :class => 'prev_next',
+                :data => { :viewer => page_sequence[:prev] },
                 :remote => true) if page_sequence[:prev] %>
     <%= link_to('Next >',
                 image_viewer_path(@document.id,
                                   :view => page_sequence[:next]),
                 :class => 'prev_next',
+                :data => { :viewer => page_sequence[:next] },
                 :remote => true) if page_sequence[:next] %>
   </div>
 </div>
