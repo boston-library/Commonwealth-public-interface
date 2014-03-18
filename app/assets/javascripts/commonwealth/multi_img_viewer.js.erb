@@ -6,7 +6,7 @@ var scrollTop = scrollingContainer.scrollTop();
 jQuery('#multi_img_show_container').find('a.prev_next').click( function () {
 
     // display the loading icon
-    jQuery('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading') %>');
+    jQuery('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading', :alt => 'Loading...') %>');
 
     // scroll the thumbnail
     var selected_img = scrollingContainer.find("[data-viewer='" + jQuery(this).data('viewer') + "']");
