@@ -67,6 +67,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'lesson_plans', :to => 'pages#lesson_plans', :as => 'lesson_plans'
   get 'copyright', :to => 'pages#copyright', :as => 'copyright'
   get 'partners', :to => 'pages#partners', :as => 'partners'
+  get 'blog' => redirect('http://blog.digitalcommonwealth.org/')
 
   resources :users, :only => :show
 
