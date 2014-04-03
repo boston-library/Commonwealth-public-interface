@@ -11,7 +11,7 @@ en:
           title: 'Search - %{application_name}'
           limit: 'Narrow your search:'
 
-    application_name: 'Digital Commonwealth (beta)'
+    application_name: 'Digital Commonwealth'
 
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
@@ -64,6 +64,7 @@ en:
           index:
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
+          nav: 'By Collection'
           series:
             title: 'Series in this Collection:'
 
@@ -171,7 +172,7 @@ en:
           selected_items: 'Selected Items'
 
     home:
-          hero_unit: 'Digital collections from libraries, museums, historical societies, and archives across Massachusetts'
+          hero_unit: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
 
     images:
           zoom: 'Click to zoom in on this image.'
@@ -183,6 +184,7 @@ en:
             title: 'Browse by:'
           index:
             page_title: 'Institutions - %{application_name}'
+          nav: 'By Contributing Institution'
           title: 'Institutions'
 
     metadata_display:

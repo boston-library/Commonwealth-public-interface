@@ -6,22 +6,22 @@
                               :nav_link_path => advanced_path}
         },
         :explore => {
-                :collections => {:nav_link_title => t('blacklight.collections.index.title'),
+                :collections => {:nav_link_title => t('blacklight.collections.nav'),
                                  :nav_link_path => collections_path},
-                :places => {:nav_link_title => 'Places',
+                :places => {:nav_link_title => 'By Place',
                             :nav_link_path => places_facet_path},
-                :institutions => {:nav_link_title => t('blacklight.institutions.title'),
+                :institutions => {:nav_link_title => t('blacklight.institutions.nav'),
                                   :nav_link_path => institutions_path}
         },
         :for_libraries => {
                 :membership => {:nav_link_title => 'Membership',
                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/membership'},
                 :contribute => {:nav_link_title => 'Contribute Your Collections',
-                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/'},
+                                :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/contribute'},
                 :conference => {:nav_link_title => 'Conferences, Training & Events',
                                 :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/events'},
                 :training => {:nav_link_title => 'Digitization & Metadata Services',
-                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/'}
+                              :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/digitization'}
         },
         :for_educators => {
                 :lesson_plans => {:nav_link_title => t('blacklight.pages.lesson_plans.title'),
@@ -31,7 +31,7 @@
                 :overview => {:nav_link_title => t('blacklight.pages.about_dc.title'),
                          :nav_link_path => about_dc_path},
                 :news=> {:nav_link_title => t('blacklight.pages.news.title'),
-                         :nav_link_path => 'http://digitalcommonwealth.org/blog'},
+                         :nav_link_path => blog_path},
                 :directory => {:nav_link_title => 'Member Directory',
                          :nav_link_path => 'http://digitalcommonwealth.memberlodge.org/directory'},
                 :copyright => {:nav_link_title => t('blacklight.pages.copyright.title'),

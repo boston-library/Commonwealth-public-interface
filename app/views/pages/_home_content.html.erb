@@ -42,6 +42,20 @@
     </div>
 
     <div class="span4">
+      <div id="places_browse" class="well well-small media">
+        <%= link_to(image_tag('dc-home_places_thumb.jpg',
+                              :class => 'media-object',
+                              :alt => 'Browse All Places'),
+                    places_facet_path,
+                    :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading">Places</h4>
+          <%= link_to 'Browse All Places', places_facet_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4">
       <div id="institutions_browse" class="well well-small media">
         <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
                               :class => 'media-object',
@@ -56,33 +70,16 @@
       </div>
     </div>
 
-    <div class="span4">
-      <div id="places_browse" class="well well-small media">
-        <%= link_to(image_tag('dc-home_places_thumb.jpg',
-                              :class => 'media-object',
-                              :alt => 'Browse All Places'),
-                    places_facet_path,
-                    :class => 'pull-left') %>
-        <div class="media-body">
-          <h4 class="media-heading">Places</h4>
-          <%= link_to 'Browse All Places', places_facet_path %>
-        </div>
-      </div>
-    </div>
-
-
   </div>
 
   <div id="content_home_context" class="row">
 
     <div id="content_home_about" class="span6">
       <h5>About This Site</h5>
-      <p>This repository provides access to digital collections belonging to members of Digital Commonwealth, a statewide consortium of libraries, museums, historical societies, and archives across Massachusetts.</p>
-      <p>This is a beta version; not all collections are available here. For more, go to the current <%= link_to 'Digital Commonwealth',
-                                                                                                                 'http://digitalcommonwealth.org',
-                                                                                                                 :target => '_blank' %> site.</p>
+      <p>This site provides access to photographs, manuscripts, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.</p>
+
       <p class="more-info-link">
-        <%= link_to 'Learn more >>', about_path %>
+        <%= link_to 'Learn more >>', about_dc_path %>
       </p>
     </div>
 
@@ -91,7 +88,7 @@
       <%= render_dc_blog_feed %>
       <p class="more-info-link">
         <%= link_to 'More news >>',
-                    'http://digitalcommonwealth.org/blog/',
+                    blog_path,
                     :target => '_blank' %>
       </p>
 

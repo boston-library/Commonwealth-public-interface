@@ -17,6 +17,7 @@ class InstitutionsController < CatalogController
   def institutions_filter(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Institution\""
+    solr_parameters[:rows] = 50
   end
 
   def index
