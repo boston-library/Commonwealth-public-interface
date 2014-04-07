@@ -73,6 +73,21 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
 
+  # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
+  get 'collection-tree', :to => 'pages#collection_tree'
+  get 'resources' => redirect('http://digitalcommonwealth.memberlodge.org/')
+  get 'contact', :to => 'pages#contact'
+  get 'gettingstarted' => redirect('http://blog.bpl.org/dcbpl/')
+  get 'faqs' => redirect('http://digitalcommonwealth.memberlodge.org/FAQ')
+  get 'memberfees' => redirect('http://digitalcommonwealth.memberlodge.org/membership')
+  get 'lstagrant' => redirect('http://blog.bpl.org/dcbpl/')
+  get 'board' => redirect('http://digitalcommonwealth.memberlodge.org/directors')
+  get 'conference_presentations_2013' => redirect('http://digitalcommonwealth.memberlodge.org/2013Presentations')
+  get 'annualconference' => redirect('http://digitalcommonwealth.memberlodge.org/conferences')
+  get 'members' => redirect('http://digitalcommonwealth.memberlodge.org/directory')
+  get 'why_join' => redirect('http://digitalcommonwealth.memberlodge.org/why_join')
+  get 'items/*all', :to => 'pages#items'
+
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
   # The priority is based upon order of creation:

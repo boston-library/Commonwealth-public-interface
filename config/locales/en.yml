@@ -253,6 +253,10 @@ en:
             title: 'View MODS XML metadata'
           remove: 'Remove'
 
+    update:
+          item: 'Our site has recently changed! Please use the search form below to find the item you are looking for.'
+          new_url: 'Our site has recently changed! Please make a note of the updated URL for this page.'
+
     users:
           account_heading: 'My Account'
 

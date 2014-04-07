@@ -24,4 +24,22 @@ class PagesController < ApplicationController
     @nav_li_active = 'about'
   end
 
+  # redirect for legacy DC links
+  def collection_tree
+    flash[:notice] = t('blacklight.update.new_url')
+    redirect_to collections_path
+  end
+
+  # redirect for legacy DC links
+  def contact
+    flash[:notice] = t('blacklight.update.new_url')
+    redirect_to feedback_path
+  end
+
+  # redirect for legacy DC links
+  def items
+    flash[:notice] = t('blacklight.update.item')
+    redirect_to catalog_index_path
+  end
+
 end
