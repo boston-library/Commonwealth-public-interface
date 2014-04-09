@@ -16,7 +16,7 @@ describe CollectionsController do
   describe "GET 'show'" do
 
     before(:each) do
-      @collection_id = 'bpl-test:rx913p89r'
+      @collection_id = 'bpl-dev:k930bx11b'
     end
 
     it "should show the collection page" do
