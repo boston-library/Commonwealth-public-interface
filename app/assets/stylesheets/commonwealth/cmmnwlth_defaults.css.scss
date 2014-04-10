@@ -14,6 +14,10 @@ $well_bg_color: #F5F5F5;
 
 $navbarBorder: #D4D4D4;
 
+$error_text: #b94a48;
+$error_bg: #f2dede;
+$error_border: #eed3d7;
+
 @mixin rounded-corners($radius) {
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;

@@ -33,6 +33,19 @@
 
 #signup_wrapper {
 
+  #error_explanation {
+    color: $error_text;
+    background-color: $error_bg;
+    border: 1px solid $error_border;
+    @include rounded-corners(4px);
+    margin-bottom: 15px;
+    padding-top: 10px;
+
+    h2 {
+      display:none;
+    }
+  }
+
   .form-horizontal {
 
     .control-label {
