@@ -13,7 +13,7 @@ gem 'pg'
 gem 'hydra-ldap'
 #gem 'hydra-ldap', :git => 'https://github.com/boston-library/hydra-ldap.git'
 # BPL models gem
-gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'
+gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git', :ref => '4cbd775e53'
 #gem 'bplmodels', :path => '/home/eenglish/bplmodels'
 gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 
@@ -77,6 +77,3 @@ gem 'bootstrap_forms'
 gem 'hydra-role-management'
 gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
 gem 'blacklight_google_analytics'
-
-# smooth upgrade to Rails 4
-gem 'protected_attributes'

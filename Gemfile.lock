@@ -9,6 +9,7 @@ GIT
 GIT
   remote: https://github.com/boston-library/bplmodels.git
   revision: 4cbd775e5389695d73c98d664b490f5c2dbd0e3c
+  ref: 4cbd775e53
   specs:
     bplmodels (0.0.88)
       mods
@@ -17,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bpluser.git
-  revision: d0021ede41e80054f2d840fdfc8e8e0cba902663
+  revision: c1b73a610f2ca07dbbd81a551527f6b5f45295f2
   specs:
     bpluser (0.0.3)
       bootstrap_forms
@@ -255,8 +256,6 @@ GEM
       blankslate (~> 2.0)
     pg (0.17.1)
     polyglot (0.3.4)
-    protected_attributes (1.0.5)
-      activemodel (>= 4.0.1, < 5.0)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -394,7 +393,6 @@ DEPENDENCIES
   omniauth-polaris!
   paperclip
   pg
-  protected_attributes
   rails (= 4.0.3)
   rspec
   rspec-rails

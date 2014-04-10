@@ -41,7 +41,7 @@ class FoldersController < CatalogController
   end
 
   def create
-    @folder = current_user.folders.build(params[:folder])
+    @folder = current_user.folders.build(folder_params)
     if @folder.save
       flash[:notice] = "Folder created."
       redirect_to :action => "index"
@@ -82,7 +82,7 @@ class FoldersController < CatalogController
 
   def update
     # @folder is set by correct_user
-    if @folder.update_attributes(params[:folder])
+    if @folder.update_attributes(folder_params)
       flash[:notice] = "Folder updated."
       redirect_to @folder
     else
@@ -103,25 +103,30 @@ class FoldersController < CatalogController
     @folders = Bpluser::Folder.where(:visibility => 'public').joins(:folder_items).uniq.order('updated_at DESC')
   end
 
-  protected
-  def verify_user
-    flash[:notice] = t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
-  end
+  private
 
-  def check_visibility
-    @folder = Bpluser::Folder.find(params[:id])
-    if @folder.visibility != 'public'
-      correct_user
+    def folder_params
+      params.require(:folder).permit(:id, :title, :description, :visibility)
     end
-  end
 
-  def correct_user
-    @folder ||= Bpluser::Folder.find(params[:id])
-    if current_user
-      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
-    else
-      flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
+    def verify_user
+      flash[:notice] = t('blacklight.folders.need_login') and raise Blacklight::Exceptions::AccessDenied unless current_user
     end
-  end
+
+    def check_visibility
+      @folder = Bpluser::Folder.find(params[:id])
+      if @folder.visibility != 'public'
+        correct_user
+      end
+    end
+
+    def correct_user
+      @folder ||= Bpluser::Folder.find(params[:id])
+      if current_user
+        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path unless current_user.folders.include?(@folder)
+      else
+        flash[:notice] = t('blacklight.folders.private') and redirect_to root_path
+      end
+    end
 
 end
