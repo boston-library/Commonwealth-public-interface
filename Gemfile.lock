@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/boston-library/bpl-institution-management.git
-  revision: 3c00f84ca1b0c56fd727e336373d44cbc9900f78
+  revision: abd23524df08ee00a52fb029218bef6411109b6a
   specs:
-    bpl-institution-management (0.0.1)
+    bpl-institution-management (0.0.2)
       bootstrap_forms
       cancan
 
