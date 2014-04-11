@@ -5,6 +5,7 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
 
 
   def index
+    @nav_li_active = 'search'
     unless request.method==:post
       @response = get_advanced_search_facets
     end
