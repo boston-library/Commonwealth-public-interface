@@ -243,7 +243,7 @@ en:
           title: 'Search Results - %{application_name}'
           zero_results:
             search_fields: "You searched by %{search_fields}"
-            search_everything: "try searching All Fields"
+            search_everything: "try again searching All Fields"
             use_fewer_keywords: "Try use fewer keywords in your search, then refine the results using the 'Limit Your Search' options."
 
     search_history:
