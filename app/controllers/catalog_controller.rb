@@ -229,7 +229,12 @@ class CatalogController < ApplicationController
     @object_files = Bplmodels::Finder.getFiles(params[:id])
   end
 
+  def set_nav_context
+    @nav_li_active = 'search'
+  end
+
   before_filter :get_object_files, :only => [:show]
+  before_filter :set_nav_context, :only => [:index]
 
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
