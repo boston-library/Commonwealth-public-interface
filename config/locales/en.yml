@@ -241,6 +241,10 @@ en:
           pagination_info:
             no_items_found: 'No items found. Please go back and try a different search.'
           title: 'Search Results - %{application_name}'
+          zero_results:
+            search_fields: "You searched by %{search_fields}"
+            search_everything: "try again searching All Fields"
+            use_fewer_keywords: "Try use fewer keywords in your search, then refine the results using the 'Limit Your Search' options."
 
     search_history:
           intro: 'View and save your recent searches.'

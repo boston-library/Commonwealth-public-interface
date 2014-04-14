@@ -1,5 +1,0 @@
-<% docs.each_with_index do |document,counter| %>
-    <div class="index_container_list">
-      <%= render_document_partial document, "index_list", :counter => counter %>
-    </div>
-<% end %>
