@@ -217,7 +217,7 @@ class CatalogController < ApplicationController
 
   # displays values and pagination links locations facet field
   def places_facet
-    @nav_li_active = 'places'
+    @nav_li_active = 'explore'
     params[:id] = 'subject_geographic_ssim'
     @pagination = get_facet_pagination(params[:id], params)
 

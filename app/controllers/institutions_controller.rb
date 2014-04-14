@@ -21,7 +21,7 @@ class InstitutionsController < CatalogController
   end
 
   def index
-    @nav_li_active = 'institutions'
+    @nav_li_active = 'explore'
     self.solr_search_params_logic += [:institutions_filter]
     (@response, @document_list) = get_search_results
     params[:view] = 'list'
@@ -33,7 +33,7 @@ class InstitutionsController < CatalogController
   end
 
   def show
-    @nav_li_active = 'institutions'
+    @nav_li_active = 'explore'
     @show_response, @document = get_solr_response_for_doc_id
     @institution_title = @document[blacklight_config.index.show_link.to_sym]
 
