@@ -1,5 +1,5 @@
 <% @page_title = t('blacklight.collections.index.page_title', :application_name => application_name) %>
-<% extra_head_content << render_opensearch_response_metadata.html_safe %>
+<% content_for(:head) { render_opensearch_response_metadata } %>
 
 <div id="content" class="span9 collections-list">
 
