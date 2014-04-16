@@ -54,7 +54,7 @@ gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight', '4.5.0'
+gem 'blacklight', '4.6.0'
 gem 'blacklight_advanced_search', '2.1.1'
 gem 'hydra-head', '6.3.4'
 
@@ -76,4 +76,3 @@ gem 'omniauth-polaris', :git => 'https://github.com/boston-library/omniauth-pola
 gem 'bootstrap_forms'
 gem 'hydra-role-management'
 gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
-gem 'blacklight_google_analytics'

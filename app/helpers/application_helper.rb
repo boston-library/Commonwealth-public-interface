@@ -224,4 +224,12 @@ module ApplicationHelper
     download_links
   end
 
+  def insert_google_analytics
+    if Rails.env.to_s == 'production'
+      content_for(:head) do
+        render :partial=>'/layouts/google_analytics'
+      end
+    end
+  end
+
 end
