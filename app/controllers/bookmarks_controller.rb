@@ -1,9 +1,11 @@
 # -*- encoding : utf-8 -*-
-# NOTE: this entire BL controller is being recreated locally in order to facilitate changing
-#       the update action. updating a single action proved problematic, this is the easiest
-#       workaround for now.
 # note that while this is mostly restful routing, the #update and #destroy actions
 # take the Solr document ID as the :id, NOT the id of the actual Bookmark action.
+
+# LOCAL NOTE: this entire BL controller is being recreated locally
+# in order to facilitate changing the update action.
+# updating a single action was problematic, this is easiest workaround for now.
+
 class BookmarksController < CatalogController
 
   ##
@@ -15,8 +17,8 @@ class BookmarksController < CatalogController
 
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
-  def search_action_url
-    catalog_index_url
+  def search_action_url *args
+    catalog_index_url *args
   end
   helper_method :search_action_url
 
@@ -62,18 +64,19 @@ class BookmarksController < CatalogController
       format.html { redirect_to :back }
       format.js
     end
+=begin
+    if request.xhr?
+      success ? head(:no_content) : render(:text => "", :status => "500")
+    else
+      if @bookmarks.length > 0 && success
+        flash[:notice] = I18n.t('blacklight.bookmarks.add.success', :count => @bookmarks.length)
+      elsif @bookmarks.length > 0
+        flash[:error] = I18n.t('blacklight.bookmarks.add.failure', :count => @bookmarks.length)
+      end
 
-    #if request.xhr?
-    #  render :text => "", :status => (success ? "200" : "500" )
-    #else
-    #  if @bookmarks.length > 0 && success
-    #    flash[:notice] = I18n.t('blacklight.bookmarks.add.success', :count => @bookmarks.length)
-    #  elsif @bookmarks.length > 0
-    #    flash[:error] = I18n.t('blacklight.bookmarks.add.failure', :count => @bookmarks.length)
-    #  end
-
-    #  redirect_to :back
-    #end
+      redirect_to :back
+    end
+=end
   end
 
   # Beware, :id is the Solr document_id, not the actual Bookmark id.
@@ -92,7 +95,7 @@ class BookmarksController < CatalogController
       redirect_to :back
     else
       # ajaxy request needs no redirect and should not have flash set
-      render :text => "", :status => (success ? "200" : "500")
+      success ? head(:no_content) : render(:text => "", :status => "500")
     end
   end
 
@@ -111,7 +114,13 @@ class BookmarksController < CatalogController
   end
 
   protected
+
   def verify_user
     flash[:notice] = I18n.t('blacklight.bookmarks.need_login') and raise Blacklight::Exceptions::AccessDenied  unless current_or_guest_user
   end
+
+  def start_new_search_session?
+    action_name == "index"
+  end
+
 end
