@@ -19,9 +19,4 @@ module CatalogHelper
     (controller.is_a? PagesController and action_name == 'home')
   end
 
-  # might need this ?
-  # def simpleimage_file_pid (document)
-  #   return Bplmodels::Image.find(document[:id]).image_files.first.pid
-  # end
-
 end

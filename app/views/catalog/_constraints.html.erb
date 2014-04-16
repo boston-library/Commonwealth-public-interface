@@ -2,18 +2,19 @@
     <div id="appliedParams" class="constraints-container">
       <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
       <ul id="constraintsLinks" class="inline">
-        <li><%=link_to t('blacklight.search.start_over'),
-                 root_path,
-                 :class => "catalog_startOverLink",
-                 :id=>"startOverLink" %>
+        <li>
+          <%= link_to t('blacklight.search.start_over'),
+                      start_over_path,
+                      :class => 'catalog_startOverLink btn btn-sm btn-text',
+                      :id=> 'startOverLink' %>
         </li>
         <% if current_user %>
         <li>
           <%= link_to t('blacklight.saved_searches.save'),
                       save_search_path( session[:history].first ),
                       :method => :put,
-                      :id=>"saveSearchLink",
-                      :class=>'catalog_saveSearchLink' %>
+                      :id=>'saveSearchLink',
+                      :class=>'catalog_saveSearchLink btn btn-sm btn-text' %>
         </li>
         <% end %>
       </ul>

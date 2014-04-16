@@ -11,8 +11,8 @@
         <%= link_back_to_catalog %>
         |
         <%=link_to "#{t('blacklight.search.start_over')}",
-                   root_path,
-                   :id=>"startOverLink" %>
+                   start_over_path(current_search_session.try(:query_params) || {}),
+                   :id=> 'startOverLink' %>
       </div>
     </div>
 <% end %>
