@@ -35,7 +35,7 @@ role_map_cucumber.yml
 role_map_development.yml
 role_map_production.yml
 role_map_test.yml
-/config/initializers/blacklight_google_analytics.rb
+google_analytics.yml
 
 # Files to ignore by default in Git #
 #####################################

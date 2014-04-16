@@ -76,4 +76,3 @@ gem 'omniauth-polaris', :git => 'https://github.com/boston-library/omniauth-pola
 gem 'bootstrap_forms'
 gem 'hydra-role-management'
 gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
-#gem 'blacklight_google_analytics', :path => '/home/eenglish/blacklight_google_analytics'
