@@ -54,9 +54,9 @@ gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight', '4.7.0'
-gem 'blacklight_advanced_search', '2.1.1'
-gem 'hydra-head', '6.3.4'
+gem 'blacklight', '5.3.0'
+gem 'blacklight_advanced_search', '5.0.0'
+gem 'hydra-head', '7.0.0'
 
 group :development, :test do
   gem 'rspec'
@@ -67,7 +67,7 @@ end
 gem 'unicode', :platforms => [:mri_18, :mri_19]
 gem 'devise-guests', '~> 0.3'
 gem 'devise'
-gem 'bootstrap-sass', '~> 2.3.2'
+gem 'bootstrap-sass', '~> 3.0'
 gem 'omniauth'
 gem 'omniauth-ldap'
 gem 'omniauth-facebook'

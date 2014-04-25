@@ -23,13 +23,13 @@ class CatalogController < ApplicationController
     }
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'title_info_primary_tsi'
-    config.index.record_display_type = 'active_fedora_model_suffix_ssi'
+    config.index.title_field = 'title_info_primary_tsi'
+    config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
     # solr field configuration for document/show views
-    config.show.html_title = 'title_info_primary_tsi'
-    config.show.heading = 'title_info_primary_tsi'
-    config.show.display_type = 'active_fedora_model_suffix_ssi'
+    config.show.title_field = 'title_info_primary_tsi'
+    #config.show.heading = 'title_info_primary_tsi' # deprecated in BL 5
+    config.show.display_type_field = 'active_fedora_model_suffix_ssi'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
