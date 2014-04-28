@@ -29,8 +29,8 @@
                 <%= names.first %>.&nbsp;
             <% end %>
         <% end %>
-        <% if document[blacklight_config.index.show_link.to_sym] %>
-            "<%= document[blacklight_config.index.show_link.to_sym] %>."&nbsp;
+        <% if document[blacklight_config.index.title_field.to_sym] %>
+            "<%= document[blacklight_config.index.title_field.to_sym] %>."&nbsp;
         <% end %>
         <% if document[:genre_basic_ssim] %>
             <%= document[:genre_basic_ssim].first.gsub(/s\z/,'') %>.&nbsp;

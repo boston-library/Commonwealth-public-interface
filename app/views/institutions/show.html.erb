@@ -1,6 +1,6 @@
 <div id="content" class="span12 show-document">
 
-  <% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.html_title], :application_name => application_name) %>
+  <% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
   <% content_for(:head) { render_link_rel_alternates } %>
 
   <%# this should be in a partial -%>

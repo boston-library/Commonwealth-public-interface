@@ -35,7 +35,7 @@ class InstitutionsController < CatalogController
   def show
     @nav_li_active = 'explore'
     @show_response, @document = get_solr_response_for_doc_id
-    @institution_title = @document[blacklight_config.index.show_link.to_sym]
+    @institution_title = @document[blacklight_config.index.title_field.to_sym]
 
     # get the response for collection objects
     @collex_response, @collex_documents = get_search_results({:f => {'active_fedora_model_suffix_ssi' => 'Collection','institution_pid_ssi' => params[:id]},:rows => 100},{:sort => 'title_info_primary_ssort asc'})

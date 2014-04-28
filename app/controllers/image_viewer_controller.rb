@@ -4,7 +4,7 @@ class ImageViewerController < CatalogController
   def show
     @response, @document = get_solr_response_for_doc_id
     #@img_to_show = params[:view]
-    @title = @document[blacklight_config.index.show_link.to_sym]
+    @title = @document[blacklight_config.index.title_field.to_sym]
     @page_sequence = get_page_sequence(@document.id, params[:view])
     respond_to do |format|
       format.js

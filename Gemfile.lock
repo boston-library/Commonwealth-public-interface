@@ -8,10 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: 4cbd775e5389695d73c98d664b490f5c2dbd0e3c
-  ref: 4cbd775e53
+  revision: f8c55453396897e17d55a0492ec53336aa7a66b1
   specs:
-    bplmodels (0.0.88)
+    bplmodels (0.0.91)
       mods
       rails
       timeliness

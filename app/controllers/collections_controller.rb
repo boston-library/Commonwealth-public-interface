@@ -39,7 +39,7 @@ class CollectionsController < CatalogController
   def show
     @nav_li_active = 'explore'
     @show_response, @document = get_solr_response_for_doc_id
-    @collection_title = @document[blacklight_config.index.show_link.to_sym]
+    @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
     # add params[:f] for proper facet links
     params[:f] = {blacklight_config.collection_field => [@collection_title]}
@@ -79,7 +79,7 @@ class CollectionsController < CatalogController
                 'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
     if col_img_doc_list.length > 0
       col_img_info = {
-          :title => col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
+          :title => col_img_doc_list.first[blacklight_config.index.title_field.to_sym],
           :pid => col_img_doc_list.first[:id]
       }
     end

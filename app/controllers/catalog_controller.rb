@@ -191,7 +191,9 @@ class CatalogController < ApplicationController
     config.spell_max = 5
 
     # index views - 'grid' is default
-    config.document_index_view_types = ['grid','list']
+    #config.document_index_views = ['grid','list']
+    config.view = {:grid => 'grid', :list => 'list'}
+
 
     # advanced search facet limits
     config.advanced_search = {

@@ -20,7 +20,7 @@ module CatalogHelper
   def extra_body_classes
     @extra_body_classes ||= ['blacklight-' + controller.controller_name, 'blacklight-' + [controller.controller_name, controller.action_name].join('-')]
     # if this is the home page
-    if !has_search_parameters? && controller.controller_name == 'catalog' && controller.action_name =='index'
+    if controller.controller_name == 'pages' && controller.action_name =='home'
       @extra_body_classes.push('blacklight-home')
     else
       @extra_body_classes

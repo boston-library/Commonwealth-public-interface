@@ -4,11 +4,11 @@
   <h3>Item Information</h3>
   <dl class="defList dl-horizontal">
     <%# title field %>
-    <% if document[blacklight_config.index.show_link.to_sym] %>
+    <% if document[blacklight_config.index.title_field.to_sym] %>
       <dt>Title:</dt>
       <dd>
-        <%# document[blacklight_config.index.show_link.to_sym].each do |title| %>
-            <%= document[blacklight_config.index.show_link.to_sym] %>
+        <%# document[blacklight_config.index.title_field.to_sym].each do |title| %>
+            <%= document[blacklight_config.index.title_field.to_sym] %>
             <% if document[:subtitle_tsim] %>
                 : <%= document[:subtitle_tsim].first %>
             <% end %>

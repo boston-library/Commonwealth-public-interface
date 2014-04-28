@@ -24,7 +24,7 @@
       <div id="thumb_img_show_container" class="span3">
         <%= create_thumb_img_element(@document[:exemplary_image_ssi],
                                      @document[:type_of_resource_ssim],
-                                     @document[blacklight_config.index.show_link.to_sym],
+                                     @document[blacklight_config.index.title_field.to_sym],
                                      'thumb_img_show') %>
       </div>
   <% end %>
