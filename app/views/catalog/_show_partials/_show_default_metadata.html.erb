@@ -105,6 +105,14 @@
       <% end %>
     </dd>
     <% end %>
+    <% if document[:edition_tsim] %>
+      <dt>Edition:</dt>
+      <dd>
+        <% document[:edition_tsim].each do |edition| %>
+            <%= edition %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# date field  %>
     <% if document[:date_start_tsim] %>
       <dt>Date:</dt>
@@ -210,7 +218,7 @@
             <%= date_note %><br />
         <% end %>
       </dd>
-  <% end %>
+    <% end %>
     <%# TOC field %>
     <% if document[:table_of_contents_tsi] %>
       <dt>Table of Contents:</dt>
@@ -270,6 +278,14 @@
       <dd>
         <%= document[:extent_tsi] %>
       </dd>
+    <% end %>
+    <%# geo scale field %>
+    <% if document[:subject_scale_tsim] %>
+      <dt>Scale:</dt>
+      <dd>
+        <% document[:subject_scale_tsim].each do |scale| %>
+            <%= scale %><br />
+        <% end %>
     <% end %>
     <%# lang field %>
     <% if document[:lang_term_ssim] %>
