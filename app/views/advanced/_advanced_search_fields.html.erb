@@ -7,7 +7,7 @@
                      :class=> 'btn search_index_select') %>
       <%= label_tag('input' + (index+1).to_s,
                     t('blacklight.basic_search.form.q') + ' (' + (index+1).to_s + ')',
-                    :class => 'hide-text') %>
+                    :class => 'sr-only') %>
       <%= text_field_tag 'query[]',
                          nil,
                          :class => 'input-xlarge advanced_input_text',

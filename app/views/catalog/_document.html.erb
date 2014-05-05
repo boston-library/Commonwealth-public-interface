@@ -1,10 +1,4 @@
 <% # container for a single doc -%>
-    <div class="document <%= render_document_class document %>
-                         <%= params[:view] ? params[:view] + "-view" : "grid-view" %>">
-
-    <%# render :partial => 'document_header', :locals => { :document => document, :document_counter => document_counter } %>
-
-    <% # main container for doc partial view -%>
-    <%= render_document_partial document, :index, :document_counter => document_counter %>
-
+<div class="document <%= render_document_class document %> <%= params[:view] ? params[:view] + "-view" : "grid-view" %>" itemscope itemtype="<%= document.itemtype %>">
+  <%= render_document_partials document, blacklight_config.view_config(document_index_view_type).partials, :document_counter => document_counter %>
 </div>

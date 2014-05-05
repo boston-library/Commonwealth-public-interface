@@ -1,5 +1,5 @@
 <div class="row">
-  <div id="thumb_img_show_container" class="span3">
+  <div id="thumb_img_show_container" class="col-md-3">
     <%= link_to(create_thumb_img_element(document[:exemplary_image_ssi],
                                          document[:type_of_resource_ssim],
                                          document[blacklight_config.index.title_field.to_sym],
@@ -14,7 +14,7 @@
   <% # metadata display -%>
   <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 
-  <div id="sidebar" class="span3">
+  <div id="sidebar" class="col-md-3">
     <% # bookmark/folder/sharing functions -%>
     <%= render_document_sidebar_partial  %>
   </div>

@@ -2,7 +2,7 @@
 <% page_sequence = create_img_sequence(@image_files,current_img) %>
 <div id="multi_img_show_container">
   <div class="row">
-    <div class="span12">
+    <div class="col-md-12">
       <% unless page_sequence[:total] == 1 %>
           <div id="page_sequence_wrapper" class="well">
             <%= render :partial => 'catalog/_show_partials/show_multi_img_pagination',
@@ -12,17 +12,17 @@
     </div>
   </div>
   <div class="row">
-    <div id="multi_img_pane" class="span9 carousel">
+    <div id="multi_img_pane" class="col-md-9 carousel">
         <%= render :partial => 'catalog/_show_partials/show_default_img',
                    :locals => {:document => @document,
                                :image_pid => current_img,
                                :page_sequence => page_sequence } %>
     </div>
-    <div class="span3">
+    <div class="col-md-3">
       <div id="thumbnail_list_wrapper" class="well">
         <%= content_tag :ul,
                         :id => 'thumbnail_list',
-                        :class => 'unstyled',
+                        :class => 'list-unstyled',
                         :style => ('text-align:left' if @image_files.length > 3) do %>
           <% @image_files.each_with_index do |image_file, index| %>
               <li>

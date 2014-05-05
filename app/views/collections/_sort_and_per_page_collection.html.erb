@@ -1,6 +1,6 @@
 <div id="sortAndPerPage">
   <div class="page_links">
-    <%= render :partial => 'catalog/paginate_compact' %>
+    <%= render :partial => 'catalog/paginate_compact', :object => @response %>
   </div>
 
   <%# remove until date sorting more refined %>

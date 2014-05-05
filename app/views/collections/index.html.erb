@@ -1,13 +1,13 @@
 <% @page_title = t('blacklight.collections.index.page_title', :application_name => application_name) %>
 <% content_for(:head) { render_opensearch_response_metadata } %>
 
-<div id="content" class="span9 collections-list">
+<div id="content" class="col-md-9 collections-list">
 
   <h2><%= t('blacklight.collections.index.title') %></h2>
 
   <%= render 'sort_and_per_page_collection' %>
 
-  <h2 class="hide-text"><%= t('blacklight.search.search_results') %></h2>
+  <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
 
   <%= render_document_index %>
 
@@ -16,6 +16,6 @@
 </div>
 
 <%# not using facets at the moment %>
-<div id="sidebar" class="span3">
+<div id="sidebar" class="col-md-3">
   <%# render :partial=>'facets' %>
 </div><!--/well -->

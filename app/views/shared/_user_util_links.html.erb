@@ -19,7 +19,7 @@
 
   <% else %>
       <div id="util-links-nologin">
-      <ul id="user-util-links-list" class="inline">
+      <ul id="user-util-links-list" class="list-inline">
         <% unless @searches.blank? && session[:history].blank? %>
             <% if current_or_guest_user %>
                 <li><%= link_to t('blacklight.header_links.folders'), folders_path %></li>

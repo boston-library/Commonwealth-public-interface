@@ -1,5 +1,5 @@
 <% @page_title = t('blacklight.users.account_heading') + " - " + application_name %>
-<div class="span9">
+<div class="col-md-9">
   <h2>
     <%= t('blacklight.users.account_heading') %>
   </h2>
@@ -24,7 +24,7 @@
   </ul>
 
 </div>
-<div class="span3">
+<div class="col-md-3">
   <div class="well">
     <ul>
       <li><%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %></li>

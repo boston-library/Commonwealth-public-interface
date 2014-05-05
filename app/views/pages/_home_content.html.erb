@@ -1,9 +1,9 @@
 <%# putting this in a partial so it can be called from catalog#index %>
 <%# when no search params present %>
-<div id="content_home" class="span12">
+<div id="content_home" class="col-md-12">
   <div id="content_home_banner" class="row">
 
-    <div id="carousel_wrapper" class="span6">
+    <div id="carousel_wrapper" class="col-md-6">
       <% if params[:controller] == 'catalog' %>
         <%= render :partial => 'pages/carousel', :locals => {:carousel_slides => carousel_slides} %>
       <% else %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
 
-    <div id="hero_search" class="span6">
+    <div id="hero_search" class="col-md-6">
       <div id="hero_search_headline">
         <h2>
           <%= t('blacklight.home.hero_unit') %>
@@ -26,7 +26,7 @@
 
   <div id="content_home_browse" class="row">
 
-    <div class="span4">
+    <div class="col-md-4">
       <div id="collections_browse" class="well well-small media">
         <%= link_to(image_tag('dc-home_collections_thumb.jpg',
                               :class => 'media-object',
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <div class="span4">
+    <div class="col-md-4">
       <div id="places_browse" class="well well-small media">
         <%= link_to(image_tag('dc-home_places_thumb.jpg',
                               :class => 'media-object',
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="span4">
+    <div class="col-md-4">
       <div id="institutions_browse" class="well well-small media">
         <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
                               :class => 'media-object',
@@ -74,7 +74,7 @@
 
   <div id="content_home_context" class="row">
 
-    <div id="content_home_about" class="span6">
+    <div id="content_home_about" class="col-md-6">
       <h5>About This Site</h5>
       <p>This site provides access to photographs, manuscripts, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.</p>
 
@@ -83,7 +83,7 @@
       </p>
     </div>
 
-    <div id="content_home_news" class="span6">
+    <div id="content_home_news" class="col-md-6">
       <h5>News &amp; Announcements</h5>
       <%= render_dc_blog_feed %>
       <p class="more-info-link">

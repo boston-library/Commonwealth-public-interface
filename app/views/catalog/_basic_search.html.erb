@@ -1,6 +1,6 @@
 <% @page_title = t('blacklight.advanced_search.title', :application_name => application_name) %>
 
-<div id="content" class="span12 basic-search">
+<div id="content" class="col-md-12 basic-search">
   <h2><%= t('blacklight.advanced_search.page_title') %></h2>
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
@@ -14,7 +14,7 @@
 
       <div class="row">
 
-        <div class="span9">
+        <div class="col-md-9">
 
           <div id="basic_search_wrapper" class="well">
 
@@ -23,7 +23,7 @@
                          :id => 'basic_search_form',
                          :class => 'basic-search-form form-inline' do %>
                 <%= render_hash_as_hidden_fields(params_for_search().except(:q, :qt, :page, :f, :sort)) %>
-                <label for="q" class="hide-text">
+                <label for="q" class="sr-only">
                   <%= t('blacklight.basic_search.form.label') %>
                 </label>
                 <%= text_field_tag :q,
@@ -34,7 +34,7 @@
                                    :autofocus => should_autofocus_on_search_box? %>
 
                 <% unless search_fields.empty? %>
-                    <label for="search_field" class="hide-text">
+                    <label for="search_field" class="sr-only">
                       <%= t('blacklight.basic_search.form.select') %>
                     </label>
                     <%= select_tag(:search_field,

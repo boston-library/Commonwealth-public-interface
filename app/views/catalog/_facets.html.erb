@@ -12,15 +12,19 @@
 
 <% if has_facet_values?  %>
     <div id="facets" class="facets sidenav">
-      <h4 data-toggle="collapse" data-target="#facets-collapse">
-        <a class="btn btn-navbar">
+
+      <div class="top-panel-heading panel-heading">
+        <button type="button" class="facets-toggle" data-toggle="collapse" data-target="#facet-panel-collapse">
+          <span class="sr-only">Toggle facets</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </a>
-        <%= facet_heading %>
-      </h4>
-      <div id="facets-collapse" class="facets-collapse">
+          <span class="icon-bar"></span>
+        </button>
+        <h4><%= facet_heading %></h4>
+      </div>
+
+      <div id="facet-panel-collapse" class="collapse panel-group">
         <%= render_facet_partials %>
       </div>
     </div>
-<% end %>&nbsp;
+<% end %>

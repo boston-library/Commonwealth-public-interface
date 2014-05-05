@@ -1,7 +1,7 @@
 <% if query_has_constraints? %>
-    <div id="appliedParams" class="constraints-container">
+    <div id="appliedParams" class="clearfix constraints-container">
       <span class="constraints-label"><%= t('blacklight.search.filters.title') %></span>
-      <ul id="constraintsLinks" class="inline">
+      <ul id="constraintsLinks" class="list-inline">
         <li>
           <%= link_to t('blacklight.search.start_over'),
                       start_over_path,

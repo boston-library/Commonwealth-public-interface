@@ -1,5 +1,5 @@
 
-  <div id="content" class="span12 show-document">
+  <div id="content" class="col-md-12 show-document">
 
     <%= render 'previous_next_doc' %>
 
@@ -7,7 +7,7 @@
     <% content_for(:head) { render_link_rel_alternates } %>
 
     <%# this should be in a partial -%>
-    <div id="document" class="<%= render_document_class %>">
+    <div id="document" class="document <%= render_document_class %>" itemscope itemtype="<%= @document.itemtype %>">
 
       <div id="doc_<%= @document.id.to_s.parameterize %>">
 
@@ -15,11 +15,12 @@
           <%= render_item_breadcrumb(@document) %>
         </div>
 
-        <%= render_document_heading(:h1).html_safe %>
+        <!-- BL4 -->
+        <!-- <div class="document">
+          <%# render_document_partial @document, :show %>
+        </div> -->
 
-        <div class="document">
-          <%= render_document_partial @document, :show %>
-        </div>
+        <%= render_document_partials @document, blacklight_config.view_config(:show).partials %>
 
       </div>
 
