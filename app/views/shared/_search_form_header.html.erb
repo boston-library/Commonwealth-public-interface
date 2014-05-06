@@ -11,9 +11,9 @@
     <div class="input-append pull-left">
       <label for="q" class="sr-only"><%= t('blacklight.search.form.q') %></label>
       <%= text_field_tag :q, nil, :placeholder => t('blacklight.search.form.q'), :class => "search_q q", :id => "q"%>
-      <button type="submit" class="btn btn-primary search-btn btn-mini" id="search">
+      <button type="submit" class="btn btn-primary search-btn btn-xs" id="search">
         <span class="submit-search-text"><%=t('blacklight.search.form.submit')%></span>
-        <i class="icon-search icon-white"></i>
+        <span class="glyphicon glyphicon-search glyphicon-white"></span>
       </button>
 
     </div>

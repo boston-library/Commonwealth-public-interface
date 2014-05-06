@@ -1,15 +1,15 @@
 @import 'cmmnwlth_defaults';
 
-#header-navbar-fixed-top {
+#header-navbar {
   min-width: 320px;
 
-  .navbar-inner {
+  .navbar-header {
     height: 5.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
 
     /* The main logo image for the Blacklight instance */
-    .brand {
+    .navbar-brand {
       width: 205px;
       background:transparent asset_url($logo_image_home) no-repeat top left;
       display: inline-block;
@@ -123,7 +123,7 @@
 
 /* styles for expanded nav */
 
-.nav-collapse.in.collapse {
+.navbar-collapse.in.collapse {
   background-color: #f2f2f2;
   @include rounded-corners(0 0 5px 5px);
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
@@ -136,7 +136,7 @@
   z-index: 2;
 }
 
-.nav-collapse {
+.navbar-collapse {
 
   .btn {
     padding: 0 6px;
@@ -154,9 +154,9 @@
 /* greater than Portrait tablet (iPad) to landscape and desktop */
 @media (min-width: 769px) and (max-width: 979px) {
 
-  #header-navbar-fixed-top {
+  #header-navbar {
 
-    .navbar-inner {
+    .navbar-header {
 
       .navbar .nav > li > a {
         padding: 10px 40px 10px 0;
@@ -175,9 +175,9 @@
 /* Landscape phone to portrait tablet (iPad) */
 @media (max-width: 768px) {
 
-  #header-navbar-fixed-top {
+  #header-navbar {
 
-    .navbar-inner {
+    .navbar-header {
 
       .navbar .nav {
 
@@ -201,9 +201,9 @@
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
-  #header-navbar-fixed-top {
+  #header-navbar {
 
-    .navbar-inner {
+    .navbar-header {
 
       #user-util-links {
 

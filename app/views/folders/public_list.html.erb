@@ -23,10 +23,10 @@
     <%= t('blacklight.folders.public_list.title') %>
     <small id="add_folder">
       <%= link_to(
-                  content_tag(:i, '', :class=>'icon-plus') + ' add folder',
+                  content_tag(:span, '', :class => 'glyphicon glyphicon-plus') + ' add folder',
                   new_folder_path,
                   :id => 'create_folder_link',
-                  :class => 'btn btn-small'
+                  :class => 'btn btn-sm'
           ) %>
     </small>
   </h2>

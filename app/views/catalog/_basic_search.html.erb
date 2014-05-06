@@ -5,7 +5,7 @@
 
   <ul id="search_mode_tabs" class="nav nav-tabs">
     <li class="active"><a href="#">Basic</a></li>
-    <li class="hidden-phone"><%= link_to 'Advanced', advanced_search_path %></li>
+    <li class="hidden-xs"><%= link_to 'Advanced', advanced_search_path %></li>
   </ul>
 
   <div class="tab-content">
@@ -49,7 +49,7 @@
                   <span class="submit-search-text">
                     <%=t('blacklight.search.form.submit')%>
                   </span>
-                  <i class="icon-search icon-white"></i>
+                  <span class="glyphicon glyphicon-search glyphicon-white"></span>
                 </button>
 
             <% end %>

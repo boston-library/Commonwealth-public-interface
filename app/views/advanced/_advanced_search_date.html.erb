@@ -2,7 +2,7 @@
   <div class="control-group">
     <label class="control-label">Year</label>
     <div class="controls">
-      <div class="input-append">
+      <div class="input-group">
         <label id="date_range_start_label" class="control-label" for="date_start">Start</label>
         <%= text_field_tag 'date_start',
                            nil,
@@ -10,7 +10,7 @@
                            :class => 'input-mini',
                            :maxlength => 4 %>
       </div>
-      <div class="input-prepend">
+      <div class="input-group">
         <label id="date_range_end_label" class="control-label" for="date_end">End</label>
         <%= text_field_tag 'date_end',
                            nil,

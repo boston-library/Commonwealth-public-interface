@@ -1,5 +1,5 @@
 <% if show_sort_and_per_page? and !blacklight_config.document_index_view_types.blank? %>
-    <div id="view-dropdown" class="dropdown pull-right hidden-phone">
+    <div id="view-dropdown" class="dropdown pull-right hidden-xs">
       <ul class="css-dropdown">
         <li class="btn">
           <%= link_to(t('blacklight.search.change_views.label', :view => params[:view] ? params[:view] : blacklight_config.document_index_view_types.first), "#") %> <span class="caret"></span>

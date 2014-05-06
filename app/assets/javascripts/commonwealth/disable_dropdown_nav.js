@@ -1,4 +1,4 @@
-/* disable nav item dropdowns for nav-collapse */
+/* disable nav item dropdowns for navbar-collapse */
 /*
 function disable_dropdown_nav() {
     $('#header_main_nav').find('a.dropdown-toggle').addClass('disabled');

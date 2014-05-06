@@ -1,18 +1,19 @@
-<ul class="bookmarkTools">
+<ul class="bookmarkTools nav nav-pills">
   <li class="cite">
     <%= link_to t('blacklight.tools.cite'),
                 citation_catalog_path(:sort=>params[:sort],
                                       :per_page=>params[:per_page],
-                                      :id => @bookmarks.collect{|doc| doc.document_id}),
-                {:id => 'citeLink', :name => 'citation', :class => 'lightboxLink btn'} %>
+                                      :id => @response.documents.map {|doc| doc.id}),
+                {:id => 'citeLink', :name => 'citation', :class => 'btn btn-default', :data => {:ajax_modal => 'trigger'}} %>
   </li>
   <li class="email">
     <%= link_to t('blacklight.tools.email'),
                 email_catalog_path(:sort=>params[:sort],
                                    :per_page=>params[:per_page],
-                                   :id => @bookmarks.collect {|doc| doc.document_id}),
+                                   :id => @response.documents.map {|doc| doc.id}),
                 :class=>"lightboxLink btn",
-                :id => "emailLink" %>
+                :id => "emailLink",
+                :data => {:ajax_modal => 'trigger'} %>
   </li>
   <li>
     <%= link_to t('blacklight.bookmarks.clear.action_title'),

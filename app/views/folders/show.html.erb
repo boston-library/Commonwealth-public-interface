@@ -34,27 +34,27 @@
         <small id="folder_tools">
           <div class="folder_visibility">
             <% if @folder.visibility == 'public' %>
-                <%= content_tag(:i, '', :class => 'icon-eye-open') %>
+                <%= content_tag(:span, '', :class => 'glyphicon glyphicon-eye-open') %>
                 <span class="visibility_public"><%= @folder.visibility %></span>
             <% else %>
-                <%= content_tag(:i, '', :class => 'icon-lock') %>
+                <%= content_tag(:span, '', :class => 'glyphicon glyphicon-lock') %>
                 <span class="visibility_private"><%= @folder.visibility %></span>
             <% end %>
           </div>
-          <%= link_to(content_tag(:i,'',:class=>'icon-pencil') + ' ' + t('blacklight.folders.edit'),
+          <%= link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-pencil') + ' ' + t('blacklight.folders.edit'),
                       edit_folder_path(@folder),
-                      :class => 'btn btn-small',
+                      :class => 'btn btn-sm',
                       :title => 'edit this folder') %>
-          <%= link_to(content_tag(:i,'',:class=>'icon-trash') + ' ' + t('blacklight.folders.delete.delete'),
+          <%= link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-trash') + ' ' + t('blacklight.folders.delete.delete'),
                       @folder,
-                      :class => 'btn btn-small',
+                      :class => 'btn btn-sm',
                       :method => :delete,
                       :data => { :confirm => t('blacklight.folders.delete.confirm') },
                       :title => t('blacklight.folders.delete.delete')) %>
           <%# if @folder_items.length > 0 %>
-              <%# link_to(content_tag(:i,'',:class=>'icon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
+              <%# link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
                           clear_folder_items_path,
-                          :class => 'btn btn-small',
+                          :class => 'btn btn-sm',
                           :method => :delete,
                           :data => { :confirm => t('blacklight.folder_items.clear.confirm') }) %>
           <%# end %>

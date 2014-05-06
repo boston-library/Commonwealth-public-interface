@@ -1,6 +1,6 @@
 <% if current_or_guest_user %>
 
-    <% existing_bookmark = current_or_guest_user.existing_bookmark_for(document.id) %>
+    <% existing_bookmark = current_or_guest_user.document_is_bookmarked? document.id %>
 
     <div id="folder_item_toggle">
 
@@ -17,7 +17,7 @@
 
           <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
             <button class="btn" type="submit">
-                <%= content_tag(:i, "", :class => "icon-folder-close") + " " + t('blacklight.folder_items.add.button') %>
+                <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
             </button>
           <% end %>
 
@@ -27,7 +27,7 @@
 
                 <div class="btn-group folder-item-control">
                     <button class="btn" type="submit">
-                        <%= content_tag(:i, "", :class => "icon-folder-close") + " " + t('blacklight.folder_items.add.button') %>
+                        <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
                     </button>
                     <button class="btn dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>

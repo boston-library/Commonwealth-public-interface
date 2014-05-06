@@ -9,9 +9,9 @@
     <%#  render :partial => 'catalog/view_widget' # use default BL view widget %>
   </div>
 
-  <%# add 'hidden-tablet' class to per_page_widget %>
+  <%# add 'hidden-sm' class to per_page_widget %>
   <script type="text/javascript">
-    $('#per_page-dropdown').addClass("hidden-tablet");
+    $('#per_page-dropdown').addClass("hidden-sm");
   </script>
 
 </div>

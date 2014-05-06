@@ -43,12 +43,12 @@
               <%- if has_user_authentication_provider? -%>
                   <td class="actions">
                     <%- if current_or_guest_user && search.saved? -%>
-                        <%# button_to t('blacklight.search_history.forget'), forget_search_path(search.id) %>
-                         <%= content_tag(:i, '', :class => 'icon-ok') %>
+                        <%# button_to t('blacklight.search_history.forget'), forget_search_path(search.id), :class => 'btn btn-default' %>
+                         <%= content_tag(:span, '', :class => 'glyphicon glyphicon-ok') %>
                          In your <%= link_to t('blacklight.saved_searches.title'),
                                             saved_searches_path %>
                     <%- else -%>
-                        <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put %>
+                        <%= button_to t('blacklight.search_history.save'), save_search_path(search.id), :method => :put, :class => 'btn btn-default' %>
                     <%- end -%>
                   </td>
               <%- end -%>

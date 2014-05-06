@@ -71,8 +71,8 @@ module CatalogHelper
       inst_link = link_to(document[:institution_name_ssim].first,
                           institution_path(:id => document[:institution_pid_ssi]),
                           :class => 'institution_breadcrumb')
-      connector = content_tag(:i, '',
-                              :class => 'icon-arrow-right item-breadcrumb-separator')
+      connector = content_tag(:span, '',
+                              :class => 'glyphicon glyphicon-arrow-right item-breadcrumb-separator')
       coll_link = link_to(document[:collection_name_ssim].first,
                           collection_path(:id => document[:collection_pid_ssm].first),
                           :class => 'collection_breadcrumb')

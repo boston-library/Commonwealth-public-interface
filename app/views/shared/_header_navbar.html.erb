@@ -1,22 +1,22 @@
-<div id="header-navbar-fixed-top" class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-
-        <a id="nav_collapse_button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <i class="icon-search"></i>
+<div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button id="nav_collapse_button" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
+          <span class="glyphicon glyphicon-search"></span>
           <div id="icon-bar-wrapper">
+            <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </div>
-        </a>
+        </button>
 
       <%= link_to application_name,
                   root_path,
                   :id => 'header_logo_link',
-                  :class => 'brand' %>
+                  :class => 'navbar-brand' %>
 
-      <div id="header-nav-search-util" class="nav-collapse">
+      <div class="collapse navbar-collapse" id="user-util-collapse">
 
         <%= render :partial=>'shared/user_util_links' %>
 
