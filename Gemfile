@@ -54,7 +54,7 @@ gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight', '5.3.0'
+gem 'blacklight', '5.4.0'
 gem 'blacklight_advanced_search', '5.0.0'
 gem 'hydra-head', '7.0.0'
 

@@ -75,7 +75,7 @@ GEM
     addressable (2.3.5)
     arel (4.0.2)
     bcrypt-ruby (3.1.2)
-    blacklight (5.3.0)
+    blacklight (5.4.0)
       bootstrap-sass (~> 3.0)
       deprecation
       kaminari (~> 0.13)
@@ -226,7 +226,7 @@ GEM
       iso-639
       nokogiri
       nom-xml
-    multi_json (1.9.2)
+    multi_json (1.10.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-http-persistent (2.9.4)
@@ -426,7 +426,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (= 5.3.0)
+  blacklight (= 5.4.0)
   blacklight_advanced_search (= 5.0.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms
