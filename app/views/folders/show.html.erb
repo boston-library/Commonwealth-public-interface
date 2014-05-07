@@ -43,18 +43,18 @@
           </div>
           <%= link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-pencil') + ' ' + t('blacklight.folders.edit'),
                       edit_folder_path(@folder),
-                      :class => 'btn btn-sm',
+                      :class => 'btn btn-default btn-sm',
                       :title => 'edit this folder') %>
           <%= link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-trash') + ' ' + t('blacklight.folders.delete.delete'),
                       @folder,
-                      :class => 'btn btn-sm',
+                      :class => 'btn btn-default btn-sm',
                       :method => :delete,
                       :data => { :confirm => t('blacklight.folders.delete.confirm') },
                       :title => t('blacklight.folders.delete.delete')) %>
           <%# if @folder_items.length > 0 %>
               <%# link_to(content_tag(:span,'',:class=>'glyphicon glyphicon-remove') + ' ' + t('blacklight.folder_items.clear.action'),
                           clear_folder_items_path,
-                          :class => 'btn btn-sm',
+                          :class => 'btn btn-default btn-sm',
                           :method => :delete,
                           :data => { :confirm => t('blacklight.folder_items.clear.confirm') }) %>
           <%# end %>

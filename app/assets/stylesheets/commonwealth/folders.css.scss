@@ -5,18 +5,12 @@
 /* don't use fixed navbar on bookmark/folder pages */
 
 body.blacklight-folders, body.blacklight-bookmarks {
-  padding-top: 0;
 
   /* don't show useless 'relevance' sort option in folders */
   #sort-dropdown ul.css-dropdown li.btn ul li:first-child {
     display: none;
   }
 
-}
-
-body.blacklight-folders .navbar-static-top, body.blacklight-bookmarks .navbar-static-top {
-  position: relative;
-  margin-bottom: 1em;
 }
 
 #add_folder {

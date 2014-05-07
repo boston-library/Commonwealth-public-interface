@@ -2,20 +2,9 @@
 
 @import 'cmmnwlth_defaults';
 
-/* don't want fixed navbar on show page */
-
-body.blacklight-catalog-show, body.blacklight-collections-show, body.blacklight-institutions-show {
-  padding-top: 0;
-}
-
-body.blacklight-catalog-show #header-static-fixed-top {
+body.blacklight-catalog-show #header-navbar {
   // don't cover image viewer modal
   z-index: 100;
-}
-
-body.blacklight-catalog-show .navbar-static-top, body.blacklight-collections-show  .navbar-static-top, body.blacklight-institutions-show .navbar-static-top {
-  position: relative;
-  margin-bottom: 1em;
 }
 
 div.show-document #previousNextDocument.well {

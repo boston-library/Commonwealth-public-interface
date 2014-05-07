@@ -3,22 +3,7 @@
 @import 'cmmnwlth_defaults';
 
 #signin_wrapper {
-
-  .form-horizontal {
-
-    .control-label {
-      width: 65px;
-    }
-
-    .controls {
-      margin-left: 100px;
-    }
-
-    .help-inline {
-      padding-left: 2em;
-    }
-
-  }
+  padding-top:10px;
 
   #alt_signins {
     padding: 1em 0 2em 0;
@@ -32,6 +17,7 @@
 }
 
 #signup_wrapper {
+  padding-top:10px;
 
   #error_explanation {
     color: $error_text;
@@ -45,7 +31,7 @@
       display:none;
     }
   }
-
+  /*
   .form-horizontal {
 
     .control-label {
@@ -57,7 +43,7 @@
     }
 
   }
-
+*/
 }
 
 #edit_account_wrapper {

@@ -11,8 +11,8 @@
                 email_catalog_path(:sort=>params[:sort],
                                    :per_page=>params[:per_page],
                                    :id => @response.documents.map {|doc| doc.id}),
-                :class=>"lightboxLink btn",
-                :id => "emailLink",
+                :class => 'lightboxLink btn btn-default',
+                :id => 'emailLink',
                 :data => {:ajax_modal => 'trigger'} %>
   </li>
   <li>
@@ -20,6 +20,6 @@
                 clear_bookmarks_path,
                 :method => :delete,
                 :data => { :confirm => t('blacklight.bookmarks.clear.action_confirm') },
-                :class => 'btn' %>
+                :class => 'btn btn-default' %>
   </li>
 </ul>

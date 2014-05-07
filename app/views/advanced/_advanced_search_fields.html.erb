@@ -4,13 +4,13 @@
                      options_for_select(search_fields,
                                         search_fields[index]),
                      :title => t('blacklight.basic_search.form.search_indexes'),
-                     :class=> 'btn search_index_select') %>
+                     :class=> 'btn btn-default search_index_select') %>
       <%= label_tag('input' + (index+1).to_s,
                     t('blacklight.basic_search.form.q') + ' (' + (index+1).to_s + ')',
                     :class => 'sr-only') %>
       <%= text_field_tag 'query[]',
                          nil,
-                         :class => 'input-xlarge advanced_input_text',
+                         :class => 'advanced_input_text',
                          :autofocus => index == 0 ? true : false %>
     </div>
 <% end %>
@@ -26,7 +26,7 @@
 </div>
 <div class="pull-right">
   <%= submit_tag 'Search', :class=>'btn btn-primary advanced_submit', :id=>'advanced_search' %>
-  <%= link_to 'Start over', {:controller => 'advanced', :action => 'index'}, :class =>'reset btn' %>
+  <%= link_to 'Start over', {:controller => 'advanced', :action => 'index'}, :class =>'reset btn btn-default' %>
 </div>
 
 <%# search_fields_for_advanced_search.each do |key, field_def| -%>

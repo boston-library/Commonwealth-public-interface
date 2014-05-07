@@ -16,7 +16,7 @@
         <% if existing_folders.empty? %>
 
           <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
-            <button class="btn" type="submit">
+            <button class="btn btn-default" type="submit">
                 <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
             </button>
           <% end %>
@@ -26,10 +26,10 @@
               <%= form_tag( bookmark_path( document ), :method => :put, :remote => true) do %>
 
                 <div class="btn-group folder-item-control">
-                    <button class="btn" type="submit">
+                    <button class="btn btn-default" type="submit">
                         <%= content_tag(:span, '', :class => 'glyphicon glyphicon-folder-close') + ' ' + t('blacklight.folder_items.add.button') %>
                     </button>
-                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">

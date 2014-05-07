@@ -2,17 +2,6 @@
 
 @import 'cmmnwlth_defaults';
 
-/* don't use fixed navbar on static pages */
-
-body.blacklight-pages, body.blacklight-feedback {
-  padding-top: 0;
-}
-
-body.blacklight-pages .navbar-static-top, body.blacklight-feedback .navbar-static-top {
-  position: relative;
-  margin-bottom: 1em;
-}
-
 div.about_content {
 
   h5.section_heading {

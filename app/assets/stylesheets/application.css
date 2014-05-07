@@ -14,8 +14,9 @@
 
  *= require jquery.ui.dialog
 
- * remove blacklight/layout from tree so it doesn't get included twice
- *= stub blacklight/_layout
+ * to prevent specific blacklight gem css fiels from being included, you can use
+ * 'stub' method, as in example below:
+ * stub blacklight/_layout
 
  *= require blacklight_advanced_search
 

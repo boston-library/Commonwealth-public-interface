@@ -4,8 +4,8 @@
 
       <div id="user-nav-btn" class="btn-group">
         <%= "#{ link_to content_tag(:span, '', :class => 'glyphicon glyphicon-user') + ' ' + current_user.first_name,
-                        current_user, :class =>'btn btn-xs' }".html_safe unless current_user.to_s.blank? %>
-        <button class="btn dropdown-toggle btn-xs hidden-xs" data-toggle="dropdown">
+                        current_user, :class =>'btn btn-default btn-xs' }".html_safe unless current_user.to_s.blank? %>
+        <button class="btn btn-default dropdown-toggle btn-xs hidden-xs" data-toggle="dropdown">
           <span class="caret"></span>
         </button>
         <ul id="user-util-links-list" class="dropdown-menu btn-xs">
