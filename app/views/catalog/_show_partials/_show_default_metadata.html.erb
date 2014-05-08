@@ -322,7 +322,16 @@
             <%= local_call %><br />
         <% end %>
       </dd>
-  <% end %>
+    <% end %>
+    <%# local-barcode id field %>
+    <% if document[:identifier_local_barcode_tsim] %>
+      <dt>Barcode (local):</dt>
+      <dd>
+        <% document[:identifier_local_barcode_tsim].each do |barcode| %>
+            <%= barcode %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
         <dt>Referenced By:</dt>
