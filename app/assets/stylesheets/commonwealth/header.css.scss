@@ -2,11 +2,25 @@
 
 #header-navbar {
   min-width: 320px;
+  height:92px;
+  margin-bottom: 0;
+  background-color:#f9f9f9;
+  background-image:-moz-linear-gradient(top, #fff, #f2f2f2);
+  background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#f2f2f2));
+  background-image:-webkit-linear-gradient(top, #fff, #f2f2f2);
+  background-image:-o-linear-gradient(top, #fff, #f2f2f2);
+  background-image:linear-gradient(to bottom, #fff, #f2f2f2);
+  background-repeat:repeat-x;
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF2F2F2', GradientType=0);
+  border-bottom:1px solid #d4d4d4;
+  -webkit-box-shadow:0 1px 5px rgba(0,0,0,0.3);
+  -moz-box-shadow:0 1px 5px rgba(0,0,0,0.3);
+  box-shadow:0 1px 5px rgba(0,0,0,0.3);
 
   .navbar-header {
     height: 5.5em;
-    padding-bottom: 0.5em;
     padding-top: 0.5em;
+    float: none;
 
     /* The main logo image for the Blacklight instance */
     .navbar-brand {
@@ -20,39 +34,53 @@
       margin-left: 0;
       margin-right:20px;
       padding-left: 0;
-      height: 60px;
+      height: 74px;
     }
 
-    #user-util-links {
-      font-size: 12px;
-      text-align: right;
-      height: 42px;
+    #user-util-collapse {
+      padding-right:0;
 
-      #util-links-nologin, #user-nav-btn {
-        display: inline-block;
-        vertical-align: super;
-      }
+      #user-util-links {
+        font-size: 12px;
+        text-align: right;
+        height: 42px;
 
-      #user-nav-btn {
-        vertical-align: top;
-        display: inline-block;
-      }
-
-      ul.dropdown-menu {
-        text-align: left;
-      }
-
-      #header-search {
-        display: inline-block;
-        padding: 0.4em 0 0 0.7em;
-
-        input {
-          padding: 0 0 0 0.2em;
-          width: 8em;
+        #util-links-nologin, #user-nav-btn {
+          display: inline-block;
+          vertical-align: super;
         }
 
-        .submit-search-text {
-          display: none;
+        #user-nav-btn {
+          vertical-align: top;
+          padding-top: 6px;
+        }
+
+        ul.dropdown-menu {
+          text-align: left;
+          font-size: 12px;
+
+          > li > a:hover {
+            color:#FFFFFF;
+            background-color: #0081C2;
+            background-image: linear-gradient(to bottom, #0088CC, #0077B3);
+            background-repeat: repeat-x;
+          }
+
+        }
+
+        #header-search {
+          display: inline-block;
+          padding: 0.4em 0 0 0.7em;
+
+          input {
+            padding: 0 0 0 0.2em;
+            width: 120px;
+          }
+
+          .submit-search-text {
+            display: none;
+          }
+
         }
 
       }
@@ -88,6 +116,13 @@
 
       > li > a {
         padding: 10px 60px 10px 0;
+        background-color: inherit;
+        color: #777777;
+
+        &:hover {
+          color: #333333;
+        }
+
       }
 
       > li.last_nav > a {
@@ -108,7 +143,17 @@
 
       li.dropdown .dropdown-menu {
         margin: 0;
+
+        > li > a:hover {
+          color:#FFFFFF;
+          background-color: #0081C2;
+          background-image: linear-gradient(to bottom, #0088CC, #0077B3);
+          background-repeat: repeat-x;
+
+        }
+
       }
+
       /* display nav dropdown menus on hover */
       li.dropdown:hover .dropdown-menu {
         display: block;

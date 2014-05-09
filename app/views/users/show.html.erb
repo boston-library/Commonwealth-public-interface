@@ -25,9 +25,9 @@
 
 </div>
 <div class="col-md-3">
-  <div class="well">
-    <ul>
-      <li><%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %></li>
+  <div class="well sidebar-right">
+    <ul class="list-unstyled">
+      <li><%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :class => 'btn btn-default' %></li>
     </ul>
   </div>
 </div>

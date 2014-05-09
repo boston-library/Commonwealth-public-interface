@@ -29,7 +29,7 @@
                 <%= text_field_tag :q,
                                    nil,
                                    :placeholder => t('blacklight.basic_search.form.q'),
-                                   :class => 'search_q q input-xlarge',
+                                   :class => 'search_q q input-xlarge form-control',
                                    :id => 'q',
                                    :autofocus => should_autofocus_on_search_box? %>
 
@@ -42,7 +42,7 @@
                                                       h(params[:search_field])),
                                    :title => t('blacklight.basic_search.form.search_indexes'),
                                    :id => 'basic_search_indexes',
-                                   :class=> 'btn search_index_select') %>
+                                   :class=> 'btn btn-default search_index_select') %>
                 <% end %>
 
                 <button type="submit" class="btn btn-primary search-btn" id="search">
