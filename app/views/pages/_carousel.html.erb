@@ -1,4 +1,4 @@
-<div id="slideshow" class="carousel slide carousel-fade">
+<div id="slideshow" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
     <% 0.upto carousel_slides.length-1 do |index| %>
         <% if index == 0 %>
@@ -10,11 +10,11 @@
   </ol>
   <div class="carousel-inner">
 
-    <% carousel_slides.each do |slide| %>
-        <% if carousel_slides.index(slide) == 0 %>
-            <% status = "item active" %>
+    <% carousel_slides.each_with_index do |slide,index| %>
+        <% if index == 0 %>
+            <% status = 'item active' %>
         <% else %>
-            <% status = "item" %>
+            <% status = 'item' %>
         <% end %>
         <div class="<%= status %>">
           <% slide_img =  djatoka_image_tag(nonssl_image_uri(slide.image_pid,'accessMaster'),
@@ -25,14 +25,18 @@
           <%= link_to slide_img, solr_document_path(:id => slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
-            <p><small><em><%= slide.institution %></em></small></p>
+            <p><%= slide.institution %></p>
           </div>
         </div>
     <% end %>
 
   </div>
-  <a class="left carousel-control" href="#slideshow" data-slide="prev">&lsaquo;</a>
-  <a class="right carousel-control" href="#slideshow" data-slide="next">&rsaquo;</a>
+  <a class="left carousel-control" href="#slideshow" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#slideshow" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
 </div>
 <script type="text/javascript">
     $(document).ready(function() {

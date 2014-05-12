@@ -21,7 +21,7 @@
 //= require blacklight/blacklight
 
 // require bootstrap-dropdown
-// require bootstrap-carousel
+//= require bootstrap/carousel
 
 //= require blacklight_google_analytics/blacklight_google_analytics
 
