@@ -74,12 +74,13 @@ class CollectionsController < CatalogController
 
   # find the title and pid for the object representing the collection image
   def get_collection_image_info(image_pid)
-    parent_id = Bplmodels::Finder.getFileParentObject(image_pid)
-    (col_img_response, col_img_doc_list) = get_solr_response_for_doc_id(parent_id)
+    (col_img_response, col_img_doc_list) = get_search_results(
+        {:f => {'exemplary_image_ssi' => image_pid,
+                'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
     if col_img_doc_list.length > 0
       col_img_info = {
-          :title => col_img_doc_list[blacklight_config.index.show_link.to_sym],
-          :pid => col_img_doc_list[:id]
+          :title => col_img_doc_list.first[blacklight_config.index.show_link.to_sym],
+          :pid => col_img_doc_list.first[:id]
       }
     end
   end
