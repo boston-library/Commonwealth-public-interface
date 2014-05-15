@@ -44,7 +44,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'institutions/facet/:id', :to => 'institutions#facet', :as => 'institutions_facet'
 
   # for some reason feedback submit won't work w/o this addition
-  match 'feedback', :to => 'feedback#show', :via => :post
+  match 'feedback', :to => 'feedback#show', :via => [:get, :post]
   get 'feedback/complete', :to => 'feedback#complete'
 
   get 'folders/public', :to => 'folders#public_list', :as => 'public_folders'

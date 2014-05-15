@@ -25,6 +25,7 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_info_primary_tsi'
     config.index.display_type_field = 'active_fedora_model_suffix_ssi'
+    config.index.partials = [:index]
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_info_primary_tsi'

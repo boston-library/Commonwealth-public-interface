@@ -2,11 +2,23 @@
 
 @import 'cmmnwlth_defaults';
 
-/* institutions index view */
+/* institutions index view (see shared.css for static-navbar) */
 
-div.institutions-list img.index_thumb {
-  display: none;
+div.institutions-list #documents {
+  float:left;
+  margin-top: 15px;
+  width: 100%;
+
+  img.index_thumb {
+    display: none;
+  }
+
+  a.pull-left {
+    display: none;
+  }
+
 }
+
 
 /* institutions show view */
 

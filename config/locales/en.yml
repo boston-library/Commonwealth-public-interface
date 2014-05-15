@@ -94,6 +94,7 @@ en:
             name: 'Your Name:'
             email: 'Your Email:'
             message: 'Your Message:'
+          blurb: 'We welcome your comments and feedback.'
           title: 'Contact Us'
           valid_name: 'Please enter your name.'
           valid_email: 'Please enter a valid email address.'
@@ -102,7 +103,7 @@ en:
           errors:
             title: 'The message could not be sent:'
           complete:
-            title: 'Your message has been sent. Thank you for contacting us.'
+            title: 'Your message has been sent. Thank you for contacting us!'
           text:
             subject: 'Digital Commonwealth Repository: contact email'
             name: 'Name: '

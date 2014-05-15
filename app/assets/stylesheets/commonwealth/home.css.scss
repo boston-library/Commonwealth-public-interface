@@ -28,7 +28,10 @@
       padding-top:10px;
       display: inline-block;
 
-      .input-group-addon {
+      #search_field {
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+        text-align: left;
       }
 
     }
@@ -45,7 +48,7 @@
   }
 
   #content_home_context {
-    margin-top: .5em;
+    margin-top: 30px;
 
     #content_home_news li {
       padding-bottom: .5em;

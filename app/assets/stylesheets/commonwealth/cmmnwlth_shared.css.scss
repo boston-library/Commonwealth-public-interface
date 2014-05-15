@@ -1,0 +1,33 @@
+/* shared sitewide styles */
+
+@import 'cmmnwlth_defaults';
+
+body.blacklight-institutions-index, body.blacklight-collections-index, body.blacklight-catalog-index {
+
+  #header-navbar {
+    top: 0;
+    left: 0;
+    margin-bottom: 0;
+    position: fixed;
+    right: 0;
+    z-index: 1000;
+  }
+
+  #main-container {
+    padding-top: 100px;
+  }
+
+}
+
+#error_explanation {
+  color: $error_text;
+  background-color: $error_bg;
+  border: 1px solid $error_border;
+  @include rounded-corners(4px);
+  margin-bottom: 15px;
+  padding-top: 10px;
+
+  h2 {
+    display:none;
+  }
+}

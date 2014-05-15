@@ -2,6 +2,8 @@
 <div class="col-md-9" id="contact_content">
 <h2><%= t('blacklight.feedback.title') %></h2>
 
+  <p><%= t('blacklight.feedback.blurb') %></p>
+
 <% unless @errors.empty? %>
     <div id="error_explanation" class="alert alert-error">
         <ul class="errors">
@@ -14,25 +16,25 @@
 
 <%= form_tag(feedback_path, :id => 'feedback_form', :class => 'form-horizontal') do %>
     <div class="form-group">
-      <label class="col-md-2 control-label"><%= t('blacklight.feedback.form.name') %></label>
+      <label class="col-md-3 control-label"><%= t('blacklight.feedback.form.name') %></label>
       <div class="col-md-4">
         <%= text_field_tag :name, params[:name], :class => 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-2 control-label"><%= t('blacklight.feedback.form.email') %></label>
+      <label class="col-md-3 control-label"><%= t('blacklight.feedback.form.email') %></label>
       <div class="col-md-4">
         <%= text_field_tag :email, params[:email], :class => 'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-md-2 control-label"><%= t('blacklight.feedback.form.message') %></label>
+      <label class="col-md-3 control-label"><%= t('blacklight.feedback.form.message') %></label>
       <div class="col-md-4">
         <%= text_area_tag :message, params[:message], :size => '24x6', :class =>  'form-control' %>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-offset-2 col-md-4">
+      <div class="col-md-offset-3 col-md-4">
         <%= submit_tag(t('blacklight.feedback.submit'), :class => 'btn btn-default') %>
       </div>
     </div>

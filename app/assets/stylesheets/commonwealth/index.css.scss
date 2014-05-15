@@ -26,17 +26,39 @@ h4.suggest {
   font-size: 14px;
 }
 
-#per_page-dropdown {
-  padding-left: 1em;
-}
-
 #sortAndPerPage {
   margin-bottom: 0;
+  padding-bottom: 9px;
+  float: left;
+  width:100%;
+
+  > .page_links {
+    padding: 0 12px 0 0;
+    float: left;
+  }
+
+  #per_page-dropdown {
+    padding-left: 1em;
+    float: right;
+  }
+
 }
 
 .css-dropdown ul {
   /* make sure dropdowns aren't hidden behind images */
   z-index:1;
+}
+
+div.record-padding {
+  float: left;
+  width: 100%;
+
+  #pagination_links {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
 }
 
 div.item_index_title {
@@ -215,26 +237,6 @@ div.item_index_title {
   padding-bottom: 10px;
 }
 
-div.collections-list #documents {
 
-  div.list-view a.pull-left {
-    min-width: 150px;
-  }
-
-  div.media img {
-    max-height:130px;
-    max-width:130px;
-  }
-
-  div.item_index_details {
-    font-size: 13px;
-  }
-
-}
-
-
-body.blacklight-catalog-institutions a.pull-left {
-  display: none;
-}
 
 
