@@ -244,8 +244,8 @@ en:
           title: 'Search Results - %{application_name}'
           view_title: "View results as: "
           view:
-            list: "List"
-            grid: "Grid"
+            list: "list view"
+            grid: "grid view"
           zero_results:
             search_fields: "You searched by %{search_fields}"
             search_everything: "try again searching All Fields"

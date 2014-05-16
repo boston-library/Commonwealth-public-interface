@@ -2,6 +2,16 @@
 
 @import 'cmmnwlth_defaults';
 
+
+body.blacklight-catalog-index {
+
+  #main-container {
+    padding-top: 115px;
+  }
+
+}
+
+
 #search_mode_tabs {
   li.active a {
     font-weight: bold;
@@ -10,16 +20,15 @@
 
 #constraintsLinks {
   float: right;
-  display: inline;
-
-  #startOverLink {
-    float: none;
-  }
-
 }
 
 .appliedFilter {
   z-index: 1;
+
+  .constraint-value, .remove {
+    background-color: #E2EDFE;
+  }
+
 }
 
 h4.suggest {
@@ -27,11 +36,13 @@ h4.suggest {
 }
 
 #sortAndPerPage {
-  margin-bottom: 0;
-  padding-bottom: 9px;
-  float: left;
-  width:100%;
+  @include rounded-corners(3px);
+  @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05) inset);
+  padding: 9px;
+  background-color: #F5F5F5;
+  border: 1px solid #E3E3E3;
 
+  /*
   > .page_links {
     padding: 0 12px 0 0;
     float: left;
@@ -41,6 +52,7 @@ h4.suggest {
     padding-left: 1em;
     float: right;
   }
+  */
 
 }
 

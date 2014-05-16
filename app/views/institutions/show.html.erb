@@ -2,7 +2,7 @@
 
   <% @page_title = t('blacklight.search.show.title', :document_title => @document[blacklight_config.show.title_field], :application_name => application_name) %>
   <% content_for(:head) { render_link_rel_alternates } %>
-
+  <%# blacklight_config.view_config.inspect %>
   <%# this should be in a partial -%>
   <div id="document" class="<%= render_document_class %>">
 
@@ -37,7 +37,7 @@
 
   <div class="col-md-9">
 
-    <div id="institution_search_tools" class="well well-small">
+    <div id="institution_search_tools" class="well well-sm">
       <%= render :partial => 'search_form_institution',
                  :locals => {:document => @document} %>
       <div id="institution_view_all">

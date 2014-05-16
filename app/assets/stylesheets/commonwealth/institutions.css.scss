@@ -54,15 +54,17 @@ div.blacklight-institution {
 
   #institution_search_tools {
     margin-bottom: 1em;
-    width:69%;
+    width:72%;
     float: right;
 
     #institution_search_form {
-      padding: 0 1em 0 0;
+      padding: 0 30px 0 0;
       float: left;
 
       input {
         width: 250px;
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
       }
 
       .submit-search-text {

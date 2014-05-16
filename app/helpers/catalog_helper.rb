@@ -66,6 +66,12 @@ module CatalogHelper
             :target => '_blank')
   end
 
+  # have to override this because of a bug in BL
+  # submitted issue #908 on projectblacklight/blacklight GitHub
+  def render_document_class(document = @document)
+    'blacklight-' + document.get(blacklight_config.view_config(document_index_view_type).display_type_field).parameterize rescue nil
+  end
+
   def render_item_breadcrumb(document)
     if document[:institution_pid_ssi] && document[:collection_pid_ssm]
       inst_link = link_to(document[:institution_name_ssim].first,
