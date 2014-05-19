@@ -3,8 +3,8 @@
     <% if params[:view] == "list" %>
       <%= render documents, :as => :document %>
     <% else %>
-      <ul class="thumbnails">
+      <!-- <div class="row"> -->
         <%= render :partial => "catalog/document_grid-view", :collection => documents, :as => :document %>
-      </ul>
+      <!-- </div> -->
     <% end %>
 </div>
