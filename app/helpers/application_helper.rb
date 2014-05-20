@@ -114,6 +114,8 @@ module ApplicationHelper
     datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
   end
 
+=begin
+  # THIS IS NOW IN CATALOG_HELPER
   def create_thumb_img_element(thumb_pid, resource_type, doc_title, img_class)
     if thumb_pid
       image_tag(datastream_disseminator_url(thumb_pid,'thumbnail300'),
@@ -126,7 +128,8 @@ module ApplicationHelper
         render_object_icon(nil, img_class)
       end
     end
-  end
+    end
+=end
 
   def insert_google_analytics
     if Rails.env.to_s == 'production'

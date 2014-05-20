@@ -221,6 +221,16 @@ class CatalogController < ApplicationController
     solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
   end
 
+  # displayes the MODS XML record. copied from blacklight_marc gem
+  def librarian_view
+    @response, @document = get_solr_response_for_doc_id
+
+    respond_to do |format|
+      format.html
+      format.js { render :layout => false }
+    end
+  end
+
   # displays values and pagination links locations facet field
   def places_facet
     @nav_li_active = 'explore'

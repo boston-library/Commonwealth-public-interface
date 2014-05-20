@@ -22,10 +22,7 @@
   <%# show thumbnail or icon if object has no images %>
   <% unless @image_files %>
       <div id="thumb_img_show_container" class="col-md-3">
-        <%= create_thumb_img_element(@document[:exemplary_image_ssi],
-                                     @document[:type_of_resource_ssim],
-                                     @document[blacklight_config.index.title_field.to_sym],
-                                     'thumb_img_show') %>
+        <%= create_thumb_img_element(@document, %w(thumb_img_show)) %>
       </div>
   <% end %>
 

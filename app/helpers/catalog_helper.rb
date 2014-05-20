@@ -109,6 +109,23 @@ module CatalogHelper
     mods_xml_text = REXML::Document.new(mods_response.body)
   end
 
+  def create_thumb_img_element(document, img_class=[])
+    image_classes = img_class.join(' ')
+    if document[:exemplary_image_ssi]
+      image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
+                :alt => document[blacklight_config.index.title_field.to_sym],
+                :class => image_classes)
+    elsif document[:type_of_resource_ssim]
+      render_object_icon(document[:type_of_resource_ssim].first, image_classes)
+    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
+      image_tag('dc_collection-icon.png',
+                :alt => document[blacklight_config.index.title_field.to_sym],
+                :class => image_classes)
+    else
+      render_object_icon(nil, image_classes)
+    end
+  end
+
   def should_autofocus_on_search_box?
     (controller.is_a? Blacklight::Catalog and
         action_name == "index" and

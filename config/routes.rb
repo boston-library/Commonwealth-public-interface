@@ -27,6 +27,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   #get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   #get 'search', :to => 'catalog#index', :as => 'catalog_index'
   #get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+  get 'catalog/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
   get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
 
   #resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
