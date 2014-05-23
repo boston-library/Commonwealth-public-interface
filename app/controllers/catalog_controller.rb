@@ -53,7 +53,7 @@ class CatalogController < ApplicationController
     # facet bar
     # config.add_facet_field 'collection_name_ssim', :label => 'Collection'
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8
-    config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8
+    config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count'
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index'
     config.add_facet_field 'genre_basic_ssim', :label => 'Format', :limit => 8, :helper_method => :render_format
     config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8
@@ -221,7 +221,7 @@ class CatalogController < ApplicationController
     solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
   end
 
-  # displayes the MODS XML record. copied from blacklight_marc gem
+  # displays the MODS XML record. copied from blacklight_marc gem
   def librarian_view
     @response, @document = get_solr_response_for_doc_id
 
@@ -231,11 +231,16 @@ class CatalogController < ApplicationController
     end
   end
 
-  # displays values and pagination links locations facet field
+  # displays values and pagination links for Places field
   def places_facet
     @nav_li_active = 'explore'
-    params[:id] = 'subject_geographic_ssim'
-    @pagination = get_facet_pagination(params[:id], params)
+
+    @facet = blacklight_config.facet_fields['subject_geographic_ssim']
+    @response = get_facet_field_response(@facet.field, params)
+    @display_facet = @response.facets.first
+
+    # @pagination was deprecated in Blacklight 5.1
+    @pagination = facet_paginator(@facet, @display_facet)
 
     render :facet
 

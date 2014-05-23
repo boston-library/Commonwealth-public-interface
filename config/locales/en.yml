@@ -12,6 +12,7 @@ en:
           limit: 'Narrow your search:'
 
     application_name: 'Digital Commonwealth'
+    application_desc: 'An online library of photographs, manuscripts, audio recordings, and other materials of historical interest from libraries, museums, archives, and historical societies across Massachusetts.'
 
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
