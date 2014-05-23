@@ -136,11 +136,12 @@ body.blacklight-catalog-show #header-navbar {
     border: 2px solid #FFFFFF;
     top: 48%;
     opacity: 0.15;
-    line-height: 24px;
+    line-height: 21px;
     height: 30px;
     width: 30px;
     font-size:50px;
     left: 5px;
+    border-radius: 23px;
 
     &.right {
       left: auto;
@@ -201,11 +202,12 @@ div#img_viewer_modal {
     width: 97%;
 
     dt {
-      padding: .2em 0;
+      padding: 2px 0 0;
     }
 
     dd {
-      padding: 0;
+      padding: 2px 0 0;
+      margin-bottom: 3px;
 
       .metadata_breadcrumb {
         color: $dark_gray;

@@ -4,17 +4,37 @@
 
 /* institutions index view (see shared.css for static-navbar) */
 
-div.institutions-list #documents {
-  float:left;
-  margin-top: 15px;
-  width: 100%;
+div.institutions-list {
 
-  img.index_thumb {
-    display: none;
+  #sortAndPerPage {
+    margin-bottom:0;
+
+    /* don't display sort or view-type widgets */
+    #sort-dropdown, .view-type {
+      display: none;
+    }
+
   }
 
-  a.pull-left {
-    display: none;
+  #documents {
+    float:left;
+    margin-top: 15px;
+    width: 100%;
+
+    div.list-view {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+
+      img.index_thumb {
+        display: none;
+      }
+
+      a.pull-left {
+        display: none;
+      }
+
+    }
+
   }
 
 }

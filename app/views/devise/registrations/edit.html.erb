@@ -46,7 +46,7 @@
         <div class="form-group">
           <%= f.label :password_confirmation, :class => 'control-label col-md-2' %>
           <div class="col-md-4">
-            <%= f.password_field :password_confirmation %>
+            <%= f.password_field :password_confirmation, :class => 'form-control' %>
           </div>
         </div>
         <div class="form-group">
@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-md-offset-2 col-md-4">
+          <div class="col-md-offset-2 col-md-6">
             <%= f.submit 'Update my account', :class => 'btn btn-primary' %>
             <%= link_to 'Cancel changes', current_user, :class => 'btn btn-default' %>
           </div>
@@ -65,7 +65,7 @@
   <% end %>
   </div>
 </div>
-<div class="col-md-3">
+<div class="col-md-3 sidebar-right">
   <div class="well">
     <h4>Actually, I want to cancel my account...</h4>
     <ul>

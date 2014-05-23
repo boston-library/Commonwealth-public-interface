@@ -13,8 +13,8 @@
       <%= label_tag(:visibility,
                     content_tag(:span, '*', :class => 'required_field_indicator') + ' Visibility',
                     :class => 'control-label col-md-2') %>
-      <div class="col-md-4">
-        <%= f.select(:visibility, %w(private public)) %>
+      <div class="col-md-2">
+        <%= f.select(:visibility, %w(private! public), {}, {:class => 'form-control'}) %>
       </div>
     </div>
     <div class="form-group">

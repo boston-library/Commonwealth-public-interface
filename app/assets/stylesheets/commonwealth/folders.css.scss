@@ -15,7 +15,6 @@ body.blacklight-folders, body.blacklight-bookmarks {
 
 #add_folder {
   float: right;
-  margin-top: 5px;
 }
 
 #user_folders {
@@ -69,7 +68,12 @@ body.blacklight-folders, body.blacklight-bookmarks {
 }
 
 #public_folders_sidebar {
-  margin-top:34px;
+  margin-top: 42px;
+
+  ul {
+    padding: 20px 0 10px 20px;
+  }
+
 }
 
 .folder_visibility {
@@ -140,6 +144,7 @@ div.folder_show_container {
       border-color: $well_bg_color;
       margin:0;
       display: inline;
+      padding-left: 0;
 
       li {
         display:inline-block;

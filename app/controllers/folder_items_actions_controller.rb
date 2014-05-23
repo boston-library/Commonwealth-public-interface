@@ -44,7 +44,7 @@ class FolderItemsActionsController < ApplicationController
           destination = params[:commit].split(t('blacklight.tools.copy_to') + ' ')[1]
           if destination == t('blacklight.bookmarks.title')
             success = items.all? do |item_id|
-              current_or_guest_user.bookmarks.create(:document_id => item_id) unless current_or_guest_user.existing_bookmark_for(item_id)
+              current_or_guest_user.bookmarks.create(:document_id => item_id) unless current_or_guest_user.bookmarks.where(:document_id => item_id).exists?
             end
           else
             folder_to_update = current_user.folders.find(destination)

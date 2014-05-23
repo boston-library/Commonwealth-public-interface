@@ -7,7 +7,8 @@
 
 div.collections-list {
 
-  #sort-dropdown {
+  /* don't display sort or view-type widgets */
+  #sort-dropdown, .view-type {
     display: none;
   }
 
@@ -119,8 +120,9 @@ h4.collection-provenance {
 }
 
 #series_wrapper {
-  float:left;
+  /* float:left; */
   clear: left;
+  padding-top: 10px;
 
   .panel-default {
     border: none;
@@ -139,8 +141,6 @@ h4.collection-provenance {
     }
 
   }
-
-
 
   #documents div.grid-view {
     margin-top: 0;
