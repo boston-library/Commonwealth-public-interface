@@ -7,9 +7,13 @@ class CollectionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  # add series facet for collections#show
+  # show series facet for collections#show
   configure_blacklight do |config|
-    config.add_facet_field 'related_item_series_ssim', :label => 'Series', :limit => 300, :sort => 'index'
+    series_facet = config.facet_fields["related_item_series_ssim"]
+    series_facet.show = true
+    series_facet.if = true # have to include this or it won't display!
+    series_facet.limit = 300
+    series_facet.sort = 'index'
   end
 
   # Blacklight uses #search_action_url to figure out the right URL for

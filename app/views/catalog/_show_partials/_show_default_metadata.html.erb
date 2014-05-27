@@ -342,16 +342,17 @@
             <% end %>
         </dd>
     <% end %>
-    <%# ARK URI field %>
-    <% unless document[:active_fedora_model_suffix_ssi] == 'OAIObject' %>
-      <% if document[:identifier_uri_ss] %>
-          <dt>Permalink:</dt>
-          <dd>
-            <%# t('blacklight.ark.prefix') + document[:id].gsub(/[\D]*:/,'') %>
-            <%= link_to(document[:identifier_uri_ss],
-                        document[:identifier_uri_ss]) %>
-          </dd>
-      <% end %>
+    <%# URI field %>
+    <% if document[:identifier_uri_ss] %>
+        <% oai_object = true if document[:active_fedora_model_suffix_ssi] == 'OAIObject' %>
+        <dt><%= oai_object ? 'Link to item' : 'Permalink' %>:</dt>
+        <dd>
+          <%= link_to(document[:identifier_uri_ss],
+                      document[:identifier_uri_ss],
+                      :class => 'uri_metadata_link',
+                      :target => oai_object ? '_blank' : '_self'
+              ) %>
+        </dd>
     <% end %>
     <%# rights field %>
     <% if document[:use_and_reproduction_ssm] %>

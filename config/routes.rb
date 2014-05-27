@@ -13,24 +13,23 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
-  #Blacklight.add_routes(self, :except => [:solr_document, :catalog])
-  blacklight_for :catalog
+  #add all Blacklight routes except :catalog
+  blacklight_for :catalog, except: [ :catalog ]
 
   # add Blacklight catalog -> search routing
   # Catalog stuff.
-  #get 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
-  #get 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
-  #match 'search/email', :to => 'catalog#email', :as => 'email_catalog', :via => [:get, :post]
+  get 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
+  get 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
+  match 'search/email', :to => 'catalog#email', :as => 'email_catalog', :via => [:get, :post]
   #match 'search/sms', :as => "sms_catalog"
   #match 'search/endnote', :as => "endnote_catalog"
-  #post 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
-  #get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
-  #get 'search', :to => 'catalog#index', :as => 'catalog_index'
-  #get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
-  get 'catalog/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
+  post 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
+  get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
+  get 'search', :to => 'catalog#index', :as => 'catalog_index'
+  get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
   get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
 
-  #resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
+  resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
   # :show and :update are for backwards-compatibility with catalog_url named routes
   #resources :catalog, :only => [:show, :update]
 

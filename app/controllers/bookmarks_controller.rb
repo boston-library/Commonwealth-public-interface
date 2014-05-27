@@ -24,7 +24,6 @@ class BookmarksController < CatalogController
   def search_action_url *args
     catalog_index_url *args
   end
-  helper_method :search_action_url
 
   before_filter :verify_user
 
@@ -72,27 +71,17 @@ class BookmarksController < CatalogController
       current_or_guest_user.bookmarks.create(bookmark) unless current_or_guest_user.bookmarks.where(bookmark).exists?
     end
 
-    unless request.xhr?
-      flash[:notice] = t('blacklight.folder_items.add.success')
-    end
-
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
-=begin
     if request.xhr?
-      success ? head(:no_content) : render(:text => "", :status => "500")
+      success ? render(:update) : render(:text => '', :status => '500')
     else
       if @bookmarks.length > 0 && success
         flash[:notice] = I18n.t('blacklight.bookmarks.add.success', :count => @bookmarks.length)
       elsif @bookmarks.length > 0
         flash[:error] = I18n.t('blacklight.bookmarks.add.failure', :count => @bookmarks.length)
       end
-
       redirect_to :back
     end
-=end
+
   end
 
   # Beware, :id is the Solr document_id, not the actual Bookmark id.

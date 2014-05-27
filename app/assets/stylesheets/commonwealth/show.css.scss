@@ -214,6 +214,12 @@ div#img_viewer_modal {
         padding: 0 2px;
       }
 
+      .uri_metadata_link {
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+      }
+
     }
   }
 
@@ -236,26 +242,31 @@ div#img_viewer_modal {
 
 #sidebar {
 
-  .panel-heading {
-    padding:10px;
-    font-weight: bold;
-  }
+  div.show-tools {
 
-  .panel-body {
-    padding:10px;
-
-    .addthis_toolbox {
-      padding-bottom: .5em;
+    .panel-heading {
+      padding:10px;
+      font-weight: bold;
     }
 
-    #emailLink, #citeLink {
-      padding: 10px 0 0;
+    .panel-body {
+      padding:10px;
+
+      .addthis_toolbox {
+        padding-bottom: .5em;
+      }
+
+      .glyphicon {
+        padding-right: 3px;
+      }
+
+      #emailLink, #citeLink {
+        padding: 10px 0 0;
+      }
+
     }
 
   }
-
-
-
 
 }
 
