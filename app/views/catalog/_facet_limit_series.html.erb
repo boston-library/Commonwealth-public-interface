@@ -1,7 +1,7 @@
 <div id="documents">
   <% display_facet.items.each do |item| -%>
         <% series_title = facet_display_value(solr_field, item) %>
-        <div class="col-md-3 <%= cycle('new_row','','','') %>">
+        <div class="col-sm-3 <%= cycle('new_row','','','') %>">
           <div class="document grid-view thumbnail">
             <div class="default_index_container">
               <div class="item_index_thumb">

@@ -1,5 +1,5 @@
 <% # container for a single doc -%>
-<div class="col-md-4 <%= cycle("new_row","","") %>">
+<div class="col-sm-4 <%= cycle("new_row","","") %>">
     <div class="document <%= render_document_class document %>
                          <%= !params[:view].blank? ? params[:view] + "-view" : "grid-view" %> thumbnail" itemscope itemtype="<%= document.itemtype %>">
 

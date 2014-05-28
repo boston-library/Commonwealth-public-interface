@@ -4,27 +4,27 @@
     <div class="form-group">
       <%= label_tag(:title,
                     content_tag(:span, '*', :class => 'required_field_indicator') + ' Title',
-                    :class => 'control-label col-md-2') %>
-      <div class="col-md-4">
+                    :class => 'control-label col-sm-2') %>
+      <div class="col-sm-4">
         <%= f.text_field :title, :class => 'form-control' %>
       </div>
     </div>
     <div class="form-group">
       <%= label_tag(:visibility,
                     content_tag(:span, '*', :class => 'required_field_indicator') + ' Visibility',
-                    :class => 'control-label col-md-2') %>
-      <div class="col-md-2">
+                    :class => 'control-label col-sm-2') %>
+      <div class="col-sm-2">
         <%= f.select(:visibility, %w(private! public), {}, {:class => 'form-control'}) %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :description, :class => 'control-label col-md-2' %>
-      <div class="col-md-4">
+      <%= f.label :description, :class => 'control-label col-sm-2' %>
+      <div class="col-sm-4">
         <%= f.text_area :description, :class => 'form-control', :size => '24x4' %>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-offset-2 col-md-4">
+      <div class="col-sm-offset-2 col-sm-4">
         <%= f.submit submit_button_text, :class => 'btn btn-primary' %>
         <% if @folder.id %>
             <%= link_to 'Cancel', folder_path(@folder.id), :class=>'btn btn-default' %>

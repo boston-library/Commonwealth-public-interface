@@ -321,7 +321,7 @@ div#img_viewer_modal {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
-  #multi_img_pane,#oai_img_show_container,#sidebar {
+  #multi_img_pane, #oai_img_show_container, .blacklight-catalog-show #sidebar {
     float:left;
   }
 

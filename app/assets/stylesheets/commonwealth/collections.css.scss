@@ -180,7 +180,7 @@ h4.collection-provenance {
 @media (min-width: 1200px) {
 
   #collection_search_tools {
-    width:52%;
+    width:54%;
   }
 
   #series_wrapper {
@@ -252,8 +252,17 @@ h4.collection-provenance {
     display: none;
   }
 
-  #facets {
+  .blacklight-collection #facets {
     margin-top: 1em;
+
+    div.top-panel-heading {
+      padding: 10px 15px;
+
+      h4 {
+        margin-top: 10px;
+      }
+
+    }
 
     div.blacklight-related_item_series_ssim {
       display: block;

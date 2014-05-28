@@ -1,5 +1,5 @@
 <div class="row">
-  <div id="thumb_img_show_container" class="col-md-3">
+  <div id="thumb_img_show_container" class="col-sm-3">
     <%= link_to(create_thumb_img_element(@document, %w(thumb_img_show)),
                 @document[:identifier_uri_ss],
                 :target => '_blank',
@@ -11,7 +11,7 @@
   <% # metadata display -%>
   <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 
-  <div id="sidebar" class="col-md-3">
+  <div id="sidebar" class="col-sm-3">
     <% # bookmark/folder/sharing functions -%>
     <%= render_document_sidebar_partial  %>
   </div>

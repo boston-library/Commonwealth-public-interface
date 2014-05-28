@@ -13,29 +13,42 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
-  #add all Blacklight routes except :catalog
-  blacklight_for :catalog, except: [ :catalog ]
+  # not using the default below as it requires controller and path to have same name
+  # blacklight_for :catalog
 
-  # add Blacklight catalog -> search routing
-  # Catalog stuff.
+  # add all BL routes locally -- stopgap solution until patch can be submitted
+  # that will allow local app to provide :path option for resources passed as
+  # args to blacklight/lib/blacklight/rails/routes.rb#blacklight_for
+  delete 'bookmarks/clear', :to => 'bookmarks#clear', :as => 'clear_bookmarks'
+  resources :bookmarks
+  get 'search_history', :to => 'search_history#index', :as => 'search_history'
+  delete 'search_history/clear', :to => 'search_history#clear', :as => 'clear_search_history'
+  delete 'saved_searches/clear', :to => 'saved_searches#clear', :as => 'clear_saved_searches'
+  get 'saved_searches', :to => 'saved_searches#index', :as => 'saved_searches'
+  put 'saved_searches/save/:id', :to => 'saved_searches#save', :as => 'save_search'
+  delete 'saved_searches/forget/:id', :to => 'saved_searches#forget', :as => 'forget_search'
+  post 'saved_searches/forget/:id', :to => 'saved_searches#forget'
   get 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
   get 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
-  match 'search/email', :to => 'catalog#email', :as => 'email_catalog', :via => [:get, :post]
-  #match 'search/sms', :as => "sms_catalog"
-  #match 'search/endnote', :as => "endnote_catalog"
-  post 'search/send_email_record', :to => 'catalog#send_email_record', :as => 'send_email_record_catalog'
+  get 'search/email', :as => 'email_catalog'
+  post 'search/email'
   get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   get 'search', :to => 'catalog#index', :as => 'catalog_index'
-  get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
-  get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
-
-  resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update]
+  resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update] do
+    member do
+      post 'track'
+    end
+  end
   # :show and :update are for backwards-compatibility with catalog_url named routes
-  #resources :catalog, :only => [:show, :update]
+  resources :catalog, :only => [:show, :update]
+  # end local BL routes override
+
+  get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
+  get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
 
   #HydraHead.add_routes(self) # deprecated in HH7
 
-  resources :downloads
+  resources :downloads, :only => [:show]
 
   resources :collections, :only => [:index, :show]
   get 'collections/facet/:id', :to => 'collections#facet', :as => 'collections_facet'

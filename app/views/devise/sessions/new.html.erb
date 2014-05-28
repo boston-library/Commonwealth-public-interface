@@ -1,4 +1,4 @@
-<div class="col-md-9">
+<div class="col-sm-9">
   <h2>Sign in</h2>
 
   <div id="signin_wrapper">
@@ -6,14 +6,14 @@
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal', :role => 'form'}) do |f| %>
 
         <div class="form-group">
-          <label class="col-md-2 control-label" for="user_uid">Email</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 control-label" for="user_uid">Email</label>
+          <div class="col-sm-4">
             <%= f.text_field :uid, :class => 'form-control' %>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-2 control-label" for="user_password">Password</label>
-          <div class="col-md-4">
+          <label class="col-sm-2 control-label" for="user_password">Password</label>
+          <div class="col-sm-4">
             <%= f.password_field :password, :class => 'form-control' %>
             <span class="help-block">
               <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
@@ -24,7 +24,7 @@
         </div>
         <% if devise_mapping.rememberable? -%>
             <div class="form-group">
-              <div class="col-md-offset-2 col-md-6">
+              <div class="col-sm-offset-2 col-sm-6">
                 <label id="remember_me" class="checkbox">
                   <%= f.check_box :remember_me %>
                   Remember me on this computer
@@ -34,7 +34,7 @@
 
         <% end -%>
         <div class="form-group">
-          <div class="col-md-offset-2 col-md-4">
+          <div class="col-sm-offset-2 col-sm-4">
             <%# f.submit "Sign in" %>
             <button type="submit" class="btn btn-primary">
               <span>Sign in</span>
@@ -60,7 +60,7 @@
 
   </div>
 </div>
-<div class="col-md-3" id="why_log_in">
+<div class="col-sm-3" id="why_log_in">
   <div class="well">
     <h4>Why sign in?</h4>
     <ul>
