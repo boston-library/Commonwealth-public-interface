@@ -59,8 +59,15 @@
 }
 
 
-
 /* responsive styles */
+
+@media (max-width: 767px) {
+
+  #carousel_wrapper .carousel-inner img {
+    width:100%;
+  }
+
+}
 
 @media (max-width: 480px) {
 

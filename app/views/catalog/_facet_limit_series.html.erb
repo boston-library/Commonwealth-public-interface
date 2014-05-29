@@ -1,27 +1,26 @@
 <div id="documents">
   <% display_facet.items.each do |item| -%>
-        <% series_title = facet_display_value(solr_field, item) %>
-        <div class="col-sm-3 <%= cycle('new_row','','','') %>">
-          <div class="document grid-view thumbnail">
-            <div class="default_index_container">
-              <div class="item_index_thumb">
-                <%# if document[:exemplary_image_ssi] %>
-                    <% thumb = image_tag(datastream_disseminator_url(get_series_image_pid(series_title,@collection_title), 'thumbnail300'),
-                                         :alt => series_title,
-                                         :class => 'index_thumb') %>
-                    <%= link_to thumb,
-                                add_facet_params_and_redirect(solr_field, item) %>
-                <%# end %>
-              </div>
-              <div class="item_index_title">
-                <%= (link_to(series_title, add_facet_params_and_redirect(solr_field, item), :class=> 'facet_select')).html_safe %><!-- <br/>
+      <% series_title = facet_display_value(solr_field, item) %>
+      <div class="col-sm-3 <%= cycle('new_row','','','') %>">
+        <div class="document grid-view thumbnail">
+          <div class="default_index_container">
+            <div class="item_index_thumb">
+              <%# if document[:exemplary_image_ssi] %>
+              <% thumb = image_tag(datastream_disseminator_url(get_series_image_pid(series_title,@collection_title), 'thumbnail300'),
+                                   :alt => series_title,
+                                   :class => 'index_thumb') %>
+              <%= link_to thumb,
+                          add_facet_params_and_redirect(solr_field, item) %>
+              <%# end %>
+            </div>
+            <div class="item_index_title">
+              <%= (link_to(series_title, add_facet_params_and_redirect(solr_field, item), :class=> 'facet_select')).html_safe %><!-- <br/>
                 <span class="series_facet_count">
                   <%# render_facet_count(item.hits) + ' items' %>
                 </span> -->
-              </div>
             </div>
           </div>
         </div>
+      </div>
   <% end %>
-  </ul>
 </div>

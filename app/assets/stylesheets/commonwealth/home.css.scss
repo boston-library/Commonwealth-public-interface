@@ -74,15 +74,22 @@
 
     #hero_search {
       height: 287px;
-    }
 
-    #hero_search h2 {
-      font-size: 31.5px;
-      line-height: 35px;
-      padding: 20px 0 10px 10px;
+      #hero_search_headline {
+        width:81%;
+
+        h2 {
+          font-size: 31.5px;
+          line-height: 35px;
+          padding: 30px 0 10px 10px;
+        }
+
+      }
+
     }
 
   }
+
 }
 
 /* Portrait tablet to landscape and desktop */
@@ -91,17 +98,33 @@
   #content_home {
 
     #hero_search {
-      height: 150px;
+      height: 179px;
 
-      h2 {
-        font-size: 17.5px;
-        line-height: 20px;
-        padding: 10px 0 0 7px;
+      #hero_search_headline {
+        width:81%;
+
+        h2 {
+          font-size: 20px;
+          line-height: 20px;
+          padding: 10px 0 0 7px;
+        }
+
       }
 
-      select {
-        display:none;
+      #hero_search_form {
+
+        #search_field {
+          display:none;
+        }
+
+        #q {
+          border-bottom-left-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+
       }
+
+
 
     }
 
@@ -117,9 +140,40 @@
     #hero_search {
       margin-bottom: 20px;
       height: auto;
+      margin-left: 15px;
+      width: 95%;
+
+      #hero_search_headline {
+        width:81%;
+
+        h2 {
+          padding: 25px 0 0 5px;
+        }
+
+      }
+
+      #hero_search_form {
+        padding-top: 0;
+      }
+
+    }
+
+    #content_home_browse {
+      margin-top: 10px;
+
+      h4 {
+        font-size:24px;
+      }
+
+      img.media-object {
+        width: 70px;
+      }
+
     }
 
   }
+
+
 
 }
 
@@ -130,16 +184,31 @@
 
     #hero_search {
       margin-bottom: 20px;
+      padding-bottom: 10px;
       height: auto;
 
-      h2 {
-        font-size: 14px;
-        line-height: 20px;
-        padding: 0 0 0 5px;
+      #hero_search_headline {
+
+        h2 {
+          font-size: 16px;
+          line-height: 20px;
+          padding: 15px 0 0 5px;
+        }
+
       }
 
       #hero_search_form {
         padding-top: 0;
+
+        #search_field {
+          display:none;
+        }
+
+        #q {
+          border-bottom-left-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+
       }
 
     }

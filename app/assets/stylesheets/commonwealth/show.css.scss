@@ -325,6 +325,10 @@ div#img_viewer_modal {
     float:left;
   }
 
+  #multi_img_pane {
+    width: 100%;
+  }
+
   #img_show_container {
     min-height: 300px;
   }
@@ -337,6 +341,22 @@ div#img_viewer_modal {
 
   }
 
+  #item_metadata {
+    float: left;
+    width:100%;
+    padding: 0 0 1.5em 0;
+
+    h3 {
+      padding-left:10px;
+    }
+
+    dl.defList {
+      width: 97%;
+      padding-left:10px;
+    }
+
+  }
+
 }
 
 /* Landscape phones and down */
@@ -344,6 +364,25 @@ div#img_viewer_modal {
 
   #img_show_container {
     min-height: 200px;
+  }
+
+  #previousNextDocument {
+    font-size:12px;
+
+    .page_links {
+      float: left;
+    }
+
+    .search-widgets {
+      float: left !important;
+
+      a {
+        font-size:12px;
+        padding: 5px 10px;
+      }
+
+    }
+
   }
 
 }

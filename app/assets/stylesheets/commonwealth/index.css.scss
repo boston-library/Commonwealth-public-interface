@@ -237,5 +237,56 @@ div.item_index_title {
 }
 
 
+/* responsive styles */
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+
+  #sortAndPerPage {
+
+    .page_links {
+      font-size: 12px;
+    }
+
+    #sort-dropdown button, #per_page-dropdown button, .view-type-group a  {
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 5px 10px;
+    }
+
+  }
+
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #sortAndPerPage {
+
+    .page_links {
+      font-size: 12px;
+    }
+
+    #sort-dropdown button, #per_page-dropdown button, .view-type-group a  {
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 5px 10px;
+    }
+
+  }
+
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+
+  #sortAndPerPage {
+
+    .search-widgets {
+      float:left !important;
+    }
+
+  }
+
+}
 

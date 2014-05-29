@@ -13,7 +13,6 @@ div.collections-list {
   }
 
   #documents {
-    float:left;
     margin-top: 15px;
 
     div.list-view {
@@ -131,7 +130,7 @@ h4.collection-provenance {
       display: none;
     }
 
-    #facet-related_item_series_ssim {
+    #facet-related_item_series_ssim_thumb-list {
       display:block;
 
       .panel-body {
@@ -255,15 +254,6 @@ h4.collection-provenance {
   .blacklight-collection #facets {
     margin-top: 1em;
 
-    div.top-panel-heading {
-      padding: 10px 15px;
-
-      h4 {
-        margin-top: 10px;
-      }
-
-    }
-
     div.blacklight-related_item_series_ssim {
       display: block;
     }
@@ -275,29 +265,9 @@ h4.collection-provenance {
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
-  #collection_img {
-    width: 100%;
-    margin: 0 0 1em 0;
-    float: none;
-  }
-
-  #collection_search_tools {
-    width:95%;
-    float:none;
-
-    #collection_view_all {
-      padding-top: 2.5em;
+  #collection_view_all {
+      padding-top: 45px;
     }
-
-  }
-
-  #series_wrapper {
-    display: none;
-  }
-
-  #facets div.blacklight-related_item_series_ssim {
-    display: block;
-  }
 
 }
 

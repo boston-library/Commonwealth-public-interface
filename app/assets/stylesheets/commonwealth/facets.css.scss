@@ -33,3 +33,27 @@
 
 }
 
+/* responsive styles */
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+  #sidebar, #facets {
+    padding-bottom: 0;
+  }
+
+  #facets {
+
+    div.top-panel-heading {
+      padding: 2px 15px;
+
+      h4 {
+        margin-top: 10px;
+      }
+
+    }
+
+  }
+
+}
+
