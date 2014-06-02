@@ -2,6 +2,20 @@
 
 @import 'cmmnwlth_defaults';
 
+/* don't show the search icon on home page */
+body.blacklight-home {
+
+  #header-navbar .navbar-header #nav_collapse_button {
+    padding-left: 8px;
+
+    .glyphicon-search {
+      display: none;
+    }
+
+  }
+
+}
+
 #content_home {
   padding-top: 13px;
 
@@ -33,6 +47,7 @@
         border-bottom-left-radius: 4px;
         border-top-left-radius: 4px;
         text-align: left;
+        height: 34px;
       }
 
     }
@@ -154,6 +169,7 @@
 
       #hero_search_form {
         padding-top: 0;
+        width:75%;
       }
 
     }

@@ -9,5 +9,5 @@ $(document).ready(function() {
     */
     /* auto-expand all facets */
     facet_div.find('div.collapse-toggle').removeClass('collapsed');
-    facet_div.find('div.facet-content').show();
+    facet_div.find('div.facet-content').addClass('in');
 });

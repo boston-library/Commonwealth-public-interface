@@ -46,17 +46,12 @@ h4.suggest {
   background-color: #F5F5F5;
   border: 1px solid #E3E3E3;
 
-  /*
-  > .page_links {
-    padding: 0 12px 0 0;
-    float: left;
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color:#FFFFFF;
+    background-color: $dropdown-hover-background;
+    background-image: linear-gradient(to bottom, $dropdown-hover-background-gradient-start, $dropdown-hover-background-gradient-end);
+    background-repeat: repeat-x;
   }
-
-  #per_page-dropdown {
-    padding-left: 1em;
-    float: right;
-  }
-  */
 
 }
 
@@ -282,7 +277,7 @@ div.item_index_title {
 
   #sortAndPerPage {
 
-    .search-widgets {
+    .page_links, .search-widgets {
       float:left !important;
     }
 

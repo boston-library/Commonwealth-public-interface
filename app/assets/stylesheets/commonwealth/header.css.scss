@@ -73,8 +73,11 @@
           padding: 0.4em 0 0 0.7em;
 
           input {
-            padding: 0 0 0 0.2em;
+            padding: 0 0 0 4px;
             width: 120px;
+            border-bottom-left-radius: 3px;
+            border-top-left-radius: 3px;
+            height: 20px;
           }
 
           .submit-search-text {
@@ -152,10 +155,9 @@
 
         > li > a:hover {
           color:#FFFFFF;
-          background-color: #0081C2;
-          background-image: linear-gradient(to bottom, #0088CC, #0077B3);
+          background-color: $dropdown-hover-background;
+          background-image: linear-gradient(to bottom, $dropdown-hover-background-gradient-start, $dropdown-hover-background-gradient-end);
           background-repeat: repeat-x;
-
         }
 
       }
@@ -174,7 +176,7 @@
 
 /* styles for expanded nav */
 
-.navbar-collapse.in.collapse {
+.navbar-collapse.in.collapse, .navbar-collapse.collapsing {
   background-color: #f2f2f2;
   @include rounded-corners(0 0 5px 5px);
   box-shadow: 3px 5px 5px rgba(0, 0, 0, 0.3);
@@ -187,7 +189,7 @@
   left: 7px;
   top: 9px;
   width: 98%;
-  z-index: 2;
+  z-index: 12;
 }
 
 .navbar-collapse {
@@ -259,31 +261,36 @@
 
     .navbar-header {
 
-      #user-util-links {
+      #user-util-collapse {
+          width:93%;
 
-        #util-links-nologin, #header-search {
-          display: block;
-        }
+        #user-util-links {
 
-        #header-search {
-          margin-bottom: 20px;
+          #util-links-nologin, #header-search {
+            display: block;
+          }
 
-          form.header-search-form {
-            margin-left: 190px;
+          #header-search {
+            margin-bottom: 20px;
+
+            form.header-search-form {
+              margin-left: 112px;
+            }
+
           }
 
         }
 
-      }
+        .navbar .nav {
+          text-align: right;
 
-      .navbar .nav {
-        text-align: right;
+          > li, li.last_nav {
+            float: none;
 
-        > li, li.last_nav {
-          float: none;
+            > a {
+              padding: 4px 0;
+            }
 
-          > a {
-            padding: 4px 0;
           }
 
         }
