@@ -30,8 +30,9 @@ CommonwealthPublicInterface::Application.routes.draw do
   post 'saved_searches/forget/:id', :to => 'saved_searches#forget'
   get 'search/opensearch', :to => 'catalog#opensearch', :as => 'opensearch_catalog'
   get 'search/citation', :to => 'catalog#citation', :as => 'citation_catalog'
-  get 'search/email', :as => 'email_catalog'
-  post 'search/email'
+  #get 'search/email', :as => 'email_catalog'
+  #post 'search/email'
+  match 'search/email', :to => 'catalog#email', :as => 'email_catalog', :via => [:get, :post]
   get 'search/facet/:id', :to => 'catalog#facet', :as => 'catalog_facet'
   get 'search', :to => 'catalog#index', :as => 'catalog_index'
   resources :solr_document, :path => 'search', :controller => 'catalog', :only => [:show, :update] do

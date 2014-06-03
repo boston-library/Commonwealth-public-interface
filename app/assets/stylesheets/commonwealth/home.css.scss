@@ -159,7 +159,8 @@ body.blacklight-home {
       width: 95%;
 
       #hero_search_headline {
-        width:81%;
+        width:82%;
+        text-align: center;
 
         h2 {
           padding: 25px 0 0 5px;
@@ -227,6 +228,10 @@ body.blacklight-home {
           #q {
             border-bottom-left-radius: 4px;
             border-top-left-radius: 4px;
+          }
+
+          .submit-search-text {
+            display: none;
           }
 
         }

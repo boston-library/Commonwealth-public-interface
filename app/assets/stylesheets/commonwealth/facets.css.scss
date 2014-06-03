@@ -61,6 +61,21 @@
 
 /* responsive styles */
 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  #facets {
+
+    div.top-panel-heading {
+      margin-bottom: 0;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+  }
+
+}
+
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
