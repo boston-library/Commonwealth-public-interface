@@ -11,7 +11,7 @@ module CatalogHelper
         download_links << link_to(file_name_ext[0],
                                   download_path(file['id'],:datastream_id => 'productionMaster')                                  ,
                                   :target => '_blank',
-                                  :class => link_class) + ' (' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')'
+                                  :class => link_class) + content_tag(:span, '(' + file_name_ext[1].upcase + ', ' + number_to_human_size(object_profile_json["datastreams"]["productionMaster"]["dsSize"]) + ')', :class => 'download_info')
       end
     end
     download_links

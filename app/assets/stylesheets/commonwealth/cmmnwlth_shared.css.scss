@@ -20,6 +20,7 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
 }
 
 .flash_messages {
+  margin-top: 10px;
 
   .alert {
     padding: 5px 8px;
@@ -37,6 +38,7 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
   margin-top: 5px;
 
   ul.breadcrumb {
+    background: none;
     padding: 0;
     margin: 0 0 10px;
     font-size: 12px;

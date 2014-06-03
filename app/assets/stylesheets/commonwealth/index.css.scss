@@ -31,6 +31,21 @@ body.blacklight-catalog-index {
       background-color: #E2EDFE;
     }
 
+    /* need to use background image here rather than CSS 'content'
+    /* which doesn't work in iOS */
+    .filterName {
+      background: url('../blacklight/separator.gif') no-repeat right center;
+      padding-right:14px;
+
+      &:after {
+        content:'';
+        padding-left: 2px;
+      }
+
+    }
+
+
+
   }
 
 }
@@ -141,7 +156,7 @@ div.item_index_title {
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 991px) {
 
   #documents div.grid-view div.item_index_thumb {
     height: 150px;
@@ -235,7 +250,7 @@ div.item_index_title {
 /* responsive styles */
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 991px) {
 
   #sortAndPerPage {
 
@@ -279,6 +294,10 @@ div.item_index_title {
 
     .page_links, .search-widgets {
       float:left !important;
+    }
+
+    .view-type-group {
+      display: none;
     }
 
   }

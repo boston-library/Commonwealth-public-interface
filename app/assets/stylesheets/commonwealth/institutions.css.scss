@@ -17,9 +17,7 @@ div.institutions-list {
   }
 
   #documents {
-    float:left;
     margin-top: 15px;
-    width: 100%;
 
     div.list-view {
       margin-bottom: 10px;
@@ -123,7 +121,7 @@ div.blacklight-institution {
 
   /* Portrait tablet to landscape and desktop */
 
-  @media (min-width: 768px) and (max-width: 979px) {
+  @media (min-width: 768px) and (max-width: 991px) {
 
     img.institution_img_show {
       max-width: 35%;
@@ -140,7 +138,7 @@ div.blacklight-institution {
   @media (max-width: 767px) {
 
     #institution_search_tools {
-      width:65%;
+      width:70%;
 
       #institution_search_form {
         padding: 0 1em .5em 0;

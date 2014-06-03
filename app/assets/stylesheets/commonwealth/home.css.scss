@@ -108,7 +108,7 @@ body.blacklight-home {
 }
 
 /* Portrait tablet to landscape and desktop */
-@media (min-width: 768px) and (max-width: 979px) {
+@media (min-width: 768px) and (max-width: 991px) {
 
   #content_home {
 
@@ -202,6 +202,7 @@ body.blacklight-home {
       margin-bottom: 20px;
       padding-bottom: 10px;
       height: auto;
+      width: 91%;
 
       #hero_search_headline {
 
@@ -216,14 +217,21 @@ body.blacklight-home {
       #hero_search_form {
         padding-top: 0;
 
-        #search_field {
-          display:none;
+        form.search-query-form {
+          padding-top: 0;
+
+          #search_field {
+            display:none;
+          }
+
+          #q {
+            border-bottom-left-radius: 4px;
+            border-top-left-radius: 4px;
+          }
+
         }
 
-        #q {
-          border-bottom-left-radius: 4px;
-          border-top-left-radius: 4px;
-        }
+
 
       }
 
