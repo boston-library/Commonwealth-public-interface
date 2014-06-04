@@ -23,6 +23,9 @@
 // require bootstrap-dropdown
 //= require bootstrap/carousel
 
+// for IE8 responsiveness
+//= require respond/respond.min
+
 //= require blacklight_google_analytics/blacklight_google_analytics
 
 //= require commonwealth/disable_dropdown_nav.js
