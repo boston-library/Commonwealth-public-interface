@@ -178,6 +178,8 @@ en:
 
     images:
           zoom: 'Click to zoom in on this image.'
+          next: 'View next image'
+          prev: 'View previous image'
 
     institutions:
           browse:

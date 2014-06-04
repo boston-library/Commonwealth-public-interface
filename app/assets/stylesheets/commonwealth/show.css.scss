@@ -137,13 +137,14 @@ body.blacklight-catalog-show #header-navbar {
     top: 48%;
     opacity: 0.15;
     line-height: 21px;
-    font-size:50px;
+    font-size: 30px;
+    font-weight: bold;
     height: 30px;
     width: 30px;
     left: 5px;
     border-radius: 23px;
     background: none repeat scroll 0 0 #222222;
-    padding-right: 2px;
+    padding-right: 1px;
 
     .glyphicon-chevron-left {
       margin-left: -17px;
@@ -154,7 +155,7 @@ body.blacklight-catalog-show #header-navbar {
       left: auto;
       right: 5px;
       padding-right: 0;
-      padding-left: 3px;
+      padding-left: 2px;
     }
 
     // Hover/focus state
