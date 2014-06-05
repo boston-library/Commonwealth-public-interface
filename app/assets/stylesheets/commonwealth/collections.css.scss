@@ -212,6 +212,15 @@ h4.collection-provenance {
   #collection_search_tools {
     width:97%;
     float:left;
+
+    #collection_search_form {
+
+      input {
+        width: 100%;
+      }
+
+    }
+
   }
 
   #series_wrapper {
@@ -245,6 +254,16 @@ h4.collection-provenance {
   #collection_search_tools {
     width:97%;
     float:none;
+
+    #collection_search_form {
+      width:289px;
+
+      input {
+        width: 100%;
+      }
+
+    }
+
   }
 
   #series_wrapper {
@@ -265,9 +284,23 @@ h4.collection-provenance {
 /* Landscape phones and down */
 @media (max-width: 480px) {
 
-  #collection_view_all {
+  #collection_search_tools {
+
+    #collection_search_form {
+
+      input {
+        width: 100%;
+      }
+
+    }
+
+    #collection_view_all {
       padding-top: 45px;
     }
+
+  }
+
+
 
 }
 

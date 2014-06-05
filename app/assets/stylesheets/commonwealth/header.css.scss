@@ -235,6 +235,24 @@
 
     .navbar-header {
 
+      #user-util-collapse {
+
+        #user-util-links {
+
+          #header-search {
+            float:none;
+            width:30%;
+
+            input {
+              width:100%;
+            }
+
+          }
+
+        }
+
+      }
+
       .navbar .nav {
 
         > li.dropdown > a.active  {
@@ -266,25 +284,24 @@
 
         #user-util-links {
 
-          #util-links-nologin, #header-search {
+          #util-links-nologin {
             display: block;
           }
 
           #header-search {
-            margin-bottom: 20px;
+            float:none;
+            width:43%;
 
-            form.header-search-form {
-              margin-left: 252px;
-              float:right;
-
-              div.input-group {
-                /* width: 146px; */
-              }
-
+            input {
+              width:100%;
             }
 
           }
 
+        }
+
+        #header_main_nav {
+          padding-top:13px;
         }
 
         .navbar .nav {

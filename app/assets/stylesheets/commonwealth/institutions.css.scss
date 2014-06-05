@@ -142,6 +142,12 @@ div.blacklight-institution {
 
       #institution_search_form {
         padding: 0 1em .5em 0;
+        width: 301px;
+
+        input {
+          width:100%;
+        }
+
       }
 
     }
@@ -166,9 +172,11 @@ div.blacklight-institution {
 
       #institution_search_form {
         padding: 0 1em .5em 0;
+        width: 100%;
 
         input {
-          width: 200px;
+          width: 100%;
+          font-size: 11px;
         }
 
       }
