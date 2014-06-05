@@ -2,14 +2,14 @@
 
 @import 'cmmnwlth_defaults';
 
-#advanced_search {
+#advanced_search_wrapper {
+  margin-top: 20px;
 
   #advanced_search_fields {
 
     .advanced_search_field {
-      padding-bottom:5px;
       margin-left: 0;
-      float: left;
+      margin-bottom:5px;
 
       .search_index_select {
         text-align: left;
@@ -17,7 +17,7 @@
       }
 
       #advanced_operators {
-        padding-left:125px;
+        padding-left:32px;
       }
 
     }
@@ -37,12 +37,30 @@
     #date_range_limit {
       padding-bottom: 20px;
 
-      #date_range_start_label, #date_range_end_label {
-        font-weight: normal;
-        padding-right: 4px;
-        font-size: 12px;
+      .input-group {
+        float:left;
+        margin-right: 5px;
+
+        label {
+          font-weight: normal;
+          padding-right: 4px;
+          font-size: 12px;
+          background: none;
+          border: none;
+
+        }
+
+        input {
+          border-bottom-left-radius: 4px;
+          border-top-left-radius: 4px;
+        }
+
       }
 
+      #date_range_start_label, #date_range_end_label {
+
+      }
+      /*
       #date_range_start_label {
         width: 25px;
       }
@@ -50,11 +68,7 @@
       #date_range_end_label {
         width: 30px;
       }
-
-      .input-group input {
-        @include rounded-corners(4px);
-      }
-
+      */
     }
 
     .facet_scrollbox_wrapper {
@@ -108,6 +122,7 @@
 /* responsive styles */
 
 /* Landscape phone to portrait tablet (iPad) */
+
 @media (max-width: 767px) {
 
   #advanced_search {

@@ -82,8 +82,8 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
-    blacklight_advanced_search (5.0.0)
-      blacklight (>= 5.1, < 6.0)
+    blacklight_advanced_search (5.1.0)
+      blacklight (>= 5.2, < 6.0)
       parslet
     blankslate (2.1.2.4)
     block_helpers (0.3.3)
@@ -271,7 +271,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    parslet (1.5.0)
+    parslet (1.6.1)
       blankslate (~> 2.0)
     pg (0.17.1)
     polyglot (0.3.4)
@@ -427,7 +427,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.4.0)
-  blacklight_advanced_search (= 5.0.0)
+  blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms
   bpl-institution-management!
