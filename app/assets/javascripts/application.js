@@ -23,6 +23,9 @@
 // require bootstrap-dropdown
 //= require bootstrap/carousel
 
+// bootstrap-accessibility-plugin
+//= require bootstrap-accessibility-plugin/bootstrap-accessibility.min
+
 // for IE8 responsiveness
 //= require respond/respond.min
 

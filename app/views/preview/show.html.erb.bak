@@ -1,3 +1,0 @@
-
-<%# datastream_disseminator_url(@image_pid, "thumbnail300") %>
-<%# @doc.inspect %>

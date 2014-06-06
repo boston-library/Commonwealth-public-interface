@@ -6,12 +6,12 @@
       <%= render_hash_as_hidden_fields(params_for_search(:f => {'institution_name_ssim' => [document[blacklight_config.index.title_field.to_sym]]}).except('q', 'search_field', 'qt', 'page')) %>
 
       <div class="input-group pull-left">
-        <label for="q" class="sr-only"><%= t('blacklight.search.form.institution') %></label>
+        <label for="q_inst" class="sr-only"><%= t('blacklight.search.form.institution') %></label>
         <%= text_field_tag :q,
                            params[:q],
                            :placeholder => t('blacklight.search.form.institution'),
                            :class => 'search_q q form-control',
-                           :id => 'q',
+                           :id => 'q_inst',
                            :autofocus => true %>
         <span class="input-group-btn">
           <button type="submit" class="btn btn-primary search-btn" id="institution-search">

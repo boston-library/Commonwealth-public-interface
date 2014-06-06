@@ -22,6 +22,9 @@ class CatalogController < ApplicationController
       :rows => 20
     }
 
+    #set default per-page
+    config.default_per_page = 20
+
     # solr field configuration for search results/index views
     config.index.title_field = 'title_info_primary_tsi'
     config.index.display_type_field = 'active_fedora_model_suffix_ssi'
