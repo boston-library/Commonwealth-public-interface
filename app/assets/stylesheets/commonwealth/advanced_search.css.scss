@@ -57,41 +57,34 @@
 
       }
 
-      #date_range_start_label, #date_range_end_label {
-
-      }
-      /*
-      #date_range_start_label {
-        width: 25px;
-      }
-
-      #date_range_end_label {
-        width: 30px;
-      }
-      */
-    }
-
-    .facet_scrollbox_wrapper {
-      padding: 10px 19px 10px 0;
-      width: 345px;
     }
 
     .facet_limit_scrollbox {
       max-height: 130px;
       min-height: 50px;
       overflow-y: auto;
-      width: 345px;
       -webkit-overflow-scrolling:touch;
 
-      ul {
-        padding-top: 0;
+      ul.facet-values {
 
         li {
-          padding-bottom: .2em;
 
-          label.checkbox {
+          .facet-checkbox {
+
+            input[type="checkbox"] {
+              vertical-align: bottom;
+            }
+
+          }
+
+          .label-and-count {
             font-size: 12px;
-            margin-bottom: 0;
+
+            .facet-label {
+              text-indent: -20px;
+              padding-bottom: 4px;
+            }
+
           }
 
         }
@@ -112,6 +105,12 @@
 
     ul.advanced_help {
       font-size: 12px;
+      padding-left: 24px;
+
+      li {
+        padding-bottom:10px;
+      }
+
     }
 
   }
@@ -125,38 +124,11 @@
 
 @media (max-width: 767px) {
 
-  #advanced_search {
+  #advanced_search_wrapper {
 
-    #advanced_search_fields {
-
-      .advanced_search_field {
-
-        .advanced_input_text {
-          width:200px;
-        }
-
-        .search_index_select {
-          width: 102px;
-        }
-
-        #advanced_operators {
-          padding-left:0px;
-        }
-
-      }
-
-    }
-
-    #advanced_search_limits {
-
-      .facet_scrollbox_wrapper {
-        width: 230px;
-      }
-
-      .facet_limit_scrollbox {
-        width: 225px;
-      }
-
+    #advanced_search_help {
+      float:left;
+      margin-top:20px;
     }
 
   }
