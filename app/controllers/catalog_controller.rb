@@ -207,7 +207,7 @@ class CatalogController < ApplicationController
     #config.view = {:grid => {:title => 'Grid', :default => true, :icon_class => 'glyphicon-th-large' }, :list => {:title => 'List'}}
     config.view.grid.title = 'Grid'
     config.view.grid.default = true
-    config.view.grid.icon_class = 'glyphicon-th'
+    config.view.grid.icon_class = 'glyphicon-th-large'
 
 
     # advanced search facet limits

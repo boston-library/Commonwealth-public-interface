@@ -59,30 +59,35 @@
 
     }
 
-    .facet_limit_scrollbox {
-      max-height: 130px;
-      min-height: 50px;
-      overflow-y: auto;
-      -webkit-overflow-scrolling:touch;
+    .facet_scrollbox_wrapper {
+      background-color: #FFFFFF;
 
-      ul.facet-values {
+      .facet_limit_scrollbox {
+        max-height: 130px;
+        min-height: 50px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling:touch;
 
-        li {
+        ul.facet-values {
 
-          .facet-checkbox {
+          li {
 
-            input[type="checkbox"] {
-              vertical-align: bottom;
+            .facet-checkbox {
+
+              input[type="checkbox"] {
+                vertical-align: bottom;
+              }
+
             }
 
-          }
+            .label-and-count {
+              font-size: 12px;
 
-          .label-and-count {
-            font-size: 12px;
+              .facet-label {
+                text-indent: -20px;
+                padding-bottom: 4px;
+              }
 
-            .facet-label {
-              text-indent: -20px;
-              padding-bottom: 4px;
             }
 
           }
