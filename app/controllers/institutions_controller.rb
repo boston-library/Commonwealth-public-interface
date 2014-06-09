@@ -18,7 +18,7 @@ class InstitutionsController < CatalogController
   def institutions_filter(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Institution\""
-    solr_parameters[:rows] = 50
+    solr_parameters[:rows] = params[:per_page].presence || 50
   end
 
   def index
@@ -53,27 +53,4 @@ class InstitutionsController < CatalogController
 
   end
 
-  #maybe don't need this anymore?
-=begin
-  # copied from Blacklight::Catalog
-  # displays values and pagination links for a single facet field
-  def facet
-    @facet = blacklight_config.facet_fields[params[:id]]
-    @response = get_facet_field_response(@facet.field, params)
-    @display_facet = @response.facets.first
-
-    # @pagination was deprecated in Blacklight 5.1
-    @pagination = facet_paginator(@facet, @display_facet)
-
-
-    respond_to do |format|
-      # Draw the facet selector for users who have javascript disabled:
-      format.html
-      format.json { render json: render_facet_list_as_json }
-
-      # Draw the partial for the "more" facet modal window:
-      format.js { render :layout => false }
-    end
-  end
-=end
 end
