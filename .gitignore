@@ -36,6 +36,7 @@ role_map_development.yml
 role_map_production.yml
 role_map_test.yml
 google_analytics.yml
+contact_emails.yml
 
 # Files to ignore by default in Git #
 #####################################
