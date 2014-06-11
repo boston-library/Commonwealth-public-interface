@@ -111,7 +111,7 @@ module CatalogHelper
 
   def create_thumb_img_element(document, img_class=[])
     image_classes = img_class.join(' ')
-    if document[:exemplary_image_ssi]
+    if document[:exemplary_image_ssi] and !document[blacklight_config.flagged_field.to_sym]
       image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
                 :alt => document[blacklight_config.index.title_field.to_sym],
                 :class => image_classes)
