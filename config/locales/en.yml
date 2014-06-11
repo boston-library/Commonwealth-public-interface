@@ -79,10 +79,10 @@ en:
           form:
             title: 'Email'
             message: 'Comments:'
-          reply_to: 'repo-admin@digitalcommonealth.org'
+          reply_to: 'admin@digitalcommonealth.org'
           record_mailer:
             name: 'Digital Commonwealth'
-            email: 'repository@repository.digitalcommonwealth.org'
+            email: 'admin@digitalcommonwealth.org'
           text:
             subject:
               one: 'Digital Commonwealth E-mail: link to item'
