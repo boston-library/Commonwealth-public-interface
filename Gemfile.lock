@@ -450,6 +450,7 @@ DEPENDENCIES
   devise-guests (~> 0.3)
   djatoka
   execjs
+  hydra-derivatives
   hydra-head (= 7.0.0)
   hydra-ldap
   hydra-role-management

@@ -8,6 +8,7 @@ describe Notifier do
       @test_params = {
           :name => "Testy McGee",
           :email => "testy@example.com",
+          :topic => "image reproduction",
           :message => "Test message"
       }
       @test_feedback_email = Notifier.feedback(@test_params)
@@ -22,7 +23,7 @@ describe Notifier do
     end
 
     it "should have the right receiver email address" do
-      @test_feedback_email.to.should == [I18n.t('blacklight.repo-admin.email')]
+      @test_feedback_email.to[0].should == CONTACT_EMAILS['image_requests']
     end
 
   end
