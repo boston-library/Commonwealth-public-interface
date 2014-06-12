@@ -7,6 +7,28 @@ body.blacklight-catalog-show #header-navbar {
   z-index: 100;
 }
 
+#flagged_warning {
+
+  .modal-dialog {
+    margin: 150px auto;
+
+    h4.modal-title {
+      font-weight: bold;
+    }
+
+    .modal-body {
+      font-size:20px;
+      padding: 20px 100px;
+    }
+
+  }
+
+}
+/*
+.modal-backdrop.in, .no-js #sidebar .modal-backdrop.collapse {
+  opacity: 0.86;
+}
+*/
 #previousNextDocument {
   margin-top: 7px;
   @include rounded-corners(3px);

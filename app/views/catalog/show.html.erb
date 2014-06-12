@@ -1,3 +1,6 @@
+<% if @document[blacklight_config.flagged_field.to_sym] %>
+    <%= render :partial => 'catalog/_show_partials/show_flagged_notice' %>
+<% end %>
 
   <div id="content" class="col-sm-12 show-document">
 

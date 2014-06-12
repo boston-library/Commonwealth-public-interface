@@ -22,7 +22,9 @@
   <%# show thumbnail or icon if object has no images %>
   <% unless @image_files %>
       <div id="thumb_img_show_container" class="col-sm-3">
-        <%= create_thumb_img_element(@document, %w(thumb_img_show)) %>
+        <%= create_thumb_img_element(@document,
+                                     %w(thumb_img_show),
+                                     params[:action]) %>
       </div>
   <% end %>
 

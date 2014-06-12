@@ -1,6 +1,8 @@
 <div class="row">
   <div id="thumb_img_show_container" class="col-sm-3">
-    <%= link_to(create_thumb_img_element(@document, %w(thumb_img_show)),
+    <%= link_to(create_thumb_img_element(@document,
+                                         %w(thumb_img_show),
+                                         params[:action]),
                 @document[:identifier_uri_ss],
                 :target => '_blank',
                 :title => t('blacklight.oai_objects.link_to_item',
