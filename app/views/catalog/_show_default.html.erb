@@ -1,12 +1,12 @@
 <%# show the object image(s)/file(s) and metadata %>
 
-<% @image_files = has_image_files?(@object_files) %>
-<% if @image_files %>
-    <% case @image_files.length %>
+<% image_files = has_image_files?(@object_files) %>
+<% if image_files %>
+    <% case image_files.length %>
         <% when 1 %>
             <%= render :partial => 'catalog/_show_partials/show_default_img',
                        :locals => {:document => @document,
-                                   :image_pid => @image_files.first,
+                                   :image_pid => image_files.first,
                                    :page_sequence => {:total => 1}} %>
         <%# when 2..7 %>
         <% else %>
@@ -20,7 +20,7 @@
 <div class="row">
 
   <%# show thumbnail or icon if object has no images %>
-  <% unless @image_files %>
+  <% unless image_files %>
       <div id="thumb_img_show_container" class="col-sm-3">
         <%= create_thumb_img_element(@document,
                                      %w(thumb_img_show),
@@ -28,8 +28,12 @@
       </div>
   <% end %>
 
-  <% # metadata display -%>
-  <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+  <div class="<%= params[:action]%>_details col-sm-9">
+
+    <% # metadata display -%>
+    <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
+
+  </div>
 
   <div id="sidebar" class="col-sm-3">
     <%# render files to download %>
