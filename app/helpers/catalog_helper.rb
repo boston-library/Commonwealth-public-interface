@@ -17,37 +17,21 @@ module CatalogHelper
     download_links
   end
 
-  # render a thumbnail, with a link if it's an OAIObject
   def create_thumb_img_element(document, img_class=[], action=nil)
     image_classes = img_class.join(' ')
-    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || (action && action == 'show'))
-      img = image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
+    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || action == 'show')
+      image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
                 :alt => document[blacklight_config.index.title_field.to_sym],
                 :class => image_classes)
     elsif document[:type_of_resource_ssim]
-      img = render_object_icon(document[:type_of_resource_ssim].first, image_classes)
+      render_object_icon(document[:type_of_resource_ssim].first, image_classes)
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-      img = image_tag('dc_collection-icon.png',
+      image_tag('dc_collection-icon.png',
                 :alt => document[blacklight_config.index.title_field.to_sym],
                 :class => image_classes)
     else
-      img = render_object_icon(nil, image_classes)
+      render_object_icon(nil, image_classes)
     end
-
-    if document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject'
-      content = []
-      content << link_to(img,
-                         document[:identifier_uri_ss],
-                         :target => '_blank',
-                         :title => t('blacklight.oai_objects.link_to_item',
-                                     :institution_name => document[:institution_name_ssim].first))
-      content << render(:partial => 'catalog/_show_partials/show_oai_item_link',
-          :locals => {:document => document})
-      content.join("\n").html_safe
-    else
-      img
-    end
-
   end
 
   def extra_body_classes
@@ -130,7 +114,7 @@ module CatalogHelper
     prefix << 'c' if date_type == 'copyrightDate'
     if date_end && date_end != 'nil'
       date_start_suffix = '?' if date_qualifier == 'questionable'
-      prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.fields.date.date_range_connector') + normalize_date(date_end) + suffix
+      prefix + normalize_date(date_start) + date_start_suffix + t('blacklight.metadata_display.date_range_connector') + normalize_date(date_end) + suffix
     else
       prefix + normalize_date(date_start) + suffix
     end

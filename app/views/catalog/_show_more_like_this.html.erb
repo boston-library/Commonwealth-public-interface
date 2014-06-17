@@ -1,6 +1,15 @@
-<li class="more_like_this_document">
-  <span class="mlt_title">
-    <%= link_to_document document,
-                         :label=>document_show_link_field(document) %>
-  </span>
-</li>
+<div class="more_like_this_document col-sm-3">
+  <%= link_to(create_thumb_img_element(document, %w(mlt_thumb)),
+              url_for_document(document),
+              :class => 'mlt_thumb_link thumbnail',
+              :title => document[blacklight_config.index.title_field.to_sym]
+      )
+  %>
+  <%= link_to_document(document,
+                       :label => truncate(document[blacklight_config.index.title_field.to_sym],
+                                          :length => 70,
+                                          :separator => ' ',
+                                          :omission => ' ...'),
+                       :class => 'mlt_title_link'
+                       ) %>
+</div>

@@ -202,9 +202,44 @@ en:
           title: 'Institutions'
 
     metadata_display:
+          date_range_connector: '–'
           fields:
-            date:
-              date_range_connector: '–'
+            abstract: 'Description'
+            access: 'Restrictions'
+            collection: 'Collection (local)'
+            creator: 'Creator'
+            date: 'Date'
+            edition: 'Edition'
+            extent: 'Extent'
+            location: 'Location'
+            genre_basic: 'Format'
+            genre_specific: 'Genre'
+            id_local_acc: 'Accession #'
+            id_local_barcode: 'Barcode'
+            id_local_call: 'Call #'
+            id_local_other: 'Identifier'
+            id_uri_ark: 'Permalink'
+            id_uri_oai: 'Link to Item'
+            language: 'Language'
+            note: 'Notes'
+            note_date: 'Notes (date)'
+            note_resp: 'Name on Item'
+            publisher: 'Publisher'
+            referenced_by: 'Referenced by'
+            rights: 'Terms of Use'
+            scale: 'Scale'
+            series: 'Series'
+            shelf_locator: 'Shelf Locator'
+            subject_geo: 'Places'
+            subject_topic: 'Subjects'
+            toc: 'Table of Contents'
+            title: 'Title'
+            title_alt: 'Title (alt.)'
+
+
+    more_like_this:
+          heading: 'More Like This'
+          more_mlt_link: 'Find More Like This >>'
 
     oai_objects:
           link_to_item: 'View this item at %{institution_name}'

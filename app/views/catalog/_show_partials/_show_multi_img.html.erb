@@ -1,5 +1,5 @@
-<% current_img = params[:view].presence || @image_files.first %>
-<% page_sequence = create_img_sequence(@image_files,current_img) %>
+<% current_img = params[:view].presence || image_files.first %>
+<% page_sequence = create_img_sequence(image_files,current_img) %>
 <div id="multi_img_show_container">
   <div class="row">
     <div class="col-sm-12">
@@ -23,8 +23,8 @@
         <%= content_tag :ul,
                         :id => 'thumbnail_list',
                         :class => 'list-unstyled',
-                        :style => ('text-align:left' if @image_files.length > 3) do %>
-          <% @image_files.each_with_index do |image_file, index| %>
+                        :style => ('text-align:left' if image_files.length > 3) do %>
+          <% image_files.each_with_index do |image_file, index| %>
               <li>
                 <%= link_to(image_tag(datastream_disseminator_url(image_file,'thumbnail300'),:alt => 'image ' + (index+1).to_s),
                             image_viewer_path(@document.id, :view => image_file),

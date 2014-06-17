@@ -11,7 +11,8 @@
         <%# when 2..7 %>
         <% else %>
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
-                       :locals => {:document => @document} %>
+                       :locals => {:document => @document,
+                                   :image_files => image_files} %>
         <%# else %>
             <%# "PAGE TURNER [TK]" %>
     <% end %>
@@ -21,21 +22,37 @@
 
   <%# show thumbnail or icon if object has no images %>
   <% unless image_files %>
-      <div id="thumb_img_show_container" class="col-sm-3">
-        <%= create_thumb_img_element(@document,
+      <div id="thumb_img_show_container" class="col-sm-4">
+        <% img = create_thumb_img_element(@document,
                                      %w(thumb_img_show),
                                      params[:action]) %>
+        <% if @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' %>
+            <%= link_to(img,
+                        @document[:identifier_uri_ss],
+                        :target => '_blank',
+                        :title => t('blacklight.oai_objects.link_to_item',
+                                    :institution_name => document[:institution_name_ssim].first)) %>
+            <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
+                       :locals => {:document => @document} %>
+        <% else %>
+            <%= img %>
+        <% end %>
       </div>
   <% end %>
 
-  <div class="<%= params[:action]%>_details col-sm-9">
+  <div class="<%= params[:action]%>_details col-sm-8">
 
     <% # metadata display -%>
     <%= render :partial => 'catalog/_show_partials/show_default_metadata', :locals => {:document => @document} %>
 
+    <%# more like this %>
+    <% unless @document.more_like_this.empty? %>
+        <%= render :partial => 'catalog/more_like_this', :locals => {:document => @document} %>
+    <% end %>
+
   </div>
 
-  <div id="sidebar" class="col-sm-3">
+  <div id="sidebar" class="col-sm-4">
     <%# render files to download %>
     <% if has_downloadable_files?(@object_files) %>
         <%= render :partial => 'catalog/_show_partials/show_downloads', :locals => {:object_files => @object_files} %>

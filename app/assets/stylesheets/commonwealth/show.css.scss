@@ -235,11 +235,13 @@ div#img_viewer_modal {
 
     dt {
       padding: 2px 0 0;
+      width: 144px;
     }
 
     dd {
       padding: 2px 0 0;
       margin-bottom: 3px;
+      margin-left: 164px;
 
       .metadata_breadcrumb {
         color: $dark_gray;
@@ -339,6 +341,63 @@ div#img_viewer_modal {
   word-break: normal;
   font-size: 12px;
   white-space: pre-wrap;
+}
+
+/* more like this / related items */
+
+#more_like_this {
+  float:left;
+
+  #more_like_this_docs {
+
+    .more_like_this_document {
+
+      .thumbnail {
+        border-radius: 0;
+        padding:0;
+        margin-bottom:0;
+      }
+
+      .mlt_title_link {
+        position: absolute;
+        top: 0;
+        font-size: 12px;
+        bottom: 0;
+        width: 82%;
+        padding: 5px;
+        background: $dark_gray;
+        visibility: hidden;
+        color: #FFFFFF;
+        opacity:0;
+        transition: opacity 0.3s ease;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+      }
+
+      &:hover .mlt_title_link {
+        visibility: visible;
+        opacity:.9;
+        -moz-opacity: 0.6;
+        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+      }
+
+    }
+
+  }
+
+  .more_mlt_link_wrapper {
+    float: right;
+    margin-top: 7px;
+
+    a {
+      color:$dark_gray;
+    }
+
+  }
+
 }
 
 /* responsive styles */

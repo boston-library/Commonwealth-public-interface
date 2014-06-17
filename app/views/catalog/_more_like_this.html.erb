@@ -1,0 +1,13 @@
+<div id="more_like_this" class="well well-sm">
+  <h4><%= t('blacklight.more_like_this.heading') %></h4>
+  <div id="more_like_this_docs" class="row">
+    <%= render :collection => document.more_like_this,
+               :partial => 'show_more_like_this',
+               :as => :document %>
+  </div>
+  <div class="more_mlt_link_wrapper">
+    <%= link_to t('blacklight.more_like_this.more_mlt_link'),
+                link_to_previous_search(:f => {blacklight_config.collection_field => [document[blacklight_config.index.title_field.to_sym]]}),
+                :id => 'more_mlt_link' %>
+  </div>
+</div>
