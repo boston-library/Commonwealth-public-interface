@@ -1,7 +1,7 @@
-<% unless has_search_parameters? %>
+<%# unless has_search_parameters? %>
     <%# if no input/search params, render basic_search partial %>
-    <%= render :partial => 'catalog/basic_search' %>
-<% else %>
+    <%# render :partial => 'catalog/basic_search' %>
+<%# else %>
 
 <div id="sidebar" class="col-sm-3">
   <%= render 'search_sidebar' %>
@@ -35,4 +35,4 @@
       <%= render 'results_pagination' %>
 
 </div>
-<% end %>
+<%# end %>

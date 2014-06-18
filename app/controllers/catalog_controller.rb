@@ -260,6 +260,13 @@ class CatalogController < ApplicationController
 
   end
 
+  # get 'more like this' search results for doc
+  def more_like_this
+    (@response, @document_list) = get_search_results({:qt => 'mlt'},{:id => params[:id]})
+
+    render :index
+  end
+
   def get_object_files
     @object_files = Bplmodels::Finder.getFiles(params[:id])
   end

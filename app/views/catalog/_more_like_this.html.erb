@@ -7,7 +7,7 @@
   </div>
   <div class="more_mlt_link_wrapper">
     <%= link_to t('blacklight.more_like_this.more_mlt_link'),
-                link_to_previous_search(:f => {blacklight_config.collection_field => [document[blacklight_config.index.title_field.to_sym]]}),
+                more_like_this_path(:id => document.id),
                 :id => 'more_mlt_link' %>
   </div>
 </div>
