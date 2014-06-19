@@ -363,7 +363,7 @@ div#img_viewer_modal {
         top: 0;
         font-size: 12px;
         bottom: 0;
-        width: 82%;
+        width: 81%;
         padding: 5px;
         background: $dark_gray;
         visibility: hidden;
@@ -402,6 +402,26 @@ div#img_viewer_modal {
 
 /* responsive styles */
 
+/* Large desktop */
+@media (min-width: 1200px) {
+
+  #more_like_this {
+
+    #more_like_this_docs {
+
+      .more_like_this_document {
+
+        .mlt_title_link {
+          width: 84%;
+        }
+
+      }
+
+    }
+
+  }
+}
+
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 991px) {
 
@@ -421,6 +441,22 @@ div#img_viewer_modal {
 
     img.img_show {
       max-height: 400px;
+    }
+
+  }
+
+  #more_like_this {
+
+    #more_like_this_docs {
+
+      .more_like_this_document {
+
+        .mlt_title_link {
+          width: 75%;
+        }
+
+      }
+
     }
 
   }
@@ -462,6 +498,30 @@ div#img_viewer_modal {
     dl.defList {
       width: 97%;
       padding-left:10px;
+
+      dd {
+        margin-left: 0;
+      }
+
+    }
+
+  }
+
+  #more_like_this {
+    width:100%;
+
+    #more_like_this_docs {
+
+      .more_like_this_document {
+        float: left;
+        margin-bottom: 10px;
+
+        .mlt_title_link {
+          width: 89%;
+        }
+
+      }
+
     }
 
   }
@@ -488,6 +548,23 @@ div#img_viewer_modal {
       a {
         font-size:12px;
         padding: 5px 10px;
+      }
+
+    }
+
+  }
+
+  #more_like_this {
+
+    #more_like_this_docs {
+
+      .more_like_this_document {
+        width:50%;
+
+        .mlt_title_link {
+          width: 86%;
+        }
+
       }
 
     }

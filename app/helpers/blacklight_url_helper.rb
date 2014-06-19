@@ -1,8 +1,8 @@
 module BlacklightUrlHelper
   include Blacklight::UrlHelperBehavior
 
-  # overriding to allow use in collections/show
-  # so facet links point to catalog/index
+  # overriding to allow use in collections#show and institutions#show
+  # so facet links in those views point to catalog#index
   def add_facet_params_and_redirect(field, item)
     new_params = add_facet_params(field, item)
 

@@ -262,7 +262,7 @@ class CatalogController < ApplicationController
 
   # get 'more like this' search results for doc
   def more_like_this
-    (@response, @document_list) = get_search_results({:qt => 'mlt'},{:id => params[:id]})
+    (@response, @document_list) = get_search_results(params.merge({:qt => 'mlt'}),{:id => params[:id]})
 
     render :index
   end
@@ -275,8 +275,21 @@ class CatalogController < ApplicationController
     @nav_li_active = 'search'
   end
 
+  # for 'more like this' search -- set solr id param to params[:mlt_id]
+  def set_solr_id_for_mlt(solr_parameters, user_parameters)
+    solr_parameters[:id] = user_parameters[:mlt_id]
+  end
+
+  # if this is 'more like this' search, solr id = params[:mlt_id]
+  def mlt_search
+    if params[:mlt_id]
+      CatalogController.solr_search_params_logic += [:set_solr_id_for_mlt]
+    end
+  end
+
   before_filter :get_object_files, :only => [:show]
   before_filter :set_nav_context, :only => [:index]
+  before_filter :mlt_search, :only => [:index]
 
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
