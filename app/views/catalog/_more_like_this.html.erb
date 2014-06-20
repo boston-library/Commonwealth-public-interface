@@ -5,10 +5,5 @@
                :partial => 'show_more_like_this',
                :as => :document %>
   </div>
-  <div class="more_mlt_link_wrapper">
-    <%= link_to t('blacklight.more_like_this.more_mlt_link'),
-                # more_like_this_path(:id => document.id),
-                catalog_index_path(:mlt_id => document.id, :qt => 'mlt'),
-                :id => 'more_mlt_link' %>
-  </div>
+  <%= render_mlt_search_link(document) %>
 </div>

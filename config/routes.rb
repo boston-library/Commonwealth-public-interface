@@ -46,7 +46,6 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
   get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
-  get 'more_like_this/:id', :to => 'catalog#more_like_this', :as => 'more_like_this'
 
   #HydraHead.add_routes(self) # deprecated in HH7
 
