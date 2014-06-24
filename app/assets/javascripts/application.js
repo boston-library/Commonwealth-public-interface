@@ -27,7 +27,8 @@
 //= require respond/respond.min
 
 // bootstrap-accessibility-plugin
-//= require bootstrap-accessibility-plugin/bootstrap-accessibility.min
+// don't use for now as it messes with mobile nav links
+// require bootstrap-accessibility-plugin/bootstrap-accessibility.min
 
 //= require blacklight_google_analytics/blacklight_google_analytics
 
