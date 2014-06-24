@@ -1,4 +1,4 @@
-<% if query_has_constraints? %>
+<% if query_has_constraints? || params[:mlt_id] %>
     <div id="appliedParams" class="clearfix constraints-container">
       <div class="pull-right">
         <ul id="constraintsLinks" class="list-inline">
