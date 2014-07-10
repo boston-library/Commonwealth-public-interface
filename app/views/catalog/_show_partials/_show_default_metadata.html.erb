@@ -34,53 +34,10 @@
     <% end %>
     <%# creator field - assumes equal # of roles and creator names %>
     <% if document[:name_personal_tsim] || document[:name_corporate_tsim] || document[:name_generic_tsim] %>
-      <% if document[:name_personal_tsim] %>
-          <% 0.upto document[:name_personal_tsim].length-1 do |index| %>
-            <dt>
-              <% if document[:name_personal_role_tsim] %>
-                  <% if document[:name_personal_role_tsim][index] %>
-                    <%= document[:name_personal_role_tsim][index].strip %>:
-                  <% end %>
-              <% else %>
-                  <%= t('blacklight.metadata_display.fields.creator') %>:
-              <% end %>
-            </dt>
-            <dd>
-              <%= document[:name_personal_tsim][index] %>
-            </dd>
-          <% end %>
-      <% end %>
-      <% if document[:name_corporate_tsim] %>
-          <% 0.upto document[:name_corporate_tsim].length-1 do |index| %>
-              <dt>
-                <% if document[:name_corporate_role_tsim] %>
-                    <% if document[:name_corporate_role_tsim][index] %>
-                        <%= document[:name_corporate_role_tsim][index].strip %>:
-                    <% end %>
-                <% else %>
-                    <%= t('blacklight.metadata_display.fields.creator') %>:
-                <% end %>
-              </dt>
-              <dd>
-                <%= document[:name_corporate_tsim][index] %>
-              </dd>
-          <% end %>
-      <% end %>
-      <% if document[:name_generic_tsim] %>
-          <% 0.upto document[:name_generic_tsim].length-1 do |index| %>
-              <dt>
-                <% if document[:name_generic_role_tsim] %>
-                    <% if document[:name_generic_role_tsim][index] %>
-                        <%= document[:name_generic_role_tsim][index].strip %>:
-                    <% end %>
-                <% else %>
-                    <%= t('blacklight.metadata_display.fields.creator') %>:
-                <% end %>
-              </dt>
-              <dd>
-                <%= document[:name_generic_tsim][index] %>
-              </dd>
-          <% end %>
+      <% names, roles = setup_names_roles(document) %>
+      <% names.each_with_index do |name, index| %>
+        <dt><%= roles[index] %>:</dt>
+        <dd><%= name %></dd>
       <% end %>
     <% end %>
     <%# note @type="statement of responsibility" field %>

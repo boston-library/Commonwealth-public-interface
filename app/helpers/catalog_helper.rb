@@ -138,6 +138,45 @@ module CatalogHelper
     mods_xml_text = REXML::Document.new(mods_response.body)
   end
 
+  # create a list of names and roles to be displayed
+  def setup_names_roles(document)
+    names = []
+    roles = []
+    multi_role_indices = []
+    name_fields = [document[:name_personal_tsim], document[:name_corporate_tsim], document[:name_generic_tsim]]
+    role_fields = [document[:name_personal_role_tsim], document[:name_corporate_role_tsim], document[:name_generic_role_tsim]]
+    name_fields.each_with_index do |name_field,name_field_index|
+      if name_field
+        0.upto name_field.length-1 do |index|
+          names << name_field[index]
+          if role_fields[name_field_index]
+            roles << role_fields[name_field_index][index].strip
+          else
+            roles << 'Creator'
+          end
+        end
+      end
+    end
+    roles.each_with_index do |role,index|
+      if /[\|]{2}/.match(role)
+        multi_roles = role.split('||')
+        multi_role_name = names[index]
+        multi_role_indices << index
+        multi_roles.each { |multi_role| roles << multi_role }
+        0.upto multi_roles.length-1 do
+          names << multi_role_name
+        end
+      end
+    end
+    unless multi_role_indices.empty?
+      multi_role_indices.reverse.each do |index|
+        names.delete_at(index)
+        roles.delete_at(index)
+      end
+    end
+    return names,roles
+  end
+
   def should_autofocus_on_search_box?
     (controller.is_a? Blacklight::Catalog and
         action_name == "index" and
