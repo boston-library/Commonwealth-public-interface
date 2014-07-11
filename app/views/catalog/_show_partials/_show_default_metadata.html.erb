@@ -145,7 +145,7 @@
       </dd>
   <% end %>
     <%# topic field %>
-    <% if document[:subject_topic_tsim] || document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] %>
+    <% if document[:subject_topic_tsim] || document[:subject_name_corporate_tsim] || document[:subject_name_personal_tsim] || document[:subject_name_conference_tsim] || document[:subject_temporal_facet_ssim] || document[:subject_title_tsim] %>
         <dt><%= t('blacklight.metadata_display.fields.subject_topic') %>:</dt>
         <dd>
           <% if document[:subject_topic_tsim] %>
@@ -168,9 +168,18 @@
                   <%= link_to_facet(conf_name, 'subject_facet_ssim') %><br />
               <% end %>
           <% end %>
+          <% if document[:subject_title_tsim] %>
+              <% document[:subject_title_tsim].each do |subj_title| %>
+                  <%= link_to_facet(subj_title, 'subject_facet_ssim') %><br />
+              <% end %>
+          <% end %>
           <% if document[:subject_temporal_facet_ssim] %>
               <% document[:subject_temporal_facet_ssim].each do |temporal_subj| %>
-                  <%= link_to_facet(temporal_subj, 'subject_facet_ssim') %><br />
+                  <% if temporal_subj =~ /-[0-9]{2}$/ %>
+                      <%= link_to_facet_labeled(render_mods_dates(temporal_subj), temporal_subj, 'subject_facet_ssim') %>
+                  <% else %>
+                      <%= link_to_facet(temporal_subj, 'subject_facet_ssim') %><br />
+                  <% end %>
               <% end %>
           <% end %>
         </dd>
@@ -201,6 +210,15 @@
       <dd>
         <% document[:edition_tsim].each do |edition| %>
             <%= edition %><br />
+        <% end %>
+      </dd>
+    <% end %>
+    <%# note @type="performers" field %>
+    <% if document[:note_performers_tsim] %>
+      <dt><%= t('blacklight.metadata_display.fields.note_performers') %>:</dt>
+      <dd>
+        <% document[:note_performers_tsim].each do |performers| %>
+            <%= performers %><br />
         <% end %>
       </dd>
     <% end %>

@@ -223,6 +223,7 @@ en:
             language: 'Language'
             note: 'Notes'
             note_date: 'Notes (date)'
+            note_performers: 'Performers'
             note_resp: 'Name on Item'
             publisher: 'Publisher'
             referenced_by: 'Referenced by'
