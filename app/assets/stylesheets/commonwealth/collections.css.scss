@@ -7,6 +7,19 @@
 
 div.collections-list {
 
+  #collection_az_links {
+    padding-left:8px;
+
+    .col_a-z_link, .col_a-z_nolink {
+      padding-right:12px;
+    }
+
+    .col_a-z_nolink {
+      color:$dark_gray;
+    }
+
+  }
+
   /* don't display sort or view-type widgets */
   #sort-dropdown, .view-type {
     display: none;

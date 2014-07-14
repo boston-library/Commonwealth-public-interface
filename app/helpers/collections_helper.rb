@@ -7,4 +7,12 @@ module CollectionsHelper
             :class => link_class)
   end
 
+  # link to collections starting with a specific letter
+  def link_to_cols_start_with(letter)
+    link_to(letter,
+            collections_path(:q => 'title_info_primary_ssort:' + letter + '*'),
+            :class => 'col_a-z_link'
+    )
+  end
+
 end
