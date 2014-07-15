@@ -8,10 +8,10 @@
 div.collections-list {
 
   #collection_az_links {
-    padding-left:8px;
+    margin-bottom: 10px;
 
     .col_a-z_link, .col_a-z_nolink {
-      padding-right:12px;
+      padding-left:7px;
     }
 
     .col_a-z_nolink {
@@ -192,6 +192,18 @@ h4.collection-provenance {
 /* Large desktop */
 @media (min-width: 1200px) {
 
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:13px;
+      }
+
+    }
+
+  }
+
   #collection_search_tools {
     width:54%;
   }
@@ -217,6 +229,18 @@ h4.collection-provenance {
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 991px) {
+
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:1px;
+      }
+
+    }
+
+  }
 
   #collection_img {
     width: 100%;
@@ -258,6 +282,18 @@ h4.collection-provenance {
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+
+  div.collections-list {
+
+    #collection_az_links {
+
+      .col_a-z_link, .col_a-z_nolink {
+        padding-left:2px;
+      }
+
+    }
+
+  }
 
   #collection_img {
     width: 100%;

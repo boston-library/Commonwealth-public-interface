@@ -63,6 +63,7 @@ en:
           facets:
             title: 'Browse by:'
           index:
+            a-z_label: 'Browse by title:'
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
           nav: 'By Collection'
