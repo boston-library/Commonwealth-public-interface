@@ -89,6 +89,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
 
+  get 'iiif', :to => 'iiif_request#show', :as => 'iiif_request'
+
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collection-tree', :to => 'pages#collection_tree'
   get 'resources' => redirect('http://digitalcommonwealth.memberlodge.org/')
