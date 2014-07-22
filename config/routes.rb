@@ -90,6 +90,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
 
   get 'iiif/:identifier/:region/:size/:rotation/:quality.jpg', :to => 'iiif_request#show', :as => 'iiif_request'
+  get 'iiif/:identifier/info.json', :to => 'iiif_request#info', :as => 'iiif_info'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collection-tree', :to => 'pages#collection_tree'
