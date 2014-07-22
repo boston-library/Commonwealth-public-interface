@@ -80,15 +80,15 @@ class CollectionsController < CatalogController
 
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
-  def get_series_image_pid(series_title,collection_title)
+  def get_series_image_obj(series_title,collection_title)
     (@series_response, @series_doc_list) = get_search_results(
         {:f => {'related_item_series_ssim' => series_title,
                 blacklight_config.collection_field => collection_title},
          :rows => 1
         })
-    @series_doc_list.first[:exemplary_image_ssi]
+    @series_doc_list.first
   end
-  helper_method :get_series_image_pid
+  helper_method :get_series_image_obj
 
   # Not using this for now
   # find a representative image for a collection if none is assigned
