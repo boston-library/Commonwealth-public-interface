@@ -19,6 +19,8 @@ class IiifRequestController < ApplicationController
     iiif_metadata = {
         '@context' => 'http://library.stanford.edu/iiif/image-api/1.1/context.json',
         '@id' => params[:identifier],
+        'identifier' => params[:identifier], # for 0.2 backwards compatibility
+        #'tilesURL' => request.base_url + '/iiif/', # for OSd
         'width' => metadata.width.to_i,
         'height' => metadata.height.to_i,
         'scale_factors' => scale_factors,
@@ -29,6 +31,13 @@ class IiifRequestController < ApplicationController
         'profile' => 'http://library.stanford.edu/iiif/image-api/compliance.html#level1'
     }
     render :json => iiif_metadata.to_json
+  end
+
+  after_action :set_access_control_headers, :only => [:info]
+
+  # to allow OSd to load info.json received from remote server
+  def set_access_control_headers
+    headers['Access-Control-Allow-Origin'] = "*"
   end
 
 end
