@@ -1,0 +1,214 @@
+<% @page_title = @title + ' - ' + application_name %>
+<div id="viewer" data-group="1" data-index="1">
+  <header>
+    <nav>
+      <h1>
+        Title: <%= link_to @title, solr_document_path(params[:id]) %>
+      </h1>
+    </nav>
+  </header>
+  <div id="viewport">
+    <div id="pages">
+      <div class="page current">
+        <%= djatoka_image_tag(nonssl_image_uri(@image_files.first,'accessMaster'),
+                              {:resolver => Rails.configuration.djatoka_resolver.base_url,
+                               :scale => 500,
+                               :alt => @title}) %>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <nav class="toolbar">
+      <div class="item-detail-nav">
+        <%= link_to 'Item Detail', solr_document_path(params[:id]) %>
+      </div>
+      <label class="group">
+        Volume
+        <select id="group" disabled>
+          <option selected>
+            1
+          </option>
+        </select>
+      </label>
+      <div class="index">
+        <label>Page <input type="number" disabled class="current-index" value="1" min="1" max="1" step="1"></label> <label class="max-index-label">of <span class="max-index">1</span></label> <input disabled id="index" type="range" value="1" min="1" max="1" step="1"> <a class="page previous disabled">Previous</a> <a class="page next disabled">Next</a>
+      </div>
+      <div class="controls"></div>
+    </nav>
+  </footer>
+</div>
+
+<%= render :partial => 'book_viewer_help' %>
+
+<%# JS includes %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"></script>
+<%= javascript_include_tag 'openseadragon/openseadragon.min' %>
+<%= javascript_include_tag 'wdl-viewer/wdl-viewer_commonwealth' %>
+<script>
+    Modernizr.load([
+        {
+            test: Modernizr.inputtypes.range && Modernizr.history,
+            nope: [
+                /* https://github.com/freqdec/fd-slider */
+                'http://static.wdl.org/external/fd-slider/fd-slider.min.4f7795c3d956.css',
+                'http://static.wdl.org/external/fd-slider/fd-slider.93e761fdb58d.js'
+            ],
+            callback: function(id, testResult) {
+                if ("fdSlider" in window && typeof(fdSlider.onDomReady) != "undefined") {
+                    fdSlider.onDomReady();
+                };
+            }
+        },
+        {
+            test: Modernizr.history,
+            complete: function() {
+                // Slightly wonky double check but callback: won't fire if you don't load anything
+                // and this keeps polyfills in one place:
+                if (!Modernizr.history) {
+                    window.history.replaceState = function (state, title, url) {
+                        if (document.location.href == url || document.location.pathname == url) {
+                            return;
+                        } else {
+                            document.location.href = url;
+                        }
+                    }
+                } else {
+                    $(".next.page").on("click", function () {
+                        $viewer.trigger("goto-next-page"); return false;
+                    })
+                    $(".previous.page").on("click", function () {
+                        $viewer.trigger("goto-previous-page"); return false;
+                    })
+                }
+            }
+        },
+        {
+            test: Modernizr.touch,
+            yep: ['//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js'],
+            complete: function(id, testResult) {
+                if (Modernizr.touch && typeof(jQuery.fn.hammer) !== "undefined") {
+                    $(window).hammer()
+                            .on("swipeleft", function () { $viewer.trigger("goto-next-page"); })
+                            .on("swiperight", function () { $viewer.trigger("goto-previous-page"); });
+
+                    var lastTimeoutId;
+
+                    var viewer = document.getElementById("viewer");
+                    // By default, touchmove events as fired when attempting rotation can cause Mobile
+                    // Safari to "bounce" the viewport, displaying the standard gray background, which is
+                    // quite unpleasant in the middle of a rotation:
+                    document.ontouchmove = function(evt) {
+                        if (viewer.dataset.activeView != "grid") {
+                            evt.preventDefault();
+                        }
+                    }
+
+                    $("#pages").hammer()
+                            .on("tap", function (evt) {
+                                if (evt.gesture.center.pageX < 50) {
+                                    $viewer.trigger("goto-previous-page");
+                                } else if ($(window).width() - evt.gesture.center.pageX < 50) {
+                                    $viewer.trigger("goto-next-page");
+                                } else {
+                                    $viewer.trigger("toggle-chrome");
+                                }
+
+                                if (lastTimeoutId) {
+                                    window.clearTimeout(lastTimeoutId);
+                                }
+
+                                lastTimeoutId = window.setTimeout(function () {
+                                    $viewer.trigger("hide-chrome");
+                                }, 6000);
+                            })
+                            .on("pinchout", function (evt) {
+                                if (Math.abs(evt.gesture.rotation) < 20 && evt.gesture.scale > 3.0) {
+                                    $viewer.trigger("open-seadragon");
+                                    evt.preventDefault();
+                                }
+                            })
+                            .on("rotate", function (evt) {
+                                $viewer.trigger("set-rotation", evt.gesture.rotation);
+                                evt.preventDefault();
+                            });
+
+                    $viewer.on("page-changed", function () {
+                        $viewer.trigger("hide-chrome");
+                    });
+                }
+            }
+        }
+    ]);
+
+    if (navigator.userAgent.match(/Chrome/)) {
+        // Suppress fullscreen mode on Chrome until they close
+        // https://code.google.com/p/chromium/issues/detail?id=138324
+        $('html').removeClass("fullscreen").addClass("no-fullscreen");
+        Modernizr.fullscreen = false;
+    }
+
+    function generateImageUrl(group, index, maxEdge) {
+        // return the pid for the given index
+        var pid = image_files[index-1];
+        return image_server + pid + "/full/pct:20/0/native.jpg"
+    }
+
+    // hijacking this function to return IIIF info.json as tileSource
+    function generateDziUrl(group, index) {
+        var pid = image_files[index-1];
+        return 'http:' + image_server + pid + '/info.json';
+    }
+
+    var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
+
+    var image_server = "/iiif/";
+
+    var image_files = <%= @image_files.to_json.html_safe %>;
+
+    var $window = $(window),
+            $viewer = $("#viewer").wdlViewer({
+                pageGroups: {"1": <%= @image_files.count %>}, // List of groups and the last index value in each
+                pageUrlTemplate: "#1/{index}",
+                imageUrlTemplate: generateImageUrl,
+                dziUrlTemplate: generateDziUrl,
+                placeholderSrc: "http://content.wdl.org/placeholder/308x255.png",
+                initialView: "page",
+                seadragonPrefixUrl: "../external/openseadragon_1.1.1/images/"
+            });
+    /* this makes the text on the controls disappear!
+     if (Modernizr.fontface) {
+     $viewer.find(".controls button, .toolbar a.page").each(function () {
+     var $this = $(this);
+     $this
+     .attr("title", $.trim($this.text()))
+     .empty(); // Clearing the button avoids a Chrome bug which mispositions the icon text
+     });
+     }
+     */
+    $("input,select").removeAttr("disabled");
+
+    // Help browsers which don't support <link rel="prefetch">:
+    $viewer.trigger("prefetch-adjacent-pages");
+
+    $viewer.on("page-changed", function () {
+        // If you use Google Analytics:
+        // _gaq.push(['_trackPageview', document.location.pathname]);
+    });
+
+    $window.on("resize", function () {
+        /*
+         This works around IE<9's lack of any support for viewport units and WebKit not correctly
+         recalculating them after a window resize (see https://bugs.webkit.org/show_bug.cgi?id=114690)
+         */
+        $("#pages img").css({
+            "max-height": $window.height(),
+            "max-width": $window.width()
+        });
+
+        $viewer.find("h1").css("max-width", $window.width() - 20);
+    }).trigger("resize");
+
+    if (bookmark) {
+        $viewer.trigger("goto-page", [bookmark[1], bookmark[2]]);
+    }
+</script>

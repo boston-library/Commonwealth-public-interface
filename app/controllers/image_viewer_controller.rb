@@ -1,6 +1,8 @@
 # use to render new image in multi image viewer in catalog#show
 class ImageViewerController < CatalogController
 
+  include CatalogHelper
+
   def show
     @response, @document = get_solr_response_for_doc_id
     #@img_to_show = params[:view]
@@ -11,6 +13,13 @@ class ImageViewerController < CatalogController
       format.html { redirect_to catalog_path(@document.id,
                                              :view => params[:view]) }
     end
+  end
+
+  def book_viewer
+    @response, @document = get_solr_response_for_doc_id
+    @title = @document[blacklight_config.index.title_field.to_sym]
+    @image_files = has_image_files?(Bplmodels::Finder.getFiles(params[:id]))
+    render(:layout => 'book_viewer')
   end
 
   private
