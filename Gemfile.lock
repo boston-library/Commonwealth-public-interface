@@ -36,8 +36,10 @@ GIT
       omniauth (~> 1.0)
       rest-client (~> 1.6.7)
 
-PATH
-  remote: /home/eenglish/djatoka-forked/djatoka
+GIT
+  remote: https://github.com/jronallo/djatoka.git
+  revision: e07933029766245f7b1b0fadd4f849b98f25c28a
+  ref: e079330297
   specs:
     djatoka (0.2.4)
       addressable
