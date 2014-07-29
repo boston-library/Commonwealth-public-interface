@@ -24,6 +24,20 @@ en:
             search_indexes: 'Search by title, subject, place, etc.'
             select: 'in'
 
+    book_viewer:
+          controls:
+            grid: 'Pages List'
+            help: 'Help'
+            next: 'Next Page'
+            previous: 'Previous Page'
+            read: 'Read'
+            rotate:
+              left: 'Rotate Left'
+              right: 'Rotate Right'
+            zoom: 'Zoom'
+          item_link: 'Back to item'
+
+
     bookmarks:
           collection:
             add:

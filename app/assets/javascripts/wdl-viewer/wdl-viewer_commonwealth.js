@@ -1,4 +1,7 @@
 /*global navigator, window, document, Element, Modernizr, jQuery, Image, OpenSeadragon */
+/* this is a modified version of the wdl-viewer JS */
+/* https://github.com/LibraryOfCongress/wdl-viewer/src/js/wdl-viewer.js */
+/* all local changes are marked with: *** commonwealth changes *** */
 
 (function ($) {
     "use strict";
@@ -115,17 +118,21 @@
         this.gridView = new GridView(this, $grid, config);
         this.activeView = this.pageView;
 
+        /* *** commonwealth changes ***/
+        /* add classes for bootstrap and font-awesome */
         // Add toolbar features which only work with JavaScript:
         if (Modernizr.canvas || Modernizr.csstransforms) {
-            $('<button id="rotate-left" class="requires-rotation" type="button"></button>')
-                .text(gettext("Rotate Left"))
+            $('<button id="rotate-left" class="requires-rotation btn btn-link" type="button"><i class="fa fa-undo"></i></button>')
+                // .text(gettext("Rotate Left"))
+                .attr("title","Rotate Left")
                 .appendTo("footer .toolbar .controls")
                 .on("click", $.proxy(function () {
                     this.rotate(true);
                 }, this));
 
-            $('<button id="rotate-right" class="requires-rotation" type="button"></button>')
-                .text(gettext("Rotate Right"))
+            $('<button id="rotate-right" class="requires-rotation btn btn-link" type="button"><i class="fa fa-repeat"></i></button>')
+                //.text(gettext("Rotate Right"))
+                .attr("title","Rotate Right")
                 .appendTo("footer .toolbar .controls")
                 .on("click", $.proxy(function () {
                     this.rotate();
@@ -133,7 +140,8 @@
         }
 
         if (this.seadragonView) {
-            $('<button id="toggle-seadragon" type="button">' + gettext('Zoom') + '</button>')
+            $('<button id="toggle-seadragon" class="btn btn-link" type="button"><i class="fa fa-search-plus"></i></button>')
+                .attr("title","Zoom")
                 .appendTo("footer .toolbar .controls")
                 .on("click", $.proxy(function () {
                     if (this.activeView == this.seadragonView) {
@@ -144,7 +152,8 @@
                 }, this));
         }
 
-        $('<button id="toggle-grid" type="button">' + gettext('Grid') + '</button>')
+        $('<button id="toggle-grid" class="btn btn-link" type="button"><i class="fa fa-th-large"></i></button>')
+            .attr("title","Page List")
             .appendTo("footer .toolbar .controls")
             .on("click", $.proxy(function () {
                 if (this.activeView == this.gridView) {
@@ -155,14 +164,16 @@
             }, this));
 
         if ($("html").hasClass("fullscreen")) {
-            $('<button id="toggle-fullscreen" type="button">' + gettext('Full Screen') + '</button>')
+            $('<button id="toggle-fullscreen" class="btn btn-link" type="button"><i class="fa fa-expand"></i></button>')
+                .attr("title","Full Screen")
                 .appendTo("footer .toolbar .controls")
                 .on("click", function () {
                     toggleFullscreen();
                 });
         }
 
-        $('<button id="toggle-help" type="button">' + gettext('Help') + '</button>')
+        $('<button id="toggle-help" class="btn btn-link" type="button"><i class="fa fa-question"></i></button>')
+            .attr("title","Help")
             .appendTo("footer .toolbar .controls")
             .on("click", function () {
                 $("#help").toggle();
@@ -672,8 +683,12 @@
             });
         };
 
+        /* ***commonwealth changes** */
         this.hide = function () {
-            $("#toggle-seadragon").text(gettext("Zoom"));
+            // $("#toggle-seadragon").text(gettext("Zoom"));
+            var toggle = $("#toggle-seadragon");
+            toggle.attr("title","Zoom");
+            toggle.find("i").attr("class", "fa fa-search-plus");
 
             if (this.seadragon) {
                 this.seadragon.close();
@@ -685,8 +700,12 @@
             $window.off("resize", this.onResize);
         };
 
+        /* ***commonwealth changes** */
         this.show = function () {
-            $("#toggle-seadragon").text(gettext("Read"));
+            // $("#toggle-seadragon").text(gettext("Read"));
+            var toggle = $("#toggle-seadragon");
+            toggle.attr("title","Read");
+            toggle.find("i").attr("class", "fa fa-file-text");
 
             if (this.seadragon) {
                 this.seadragon.close();
