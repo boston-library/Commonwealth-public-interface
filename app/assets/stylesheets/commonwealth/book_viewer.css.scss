@@ -104,6 +104,7 @@
       position: fixed;
       bottom: 0;
       height: 34px;
+      box-shadow:0 -2px 8px rgba(0,0,0,0.45);
 
       > nav {
         // border-top-width: 2px;
@@ -289,6 +290,7 @@
   }
 
   #help {
+    display: none;
     position: fixed;
     top: 0;
     bottom: 0;
@@ -302,7 +304,7 @@
     text-align: center;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
-    font-size: x-large;
+    //font-size: x-large;
 
     > div {
       display: table;
@@ -321,18 +323,17 @@
 
     }
 
-    h1 {
-      font-family: sans-serif;
-      font-size: xx-large;
-    }
-
     h2 {
-      font-family: sans-serif;
+      //font-family: sans-serif;
       color: inherit;
     }
 
+    i {
+      margin-right: 5px;
+    }
+
     p, table {
-      font-size: smaller;
+      font-size: 18px;
       max-width: 40em;
       margin: auto;
       color: #ddd;
@@ -341,6 +342,7 @@
     th, td {
       vertical-align: top;
       padding: 0 1em;
+      font-weight: normal;
     }
 
     td {
