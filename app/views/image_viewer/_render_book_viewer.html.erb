@@ -40,7 +40,7 @@ Modernizr.load([
     },
     {
         test: Modernizr.touch,
-        yep: ['//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js'],
+        yep: ['/assets/wdl-viewer/jquery.hammer.min.js'],
         complete: function(id, testResult) {
             if (Modernizr.touch && typeof(jQuery.fn.hammer) !== "undefined") {
                 $(window).hammer()
