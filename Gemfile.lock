@@ -36,6 +36,18 @@ GIT
       omniauth (~> 1.0)
       rest-client (~> 1.6.7)
 
+GIT
+  remote: https://github.com/jronallo/djatoka.git
+  revision: e07933029766245f7b1b0fadd4f849b98f25c28a
+  ref: e079330297
+  specs:
+    djatoka (0.2.4)
+      addressable
+      hashie
+      json
+      mime-types
+      trollop
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -73,7 +85,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
-    addressable (2.3.5)
+    addressable (2.3.6)
     arel (4.0.2)
     bcrypt-ruby (3.1.2)
     blacklight (5.4.0)
@@ -126,12 +138,6 @@ GEM
     devise-guests (0.3.3)
       devise
     diff-lcs (1.2.5)
-    djatoka (0.2.3)
-      addressable
-      hashie
-      json
-      mime-types
-      trollop
     ebnf (0.3.6)
       haml (~> 4.0)
       rdf (~> 1.1)
@@ -147,6 +153,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.3)
+    font-awesome-sass (4.1.0)
+      sass (~> 3.2)
     haml (4.0.5)
       tilt
     hashie (2.0.5)
@@ -448,8 +456,9 @@ DEPENDENCIES
   coffee-rails (~> 4.0.1)
   devise
   devise-guests (~> 0.3)
-  djatoka
+  djatoka!
   execjs
+  font-awesome-sass
   hydra-derivatives
   hydra-head (= 7.0.0)
   hydra-ldap

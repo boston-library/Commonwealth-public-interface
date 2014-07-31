@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.erb.bak
       format.xml { render :xml => @user }
     end
   end

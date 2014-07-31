@@ -18,6 +18,10 @@
  * 'stub' method, as in example below:
  * stub blacklight/_layout
 
+ * don't auto-include wdl-viewer slider CSS for older browsers
+ *= stub wdl-viewer/fd-slider.min.4f7795c3d956
+
  *= require blacklight_advanced_search
+ *= require font-awesome
 
 */

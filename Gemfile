@@ -19,7 +19,9 @@ gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 
 
 #gem 'rmagick'          rake db
-gem 'djatoka'
+#gem 'djatoka'
+#gem 'djatoka', :path => '/home/eenglish/djatoka-forked/djatoka'
+gem 'djatoka', :git => 'https://github.com/jronallo/djatoka.git', :ref => 'e079330297'
 
 
 gem 'sass-rails',   '~> 4.0.1'
@@ -77,3 +79,4 @@ gem 'omniauth-polaris', :git => 'https://github.com/boston-library/omniauth-pola
 gem 'bootstrap_forms'
 gem 'hydra-role-management'
 gem 'bpl-institution-management', :git => 'https://github.com/boston-library/bpl-institution-management.git'
+gem 'font-awesome-sass'
