@@ -19,7 +19,7 @@
   <% insert_google_analytics %>
   <%= content_for(:head) %>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+  <%= javascript_include_tag 'wdl-viewer/modernizr.min' %>
 
 </head>
 <body class="wdl-viewer">
