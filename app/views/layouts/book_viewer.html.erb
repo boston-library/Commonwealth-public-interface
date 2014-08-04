@@ -22,7 +22,7 @@
   <%= javascript_include_tag 'wdl-viewer/modernizr.min' %>
 
 </head>
-<body class="wdl-viewer">
+<body class="<%= render_body_class %> wdl-viewer">
     <%= yield %>
 </body>
 </html>

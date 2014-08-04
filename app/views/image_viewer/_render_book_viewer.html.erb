@@ -112,12 +112,12 @@ function generateImageUrl(group, index, maxEdge) {
 // hijacking this function to return IIIF info.json as tileSource
 function generateDziUrl(group, index) {
     var pid = image_files[index-1];
-    return 'http:' + image_server + pid + '/info.json';
+    return image_server + pid + '/info.json';
 }
 
 var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
 
-var image_server = "/iiif/";
+var image_server = <%= iiif_info_path(:identifier => 'xyz').split('xyz')[0] %>;
 
 var image_files = <%= image_files.to_json.html_safe %>;
 
@@ -127,9 +127,9 @@ var $window = $(window),
             pageUrlTemplate: "#1/{index}",
             imageUrlTemplate: generateImageUrl,
             dziUrlTemplate: generateDziUrl,
-            placeholderSrc: "../assets/loading-wdl.gif",
+            placeholderSrc: "<%= image_path('loading-wdl.gif') %>",
             initialView: "page",
-            seadragonPrefixUrl: "../assets/openseadragon/"
+            seadragonPrefixUrl: "/assets/openseadragon/"
         });
 /* this makes the text on the controls disappear!
  if (Modernizr.fontface) {
