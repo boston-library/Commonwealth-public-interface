@@ -123,7 +123,9 @@
 
         #index {
           height: 28px;
-          vertical-align: middle;
+          vertical-align: top;
+          margin-top: 4px;
+          padding: 0;
 
           &.fd-form-element-hidden {
             display: none;
@@ -135,17 +137,21 @@
 
         .current-index {
           width: 3em;
-          height: 24px;
+          height: 22px;
+          padding-top:0px;
           color: $bootstrap_text;
         }
 
         #fd-slider-index {
           vertical-align: top;
           height: 28px;
+          margin-top: 4px;
+          padding: 0;
         }
 
         .controls button {
           height: 28px;
+          margin-top:1px;
 
           &.btn-link {
             color: #F9F9F9;
@@ -169,9 +175,18 @@
           font-size: 20px;
         }
 
+        #toggle-help {
+          margin-top: -2px;
+
+          i {
+            font-size: 22px;
+          }
+
+        }
+
         .item-detail-nav {
           margin-right: 15px;
-          padding-top: 6px;
+          padding-top: 5px;
 
           a:before {
             // content: "←";
@@ -409,7 +424,7 @@
     font-size: small;
   }
 
-  footer > nav #index, footer > nav #fd-slider-index {
+  .wdl-viewer #viewer footer > nav #index, .wdl-viewer #viewer footer > nav #fd-slider-index {
     display: none;
   }
 
@@ -434,31 +449,43 @@
       header > nav > *, footer > nav > * {
         font-size: 12px;
         line-height: 18px;
-        height: 20px;
+        height: 24px;
       }
 
       header button, footer button {
-        padding: 0;
-        height: 18px;
+        padding: 1px;
+        //height: 18px;
         font-size: 16px;
       }
 
       footer {
+        height: 24px;
 
         > nav {
 
           .current-index {
-            width: 2em;
+            // width: 2em;
           }
 
           .max-index, .max-index-label {
             display: none;
           }
 
+          .controls button {
+            height: 24px;
+            margin-top: 0;
+          }
+
+          a.btn {
+            padding:1px;
+          }
+
         }
 
         .toolbar .item-detail-nav {
-          display: none;
+          // display: none;
+          margin-right: 5px;
+          padding-top: 0;
 
           .page {
             display: none;
@@ -471,10 +498,17 @@
     }
 
     #help {
-      font-size: inherit;
 
-      h1 {
-        font-size: larger;
+      h2 {
+        font-size: 24px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      p, table {
+        font-size: 12px;
       }
 
     }

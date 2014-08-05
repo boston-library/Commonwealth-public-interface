@@ -6,8 +6,8 @@ Modernizr.load([
         test: Modernizr.inputtypes.range && Modernizr.history,
         nope: [
             /* https://github.com/freqdec/fd-slider */
-            '/assets/wdl-viewer/fd-slider.min.4f7795c3d956.css',
-            '/assets/wdl-viewer/fd-slider.93e761fdb58d.js'
+            '<%= stylesheet_path('wdl-viewer/fd-slider.min') %>',
+            '<%= javascript_path('wdl-viewer/fd-slider') %>'
         ],
         callback: function(id, testResult) {
             if ("fdSlider" in window && typeof(fdSlider.onDomReady) != "undefined") {
@@ -40,7 +40,7 @@ Modernizr.load([
     },
     {
         test: Modernizr.touch,
-        yep: ['/assets/wdl-viewer/jquery.hammer.min.js'],
+        yep: ['<%= javascript_path('wdl-viewer/jquery.hammer.min') %>'],
         complete: function(id, testResult) {
             if (Modernizr.touch && typeof(jQuery.fn.hammer) !== "undefined") {
                 $(window).hammer()
