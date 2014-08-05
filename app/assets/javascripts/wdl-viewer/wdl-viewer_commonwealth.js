@@ -224,7 +224,7 @@
 
             // Global state changes:
             switch (evt.which) {
-                case 71: // g
+                case 80: // p
                     $("#toggle-grid").trigger("click");
                     return false;
                 case 191: // ?
