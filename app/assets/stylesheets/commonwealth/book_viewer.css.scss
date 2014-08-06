@@ -150,7 +150,6 @@
         }
 
         .controls button {
-          height: 28px;
           margin-top:1px;
 
           &.btn-link {
@@ -176,7 +175,7 @@
         }
 
         #toggle-help {
-          margin-top: -2px;
+          margin-top: 0;
 
           i {
             font-size: 22px;
@@ -504,11 +503,11 @@
     #help {
 
       h2 {
-        font-size: 24px;
+        font-size: 20px;
       }
 
       h3 {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       p, table {
