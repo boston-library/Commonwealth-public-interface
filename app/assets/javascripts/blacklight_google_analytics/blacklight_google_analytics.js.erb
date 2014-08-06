@@ -151,4 +151,15 @@ jQuery(function() {
         }
     });
 
+    // image_viewer#book_viewer button clicks
+    jQuery("#viewer").find("button").click(function(){
+        try{
+            var action = BlacklightGoogleAnalytics.this_or_parent_id(jQuery(this));
+            var label = '';
+            ga('send', 'event', category, action, label);
+        } catch(err) {
+            BlacklightGoogleAnalytics.console_log_error(err, [category, action, label]);
+        }
+    })
+
 });

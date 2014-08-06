@@ -82,6 +82,8 @@
         this.rotation = config.viewportRotation || 0;
 
         config.placeholderSrc = config.placeholderSrc || placeholderImage;
+        /* ***commonwealth changes*** */
+        config.placeholderSrcGrid = config.placeholderSrcGrid || placeholderImage;
         // TODO: Adjust image max size based on the viewport
         config.maxPageEdge = 1024;
         config.maxThumbnailEdge = 256;
@@ -109,6 +111,11 @@
             this.generateDziUrl = config.dziUrlTemplate;
         }
 
+        /* *** commonwealth changes *** */
+        if ($.isFunction(config.thumbUrlTemplate)) {
+            this.generateThumbUrl = config.thumbUrlTemplate;
+        }
+
         this.pageView = new PageView(this, $pages, config);
 
         if (config.dziUrlTemplate) {
@@ -118,7 +125,7 @@
         this.gridView = new GridView(this, $grid, config);
         this.activeView = this.pageView;
 
-        /* *** commonwealth changes ***/
+        /* *** commonwealth changes *** */
         /* add classes for bootstrap and font-awesome */
         // Add toolbar features which only work with JavaScript:
         if (Modernizr.canvas || Modernizr.csstransforms) {
@@ -424,6 +431,10 @@
             this.currentIndex = newIndex;
 
             this.updateViewer();
+        },
+        /* ***commonwealth changes*** */
+        generateThumbUrl: function (group, index) {
+            return this.config.thumbUrlTemplate.replace('{group}', group).replace('{index}', index);
         },
         setGroup: function (newGroup, newIndex) {
             if (newGroup == this.currentGroup && (!newIndex || newIndex == this.currentIndex)) {
@@ -796,7 +807,6 @@
             var seadragon = new OpenSeadragon({
                 id: $container.attr("id"),
                 prefixUrl: this.controller.config.seadragonPrefixUrl,
-                // tileSources: ["http://localhost:3000/iiif/bpl-dev:h989r3271/info.json"],
                 tileSources: dziUrl,
                 // autoHideControls: false,
                 immediateRender: navigator.userAgent.match(/mobile/i),
@@ -907,10 +917,9 @@
                 div.id = "index-" + i;
                 div.className = "placeholder";
                 div.appendChild(document.createTextNode(i));
-                thumbnailUrls[i] = controller.generateImageUrl(controller.currentGroup,
-                    i,
-                    config.maxThumbnailEdge);
-                div.style.backgroundImage = "url(" + config.placeholderSrc + ")";
+                thumbnailUrls[i] = controller.generateThumbUrl(controller.currentGroup,
+                    i);
+                div.style.backgroundImage = "url(" + config.placeholderSrcGrid + ")";
                 container.appendChild(div);
             }
 
