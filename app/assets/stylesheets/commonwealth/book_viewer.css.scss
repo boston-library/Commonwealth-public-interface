@@ -21,7 +21,7 @@
   }
 
   #viewer {
-    background-color: black;
+    background-color: #111111;
     height: 100%;
     width: 100%;
     font-size: large;
@@ -247,7 +247,7 @@
       #seadragon {
 
         .openseadragon-container > div + div + div + div {
-          bottom: 35px !important;
+          bottom: 50px !important;
         }
 
         .control {
@@ -274,7 +274,7 @@
         overflow-x: hidden;
         overflow-y: scroll;
         -webkit-overflow-scrolling: touch;
-        background-color: #111;
+        // background-color: #111;
         padding: 30px 0px;
 
         div {
@@ -420,6 +420,14 @@
 
 
 /* responsive styles */
+
+@media screen and (max-width: 1024px) {
+
+  .wdl-viewer #viewer footer > nav #index, .wdl-viewer #viewer footer > nav #fd-slider-index {
+    display: none;
+  }
+
+}
 
 @media screen and (max-width: 768px) {
 
