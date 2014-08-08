@@ -82,8 +82,6 @@
         this.rotation = config.viewportRotation || 0;
 
         config.placeholderSrc = config.placeholderSrc || placeholderImage;
-        /* ***commonwealth changes*** */
-        config.placeholderSrcGrid = config.placeholderSrcGrid || placeholderImage;
         // TODO: Adjust image max size based on the viewport
         config.maxPageEdge = 1024;
         config.maxThumbnailEdge = 256;
@@ -919,7 +917,7 @@
                 div.appendChild(document.createTextNode(i));
                 thumbnailUrls[i] = controller.generateThumbUrl(controller.currentGroup,
                     i);
-                div.style.backgroundImage = "url(" + config.placeholderSrcGrid + ")";
+                div.style.backgroundImage = "url(" + config.placeholderSrc + ")";
                 container.appendChild(div);
             }
 
