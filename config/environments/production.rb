@@ -59,6 +59,7 @@ CommonwealthPublicInterface::Application.configure do
 
   #use sendmail for email messages being sent
   config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.default_url_options = { :host => 'digitalcommonwealth.org' }
 
   # Enable threaded mode
   # config.threadsafe!

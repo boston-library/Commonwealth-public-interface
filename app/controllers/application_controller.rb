@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 # Adds Hydra behaviors into the application controller 
   include Hydra::Controller::ControllerBehavior
 
-  # Please be sure to impelement current_user and user_session. Blacklight depends on 
+  # Please be sure to implement current_user and user_session. Blacklight depends on
   # these methods in order to perform user specific actions. 
 
   layout 'blacklight'
@@ -17,10 +17,12 @@ class ApplicationController < ActionController::Base
   # TODO figure out why it doesn't work for Polaris or Facebook logins
   def store_location
     # store last url - this is needed for post-login redirect to whatever the user last visited.
-    if (request.fullpath != "/users/sign_in" &&
-        request.fullpath != "/users/sign_up" &&
-        request.fullpath != "/users/password" &&
-        request.fullpath != "/users/sign_out" &&
+    if (request.path != "/users/sign_in" &&
+        request.path != "/users/sign_up" &&
+        request.path != "/users/password/new" &&
+        request.path != "/users/password/edit" &&
+        request.path != "/users/confirmation" &&
+        request.path != "/users/sign_out" &&
         !request.fullpath.match(/\/users\/auth\//) &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath

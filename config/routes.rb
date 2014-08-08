@@ -85,7 +85,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'partners', :to => 'pages#partners', :as => 'partners'
   get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), :as => 'blog'
 
-  resources :users, :only => :show
+  resources :users, :only => [:show, :index]
 
   get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
   get 'book_viewer/:id', :to => 'image_viewer#book_viewer', :as => 'book_viewer'
