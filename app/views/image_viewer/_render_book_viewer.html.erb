@@ -121,7 +121,7 @@ function generateThumbUrl(group, index) {
     return '<%= datastream_disseminator_url('xyz', 'thumbnail300') %>'.replace("xyz", pid)
 }
 
-var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
+var bookmark = document.location.pathname.match(/(\d+)\/(\d+)\/?$/);
 
 var image_server = <%= iiif_info_path(:identifier => 'xyz').split('xyz')[0] %>;
 
@@ -130,7 +130,7 @@ var image_files = <%= image_files.to_json.html_safe %>;
 var $window = $(window),
         $viewer = $("#viewer").wdlViewer({
             pageGroups: {"1": <%= image_files.count %>}, // List of groups and the last index value in each
-            pageUrlTemplate: "#1/{index}",
+            pageUrlTemplate: "/book_viewer/<%= params[:id] %>/{group}/{index}/",
             imageUrlTemplate: generateImageUrl,
             dziUrlTemplate: generateDziUrl,
             placeholderSrc: "<%= image_path('loading-wdl-grid.gif') %>",
