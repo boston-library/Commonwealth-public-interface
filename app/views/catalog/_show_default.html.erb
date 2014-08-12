@@ -8,34 +8,28 @@
                        :locals => {:document => @document,
                                    :image_pid => image_files.first,
                                    :page_sequence => {:total => 1}} %>
-        <%# when 2..7 %>
-        <% else %>
+        <% when 2..7 %>
             <%= render :partial => 'catalog/_show_partials/show_multi_img',
                        :locals => {:document => @document,
                                    :image_files => image_files} %>
-        <%# else %>
-            <%# "PAGE TURNER [TK]" %>
+        <% else %>
+            <% book_reader = true %>
     <% end %>
 <% end %>
 
 <div class="row">
 
   <%# show thumbnail or icon if object has no images %>
-  <% unless image_files %>
+  <% if !image_files || book_reader %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
           <% img = create_thumb_img_element(@document,
                                             %w(thumb_img_show),
                                             params[:action]) %>
           <% if @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' %>
-              <%= link_to(img,
-                          @document[:identifier_uri_ss],
-                          :target => '_blank',
-                          :title => t('blacklight.oai_objects.link_to_item',
-                                      :institution_name => document[:institution_name_ssim].first)) %>
-            </div>
-              <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
-                         :locals => {:document => @document} %>
+              <%= render :partial => 'catalog/_show_partials/show_oai_item_link', :locals => {:document => @document, :img => img} %>
+          <% elsif book_reader %>
+              <%= render :partial => 'catalog/_show_partials/show_book_viewer_link', :locals => {:document => @document, :img => img} %>
           <% else %>
               <%= img %>
             </div>

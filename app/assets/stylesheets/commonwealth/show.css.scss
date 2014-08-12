@@ -228,6 +228,19 @@ div#img_viewer_modal {
 
   }
 
+  #book_viewer_link_wrap {
+    bottom: 12px;
+    position: absolute;
+    right: 56px;
+
+    a {
+      color: $lighter_gray;
+      background: none repeat scroll 0 0 rgba(0, 0, 0, 0.60);
+      padding: 0px 5px;
+    }
+
+  }
+
 }
 
 /* metadata */
@@ -422,6 +435,11 @@ div#img_viewer_modal {
       padding: 10px;
     }
 
+    #book_viewer_link_wrap {
+      bottom: 18px;
+      right: 90px;
+    }
+
   }
 
   #more_like_this {
@@ -452,6 +470,14 @@ div#img_viewer_modal {
         max-height: 400px;
       }
 
+    }
+
+  }
+
+  #thumbnail_wrapper {
+
+    #book_viewer_link_wrap {
+      right: 28px;
     }
 
   }
@@ -516,6 +542,10 @@ div#img_viewer_modal {
       @include box-shadow(none);
       padding:0;
       width: 100%;
+    }
+
+    #book_viewer_link_wrap {
+        right: 28px;
     }
 
   }

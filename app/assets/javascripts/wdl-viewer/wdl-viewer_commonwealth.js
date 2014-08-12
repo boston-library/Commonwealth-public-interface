@@ -714,7 +714,7 @@
             // $("#toggle-seadragon").text(gettext("Read"));
             var toggle = $("#toggle-seadragon");
             toggle.attr("title","Read");
-            toggle.find("i").attr("class", "fa fa-file-text");
+            toggle.find("i").attr("class", "fa fa-book");
 
             if (this.seadragon) {
                 this.seadragon.close();

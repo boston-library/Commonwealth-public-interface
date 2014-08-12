@@ -121,7 +121,7 @@ function generateThumbUrl(group, index) {
     return '<%= datastream_disseminator_url('xyz', 'thumbnail300') %>'.replace("xyz", pid)
 }
 
-var bookmark = document.location.pathname.match(/(\d+)\/(\d+)\/?$/);
+var bookmark = window.location.pathname.match(/(\d+)\/(\d+)\/?$/);
 
 var image_server = <%= iiif_info_path(:identifier => 'xyz').split('xyz')[0] %>;
 

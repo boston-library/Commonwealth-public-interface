@@ -1,0 +1,11 @@
+<%= link_to(img,
+            book_viewer_path(:id => document.id, :group => '1', :index => '1'),
+            :title => t('blacklight.book_viewer.link_to_reader')) %>
+
+<div id="book_viewer_link_wrap">
+  <%= link_to(book_viewer_path(:id => document.id, :group => '1', :index => '1'),
+              :class => 'book_viewer_link btn') do %>
+      <%= t('blacklight.book_viewer.link_to_reader') %> <i class="fa fa-book"></i>
+  <% end %>
+</div>
+</div>
