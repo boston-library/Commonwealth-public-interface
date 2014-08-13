@@ -303,8 +303,7 @@
         $viewer.on("page-changed", $.proxy(function () {
             $groupControl.val(this.currentGroup);
             $indexControl.val(this.currentIndex);
-            $viewer.find("input.current-index").val(this.currentIndex);
-            $viewer.find("input.current-index").attr("max", this.maxIndex);
+            $viewer.find('input.current-index').attr('max', this.maxIndex).val(this.currentIndex);
             $viewer.find(".max-index").text(this.maxIndex);
             $indexControl.attr("max", this.maxIndex);
         }, this));

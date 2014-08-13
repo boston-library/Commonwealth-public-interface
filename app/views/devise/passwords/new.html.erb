@@ -1,6 +1,6 @@
 <div class="col-sm-9">
 <h2>Forgot your password?</h2>
-  <%= request.base_url %>
+
   <p>Enter your email address below and we'll send you a message with instructions on how to reset your password.</p>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :id => 'password_reset_request', :class => 'form-horizontal', :role => 'form' }) do |f| %>
