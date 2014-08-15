@@ -43,6 +43,10 @@
     padding-bottom: .5em;
   }
 
+  .facet-values .facet-label {
+    word-break: normal;
+  }
+
   /* advanced search results facets */
   .advanced_facet_limit ul {
     border-bottom: medium none;
