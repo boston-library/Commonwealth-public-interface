@@ -222,6 +222,33 @@
         <% end %>
       </dd>
     <% end %>
+    <%# note @type="ownership" field %>
+    <% if document[:note_ownership_tsim] %>
+      <dt><%= t('blacklight.metadata_display.fields.note_ownership') %>:</dt>
+      <dd>
+        <% document[:note_ownership_tsim].each do |ownership_note| %>
+            <%= ownership_note %><br />
+        <% end %>
+      </dd>
+    <% end %>
+    <%# note @type="acquisition" field %>
+    <% if document[:note_acquisition_tsim] %>
+      <dt><%= t('blacklight.metadata_display.fields.note_acquisition') %>:</dt>
+      <dd>
+        <% document[:note_acquisition_tsim].each do |acquisition_note| %>
+            <%= acquisition_note %><br />
+        <% end %>
+      </dd>
+    <% end %>
+    <%# note @type="preferred citation" field %>
+    <% if document[:note_citation_tsim] %>
+      <dt><%= t('blacklight.metadata_display.fields.note_citation') %>:</dt>
+      <dd>
+        <% document[:note_citation_tsim].each do |citation_note| %>
+            <%= citation_note %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# note @type="date" field %>
     <% if document[:note_date_tsim] %>
       <dt><%= t('blacklight.metadata_display.fields.note_date') %>:</dt>
@@ -230,7 +257,7 @@
             <%= date_note %><br />
         <% end %>
       </dd>
-    <% end %>
+  <% end %>
     <%# note field %>
     <% if document[:note_tsim] %>
         <dt><%= t('blacklight.metadata_display.fields.note') %>:</dt>
