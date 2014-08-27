@@ -18,16 +18,16 @@ ActiveRecord::Schema.define(version: 20140506143300) do
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",       null: false
     t.string   "document_id"
     t.string   "title"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "user_type"
     t.string   "document_type"
   end
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20140506143300) do
   create_table "bpluser_folder_items", force: true do |t|
     t.integer  "folder_id"
     t.string   "document_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "bpluser_folder_items", ["document_id"], name: "index_bpluser_folder_items_on_document_id"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20140506143300) do
     t.string   "title"
     t.integer  "user_id",     null: false
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "visibility"
   end
 
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20140506143300) do
     t.string   "title"
     t.string   "institution"
     t.string   "context"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "institutions", force: true do |t|
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20140506143300) do
   create_table "searches", force: true do |t|
     t.text     "query_params"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "user_type"
   end
 
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 20140506143300) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "guest",                  default: false
     t.string   "username"
     t.string   "provider"

@@ -1,5 +1,4 @@
-<%# creating local version to deal with IE6-8 issues with non-SSL HTML5 shim %>
-<%# revert after upgrading to BL 5 %>
+<%# creating local version for google-analytics and mobile icons %>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
@@ -20,6 +19,10 @@
   <title><%= render_page_title %></title>
   <%= opensearch_description_tag application_name, opensearch_catalog_path(:format => 'xml', :only_path => false) %>
   <%= favicon_link_tag asset_path('favicon.ico') %>
+  <%= favicon_link_tag 'dc_mobile-icons_60x60.png', :rel => 'apple-touch-icon', :type => 'image/png'  %>
+  <%= favicon_link_tag 'dc_mobile-icons_76x76.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '76x76' %>
+  <%= favicon_link_tag 'dc_mobile-icons_120x120.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '120x120' %>
+  <%= favicon_link_tag 'dc_mobile-icons_152x152.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => '152x152' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
