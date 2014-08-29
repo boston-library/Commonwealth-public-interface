@@ -190,8 +190,51 @@ body.blacklight-catalog-show #header-navbar {
 
 }
 
-div#img_viewer_modal {
-  position:relative;
+#img_viewer_modal {
+
+  .modal-dialog {
+    width:98%;
+    margin:10px auto;
+
+    .modal-content {
+      background-color: $light_gray;
+
+      .modal-header {
+        border-bottom: 0;
+        padding: 3px 10px;
+
+        .modal-title {
+          font-weight: bold;
+
+          h4 {
+            font-size: 16px;
+          }
+
+        }
+
+      }
+
+      #img_viewer_osd {
+        background-color: #222222;
+        margin: 0 5px;
+        padding: 0;
+
+        .openseadragon-container > div + div + div + div {
+          bottom: 3px !important;
+          right: 3px !important;
+        }
+
+      }
+
+      .modal-footer {
+        border-top: 0;
+        padding: 2px;
+      }
+
+    }
+
+  }
+
 }
 
 #thumbnail_wrapper {

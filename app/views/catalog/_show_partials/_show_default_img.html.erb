@@ -15,9 +15,8 @@
                   :title => t('blacklight.images.zoom')) %>
 
       <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
-                 :locals => {:object_title => object_title.html_safe,
-                             :image_datastream => image_datastream,
-                             :image_metadata => image_metadata} %>
+                 :locals => { :object_title => object_title.html_safe,
+                             :image_pid => image_pid } %>
   <% end %>
 
   <% unless page_sequence[:total] == 1 %>
