@@ -17,20 +17,16 @@ gem 'bplmodels', :git => 'https://github.com/boston-library/bplmodels.git'#, :re
 #gem 'bplmodels', :path => '/home/eenglish/bplmodels'
 gem 'bpluser', :git => 'https://github.com/boston-library/bpluser.git'
 
-
 #gem 'rmagick'          rake db
 #gem 'djatoka'
 #gem 'djatoka', :path => '/home/eenglish/djatoka-forked/djatoka'
 gem 'djatoka', :git => 'https://github.com/jronallo/djatoka.git', :ref => 'e079330297'
 
-
 gem 'sass-rails',   '~> 4.0.1'
 gem 'coffee-rails', '~> 4.0.1'
 gem 'uglifier', '>= 1.3.0'
 
-
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

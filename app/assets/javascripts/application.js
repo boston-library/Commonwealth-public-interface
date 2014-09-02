@@ -13,10 +13,8 @@
 //= require jquery
 // require blacklight_advanced_search/blacklight_advanced_search
 
-
 //= require jquery_ujs
-//= require jquery.ui.dialog
-//
+
 // Required by Blacklight
 //= require blacklight/blacklight
 
@@ -33,7 +31,7 @@
 
 //= require blacklight_google_analytics/blacklight_google_analytics
 
-// WARNING: require tree has been disabled to avoid djatoka_viewer JS files being automatically included
-//          since the viewer uses mooTools/Prototype, which causes namespace conflicts with jQuery
+// WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
+// from being automatically included on pages that don't need them
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive
 // require_tree .

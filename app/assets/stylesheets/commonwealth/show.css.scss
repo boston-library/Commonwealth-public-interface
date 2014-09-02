@@ -202,14 +202,14 @@ body.blacklight-catalog-show #header-navbar {
       .modal-header {
         border-bottom: 0;
         padding: 3px 10px;
+        text-align: left;
+        height: 29px;
+        overflow: hidden;
 
         .modal-title {
+          font-size: 16px;
           font-weight: bold;
-
-          h4 {
-            font-size: 16px;
-          }
-
+          width: 95%;
         }
 
       }
@@ -218,12 +218,20 @@ body.blacklight-catalog-show #header-navbar {
         background-color: #222222;
         margin: 0 5px;
         padding: 0;
+        border: 1px solid #111111;
 
+        /* OSd navigator */
+        .openseadragon-container > div.openseadragon-canvas + div + div {
+          right: 3px !important;
+          top: 3px !important;
+        }
+
+        /* OSd controls
         .openseadragon-container > div + div + div + div {
           bottom: 3px !important;
           right: 3px !important;
         }
-
+        */
       }
 
       .modal-footer {

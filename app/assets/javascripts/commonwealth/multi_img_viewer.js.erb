@@ -1,18 +1,21 @@
+/* lock height of #multi_img_pane to prevent bounce on image change */
+$(document).ready(function() {
+    var multi_img_pane_div = $('#multi_img_pane');
+    multi_img_pane_div.css('height', multi_img_pane_div.height());
+});
+
 /* show loading gif while waiting for selected image to load */
 
-var scrollingContainer = jQuery('#thumbnail_list');
+var scrollingContainer = $('#thumbnail_list');
 var scrollTop = scrollingContainer.scrollTop();
 
-jQuery('#multi_img_show_container').find('a.prev_next').click( function () {
-
+$('#multi_img_show_container').find('a.prev_next').click( function () {
     // display the loading icon
-    jQuery('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading', :alt => 'Loading...') %>');
-
+    $('#img_show_container').html('<%= image_tag('loading.gif',:id => 'loading', :alt => 'Loading...') %>');
     // scroll the thumbnail
-    var selected_img = scrollingContainer.find("[data-viewer='" + jQuery(this).data('viewer') + "']");
+    var selected_img = scrollingContainer.find("[data-viewer='" + $(this).data('viewer') + "']");
     var position = selected_img.position().top;
     scrollingContainer.animate({
         scrollTop: (position + scrollTop) - 200
     }, 200);
-
 });

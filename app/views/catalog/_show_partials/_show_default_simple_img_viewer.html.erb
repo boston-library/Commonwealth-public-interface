@@ -14,9 +14,9 @@
 </div>
 
 <script type="text/javascript">
-    jQuery('#img_viewer_link').click(function() {
-        jQuery('#img_viewer_modal').modal();
-        jQuery("#img_viewer_osd").css("height", $(window).height() - 60);
+    $('#img_viewer_link').click(function() {
+        $('#img_viewer_modal').modal();
+        $("#img_viewer_osd").css("height", $(window).height() - 60);
         OpenSeadragon({
             id: "img_viewer_osd",
             prefixUrl: "/assets/openseadragon/",
@@ -25,7 +25,7 @@
             immediateRender: navigator.userAgent.match(/mobile/i),
             showNavigator: true,
             navigatorPosition: 'TOP_RIGHT',
-            showNavigationControl: true,
+            showRotationControl: true,
             navigationControlAnchor: OpenSeadragon.ControlAnchor.BOTTOM_RIGHT,
             showFullPageControl: false
         });
@@ -35,4 +35,3 @@
         $("#img_viewer_osd").find('.openseadragon-container').remove();
     });
 </script>
-

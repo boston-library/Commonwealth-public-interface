@@ -1,22 +1,19 @@
-// remove the previous image zoom viewer modal
-jQuery('div.ui-dialog').remove();
-
 // add a class so the thumbnail is highlighted
-jQuery('#thumbnail_list').find('a').each(function() {
-    if (this.hasClass('in_viewer')) {
-        this.removeClass('in_viewer');
+$('#thumbnail_list').find('a').each(function() {
+    if ($(this).hasClass('in_viewer')) {
+        $(this).removeClass('in_viewer');
     }
-    if (jQuery(this).data('viewer') === '<%= escape_javascript(@page_sequence[:current]) %>') {
-        this.addClass('in_viewer');
+    if ($(this).data('viewer') === '<%= @page_sequence[:current] %>') {
+        $(this).addClass('in_viewer');
     }
 });
 
 // update the image pagination
-jQuery('#page_sequence').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_multi_img_pagination',
+$('#page_sequence').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_multi_img_pagination',
                    :locals => {:page_sequence => @page_sequence}) %>");
 
 // update the main image
-jQuery('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
+$('#img_show_container').replaceWith("<%= escape_javascript(render :partial => 'catalog/_show_partials/show_default_img',
                    :locals => {:image_pid => @page_sequence[:current], :document => @document, :page_sequence => @page_sequence}) %>");
 
 
