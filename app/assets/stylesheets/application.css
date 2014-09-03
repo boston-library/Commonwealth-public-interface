@@ -12,8 +12,6 @@
  *= require_self
  *= require_tree .
 
- *= require jquery.ui.dialog
-
  * to prevent specific blacklight gem css files from being included, you can use
  * 'stub' method, as in example below:
  * stub blacklight/_layout

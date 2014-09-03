@@ -1,11 +1,10 @@
 /* lock height of #multi_img_pane to prevent bounce on image change */
-$(document).ready(function() {
+$(window).bind("load", function() {
     var multi_img_pane_div = $('#multi_img_pane');
     multi_img_pane_div.css('height', multi_img_pane_div.height());
 });
 
 /* show loading gif while waiting for selected image to load */
-
 var scrollingContainer = $('#thumbnail_list');
 var scrollTop = scrollingContainer.scrollTop();
 
