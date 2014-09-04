@@ -562,6 +562,24 @@ body.blacklight-catalog-show #header-navbar {
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 
+  #flagged_warning {
+
+    h3 {
+      font-size: 20px;
+    }
+
+    .modal-dialog {
+      margin: 90px auto;
+
+      .modal-body {
+        font-size:16px;
+        padding: 20px 20px;
+      }
+
+    }
+
+  }
+
   #multi_img_pane, #thumb_img_show_container, .blacklight-catalog-show #sidebar {
     float:left;
   }
@@ -597,6 +615,27 @@ body.blacklight-catalog-show #header-navbar {
 
     #book_viewer_link_wrap {
         right: 28px;
+    }
+
+  }
+
+  #img_viewer_modal {
+
+    .modal-dialog {
+
+      .modal-content {
+
+        .modal-header {
+
+          .modal-title {
+            font-size: 14px;
+            font-weight: normal;
+          }
+
+        }
+
+      }
+
     }
 
   }

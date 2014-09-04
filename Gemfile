@@ -61,6 +61,7 @@ group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
 end
 
 gem 'unicode', :platforms => [:mri_18, :mri_19]
