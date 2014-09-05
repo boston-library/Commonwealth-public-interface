@@ -13,4 +13,12 @@ describe ImageViewerController do
     end
   end
 
+  describe 'get #book_viewer' do
+    it 'should render the book viewer' do
+      get :book_viewer, :id => 'bpl-dev:k930bx42b'
+      response.should be_success
+      response.body.should have_selector('#viewer')
+    end
+  end
+
 end
