@@ -27,6 +27,8 @@ $error_text: #b94a48;
 $error_bg: #f2dede;
 $error_border: #eed3d7;
 
+$viewer_bg: #111111;
+
 @mixin rounded-corners($radius) {
   -moz-border-radius: $radius;
   -webkit-border-radius: $radius;

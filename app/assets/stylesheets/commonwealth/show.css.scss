@@ -215,10 +215,10 @@ body.blacklight-catalog-show #header-navbar {
       }
 
       #img_viewer_osd {
-        background-color: #222222;
+        background-color: $viewer_bg;
         margin: 0 5px;
         padding: 0;
-        border: 1px solid #111111;
+        border: 1px solid $light_gray;
 
         /* OSd navigator */
         .openseadragon-container > div.openseadragon-canvas + div + div {
@@ -226,12 +226,6 @@ body.blacklight-catalog-show #header-navbar {
           top: 3px !important;
         }
 
-        /* OSd controls
-        .openseadragon-container > div + div + div + div {
-          bottom: 3px !important;
-          right: 3px !important;
-        }
-        */
       }
 
       .modal-footer {
