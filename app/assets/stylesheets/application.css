@@ -10,14 +10,18 @@
 
  *
  *= require_self
- *= require_tree .
 
- * to prevent specific blacklight gem css files from being included, you can use
- * 'stub' method, as in example below:
+ * not using 'require_tree .' (include everything) as stubbed file list getting bigger
+ * instead, require directories and/or files as needed
+ * require_tree .
+
+ *= require blacklight
+ *= require_directory ./commonwealth
+
+ *= require bootstrap-accessibility-plugin/bootstrap-accessibility
+
+ * to prevent specific css files from being included, you can use 'stub' method, for ex::
  * stub blacklight/_layout
-
- * don't auto-include wdl-viewer slider CSS for older browsers
- *= stub wdl-viewer/fd-slider.min
 
  *= require blacklight_advanced_search
  *= require font-awesome

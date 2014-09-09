@@ -10,9 +10,8 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-// require blacklight_advanced_search/blacklight_advanced_search
 
+//= require jquery
 //= require jquery_ujs
 
 // Required by Blacklight

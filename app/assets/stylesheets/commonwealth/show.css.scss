@@ -2,11 +2,6 @@
 
 @import 'cmmnwlth_defaults';
 
-body.blacklight-catalog-show #header-navbar {
-  // don't cover image viewer modal
-  z-index: 100;
-}
-
 #flagged_warning {
 
   .modal-dialog {
@@ -218,7 +213,7 @@ body.blacklight-catalog-show #header-navbar {
         background-color: $viewer_bg;
         margin: 0 5px;
         padding: 0;
-        border: 1px solid $light_gray;
+        border: 1px solid $dark_gray;
 
         /* OSd navigator */
         .openseadragon-container > div.openseadragon-canvas + div + div {

@@ -49,7 +49,9 @@ module CommonwealthPublicInterface
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.assets.precompile += %w(wdl-viewer/fd-slider.min.css)
+    # add additional files to be compiled
+    # NOTE: this WON'T work with '.scss' files -- has to be '.css'
+    config.assets.precompile += %w(wdl-viewer/fd-slider.min.css ie_fixes.css)
 
     # Don't automatically make all helpers available to all controllers
     #config.action_controller.include_all_helpers = false
