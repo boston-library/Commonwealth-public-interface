@@ -14,10 +14,11 @@
 </div>
 
 <script type="text/javascript">
+    OSd_viewer = {}
     $('#img_viewer_link').click(function() {
         $('#img_viewer_modal').modal();
         $("#img_viewer_osd").css("height", $(window).height() - 60);
-        OpenSeadragon({
+        OSd_viewer.viewer = new OpenSeadragon({
             id: "img_viewer_osd",
             prefixUrl: "/assets/openseadragon/",
             tileSources: ['<%= iiif_info_path(:identifier => image_pid) %>'],
@@ -33,5 +34,9 @@
     });
     $('#img_viewer_modal').on('hidden.bs.modal', function (e) {
         $("#img_viewer_osd").find('.openseadragon-container').remove();
+        if (OSd_viewer.viewer) {
+            OSd_viewer.viewer.destroy();
+            OSd_viewer.viewer = null;
+        }
     });
 </script>
