@@ -805,7 +805,7 @@
                 id: $container.attr("id"),
                 prefixUrl: this.controller.config.seadragonPrefixUrl,
                 tileSources: dziUrl,
-                // autoHideControls: false,
+                autoHideControls: false,
                 immediateRender: navigator.userAgent.match(/mobile/i),
                 showNavigator: true,
                 navigatorPosition: 'TOP_RIGHT',

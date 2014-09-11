@@ -221,6 +221,17 @@
           top: 3px !important;
         }
 
+        /* OSd controls */
+        .openseadragon-container > div.openseadragon-canvas + div + div + div {
+          right: 3px !important;
+          padding: 1px 1px 0 !important;
+          border-radius: 5px 5px 0 0;
+          background: rgb(17, 17, 17) !important; /* fallback for browsers w/o RGBa support */
+          background: rgba(17, 17, 17, 0.4) !important;
+          filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66111111, endColorstr=#66111111); /* for IE 5.5-7 */
+          -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#66111111, endColorstr=#66111111)"; /* for IE8 */
+        }
+
       }
 
       .modal-footer {
