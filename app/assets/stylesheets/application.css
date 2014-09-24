@@ -16,6 +16,7 @@
  * require_tree .
 
  *= require blacklight
+ *= require blacklight_maps
  *= require_directory ./commonwealth
 
  *= require bootstrap-accessibility-plugin/bootstrap-accessibility

@@ -48,6 +48,17 @@ GIT
       mime-types
       trollop
 
+PATH
+  remote: /home/eenglish/blacklight-maps
+  specs:
+    blacklight-maps (0.1.0)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      leaflet-sidebar-rails (~> 0.0.2)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -213,6 +224,10 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    leaflet-markercluster-rails (0.7.0)
+      railties (>= 3.1)
+    leaflet-rails (0.7.3)
+    leaflet-sidebar-rails (0.0.3)
     libv8 (3.16.14.3)
     linkeddata (1.1.1)
       equivalent-xml (>= 0.4.0)
@@ -447,6 +462,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.5.3)
+  blacklight-maps!
   blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms
