@@ -234,6 +234,7 @@ en:
             id_local_barcode: 'Barcode'
             id_local_call: 'Call #'
             id_local_other: 'Identifier'
+            id_local_other_invalid: '(no longer used)'
             id_uri_ark: 'Permalink'
             id_uri_oai: 'Link to Item'
             language: 'Language'

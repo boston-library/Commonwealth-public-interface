@@ -308,11 +308,18 @@
       </dd>
     <% end %>
     <%# local-other id field %>
-    <% if document[:identifier_local_other_tsim] %>
+    <% if document[:identifier_local_other_tsim] || document[:identifier_local_other_invalid_tsim] %>
       <dt><%= t('blacklight.metadata_display.fields.id_local_other') %>:</dt>
       <dd>
-        <% document[:identifier_local_other_tsim].each do |local_other| %>
-            <%= local_other %><br />
+        <% if document[:identifier_local_other_tsim] %>
+            <% document[:identifier_local_other_tsim].each do |local_other| %>
+                <%= local_other %><br />
+            <% end %>
+        <% end %>
+        <% if document[:identifier_local_other_invalid_tsim] %>
+            <% document[:identifier_local_other_invalid_tsim].each do |local_other_invalid| %>
+                <%= local_other_invalid + ' ' + t('blacklight.metadata_display.fields.id_local_other_invalid') %><br />
+            <% end %>
         <% end %>
       </dd>
     <% end %>
