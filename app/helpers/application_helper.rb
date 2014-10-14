@@ -55,44 +55,28 @@ module ApplicationHelper
     link_to(display, link_url)
   end
 
-  #from psu scholarsphere
-  #def link_to_facet(field, field_string)
-  #  link_to(field, add_facet_params(field_string, field).merge!({"controller" => "catalog",
-  #                                                               :action=> "index"}))
-  #end
-
-  def link_to_facet(field_value, field)
-    new_params = add_facet_params(field, field_value)
-    new_params.delete(:id)
-    new_params.delete(:view)
+  def link_to_facet(field_value, field, displayvalue = nil)
+    new_params = {}
     new_params[:action] = 'index'
     new_params[:controller] = 'catalog'
     new_params[:f] = {field => [field_value]}
     if field == 'genre_basic_ssim'
       link_to(render_format(field_value), new_params)
     else
-      link_to(field_value, new_params)
+      link_to(displayvalue.presence || field_value, new_params)
     end
   end
 
   # link to a combination of facets (series + subseries, for ex)
-  def link_to_facets(field_values, fields)
-    new_params = params
-    new_params.delete(:id)
-    new_params.delete(:view)
+  def link_to_facets(field_values, fields, displayvalue = nil)
+    new_params = {}
     new_params[:action] = 'index'
     new_params[:controller] = 'catalog'
     new_params[:f] = {}
     fields.each_with_index do |field, index|
       new_params[:f][field] = [field_values[index]]
     end
-    link_to(field_values[0], new_params)
-  end
-
-  def link_to_facet_labeled(link_text, field, field_string)
-    link_to(link_text,
-            add_facet_params(field_string, field).merge!({'controller' => 'catalog',
-                                                                 :action=> 'index'}))
+    link_to(displayvalue.presence || field_values[0], new_params)
   end
 
   def link_to_county_facet(field, field_string)
