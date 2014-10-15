@@ -61,7 +61,7 @@
 
     <%# map view %>
     <% if @document[blacklight_config.view.maps.placename_coord_field.to_sym] %>
-        <%= render :partial => 'catalog/_show_partials/show_map', :locals => {:document => @document} %>
+        <%= render :partial => 'catalog/_show_maplet', :locals => {:document => @document} %>
     <% end %>
 
   </div>

@@ -234,6 +234,9 @@ class CatalogController < ApplicationController
     config.view.maps.placename_coord_field = 'subject_blacklight_maps_ssim'
     config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     config.view.maps.placename_coord_delimiter = '-|-'
+    config.view.maps.geo_facet_field = 'subject_geographic_ssim'
+
+    #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
 
     # are these being used?
     config.view.maps.center_point_field = 'subject_coordinates_geospatial'
