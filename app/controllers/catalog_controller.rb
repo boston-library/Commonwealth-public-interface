@@ -229,18 +229,13 @@ class CatalogController < ApplicationController
     config.institution_field = 'institution_name_ssim'
 
     # blacklight-maps stuff
-    config.view.maps.type = 'placename_coord'
-    config.view.maps.bbox_field = 'place_bbox' # don't think this is being usedq
-    config.view.maps.placename_coord_field = 'subject_blacklight_maps_ssim'
-    config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    config.view.maps.placename_coord_delimiter = '-|-'
+    config.view.maps.geojson_field = 'subject_geojson_ssm'
+    config.view.maps.placename_property = 'city'
+    config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
+    # config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     config.view.maps.geo_facet_field = 'subject_geographic_ssim'
 
     #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
-
-    # are these being used?
-    config.view.maps.center_point_field = 'subject_coordinates_geospatial'
-    #config.view.maps.thumbnail_method = 'maps_thumbnail'
 
   end
 
