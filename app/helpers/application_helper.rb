@@ -56,37 +56,24 @@ module ApplicationHelper
   end
 
   def link_to_facet(field_value, field, displayvalue = nil)
-    new_params = {}
-    new_params[:action] = 'index'
-    new_params[:controller] = 'catalog'
-    new_params[:f] = {field => [field_value]}
     if field == 'genre_basic_ssim'
-      link_to(render_format(field_value), new_params)
+      link_to(render_format(field_value), catalog_index_path(:f => {field => [field_value]}))
     else
-      link_to(displayvalue.presence || field_value, new_params)
+      link_to(displayvalue.presence || field_value, catalog_index_path(:f => {field => [field_value]}))
     end
   end
 
   # link to a combination of facets (series + subseries, for ex)
   def link_to_facets(field_values, fields, displayvalue = nil)
-    new_params = {}
-    new_params[:action] = 'index'
-    new_params[:controller] = 'catalog'
-    new_params[:f] = {}
+   facets = {}
     fields.each_with_index do |field, index|
-      new_params[:f][field] = [field_values[index]]
+      facets[field] = [field_values[index]]
     end
-    link_to(displayvalue.presence || field_values[0], new_params)
+    link_to(displayvalue.presence || field_values[0], catalog_index_path(:f => facets))
   end
 
-  def link_to_county_facet(field, field_string)
-    new_params = add_facet_params(field_string, field + ' (county)')
-    new_params.delete(:id)
-    new_params.delete(:view)
-    new_params[:action] = 'index'
-    new_params[:controller] = 'catalog'
-    new_params[:f] = {field_string => [field + ' (county)']}
-    link_to(field + ' County', new_params)
+  def link_to_county_facet(field_value, field)
+    link_to(field_value + ' County', catalog_index_path(:f => {field => [field_value + ' (county)']}))
   end
 
   def datastream_disseminator_url pid, datastream_id
