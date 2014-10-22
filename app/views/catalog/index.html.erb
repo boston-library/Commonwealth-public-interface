@@ -1,5 +1,5 @@
-<%# check for search params or :mlt_id %>
-<% if has_search_parameters? || params[:mlt_id] %>
+<%# check for search params %>
+<% if has_search_parameters? %>
 
     <div id="sidebar" class="col-sm-3">
       <%= render 'search_sidebar' %>

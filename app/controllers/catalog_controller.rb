@@ -71,6 +71,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :show => false
     config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :show => false
     config.add_facet_field 'institution_name_ssim', :label => 'Institution', :show => false
+    config.add_facet_field 'subject_coordinates_geospatial', :label => 'Coordinates', :show => false
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
@@ -298,6 +299,11 @@ class CatalogController < ApplicationController
   before_filter :get_object_files, :only => [:show]
   before_filter :set_nav_context, :only => [:index]
   before_filter :mlt_search, :only => [:index]
+
+  # override so we can inspect for other params
+  def has_search_parameters?
+    !params[:q].blank? or !params[:f].blank? or !params[:search_field].blank? or params[:mlt_id] or !params[:coordinates].blank?
+  end
 
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
