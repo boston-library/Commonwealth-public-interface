@@ -34,12 +34,10 @@
                                                   :alt => image_title,
                                                   :class => 'collection_img_show') %>
                   <% else %>
-                      <% image_datastream = nonssl_image_uri(@collection_image_pid,'accessMaster') %>
-                      <% img_element = djatoka_image_tag(image_datastream,
-                                    {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                    :scale => 300,
-                                    :alt => image_title,
-                                    :class => 'collection_img_show'}) %>
+                      <% img_element = iiif_image_tag(@collection_image_pid,
+                                                      {:size => 'pct:20',
+                                                       :alt => image_title,
+                                                       :class => 'collection_img_show'}) %>
                   <% end %>
               <%= link_to(img_element,
                           solr_document_path(@collection_image_info[:pid])) %>

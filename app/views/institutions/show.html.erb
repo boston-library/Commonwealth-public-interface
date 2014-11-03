@@ -46,12 +46,10 @@
     </div>
 
     <% if @institution_image_pid %>
-        <% image_datastream = datastream_disseminator_url(@institution_image_pid,'accessMaster') %>
-        <%= djatoka_image_tag(image_datastream,
-                              {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                               :scale => 300,
-                               :alt => @institution_title,
-                               :class => 'institution_img_show'}) %>
+        <%= iiif_image_tag(@institution_image_pid,
+                           {:size => 'pct:20',
+                            :alt => @institution_title,
+                            :class => 'institution_img_show'}) %>
     <% else %>
         <%= image_tag('dc_library-icon.png',
                       :alt => @institution_title,

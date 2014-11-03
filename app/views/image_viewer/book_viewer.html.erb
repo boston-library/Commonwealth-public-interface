@@ -12,10 +12,7 @@
   <div id="viewport">
     <div id="pages">
       <div class="page current">
-        <%= djatoka_image_tag(nonssl_image_uri(@image_files.first,'accessMaster'),
-                              {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                               :scale => 500,
-                               :alt => @title}) %>
+        <%= iiif_image_tag(@image_files.first, {:size => 'pct:30', :alt => @title}) %>
       </div>
     </div>
   </div>

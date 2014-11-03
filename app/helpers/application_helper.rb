@@ -98,6 +98,20 @@ module ApplicationHelper
     datastream_disseminator_url(pid,datastream_id).gsub(/\Ahttps/,'http')
   end
 
+  # create an image tag from an IIIF image server
+  def iiif_image_tag(image_pid,options)
+    size = options[:size] ? 'pct:' + options[:size] : 'full'
+    url = IIIF_SERVER['url'] + image_pid + '/full/' + size + '/0/default.jpg'
+    image_tag url, :alt => options[:alt].presence, :class => options[:class].presence
+  end
+
+  # returns a hash with width/height from IIIF info.json response
+  def get_image_metadata(image_pid)
+    iiif_response = Typhoeus::Request.get(IIIF_SERVER['url'] + image_pid + '/info.json')
+    iiif_info = JSON.parse(iiif_response.body)
+    return {:height => iiif_info["height"].to_i, :width => iiif_info["width"].to_i}
+  end
+
   def insert_google_analytics
     if Rails.env.to_s == 'production'
       content_for(:head) do

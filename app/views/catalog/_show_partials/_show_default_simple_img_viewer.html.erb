@@ -24,7 +24,7 @@
         OSd_viewer.viewer = new OpenSeadragon({
             id: "img_viewer_osd",
             prefixUrl: "/assets/openseadragon/",
-            tileSources: ['<%= iiif_info_path(:identifier => image_pid) %>'],
+            tileSources: ['<%= IIIF_SERVER['url'] + image_pid + '/info.json' %>'],
             autoHideControls: false,
             immediateRender: navigator.userAgent.match(/mobile/i),
             showNavigator: true,

@@ -111,7 +111,7 @@ if (navigator.userAgent.match(/Chrome/)) {
 function generateImageUrl(group, index, maxEdge) {
     // return the pid for the given index
     var pid = image_files[index-1];
-    return image_server + pid + "/full/pct:30/0/native.jpg"
+    return image_server + pid + "/full/pct:30/0/default.jpg"
 }
 
 // hijacking this function to return IIIF info.json as tileSource
@@ -128,7 +128,7 @@ function generateThumbUrl(group, index) {
 
 var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
 
-var image_server = <%= iiif_info_path(:identifier => 'xyz').split('xyz')[0] %>;
+var image_server = <%= IIIF_SERVER['url'] %>;
 
 var image_files = <%= image_files.to_json.html_safe %>;
 
