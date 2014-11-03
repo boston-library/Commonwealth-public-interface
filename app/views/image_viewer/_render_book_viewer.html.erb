@@ -128,7 +128,7 @@ function generateThumbUrl(group, index) {
 
 var bookmark = document.location.hash.match(/^#(\d+)\/(\d+)$/);
 
-var image_server = <%= IIIF_SERVER['url'] %>;
+var image_server = "<%= IIIF_SERVER['url'] %>";
 
 var image_files = <%= image_files.to_json.html_safe %>;
 
