@@ -94,6 +94,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'iiif/:identifier/info.json', :to => 'iiif_request#info', :as => 'iiif_info'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
+  get 'collections/show/:id', :to => 'pages#collection_tree'
   get 'collection-tree', :to => 'pages#collection_tree'
   get 'resources' => redirect('http://digitalcommonwealth.memberlodge.org/')
   get 'contact', :to => 'pages#contact'
