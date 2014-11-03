@@ -100,7 +100,7 @@ module ApplicationHelper
 
   # create an image tag from an IIIF image server
   def iiif_image_tag(image_pid,options)
-    size = options[:size] ? 'pct:' + options[:size] : 'full'
+    size = options[:size] ? options[:size] : 'full'
     url = IIIF_SERVER['url'] + image_pid + '/full/' + size + '/0/default.jpg'
     image_tag url, :alt => options[:alt].presence, :class => options[:class].presence
   end
