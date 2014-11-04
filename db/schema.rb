@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506143300) do
+ActiveRecord::Schema.define(version: 20141104185610) do
 
   create_table "batch_uploads", force: true do |t|
     t.string   "upload_file_name"
@@ -57,13 +57,13 @@ ActiveRecord::Schema.define(version: 20140506143300) do
     t.integer  "sequence"
     t.string   "object_pid"
     t.string   "image_pid"
-    t.integer  "scale"
-    t.text     "region"
+    t.string   "region"
     t.string   "title"
     t.string   "institution"
     t.string   "context"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "size"
   end
 
   create_table "institutions", force: true do |t|

@@ -17,11 +17,10 @@
             <% status = 'item' %>
         <% end %>
         <div class="<%= status %>">
-          <% slide_img =  djatoka_image_tag(nonssl_image_uri(slide.image_pid,'accessMaster'),
-                                            {:resolver => Rails.configuration.djatoka_resolver.base_url,
-                                             :scale => slide.scale,
-                                             :alt => slide.title,
-                                             :region => slide.region}) %>
+          <% slide_img = iiif_image_tag(slide.image_pid,
+                                        {:size => slide.size,
+                                         :alt => slide.title,
+                                         :region => slide.region}) %>
           <%= link_to slide_img, solr_document_path(:id => slide.object_pid) %>
           <div class="carousel-caption">
             <h5><%= slide.title %></h5>
