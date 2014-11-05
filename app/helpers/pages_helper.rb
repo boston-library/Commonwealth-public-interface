@@ -24,7 +24,8 @@ module PagesHelper
                                          blog_path,
                                          :target => '_blank') + ' for the latest updates.')
     end
-
+  rescue
+    content_tag(:p, 'No news at the moment, please check back later...')
   end
 
 end
