@@ -109,8 +109,13 @@ module ApplicationHelper
   # returns a hash with width/height from IIIF info.json response
   def get_image_metadata(image_pid)
     iiif_response = Typhoeus::Request.get(IIIF_SERVER['url'] + image_pid + '/info.json')
-    iiif_info = JSON.parse(iiif_response.body)
-    return {:height => iiif_info["height"].to_i, :width => iiif_info["width"].to_i}
+    if iiif_response.response_code == 200
+      iiif_info = JSON.parse(iiif_response.body)
+      img_metadata = {:height => iiif_info["height"].to_i, :width => iiif_info["width"].to_i}
+    else
+      img_metadata = {:height => 0, :width => 0}
+    end
+    img_metadata
   end
 
   def insert_google_analytics
