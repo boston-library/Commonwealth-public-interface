@@ -231,10 +231,11 @@ class CatalogController < ApplicationController
   def exclude_unwanted_models(solr_parameters, user_parameters)
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << '-has_model_ssim:"info:fedora/afmodel:Bplmodels_File"'
-    solr_parameters[:fq] << '+workflow_state_ssi:"published"'
-    solr_parameters[:fq] << '+processing_state_ssi:"complete"'
-    # solr_parameters[:fq] << '-workflow_state_ssi:"draft"'
-    # solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
+    solr_parameters[:fq] << '-workflow_state_ssi:"draft"'
+    solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
+    # can't implement below until all records have this field
+    # solr_parameters[:fq] << '+workflow_state_ssi:"published"'
+    # solr_parameters[:fq] << '+processing_state_ssi:"complete"'
   end
 
   # displays the MODS XML record. copied from blacklight_marc gem
