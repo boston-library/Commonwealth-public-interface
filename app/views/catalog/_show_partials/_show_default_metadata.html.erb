@@ -365,13 +365,29 @@
         </dd>
     <% end %>
     <%# rights field %>
-    <% if document[:use_and_reproduction_ssm] %>
+    <%# TODO: Remove use_and_reproduction_ssm after November 2014 update has run %>
+    <% if document[:use_and_reproduction_ssm] || document[:rights_ssm] || document[:license_ssm]  %>
       <dt><%= t('blacklight.metadata_display.fields.rights') %>:</dt>
       <dd>
-        <% document[:use_and_reproduction_ssm].each do |terms| %>
-            <%= terms %><br />
-            <% if terms.match(/\(CC\s/) %>
-                <%= render_cc_license(terms) %><br />
+        <% if document[:use_and_reproduction_ssm] %>
+            <% document[:use_and_reproduction_ssm].each do |terms| %>
+                <%= terms %><br />
+                <% if terms.match(/\(CC\s/) %>
+                    <%= render_cc_license(terms) %><br />
+                <% end %>
+            <% end %>
+        <% end %>
+        <% if document[:rights_ssm] %>
+            <% document[:rights_ssm].each do |rights| %>
+                <%= rights %><br />
+            <% end %>
+        <% end %>
+        <% if document[:license_ssm] %>
+            <% document[:license_ssm].each do |license| %>
+                <%= license %><br />
+                <% if license.match(/\(CC\s/) %>
+                    <%= render_cc_license(license) %><br />
+                <% end %>
             <% end %>
         <% end %>
       </dd>

@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: d5cd3f17e89aed978240e35bb4d86cc803d074ff
+  revision: 14f9dfc3c7cf13cff287d918b55aed4e54702d8e
   specs:
     bplmodels (0.0.91)
       hydra-derivatives
@@ -195,7 +195,7 @@ GEM
       bootstrap_forms
       cancan
     i18n (0.6.9)
-    iso-639 (0.2.4)
+    iso-639 (0.2.5)
     jettywrapper (1.7.0)
       activesupport (>= 3.0.0)
       childprocess
