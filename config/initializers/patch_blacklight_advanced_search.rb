@@ -1,5 +1,6 @@
 # have to override some methods from BlacklightAdvancedSearch
 # to provide search-field drop-down options and date limiter
+# and modify query constraints checking for mlt and geographic searches
 
 require BlacklightAdvancedSearch::Engine.root.join(Rails.root, 'config','initializers','patch_blacklight_advanced_search')
 
@@ -57,6 +58,17 @@ class BlacklightAdvancedSearch::QueryParser
     @config = config
   end
 
+end
 
+module BlacklightAdvancedSearch::RenderConstraintsOverride
+
+  # LOCAL OVERRIDE for mlt and geo searches
+  def query_has_constraints?(localized_params = params)
+    if is_advanced_search? localized_params
+      true
+    else
+      !(localized_params[:q].blank? and localized_params[:f].blank? and localized_params[:f_inclusive].blank? and localized_params[:mlt_id].blank? and localized_params[:coordinates].blank?)
+    end
+  end
 
 end
