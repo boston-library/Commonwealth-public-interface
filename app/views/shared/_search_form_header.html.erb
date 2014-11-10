@@ -1,5 +1,5 @@
 <%= form_tag search_action_url, :method => :get, :class => 'header-search-form form-inline' do %>
-    <%= render_hash_as_hidden_fields(params_for_search(:search_field => default_search_field[:key]).except('q', 'qt', 'page', 'utf8', 'f', 'sort', 'mlt_id')) %>
+    <%= render_hash_as_hidden_fields(params_for_search(:search_field => default_search_field[:key]).except('q', 'qt', 'page', 'utf8', 'f', 'sort', 'mlt_id', 'coordinates', 'spatial_search_type')) %>
 
     <%# unless search_fields.empty? %>
         <!-- <div class="pull-left"> -->

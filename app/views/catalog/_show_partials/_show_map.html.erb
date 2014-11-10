@@ -1,4 +1,0 @@
-<%# TODO this partial should prob be included in BL maps gem %>
-<%= blacklight_map_tag('blacklight-map_show',{data:{maxzoom:10}}) %>
-<%# <%= blacklight_map_tag('blacklight-map_show',{data:{maxzoom:10, viewpoint: [42.2500,-71.8333], initialzoom:6}}) # how to add more params TODO viewwpoint should be determined by function %> %>
-<%= javascript_tag "$('#blacklight-map_show').blacklight_leaflet_show_map(#{serialize_geojson});" %>
