@@ -71,7 +71,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :show => false
     config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :show => false
     config.add_facet_field 'institution_name_ssim', :label => 'Institution', :show => false
-    config.add_facet_field 'subject_coordinates_geospatial', :label => 'Coordinates', :show => false
+    config.add_facet_field 'subject_coordinates_geospatial', :label => 'Coordinates', :limit => 8, :sort => 'count'
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
@@ -237,6 +237,7 @@ class CatalogController < ApplicationController
     config.view.maps.placename_facet_field = 'subject_geographic_ssim'
     config.view.maps.maxzoom = 12
     config.view.maps.show_initial_zoom = 9
+    config.view.maps.facet_mode = 'geojson'
 
 
     #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
