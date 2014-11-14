@@ -57,7 +57,6 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    # config.add_facet_field 'collection_name_ssim', :label => 'Collection'
     config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count'
     config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count'
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index'
@@ -65,13 +64,16 @@ class CatalogController < ApplicationController
     config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count'
     config.add_facet_field 'collection_name_ssim', :label => 'Collection', :limit => 8, :sort => 'count'
     # link_to_facet fields (not in facets sidebar of search results)
-    config.add_facet_field 'related_item_host_ssim', :label => 'Collection', :show => false # Collection (local)
-    config.add_facet_field 'genre_specific_ssim', :label => 'Genre', :show => false
-    config.add_facet_field 'related_item_series_ssim', :label => 'Series', :show => false
-    config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :show => false
-    config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :show => false
-    config.add_facet_field 'institution_name_ssim', :label => 'Institution', :show => false
-    config.add_facet_field 'subject_coordinates_geospatial', :label => 'Coordinates', :limit => 8, :sort => 'count'
+    config.add_facet_field 'related_item_host_ssim', :label => 'Collection', :include_in_request => false # Collection (local)
+    config.add_facet_field 'genre_specific_ssim', :label => 'Genre', :include_in_request => false
+    config.add_facet_field 'related_item_series_ssim', :label => 'Series', :include_in_request => false
+    config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :include_in_request => false
+    config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :include_in_request => false
+    config.add_facet_field 'institution_name_ssim', :label => 'Institution', :include_in_request => false
+    # facet for blacklight-maps catalog#index map view
+    # have to use '-2' to get all values
+    # because Blacklight::SolrHelper#solr_facet_params adds '+1' to value
+    config.add_facet_field 'subject_geospatial_facet_ssim', :limit => -2, :label => 'Coordinates', :show => false
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
@@ -235,10 +237,10 @@ class CatalogController < ApplicationController
     config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
     config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     config.view.maps.placename_facet_field = 'subject_geographic_ssim'
+    config.view.maps.coordinates_facet_field = 'subject_geospatial_facet_ssim'
     config.view.maps.maxzoom = 12
     config.view.maps.show_initial_zoom = 9
-    config.view.maps.facet_mode = 'geojson'
-
+    config.view.maps.facet_mode = 'coordinates'
 
     #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
 
