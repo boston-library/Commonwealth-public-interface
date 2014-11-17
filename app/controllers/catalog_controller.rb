@@ -232,7 +232,7 @@ class CatalogController < ApplicationController
     config.institution_field = 'institution_name_ssim'
 
     # blacklight-maps stuff
-    config.view.maps.geojson_field = 'subject_geojson_ssm'
+    config.view.maps.geojson_field = 'subject_geojson_ssim'
     config.view.maps.placename_property = 'city'
     config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
     config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
