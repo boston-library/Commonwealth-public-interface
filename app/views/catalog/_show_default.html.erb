@@ -62,7 +62,7 @@
     <%# map view %>
     <% if @document[blacklight_config.view.maps.geojson_field.to_sym] || @document[blacklight_config.view.maps.coordinates_field.to_sym] %>
         <%= render :partial => 'catalog/show_maplet',
-                   :locals => {:geojson_features => serialize_geojson} %>
+                   :locals => {:geojson_features => serialize_geojson(@document)} %>
     <% end %>
 
   </div>
