@@ -1,7 +1,7 @@
 <% image_metadata = get_image_metadata(image_pid) %>
 <% object_title = document[blacklight_config.index.title_field.to_sym] %>
 <% img_element = iiif_image_tag(image_pid,
-                                {:size => 'pct:30',
+                                {:size => ',800',
                                  :alt => object_title,
                                  :class => 'img_show'}) %>
 <div id="img_show_container">
