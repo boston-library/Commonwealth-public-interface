@@ -67,7 +67,8 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :folder_items
 
-  resources :preview, :only => :show
+  get 'preview/:id', :to => 'preview#preview', :as => 'preview'
+  get 'full_image/:id', :to => 'preview#full', :as => 'full_image'
 
   delete 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
@@ -90,8 +91,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'image_viewer/:id', :to => 'image_viewer#show', :as => 'image_viewer'
   get 'book_viewer/:id', :to => 'image_viewer#book_viewer', :as => 'book_viewer'
 
-  get 'iiif/:identifier/:region/:size/:rotation/:quality.jpg', :to => 'iiif_request#show', :as => 'iiif_request'
-  get 'iiif/:identifier/info.json', :to => 'iiif_request#info', :as => 'iiif_info'
+  # get 'iiif/:identifier/:region/:size/:rotation/:quality.jpg', :to => 'iiif_request#show', :as => 'iiif_request'
+  # get 'iiif/:identifier/info.json', :to => 'iiif_request#info', :as => 'iiif_info'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collections/show/:id', :to => 'pages#collection_tree'
