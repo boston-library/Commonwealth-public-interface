@@ -73,7 +73,7 @@ class CatalogController < ApplicationController
     # facet for blacklight-maps catalog#index map view
     # have to use '-2' to get all values
     # because Blacklight::SolrHelper#solr_facet_params adds '+1' to value
-    config.add_facet_field 'subject_geospatial_facet_ssim', :limit => -2, :label => 'Coordinates', :show => false
+    config.add_facet_field 'subject_geojson_ssim', :limit => -2, :label => 'Coordinates', :show => false
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
     #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
@@ -238,9 +238,9 @@ class CatalogController < ApplicationController
     config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     config.view.maps.placename_facet_field = 'subject_geographic_ssim'
     config.view.maps.coordinates_facet_field = 'subject_geospatial_facet_ssim'
-    config.view.maps.maxzoom = 12
+    config.view.maps.maxzoom = 13
     config.view.maps.show_initial_zoom = 9
-    config.view.maps.facet_mode = 'coordinates'
+    config.view.maps.facet_mode = 'geojson'
 
     #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
 
