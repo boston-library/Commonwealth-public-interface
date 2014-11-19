@@ -91,12 +91,12 @@ module CatalogHelper
 
   def render_item_breadcrumb(document)
     if document[:institution_pid_ssi] && document[:collection_pid_ssm]
-      inst_link = link_to(document[:institution_name_ssim].first,
+      inst_link = link_to(document[blacklight_config.institution_field.to_sym].first,
                           institution_path(:id => document[:institution_pid_ssi]),
                           :class => 'institution_breadcrumb')
       connector = content_tag(:span, '',
                               :class => 'glyphicon glyphicon-arrow-right item-breadcrumb-separator')
-      coll_link = link_to(document[:collection_name_ssim].first,
+      coll_link = link_to(document[blacklight_config.collection_field.to_sym].first,
                           collection_path(:id => document[:collection_pid_ssm].first),
                           :class => 'collection_breadcrumb')
       inst_link + connector + coll_link

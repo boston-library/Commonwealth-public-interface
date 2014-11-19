@@ -6,7 +6,7 @@
                 @document[:identifier_uri_ss],
                 :target => '_blank',
                 :title => t('blacklight.oai_objects.link_to_item',
-                            :institution_name => document[:institution_name_ssim].first)) %>
+                            :institution_name => document[blacklight_config.institution_field.to_sym].first)) %>
     <%= render :partial => 'catalog/_show_partials/show_oai_item_link',
                :locals => {:document => @document} %>
   </div>

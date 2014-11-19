@@ -225,6 +225,8 @@ class CatalogController < ApplicationController
 
     # collection name field
     config.collection_field = 'collection_name_ssim'
+    # institution name field
+    config.institution_field = 'institution_name_ssim'
 
   end
 

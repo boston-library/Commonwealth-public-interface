@@ -46,10 +46,11 @@ class CollectionsController < CatalogController
     @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
     # add params[:f] for proper facet links
-    params[:f] = {blacklight_config.collection_field => [@collection_title]}
+    params[:f] = {blacklight_config.collection_field => [@collection_title],
+                  blacklight_config.institution_field => @document[blacklight_config.institution_field.to_sym]}
 
     # get the response for the facets representing items in collection
-    (@response, @document_list) = get_search_results({:f => {blacklight_config.collection_field => @collection_title}})
+    (@response, @document_list) = get_search_results({:f => params[:f]})
 
     # get an image for the collection
     if @document[:exemplary_image_ssi]

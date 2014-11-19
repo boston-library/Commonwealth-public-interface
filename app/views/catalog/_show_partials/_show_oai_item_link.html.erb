@@ -2,13 +2,13 @@
             document[:identifier_uri_ss],
             :target => '_blank',
             :title => t('blacklight.oai_objects.link_to_item',
-                        :institution_name => document[:institution_name_ssim].first)) %>
+                        :institution_name => document[blacklight_config.institution_field.to_sym].first)) %>
 </div>
 <div id="oai_item_link">
   <%= link_to(document[:identifier_uri_ss],
               :class => 'view_oai_item',
               :target => '_blank' ) do %>
       <%= t('blacklight.oai_objects.link_to_item',
-            :institution_name => document[:institution_name_ssim].first) %> <span class="glyphicon glyphicon-share"></span>
+            :institution_name => document[blacklight_config.institution_field.to_sym].first) %> <span class="glyphicon glyphicon-share"></span>
   <% end %>
 </div>
