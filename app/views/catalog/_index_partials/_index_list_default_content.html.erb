@@ -52,11 +52,11 @@
         <% end %>
         <%# date field  %>
         <% if document[:date_start_tsim] %>
-            <% @date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
-            <% @date_start_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm].first : nil %>
+            <% date_end = document[:date_end_tsim] ? document[:date_end_tsim].first : nil %>
+            <% date_start_qualifier = document[:date_start_qualifier_ssm] ? document[:date_start_qualifier_ssm].first : nil %>
             <dt>Date:</dt>
             <dd>
-              <%= render_mods_dates(document[:date_start_tsim].first, @date_end, @date_start_qualifier) %>
+              <%= render_mods_dates(document[:date_start_tsim].first, date_end, date_start_qualifier) %>
             </dd>
         <% end %>
       </dl>

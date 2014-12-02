@@ -119,7 +119,7 @@ module CatalogHelper
     prefix = ''
     suffix = ''
     date_start_suffix = ''
-    if date_qualifier
+    if date_qualifier && date_qualifier != 'nil'
       prefix = date_qualifier == 'approximate' ? '[ca. ' : '['
       suffix = date_qualifier == 'questionable' ? '?]' : ']'
     end
