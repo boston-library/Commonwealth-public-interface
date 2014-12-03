@@ -10,7 +10,7 @@ body.blacklight-institutions-index, body.blacklight-collections-index, body.blac
     margin-bottom: 0;
     position: fixed;
     right: 0;
-    z-index: 1000;
+    z-index: 1001; // blacklight-maps leaflet controls have z-index:1000
   }
 
   #main-container {
