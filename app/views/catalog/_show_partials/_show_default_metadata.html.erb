@@ -11,6 +11,9 @@
             <% if document[:subtitle_tsim] %>
                 : <%= document[:subtitle_tsim].first %>
             <% end %>
+            <% if document[:title_info_primary_trans_tsi] %>
+                = <%= document[:title_info_primary_trans_tsi] %>
+            <% end %>
         <%# end %>
       </dd>
     <% end %>
@@ -259,7 +262,16 @@
             <%= date_note %><br />
         <% end %>
       </dd>
-  <% end %>
+    <% end %>
+    <%# note @type="citation/refernce" field %>
+    <% if document[:note_reference_tsim] %>
+      <dt><%= t('blacklight.metadata_display.fields.note_reference') %>:</dt>
+      <dd>
+        <% document[:note_reference_tsim].each do |reference_note| %>
+            <%= reference_note %><br />
+        <% end %>
+      </dd>
+    <% end %>
     <%# note field %>
     <% if document[:note_tsim] %>
         <dt><%= t('blacklight.metadata_display.fields.note') %>:</dt>
