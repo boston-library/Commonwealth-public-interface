@@ -11,8 +11,10 @@
             <% if document[:subtitle_tsim] %>
                 : <%= document[:subtitle_tsim].first %>
             <% end %>
-            <% if document[:title_info_primary_trans_tsi] %>
-                = <%= document[:title_info_primary_trans_tsi] %>
+            <% if document[:title_info_primary_trans_tsim] %>
+                <% document[:title_info_primary_trans_tsim].each do |parallel_title| %>
+                    = <%= parallel_title %>
+                <% end %>
             <% end %>
         <%# end %>
       </dd>
