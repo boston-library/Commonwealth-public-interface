@@ -10,7 +10,8 @@
   <% else %>
       <%= link_to(img_element, '#', :id => 'img_viewer_link',
                   :class => 'img_viewer_link',
-                  :title => t('blacklight.images.zoom')) %>
+                  :title => t('blacklight.images.zoom'),
+                  :rel => 'nofollow') %>
 
       <%= render :partial => 'catalog/_show_partials/show_default_simple_img_viewer',
                  :locals => {:object_title => object_title.html_safe,
