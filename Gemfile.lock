@@ -1,4 +1,17 @@
 GIT
+  remote: https://github.com/boston-library/blacklight-maps.git
+  revision: b2d07d4bb2126e5575dbbce2299b73f01ab21fec
+  branch: hydra-connect-refactor
+  specs:
+    blacklight-maps (0.1.1)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      leaflet-sidebar-rails (~> 0.0.2)
+      rails
+
+GIT
   remote: https://github.com/boston-library/bpl-institution-management.git
   revision: abd23524df08ee00a52fb029218bef6411109b6a
   specs:
@@ -47,17 +60,6 @@ GIT
       json
       mime-types
       trollop
-
-PATH
-  remote: /home/eenglish/blacklight-maps
-  specs:
-    blacklight-maps (0.2.0)
-      blacklight (>= 5.1.0)
-      bootstrap-sass (~> 3.0)
-      leaflet-markercluster-rails
-      leaflet-rails
-      leaflet-sidebar-rails (~> 0.0.2)
-      rails
 
 GEM
   remote: https://rubygems.org/
