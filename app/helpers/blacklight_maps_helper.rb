@@ -2,7 +2,7 @@ module BlacklightMapsHelper
   include Blacklight::BlacklightMapsHelperBehavior
 
   # create a link to a location name facet value
-  def link_to_placename_facet field_value, field, displayvalue = nil
+  def link_to_placename_field field_value, field, displayvalue = nil
     new_params = params
     field_values = field_value.split(', ')
     if field_values.length > 2 || field_values.last.match(/[\.\)]/) # Mass.)

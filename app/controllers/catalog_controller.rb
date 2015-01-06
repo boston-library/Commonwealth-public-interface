@@ -233,16 +233,11 @@ class CatalogController < ApplicationController
 
     # blacklight-maps stuff
     config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
-    config.view.maps.placename_property = 'placename'
     config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-    config.view.maps.tileurl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-    config.view.maps.placename_facet_field = 'subject_geographic_ssim'
-    config.view.maps.coordinates_facet_field = 'subject_geospatial_facet_ssim'
+    config.view.maps.placename_field = 'subject_geographic_ssim'
     config.view.maps.maxzoom = 13
     config.view.maps.show_initial_zoom = 9
     config.view.maps.facet_mode = 'geojson'
-
-    #config.view.maps.placename_field 'genre_basic_ssim'#, :helper_method => :render_placename
 
   end
 
