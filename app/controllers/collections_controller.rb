@@ -14,6 +14,7 @@ class CollectionsController < CatalogController
     series_facet.if = true # have to include this or it won't display!
     series_facet.limit = 300
     series_facet.sort = 'index'
+    series_facet.include_in_request = true
   end
 
   # Blacklight uses #search_action_url to figure out the right URL for
