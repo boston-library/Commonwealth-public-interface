@@ -195,8 +195,18 @@
     <% if document[:subject_geographic_ssim] %>
         <dt><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
         <dd>
-            <%= render :partial => 'catalog/_show_partials/show_geographic_subjects',
-                       :locals => {:document => document} %>
+          <% if document[:subject_hiergeo_geojson_ssm] %>
+              <% document[:subject_hiergeo_geojson_ssm].each do |hier_geojson| %>
+                  <%= render_hiergo_subject(hier_geojson,
+                                            t('blacklight.breadcrumb.separator'),
+                                            'metadata_breadcrumb') %><br />
+              <% end %>
+          <% end %>
+          <% if document[:subject_geo_nonhier_ssim] %>
+              <% document[:subject_geo_nonhier_ssim].each do |nonhier_geo| %>
+                  <%= link_to_facet(nonhier_geo, 'subject_geographic_ssim') %><br />
+              <% end %>
+          <% end %>
         </dd>
     <% end %>
     <%# publisher field %>

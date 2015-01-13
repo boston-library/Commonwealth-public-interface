@@ -89,6 +89,24 @@ module CatalogHelper
     'blacklight-' + document.get(blacklight_config.view_config(document_index_view_type).display_type_field).parameterize rescue nil
   end
 
+  # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
+  def render_hiergo_subject(geojson_feature, separator, separator_class=nil)
+    output_array = []
+    hiergeo_hash = JSON.parse(geojson_feature).symbolize_keys[:properties]
+    hiergeo_hash.each_key do |k|
+      if k == 'country' && hiergeo_hash[k] == 'United States'
+        # do nothing
+      elsif k == 'county'
+        output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_ssim')
+      elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
+        output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_ssim') + " (#{k.to_s})"
+      else
+        output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_ssim')
+      end
+    end
+    output_array.join(content_tag(:span, separator, :class => separator_class)).html_safe
+  end
+
   def render_item_breadcrumb(document)
     if document[:institution_pid_ssi] && document[:collection_pid_ssm]
       inst_link = link_to(document[blacklight_config.institution_field.to_sym].first,
