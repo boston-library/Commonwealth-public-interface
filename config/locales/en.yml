@@ -230,6 +230,8 @@ en:
             location: 'Location'
             genre_basic: 'Format'
             genre_specific: 'Genre'
+            id_isbn: 'ISBN'
+            id_lccn: 'LCCN'
             id_local_acc: 'Accession #'
             id_local_barcode: 'Barcode'
             id_local_call: 'Call #'
@@ -257,6 +259,7 @@ en:
             toc: 'Table of Contents'
             title: 'Title'
             title_alt: 'Title (alt.)'
+            title_uniform: 'Title (uniform)'
 
 
     more_like_this:

@@ -167,7 +167,7 @@ module CatalogHelper
       if name_field
         0.upto name_field.length-1 do |index|
           names << name_field[index]
-          if role_fields[name_field_index]
+          if role_fields[name_field_index] && role_fields[name_field_index][index]
             roles << role_fields[name_field_index][index].strip
           else
             roles << 'Creator'

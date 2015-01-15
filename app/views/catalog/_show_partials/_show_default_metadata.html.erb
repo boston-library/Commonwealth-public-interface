@@ -21,12 +21,27 @@
     <% end %>
     <%# alternative title field %>
     <% if document[:title_info_alternative_tsim] %>
-      <dt><%= t('blacklight.metadata_display.fields.title_alt') %>:</dt>
+      <dt>
+        <% if document[:title_info_alternative_label_ssm] %>
+            <%= document[:title_info_alternative_label_ssm].first %>
+        <% else %>
+            <%= t('blacklight.metadata_display.fields.title_alt') %>:
+        <% end %>
+      </dt>
       <dd>
         <% document[:title_info_alternative_tsim].each do |alt_title| %>
             <%= alt_title %><br />
         <% end %>
       </dd>
+    <% end %>
+    <%# uniform title field %>
+    <% if document[:title_info_uniform_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.title_uniform') %>:</dt>
+        <dd>
+          <% document[:title_info_uniform_tsim].each do |uniform_title| %>
+              <%= uniform_title %><br />
+          <% end %>
+        </dd>
     <% end %>
     <%# abstract/description field %>
     <% if document[:abstract_tsim] %>
@@ -366,6 +381,24 @@
             <%= barcode %><br />
         <% end %>
       </dd>
+    <% end %>
+    <%# isbn id field %>
+    <% if document[:identifier_isbn_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.id_isbn') %>:</dt>
+        <dd>
+          <% document[:identifier_isbn_tsim].each do |isbn| %>
+              <%= isbn %><br />
+          <% end %>
+        </dd>
+    <% end %>
+    <%# lccn id field %>
+    <% if document[:identifier_lccn_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.id_lccn') %>:</dt>
+        <dd>
+          <% document[:identifier_lccn_tsim].each do |lccn| %>
+              <%= lccn %><br />
+          <% end %>
+        </dd>
     <% end %>
     <%# related item isReferencedBy field %>
     <% if document[:related_item_isreferencedby_ssm] %>
