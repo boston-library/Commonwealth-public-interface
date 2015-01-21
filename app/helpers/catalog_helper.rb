@@ -100,6 +100,10 @@ module CatalogHelper
         output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_ssim')
       elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
         output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_ssim') + " (#{k.to_s})"
+      elsif k == 'other'
+        place_type = hiergeo_hash[k].scan(/\([a-z\s]*\)/).last
+        place_name = hiergeo_hash[k].gsub(/#{place_type}/,'').gsub(/\s\(\)\z/,'')
+        output_array << link_to_facet(place_name, 'subject_geographic_ssim') + " #{place_type.to_s}"
       else
         output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_ssim')
       end
