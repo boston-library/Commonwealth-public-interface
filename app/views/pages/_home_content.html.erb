@@ -26,7 +26,21 @@
 
   <div id="content_home_browse" class="row">
 
-    <div class="col-sm-4">
+    <div class="col-sm-3">
+      <div id="map_browse" class="well well-sm media">
+        <%= link_to(image_tag('dc-home_map_thumb.jpg',
+                              :class => 'media-object',
+                              :alt => 'Browse by Map'),
+                    map_path,
+                    :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading">Places</h4>
+          <%= link_to 'Browse by Map', map_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
       <div id="collections_browse" class="well well-sm media">
         <%= link_to(image_tag('dc-home_collections_thumb.jpg',
                               :class => 'media-object',
@@ -41,21 +55,7 @@
       </div>
     </div>
 
-    <div class="col-sm-4">
-      <div id="places_browse" class="well well-sm media">
-        <%= link_to(image_tag('dc-home_places_thumb.jpg',
-                              :class => 'media-object',
-                              :alt => 'Browse All Places'),
-                    places_facet_path,
-                    :class => 'pull-left') %>
-        <div class="media-body">
-          <h4 class="media-heading">Places</h4>
-          <%= link_to 'Browse All Places', places_facet_path %>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <div id="institutions_browse" class="well well-sm media">
         <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
                               :class => 'media-object',
@@ -66,6 +66,21 @@
           <h4 class="media-heading"><%= t('blacklight.institutions.title') %></h4>
           <%= link_to 'Browse All ' + t('blacklight.institutions.title'),
                       institutions_path %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div id="formats_browse" class="well well-sm media">
+        <%= link_to(image_tag('dc-home_format_thumb.jpg',
+                              :class => 'media-object',
+                              :alt => 'Browse All Formats'),
+                    formats_facet_path,
+                    :class => 'pull-left') %>
+        <div class="media-body">
+          <h4 class="media-heading"><%= t('blacklight.navigation.format') %></h4>
+          <%= link_to 'Browse All ' + t('blacklight.navigation.format'),
+                      formats_facet_path %>
         </div>
       </div>
     </div>

@@ -44,7 +44,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   resources :catalog, :only => [:show, :update]
   # end local BL routes override
 
-  get 'places', :to => 'catalog#places_facet', :as => 'places_facet'
+  get 'places', :to => 'catalog#map', :as => 'places_facet'
+  get 'formats', :to => 'catalog#formats_facet', :as => 'formats_facet'
   get 'search/:id/librarian_view', :to => 'catalog#librarian_view', :as => 'librarian_view_catalog'
 
   #HydraHead.add_routes(self) # deprecated in HH7

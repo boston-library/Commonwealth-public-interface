@@ -6,12 +6,14 @@
                               :nav_link_path => advanced_search_path}
         },
         :explore => {
+                :map => {:nav_link_title => 'By Map',
+                            :nav_link_path => map_path},
                 :collections => {:nav_link_title => t('blacklight.collections.nav'),
                                  :nav_link_path => collections_path},
-                :places => {:nav_link_title => 'By Place',
-                            :nav_link_path => places_facet_path},
                 :institutions => {:nav_link_title => t('blacklight.institutions.nav'),
-                                  :nav_link_path => institutions_path}
+                                  :nav_link_path => institutions_path},
+                :formats => {:nav_link_title => 'By ' + t('blacklight.navigation.format'),
+                                  :nav_link_path => formats_facet_path}
         },
         :for_libraries => {
                 :membership => {:nav_link_title => 'Membership',

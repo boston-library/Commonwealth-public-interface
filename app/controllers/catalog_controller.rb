@@ -261,11 +261,11 @@ class CatalogController < ApplicationController
     end
   end
 
-  # displays values and pagination links for Places field
-  def places_facet
+  # displays values and pagination links for Format field
+  def formats_facet
     @nav_li_active = 'explore'
 
-    @facet = blacklight_config.facet_fields['subject_geographic_ssim']
+    @facet = blacklight_config.facet_fields['genre_basic_ssim']
     @response = get_facet_field_response(@facet.field, params)
     @display_facet = @response.facets.first
 
@@ -273,7 +273,6 @@ class CatalogController < ApplicationController
     @pagination = facet_paginator(@facet, @display_facet)
 
     render :facet
-
   end
 
   def get_object_files

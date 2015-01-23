@@ -267,6 +267,9 @@ en:
           heading: 'More Like This'
           more_mlt_link: 'Find More Like This >>'
 
+    navigation:
+          format: 'Format'
+
     oai_objects:
           link_to_item: 'View this item at %{institution_name}'
           link_to_item_label: 'Link to Item'
