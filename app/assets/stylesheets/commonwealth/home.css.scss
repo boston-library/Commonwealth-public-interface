@@ -54,12 +54,23 @@ body.blacklight-home {
   }
 
   #content_home_browse {
-    margin-top: 30px;
+    margin-top: 50px;
 
-    img.media-object {
-      width:100px;
-      border: 1px solid $light_gray;
+    div.browse_item {
+      text-align: center;
+
+      img.browse_img {
+        width:120px;
+        border: 1px solid $light_gray;
+      }
+
+      .browse_item_desc {
+        font-size: 16px;
+        color: $darker_gray;
+      }
+
     }
+
   }
 
   #content_home_context {
