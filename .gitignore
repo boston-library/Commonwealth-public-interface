@@ -60,6 +60,7 @@ Icon?
 ehthumbs.db
 .idea # Rubymine config files
 /.idea/*
+/vendor/assets/dc_static_geojson_catalog-map.json
 
 # Directories to ignore #
 #########################
