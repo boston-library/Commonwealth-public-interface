@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/boston-library/blacklight-maps.git
-  revision: 5478bf95072f59d87e8a46ef3ab52330f87bec90
-  branch: hydra-connect-refactor
-  specs:
-    blacklight-maps (0.1.1)
-      blacklight (>= 5.1.0)
-      bootstrap-sass (~> 3.0)
-      leaflet-markercluster-rails
-      leaflet-rails
-      leaflet-sidebar-rails (~> 0.0.2)
-      rails
-
-GIT
   remote: https://github.com/boston-library/bpl-institution-management.git
   revision: abd23524df08ee00a52fb029218bef6411109b6a
   specs:
@@ -95,6 +82,12 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
+    blacklight-maps (0.3.0)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      rails
     blacklight_advanced_search (5.1.0)
       blacklight (>= 5.2, < 6.0)
       parslet
@@ -216,7 +209,6 @@ GEM
     leaflet-markercluster-rails (0.7.0)
       railties (>= 3.1)
     leaflet-rails (0.7.4)
-    leaflet-sidebar-rails (0.0.3)
     libv8 (3.16.14.3)
     linkeddata (1.1.1)
       equivalent-xml (>= 0.4.0)
@@ -450,7 +442,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.5.3)
-  blacklight-maps!
+  blacklight-maps (= 0.3.0)
   blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms

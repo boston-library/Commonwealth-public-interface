@@ -56,7 +56,7 @@ gem 'blacklight', '5.5.3'
 gem 'blacklight_advanced_search', '5.1.0'
 gem 'hydra-head', '7.0.0'
 gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work
-gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps.git', :branch => 'hydra-connect-refactor'
+gem 'blacklight-maps', '0.3.0'
 
 group :development, :test do
   gem 'rspec'
