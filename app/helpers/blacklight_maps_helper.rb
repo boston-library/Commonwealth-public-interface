@@ -28,8 +28,8 @@ module BlacklightMapsHelper
 
   # render the map for #index and #map views
   def render_index_map
-    if Rails.env.to_s == 'production' && params[:action] == 'map'
-      geojson_for_map = File.open('./vendor/assets/dc_static_geojson_catalog-map.json').first
+    if Rails.env.to_s == 'production' && params[:action] == 'map' && File::exists?(GEOJSON_STATIC_FILE['filepath'])
+      geojson_for_map = File.open(GEOJSON_STATIC_FILE['filepath']).first
     else
       geojson_for_map = serialize_geojson(map_facet_values)
     end
