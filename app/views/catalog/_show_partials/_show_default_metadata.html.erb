@@ -207,7 +207,7 @@
         </dd>
     <% end %>
     <%# geo subject field %>
-    <% if document[:subject_geographic_ssim] %>
+    <% if document[:subject_hiergeo_geojson_ssm] || document[:subject_geo_nonhier_ssim] %>
         <dt><%= t('blacklight.metadata_display.fields.subject_geo') %>:</dt>
         <dd>
           <% if document[:subject_hiergeo_geojson_ssm] %>

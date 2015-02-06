@@ -51,7 +51,7 @@
           <%= link_to t('blacklight.collections.index.title'), collections_path %>
         </h4>
         <p class="browse_item_desc">
-          Browse collections representing over 400 years of Massachusetts history.
+          Explore curated collections of historic materials grouped by topic, date, location, or format.
         </p>
       </div>
     </div>
@@ -78,7 +78,7 @@
                     formats_facet_path,
                     :class => '') %>
         <h4 class="">
-          <%= link_to t('blacklight.navigation.format') + 's', formats_facet_path %>
+          <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
         </h4>
         <p class="browse_item_desc">Photographs, maps, postcards, manuscripts, books, artifacts, and more.</p>
       </div>
@@ -90,7 +90,7 @@
 
     <div id="content_home_about" class="col-sm-6">
       <h4>About This Site</h4>
-      <p>This site provides access to photographs, manuscripts, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.</p>
+      <p>This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.</p>
 
       <p class="more-info-link">
         <%= link_to 'Learn more >>', about_dc_path %>

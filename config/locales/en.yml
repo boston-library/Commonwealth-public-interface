@@ -81,7 +81,7 @@ en:
             a-z_label: 'Browse by title:'
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
-          nav: 'By Collection'
+          nav: 'Collections'
           series:
             title: 'Series in this Collection:'
 
@@ -214,7 +214,7 @@ en:
             title: 'Browse by:'
           index:
             page_title: 'Institutions - %{application_name}'
-          nav: 'By Contributing Institution'
+          nav: 'Institutions'
           title: 'Institutions'
 
     metadata_display:
@@ -268,7 +268,7 @@ en:
           more_mlt_link: 'Find More Like This >>'
 
     navigation:
-          format: 'Format'
+          format: 'Formats'
 
     oai_objects:
           link_to_item: 'View this item at %{institution_name}'
