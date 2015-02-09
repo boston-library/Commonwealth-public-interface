@@ -53,7 +53,7 @@ class PreviewController < CatalogController
 
   # return a large-size JPEG image file for 'large' requests
   # for flagged items, return the image icon
-  def full
+  def large
     solr_response, solr_document = get_solr_response_for_doc_id
     if solr_document[:exemplary_image_ssi]
       filename = solr_document[:id].to_s + '_large'
