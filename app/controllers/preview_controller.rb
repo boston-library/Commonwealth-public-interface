@@ -51,6 +51,28 @@ class PreviewController < CatalogController
     end
   end
 
+  # return a large-size JPEG image file for 'large' requests
+  # for flagged items, return the image icon
+  def full
+    solr_response, solr_document = get_solr_response_for_doc_id
+    if solr_document[:exemplary_image_ssi]
+      filename = solr_document[:id].to_s + '_large'
+      if solr_document[blacklight_config.flagged_field.to_sym]
+        send_icon(filename)
+      else
+        iiif_request_url = "#{IIIF_SERVER['url']}#{solr_document[:exemplary_image_ssi]}/full/,800/0/default.jpg"
+        @response = Typhoeus::Request.get(iiif_request_url)
+        if @response.headers[/404 Not Found/]
+          not_found
+        else
+          send_image(filename)
+        end
+      end
+    else
+      not_found
+    end
+  end
+
   private
 
   def not_found

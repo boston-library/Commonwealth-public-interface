@@ -70,6 +70,7 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   get 'preview/:id', :to => 'preview#preview', :as => 'preview'
   get 'full_image/:id', :to => 'preview#full', :as => 'full_image'
+  get 'large_image/:id', :to => 'preview#large', :as => 'large_image'
 
   delete 'folder/:id/clear', :to => 'folder_items#clear', :as => 'clear_folder_items'
   #match "folder/:id/remove", :to => "folder_items#delete_selected", :as => "delete_selected_folder_items"
