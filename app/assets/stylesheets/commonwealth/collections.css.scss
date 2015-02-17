@@ -179,6 +179,16 @@ h4.collection-provenance {
   display: none;
 }
 
+#blacklight-collection-map-container {
+  clear: left;
+  padding-top: 10px;
+
+  #blacklight-index-map {
+    height: 300px;
+  }
+
+}
+
 #collection_metadata_wrapper {
   margin-top: 1.5em;
 }

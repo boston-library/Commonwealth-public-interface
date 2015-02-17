@@ -1,6 +1,7 @@
 module BlacklightMapsHelper
   include Blacklight::BlacklightMapsHelperBehavior
 
+  # LOCAL OVERRIDE: convert state abbreviations, deal with complex locations, etc.
   # create a link to a location name facet value
   def link_to_placename_field field_value, field, displayvalue = nil
     new_params = params
@@ -26,6 +27,7 @@ module BlacklightMapsHelper
             catalog_index_path(new_params.except(:view, :id, :spatial_search_type, :coordinates)))
   end
 
+  # LOCAL OVERRIDE: use a static file for catalog#map so page loads faster
   # render the map for #index and #map views
   def render_index_map
     if Rails.env.to_s == 'production' && params[:action] == 'map' && File::exists?(GEOJSON_STATIC_FILE['filepath'])
@@ -35,6 +37,16 @@ module BlacklightMapsHelper
     end
     render :partial => 'catalog/index_map',
            :locals => {:geojson_features => geojson_for_map}
+  end
+
+  # LOCAL OVERRIDE: allow controller.action name to be passed
+  # pass the document or facet values to BlacklightMaps::GeojsonExport
+  def serialize_geojson(documents, action_name=nil)
+    action = action_name || controller.action_name
+    export = BlacklightMaps::GeojsonExport.new(controller,
+                                               action,
+                                               documents)
+    export.to_geojson
   end
 
 end

@@ -76,9 +76,20 @@
                 </div>
             <% end %>
 
-            <%# full metadata display - DEPRECATED - no longer creating collection metadata %>
-            <%# besides title and abstract %>
-            <%# render :partial => 'collections/show_collection_metadata', :locals => {:document => @document} %>
+            <% # map for collections#show view %>
+            <div id="blacklight-collection-map-container">
+              <% if @response.facet_by_field_name(map_facet_field) %>
+                  <%# map_facet_values %>
+                  <%# geojson_features = serialize_geojson(map_facet_values, 'index') %>
+                  <%= render :partial => 'catalog/index_map',
+                             :locals => {:geojson_features => serialize_geojson(map_facet_values, 'index')} %>
+                  <%# blacklight_map_tag('blacklight-collection-map',
+                                         {data:{viewpoint: set_viewpoint(geojson_features),
+                                                initialzoom:blacklight_config.view.maps.show_initial_zoom,
+                                                singlemarkermode:false}}) %>
+                  <%# javascript_tag "$('#blacklight-collection-map').blacklight_leaflet_map(#{geojson_features});" %>
+              <% end %>
+            </div>
 
           </div>
 
