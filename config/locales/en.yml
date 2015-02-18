@@ -81,6 +81,8 @@ en:
             a-z_label: 'Browse by title:'
             page_title: 'Collections - %{application_name}'
             title: 'Collections'
+          map:
+            title: 'Locations in this Collection:'
           nav: 'Collections'
           series:
             title: 'Series in this Collection:'

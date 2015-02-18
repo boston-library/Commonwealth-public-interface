@@ -45,14 +45,15 @@
                 <%= link_to(image_title,
                             solr_document_path(@collection_image_info[:pid])) %>
               </div>
-            <% else %>
-              <%= image_tag('dc_collection-icon.png',
-                            :alt => @collection_title,
-                            :class => 'collection_img_show') %>
-            <% end %>
+              <% else %>
+                <%= image_tag('dc_collection-icon.png',
+                              :alt => @collection_title,
+                              :class => 'collection_img_show') %>
+              <% end %>
             </div>
             <div id="collection_search_tools" class="well well-sm">
               <%= render :partial => 'search_form_collection', :locals => {:document => @document} %>
+              <span class="collection_search_separator">or</span>
               <div id="collection_view_all">
                 <% if @document[blacklight_config.institution_field.to_sym] %>
                     <%= link_to_all_col_items(@collection_title,
@@ -77,19 +78,15 @@
             <% end %>
 
             <% # map for collections#show view %>
-            <div id="blacklight-collection-map-container">
-              <% if @response.facet_by_field_name(map_facet_field) %>
-                  <%# map_facet_values %>
-                  <%# geojson_features = serialize_geojson(map_facet_values, 'index') %>
+            <% unless @response.facet_by_field_name(map_facet_field).items.empty? %>
+                <div id="blacklight-collection-map-container">
+                  <h4><%= t('blacklight.collections.map.title') %></h4>
                   <%= render :partial => 'catalog/index_map',
-                             :locals => {:geojson_features => serialize_geojson(map_facet_values, 'index')} %>
-                  <%# blacklight_map_tag('blacklight-collection-map',
-                                         {data:{viewpoint: set_viewpoint(geojson_features),
-                                                initialzoom:blacklight_config.view.maps.show_initial_zoom,
-                                                singlemarkermode:false}}) %>
-                  <%# javascript_tag "$('#blacklight-collection-map').blacklight_leaflet_map(#{geojson_features});" %>
-              <% end %>
-            </div>
+                             :locals => {:geojson_features => serialize_geojson(map_facet_values,
+                                                                                'index')} %>
+                  </div>
+                </div>
+            <% end %>
 
           </div>
 

@@ -106,7 +106,7 @@ h4.collection-provenance {
   float:right;
 
   #collection_search_form {
-    padding: 0 1em 0 0;
+    padding: 0 3px 0 0;
     float: left;
 
     input {
@@ -119,6 +119,14 @@ h4.collection-provenance {
       display: none;
     }
 
+  }
+
+  .collection_search_separator {
+    display: inline;
+    float: left;
+    padding: 6px 6px 8px 3px;
+    vertical-align: middle;
+    color: $dark_gray;
   }
 
 }
@@ -231,6 +239,14 @@ h4.collection-provenance {
 
       }
 
+    }
+
+  }
+
+  #blacklight-collection-map-container {
+
+    #blacklight-index-map {
+      height: 400px;
     }
 
   }
@@ -358,6 +374,10 @@ h4.collection-provenance {
       padding-top: 45px;
     }
 
+  }
+
+  #blacklight-collection-map-container {
+    display:none;
   }
 
 }
