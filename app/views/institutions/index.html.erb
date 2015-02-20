@@ -12,7 +12,8 @@
 
   <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
 
-  <%= render_document_index %>
+  <%= render_institutions_index %>
+  <%# document_index_view_type == :list # DEBUGGING %>
 
   <%= render 'catalog/results_pagination' %>
 

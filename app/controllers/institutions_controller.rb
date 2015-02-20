@@ -25,8 +25,9 @@ class InstitutionsController < CatalogController
     self.solr_search_params_logic += [:institutions_filter]
     params[:per_page] = params[:per_page].presence || '50'
     (@response, @document_list) = get_search_results
-    params[:view] = 'list'
+    params[:view] ||= 'list'
     params[:sort] = 'title_info_primary_ssort asc'
+    @institutions_geojson = ''
 
     respond_to do |format|
       format.html

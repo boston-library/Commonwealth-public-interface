@@ -7,4 +7,16 @@ module InstitutionsHelper
             :class => link_class)
   end
 
+  # replaces render_document_index in institutions/index partial
+  # so we can use local index_map_institutions partial for map view
+  def render_institutions_index documents = nil, locals = {}
+    documents ||= @document_list
+    if document_index_view_type.to_s == 'maps'
+      render :partial => 'catalog/index_map_institutions',
+             :locals => {:geojson_features => @institutions_geojson}
+    else
+      render_document_index_with_view(document_index_view_type, documents, locals)
+    end
+  end
+
 end

@@ -95,7 +95,8 @@ module CatalogHelper
     hiergeo_hash = JSON.parse(geojson_feature).symbolize_keys[:properties]
     hiergeo_hash.each_key do |k|
       if k == 'country' && hiergeo_hash[k] == 'United States'
-        # do nothing
+        # display 'United States' only if no other values
+        output_array << link_to_facet(hiergeo_hash[k], 'subject_geographic_ssim') if hiergeo_hash.length == 1
       elsif k == 'county'
         output_array << link_to_facet("#{hiergeo_hash[k]} (county)", 'subject_geographic_ssim')
       elsif k == 'island' || k == 'area' || k == 'province' || k == 'territory' || k == 'region'
