@@ -1,10 +1,10 @@
 # stores location of static file with GeoJSON FeatureCollection for catalog#map
 
 development:
-  filepath: './vendor/assets/dc_static_geojson_catalog-map.json'
+  filepath: './lib/assets/dc_static_geojson_catalog-map.json'
 
 test:
-  filepath: './vendor/assets/dc_static_geojson_catalog-map.json'
+  filepath: './lib/assets/dc_static_geojson_catalog-map.json'
 
 production:
-  filepath: './vendor/assets/dc_static_geojson_catalog-map.json'
+  filepath: './lib/assets/dc_static_geojson_catalog-map.json'

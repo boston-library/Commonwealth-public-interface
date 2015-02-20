@@ -38,6 +38,7 @@ role_map_test.yml
 google_analytics.yml
 contact_emails.yml
 iiif_server.yml
+secrets.yml
 
 # Files to ignore by default in Git #
 #####################################
@@ -60,7 +61,7 @@ Icon?
 ehthumbs.db
 .idea # Rubymine config files
 /.idea/*
-/vendor/assets/dc_static_geojson_catalog-map.json
+/lib/assets/dc_static_geojson_catalog-map.json
 
 # Directories to ignore #
 #########################

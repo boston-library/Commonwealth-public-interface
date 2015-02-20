@@ -1,0 +1,16 @@
+# stores contact emails for BPL and DC contacts
+
+development:
+  bpl_admin: someone@example.org
+  dc_admin: someone@example.org
+  image_requests: someone@example.org
+
+test:
+  bpl_admin:
+  dc_admin:
+  image_requests:
+
+production:
+  bpl_admin:
+  dc_admin:
+  image_requests:

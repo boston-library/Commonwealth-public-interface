@@ -1,0 +1,20 @@
+test:
+  host: #######.bpl.org
+  port: 389
+  #group_base: nil
+  base: dc=bpl,dc=org
+  uid: #######
+  username: #####
+  password: #####
+
+development:
+  host: #######.bpl.org
+  port: 389
+  #group_base: nil
+  base: dc=bpl,dc=org
+  uid: #######
+  username: #####
+  password: #####
+  group_member: uniquemember  # attribute name in a group to identify a member
+  group_owner: owner          # attribute name to identify group owner
+
