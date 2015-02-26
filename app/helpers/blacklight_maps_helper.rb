@@ -39,13 +39,12 @@ module BlacklightMapsHelper
            :locals => {:geojson_features => geojson_for_map}
   end
 
-  # LOCAL OVERRIDE: allow controller.action name to be passed
+  # LOCAL OVERRIDE: allow controller.action name to be passed, allow @controller
   # pass the document or facet values to BlacklightMaps::GeojsonExport
   def serialize_geojson(documents, action_name=nil)
     action = action_name || controller.action_name
-    export = BlacklightMaps::GeojsonExport.new(controller,
-                                               action,
-                                               documents)
+    cntrllr = @controller || controller
+    export = BlacklightMaps::GeojsonExport.new(cntrllr, action, documents)
     export.to_geojson
   end
 
