@@ -8,12 +8,13 @@
   <p>This is a list of institutions that have contributed historical materials to this site. For the full list of Digital Commonwealth member institutions, and information on how to join, see the <a href="http://digitalcommonwealth.memberlodge.org/directory" target="_blank">Member Directory.</a></p>
   <p>Click on an institution name to view their collections.</p>
 
+  <%= render 'catalog/constraints' %>
+
   <%= render 'catalog/sort_and_per_page' %>
 
   <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
 
   <%= render_institutions_index %>
-  <%# document_index_view_type == :list # DEBUGGING %>
 
   <%= render 'catalog/results_pagination' %>
 

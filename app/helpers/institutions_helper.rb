@@ -13,7 +13,9 @@ module InstitutionsHelper
     documents ||= @document_list
     if document_index_view_type.to_s == 'maps'
       render :partial => 'catalog/index_map_institutions',
-             :locals => {:geojson_features => @institutions_geojson}
+             :locals => {:geojson_features => serialize_geojson(map_facet_values,
+                                                                nil,
+                                                                {partial: 'institutions/map_institutions_search'})}
     else
       render_document_index_with_view(document_index_view_type, documents, locals)
     end

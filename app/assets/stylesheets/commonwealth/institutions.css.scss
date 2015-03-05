@@ -35,6 +35,19 @@ div.institutions-list {
 
   }
 
+  #institutions-index-map {
+    height: 550px;
+    margin: 10px 0;
+
+    & ~ div.record-padding {
+
+      div.pagination {
+        display: none;
+      }
+
+    }
+  }
+
 }
 
 

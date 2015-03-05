@@ -3,7 +3,8 @@ module BlacklightMapsHelper
 
   # LOCAL OVERRIDE: convert state abbreviations, deal with complex locations, etc.
   # create a link to a location name facet value
-  def link_to_placename_field field_value, field, displayvalue = nil
+  def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
+    search_path = catalogpath || 'catalog_index_path'
     new_params = params
     field_values = field_value.split(', ')
     if field_values.last.match(/[\.\)]/) # Mass.)
@@ -24,7 +25,7 @@ module BlacklightMapsHelper
       new_params = add_facet_params(field, place, new_params) unless params[:f] && params[:f][field] && params[:f][field].include?(place)
     end
     link_to(displayvalue.presence || field_value,
-            catalog_index_path(new_params.except(:view, :id, :spatial_search_type, :coordinates)))
+            self.send(search_path,new_params.except(:view, :id, :spatial_search_type, :coordinates)))
   end
 
   # LOCAL OVERRIDE: use a static file for catalog#map so page loads faster
@@ -41,10 +42,10 @@ module BlacklightMapsHelper
 
   # LOCAL OVERRIDE: allow controller.action name to be passed, allow @controller
   # pass the document or facet values to BlacklightMaps::GeojsonExport
-  def serialize_geojson(documents, action_name=nil)
+  def serialize_geojson(documents, action_name=nil, options={})
     action = action_name || controller.action_name
     cntrllr = @controller || controller
-    export = BlacklightMaps::GeojsonExport.new(cntrllr, action, documents)
+    export = BlacklightMaps::GeojsonExport.new(cntrllr, action, documents, options)
     export.to_geojson
   end
 

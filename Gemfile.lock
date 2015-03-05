@@ -36,6 +36,16 @@ GIT
       omniauth (~> 1.0)
       rest-client (~> 1.6.7)
 
+PATH
+  remote: /home/eenglish/blacklight-maps
+  specs:
+    blacklight-maps (0.3.1)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -82,12 +92,6 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
-    blacklight-maps (0.3.0)
-      blacklight (>= 5.1.0)
-      bootstrap-sass (~> 3.0)
-      leaflet-markercluster-rails
-      leaflet-rails
-      rails
     blacklight_advanced_search (5.1.0)
       blacklight (>= 5.2, < 6.0)
       parslet
@@ -442,7 +446,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.5.3)
-  blacklight-maps (= 0.3.0)
+  blacklight-maps!
   blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms
