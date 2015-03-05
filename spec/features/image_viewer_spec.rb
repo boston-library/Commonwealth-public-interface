@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-Capybara.javascript_driver = :webkit
-
 describe 'openseadragon image viewer modal' do
 
   it 'should display the OSd viewer modal when the image is clicked', :js => true do
