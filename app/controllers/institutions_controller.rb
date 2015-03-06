@@ -7,10 +7,6 @@ class InstitutionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
-  configure_blacklight do |config|
-    config.view.delete(:grid)
-  end
-
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
   def search_action_url *args
@@ -55,5 +51,20 @@ class InstitutionsController < CatalogController
     end
 
   end
+
+  # remove grid view from blacklight_config for index view
+  def remove_grid_view
+    InstitutionsController.configure_blacklight do |config|
+      config.view.delete(:grid)
+    end
+  end
+
+  # restore grid view from blacklight_config for show view
+  def refresh_blacklight_config
+    InstitutionsController.copy_blacklight_config_from(CatalogController)
+  end
+
+  before_filter :remove_grid_view, :only => [:index]
+  before_filter :refresh_blacklight_config, :only => [:show]
 
 end
