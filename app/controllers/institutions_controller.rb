@@ -54,17 +54,9 @@ class InstitutionsController < CatalogController
 
   # remove grid view from blacklight_config for index view
   def remove_grid_view
-    InstitutionsController.configure_blacklight do |config|
-      config.view.delete(:grid)
-    end
-  end
-
-  # restore grid view from blacklight_config for show view
-  def refresh_blacklight_config
-    InstitutionsController.copy_blacklight_config_from(CatalogController)
+    blacklight_config.view.delete(:grid)
   end
 
   before_filter :remove_grid_view, :only => [:index]
-  before_filter :refresh_blacklight_config, :only => [:show]
 
 end
