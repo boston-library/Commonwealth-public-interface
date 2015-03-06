@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/boston-library/blacklight-maps.git
+  revision: 72a2f9fddbfc65fd268b4c2b271c7d726664c514
+  branch: all-ebens-prs
+  specs:
+    blacklight-maps (0.3.1)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      rails
+
+GIT
   remote: https://github.com/boston-library/bpl-institution-management.git
   revision: abd23524df08ee00a52fb029218bef6411109b6a
   specs:
@@ -35,16 +47,6 @@ GIT
     omniauth-polaris (1.0.0)
       omniauth (~> 1.0)
       rest-client (~> 1.6.7)
-
-PATH
-  remote: /home/eenglish/blacklight-maps
-  specs:
-    blacklight-maps (0.3.1)
-      blacklight (>= 5.1.0)
-      bootstrap-sass (~> 3.0)
-      leaflet-markercluster-rails
-      leaflet-rails
-      rails
 
 GEM
   remote: https://rubygems.org/

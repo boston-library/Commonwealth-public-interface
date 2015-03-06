@@ -13,6 +13,11 @@ describe InstitutionsController do
       assigns(:document_list).should_not be_nil
     end
 
+    it "should not show the grid view option" do
+      get :index
+      response.body.should_not have_selector(".view-type-grid")
+    end
+
     describe "map view" do
 
       it "should show the map on institutions page" do

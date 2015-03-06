@@ -9,8 +9,8 @@ div.institutions-list {
   #sortAndPerPage {
     margin-bottom:0;
 
-    /* don't display sort or view-type widgets */
-    #sort-dropdown, .view-type-grid {
+    /* don't display sort widget */
+    #sort-dropdown {
       display: none;
     }
 

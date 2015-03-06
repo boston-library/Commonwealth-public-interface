@@ -7,6 +7,9 @@ class InstitutionsController < CatalogController
 
   copy_blacklight_config_from(CatalogController)
 
+  configure_blacklight do |config|
+    config.view.delete(:grid)
+  end
 
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
@@ -25,9 +28,8 @@ class InstitutionsController < CatalogController
     self.solr_search_params_logic += [:institutions_filter]
     params[:per_page] = params[:per_page].presence || '50'
     (@response, @document_list) = get_search_results
-    params[:view] ||= 'list'
+    params[:view] ||= 'list' # still need this or grid view is invoked
     params[:sort] = 'title_info_primary_ssort asc'
-    @institutions_geojson = ''
 
     respond_to do |format|
       format.html
