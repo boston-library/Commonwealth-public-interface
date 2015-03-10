@@ -69,26 +69,26 @@ class CollectionsController < CatalogController
 
   # find the title and pid for the object representing the collection image
   def get_collection_image_info(image_pid)
-    (col_img_response, col_img_doc_list) = get_search_results(
-        {:f => {'exemplary_image_ssi' => image_pid,
-                'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'}})
-    if col_img_doc_list.length > 0
-      col_img_info = {
-          :title => col_img_doc_list.first[blacklight_config.index.title_field.to_sym],
-          :pid => col_img_doc_list.first[:id]
-      }
+    col_img_file_doc = get_solr_response_for_doc_id(image_pid)[1]
+    if col_img_file_doc && col_img_file_doc[:is_image_of_ssim]
+      col_img_obj_pid = col_img_file_doc[:is_image_of_ssim].first.gsub(/info:fedora\//,'')
+    end
+    col_img_obj_doc = get_solr_response_for_doc_id(col_img_obj_pid)[1]
+    if col_img_obj_doc
+      {:title => col_img_obj_doc[blacklight_config.index.title_field.to_sym],
+       :pid => col_img_obj_pid }
     end
   end
 
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
   def get_series_image_obj(series_title,collection_title)
-    (@series_response, @series_doc_list) = get_search_results(
+    series_doc_list = get_search_results(
         {:f => {'related_item_series_ssim' => series_title,
                 blacklight_config.collection_field => collection_title},
          :rows => 1
-        })
-    @series_doc_list.first
+        })[1]
+    series_doc_list.first
   end
   helper_method :get_series_image_obj
 
