@@ -93,7 +93,7 @@ div.blacklight-institution {
     float: right;
 
     #institution_search_form {
-      padding: 0 30px 0 0;
+      padding: 0 3px 0 0;
       float: left;
 
       input {
@@ -106,6 +106,14 @@ div.blacklight-institution {
         display: none;
       }
 
+    }
+
+    .institution_search_separator {
+      display: inline;
+      float: left;
+      padding: 6px 15px 8px 12px;
+      vertical-align: middle;
+      color: $dark_gray;
     }
 
   }
@@ -157,13 +165,17 @@ div.blacklight-institution {
       width:70%;
 
       #institution_search_form {
-        padding: 0 1em .5em 0;
+        padding: 0 3px 7px 0;
         width: 301px;
 
         input {
           width:100%;
         }
 
+      }
+
+      .institution_search_separator {
+        padding: 6px 10px 15px 7px;
       }
 
     }

@@ -29,6 +29,7 @@
     <div id="institution_search_tools" class="well well-sm">
       <%= render :partial => 'search_form_institution',
                  :locals => {:document => @document} %>
+      <span class="institution_search_separator">or</span>
       <div id="institution_view_all">
         <%= link_to_all_inst_items('btn btn-info view-all-inst') %>
       </div>
