@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.2.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -52,7 +52,7 @@ gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight', '5.5.3'
+gem 'blacklight', '5.7.2'
 gem 'blacklight_advanced_search', '5.1.0'
 gem 'hydra-head', '7.0.0'
 gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work

@@ -6,7 +6,7 @@ describe PagesController do
 
   describe "GET 'home'" do
     it 'should show the home page' do
-      get 'home'
+      get :home
       response.should be_success
       response.body.should have_selector('#content_home')
     end
@@ -14,7 +14,7 @@ describe PagesController do
 
   describe "GET 'about'" do
     it 'should show the about page' do
-      get 'about'
+      get :about
       response.should be_success
       response.body.should have_selector('ul.page_list')
     end
@@ -22,7 +22,7 @@ describe PagesController do
 
   describe "GET 'about_dc'" do
     it 'should show the about_dc page' do
-      get 'about_dc'
+      get :about_dc
       response.should be_success
       response.body.should have_selector('div.about_content')
     end
@@ -30,7 +30,7 @@ describe PagesController do
 
   describe "GET 'lesson_plans'" do
     it 'should show the lesson_plans page' do
-      get 'lesson_plans'
+      get :lesson_plans
       response.should be_success
       response.body.should have_selector('#lesson_plan_list')
     end
@@ -38,7 +38,7 @@ describe PagesController do
 
   describe "GET 'copyright'" do
     it 'should show the copyright page' do
-      get 'copyright'
+      get :copyright
       response.should be_success
       response.body.should have_selector('div.about_content')
     end
@@ -46,7 +46,7 @@ describe PagesController do
 
   describe "GET 'partners'" do
     it 'should show the partners page' do
-      get 'partners'
+      get :partners
       response.should be_success
       response.body.should have_selector('#partner_list')
     end
