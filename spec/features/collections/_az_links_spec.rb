@@ -12,9 +12,9 @@ describe 'collections a-z links' do
   it 'should show correct results after clicking a letter link' do
     visit collections_path
     within ('#collection_az_links') do
-      click_link('S')
+      click_link('C')
     end
-    expect(page).to have_selector('.item_index_title a', :text => 'Stephen Phillips Trust House Collection')
+    expect(page).to have_selector('.item_index_title a', :text => 'Carte de Visite Collection')
   end
 
 end

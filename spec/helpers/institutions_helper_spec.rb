@@ -24,7 +24,7 @@ describe InstitutionsHelper do
     @geojson_hash = {type:"Feature", geometry:{type:"Point",coordinates:[91.117212, 29.646923]},properties:{placename:"Tibet"}}
     @coords = [91.117212,29.646923]
     @bbox = [78.3955448,26.8548157,99.116241,36.4833345]
-    puts "THE HELPER = " + helper.render_institutions_index
+    #puts "THE HELPER = " + helper.render_institutions_index
   end
 
   describe "render_institutions_index" do

@@ -298,12 +298,12 @@ class CatalogController < ApplicationController
   before_filter :get_object_files, :only => [:show]
   before_filter :set_nav_context, :only => [:index]
   before_filter :mlt_search, :only => [:index]
-=begin
+
   # override so we can inspect for other params
   def has_search_parameters?
     !params[:q].blank? or !params[:f].blank? or !params[:search_field].blank? or params[:mlt_id] or !params[:coordinates].blank?
   end
-=end
+
   #def create_folder
   #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
   #  respond_to do |format|

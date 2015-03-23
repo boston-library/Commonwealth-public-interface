@@ -1,19 +1,13 @@
 module RenderConstraintsHelper
   include Blacklight::RenderConstraintsHelperBehavior
-=begin
+
   # LOCAL OVERRIDE
   # add method to show constraint for 'more like this' search
-  ##
-  # Render the actual constraints, not including header or footer
-  # info.
-  #
-  # @param [Hash] query parameters
-  # @return [String]
   def render_constraints(localized_params = params)
-    puts "CPI RENDERCONSTRAINTS"
-    render_mlt_query(localized_params) + render_constraints_query(localized_params) + render_constraints_filters(localized_params)
+    render_mlt_query(localized_params) + render_spatial_query(localized_params) + super
   end
-=end
+
+  # LOCAL ADDITION
   ##
   # Render the 'more like this' query constraints
   #

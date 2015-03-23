@@ -5,7 +5,7 @@ describe PreviewController do
   describe 'GET #preview' do
 
     it 'should return the thumbnail if one exists' do
-      get :preview, :id => 'bpl-dev:k930bx42b'
+      get :preview, :id => 'bpl-dev:h702q6403'
       expect(response).to be_success
       response.header['Content-Type'].should == 'image/jpeg'
     end
@@ -26,9 +26,8 @@ describe PreviewController do
 
   describe 'GET #full' do
 
-    # doesn't pass for now; try again once we get IIIF server dev instance working
     it 'should return the full image if one exists' do
-      get :full, :id => 'bpl-dev:k930bx42b'
+      get :full, :id => 'bpl-dev:h702q6403'
       expect(response).to be_success
       response.header['Content-Type'].should == 'image/jpeg'
     end
