@@ -161,6 +161,15 @@ module CatalogHelper
     mods_xml_text = REXML::Document.new(mods_response.body)
   end
 
+  # return the correct name of the institution to link to for OAI objects
+  def return_oai_inst_name(document)
+    inst_name = nil
+    if document[:note_tsim]
+      inst_name = 'NOBLE Digital Heritage' if document[:note_tsim].join(' ').match(/NOBLE/)
+    end
+    inst_name.presence || document[blacklight_config.institution_field.to_sym].first
+  end
+
   # create a list of names and roles to be displayed
   def setup_names_roles(document)
     names = []
