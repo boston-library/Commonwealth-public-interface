@@ -68,7 +68,7 @@ describe CollectionsController do
   describe "get_collection_image_info" do
 
     it "should return a hash with the collection image object title and pid" do
-      expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({:title => 'Beauregard',:pid =>'bpl-dev:h702q6403'})
+      expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({title:'Beauregard', pid:'bpl-dev:h702q6403', access_master:true})
     end
 
   end

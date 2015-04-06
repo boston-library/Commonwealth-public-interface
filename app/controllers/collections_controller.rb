@@ -73,14 +73,14 @@ class CollectionsController < CatalogController
     col_img_info = {title: '', pid: collection_pid, access_master: false}
     col_img_file_doc = get_solr_response_for_doc_id(image_pid)[1]
     if col_img_file_doc
-      col_img_info[:access_master => true] if col_img_file_doc[:is_image_of_ssim]
+      col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
       col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
       if col_img_field
         col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
         col_img_obj_doc = get_solr_response_for_doc_id(col_img_obj_pid)[1]
         if col_img_obj_doc
-          col_img_info = {title: col_img_obj_doc[blacklight_config.index.title_field.to_sym],
-                          pid: col_img_obj_pid }
+          col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]
+          col_img_info[:pid] = col_img_obj_pid
         end
       end
     end
