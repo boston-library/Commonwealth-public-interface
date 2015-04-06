@@ -29,7 +29,7 @@
             <div id="collection_img">
               <% if @collection_image_pid && @collection_image_info %>
                   <% image_title = @collection_image_info[:title] %>
-                  <% if @collection_image_pid.match(/oai/) %>
+                  <% if @collection_image_pid.match(/oai/) || @collection_image_info[:access_master] == false %>
                        <% img_element = image_tag(datastream_disseminator_url(@collection_image_pid,'thumbnail300'),
                                                   :alt => image_title,
                                                   :class => 'collection_img_show') %>
