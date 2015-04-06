@@ -56,7 +56,8 @@ class CollectionsController < CatalogController
     # get an image for the collection
     if @document[:exemplary_image_ssi]
       @collection_image_pid = @document[:exemplary_image_ssi]
-      @collection_image_info = get_collection_image_info(@collection_image_pid)
+      @collection_image_info = get_collection_image_info(@collection_image_pid,
+                                                         @document[:id])
     end
 
     respond_to do |format|
@@ -68,16 +69,21 @@ class CollectionsController < CatalogController
   private
 
   # find the title and pid for the object representing the collection image
-  def get_collection_image_info(image_pid)
+  def get_collection_image_info(image_pid, collection_pid)
+    col_img_info = {title: '', pid: collection_pid}
     col_img_file_doc = get_solr_response_for_doc_id(image_pid)[1]
-    if col_img_file_doc && col_img_file_doc[:is_image_of_ssim]
-      col_img_obj_pid = col_img_file_doc[:is_image_of_ssim].first.gsub(/info:fedora\//,'')
+    if col_img_file_doc
+      col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
+      if col_img_field
+        col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
+        col_img_obj_doc = get_solr_response_for_doc_id(col_img_obj_pid)[1]
+        if col_img_obj_doc
+          col_img_info = {title: col_img_obj_doc[blacklight_config.index.title_field.to_sym],
+                          pid: col_img_obj_pid }
+        end
+      end
     end
-    col_img_obj_doc = get_solr_response_for_doc_id(col_img_obj_pid)[1]
-    if col_img_obj_doc
-      {:title => col_img_obj_doc[blacklight_config.index.title_field.to_sym],
-       :pid => col_img_obj_pid }
-    end
+    col_img_info
   end
 
   # find a representative image for a series

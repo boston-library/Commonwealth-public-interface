@@ -61,13 +61,14 @@ describe CollectionsController do
     @mock_controller = CollectionsControllerTestClass.new
     @mock_controller.params = {}
     @mock_controller.request = ActionDispatch::TestRequest.new
+    @collection_pid = 'bpl-dev:h702q636h'
     @collection_image_pid = 'bpl-dev:h702q642n'
   end
 
   describe "get_collection_image_info" do
 
     it "should return a hash with the collection image object title and pid" do
-      expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid)).to eq({:title => 'Beauregard',:pid =>'bpl-dev:h702q6403'})
+      expect(@mock_controller.send(:get_collection_image_info,@collection_image_pid,@collection_pid)).to eq({:title => 'Beauregard',:pid =>'bpl-dev:h702q6403'})
     end
 
   end
