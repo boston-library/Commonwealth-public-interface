@@ -56,15 +56,16 @@ gem 'blacklight', '5.7.2'
 gem 'blacklight_advanced_search', '5.1.0'
 gem 'hydra-head', '7.0.0'
 gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work
-#gem 'blacklight-maps', '0.3.0'
+gem 'blacklight-maps', '0.3.2'
 #gem 'blacklight-maps', :path => '/home/eenglish/blacklight-maps'
-gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps.git', :branch => 'all-ebens-prs'
+#gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps.git', :branch => 'all-ebens-prs'
 
 group :development, :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-webkit'
+  gem 'quiet_assets'
 end
 
 gem 'unicode', :platforms => [:mri_18, :mri_19]
