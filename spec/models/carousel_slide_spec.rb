@@ -26,11 +26,11 @@ describe CarouselSlide do
     end
 
     it 'should have a title attribute' do
-      @slide.should respond_to(:title)
+      expect(@slide).to respond_to(:title)
     end
 
     it 'should have the right title' do
-      @slide.title.should == 'The Slide Title'
+      expect(@slide.title).to eq('The Slide Title')
     end
 
   end

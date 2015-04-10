@@ -18,11 +18,11 @@ describe 'multi image viewer' do
   end
 
   it 'should display the next image when a prev-next link is clicked' do
-    find('.img_show')['src'].should match /bpl-dev:h702q642n/
+    expect(find('.img_show')['src']).to match /bpl-dev:h702q642n/
   end
 
   it 'should update the thumbnail in the #thumbnail_list' do
-    all('#thumbnail_list li').last.should have_selector('.in_viewer')
+    expect(all('#thumbnail_list li').last).to have_selector('.in_viewer')
   end
 
 end

@@ -19,12 +19,12 @@ describe FoldersController do
 
       it "should link to the bookmarks folder" do
         get :index
-        response.body.should have_selector("a[href='/bookmarks']")
+        expect(response.body).to have_selector("a[href='/bookmarks']")
       end
 
       it "should not show any folders" do
         get :index
-        @folders.should be_nil
+        expect(@folders).to be_nil
       end
 
     end
@@ -39,8 +39,8 @@ describe FoldersController do
 
         it "should not show any folders" do
           get :index
-          @test_user.folders.should be_empty
-          @folders.should be_nil
+          expect(@test_user.folders).to be_empty
+          expect(@folders).to be_nil
         end
 
       end
@@ -54,7 +54,7 @@ describe FoldersController do
 
         it "should show the user's folders" do
           get :index
-          response.body.should have_selector("ul[id='user_folder_list']")
+          expect(response.body).to have_selector("ul[id='user_folder_list']")
         end
 
       end
@@ -74,7 +74,7 @@ describe FoldersController do
 
       it "should redirect to the login page" do
         delete :destroy, :id => @test_user.folders.first.id
-        response.should be_redirect
+        expect(response).to be_redirect
       end
 
     end
@@ -86,14 +86,14 @@ describe FoldersController do
       end
 
       it "should delete the folder" do
-        lambda do
+        expect {
           delete :destroy, :id => @test_user.folders.first.id
-        end.should change(Bpluser::Folder, :count).by(-1)
+        }.to change(Bpluser::Folder, :count).by(-1)
       end
 
       it "should redirect to the folders page" do
         delete :destroy, :id => @test_user.folders.first.id
-        response.should redirect_to(:controller => 'folders', :action => 'index')
+        expect(response).to redirect_to(:controller => 'folders', :action => 'index')
       end
 
     end
@@ -108,12 +108,12 @@ describe FoldersController do
 
     it "should return http success" do
       get :new
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "should display the form" do
       get :new
-      response.body.should have_selector("form[id='edit_folder_form']")
+      expect(response.body).to have_selector("form[id='edit_folder_form']")
     end
 
   end
@@ -131,7 +131,7 @@ describe FoldersController do
 
         it "should redirect to the login page" do
           get :show, :id => @folder.id
-          response.should be_redirect
+          expect(response).to be_redirect
         end
 
       end
@@ -145,7 +145,7 @@ describe FoldersController do
 
         it "should show the folder" do
           get :show, :id => @public_folder.id
-          response.body.should have_selector("h2", :text => @public_folder.title)
+          expect(response.body).to have_selector("h2", :text => @public_folder.title)
         end
 
       end
@@ -160,7 +160,7 @@ describe FoldersController do
 
       it "should show the folder title" do
         get :show, :id => @folder.id
-        response.body.should have_selector("h2", :text => @folder.title)
+        expect(response.body).to have_selector("h2", :text => @folder.title)
       end
 
       describe "user has folder with items" do
@@ -171,7 +171,7 @@ describe FoldersController do
 
         it "should show a link to the folder item" do
           get :show, :id => @folder.id
-          response.body.should have_selector("a[href='/search/" + @test_folder_item.document_id + "']")
+          expect(response.body).to have_selector("a[href='/search/" + @test_folder_item.document_id + "']")
         end
 
       end
@@ -196,7 +196,7 @@ describe FoldersController do
 
       it "should not allow access to another user's folder" do
         get :show, :id => @folder.id
-        response.should redirect_to(root_path)
+        expect(response).to redirect_to(root_path)
       end
 
     end
@@ -211,7 +211,7 @@ describe FoldersController do
       #post :create
       # TODO: below doesn't work due to ?referer=%2Ffolders suffix on end of URL.
       # not sure how to test for this.
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
+      #expect(response).to redirect_to(:controller => 'devise/sessions', :action => 'new' )
       #end
 
     end
@@ -225,14 +225,14 @@ describe FoldersController do
       describe "failure" do
 
         it "should not create a folder" do
-          lambda do
+          expect {
             post :create, :folder => {:title => ""}
-          end.should_not change(Bpluser::Folder, :count)
+          }.not_to change(Bpluser::Folder, :count)
         end
 
         it "should re-render the create page" do
           post :create, :folder => {:title => ""}
-          response.should render_template('folders/new')
+          expect(response).to render_template('folders/new')
         end
 
       end
@@ -240,14 +240,14 @@ describe FoldersController do
       describe "success" do
 
         it "should create a folder" do
-          lambda do
+          expect do
             post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
-          end.should change(Bpluser::Folder, :count).by(1)
+          end.to change(Bpluser::Folder, :count).by(1)
         end
 
         it "should redirect to the folders page" do
           post :create, :folder => {:title => "Whatever, man",:visibility => 'private'}
-          response.should redirect_to(:controller => 'folders', :action => 'index')
+          expect(response).to redirect_to(:controller => 'folders', :action => 'index')
         end
 
       end
@@ -269,7 +269,7 @@ describe FoldersController do
       #it "should deny access to edit" do
       #get :edit, :id => @folder.id
       # TODO: below doesn't work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
+      #expect(response).to redirect_to(:controller => 'devise/sessions', :action => 'new' )
       #end
 
     end
@@ -282,7 +282,7 @@ describe FoldersController do
 
       it "should show the edit form with the correct title value" do
         get :edit, :id => @folder.id
-        response.body.should have_field("folder_title", :with => @folder.title)
+        expect(response.body).to have_field("folder_title", :with => @folder.title)
       end
 
     end
@@ -301,7 +301,7 @@ describe FoldersController do
       #it "should deny access to create" do
       #put :update, :id => @folder.id
       # TODO: below doesn't work due to ?referer=%2Ffolders suffix on end of URL. not sure how to test for this.
-      #response.should redirect_to(:controller => 'devise/sessions', :action => 'new' )
+      #expect(response).to redirect_to(:controller => 'devise/sessions', :action => 'new' )
       #end
 
     end
@@ -317,12 +317,12 @@ describe FoldersController do
         it "should not update the folder" do
           put :update, :id => @folder.id, :folder => {:title => ""}
           @folder.reload
-          @folder.title.should_not == ""
+          expect(@folder.title).not_to eq("")
         end
 
         it "should re-render the edit form" do
           put :update, :id => @folder.id, :folder => {:title => ""}
-          response.should render_template('folders/edit')
+          expect(response).to render_template('folders/edit')
         end
 
       end
@@ -332,12 +332,12 @@ describe FoldersController do
         it "should update the folder" do
           put :update, :id => @folder.id, :folder => {:title => "New Folder Title"}
           @folder.reload
-          @folder.title.should == "New Folder Title"
+          expect(@folder.title).to eq("New Folder Title")
         end
 
         it "should redirect to the folders show page" do
           put :update, :id => @folder.id, :folder => {:title => "New Folder Title"}
-          response.should redirect_to(:controller => 'folders', :action => 'show')
+          expect(response).to redirect_to(:controller => 'folders', :action => 'show')
         end
 
       end
@@ -356,13 +356,13 @@ describe FoldersController do
 
     it 'should show the public list' do
       get :public_list
-      response.should be_success
-      response.body.should have_css('body.blacklight-folders-public_list')
+      expect(response).to be_success
+      expect(response.body).to have_css('body.blacklight-folders-public_list')
     end
 
     it 'should show the public folder in the list' do
       get :public_list
-      response.body.should have_selector('a', :text => @folder.title)
+      expect(response.body).to have_selector('a', :text => @folder.title)
     end
 
   end

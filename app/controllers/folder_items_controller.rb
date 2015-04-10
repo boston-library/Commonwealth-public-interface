@@ -45,7 +45,7 @@ class FolderItemsController < CatalogController
     # success = (!folder_item) || FolderItem.find(folder_item).destroy
 
     Bpluser::Folder.find(folder_item.folder_id).touch
-    Bpluser::FolderItem.find(folder_item).destroy
+    Bpluser::FolderItem.find(folder_item.id).destroy
 
     respond_to do |format|
       format.html { redirect_to :back }
@@ -56,7 +56,7 @@ class FolderItemsController < CatalogController
 
   def clear
     @folder = Bpluser::Folder.find(params[:id])
-    if current_user.folders.find(@folder).folder_items.clear
+    if current_user.folders.find(@folder.id).folder_items.clear
       @folder.touch
       flash[:notice] = I18n.t('blacklight.folder_items.clear.success')
     else

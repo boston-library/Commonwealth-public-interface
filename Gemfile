@@ -61,8 +61,8 @@ gem 'blacklight-maps', '0.3.2'
 #gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps.git', :branch => 'all-ebens-prs'
 
 group :development, :test do
-  gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec', '~> 3.2.0'
+  gem 'rspec-rails', '~> 3.2.0'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'quiet_assets'

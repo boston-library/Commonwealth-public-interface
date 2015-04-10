@@ -44,6 +44,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.infer_spec_type_from_file_location!
+
+  #config.expect_with(:rspec) { |c| c.syntax = :should }
+
 end
 
 Capybara.javascript_driver = :webkit

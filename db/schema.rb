@@ -13,30 +13,30 @@
 
 ActiveRecord::Schema.define(version: 20141104185610) do
 
-  create_table "batch_uploads", force: true do |t|
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
+  create_table "batch_uploads", force: :cascade do |t|
+    t.string   "upload_file_name",    limit: 255
+    t.string   "upload_content_type", limit: 255
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "bookmarks", force: true do |t|
-    t.integer  "user_id",       null: false
-    t.string   "document_id"
-    t.string   "title"
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer  "user_id",                   null: false
+    t.string   "document_id",   limit: 255
+    t.string   "title",         limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type"
-    t.string   "document_type"
+    t.string   "user_type",     limit: 255
+    t.string   "document_type", limit: 255
   end
 
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
-  create_table "bpluser_folder_items", force: true do |t|
+  create_table "bpluser_folder_items", force: :cascade do |t|
     t.integer  "folder_id"
-    t.string   "document_id"
+    t.string   "document_id", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -44,34 +44,34 @@ ActiveRecord::Schema.define(version: 20141104185610) do
   add_index "bpluser_folder_items", ["document_id"], name: "index_bpluser_folder_items_on_document_id"
   add_index "bpluser_folder_items", ["folder_id"], name: "index_bpluser_folder_items_on_folder_id"
 
-  create_table "bpluser_folders", force: true do |t|
-    t.string   "title"
-    t.integer  "user_id",     null: false
-    t.string   "description"
+  create_table "bpluser_folders", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.integer  "user_id",                 null: false
+    t.string   "description", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "visibility"
+    t.string   "visibility",  limit: 255
   end
 
-  create_table "carousel_slides", force: true do |t|
+  create_table "carousel_slides", force: :cascade do |t|
     t.integer  "sequence"
-    t.string   "object_pid"
-    t.string   "image_pid"
+    t.string   "object_pid",  limit: 255
+    t.string   "image_pid",   limit: 255
     t.string   "region"
-    t.string   "title"
-    t.string   "institution"
-    t.string   "context"
+    t.string   "title",       limit: 255
+    t.string   "institution", limit: 255
+    t.string   "context",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "size"
   end
 
-  create_table "institutions", force: true do |t|
-    t.string "name"
-    t.string "pid"
+  create_table "institutions", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "pid",  limit: 255
   end
 
-  create_table "institutions_users", id: false, force: true do |t|
+  create_table "institutions_users", id: false, force: :cascade do |t|
     t.integer "institution_id"
     t.integer "user_id"
   end
@@ -79,11 +79,11 @@ ActiveRecord::Schema.define(version: 20141104185610) do
   add_index "institutions_users", ["institution_id", "user_id"], name: "index_institutions_users_on_institution_id_and_user_id"
   add_index "institutions_users", ["user_id", "institution_id"], name: "index_institutions_users_on_user_id_and_institution_id"
 
-  create_table "roles", force: true do |t|
-    t.string "name"
+  create_table "roles", force: :cascade do |t|
+    t.string "name", limit: 255
   end
 
-  create_table "roles_users", id: false, force: true do |t|
+  create_table "roles_users", id: false, force: :cascade do |t|
     t.integer "role_id"
     t.integer "user_id"
   end
@@ -91,36 +91,36 @@ ActiveRecord::Schema.define(version: 20141104185610) do
   add_index "roles_users", ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id"
   add_index "roles_users", ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id"
 
-  create_table "searches", force: true do |t|
+  create_table "searches", force: :cascade do |t|
     t.text     "query_params"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type"
+    t.string   "user_type",    limit: 255
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
-  create_table "users", force: true do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  limit: 255, default: "",    null: false
+    t.string   "encrypted_password",     limit: 255, default: "",    null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "guest",                  default: false
-    t.string   "username"
-    t.string   "provider"
-    t.string   "display_name"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "uid"
+    t.boolean  "guest",                              default: false
+    t.string   "username",               limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "display_name",           limit: 255
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -14,7 +14,7 @@ describe InstitutionsHelper do
 =end
   before :each do
     CatalogController.blacklight_config = Blacklight::Configuration.new
-    helper.stub(blacklight_config: blacklight_config)
+    allow(helper).to receive_messages(blacklight_config: blacklight_config)
     @request = ActionDispatch::TestRequest.new
     @catalog = CatalogController.new
     @catalog.request = @request

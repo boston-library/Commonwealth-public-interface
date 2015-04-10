@@ -24,14 +24,14 @@ describe FolderItemsActionsController do
     describe "success" do
 
       it "should remove the selected items" do
-        lambda do
+        expect {
           put :folder_item_actions,
               :commit => "Remove",
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-development:100", "bpl-development:99"]
-          response.should be_redirect
-        end.should change(@folder.folder_items, :count).by(-2)
+          expect(response).to be_redirect
+        }.to change(@folder.folder_items, :count).by(-2)
       end
 
     end
@@ -48,15 +48,15 @@ describe FolderItemsActionsController do
     describe "success" do
 
       it "should copy the selected items to folder2" do
-        lambda do
+        expect {
           @request.env['HTTP_REFERER'] = '/folders/' + @folder.id.to_s
           put :folder_item_actions,
               :commit => "Copy to " + @folder2.id.to_s,
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-development:100", "bpl-development:99"]
-          response.should be_redirect
-        end.should change(@folder2.folder_items, :count).by(2)
+          expect(response).to be_redirect
+        }.to change(@folder2.folder_items, :count).by(2)
       end
 
     end
@@ -73,7 +73,7 @@ describe FolderItemsActionsController do
               :origin => "folders",
               :id => @folder,
               :selected => ["bpl-development:99"]
-          response.should redirect_to(citation_catalog_path(:id => ["bpl-development:99"]))
+          expect(response).to redirect_to(citation_catalog_path(:id => ["bpl-development:99"]))
       end
 
     end
@@ -90,7 +90,7 @@ describe FolderItemsActionsController do
             :origin => "folders",
             :id => @folder,
             :selected => ["bpl-development:99"]
-        response.should redirect_to(email_catalog_path(:id => ["bpl-development:99"]))
+        expect(response).to redirect_to(email_catalog_path(:id => ["bpl-development:99"]))
       end
 
     end

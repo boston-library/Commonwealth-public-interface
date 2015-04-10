@@ -15,15 +15,15 @@ describe Notifier do
     end
 
     it "should create the email" do
-      @test_feedback_email.should_not be_nil
+      expect(@test_feedback_email).not_to be_nil
     end
 
     it "should have the right user email in the text" do
-      @test_feedback_email.body.encoded.should have_text(@test_params[:email])
+      expect(@test_feedback_email.body.encoded).to include(@test_params[:email])
     end
 
     it "should have the right receiver email address" do
-      @test_feedback_email.to[0].should == CONTACT_EMAILS['image_requests']
+      expect(@test_feedback_email.to[0]).to eq(CONTACT_EMAILS['image_requests'])
     end
 
   end

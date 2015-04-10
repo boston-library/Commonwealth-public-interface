@@ -18,7 +18,7 @@ describe 'dc_public namespace rake tasks' do
 
     it 'should create the geojson file' do
       run_rake_task
-      expect(File.file?(GEOJSON_STATIC_FILE['filepath'])).to be_true
+      expect(File.file?(GEOJSON_STATIC_FILE['filepath'])).not_to be_nil
       expect(File.stat(GEOJSON_STATIC_FILE['filepath']).mtime.to_f).to be > @time
     end
 

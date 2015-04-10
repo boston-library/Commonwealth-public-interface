@@ -23,20 +23,20 @@ describe FolderItemsController do
     describe "success" do
 
       it "should create a new folder item" do
-        lambda do
+        expect {
           @request.env['HTTP_REFERER'] = '/folder_items/new'
           post :create, :id => "bpl-dev:h702q6403", :folder_id => @folder.id
-          response.should be_redirect
-          @test_user.existing_folder_item_for("bpl-dev:h702q6403").should_not be_false
-        end.should change(Bpluser::FolderItem, :count).by(1)
+          expect(response).to be_redirect
+          expect(@test_user.existing_folder_item_for("bpl-dev:h702q6403")).not_to be_nil
+        }.to change(Bpluser::FolderItem, :count).by(1)
       end
 
       it "should create a new folder item using ajax" do
-        lambda do
+        expect {
           xhr :post, :create, :id => "bpl-dev:h702q637s", :folder_id => @folder.id
-          response.should be_success
-          @test_user.existing_folder_item_for("bpl-dev:h702q637s").should_not be_false
-        end.should change(Bpluser::FolderItem, :count).by(1)
+          expect(response).to be_success
+          expect(@test_user.existing_folder_item_for("bpl-dev:h702q637s")).not_to be_nil
+        }.to change(Bpluser::FolderItem, :count).by(1)
       end
 
     end
@@ -52,18 +52,18 @@ describe FolderItemsController do
       end
 
       it "should delete a folder item" do
-        lambda do
+        expect {
           @request.env['HTTP_REFERER'] = '/folder_items'
           delete :destroy, :id => "bpl-dev:h702q637s"
-          response.should be_redirect
-        end.should change(Bpluser::FolderItem, :count).by(-1)
+          expect(response).to be_redirect
+        }.to change(Bpluser::FolderItem, :count).by(-1)
       end
 
       it "should delete a folder item using ajax" do
-        lambda do
+        expect {
           xhr :delete, :destroy, :id => "bpl-dev:h702q637s"
-          response.should be_success
-        end.should change(Bpluser::FolderItem, :count).by(-1)
+          expect(response).to be_success
+        }.to change(Bpluser::FolderItem, :count).by(-1)
       end
 
     end
@@ -80,7 +80,7 @@ describe FolderItemsController do
 
       it "should clear the folder's folder items" do
         delete :clear, :id => @folder
-        @folder.folder_items.count.should == 0
+        expect(@folder.folder_items.count).to eq(0)
       end
 
     end
