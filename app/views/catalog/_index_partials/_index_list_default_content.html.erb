@@ -16,10 +16,10 @@
 
     <div class="item_index_title">
       <%= link_to_document(document,
-                           :label => truncate(document[blacklight_config.index.title_field.to_sym],
-                                              :length => 130,
-                                              :separator => ' ',
-                                              :omission => ' ...'),
+                           truncate(document[blacklight_config.index.title_field.to_sym],
+                                    :length => 130,
+                                    :separator => ' ',
+                                    :omission => ' ...'),
                            :counter => document_counter_with_offset(document_counter)) %>
     </div>
 

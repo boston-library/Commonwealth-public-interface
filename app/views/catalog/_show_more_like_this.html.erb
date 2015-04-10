@@ -6,10 +6,10 @@
       )
   %>
   <%= link_to_document(document,
-                       :label => truncate(document[blacklight_config.index.title_field.to_sym],
-                                          :length => 70,
-                                          :separator => ' ',
-                                          :omission => ' ...'),
+                       truncate(document[blacklight_config.index.title_field.to_sym],
+                                :length => 70,
+                                :separator => ' ',
+                                :omission => ' ...'),
                        :class => 'mlt_title_link'
                        ) %>
 </div>

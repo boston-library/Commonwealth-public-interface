@@ -15,7 +15,7 @@ class FolderItemsActionsController < ApplicationController
         when t('blacklight.tools.email')
           redirect_to email_catalog_path(:id => items)
         # cite
-        when t('blacklight.tools.cite')
+        when t('blacklight.tools.citation')
           redirect_to citation_catalog_path(:id => items)
         # remove
         when t('blacklight.tools.remove')

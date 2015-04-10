@@ -83,12 +83,6 @@ module CatalogHelper
             :target => '_blank')
   end
 
-  # have to override this because of a bug in BL
-  # submitted issue #908 on projectblacklight/blacklight GitHub
-  def render_document_class(document = @document)
-    'blacklight-' + document.get(blacklight_config.view_config(document_index_view_type).display_type_field).parameterize rescue nil
-  end
-
   # render metadata for <mods:hierarchicalGeographic> subjects from GeoJSON
   def render_hiergo_subject(geojson_feature, separator, separator_class=nil)
     output_array = []

@@ -4,7 +4,7 @@ class ImageViewerController < CatalogController
   include CatalogHelper
 
   def show
-    @response, @document = get_solr_response_for_doc_id
+    @response, @document = get_solr_response_for_doc_id(params[:id])
     #@img_to_show = params[:view]
     @title = @document[blacklight_config.index.title_field.to_sym]
     @page_sequence = get_page_sequence(@document.id, params[:view])
@@ -16,7 +16,7 @@ class ImageViewerController < CatalogController
   end
 
   def book_viewer
-    @response, @document = get_solr_response_for_doc_id
+    @response, @document = get_solr_response_for_doc_id(params[:id])
     @title = @document[blacklight_config.index.title_field.to_sym]
     @image_files = has_image_files?(Bplmodels::Finder.getFiles(params[:id]))
     render(:layout => 'book_viewer')

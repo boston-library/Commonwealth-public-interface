@@ -1,6 +1,6 @@
 <ul class="bookmarkTools nav nav-pills">
   <li class="cite">
-    <%= link_to t('blacklight.tools.cite'),
+    <%= link_to t('blacklight.tools.citation'),
                 citation_catalog_path(:sort=>params[:sort],
                                       :per_page=>params[:per_page],
                                       :id => @response.documents.map {|doc| doc.id}),

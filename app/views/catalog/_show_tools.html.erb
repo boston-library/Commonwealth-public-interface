@@ -26,7 +26,7 @@
   <%- end -%>
   <%# if (@document.respond_to?(:export_as_mla_citation_txt) || @document.respond_to?(:export_as_apa_citation_txt)) %>
       <li class="cite">
-        <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.cite'),
+        <%= link_to content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.citation'),
                     citation_catalog_path(:id => @document),
                     {:id => 'citeLink', :data => {:ajax_modal => 'trigger'}} %>
       </li>

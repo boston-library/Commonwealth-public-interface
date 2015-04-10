@@ -10,7 +10,7 @@ class PreviewController < CatalogController
   # return an image file for <mods:url access='preview'> requests
   # for flagged items, return the image icon
   def preview
-    solr_response, solr_document = get_solr_response_for_doc_id
+    solr_response, solr_document = get_solr_response_for_doc_id(params[:id])
     if solr_document[:exemplary_image_ssi]
       filename = solr_document[:id].to_s + '_thumbnail'
       if solr_document[blacklight_config.flagged_field.to_sym]
@@ -32,7 +32,7 @@ class PreviewController < CatalogController
   # return a full-size JPEG image file for 'full' requests
   # for flagged items, return the image icon
   def full
-    solr_response, solr_document = get_solr_response_for_doc_id
+    solr_response, solr_document = get_solr_response_for_doc_id(params[:id])
     if solr_document[:exemplary_image_ssi]
       filename = solr_document[:id].to_s + '_full'
       if solr_document[blacklight_config.flagged_field.to_sym]
@@ -54,7 +54,7 @@ class PreviewController < CatalogController
   # return a large-size JPEG image file for 'large' requests
   # for flagged items, return the image icon
   def large
-    solr_response, solr_document = get_solr_response_for_doc_id
+    solr_response, solr_document = get_solr_response_for_doc_id(params[:id])
     if solr_document[:exemplary_image_ssi]
       filename = solr_document[:id].to_s + '_large'
       if solr_document[blacklight_config.flagged_field.to_sym]

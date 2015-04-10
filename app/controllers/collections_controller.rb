@@ -43,7 +43,7 @@ class CollectionsController < CatalogController
 
   def show
     @nav_li_active = 'explore'
-    @show_response, @document = get_solr_response_for_doc_id
+    @show_response, @document = get_solr_response_for_doc_id(params[:id])
     @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
     # add params[:f] for proper facet links

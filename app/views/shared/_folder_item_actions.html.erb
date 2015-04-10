@@ -4,8 +4,8 @@
 
 <%# for users with JS, the email_btn and cite_btn below are replaced by
     code from shared/folder_tools %>
-<%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'cite_btn', :name => 'commit', :value => t('blacklight.tools.cite')) do %>
-    <%= content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.cite') %>
+<%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'cite_btn', :name => 'commit', :value => t('blacklight.tools.citation')) do %>
+    <%= content_tag(:span, '', :class => 'glyphicon glyphicon-list-alt') + ' ' + t('blacklight.tools.citation') %>
 <% end %>
 <%= button_tag(:type => 'submit', :class => 'btn btn-default', :id => 'email_btn', :name => 'commit', :value => t('blacklight.tools.email')) do %>
     <%= content_tag(:span, '', :class => 'glyphicon glyphicon-envelope') + ' ' + t('blacklight.tools.email') %>
