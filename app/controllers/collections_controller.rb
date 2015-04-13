@@ -19,8 +19,8 @@ class CollectionsController < CatalogController
 
   # Blacklight uses #search_action_url to figure out the right URL for
   # the global search box
-  def search_action_url *args
-    catalog_index_url *args
+  def search_action_url options = {}
+    catalog_index_url(options.except(:controller, :action))
   end
   helper_method :search_action_url
 
