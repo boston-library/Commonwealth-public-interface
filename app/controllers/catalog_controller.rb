@@ -17,6 +17,10 @@ class CatalogController < ApplicationController
   CatalogController.search_params_logic += [:exclude_unwanted_models]
 
   configure_blacklight do |config|
+
+    # CommonwealthSearchBuilder contrains logic for adding params to Solr
+    config.search_builder_class = CommonwealthSearchBuilder
+
     config.default_solr_params = { 
       :qt => 'search',
       :rows => 20
@@ -241,16 +245,6 @@ class CatalogController < ApplicationController
 
   end
 
-  def exclude_unwanted_models(solr_parameters, user_parameters)
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << '-has_model_ssim:"info:fedora/afmodel:Bplmodels_File"'
-    solr_parameters[:fq] << '-workflow_state_ssi:"draft"'
-    solr_parameters[:fq] << '-workflow_state_ssi:"needs_review"'
-    # can't implement below until all records have this field
-    # solr_parameters[:fq] << '+workflow_state_ssi:"published"'
-    # solr_parameters[:fq] << '+processing_state_ssi:"complete"'
-  end
-
   # displays the MODS XML record. copied from blacklight_marc gem
   def librarian_view
     @response, @document = fetch(params[:id])
@@ -281,11 +275,6 @@ class CatalogController < ApplicationController
 
   def set_nav_context
     @nav_li_active = 'search'
-  end
-
-  # for 'more like this' search -- set solr id param to params[:mlt_id]
-  def set_solr_id_for_mlt(solr_parameters, user_parameters)
-    solr_parameters[:id] = user_parameters[:mlt_id]
   end
 
   # if this is 'more like this' search, solr id = params[:mlt_id]

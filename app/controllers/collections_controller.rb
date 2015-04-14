@@ -24,11 +24,6 @@ class CollectionsController < CatalogController
   end
   helper_method :search_action_url
 
-  def collections_filter(solr_parameters, user_parameters)
-    solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Collection\""
-  end
-
   def index
     @nav_li_active = 'explore'
     self.search_params_logic += [:collections_filter]
