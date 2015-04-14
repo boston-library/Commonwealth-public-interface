@@ -3,10 +3,10 @@
       <%= select_tag('search_index[]',
                      options_for_select(search_fields,
                                         search_fields[index]),
-                     :title => t('blacklight.basic_search.form.search_indexes'),
+                     :title => t('blacklight.search.basic_search.form.search_indexes'),
                      :class=> 'btn btn-default search_index_select col-sm-2 control-label') %>
       <%= label_tag('input' + (index+1).to_s,
-                    t('blacklight.basic_search.form.q') + ' (' + (index+1).to_s + ')',
+                    t('blacklight.search.basic_search.form.q') + ' (' + (index+1).to_s + ')',
                     :class => 'sr-only') %>
       <div class="col-sm-6">
         <%= text_field_tag 'query[]',

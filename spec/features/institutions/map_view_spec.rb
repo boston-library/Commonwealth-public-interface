@@ -16,7 +16,7 @@ describe 'Institutions#index map view', js: true do
 
     it 'should show the search_form_institution content' do
       within ('div.leaflet-popup-content') do
-        expect(page).to have_content('institution')
+        expect(page.text).to include('institution')
       end
     end
 

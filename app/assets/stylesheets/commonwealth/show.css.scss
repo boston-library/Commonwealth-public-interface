@@ -24,7 +24,7 @@
   opacity: 0.86;
 }
 */
-#previousNextDocument {
+#previousNextDocument, .pagination-search-widgets {
   margin-top: 7px;
   @include rounded-corners(3px);
   @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.05) inset);
@@ -715,7 +715,7 @@
     min-height: 200px;
   }
 
-  #previousNextDocument {
+  #previousNextDocument, .pagination-search-widgets {
     font-size:12px;
 
     .page_links {

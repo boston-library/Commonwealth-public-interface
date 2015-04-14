@@ -17,13 +17,6 @@ en:
     ark:
           prefix: 'http://ark.digitalcommonwealth.org/ark:/50959/'
 
-    basic_search:
-          form:
-            label: 'Search for'
-            q: 'Enter search terms...'
-            search_indexes: 'Search by title, subject, place, etc.'
-            select: 'in'
-
     book_viewer:
           controls:
             grid: 'Pages List'
@@ -311,6 +304,11 @@ en:
 
 
     search:
+          basic_search:
+            form:
+              q: 'Enter search terms...'
+              search_indexes: 'Search by title, subject, place, etc.'
+              select: 'in'
           change_views:
             label: 'View as %{view}'
             action: 'View as'
@@ -318,6 +316,8 @@ en:
           form:
             collection: 'Search this collection...'
             institution: "Search this institution's collections..."
+            search:
+              label: 'Search for'
           facets:
             home: 'Explore the Collections'
           pagination_info:

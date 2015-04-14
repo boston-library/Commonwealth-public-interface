@@ -97,11 +97,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    autoprefixer-rails (5.1.8.1)
+    autoprefixer-rails (5.1.9)
       execjs
       json
     bcrypt (3.1.10)
-    blacklight (5.8.0)
+    blacklight (5.9.3)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (~> 0.13)
@@ -261,7 +261,7 @@ GEM
     mini_magick (3.7.0)
       subexec (~> 0.2.1)
     mini_portile (0.6.2)
-    minitest (5.5.1)
+    minitest (5.6.0)
     mods (2.0.1)
       iso-639
       nokogiri
@@ -483,7 +483,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (= 5.8.0)
+  blacklight (= 5.9.3)
   blacklight-maps!
   blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
