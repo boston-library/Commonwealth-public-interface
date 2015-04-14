@@ -6,6 +6,7 @@ module BlacklightMapsHelper
   def link_to_placename_field field_value, field, displayvalue = nil, catalogpath = nil
     search_path = catalogpath || 'catalog_index_path'
     new_params = params
+    new_params[:view] = default_document_index_view_type
     field_values = field_value.split(', ')
     if field_values.last.match(/[\.\)]/) # Mass.)
       field_values = [field_values.join(', ')]

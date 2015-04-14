@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/boston-library/blacklight-maps.git
+  revision: 9e53549f5ecbf41158be4bc2788fa9a8e3fb8adf
+  branch:  fix-for-preferred-view
+  specs:
+    blacklight-maps (0.3.2)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      rails
+
+GIT
   remote: https://github.com/boston-library/bpl-institution-management.git
   revision: abd23524df08ee00a52fb029218bef6411109b6a
   specs:
@@ -96,12 +108,6 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
-    blacklight-maps (0.3.2)
-      blacklight (>= 5.1.0)
-      bootstrap-sass (~> 3.0)
-      leaflet-markercluster-rails
-      leaflet-rails
-      rails
     blacklight_advanced_search (5.1.0)
       blacklight (>= 5.2, < 6.0)
       parslet
@@ -478,7 +484,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.8.0)
-  blacklight-maps (= 0.3.2)
+  blacklight-maps!
   blacklight_advanced_search (= 5.1.0)
   bootstrap-sass (~> 3.0)
   bootstrap_forms

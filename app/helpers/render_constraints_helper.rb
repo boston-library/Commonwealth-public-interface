@@ -4,7 +4,7 @@ module RenderConstraintsHelper
   # LOCAL OVERRIDE
   # add method to show constraint for 'more like this' search
   def render_constraints(localized_params = params)
-    render_mlt_query(localized_params) + render_spatial_query(localized_params) + super
+    render_mlt_query(localized_params) + super
   end
 
   # LOCAL ADDITION
