@@ -3,7 +3,7 @@ class CollectionsController < CatalogController
   ##
   # Give Bookmarks access to the CatalogController configuration
   include Blacklight::Configurable
-  include Blacklight::SolrHelper
+  include Blacklight::SearchHelper
 
   copy_blacklight_config_from(CatalogController)
 
@@ -31,8 +31,8 @@ class CollectionsController < CatalogController
 
   def index
     @nav_li_active = 'explore'
-    self.solr_search_params_logic += [:collections_filter]
-    (@response, @document_list) = get_search_results
+    self.search_params_logic += [:collections_filter]
+    (@response, @document_list) = search_results(params, search_params_logic)
     params[:view] = 'list'
     params[:sort] = 'title_info_primary_ssort asc'
 
@@ -43,7 +43,7 @@ class CollectionsController < CatalogController
 
   def show
     @nav_li_active = 'explore'
-    @show_response, @document = get_solr_response_for_doc_id(params[:id])
+    @show_response, @document = fetch(params[:id])
     @collection_title = @document[blacklight_config.index.title_field.to_sym]
 
     # add params[:f] for proper facet links
@@ -51,7 +51,7 @@ class CollectionsController < CatalogController
                   blacklight_config.institution_field => @document[blacklight_config.institution_field.to_sym]}
 
     # get the response for the facets representing items in collection
-    (@response, @document_list) = get_search_results({:f => params[:f]})
+    (@response, @document_list) = search_results({:f => params[:f]}, search_params_logic)
 
     # get an image for the collection
     if @document[:exemplary_image_ssi]
@@ -71,13 +71,13 @@ class CollectionsController < CatalogController
   # find the title and pid for the object representing the collection image
   def get_collection_image_info(image_pid, collection_pid)
     col_img_info = {title: '', pid: collection_pid, access_master: false}
-    col_img_file_doc = get_solr_response_for_doc_id(image_pid)[1]
+    col_img_file_doc = fetch(image_pid)[1]
     if col_img_file_doc
       col_img_info[:access_master] = true if col_img_file_doc[:is_image_of_ssim]
       col_img_field = col_img_file_doc[:is_image_of_ssim].presence || col_img_file_doc[:is_file_of_ssim].presence
       if col_img_field
         col_img_obj_pid = col_img_field.first.gsub(/info:fedora\//,'')
-        col_img_obj_doc = get_solr_response_for_doc_id(col_img_obj_pid)[1]
+        col_img_obj_doc = fetch(col_img_obj_pid)[1]
         if col_img_obj_doc
           col_img_info[:title] = col_img_obj_doc[blacklight_config.index.title_field.to_sym]
           col_img_info[:pid] = col_img_obj_pid
@@ -90,11 +90,11 @@ class CollectionsController < CatalogController
   # find a representative image for a series
   # TODO better exception handling for items which don't have exemplary_image
   def get_series_image_obj(series_title,collection_title)
-    series_doc_list = get_search_results(
+    series_doc_list = search_results(
         {:f => {'related_item_series_ssim' => series_title,
                 blacklight_config.collection_field => collection_title},
-         :rows => 1
-        })[1]
+         :rows => 1},
+        search_params_logic)[1]
     series_doc_list.first
   end
   helper_method :get_series_image_obj
@@ -103,7 +103,7 @@ class CollectionsController < CatalogController
   # find a representative image for a collection if none is assigned
   # TODO better exception handling for items which don't have exemplary_image
   #def get_collection_image_pid(collection_title)
-  #  (@default_coll_img_resp, @default_coll_img_doc_list) = get_search_results(
+  #  (@default_coll_img_resp, @default_coll_img_doc_list) = search_results(
   #      {:f => {blacklight_config.collection_field => collection_title,
   #              'has_model_ssim' => 'info:fedora/afmodel:Bplmodels_ObjectBase'},
   #       :rows => 1

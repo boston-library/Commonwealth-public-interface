@@ -3,7 +3,7 @@ class FoldersController < CatalogController
   ##
   # Give Bookmarks access to the CatalogController configuration
   include Blacklight::Configurable
-  include Blacklight::SolrHelper
+  include Blacklight::SearchHelper
 
   copy_blacklight_config_from(CatalogController)
 
@@ -29,7 +29,7 @@ class FoldersController < CatalogController
     @folder_items = @folder.folder_items
     folder_items_ids = @folder_items.collect { |f_item| f_item.document_id.to_s }
     params[:sort] ||= 'title_info_primary_ssort asc, date_start_dtsi asc'
-    @response, @document_list = get_solr_response_for_field_values(SolrDocument.unique_key, folder_items_ids)
+    @response, @document_list = fetch(folder_items_ids)
 
     # have to declare this so view uses catalog/index partials
     # uh, maybe not? default templates won't get invoked if below is set

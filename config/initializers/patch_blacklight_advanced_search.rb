@@ -10,7 +10,7 @@ class BlacklightAdvancedSearch::QueryParser
   def process_query(params,config)
     queries = []
     keyword_queries.each do |field,query|
-      queries << ParsingNesting::Tree.parse(query).to_query( local_param_hash(field, config)  )
+      queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query( local_param_hash(field, config) )
     end
     if params[:date_start].blank? && params[:date_end].blank?
       queries.join( ' ' + keyword_op + ' ')

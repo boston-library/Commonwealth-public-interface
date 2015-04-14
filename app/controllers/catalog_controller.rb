@@ -12,9 +12,9 @@ class CatalogController < ApplicationController
   # These before_filters apply the hydra access controls
   #before_filter :enforce_show_permissions, :only=>:show
   # This applies appropriate access controls to all solr queries
-  #CatalogController.solr_search_params_logic += [:add_access_controls_to_solr_params]
+  #CatalogController.search_params_logic += [:add_access_controls_to_solr_params]
   # This filters out objects that you want to exclude from search results, like FileAssets
-  CatalogController.solr_search_params_logic += [:exclude_unwanted_models]
+  CatalogController.search_params_logic += [:exclude_unwanted_models]
 
   configure_blacklight do |config|
     config.default_solr_params = { 
@@ -72,7 +72,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'institution_name_ssim', :label => 'Institution', :include_in_request => false
     # facet for blacklight-maps catalog#index map view
     # have to use '-2' to get all values
-    # because Blacklight::SolrHelper#solr_facet_params adds '+1' to value
+    # because Blacklight::SearchHelper#solr_facet_params adds '+1' to value
     config.add_facet_field 'subject_geojson_facet_ssim', :limit => -2, :label => 'Coordinates', :show => false
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
@@ -253,7 +253,7 @@ class CatalogController < ApplicationController
 
   # displays the MODS XML record. copied from blacklight_marc gem
   def librarian_view
-    @response, @document = get_solr_response_for_doc_id
+    @response, @document = fetch(params[:id])
 
     respond_to do |format|
       format.html
@@ -291,7 +291,7 @@ class CatalogController < ApplicationController
   # if this is 'more like this' search, solr id = params[:mlt_id]
   def mlt_search
     if params[:mlt_id]
-      CatalogController.solr_search_params_logic += [:set_solr_id_for_mlt]
+      CatalogController.search_params_logic += [:set_solr_id_for_mlt]
     end
   end
 
@@ -305,7 +305,7 @@ class CatalogController < ApplicationController
   end
 
   #def create_folder
-  #  @response, @documents = get_solr_response_for_field_values(SolrDocument.unique_key,params[:id])
+  #  @response, @documents = fetch()params[:id])
   #  respond_to do |format|
   #    format.html
   #    format.js { render :layout => false }

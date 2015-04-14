@@ -55,7 +55,6 @@ class BlacklightAdvancedSearch::AdvancedController < CatalogController
     # ensure empty query is all records, to fetch available facets on entire corpus
     input[:q] ||= '{!lucene}*:*'
 
-    # first arg nil, use default search path.
-    find(nil, input.to_hash)
+    repository.search(input)
   end
 end

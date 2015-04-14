@@ -2,7 +2,7 @@ class FolderItemsController < CatalogController
 
   # give controller access to useful BL/Solr methods
   #include Blacklight::Configurable
-  #include Blacklight::SolrHelper
+  #include Blacklight::SearchHelper
 
   before_action :verify_user
 
@@ -11,7 +11,7 @@ class FolderItemsController < CatalogController
   end
 
   def create
-    @response, @document = get_solr_response_for_doc_id(params[:id])
+    @response, @document = fetch(params[:id])
     if params[:folder_items]
       @folder_items = params[:folder_items]
     else
@@ -39,7 +39,7 @@ class FolderItemsController < CatalogController
   # idempotent, as DELETE is supposed to be.
   # PRETTY SURE THIS METHOD IS NEVER USED!
   def destroy
-    @response, @document = get_solr_response_for_doc_id(params[:id])
+    @response, @document = fetch(params[:id])
     folder_item = current_user.existing_folder_item_for(params[:id])
 
     # success = (!folder_item) || FolderItem.find(folder_item).destroy

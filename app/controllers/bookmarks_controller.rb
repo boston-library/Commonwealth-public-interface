@@ -8,7 +8,7 @@ class BookmarksController < CatalogController
     if params[:bookmarks]
       @bookmarks = params[:bookmarks]
     else
-      @bookmarks = [{ document_id: params[:id], document_type: blacklight_config.solr_document_model.to_s }]
+      @bookmarks = [{ document_id: params[:id], document_type: blacklight_config.document_model.to_s }]
     end
 
     current_or_guest_user.save! unless current_or_guest_user.persisted?

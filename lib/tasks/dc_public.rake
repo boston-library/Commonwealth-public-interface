@@ -6,7 +6,7 @@ namespace :dc_public do
   task :create_geojson => :environment do
 
     include BlacklightMapsHelper #works
-    include Blacklight::SolrHelper
+    include Blacklight::SearchHelper
 
     def blacklight_config
       CatalogController.blacklight_config
