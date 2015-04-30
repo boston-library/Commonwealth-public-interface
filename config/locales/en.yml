@@ -266,6 +266,7 @@ en:
             title: 'Title'
             title_alt: 'Title (alt.)'
             title_uniform: 'Title (uniform)'
+            title_translated: 'Title (translated)'
 
 
     more_like_this:

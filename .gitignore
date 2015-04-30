@@ -25,6 +25,7 @@ pickle-email-*.html
 
 # Specific configuration files #
 ################################
+blacklight.yml
 hydra-ldap.yml
 database.yml
 fedora.yml

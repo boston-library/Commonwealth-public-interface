@@ -19,6 +19,15 @@
         <%# end %>
       </dd>
     <% end %>
+    <%# translated title field %>
+    <% if document[:title_info_translated_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.title_translated') %>:</dt>
+        <dd>
+          <% document[:title_info_translated_tsim].each do |translated_title| %>
+              <%= translated_title %><br />
+          <% end %>
+        </dd>
+    <% end %>
     <%# alternative title field %>
     <% if document[:title_info_alternative_tsim] %>
       <dt>

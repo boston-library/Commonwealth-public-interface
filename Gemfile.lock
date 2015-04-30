@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/boston-library/bplmodels.git
-  revision: c119605be824e0c76ccd8dc4d5ebbbe92ebd77dc
+  revision: 69e12089228504e9460cb54e7919d9e73cafcb03
   specs:
     bplmodels (0.0.91)
       hydra-derivatives
