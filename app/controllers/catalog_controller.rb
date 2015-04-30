@@ -18,7 +18,7 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
 
-    # CommonwealthSearchBuilder contrains logic for adding params to Solr
+    # CommonwealthSearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
 
     config.default_solr_params = { 
@@ -76,7 +76,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'institution_name_ssim', :label => 'Institution', :include_in_request => false
     # facet for blacklight-maps catalog#index map view
     # have to use '-2' to get all values
-    # because Blacklight::SearchHelper#solr_facet_params adds '+1' to value
+    # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
     config.add_facet_field 'subject_geojson_facet_ssim', :limit => -2, :label => 'Coordinates', :show => false
 
     #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
