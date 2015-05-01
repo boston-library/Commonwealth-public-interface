@@ -101,7 +101,7 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
-    blacklight (5.13.0)
+    blacklight (5.13.1)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (>= 0.15)
@@ -483,7 +483,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (= 5.13.0)
+  blacklight (= 5.13.1)
   blacklight-maps!
   blacklight_advanced_search (= 5.1.4)
   bootstrap-sass (~> 3.0)
