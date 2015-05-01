@@ -18,8 +18,8 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
 
-    # CommonwealthSearchBuilder contains logic for adding search params to Solr
-    config.search_builder_class = CommonwealthSearchBuilder
+    # SearchBuilder contains logic for adding search params to Solr
+    config.search_builder_class = SearchBuilder
 
     config.default_solr_params = { 
       :qt => 'search',

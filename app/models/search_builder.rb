@@ -1,4 +1,5 @@
-class CommonwealthSearchBuilder < Blacklight::Solr::SearchBuilder
+class SearchBuilder < Blacklight::SearchBuilder
+  include Blacklight::Solr::SearchBuilderBehavior
 
   # keep file assets and unpublished items from appearing in search results
   def exclude_unwanted_models(solr_parameters = {})
@@ -27,6 +28,5 @@ class CommonwealthSearchBuilder < Blacklight::Solr::SearchBuilder
     solr_parameters[:fq] ||= []
     solr_parameters[:fq] << "+active_fedora_model_suffix_ssi:\"Institution\""
   end
-
 
 end
