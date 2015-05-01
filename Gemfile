@@ -52,7 +52,7 @@ gem 'typhoeus'
 gem 'paperclip'
 
 # hydra-head
-gem 'blacklight', '5.11.0'
+gem 'blacklight', '5.12.0'
 gem 'blacklight_advanced_search', '5.1.4'
 gem 'hydra-head', '7.0.0'
 gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work

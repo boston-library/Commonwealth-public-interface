@@ -260,10 +260,9 @@ class CatalogController < ApplicationController
     @nav_li_active = 'explore'
 
     @facet = blacklight_config.facet_fields['genre_basic_ssim']
-    @response = get_facet_field_response(@facet.field, params)
-    @display_facet = @response.facets.first
+    @response = get_facet_field_response(@facet.key, params)
+    @display_facet = @response.aggregations[@facet.key]
 
-    # @pagination was deprecated in Blacklight 5.1
     @pagination = facet_paginator(@facet, @display_facet)
 
     render :facet

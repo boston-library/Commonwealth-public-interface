@@ -20,7 +20,7 @@ namespace :dc_public do
     @controller.params = {}
     @controller.request = ActionDispatch::TestRequest.new
 
-    (@response, @document_list) = get_search_results({})
+    (@response, @document_list) = search_results({},search_params_logic)
     geojson_features = serialize_geojson(map_facet_values, 'index')
     if geojson_features
       File.open('./lib/assets/dc_static_geojson_catalog-map.json', 'w') {|f| f.write(geojson_features) }
