@@ -1,5 +1,5 @@
 <% # container for all documents in index view -%>
-<div id="documents">
+<div id="documents" class="documents-<%= document_index_view_type %>">
     <% if params[:view] == "list" %>
       <%= render documents, :as => :document %>
     <% else %>

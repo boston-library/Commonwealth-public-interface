@@ -1,7 +1,5 @@
 <% if current_or_guest_user %>
 
-    <% existing_bookmark = current_or_guest_user.document_is_bookmarked? document %>
-
     <div id="folder_item_toggle">
 
       <% if current_user %>
@@ -11,7 +9,7 @@
           <% existing_folders = [] %>
       <% end %>
 
-      <% unless existing_folder_item || existing_bookmark %>
+      <% unless is_bookmarked? document || existing_folder_item %>
 
         <% if existing_folders.empty? %>
 
