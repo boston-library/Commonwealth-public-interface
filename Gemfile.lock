@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boston-library/blacklight-maps.git
-  revision: 9e53549f5ecbf41158be4bc2788fa9a8e3fb8adf
+  revision: c6b39f16fab4198be1f4ec0bd64d4c225cc8e543
   branch:  fix-for-preferred-view
   specs:
     blacklight-maps (0.3.2)

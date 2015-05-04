@@ -5,22 +5,21 @@ namespace :dc_public do
   desc 'generate the static geojson file for catalog#map view'
   task :create_geojson => :environment do
 
-    include BlacklightMapsHelper #works
-    include Blacklight::SearchHelper
+    include BlacklightMapsHelper
 
     def blacklight_config
       CatalogController.blacklight_config
     end
 
     class BlacklightGeojsonTestClass < CatalogController
-      attr_accessor :params
+      include Blacklight::SearchHelper
     end
 
     @controller = BlacklightGeojsonTestClass.new
-    @controller.params = {}
     @controller.request = ActionDispatch::TestRequest.new
 
-    (@response, @document_list) = search_results({},search_params_logic)
+    (@response, @document_list) = @controller.search_results({},@controller.search_params_logic)
+
     geojson_features = serialize_geojson(map_facet_values, 'index')
     if geojson_features
       File.open('./lib/assets/dc_static_geojson_catalog-map.json', 'w') {|f| f.write(geojson_features) }
