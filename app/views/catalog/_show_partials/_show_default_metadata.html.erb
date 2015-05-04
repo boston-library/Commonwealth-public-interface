@@ -245,6 +245,15 @@
         <% end %>
       </dd>
     <% end %>
+    <%# place of pub. field (if no publisher) %>
+    <% if document[:pubplace_tsim] && !document[:publisher_tsim] %>
+        <dt><%= t('blacklight.metadata_display.fields.pubplace') %>:</dt>
+        <dd>
+          <% document[:pubplace_tsim].each do |pubplace| %>
+              <%= pubplace %><br />
+          <% end %>
+        </dd>
+    <% end %>
     <%# edition field %>
     <% if document[:edition_tsim] %>
       <dt><%= t('blacklight.metadata_display.fields.edition') %>:</dt>

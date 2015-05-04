@@ -12,6 +12,12 @@ class SearchBuilder < Blacklight::SearchBuilder
     # solr_parameters[:fq] << '+processing_state_ssi:"complete"'
   end
 
+  # don;t return flagged items (for series images on collections#show)
+  def flagged_filter(solr_parameters = {})
+    solr_parameters[:fq] ||= []
+    solr_parameters[:fq] << "-#{blacklight_config.flagged_field}:[* TO *]"
+  end
+
   # for 'more like this' search -- set solr id param to params[:mlt_id]
   def set_solr_id_for_mlt(solr_parameters = {})
     solr_parameters[:id] = blacklight_params[:mlt_id]

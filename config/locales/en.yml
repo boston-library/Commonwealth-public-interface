@@ -248,6 +248,7 @@ en:
             note_reference: 'Notes (citation)'
             note_resp: 'Name on Item'
             publisher: 'Publisher'
+            pubplace: 'Place of origin'
             referenced_by: 'Referenced by'
             rights: 'Terms of Use'
             scale: 'Scale'
