@@ -133,6 +133,15 @@ div.folder_show_container {
 
   #sortAndPerPage {
     margin: 10px 0;
+
+    a.view-type-maps {
+      display: none;
+    }
+
+    a.clear-bookmarks {
+      display: none;
+    }
+
   }
 
   #folderItemTools {
