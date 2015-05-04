@@ -19,9 +19,20 @@ body.blacklight-catalog-index {
 }
 
 #appliedParams {
+  padding: 16px 9px;
 
   #constraintsLinks {
     margin-bottom: 0;
+
+    & > li:first-child {
+      padding-left: 4px;
+    }
+
+    & > li {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
   }
 
   .appliedFilter {
