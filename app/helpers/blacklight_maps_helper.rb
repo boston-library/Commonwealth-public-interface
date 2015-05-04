@@ -23,9 +23,10 @@ module BlacklightMapsHelper
     field_values.each do |val|
       place = val.match(/\(county\)/) ? val : val.gsub(/\s\([a-z]*\)\z/,'')
       new_params = add_facet_params(field, place, new_params) unless params[:f] && params[:f][field] && params[:f][field].include?(place)
+      new_params[:view] = default_document_index_view_type
     end
     link_to(displayvalue.presence || field_value,
-            self.send(search_path,new_params.except(:view, :id, :spatial_search_type, :coordinates)))
+            self.send(search_path,new_params.except(:id, :spatial_search_type, :coordinates)))
   end
 
   # LOCAL OVERRIDE: use a static file for catalog#map so page loads faster

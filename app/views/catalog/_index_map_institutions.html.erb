@@ -1,7 +1,6 @@
 <div id="documents" class="map">
   <%= blacklight_map_tag('institutions-index-map',
-                         {data:{viewpoint: set_viewpoint(geojson_features),
-                                searchcontrol: true,
+                         {data:{searchcontrol: true,
                                 catalogpath: institutions_path,
                                 placenamefield: blacklight_config.view.maps.placename_field
                          }}) %>
