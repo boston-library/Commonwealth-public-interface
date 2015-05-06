@@ -34,20 +34,16 @@
 
       <div class="item_index_details">
         <% if document[:abstract_tsim] %>
-            <% abstract_index = strip_tags(document[:abstract_tsim].first.gsub(/<\/p><p>/,' ')).html_safe %>
-            <%= truncate(abstract_index,
-                        :length => 300,
-                        :separator => ' ',
-                        :omission => '... ') %>
-            <% if abstract_index.length > 300 %>
-                <%= link_to('more',
-                            collection_path(:id => document[:id]),
-                           :class => 'read-more-link') %>
-            <% end %>
+            <%= truncate(sanitize(document[:abstract_tsim].first.gsub(/<\/p><p>/,' '), :tags => []),
+                         :length => 300,
+                         :separator => ' ',
+                         :omission => '... ') do
+              link_to('more',
+                      collection_path(:id => document[:id]),
+                      :class => 'read-more-link')
+            end %>
         <% end %>
       </div>
-
-
 
     </div>
 
