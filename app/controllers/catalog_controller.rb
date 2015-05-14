@@ -16,7 +16,13 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.search_params_logic += [:exclude_unwanted_models]
 
-  configure_blacklight do |config|
+  configure_blacklight do |config|          config.view.gallery.partials = [:index_header, :index]
+          config.view.masonry.partials = [:index]
+          config.view.slideshow.partials = [:index]
+
+          config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
+          config.show.partials.insert(1, :openseadragon)
+
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = SearchBuilder

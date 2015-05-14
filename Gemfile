@@ -54,6 +54,7 @@ gem 'paperclip'
 # hydra-head
 gem 'blacklight', '5.13.1'
 gem 'blacklight_advanced_search', '5.1.4'
+gem 'blacklight-gallery', '0.4.0'
 gem 'hydra-head', '7.0.0'
 gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work
 gem 'blacklight-maps', '0.3.3'
