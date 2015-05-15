@@ -16,13 +16,7 @@ class CatalogController < ApplicationController
   # This filters out objects that you want to exclude from search results, like FileAssets
   CatalogController.search_params_logic += [:exclude_unwanted_models]
 
-  configure_blacklight do |config|          config.view.gallery.partials = [:index_header, :index]
-          config.view.masonry.partials = [:index]
-          config.view.slideshow.partials = [:index]
-
-          config.show.tile_source_field = :content_metadata_image_iiif_info_ssm
-          config.show.partials.insert(1, :openseadragon)
-
+  configure_blacklight do |config|
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = SearchBuilder
@@ -38,7 +32,7 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_info_primary_tsi'
     config.index.display_type_field = 'active_fedora_model_suffix_ssi'
-    config.index.partials = [:index]
+    config.index.partials = [:index_header, :thumbnail, :index]
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_info_primary_tsi'
@@ -106,15 +100,11 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    #config.add_index_field 'title_t', :label => 'Title:'
-    #config.add_index_field 'title_vern_display', :label => 'Title:'
-    #config.add_index_field 'author_display', :label => 'Author:'
-    #config.add_index_field 'author_vern_display', :label => 'Author:'
-    #config.add_index_field 'active_fedora_model_s', :label => 'Format:'
-    #config.add_index_field 'language_facet', :label => 'Language:'
-    #config.add_index_field 'published_display', :label => 'Published:'
-    #config.add_index_field 'published_vern_display', :label => 'Published:'
-    #config.add_index_field 'lc_callnum_display', :label => 'Call number:'
+    #config.add_index_field 'title_info_primary_tsi', :label => I18n.t('blacklight.metadata_display.fields.title')
+    config.add_index_field 'genre_basic_ssim', :label => I18n.t('blacklight.metadata_display.fields.genre_basic')
+    config.add_index_field 'institution_name_ssim', :label => I18n.t('blacklight.metadata_display.fields.institution'), :helper_method => :index_institution_link
+    config.add_index_field 'collection_name_ssim', :label => I18n.t('blacklight.metadata_display.fields.collection'), :helper_method => :index_collection_link
+    config.add_index_field 'date_start_tsim', :label => I18n.t('blacklight.metadata_display.fields.date'), :helper_method => :index_date_value
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
@@ -224,6 +214,11 @@ class CatalogController < ApplicationController
     config.view.grid.title = 'Grid'
     config.view.grid.default = true
     config.view.grid.icon_class = 'glyphicon-th-large'
+
+    #blacklight-gallery stuff
+    config.view.gallery.partials = [:index_header, :index]
+    config.view.masonry.partials = [:index]
+    config.view.slideshow.partials = [:index]
 
 
     # advanced search facet limits

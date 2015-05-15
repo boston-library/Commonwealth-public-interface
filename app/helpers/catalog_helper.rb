@@ -17,9 +17,9 @@ module CatalogHelper
     download_links
   end
 
-  def create_thumb_img_element(document, img_class=[], action=nil)
-    image_classes = img_class.join(' ')
-    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || action == 'show')
+  def create_thumb_img_element(document, img_class=[])
+    image_classes = img_class.class == Array ? img_class.join(' ') : ''
+    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || controller.action_name == 'show')
       image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
                 :alt => document[blacklight_config.index.title_field.to_sym],
                 :class => image_classes)
@@ -59,6 +59,25 @@ module CatalogHelper
       end
     end
     image_file_pids
+  end
+
+  # render collection name as a link in catalog#index list view
+  def index_collection_link options={}
+    link_to(options[:value].first,
+            collection_path(:id => options[:document][:collection_pid_ssm].first))
+  end
+
+  # render the date in the catalog#index list view
+  def index_date_value options={}
+    date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
+    date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
+    render_mods_dates(options[:value].first, date_end, date_start_qualifier)
+  end
+
+  # render institution name as a link in catalog#index list view
+  def index_institution_link options={}
+    link_to(options[:value].first,
+            institution_path(:id => options[:document][:institution_pid_ssi]))
   end
 
   def normalize_date(date)

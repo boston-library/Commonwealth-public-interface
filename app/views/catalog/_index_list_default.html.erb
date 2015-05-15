@@ -1,6 +1,20 @@
 <%# default partial to display solr document fields in catalog index view -%>
-<div class="default_index_container">
-  <%# use generic item index view: %>
-  <%= render :partial => 'catalog/_index_partials/index_list_default_content',
+<%# below lines may be DEPRECATED ? %>
+<!-- <div class="default_index_container"> -->
+<%# use generic item index view: %>
+<%# render :partial => 'catalog/_index_partials/index_list_default_content',
              :locals => {:document => document, :document_counter => document_counter} %>
-</div>
+<!-- </div> -->
+<%# copy of catalog/index_default %>
+<%# need this partial or catalog#index will attempt to render blacklight-maps/index_map %>
+<%# whenever rendering a doc with 'map' as the value of blacklight_config.display_type_field %>
+<dl class="document-metadata dl-horizontal dl-invert">
+
+  <% index_fields(document).each do |field_name, field| -%>
+      <% if should_render_index_field? document, field %>
+          <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+          <dd class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_value document, field: field_name %></dd>
+      <% end -%>
+  <% end -%>
+
+</dl>

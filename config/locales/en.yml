@@ -238,6 +238,7 @@ en:
             id_local_other_invalid: '(no longer used)'
             id_uri_ark: 'Permalink'
             id_uri_oai: 'Link to Item'
+            institution: 'Institution'
             language: 'Language'
             note: 'Notes'
             note_acquisition: 'Notes (acquisition)'
