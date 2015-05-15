@@ -24,9 +24,7 @@
   <% if !image_files || book_reader %>
       <div id="thumbnail_wrapper" class="col-sm-4">
         <div id="thumb_img_show_container">
-          <% img = create_thumb_img_element(@document,
-                                            %w(thumb_img_show),
-                                            params[:action]) %>
+          <% img = create_thumb_img_element(@document, %w(thumb_img_show)) %>
           <% if @document[blacklight_config.show.display_type_field.to_sym] == 'OAIObject' %>
               <%= render :partial => 'catalog/_show_partials/show_oai_item_link', :locals => {:document => @document, :img => img} %>
           <% elsif book_reader %>

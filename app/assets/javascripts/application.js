@@ -20,6 +20,9 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+// Required by Blacklight-Gallery
+//= require blacklight_gallery
+
 // require bootstrap-dropdown
 //= require bootstrap/carousel
 

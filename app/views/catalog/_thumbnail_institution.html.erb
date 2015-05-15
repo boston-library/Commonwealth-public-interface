@@ -1,0 +1,6 @@
+<div class="document-thumbnail">
+  <% thumb = image_tag('dc_library-icon.png',
+                       :alt => document[blacklight_config.index.title_field.to_sym],
+                       :class => '') %>
+  <%= link_to(thumb, institution_path(:id => document[:id])) %>
+</div>

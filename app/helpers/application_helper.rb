@@ -32,8 +32,8 @@ module ApplicationHelper
     end
   end
 
-  # show the icon for objects with no thumbnail
-  def render_object_icon(format, img_class)
+  # return the path to the icon for objects with no thumbnail
+  def render_object_icon_path(format)
     case format
       when 'sound recording'
         icon = 'audio'
@@ -44,7 +44,7 @@ module ApplicationHelper
       else
         icon = 'text'
     end
-    image_tag('dc_' + icon +'-icon.png', :class => img_class, :alt => icon + ' icon')
+    "dc_#{icon}-icon.png"
   end
 
   #from psu scholarsphere
@@ -87,10 +87,14 @@ module ApplicationHelper
 
   # create an image tag from an IIIF image server
   def iiif_image_tag(image_pid,options)
+    image_tag iiif_image_url(image_pid, options), :alt => options[:alt].presence, :class => options[:class].presence
+  end
+
+  # return the IIIF image server url
+  def iiif_image_url(image_pid, options)
     size = options[:size] ? options[:size] : 'full'
     region = options[:region] ? options[:region] : 'full'
-    url = "#{IIIF_SERVER['url']}#{image_pid}/#{region}/#{size}/0/default.jpg"
-    image_tag url, :alt => options[:alt].presence, :class => options[:class].presence
+    "#{IIIF_SERVER['url']}#{image_pid}/#{region}/#{size}/0/default.jpg"
   end
 
   # returns a hash with width/height from IIIF info.json response

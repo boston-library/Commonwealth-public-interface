@@ -1,0 +1,9 @@
+<%# collection catalog#index masonry view %>
+<%# link_to_document(document, truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 89)) %>
+<%= link_to(document[blacklight_config.index.title_field.to_sym],
+            collection_path(:id => document[:id])) %>
+<% if params[:controller] == 'catalog' %>
+    <%= image_tag('dc_collection-icon.png',
+                  :alt => 'collection icon',
+                  :class => 'collection-icon') %>
+<% end %>

@@ -211,12 +211,14 @@ class CatalogController < ApplicationController
     # index views - 'grid' is default
     #config.document_index_views = ['grid','list']
     #config.view = {:grid => {:title => 'Grid', :default => true, :icon_class => 'glyphicon-th-large' }, :list => {:title => 'List'}}
-    config.view.grid.title = 'Grid'
-    config.view.grid.default = true
-    config.view.grid.icon_class = 'glyphicon-th-large'
+    #config.view.grid.title = 'Grid'
+    #config.view.grid.default = true
+    #config.view.grid.icon_class = 'glyphicon-th-large'
+
+    config.index.thumbnail_method = :create_thumb_img_element
 
     #blacklight-gallery stuff
-    config.view.gallery.partials = [:index_header, :index]
+    config.view.gallery.partials = [:index_header]
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]
 

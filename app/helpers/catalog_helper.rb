@@ -19,19 +19,9 @@ module CatalogHelper
 
   def create_thumb_img_element(document, img_class=[])
     image_classes = img_class.class == Array ? img_class.join(' ') : ''
-    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || controller.action_name == 'show')
-      image_tag(datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300'),
-                :alt => document[blacklight_config.index.title_field.to_sym],
-                :class => image_classes)
-    elsif document[:type_of_resource_ssim]
-      render_object_icon(document[:type_of_resource_ssim].first, image_classes)
-    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-      image_tag('dc_collection-icon.png',
-                :alt => document[blacklight_config.index.title_field.to_sym],
-                :class => image_classes)
-    else
-      render_object_icon(nil, image_classes)
-    end
+    image_tag(thumbnail_url(document),
+              :alt => document[blacklight_config.index.title_field.to_sym],
+              :class => image_classes)
   end
 
   def extra_body_classes
@@ -65,6 +55,21 @@ module CatalogHelper
   def index_collection_link options={}
     link_to(options[:value].first,
             collection_path(:id => options[:document][:collection_pid_ssm].first))
+  end
+
+  # return the URL of an image to display in the catalog#index slideshow view
+  def index_slideshow_img_url document
+    if document[:exemplary_image_ssi] && !document[blacklight_config.flagged_field.to_sym]
+      if document[blacklight_config.index.display_type_field.to_sym] == 'OAIObject' || document[:exemplary_image_ssi].match(/oai/)
+        thumbnail_url(document)
+      else
+        iiif_image_url(document[:exemplary_image_ssi], {:size => ',500'})
+      end
+    elsif document[:type_of_resource_ssim]
+      render_object_icon_path(document[:type_of_resource_ssim].first)
+    else
+      render_object_icon_path(nil)
+    end
   end
 
   # render the date in the catalog#index list view
@@ -228,6 +233,21 @@ module CatalogHelper
         params[:q].to_s.empty? and
         params[:f].to_s.empty?) or
     (controller.is_a? PagesController and action_name == 'home')
+  end
+
+  # LOCAL OVERRIDE: don't want to pull thumbnail url from Solr
+  def thumbnail_url document
+    if document[:exemplary_image_ssi] && (!document[blacklight_config.flagged_field.to_sym] || controller.action_name == 'show')
+      datastream_disseminator_url(document[:exemplary_image_ssi], 'thumbnail300')
+    elsif document[:type_of_resource_ssim]
+      render_object_icon_path(document[:type_of_resource_ssim].first)
+    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
+      'dc_collection-icon.png'
+    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
+      'dc_library-icon.png'
+    else
+      render_object_icon_path(nil)
+    end
   end
 
 end

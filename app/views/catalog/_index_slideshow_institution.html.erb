@@ -1,0 +1,22 @@
+<%# institution item catalog#index slideshow view %>
+<div class="item<%= ' active' if document_counter == 0 %>">
+  <div class="frame">
+    <% img = image_tag index_slideshow_img_url(document),
+                       :alt => document[blacklight_config.index.title_field.to_sym] %>
+    <%= link_to(img,
+                institution_path(:id => document[:id])) %>
+    <div class="caption">
+      <%# link_to_document document, document_show_link_field(document), counter: document_counter + 1 %>
+      <%= link_to(document[blacklight_config.index.title_field.to_sym],
+                  institution_path(:id => document[:id])) %>
+      <% if params[:controller] == 'catalog' %>
+          <%= image_tag('dc_library-icon.png',
+                        :alt => 'institution icon',
+                        :class => 'institution-icon') %>
+      <% end %>
+    </div>
+      <span class="counter">
+        <%= t :'blacklight_gallery.catalog.modal_slideshow.counter', counter: document_counter + 1, count: count %>
+      </span>
+  </div>
+</div>
