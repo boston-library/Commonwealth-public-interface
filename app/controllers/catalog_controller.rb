@@ -36,7 +36,6 @@ class CatalogController < ApplicationController
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_info_primary_tsi'
-    #config.show.heading = 'title_info_primary_tsi' # deprecated in BL 5
     config.show.display_type_field = 'active_fedora_model_suffix_ssi'
 
     # solr field for flagged/inappropriate content

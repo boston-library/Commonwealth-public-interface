@@ -244,7 +244,7 @@ module CatalogHelper
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
       'dc_collection-icon.png'
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
-      'dc_library-icon.png'
+      'dc_institution-icon.png'
     else
       render_object_icon_path(nil)
     end
