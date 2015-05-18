@@ -32,7 +32,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = 'title_info_primary_tsi'
     config.index.display_type_field = 'active_fedora_model_suffix_ssi'
-    config.index.partials = [:index_header, :thumbnail, :index]
+    config.index.partials = [:thumbnail, :index_header, :index]
+    config.index.document_actions = nil # don't show bookmark control
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_info_primary_tsi'
@@ -102,7 +103,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'title_info_primary_tsi', :label => I18n.t('blacklight.metadata_display.fields.title')
     config.add_index_field 'genre_basic_ssim', :label => I18n.t('blacklight.metadata_display.fields.genre_basic')
     config.add_index_field 'institution_name_ssim', :label => I18n.t('blacklight.metadata_display.fields.institution'), :helper_method => :index_institution_link
-    config.add_index_field 'collection_name_ssim', :label => I18n.t('blacklight.metadata_display.fields.collection'), :helper_method => :index_collection_link
+    config.add_index_field 'collection_name_ssim', :label => I18n.t('blacklight.collections.index.title').singularize, :helper_method => :index_collection_link
     config.add_index_field 'date_start_tsim', :label => I18n.t('blacklight.metadata_display.fields.date'), :helper_method => :index_date_value
 
     # solr fields to be displayed in the show (single result) view

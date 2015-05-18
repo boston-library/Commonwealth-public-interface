@@ -1,4 +1,4 @@
-<%# header bar for institution items in index view -%>
+<%# header bar for doc items in index view -%>
 <div class="documentHeader row">
 
   <h5 class="index_title document-title-heading col-md-12">
@@ -8,11 +8,6 @@
       </span>
     <% end %>
     <%= link_to_document document, document_show_link_field(document), counter: counter %>
-    <% if params[:controller] == 'catalog' %>
-        <%= image_tag('dc_institution-icon.png',
-                      :alt => 'institution icon',
-                      :class => 'index-title-icon institution-icon') %>
-    <% end %>
   </h5>
 
 </div>
