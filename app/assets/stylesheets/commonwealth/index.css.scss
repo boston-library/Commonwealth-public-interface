@@ -160,7 +160,7 @@ h4.suggest {
       &.blacklight-collection {
 
         .documentHeader {
-          width:65%;
+          width:60%;
         }
 
         .collection_view_all_link {
@@ -188,6 +188,48 @@ h4.suggest {
               color: $bl_link;
               text-decoration: none;
             }
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  /* gallery view */
+  &.gallery {
+
+    .document {
+      flex: none;
+      min-height: 200px;
+      min-width: 200px;
+
+      .thumbnail {
+        border: none;
+
+        img {
+          height:auto;
+          width:auto;
+          max-height:200px;
+          border: 1px solid $light_gray;
+        }
+
+        .caption {
+          padding: 0 2px;
+
+          .documentHeader {
+
+            .document-title-heading {
+              line-height: 16px;
+
+              .index-title-icon {
+                border: none;
+              }
+
+            }
+
           }
 
         }
