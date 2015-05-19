@@ -135,7 +135,7 @@ h4.suggest {
         padding: 0 0 0 20px;
 
         .document-title-heading {
-          margin: 0 0 0 0;
+          margin: 0 0 3px 0;
         }
 
       }
@@ -157,31 +157,39 @@ h4.suggest {
 
       }
 
-      .collection_view_all_link {
-        float:right;
-        font-size: 12px;
+      &.blacklight-collection {
 
-        a {
-          color: $dark_gray;
-          &:hover {
-            color: $bl_link;
-            text-decoration: none;
-          }
+        .documentHeader {
+          width:65%;
         }
 
-      }
+        .collection_view_all_link {
+          float:right;
+          font-size: 12px;
 
-      .collection_index_container {
-        float: left;
-        width: 65%;
-        margin: 0 0 0 20px;
-
-        .collection-location a {
-          color: $darker_gray;
-          &:hover {
-            color: $bl_link;
-            text-decoration: none;
+          a {
+            color: $dark_gray;
+            &:hover {
+              color: $bl_link;
+              text-decoration: none;
+            }
           }
+
+        }
+
+        .collection_index_container {
+          float: left;
+          width: 65%;
+          margin: 0 0 0 20px;
+
+          .collection-location a {
+            color: $darker_gray;
+            &:hover {
+              color: $bl_link;
+              text-decoration: none;
+            }
+          }
+
         }
 
       }

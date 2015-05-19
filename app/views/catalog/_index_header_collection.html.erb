@@ -1,7 +1,7 @@
 <%# header bar for collection items in index view -%>
-<div class="documentHeader row">
+<div class="documentHeader">
 
-  <h5 class="index_title document-title-heading col-md-12">
+  <h5 class="index_title document-title-heading">
     <% if counter = document_counter_with_offset(document_counter) %>
       <span class="document-counter">
         <%= t('blacklight.search.documents.counter', counter: counter) %>

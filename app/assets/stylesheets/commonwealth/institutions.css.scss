@@ -19,15 +19,19 @@ div.institutions-list {
   #documents {
     margin-top: 15px;
 
-    div.list-view {
+    .blacklight-institution {
       margin-bottom: 10px;
       padding-bottom: 10px;
 
-      img.index_thumb {
+      .document-thumbnail {
         display: none;
       }
 
-      a.pull-left {
+      .documentHeader {
+        padding-left: 0;
+      }
+
+      .document-metadata {
         display: none;
       }
 
