@@ -1,7 +1,0 @@
-<%# institution catalog#index masonry view %>
-<%= link_to_document(document, truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 89)) %>
-<% if params[:controller] == 'catalog' %>
-    <%= image_tag('dc_institution-icon.png',
-                  :alt => 'institution icon',
-                  :class => 'index-title-icon institution-icon') %>
-<% end %>

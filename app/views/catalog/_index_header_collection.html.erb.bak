@@ -7,12 +7,9 @@
         <%= t('blacklight.search.documents.counter', counter: counter) %>
       </span>
     <% end %>
-    <%= link_to_document document, document_show_link_field(document), counter: counter %>
-    <% if params[:controller] == 'catalog' %>
-        <%= image_tag('dc_collection-icon.png',
-                      :alt => 'collection icon',
-                      :class => 'index-title-icon collection-icon') %>
-    <% end %>
+    <%= link_to_document document,
+                         presenter(document).render_document_index_label(document_show_link_field(document)) + index_relation_base_icon(document),
+                         counter: counter %>
   </h5>
 
 </div>

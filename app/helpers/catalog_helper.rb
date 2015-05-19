@@ -57,6 +57,16 @@ module CatalogHelper
             collection_path(:id => options[:document][:collection_pid_ssm].first))
   end
 
+  # render the collection/institution icon if necessary
+  def index_relation_base_icon document
+    display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
+    if controller.controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
+      image_tag("dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
+    else
+      ''
+    end
+  end
+
   # return the URL of an image to display in the catalog#index slideshow view
   def index_slideshow_img_url document
     if document[:exemplary_image_ssi] && !document[blacklight_config.flagged_field.to_sym]

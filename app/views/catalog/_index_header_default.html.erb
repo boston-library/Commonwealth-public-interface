@@ -7,7 +7,9 @@
         <%= t('blacklight.search.documents.counter', counter: counter) %>
       </span>
     <% end %>
-    <%= link_to_document document, truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 130), counter: counter %>
+    <%= link_to_document document,
+                         truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 130) + index_relation_base_icon(document),
+                         counter: counter %>
   </h5>
 
 </div>

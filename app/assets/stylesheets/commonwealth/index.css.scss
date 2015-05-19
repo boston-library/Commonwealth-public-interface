@@ -88,6 +88,13 @@ h4.suggest {
 #documents {
 
   /* generic all-purpose catalog#index stuff */
+
+  .index-title-icon { // icons for collections/institutions
+    width: 20px;
+    padding-left: 3px;
+    display: inline;
+  }
+
   .document {
 
     .documentHeader {
@@ -105,11 +112,11 @@ h4.suggest {
 
     img {
       border: 1px solid $light_gray;
-    }
 
-    .index-title-icon {
-      width: 20px;
-      border: none;
+      &.index-title-icon { // icons for collections/institutions
+        border: none;
+      }
+
     }
 
   }
@@ -218,6 +225,11 @@ h4.suggest {
           height:auto;
           width:auto;
           max-height:200px;
+
+          &.index-title-icon {
+            width: 20px; // ugh, double declaration
+          }
+
         }
 
         .caption {

@@ -3,9 +3,11 @@
   <div class="frame">
     <% img = image_tag index_slideshow_img_url(document),
                        :alt => document[blacklight_config.index.title_field.to_sym] %>
-    <%= link_to_document document, img, counter: document_counter + 1 %>
+    <%= link_to_document document, img, counter: document_counter_with_offset(document_counter) %>
     <div class="caption">
-      <%= link_to_document document, document_show_link_field(document), counter: document_counter + 1 %>
+      <%= link_to_document document,
+                           truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 89) + index_relation_base_icon(document),
+                           counter: document_counter_with_offset(document_counter) %>
     </div>
       <span class="counter">
         <%= t :'blacklight_gallery.catalog.modal_slideshow.counter', counter: document_counter + 1, count: count %>
