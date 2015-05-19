@@ -99,12 +99,17 @@ h4.suggest {
           display:none;
         }
 
-        .index-title-icon {
-          width: 20px;
-        }
-
       }
 
+    }
+
+    img {
+      border: 1px solid $light_gray;
+    }
+
+    .index-title-icon {
+      width: 20px;
+      border: none;
     }
 
   }
@@ -213,7 +218,6 @@ h4.suggest {
           height:auto;
           width:auto;
           max-height:200px;
-          border: 1px solid $light_gray;
         }
 
         .caption {
@@ -223,15 +227,61 @@ h4.suggest {
 
             .document-title-heading {
               line-height: 16px;
+            }
 
-              .index-title-icon {
-                border: none;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  /* masonry view */
+  .masonry {
+
+    &.document {
+      margin:1px 0;
+
+      .thumbnail {
+        padding: 0 1px;
+
+        .caption {
+          left: 2px;
+          width: 97.5%;
+        }
+
+      }
+
+    }
+
+  }
+
+  /* slideshow view */
+  #slideshow-modal {
+
+    .modal-dialog {
+
+      .modal-body {
+        height: 90%; // for IE <9
+        height: 90vh;
+
+        #slideshow {
+
+          .caption {
+
+            a {
+              color: white;
+
+              &:hover {
+                color: $bl_link;
               }
 
             }
 
           }
-
         }
 
       }

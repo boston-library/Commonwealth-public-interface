@@ -67,6 +67,10 @@ module CatalogHelper
       end
     elsif document[:type_of_resource_ssim]
       render_object_icon_path(document[:type_of_resource_ssim].first)
+    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
+      'dc_collection-icon.png'
+    elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
+      'dc_institution-icon.png'
     else
       render_object_icon_path(nil)
     end
