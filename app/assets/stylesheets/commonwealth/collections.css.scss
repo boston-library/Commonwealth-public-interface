@@ -76,7 +76,7 @@ h4.collection-provenance {
 #collection_img {
   float: left;
   width: 43%;
-  margin: 0 1.4em .5em 0;
+  margin: 0 1.4em 1.5em 0;
 
   img.collection_img_show {
     border: 1px solid $light_gray;
@@ -144,6 +144,7 @@ h4.collection-provenance {
 
   .panel-default {
     border: none;
+    box-shadow: none;
 
     .panel-heading {
       display: none;
@@ -160,20 +161,26 @@ h4.collection-provenance {
 
   }
 
-  #documents div.grid-view {
-    margin-top: 0;
+  #documents {
 
-    div.item_index_thumb {
-      height: 127px;
+    .document {
+      border: none;
+      margin-bottom: 15px;
 
-      img {
-        max-height:127px;
+      .thumbnail {
+        border: none;
+        height: 127px;
+
+        img {
+          max-height: 127px;
+        }
+
+        .caption {
+          padding: 2px 5px;
+        }
+
       }
 
-    }
-
-    div.item_index_title {
-      font-weight: normal;
     }
 
   }
@@ -225,13 +232,17 @@ h4.collection-provenance {
 
   #series_wrapper {
 
-    #documents div.grid-view {
+    #documents {
 
-      div.item_index_thumb {
-        height: 159px;
+      .document {
 
-        img {
-          max-height:159px;
+        .thumbnail {
+          height: 159px;
+
+          img {
+            max-height: 159px;
+          }
+
         }
 
       }
@@ -286,13 +297,17 @@ h4.collection-provenance {
 
   #series_wrapper {
 
-    #documents div.grid-view {
+    #documents {
 
-      div.item_index_thumb {
-        height: 95px;
+      .document {
 
-        img {
-          max-height:95px;
+        .thumbnail {
+          height: 95px;
+
+          img {
+            max-height: 95px;
+          }
+
         }
 
       }

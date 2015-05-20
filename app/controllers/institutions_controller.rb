@@ -48,10 +48,12 @@ class InstitutionsController < CatalogController
   end
 
   # remove grid view from blacklight_config for index view
-  def remove_grid_view
-    blacklight_config.view.delete(:grid)
+  def remove_unwanted_views
+    blacklight_config.view.delete(:gallery)
+    blacklight_config.view.delete(:masonry)
+    blacklight_config.view.delete(:slideshow)
   end
 
-  before_filter :remove_grid_view, :only => [:index]
+  before_filter :remove_unwanted_views, :only => [:index]
 
 end

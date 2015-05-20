@@ -218,6 +218,7 @@ class CatalogController < ApplicationController
     config.index.thumbnail_method = :create_thumb_img_element
 
     #blacklight-gallery stuff
+    config.view.gallery.default = true
     config.view.gallery.partials = [:index_header]
     config.view.masonry.partials = [:index]
     config.view.slideshow.partials = [:index]

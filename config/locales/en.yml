@@ -363,3 +363,8 @@ en:
       sessions:
         signed_in: ''
         signed_out: ''
+
+
+  views:
+      pagination_compact:
+        previous: '« Prev.'
