@@ -220,7 +220,7 @@ class CatalogController < ApplicationController
     #blacklight-gallery stuff
     config.view.gallery.default = true
     config.view.gallery.partials = [:index_header]
-    config.view.masonry.partials = [:index]
+    config.view.masonry.partials = [:index_header]
     config.view.slideshow.partials = [:index]
 
 

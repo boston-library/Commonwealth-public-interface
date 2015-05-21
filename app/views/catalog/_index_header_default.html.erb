@@ -1,6 +1,11 @@
 <%# header bar for doc items in index view -%>
 <div class="documentHeader row">
 
+  <%# create checkbox for folder actions (delete, move, etc.) %>
+  <% if controller_name == 'folders' || controller_name == 'bookmarks' %>
+      <%= check_box_tag('selected[]', document[:id], false, class: 'folder_item_checkbox') %>
+  <% end %>
+
   <h5 class="index_title document-title-heading col-md-12">
     <% if counter = document_counter_with_offset(document_counter) %>
       <span class="document-counter">
@@ -8,7 +13,9 @@
       </span>
     <% end %>
     <%= link_to_document document,
-                         truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 130) + index_relation_base_icon(document),
+                         truncate(document[blacklight_config.index.title_field.to_sym],
+                                  separator: ' ',
+                                  length: index_title_length) + index_relation_base_icon(document),
                          counter: counter %>
   </h5>
 

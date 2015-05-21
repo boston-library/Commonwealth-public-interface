@@ -57,6 +57,20 @@ module CatalogHelper
             collection_path(:id => options[:document][:collection_pid_ssm].first))
   end
 
+
+  # render the date in the catalog#index list view
+  def index_date_value options={}
+    date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
+    date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
+    render_mods_dates(options[:value].first, date_end, date_start_qualifier)
+  end
+
+  # render institution name as a link in catalog#index list view
+  def index_institution_link options={}
+    link_to(options[:value].first,
+            institution_path(:id => options[:document][:institution_pid_ssi]))
+  end
+
   # render the collection/institution icon if necessary
   def index_relation_base_icon document
     display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
@@ -86,17 +100,16 @@ module CatalogHelper
     end
   end
 
-  # render the date in the catalog#index list view
-  def index_date_value options={}
-    date_end = options[:document][:date_end_tsim] ? options[:document][:date_end_tsim].first : nil
-    date_start_qualifier = options[:document][:date_start_qualifier_ssm] ? options[:document][:date_start_qualifier_ssm].first : nil
-    render_mods_dates(options[:value].first, date_end, date_start_qualifier)
-  end
-
-  # render institution name as a link in catalog#index list view
-  def index_institution_link options={}
-    link_to(options[:value].first,
-            institution_path(:id => options[:document][:institution_pid_ssi]))
+  # determine the 'truncate' length based on catalog#index view type
+  def index_title_length
+    case params[:view]
+      when 'list'
+        170
+      when 'masonry'
+        89
+      else
+        130
+    end
   end
 
   def normalize_date(date)
