@@ -327,8 +327,11 @@ en:
           title: 'Search Results - %{application_name}'
           view_title: "View results as: "
           view:
-            list: "list view"
-            grid: "grid view"
+            list: 'list view'
+            maps: 'map view'
+            gallery: 'grid view'
+            masonry: 'wall view'
+            slideshow: 'slideshow view'
           zero_results:
             search_fields: "You searched by %{search_fields}"
             search_everything: "try again searching All Fields"

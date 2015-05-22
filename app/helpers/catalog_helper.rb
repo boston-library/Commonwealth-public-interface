@@ -1,6 +1,25 @@
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
 
+  # return the image url for the collection gallery view document
+  # size = pixel length of square IIIF-created image
+  def collection_gallery_url document, size
+    exemplary_image_pid = document[:exemplary_image_ssi]
+    if exemplary_image_pid
+      if exemplary_image_pid.match(/oai/)
+        datastream_disseminator_url(exemplary_image_pid,'thumbnail300')
+      else
+        iiif_square_img_path(exemplary_image_pid, size)
+      end
+    else
+      collection_icon_path
+    end
+  end
+
+  def collection_icon_path
+    'dc_collection-icon.png'
+  end
+
   def create_download_links(files_hash, link_class)
     file_types = [files_hash[:documents], files_hash[:audio], files_hash[:generic]]
     download_links = []
@@ -92,9 +111,9 @@ module CatalogHelper
     elsif document[:type_of_resource_ssim]
       render_object_icon_path(document[:type_of_resource_ssim].first)
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-      'dc_collection-icon.png'
+      collection_icon_path
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
-      'dc_institution-icon.png'
+      institution_icon_path
     else
       render_object_icon_path(nil)
     end
@@ -110,6 +129,10 @@ module CatalogHelper
       else
         130
     end
+  end
+
+  def institution_icon_path
+    'dc_institution-icon.png'
   end
 
   def normalize_date(date)
@@ -269,9 +292,9 @@ module CatalogHelper
     elsif document[:type_of_resource_ssim]
       render_object_icon_path(document[:type_of_resource_ssim].first)
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Collection'
-      'dc_collection-icon.png'
+      collection_icon_path
     elsif document[blacklight_config.index.display_type_field.to_sym] == 'Institution'
-      'dc_institution-icon.png'
+      institution_icon_path
     else
       render_object_icon_path(nil)
     end

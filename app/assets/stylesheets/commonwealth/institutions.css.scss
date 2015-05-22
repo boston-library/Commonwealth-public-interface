@@ -143,6 +143,25 @@ div.blacklight-institution {
 
     #documents {
       margin-top: 0;
+
+      .masonry {
+
+        &.document {
+          background-color: inherit;
+          padding: 5px;
+
+          .thumbnail {
+
+            .caption {
+              display: block;
+            }
+
+          }
+
+        }
+
+      }
+
     }
 
   }
