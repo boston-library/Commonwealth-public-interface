@@ -141,7 +141,7 @@ div.blacklight-institution {
       vertical-align: top;
     }
 
-    #documents {
+    #documents.collections-gallery {
       margin-top: 0;
 
       .masonry {
@@ -151,9 +151,35 @@ div.blacklight-institution {
           padding: 5px;
 
           .thumbnail {
+            border: 1px solid $dark_gray;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 7px;
+
+            img {
+              border: none;
+            }
 
             .caption {
               display: block;
+              background-color: rgba(0,0,0,0);
+              bottom: unset;
+              top: 43%;
+
+              h5 {
+                font-size:16px;
+                margin: 2px 0;
+              }
+
+            }
+
+            &:hover {
+              background-color: $darker_gray;
+
+              img {
+                opacity: .2;
+              }
+
             }
 
           }
