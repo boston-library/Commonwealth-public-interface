@@ -212,6 +212,66 @@ h4.collection-provenance {
   padding-left:1em;
 }
 
+/* collections gallery */
+
+#documents.collections-gallery {
+
+  .masonry {
+
+    &.document {
+      background-color: inherit;
+      padding: 5px;
+
+      .thumbnail {
+        border: 1px solid $dark_gray;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 7px;
+        height: 221px;
+
+        a {
+
+          img {
+            border: none;
+            height:auto;
+            width:auto;
+            //max-width: unset;
+            max-height: 221px;
+            //min-height: 221px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+        }
+
+        .caption {
+          display: block;
+          left: 5px;
+          right: 5px;
+          width: unset;
+          bottom: 5px;
+          border-bottom-left-radius: 7px;
+          border-bottom-right-radius: 7px;
+
+          h5 {
+            font-size:16px;
+            margin-bottom: 3px;
+            margin-top: 3px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+
 /* responsive styles */
 
 /* Large desktop */
