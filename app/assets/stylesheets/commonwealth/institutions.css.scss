@@ -93,7 +93,7 @@ div.blacklight-institution {
 
   #institution_search_tools {
     margin-bottom: 1em;
-    width:72%;
+    width: 72%;
     float: right;
 
     #institution_search_form {
@@ -124,7 +124,7 @@ div.blacklight-institution {
 
   #institution_desc {
 
-    ol,ul {
+    ol, ul {
       display: inline-block;
     }
 
@@ -136,8 +136,8 @@ div.blacklight-institution {
     margin-top: 1em;
 
     #collections_count {
-      font-size:14px;
-      color:$dark_gray;
+      font-size: 14px;
+      color: $dark_gray;
       vertical-align: top;
     }
 
@@ -147,9 +147,13 @@ div.blacklight-institution {
 
   }
 
-  /* Portrait tablet to landscape and desktop */
+}
 
-  @media (min-width: 768px) and (max-width: 991px) {
+/* Portrait tablet to landscape and desktop */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  div.blacklight-institution {
 
     img.institution_img_show {
       max-width: 35%;
@@ -161,9 +165,13 @@ div.blacklight-institution {
 
   }
 
-  /* Landscape phone to portrait tablet */
+}
 
-  @media (max-width: 767px) {
+/* Landscape phone to portrait tablet */
+
+@media (max-width: 767px) {
+
+  div.blacklight-institution {
 
     #institution_search_tools {
       width:70%;
@@ -185,15 +193,23 @@ div.blacklight-institution {
     }
 
     #institution_collections {
-      float: none;
-      margin-top: 2em;
+      margin: 2em 0;
+    }
+
+    #sidebar {
+      float:left;
+      width: 100%;
     }
 
   }
 
-  /* Landscape phones and down */
+}
 
-  @media (max-width: 480px) {
+/* Landscape phones and down */
+
+@media (max-width: 480px) {
+
+  div.blacklight-institution {
 
     img.institution_img_show {
       max-width: 35%;
