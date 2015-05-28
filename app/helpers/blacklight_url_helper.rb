@@ -18,8 +18,8 @@ module BlacklightUrlHelper
 
   # override to route to collections#show and institutions#show where appropriate
   def url_for_document doc, options = {}
-    if respond_to?(:blacklight_config) && doc[blacklight_config.show.display_type_field]
-      display_type = doc[blacklight_config.show.display_type_field]
+    if respond_to?(:blacklight_config) && doc.respond_to?(:[])
+      display_type = doc[blacklight_config.show.display_type_field].presence
       if display_type == 'Collection' || display_type == 'Institution'
         {controller: display_type.downcase.pluralize, action: :show, id: doc}
       else
