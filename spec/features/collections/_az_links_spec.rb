@@ -14,7 +14,7 @@ describe 'collections a-z links' do
     within ('#collection_az_links') do
       click_link('C')
     end
-    expect(page).to have_selector('.item_index_title a', :text => 'Carte de Visite Collection')
+    expect(page).to have_selector('.document-title-heading', :text => 'Carte de Visite Collection')
   end
 
 end

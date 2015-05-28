@@ -12,7 +12,7 @@ describe 'more like this search' do
   it 'should show related results after clicking the link' do
     visit solr_document_path(:id => 'bpl-dev:00000007x')
     click_link('more_mlt_link')
-    expect(page).to have_selector('#documents div.default_index_container')
+    expect(page).to have_selector('#documents div.document')
   end
 
   it 'should show the constraint for a more-like-this search' do
