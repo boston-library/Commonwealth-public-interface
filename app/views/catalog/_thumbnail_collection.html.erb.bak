@@ -1,4 +1,0 @@
-<div class="document-thumbnail">
-  <%= link_to(create_thumb_img_element(document),
-              collection_path(:id => document[:id])) %>
-</div>

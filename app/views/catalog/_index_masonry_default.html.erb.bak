@@ -1,4 +1,0 @@
-<%# override for index_relation_base_icon and document_counter  %>
-<%= link_to_document document,
-                     truncate(presenter(document).render_document_index_label(document_show_link_field(document)), length: 89) + index_relation_base_icon(document),
-                     counter: document_counter_with_offset(document_counter) %>

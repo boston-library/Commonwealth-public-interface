@@ -1,3 +1,0 @@
-<div>
-  <%= @djatoka_url %>
-</div>
