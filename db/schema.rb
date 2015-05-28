@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104185610) do
+ActiveRecord::Schema.define(version: 20150527000001) do
 
   create_table "batch_uploads", force: :cascade do |t|
     t.string   "upload_file_name",    limit: 255
@@ -57,13 +57,13 @@ ActiveRecord::Schema.define(version: 20141104185610) do
     t.integer  "sequence"
     t.string   "object_pid",  limit: 255
     t.string   "image_pid",   limit: 255
-    t.string   "region"
+    t.string   "region",      limit: 255
     t.string   "title",       limit: 255
     t.string   "institution", limit: 255
     t.string   "context",     limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "size"
+    t.string   "size",        limit: 255
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -123,7 +123,8 @@ ActiveRecord::Schema.define(version: 20141104185610) do
     t.string   "uid",                    limit: 255
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider"
 
