@@ -208,18 +208,13 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 5
 
-    # index views - 'grid' is default
-    #config.document_index_views = ['grid','list']
-    #config.view = {:grid => {:title => 'Grid', :default => true, :icon_class => 'glyphicon-th-large' }, :list => {:title => 'List'}}
-    #config.view.grid.title = 'Grid'
-    #config.view.grid.default = true
-    #config.view.grid.icon_class = 'glyphicon-th-large'
-
+    # helper that returns thumbnail URLs
     config.index.thumbnail_method = :create_thumb_img_element
 
     #blacklight-gallery stuff
     config.view.gallery.default = true
     config.view.gallery.partials = [:index_header]
+    config.view.gallery.icon_class = 'glyphicon-th-large'
     config.view.masonry.partials = [:index_header]
     config.view.slideshow.partials = [:index]
 

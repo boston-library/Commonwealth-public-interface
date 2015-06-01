@@ -241,6 +241,9 @@ h4.collection-provenance {
             position: relative;
             top: 109px; // would rather use 50% but doesn't work in Chrome
             transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
           }
 
         }
@@ -506,7 +509,7 @@ h4.collection-provenance {
           left: 5px;
           bottom: 5px;
           right: 5px;
-          height: unset;
+          height: auto;
 
           a {
 
@@ -515,6 +518,9 @@ h4.collection-provenance {
               top: 50%;
               left: 50%;
               transform: translate(-50%,-50%);
+              -webkit-transform: translate(-50%,-50%);
+              -ms-transform: translate(-50%,-50%);
+              -moz-transform: translate(-50%,-50%);
               max-height: unset;
             }
 

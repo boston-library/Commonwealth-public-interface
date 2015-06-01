@@ -225,13 +225,13 @@ h4.suggest {
 
   /* gallery view */
   &.gallery {
+    display: block;
+
+    .document.new_row {
+      clear:left;
+    }
 
     .document {
-      -webkit-box-flex: 0;
-      -moz-box-flex: 0;
-      -webkit-flex: 0 0 33%;
-      -ms-flex: 0 0 33%;
-      flex: 0 0 33%;
       min-height: 200px;
       min-width: 200px;
 
@@ -560,12 +560,8 @@ div.record-padding {
     /* gallery view */
     &.gallery {
 
-      .document {
-        -webkit-box-flex: 1;
-        -moz-box-flex: 1;
-        -webkit-flex: 1;
-        -ms-flex: 1;
-        flex: 1;
+      .document.new_row {
+        clear:none;
       }
 
     }
