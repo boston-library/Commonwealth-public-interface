@@ -168,7 +168,7 @@ h4.collection-provenance {
 
     .document {
       border: none;
-      margin-bottom: 15px;
+      padding-bottom: 25px;
 
       .thumbnail {
         border: none;
@@ -180,6 +180,7 @@ h4.collection-provenance {
 
         .caption {
           padding: 2px 5px;
+          font-size: 12px;
         }
 
       }
@@ -237,7 +238,7 @@ h4.collection-provenance {
             width:auto;
             max-height: 221px;
             position: relative;
-            top: 50%;
+            top: 109px; // would rather use 50% but doesn't work in Chrome
             transform: translateY(-50%);
           }
 
@@ -247,7 +248,7 @@ h4.collection-provenance {
           display: block;
           left: 5px;
           right: 5px;
-          width: unset;
+          width: auto;
           bottom: 5px;
           border-bottom-left-radius: 7px;
           border-bottom-right-radius: 7px;
@@ -338,6 +339,7 @@ h4.collection-provenance {
           a {
 
             img {
+              top: 135px;
               max-height: 271px;
             }
 
@@ -420,6 +422,7 @@ h4.collection-provenance {
           a {
 
             img {
+              top: 82px;
               max-height: 166px;
             }
 
@@ -497,7 +500,7 @@ h4.collection-provenance {
         }
 
         .thumbnail {
-          position:  absolute;
+          position: absolute;
           top: 5px;
           left: 5px;
           bottom: 5px;
@@ -507,6 +510,10 @@ h4.collection-provenance {
           a {
 
             img {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
               max-height: unset;
             }
 

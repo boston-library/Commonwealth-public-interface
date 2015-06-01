@@ -205,7 +205,7 @@ h4.suggest {
         .collection_index_container {
           float: left;
           width: 65%;
-          margin: 0 0 0 20px;
+          margin: 0 0 10px 20px;
 
           .collection-location a {
             color: $darker_gray;
@@ -227,7 +227,7 @@ h4.suggest {
   &.gallery {
 
     .document {
-      flex: none;
+      flex: 0 0 33%;
       min-height: 200px;
       min-width: 200px;
 
@@ -240,7 +240,7 @@ h4.suggest {
           max-height:200px;
 
           &.index-title-icon {
-            width: 20px; // ugh, double declaration
+            width: 20px; // ugh, also declared above
           }
 
         }
@@ -549,6 +549,15 @@ div.record-padding {
 
         }
 
+      }
+
+    }
+
+    /* gallery view */
+    &.gallery {
+
+      .document {
+        flex: 0 0 auto;
       }
 
     }

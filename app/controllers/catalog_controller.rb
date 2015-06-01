@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   #include BlacklightAdvancedSearch::ParseBasicQ
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Controller::ControllerBehavior
+  include I18n
 
   # These before_filters apply the hydra access controls
   #before_filter :enforce_show_permissions, :only=>:show
