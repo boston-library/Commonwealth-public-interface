@@ -8,7 +8,6 @@ class CatalogController < ApplicationController
   #include BlacklightAdvancedSearch::ParseBasicQ
   # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
   include Hydra::Controller::ControllerBehavior
-  include I18n
 
   # These before_filters apply the hydra access controls
   #before_filter :enforce_show_permissions, :only=>:show
@@ -102,10 +101,10 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
     #config.add_index_field 'title_info_primary_tsi', :label => I18n.t('blacklight.metadata_display.fields.title')
-    config.add_index_field 'genre_basic_ssim', :label => I18n.t('blacklight.metadata_display.fields.genre_basic')
-    config.add_index_field 'institution_name_ssim', :label => I18n.t('blacklight.metadata_display.fields.institution'), :helper_method => :index_institution_link
-    config.add_index_field 'collection_name_ssim', :label => I18n.t('blacklight.collections.index.title').singularize, :helper_method => :index_collection_link
-    config.add_index_field 'date_start_tsim', :label => I18n.t('blacklight.metadata_display.fields.date'), :helper_method => :index_date_value
+    config.add_index_field 'genre_basic_ssim', :label => 'Format'
+    config.add_index_field 'institution_name_ssim', :label => 'Institution', :helper_method => :index_institution_link
+    config.add_index_field 'collection_name_ssim', :label => 'Collection', :helper_method => :index_collection_link
+    config.add_index_field 'date_start_tsim', :label => 'Date', :helper_method => :index_date_value
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
