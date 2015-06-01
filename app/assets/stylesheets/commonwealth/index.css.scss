@@ -227,6 +227,10 @@ h4.suggest {
   &.gallery {
 
     .document {
+      -webkit-box-flex: 0;
+      -moz-box-flex: 0;
+      -webkit-flex: 0 0 33%;
+      -ms-flex: 0 0 33%;
       flex: 0 0 33%;
       min-height: 200px;
       min-width: 200px;
@@ -557,7 +561,11 @@ div.record-padding {
     &.gallery {
 
       .document {
-        flex: 0 0 auto;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
       }
 
     }
