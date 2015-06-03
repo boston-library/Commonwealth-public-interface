@@ -17,7 +17,7 @@ module CatalogHelper
   end
 
   def collection_icon_path
-    'dc_collection-icon.png'
+    'commonwealth-vlr-engine/dc_collection-icon.png'
   end
 
   def create_download_links(files_hash, link_class)
@@ -132,7 +132,7 @@ module CatalogHelper
   end
 
   def institution_icon_path
-    'dc_institution-icon.png'
+    'commonwealth-vlr-engine/dc_institution-icon.png'
   end
 
   def normalize_date(date)

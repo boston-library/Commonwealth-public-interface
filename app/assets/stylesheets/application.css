@@ -13,7 +13,7 @@
 
  *= require blacklight
 
- *= require commonwealth-vlr
+ *= require commonwealth-vlr-engine
 
  * not using 'require_tree .' (include everything) as stubbed file list getting bigger
  * instead, require directories and/or files as needed

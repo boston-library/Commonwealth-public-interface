@@ -36,6 +36,18 @@ GIT
       omniauth (~> 1.0)
       rest-client (~> 1.6.7)
 
+PATH
+  remote: /home/eenglish/boston-library/commonwealth-vlr-engine
+  specs:
+    commonwealth-vlr-engine (0.0.1)
+      blacklight (~> 5.13.1)
+      blacklight-gallery (= 0.4.0)
+      blacklight-maps (= 0.3.3)
+      blacklight_advanced_search (= 5.1.4)
+      bootstrap-sass (~> 3.0)
+      font-awesome-sass
+      rails (~> 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -496,6 +508,7 @@ DEPENDENCIES
   capybara
   capybara-webkit
   coffee-rails (~> 4.0.1)
+  commonwealth-vlr-engine!
   devise
   devise-guests (~> 0.3)
   execjs

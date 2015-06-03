@@ -20,7 +20,7 @@
 // require bootstrap-dropdown
 //= require bootstrap/carousel
 
-//= require commonwealth-vlr-engine/commonwealth-vlr
+//= require commonwealth-vlr-engine
 
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
 // from being automatically included on pages that don't need them

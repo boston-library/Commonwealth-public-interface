@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   # Please be sure to implement current_user and user_session. Blacklight depends on
   # these methods in order to perform user specific actions. 
 
-  layout 'blacklight'
+  layout 'commonwealth-vlr-engine'
 
   protect_from_forgery
 

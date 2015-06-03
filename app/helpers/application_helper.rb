@@ -44,7 +44,7 @@ module ApplicationHelper
       else
         icon = 'text'
     end
-    "dc_#{icon}-icon.png"
+    "commonwealth-vlr-engine/dc_#{icon}-icon.png"
   end
 
   #from psu scholarsphere
