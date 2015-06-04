@@ -46,6 +46,8 @@ PATH
       blacklight_advanced_search (= 5.1.4)
       bootstrap-sass (~> 3.0)
       font-awesome-sass
+      hydra-derivatives
+      hydra-head (= 7.0.0)
       rails (~> 4.2.0)
 
 GEM

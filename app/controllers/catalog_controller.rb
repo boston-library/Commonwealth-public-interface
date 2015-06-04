@@ -244,15 +244,7 @@ class CatalogController < ApplicationController
 
   end
 
-  # displays the MODS XML record. copied from blacklight_marc gem
-  def librarian_view
-    @response, @document = fetch(params[:id])
 
-    respond_to do |format|
-      format.html
-      format.js { render :layout => false }
-    end
-  end
 
   # displays values and pagination links for Format field
   def formats_facet
@@ -290,13 +282,5 @@ class CatalogController < ApplicationController
   def has_search_parameters?
     !params[:q].blank? or !params[:f].blank? or !params[:search_field].blank? or params[:mlt_id] or !params[:coordinates].blank?
   end
-
-  #def create_folder
-  #  @response, @documents = fetch()params[:id])
-  #  respond_to do |format|
-  #    format.html
-  #    format.js { render :layout => false }
-  #  end
-  #end
 
 end 
