@@ -94,7 +94,7 @@ module CatalogHelper
   def index_relation_base_icon document
     display_type = document[blacklight_config.view_config(document_index_view_type).display_type_field].downcase
     if controller.controller_name == 'catalog' && (display_type == 'collection' || display_type == 'institution')
-      image_tag("dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
+      image_tag("commonwealth-vlr-engine/dc_#{display_type}-icon.png", alt: "#{display_type} icon", class: "index-title-icon #{display_type}-icon")
     else
       ''
     end
