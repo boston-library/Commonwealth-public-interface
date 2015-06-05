@@ -48,6 +48,7 @@ PATH
       font-awesome-sass
       hydra-derivatives
       hydra-head (= 7.0.0)
+      hydra-ldap
       rails (~> 4.2.0)
 
 GEM

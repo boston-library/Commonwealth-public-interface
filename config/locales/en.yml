@@ -15,8 +15,7 @@ en:
             name: 'Digital Commonwealth'
             email: 'admin@digitalcommonwealth.org'
           text:
-            subject:
-              one: 'Digital Commonwealth E-mail: link to item'
+            subject: 'Digital Commonwealth E-mail: link to item'
 
     home:
           hero_unit: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
