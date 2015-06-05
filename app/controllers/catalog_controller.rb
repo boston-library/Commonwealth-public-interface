@@ -4,43 +4,22 @@ require 'blacklight/catalog'
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  # not using BLAdvSearch (below) as it doesn't allow wildcards (*)
-  #include BlacklightAdvancedSearch::ParseBasicQ
-  # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
-  include Hydra::Controller::ControllerBehavior
-
-  # These before_filters apply the hydra access controls
-  #before_filter :enforce_show_permissions, :only=>:show
-  # This applies appropriate access controls to all solr queries
-  #CatalogController.search_params_logic += [:add_access_controls_to_solr_params]
-  # This filters out objects that you want to exclude from search results, like FileAssets
-  CatalogController.search_params_logic += [:exclude_unwanted_models]
 
   configure_blacklight do |config|
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = SearchBuilder
 
-    config.default_solr_params = { 
-      :qt => 'search',
-      :rows => 20
-    }
+    # deprecated, now set by CommonwealthVlrEngine
+    #config.default_solr_params = {
+    #  :qt => 'search',
+    #  :rows => 20
+    #}
 
-    #set default per-page
-    config.default_per_page = 20
-
+    # deprecated, now set by CommonwealthVlrEngine
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_info_primary_tsi'
-    config.index.display_type_field = 'active_fedora_model_suffix_ssi'
-    config.index.partials = [:thumbnail, :index_header, :index]
-    config.index.document_actions = nil # don't show bookmark control
-
-    # solr field configuration for document/show views
-    config.show.title_field = 'title_info_primary_tsi'
-    config.show.display_type_field = 'active_fedora_model_suffix_ssi'
-
-    # solr field for flagged/inappropriate content
-    config.flagged_field = 'flagged_content_ssi'
+    #config.index.title_field = 'title_info_primary_tsi'
+    #config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -61,7 +40,7 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count'
+    #config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count'
     config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count'
     config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index'
     config.add_facet_field 'genre_basic_ssim', :label => 'Format', :limit => 8, :sort => 'count', :helper_method => :render_format
@@ -208,79 +187,10 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 5
 
-    # helper that returns thumbnail URLs
-    config.index.thumbnail_method = :create_thumb_img_element
-
-    #blacklight-gallery stuff
-    config.view.gallery.default = true
-    config.view.gallery.partials = [:index_header]
-    config.view.gallery.icon_class = 'glyphicon-th-large'
-    config.view.masonry.partials = [:index_header]
-    config.view.slideshow.partials = [:index]
-
 
     # advanced search facet limits
-    config.advanced_search = {
-        :qt => 'search',
-        :form_solr_parameters => {
-            'facet.field' => ['genre_basic_ssim', 'physical_location_ssim'],
-            'facet.limit' => -1, # return all facet values
-            'facet.sort' => 'index' # sort by byte order of values
-        }
-    }
+    config.advanced_search[:form_solr_parameters] = {'facet.field' => ['genre_basic_ssim', 'physical_location_ssim']}
 
-    # collection name field
-    config.collection_field = 'collection_name_ssim'
-    # institution name field
-    config.institution_field = 'institution_name_ssim'
-
-    # blacklight-maps stuff
-    config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
-    config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-    config.view.maps.placename_field = 'subject_geographic_ssim'
-    config.view.maps.maxzoom = 13
-    config.view.maps.show_initial_zoom = 9
-    config.view.maps.facet_mode = 'geojson'
-
-  end
-
-
-
-  # displays values and pagination links for Format field
-  def formats_facet
-    @nav_li_active = 'explore'
-
-    @facet = blacklight_config.facet_fields['genre_basic_ssim']
-    @response = get_facet_field_response(@facet.key, params)
-    @display_facet = @response.aggregations[@facet.key]
-
-    @pagination = facet_paginator(@facet, @display_facet)
-
-    render :facet
-  end
-
-  def get_object_files
-    @object_files = Bplmodels::Finder.getFiles(params[:id])
-  end
-
-  def set_nav_context
-    @nav_li_active = 'search'
-  end
-
-  # if this is 'more like this' search, solr id = params[:mlt_id]
-  def mlt_search
-    if params[:mlt_id]
-      CatalogController.search_params_logic += [:set_solr_id_for_mlt]
-    end
-  end
-
-  before_filter :get_object_files, :only => [:show]
-  before_filter :set_nav_context, :only => [:index]
-  before_filter :mlt_search, :only => [:index]
-
-  # override so we can inspect for other params
-  def has_search_parameters?
-    !params[:q].blank? or !params[:f].blank? or !params[:search_field].blank? or params[:mlt_id] or !params[:coordinates].blank?
   end
 
 end 
