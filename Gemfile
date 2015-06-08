@@ -55,7 +55,7 @@ gem 'hydra-derivatives' # need this or Bplmodels::Finder won't work
 gem 'blacklight-maps', '0.3.3'
 #gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
 #gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps.git', :branch => ' fix-for-preferred-view'
-gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', :path => '/home/bluewolf/vlr/commonwealth-vlr-engine'
 
 group :development, :test do
   gem 'rspec', '~> 3.2.0'
