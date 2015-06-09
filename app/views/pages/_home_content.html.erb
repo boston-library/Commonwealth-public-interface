@@ -14,7 +14,7 @@
     <div id="hero_search" class="col-sm-6">
       <div id="hero_search_headline">
         <h2>
-          <%= t('blacklight.home.hero_unit') %>
+          <%= CommonwealthVlrEngine.config[:content][:homepage][:center_text] %>
         </h2>
       </div>
       <div id="hero_search_form">
@@ -25,64 +25,71 @@
   </div>
 
   <div id="content_home_browse" class="row">
+    <% if CommonwealthVlrEngine.config[:content][:sections][:maps][:enabled] %>
+        <div class="col-sm-<%=@middle_feature_columns%>">
+          <div id="map_browse" class="browse_item">
+            <%= link_to(image_tag('dc-home_map_thumb.jpg',
+                                  :class => 'browse_img img-circle',
+                                  :alt => 'Browse by Map'),
+                        map_path,
+                        :class => '') %>
+            <h4 class=""><%= link_to t('blacklight.maps.title'), map_path %></h4>
+            <p class="browse_item_desc">
+              Use the map to search for materials from locations across the globe.
+            </p>
+          </div>
+        </div>
+    <% end %>
 
-    <div class="col-sm-3">
-      <div id="map_browse" class="browse_item">
-        <%= link_to(image_tag('dc-home_map_thumb.jpg',
-                              :class => 'browse_img img-circle',
-                              :alt => 'Browse by Map'),
-                    map_path,
-                    :class => '') %>
-        <h4 class=""><%= link_to t('blacklight.maps.title'), map_path %></h4>
-        <p class="browse_item_desc">
-          Use the map to search for materials from locations across the globe.
-        </p>
-      </div>
-    </div>
+    <% if CommonwealthVlrEngine.config[:content][:sections][:collections][:enabled] %>
+        <div class="col-sm-<%=@middle_feature_columns%>">
+          <div id="collections_browse" class="browse_item">
+            <%= link_to(image_tag('dc-home_collections_thumb.jpg',
+                                  :class => 'browse_img img-circle',
+                                  :alt => 'Browse All Collections'),
+                        collections_path,
+                        :class => '') %>
+            <h4 class="">
+              <%= link_to t('blacklight.collections.index.title'), collections_path %>
+            </h4>
+            <p class="browse_item_desc">
+              Explore curated collections of historic materials grouped by topic, date, location, or format.
+            </p>
+          </div>
+        </div>
+    <% end %>
 
-    <div class="col-sm-3">
-      <div id="collections_browse" class="browse_item">
-        <%= link_to(image_tag('dc-home_collections_thumb.jpg',
-                              :class => 'browse_img img-circle',
-                              :alt => 'Browse All Collections'),
-                    collections_path,
-                    :class => '') %>
-        <h4 class="">
-          <%= link_to t('blacklight.collections.index.title'), collections_path %>
-        </h4>
-        <p class="browse_item_desc">
-          Explore curated collections of historic materials grouped by topic, date, location, or format.
-        </p>
-      </div>
-    </div>
+    <% if CommonwealthVlrEngine.config[:content][:sections][:institutions][:enabled] %>
+        <div class="col-sm-<%=@middle_feature_columns%>">
+          <div id="institutions_browse" class="browse_item">
+            <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
+                                  :class => 'browse_img img-circle',
+                                  :alt => 'Browse All Institutions'),
+                        institutions_path,
+                        :class => '') %>
+            <h4 class=""><%= link_to t('blacklight.institutions.title'), institutions_path %></h4>
+            <p class="browse_item_desc">
+              View materials from libraries, historical societies, museums, and other cultural institutions.
+            </p>
+          </div>
+        </div>
+    <% end %>
 
-    <div class="col-sm-3">
-      <div id="institutions_browse" class="browse_item">
-        <%= link_to(image_tag('dc-home_institutions_thumb.jpg',
-                              :class => 'browse_img img-circle',
-                              :alt => 'Browse All Institutions'),
-                    institutions_path,
-                    :class => '') %>
-        <h4 class=""><%= link_to t('blacklight.institutions.title'), institutions_path %></h4>
-        <p class="browse_item_desc">
-          View materials from libraries, historical societies, museums, and other cultural institutions.
-        </p>
-      </div>
-    </div>
-
-    <div class="col-sm-3">
-      <div id="formats_browse" class="browse_item">
-        <%= link_to(image_tag('dc-home_format_thumb.jpg',
-                              :class => 'browse_img img-circle',
-                              :alt => 'Browse All Formats'),
-                    formats_facet_path,
-                    :class => '') %>
-        <h4 class="">
-          <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
-        </h4>
-        <p class="browse_item_desc">Photographs, maps, postcards, manuscripts, books, artifacts, and more.</p>
-      </div>
-    </div>
+    <% if CommonwealthVlrEngine.config[:content][:sections][:formats][:enabled] %>
+        <div class="col-sm-<%=@middle_feature_columns%>">
+          <div id="formats_browse" class="browse_item">
+            <%= link_to(image_tag('dc-home_format_thumb.jpg',
+                                  :class => 'browse_img img-circle',
+                                  :alt => 'Browse All Formats'),
+                        formats_facet_path,
+                        :class => '') %>
+            <h4 class="">
+              <%= link_to t('blacklight.navigation.format'), formats_facet_path %>
+            </h4>
+            <p class="browse_item_desc">Photographs, maps, postcards, manuscripts, books, artifacts, and more.</p>
+          </div>
+        </div>
+    <% end %>
 
   </div>
 
@@ -90,10 +97,12 @@
 
     <div id="content_home_about" class="col-sm-6">
       <h4>About This Site</h4>
-      <p>This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.</p>
+      <p><%= CommonwealthVlrEngine.config[:content][:homepage][:about][:desc_text] %></p>
 
       <p class="more-info-link">
-        <%= link_to 'Learn more >>', about_dc_path %>
+        <% if CommonwealthVlrEngine.config[:content][:homepage][:about][:link].present? %>
+            <%= link_to 'Learn more >>', CommonwealthVlrEngine.config[:content][:homepage][:about][:link] %>
+        <% end %>
       </p>
     </div>
 
@@ -102,7 +111,7 @@
       <%= render_dc_blog_feed %>
       <p class="more-info-link">
         <%= link_to 'More news >>',
-                    blog_path,
+                    CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link],
                     :target => '_blank' %>
       </p>
 
