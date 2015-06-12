@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include CommonwealthVlrEngine::Pages
 
   def home
     @carousel_slides = CarouselSlide.where(:context=>'root').order(:sequence)
