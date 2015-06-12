@@ -32,7 +32,7 @@ gem 'therubyracer'
 
 # hydra-head
 gem 'blacklight', '5.13.1'
-gem 'commonwealth-vlr-engine', :path => '/Users/Saher/Documents/Eben/BPL/boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 
 
 group :development, :test do
