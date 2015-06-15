@@ -19,7 +19,7 @@
  * instead, require directories and/or files as needed
  * require_tree .
 
- *= require_directory ./commonwealth
+ * require_directory ./commonwealth
 
  * to prevent specific css files from being included, you can use 'stub' method, for ex::
  * stub blacklight/_layout
