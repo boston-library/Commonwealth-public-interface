@@ -14,7 +14,7 @@ PATH
       devise (~> 3.4.1)
       devise-guests (~> 0.3)
       execjs
-      font-awesome-sass
+      font-awesome-sass (= 4.1.0)
       hydra-derivatives
       hydra-head (= 7.0.0)
       hydra-ldap
@@ -174,7 +174,7 @@ GEM
       multipart-post (>= 1.2, < 3)
     fastercsv (1.5.5)
     ffi (1.9.8)
-    font-awesome-sass (4.3.2.1)
+    font-awesome-sass (4.1.0)
       sass (~> 3.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
