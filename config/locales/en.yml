@@ -17,18 +17,31 @@ en:
           text:
             subject: 'Digital Commonwealth E-mail: link to item'
 
-    home:
-          hero_unit: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
+    feedback:
+          form:
+            topic:
+              options:
+                membership: 'DC membership (library)'
 
-    institutions:
+    home:
+          banner:
+            center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
           browse:
-            all: 'View all items'
-          facets:
-            title: 'Browse by:'
-          index:
-            page_title: 'Institutions - %{application_name}'
-          nav: 'Institutions'
-          title: 'Institutions'
+            maps:
+              enabled: true
+            collections:
+              enabled: true
+            institutions:
+              enabled: true
+            formats:
+              enabled: true
+          context:
+            about:
+              text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
+            news:
+              rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
+              blog_url: 'https://www.digitalcommonwealth.org/blog'
+              blog_title: 'Digital Commonwealth News & Announcements'
 
     maps:
           interactions:

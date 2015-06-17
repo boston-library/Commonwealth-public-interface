@@ -3,8 +3,8 @@
 development:
   institution:
     pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
+    name: 'Digital Commonwealth'
+    site_name: 'Digital Commonwealth'
 
   content:
     sections:

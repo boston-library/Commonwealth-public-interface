@@ -1,9 +1,6 @@
 CommonwealthPublicInterface::Application.routes.draw do
-  Bpluser.add_routes(self)
 
   mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
-
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 
   root :to => 'pages#home'
 
