@@ -17,7 +17,6 @@ PATH
       font-awesome-sass (= 4.1.0)
       hydra-derivatives
       hydra-head (= 7.0.0)
-      hydra-ldap
       hydra-role-management (= 0.1.0)
       omniauth
       omniauth-facebook
@@ -208,9 +207,6 @@ GEM
       hydra-access-controls (= 7.0.0)
       hydra-core (= 7.0.0)
       rails (>= 3.2.6)
-    hydra-ldap (0.1.0)
-      net-ldap
-      rails
     hydra-role-management (0.1.0)
       bootstrap_forms
       cancan
