@@ -7,8 +7,6 @@ PATH
       blacklight-maps (= 0.3.3)
       blacklight_advanced_search (= 5.1.4)
       bootstrap-sass (~> 3.0)
-      bootstrap_forms
-      bpl-institution-management
       bplmodels
       bpluser
       devise (~> 3.4.1)
@@ -17,7 +15,6 @@ PATH
       font-awesome-sass (= 4.1.0)
       hydra-derivatives
       hydra-head (= 7.0.0)
-      hydra-role-management (= 0.1.0)
       omniauth
       omniauth-facebook
       omniauth-ldap
@@ -110,10 +107,8 @@ GEM
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap_form (2.3.0)
     bootstrap_forms (4.0.1)
-    bpl-institution-management (0.0.2)
-      bootstrap_forms
-      cancan
     bplmodels (0.0.91)
       hydra-derivatives
       mods
@@ -127,7 +122,6 @@ GEM
       omniauth-ldap
       rails
     builder (3.2.2)
-    cancan (1.6.10)
     cancancan (1.10.1)
     capybara (2.2.1)
       mime-types (>= 1.16)
@@ -207,9 +201,10 @@ GEM
       hydra-access-controls (= 7.0.0)
       hydra-core (= 7.0.0)
       rails (>= 3.2.6)
-    hydra-role-management (0.1.0)
-      bootstrap_forms
-      cancan
+    hydra-role-management (0.2.1)
+      blacklight
+      bootstrap_form
+      cancancan
     i18n (0.7.0)
     iso-639 (0.2.5)
     jettywrapper (2.0.3)

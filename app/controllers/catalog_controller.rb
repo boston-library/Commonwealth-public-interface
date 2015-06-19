@@ -45,7 +45,6 @@ class CatalogController < ApplicationController
     # facet bar
 
     # IMPORTANT: most facets are set in CommonwealthVlrEngine::ControllerOverride
-    config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -61,7 +60,6 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     # IMPORTANT: most index_fields are set in CommonwealthVlrEngine::ControllerOverride
-    config.add_index_field 'institution_name_ssim', :label => 'Institution', :helper_method => :index_institution_link
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
