@@ -23,6 +23,9 @@ en:
               options:
                 membership: 'DC membership (library)'
 
+    footer:
+              address: '321 Walnut Street, Newton, MA 02460'
+
     home:
           banner:
             center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
