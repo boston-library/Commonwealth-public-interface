@@ -1,11 +1,15 @@
 CommonwealthPublicInterface::Application.routes.draw do
 
-  mount CommonwealthVlrEngine::Engine => '/commonwealth-vlr-engine'
-
   root :to => 'pages#home'
 
+  # routes for CommonwealthVlrEngine
+  mount CommonwealthVlrEngine::Engine => '/'
+
+  # user authentication
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 
+  blacklight_for :catalog
+  
   get 'about_dc', :to => 'pages#about_dc', :as => 'about_dc'
   get 'for_libraries' => redirect('http://digitalcommonwealth.memberlodge.org/')
   get 'for_educators', :to => 'pages#lesson_plans', :as => 'for_educators'
