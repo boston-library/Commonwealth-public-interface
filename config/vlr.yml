@@ -2,96 +2,12 @@
 
 development:
   institution:
-    pid: '<pid>'
-    name: 'Digital Commonwealth'
-    site_name: 'Digital Commonwealth'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: true
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
-
-
-
+    pid: 'bpl-dev:4q77fr32b'
 
 test:
   institution:
-    pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: true
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
+      pid: 'commonwealth:abc123'
 
 production:
   institution:
-    pid: '<pid>'
-    name: '<name>'
-    email: '<email>'
-
-  content:
-    sections:
-      maps:
-        enabled: true
-      collections:
-        enabled: true
-      institutions:
-        enabled: true
-      formats:
-        enabled: true
-
-    homepage:
-      center_text: 'Explore historical collections from libraries, museums, and archives across Massachusetts'
-
-      about:
-        enabled: true
-        desc_text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
-        link: 'https://www.digitalcommonwealth.org/about_dc'
-        link_title: 'About Digital Commonwealth'
-
-      news:
-        rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-        non_rss_link: 'https://www.digitalcommonwealth.org/blog'
-        non_rss_title: 'Digital Commonwealth News & Announcements'
+      pid: 'commonwealth:abc123'
