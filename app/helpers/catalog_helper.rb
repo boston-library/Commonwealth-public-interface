@@ -25,4 +25,8 @@ module CatalogHelper
     inst_name.presence || document[blacklight_config.institution_field.to_sym].first
   end
 
+  def should_render_col_az?
+    true
+  end
+
 end
