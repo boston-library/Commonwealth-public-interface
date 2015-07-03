@@ -33,7 +33,7 @@ gem 'therubyracer'
 # blacklight
 gem 'blacklight', '5.13.1'
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
-gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine.git'
+gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
 
 
 group :development, :test do

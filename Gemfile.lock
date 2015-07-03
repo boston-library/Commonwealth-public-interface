@@ -1,5 +1,5 @@
 GIT
-  remote: https://github.com/boston-library/commonwealth-vlr-engine.git
+  remote: https://github.com/boston-library/commonwealth-vlr-engine
   revision: 2345e77b61e2aee7fbc08eebd883fe3353def500
   specs:
     commonwealth-vlr-engine (0.0.1)
