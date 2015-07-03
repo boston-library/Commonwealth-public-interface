@@ -8,6 +8,8 @@ class CatalogController < ApplicationController
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
+  CatalogController.search_params_logic.delete(:exclude_institutions)
+
   configure_blacklight do |config|
 
     # SearchBuilder contains logic for adding search params to Solr

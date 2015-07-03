@@ -30,9 +30,10 @@ gem 'jquery-rails'
 gem 'libv8', '~> 3.16.14.3'
 gem 'therubyracer'
 
-# hydra-head
+# blacklight
 gem 'blacklight', '5.13.1'
-gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
+#gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine.git'
 
 
 group :development, :test do
