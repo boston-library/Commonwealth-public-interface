@@ -100,7 +100,7 @@ class CatalogController < ApplicationController
 
 
     # advanced search facet limits
-    config.advanced_search[:form_solr_parameters] = {'facet.field' => ['genre_basic_ssim', 'physical_location_ssim']}
+    config.advanced_search[:form_solr_parameters]['facet.field'] = ['genre_basic_ssim', 'physical_location_ssim']
 
   end
 
