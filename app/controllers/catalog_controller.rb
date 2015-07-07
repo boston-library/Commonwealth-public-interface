@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
+  # allow institutions in search results
   CatalogController.search_params_logic.delete(:exclude_institutions)
 
   configure_blacklight do |config|
