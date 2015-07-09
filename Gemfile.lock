@@ -310,6 +310,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rails (= 4.2.0)
+  rsolr (~> 1.0.6)
   rspec (~> 3.2.0)
   rspec-rails (~> 3.2.0)
   sass-rails (~> 4.0.1)
