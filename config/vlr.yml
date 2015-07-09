@@ -1,0 +1,13 @@
+# stores VLR settings
+
+development:
+  institution:
+    pid: 'bpl-dev:4q77fr32b'
+
+test:
+  institution:
+      pid: 'commonwealth:abc123'
+
+production:
+  institution:
+      pid: 'commonwealth:abc123'

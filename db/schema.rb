@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20150527000001) do
 
   create_table "batch_uploads", force: :cascade do |t|
-    t.string   "upload_file_name",    limit: 255
-    t.string   "upload_content_type", limit: 255
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
     t.datetime "created_at"
@@ -23,20 +23,20 @@ ActiveRecord::Schema.define(version: 20150527000001) do
   end
 
   create_table "bookmarks", force: :cascade do |t|
-    t.integer  "user_id",                   null: false
-    t.string   "document_id",   limit: 255
-    t.string   "title",         limit: 255
+    t.integer  "user_id",       null: false
+    t.string   "document_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type",     limit: 255
-    t.string   "document_type", limit: 255
+    t.string   "user_type"
+    t.string   "document_type"
   end
 
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "bpluser_folder_items", force: :cascade do |t|
     t.integer  "folder_id"
-    t.string   "document_id", limit: 255
+    t.string   "document_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,30 +45,30 @@ ActiveRecord::Schema.define(version: 20150527000001) do
   add_index "bpluser_folder_items", ["folder_id"], name: "index_bpluser_folder_items_on_folder_id"
 
   create_table "bpluser_folders", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.integer  "user_id",                 null: false
-    t.string   "description", limit: 255
+    t.string   "title"
+    t.integer  "user_id",     null: false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "visibility",  limit: 255
+    t.string   "visibility"
   end
 
   create_table "carousel_slides", force: :cascade do |t|
     t.integer  "sequence"
-    t.string   "object_pid",  limit: 255
-    t.string   "image_pid",   limit: 255
-    t.string   "region",      limit: 255
-    t.string   "title",       limit: 255
-    t.string   "institution", limit: 255
-    t.string   "context",     limit: 255
+    t.string   "object_pid"
+    t.string   "image_pid"
+    t.string   "region"
+    t.string   "title"
+    t.string   "institution"
+    t.string   "context"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "size",        limit: 255
+    t.string   "size"
   end
 
   create_table "institutions", force: :cascade do |t|
-    t.string "name", limit: 255
-    t.string "pid",  limit: 255
+    t.string "name"
+    t.string "pid"
   end
 
   create_table "institutions_users", id: false, force: :cascade do |t|
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150527000001) do
   add_index "institutions_users", ["user_id", "institution_id"], name: "index_institutions_users_on_user_id_and_institution_id"
 
   create_table "roles", force: :cascade do |t|
-    t.string "name", limit: 255
+    t.string "name"
   end
 
   create_table "roles_users", id: false, force: :cascade do |t|
@@ -96,31 +96,31 @@ ActiveRecord::Schema.define(version: 20150527000001) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type",    limit: 255
+    t.string   "user_type"
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "guest",                              default: false
-    t.string   "username",               limit: 255
-    t.string   "provider",               limit: 255
-    t.string   "display_name",           limit: 255
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.string   "uid",                    limit: 255
+    t.boolean  "guest",                  default: false
+    t.string   "username"
+    t.string   "provider"
+    t.string   "display_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

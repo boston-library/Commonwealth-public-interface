@@ -1,40 +1,25 @@
 GIT
-  remote: https://github.com/boston-library/bpl-institution-management.git
-  revision: abd23524df08ee00a52fb029218bef6411109b6a
+  remote: https://github.com/boston-library/commonwealth-vlr-engine
+  revision: 2345e77b61e2aee7fbc08eebd883fe3353def500
   specs:
-    bpl-institution-management (0.0.2)
-      bootstrap_forms
-      cancan
-
-GIT
-  remote: https://github.com/boston-library/bplmodels.git
-  revision: 69e12089228504e9460cb54e7919d9e73cafcb03
-  specs:
-    bplmodels (0.0.91)
-      hydra-derivatives
-      mods
-      rails
-      timeliness
-
-GIT
-  remote: https://github.com/boston-library/bpluser.git
-  revision: 89491f925fb7945da9328993e2facf16fb211918
-  specs:
-    bpluser (0.0.3)
-      bootstrap_forms
-      hydra-role-management
+    commonwealth-vlr-engine (0.0.1)
+      blacklight (~> 5.13.1)
+      blacklight-gallery (= 0.4.0)
+      blacklight-maps (= 0.3.3)
+      blacklight_advanced_search (= 5.1.4)
+      bootstrap-sass (~> 3.0)
+      bpluser (~> 0.0.5)
+      devise (~> 3.4.1)
+      devise-guests (~> 0.3)
+      font-awesome-sass (= 4.1.0)
+      madison (~> 0.5.0)
       omniauth
       omniauth-facebook
       omniauth-ldap
-      rails
-
-GIT
-  remote: https://github.com/boston-library/omniauth-polaris.git
-  revision: d224ddb1d696df93136f7d6b6adda4c57704a641
-  specs:
-    omniauth-polaris (1.0.0)
-      omniauth (~> 1.0)
-      rest-client (~> 1.6.7)
+      omniauth-polaris
+      rails (~> 4.2.0)
+      typhoeus
+      unicode
 
 GEM
   remote: https://rubygems.org/
@@ -58,16 +43,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    active-fedora (7.0.2)
-      activesupport (>= 3.0.0)
-      deprecation
-      linkeddata
-      mediashelf-loggable
-      nom-xml (>= 0.5.1)
-      om (~> 3.0.0)
-      rdf-rdfxml (~> 1.1.0)
-      rsolr (~> 1.0.10.pre1)
-      rubydora (~> 1.7.4)
     activejob (4.2.0)
       activesupport (= 4.2.0)
       globalid (>= 0.3.0)
@@ -85,7 +60,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
-    autoprefixer-rails (5.1.11)
+    autoprefixer-rails (5.2.0)
       execjs
       json
     bcrypt (3.1.10)
@@ -111,15 +86,20 @@ GEM
       blacklight (~> 5.10)
       parslet
     blankslate (3.1.3)
-    block_helpers (0.3.3)
-      activesupport (>= 2.0)
     bootstrap-sass (3.3.4.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
+    bootstrap_form (2.3.0)
     bootstrap_forms (4.0.1)
+    bpluser (0.0.5)
+      bootstrap_forms
+      hydra-role-management
+      omniauth
+      omniauth-facebook
+      omniauth-ldap
+      rails
     builder (3.2.2)
-    cancan (1.6.10)
-    cancancan (1.7.1)
+    cancancan (1.12.0)
     capybara (2.2.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -129,12 +109,6 @@ GEM
     capybara-webkit (1.3.0)
       capybara (>= 2.0.2, < 2.5.0)
       json
-    childprocess (0.5.3)
-      ffi (~> 1.0, >= 1.0.11)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.3)
-      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -142,7 +116,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    daemons (1.1.9)
     deprecation (0.2.2)
       activesupport
     devise (3.4.1)
@@ -155,77 +128,29 @@ GEM
     devise-guests (0.3.3)
       devise
     diff-lcs (1.2.5)
-    ebnf (0.3.6)
-      haml (~> 4.0)
-      rdf (~> 1.1)
-      sxp (~> 0.1, >= 0.1.3)
-    equivalent-xml (0.4.2)
-      nokogiri (>= 1.4.3)
     erubis (2.7.0)
-    ethon (0.6.3)
+    ethon (0.7.4)
       ffi (>= 1.3.0)
-      mime-types (~> 1.18)
     execjs (2.5.2)
-    faraday (0.9.0)
+    faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
-    fastercsv (1.5.5)
-    ffi (1.9.3)
+    ffi (1.9.10)
     font-awesome-sass (4.1.0)
       sass (~> 3.2)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    haml (4.0.5)
-      tilt
-    hashie (2.0.5)
+    hashie (3.4.2)
     hike (1.2.3)
-    hooks (0.3.6)
-      uber (~> 0.0.4)
-    htmlentities (4.3.1)
-    hydra-access-controls (7.0.0)
-      active-fedora (~> 7.0.0)
-      activesupport
-      blacklight (~> 5.3)
+    hydra-role-management (0.2.1)
+      blacklight
+      bootstrap_form
       cancancan
-      deprecation
-      sass-rails
-    hydra-core (7.0.0)
-      block_helpers
-      hydra-access-controls (= 7.0.0)
-      jettywrapper (>= 1.4.1)
-      rails (>= 3.2.3, < 5)
-    hydra-derivatives (0.1.0)
-      active-fedora
-      activesupport (>= 3.2.13, < 5.0)
-      hydra-file_characterization
-      mini_magick
-    hydra-file_characterization (0.3.1)
-      activesupport (>= 3.0.0)
-    hydra-head (7.0.0)
-      hydra-access-controls (= 7.0.0)
-      hydra-core (= 7.0.0)
-      rails (>= 3.2.6)
-    hydra-ldap (0.1.0)
-      net-ldap
-      rails
-    hydra-role-management (0.1.0)
-      bootstrap_forms
-      cancan
     i18n (0.7.0)
-    iso-639 (0.2.5)
-    jettywrapper (1.7.0)
-      activesupport (>= 3.0.0)
-      childprocess
-      i18n
-      logger
-      mediashelf-loggable
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.8.2)
-    json-ld (1.1.3.1)
-      rdf (~> 1.1)
-    jwt (0.1.11)
-      multi_json (>= 1.5)
+    json (1.8.3)
+    jwt (1.5.1)
     kaminari (0.16.3)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -233,92 +158,53 @@ GEM
       railties (>= 3.1)
     leaflet-rails (0.7.4)
     libv8 (3.16.14.3)
-    linkeddata (1.1.1)
-      equivalent-xml (>= 0.4.0)
-      json-ld (>= 1.1.1)
-      nokogiri (>= 1.6.1)
-      rdf (>= 1.1.1)
-      rdf-aggregate-repo (>= 1.1.0)
-      rdf-isomorphic (>= 1.1.0)
-      rdf-json (>= 1.1.0)
-      rdf-microdata (>= 1.1.1)
-      rdf-n3 (>= 1.1.0)
-      rdf-rdfa (>= 1.1.1)
-      rdf-rdfxml (>= 1.1.0)
-      rdf-trig (>= 1.1.2)
-      rdf-trix (>= 1.1.0)
-      rdf-turtle (>= 1.1.2)
-      sparql (>= 1.1.2)
-      sparql-client (>= 1.1.1)
-    logger (1.2.8)
-    loofah (2.0.1)
+    loofah (2.0.2)
       nokogiri (>= 1.5.9)
+    madison (0.5.0)
+      json
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    mediashelf-loggable (0.4.9)
     mime-types (1.25.1)
-    mini_magick (3.7.0)
-      subexec (~> 0.2.1)
     mini_portile (0.6.2)
-    minitest (5.6.1)
-    mods (2.0.1)
-      iso-639
-      nokogiri
-      nom-xml
+    minitest (5.7.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    net-http-persistent (2.9.4)
     net-ldap (0.3.1)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
-    nom-xml (0.5.1)
-      activesupport
-      i18n
-      nokogiri
-    oauth2 (0.9.3)
+    oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
-      jwt (~> 0.1.8)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    om (3.0.4)
-      activemodel
-      activesupport
-      deprecation
-      mediashelf-loggable
-      nokogiri (>= 1.4.2)
-      solrizer (~> 3.1.0)
-    omniauth (1.2.1)
-      hashie (>= 1.2, < 3)
+    omniauth (1.2.2)
+      hashie (>= 1.2, < 4)
       rack (~> 1.0)
-    omniauth-facebook (1.6.0)
-      omniauth-oauth2 (~> 1.1)
+    omniauth-facebook (2.0.1)
+      omniauth-oauth2 (~> 1.2)
     omniauth-ldap (1.0.4)
       net-ldap (~> 0.3.1)
       omniauth (~> 1.0)
       pyu-ruby-sasl (~> 0.0.3.1)
       rubyntlm (~> 0.1.1)
-    omniauth-oauth2 (1.1.2)
-      faraday (>= 0.8, < 0.10)
-      multi_json (~> 1.3)
-      oauth2 (~> 0.9.3)
+    omniauth-oauth2 (1.3.1)
+      oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    omniauth-polaris (1.0.0)
+      omniauth (~> 1.0)
+      rest-client (~> 1.6.7)
     openseadragon (0.2.0)
       rails (> 3.2.0)
     orm_adapter (0.5.0)
-    paperclip (4.1.0)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
     parslet (1.7.0)
       blankslate (>= 2.0, <= 4.0)
     pg (0.17.1)
     pyu-ruby-sasl (0.0.3.3)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
-    rack (1.6.0)
+    rack (1.6.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.0)
@@ -346,45 +232,11 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
-    rdf (1.1.3)
-    rdf-aggregate-repo (1.1.0)
-      rdf (>= 1.1)
-    rdf-isomorphic (1.1.0)
-      rdf (>= 1.1)
-    rdf-json (1.1.0)
-      rdf (>= 1.1.0)
-    rdf-microdata (1.1.1.1)
-      htmlentities (~> 4.3)
-      nokogiri (~> 1.6)
-      rdf (~> 1.1)
-      rdf-xsd (~> 1.1)
-    rdf-n3 (1.1.0.1)
-      rdf (~> 1.1)
-    rdf-rdfa (1.1.3.1)
-      haml (~> 4.0)
-      htmlentities (~> 4.3)
-      rdf (~> 1.1)
-      rdf-xsd (~> 1.1)
-    rdf-rdfxml (1.1.0.1)
-      rdf (~> 1.1)
-      rdf-rdfa (~> 1.1)
-      rdf-xsd (~> 1.1)
-    rdf-trig (1.1.3.1)
-      ebnf (~> 0.3, >= 0.3.5)
-      rdf (~> 1.1, >= 1.1.2.1)
-      rdf-turtle (~> 1.1, >= 1.1.3)
-    rdf-trix (1.1.0)
-      rdf (>= 1.1)
-    rdf-turtle (1.1.3.1)
-      ebnf (~> 0.3, >= 0.3.6)
-      rdf (~> 1.1, >= 1.1.3)
-    rdf-xsd (1.1.0)
-      rdf (>= 1.1)
     ref (1.0.5)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    rest-client (1.6.9)
+      mime-types (~> 1.16)
     rsolr (1.0.12)
       builder (>= 2.1.2)
     rspec (3.2.0)
@@ -408,75 +260,39 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
-    rubydora (1.7.4)
-      activemodel
-      activesupport
-      deprecation
-      equivalent-xml
-      fastercsv
-      hooks (~> 0.3.0)
-      mime-types
-      nokogiri
-      rest-client
     rubyntlm (0.1.1)
     sass (3.2.19)
-    sass-rails (4.0.3)
+    sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.0)
-      sprockets (~> 2.8, <= 2.11.0)
+      sass (~> 3.2.2)
+      sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
-    solrizer (3.1.1)
-      activesupport
-      daemons
-      mediashelf-loggable (~> 0.4.7)
-      nokogiri
-      stomp
-      xml-simple
-    sparql (1.1.2.1)
-      builder (>= 3.0)
-      ebnf (>= 0.3.2)
-      json (>= 1.7)
-      rdf (>= 1.1.0)
-      rdf-aggregate-repo (>= 1.1.0)
-      rdf-xsd (>= 1.0.2)
-      sparql-client (>= 1.1)
-      sxp (>= 0.1.3)
-    sparql-client (1.1.1)
-      json (>= 1.8)
-      net-http-persistent (>= 1.4)
-      rdf (>= 1.1)
-    sprockets (2.11.0)
+    sprockets (2.12.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.4)
+    sprockets-rails (2.3.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.8)
-    stomp (1.3.2)
-    subexec (0.2.3)
-    sxp (0.1.5)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    timeliness (0.3.7)
-    typhoeus (0.6.7)
-      ethon (~> 0.6.2)
+    typhoeus (0.7.2)
+      ethon (>= 0.7.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uber (0.0.4)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicode (0.4.4.1)
+    unicode (0.4.4.2)
     warden (1.2.3)
       rack (>= 1.0)
-    xml-simple (1.1.3)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -485,32 +301,12 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 5.13.1)
-  blacklight-gallery (= 0.4.0)
-  blacklight-maps (= 0.3.3)
-  blacklight_advanced_search (= 5.1.4)
-  bootstrap-sass (~> 3.0)
-  bootstrap_forms
-  bpl-institution-management!
-  bplmodels!
-  bpluser!
   capybara
   capybara-webkit
   coffee-rails (~> 4.0.1)
-  devise
-  devise-guests (~> 0.3)
-  execjs
-  font-awesome-sass
-  hydra-derivatives
-  hydra-head (= 7.0.0)
-  hydra-ldap
-  hydra-role-management
+  commonwealth-vlr-engine!
   jquery-rails
   libv8 (~> 3.16.14.3)
-  omniauth
-  omniauth-facebook
-  omniauth-ldap
-  omniauth-polaris!
-  paperclip
   pg
   quiet_assets
   rails (= 4.2.0)
@@ -519,7 +315,4 @@ DEPENDENCIES
   sass-rails (~> 4.0.1)
   sqlite3
   therubyracer
-  typhoeus
-  tzinfo
   uglifier (>= 1.3.0)
-  unicode

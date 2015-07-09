@@ -4,43 +4,28 @@ require 'blacklight/catalog'
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
-  # not using BLAdvSearch (below) as it doesn't allow wildcards (*)
-  #include BlacklightAdvancedSearch::ParseBasicQ
-  # Extend Blacklight::Catalog with Hydra behaviors (primarily editing).
-  include Hydra::Controller::ControllerBehavior
 
-  # These before_filters apply the hydra access controls
-  #before_filter :enforce_show_permissions, :only=>:show
-  # This applies appropriate access controls to all solr queries
-  #CatalogController.search_params_logic += [:add_access_controls_to_solr_params]
-  # This filters out objects that you want to exclude from search results, like FileAssets
-  CatalogController.search_params_logic += [:exclude_unwanted_models]
+  # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
+  include CommonwealthVlrEngine::ControllerOverride
+
+  # allow institutions in search results
+  CatalogController.search_params_logic.delete(:exclude_institutions)
 
   configure_blacklight do |config|
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = SearchBuilder
 
-    config.default_solr_params = { 
-      :qt => 'search',
-      :rows => 20
-    }
+    # deprecated, now set by CommonwealthVlrEngine::ControllerOverride
+    #config.default_solr_params = {
+    #  :qt => 'search',
+    #  :rows => 20
+    #}
 
-    #set default per-page
-    config.default_per_page = 20
-
+    # deprecated, now set by CommonwealthVlrEngine
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_info_primary_tsi'
-    config.index.display_type_field = 'active_fedora_model_suffix_ssi'
-    config.index.partials = [:thumbnail, :index_header, :index]
-    config.index.document_actions = nil # don't show bookmark control
-
-    # solr field configuration for document/show views
-    config.show.title_field = 'title_info_primary_tsi'
-    config.show.display_type_field = 'active_fedora_model_suffix_ssi'
-
-    # solr field for flagged/inappropriate content
-    config.flagged_field = 'flagged_content_ssi'
+    #config.index.title_field = 'title_info_primary_tsi'
+    #config.index.display_type_field = 'active_fedora_model_suffix_ssi'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -61,32 +46,8 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'subject_facet_ssim', :label => 'Topic', :limit => 8, :sort => 'count'
-    config.add_facet_field 'subject_geographic_ssim', :label => 'Place', :limit => 8, :sort => 'count'
-    config.add_facet_field 'date_facet_ssim', :label => 'Date', :limit => 8, :sort => 'index'
-    config.add_facet_field 'genre_basic_ssim', :label => 'Format', :limit => 8, :sort => 'count', :helper_method => :render_format
-    config.add_facet_field 'physical_location_ssim', :label => 'Institution', :limit => 8, :sort => 'count'
-    config.add_facet_field 'collection_name_ssim', :label => 'Collection', :limit => 8, :sort => 'count'
-    # link_to_facet fields (not in facets sidebar of search results)
-    config.add_facet_field 'related_item_host_ssim', :label => 'Collection', :include_in_request => false # Collection (local)
-    config.add_facet_field 'genre_specific_ssim', :label => 'Genre', :include_in_request => false
-    config.add_facet_field 'related_item_series_ssim', :label => 'Series', :include_in_request => false
-    config.add_facet_field 'related_item_subseries_ssim', :label => 'Subseries', :include_in_request => false
-    config.add_facet_field 'related_item_subsubseries_ssim', :label => 'Sub-subseries', :include_in_request => false
-    config.add_facet_field 'institution_name_ssim', :label => 'Institution', :include_in_request => false
-    # facet for blacklight-maps catalog#index map view
-    # have to use '-2' to get all values
-    # because Blacklight::RequestBuilders#solr_facet_params adds '+1' to value
-    config.add_facet_field 'subject_geojson_facet_ssim', :limit => -2, :label => 'Coordinates', :show => false
 
-    #config.add_facet_field 'related_item_series_ssim', :label => 'Series'
-    #config.add_facet_field 'active_fedora_model_ssi', :label => 'AF Model'
-    ##config.add_facet_field 'pub_date', :label => 'Publication Year'
-    ##config.add_facet_field 'subject_topic_facet', :label => 'Topic', :limit => 20
-    ##config.add_facet_field 'language_facet', :label => 'Language', :limit => true
-    ##config.add_facet_field 'lc_1letter_facet', :label => 'Call Number'
-    ##config.add_facet_field 'subject_geo_facet', :label => 'Region'
-    ##config.add_facet_field 'subject_era_facet', :label => 'Era'
+    # IMPORTANT: most facets are set in CommonwealthVlrEngine::ControllerOverride
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -99,29 +60,16 @@ class CatalogController < ApplicationController
 
 
     # solr fields to be displayed in the index (search results) view
-    #   The ordering of the field names is the order of the display 
-    #config.add_index_field 'title_info_primary_tsi', :label => I18n.t('blacklight.metadata_display.fields.title')
-    config.add_index_field 'genre_basic_ssim', :label => 'Format'
-    config.add_index_field 'institution_name_ssim', :label => 'Institution', :helper_method => :index_institution_link
-    config.add_index_field 'collection_name_ssim', :label => 'Collection', :helper_method => :index_collection_link
-    config.add_index_field 'date_start_tsim', :label => 'Date', :helper_method => :index_date_value
+    #   The ordering of the field names is the order of the display
+
+    # IMPORTANT: most index_fields are set in CommonwealthVlrEngine::ControllerOverride
 
     # solr fields to be displayed in the show (single result) view
-    #   The ordering of the field names is the order of the display 
+    #   The ordering of the field names is the order of the display
+
+    # IMPORTANT: show fields are set in
+    # commonwealth-vlr-engine/app/views/_show_partials/_show_default_metadata
     #config.add_show_field 'title_t', :label => 'Title:'
-    #config.add_show_field 'title_vern_display', :label => 'Title:'
-    #config.add_show_field 'subtitle_display', :label => 'Subtitle:'
-    #config.add_show_field 'subtitle_vern_display', :label => 'Subtitle:'
-    #config.add_show_field 'author_display', :label => 'Author:'
-    #config.add_show_field 'author_vern_display', :label => 'Author:'
-    #config.add_show_field 'active_fedora_model_s', :label => 'Format:'
-    #config.add_show_field 'url_fulltext_display', :label => 'URL:'
-    #config.add_show_field 'url_suppl_display', :label => 'More Information:'
-    #config.add_show_field 'language_facet', :label => 'Language:'
-    #config.add_show_field 'published_display', :label => 'Published:'
-    #config.add_show_field 'published_vern_display', :label => 'Published:'
-    #config.add_show_field 'lc_callnum_display', :label => 'Call number:'
-    #config.add_show_field 'isbn_t', :label => 'ISBN:'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -135,168 +83,26 @@ class CatalogController < ApplicationController
     # The :key is what will be used to identify this BL search field internally,
     # as well as in URLs -- so changing it after deployment may break bookmarked
     # urls.  A display label will be automatically calculated from the :key,
-    # or can be specified manually to be different. 
+    # or can be specified manually to be different.
 
-    # This one uses all the defaults set by the solr request handler. Which
-    # solr request handler? The one set in config[:default_solr_parameters][:qt],
-    # since we aren't specifying it otherwise. 
-    
-    config.add_search_field('all_fields') do |field|
-      field.label = 'All Fields'
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-    end
-    
+    # IMPORTANT: search fields are set in CommonwealthVlrEngine::ControllerOverride
 
-    # Now we see how to over-ride Solr request handler defaults, in this
-    # case for a BL "search field", which is really a dismax aggregate
-    # of Solr search fields. 
-    
-    config.add_search_field('title') do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params. 
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-
-      # :solr_local_parameters will be sent using Solr LocalParams
-      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-      # Solr parameter de-referencing like $title_qf.
-      # See: http://wiki.apache.org/solr/LocalParams
-      field.solr_local_parameters = { 
-        :qf => '$title_qf',
-        :pf => '$title_pf'
-      }
-    end
-    
-    # Specifying a :qt only to show it's possible, and so our internal automated
-    # tests can test it. In this case it's the same as 
-    # config[:default_solr_parameters][:qt], so isn't actually neccesary. 
-    config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.qt = 'search'
-      field.solr_local_parameters = { 
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
-      }
-    end
-
-    config.add_search_field('place') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-          :qf => '$place_qf',
-          :pf => '$place_pf'
-      }
-    end
-
-    config.add_search_field('creator') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-          :qf => '$author_qf',
-          :pf => '$author_pf'
-      }
-    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    #config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', :label => 'relevance'
-    config.add_sort_field 'score desc, title_info_primary_ssort asc', :label => 'relevance'
-    config.add_sort_field 'title_info_primary_ssort asc, date_start_dtsi asc', :label => 'title'
-    config.add_sort_field 'date_start_dtsi asc, title_info_primary_ssort asc', :label => 'date (asc)'
-    config.add_sort_field 'date_start_dtsi desc, title_info_primary_ssort asc', :label => 'date (desc)'
-    #config.add_sort_field 'author_sort asc, title_sort asc', :label => 'author'
+
+    # IMPORTANT: sort fields are set in CommonwealthVlrEngine::ControllerOverride
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
     config.spell_max = 5
 
-    # helper that returns thumbnail URLs
-    config.index.thumbnail_method = :create_thumb_img_element
-
-    #blacklight-gallery stuff
-    config.view.gallery.default = true
-    config.view.gallery.partials = [:index_header]
-    config.view.gallery.icon_class = 'glyphicon-th-large'
-    config.view.masonry.partials = [:index_header]
-    config.view.slideshow.partials = [:index]
-
 
     # advanced search facet limits
-    config.advanced_search = {
-        :qt => 'search',
-        :form_solr_parameters => {
-            'facet.field' => ['genre_basic_ssim', 'physical_location_ssim'],
-            'facet.limit' => -1, # return all facet values
-            'facet.sort' => 'index' # sort by byte order of values
-        }
-    }
-
-    # collection name field
-    config.collection_field = 'collection_name_ssim'
-    # institution name field
-    config.institution_field = 'institution_name_ssim'
-
-    # blacklight-maps stuff
-    config.view.maps.geojson_field = 'subject_geojson_facet_ssim'
-    config.view.maps.coordinates_field = 'subject_coordinates_geospatial'
-    config.view.maps.placename_field = 'subject_geographic_ssim'
-    config.view.maps.maxzoom = 13
-    config.view.maps.show_initial_zoom = 9
-    config.view.maps.facet_mode = 'geojson'
+    config.advanced_search[:form_solr_parameters]['facet.field'] = ['genre_basic_ssim', 'physical_location_ssim']
 
   end
-
-  # displays the MODS XML record. copied from blacklight_marc gem
-  def librarian_view
-    @response, @document = fetch(params[:id])
-
-    respond_to do |format|
-      format.html
-      format.js { render :layout => false }
-    end
-  end
-
-  # displays values and pagination links for Format field
-  def formats_facet
-    @nav_li_active = 'explore'
-
-    @facet = blacklight_config.facet_fields['genre_basic_ssim']
-    @response = get_facet_field_response(@facet.key, params)
-    @display_facet = @response.aggregations[@facet.key]
-
-    @pagination = facet_paginator(@facet, @display_facet)
-
-    render :facet
-  end
-
-  def get_object_files
-    @object_files = Bplmodels::Finder.getFiles(params[:id])
-  end
-
-  def set_nav_context
-    @nav_li_active = 'search'
-  end
-
-  # if this is 'more like this' search, solr id = params[:mlt_id]
-  def mlt_search
-    if params[:mlt_id]
-      CatalogController.search_params_logic += [:set_solr_id_for_mlt]
-    end
-  end
-
-  before_filter :get_object_files, :only => [:show]
-  before_filter :set_nav_context, :only => [:index]
-  before_filter :mlt_search, :only => [:index]
-
-  # override so we can inspect for other params
-  def has_search_parameters?
-    !params[:q].blank? or !params[:f].blank? or !params[:search_field].blank? or params[:mlt_id] or !params[:coordinates].blank?
-  end
-
-  #def create_folder
-  #  @response, @documents = fetch()params[:id])
-  #  respond_to do |format|
-  #    format.html
-  #    format.js { render :layout => false }
-  #  end
-  #end
 
 end 

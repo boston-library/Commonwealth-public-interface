@@ -13,28 +13,14 @@
 
 //= require jquery
 //= require jquery_ujs
-//
-// Required by Blacklight-Maps
-//= require blacklight-maps
 
 // Required by Blacklight
 //= require blacklight/blacklight
 
-// Required by Blacklight-Gallery
-//= require blacklight_gallery
-
 // require bootstrap-dropdown
 //= require bootstrap/carousel
 
-//= require commonwealth/disable_dropdown_nav.js
-
-// for IE8 responsiveness
-//= require respond/respond.min
-
-// bootstrap-accessibility-plugin
-// require bootstrap-accessibility-plugin/bootstrap-accessibility.min
-
-//= require blacklight_google_analytics/blacklight_google_analytics
+//= require commonwealth-vlr-engine
 
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
 // from being automatically included on pages that don't need them

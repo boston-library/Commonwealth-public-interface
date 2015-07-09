@@ -9,23 +9,16 @@
  * compiled file, but it's generally better to create a new file per style scope.
 
  *
+ *= require_tree .
  *= require_self
 
- * not using 'require_tree .' (include everything) as stubbed file list getting bigger
- * instead, require directories and/or files as needed
- * require_tree .
+ * EXAMPLE: include a specific file
+ * require blacklight
 
- *= require blacklight
- *= require blacklight_maps
- *= require blacklight_gallery
- *= require_directory ./commonwealth
+ * EXAMPLE: include a specific directory
+ * require_directory ./commonwealth
 
- *= require bootstrap-accessibility-plugin/bootstrap-accessibility
-
- * to prevent specific css files from being included, you can use 'stub' method, for ex::
+ * EXAMPLE: to prevent specific css files from being included, you can use 'stub' method:
  * stub blacklight/_layout
-
- *= require blacklight_advanced_search
- *= require font-awesome
 
 */
