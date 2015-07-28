@@ -1,4 +1,6 @@
-class Notifier < CommonwealthVlrEngine::Notifier
+class Notifier < ActionMailer::Base
+
+  include CommonwealthVlrEngine::Notifier
 
   private
 
