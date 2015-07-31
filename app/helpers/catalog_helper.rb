@@ -9,10 +9,13 @@ module CatalogHelper
                           :class => 'institution_breadcrumb')
       connector = content_tag(:span, '',
                               :class => 'glyphicon glyphicon-arrow-right item-breadcrumb-separator')
-      coll_link = link_to(document[blacklight_config.collection_field.to_sym].first,
-                          collection_path(:id => document[:collection_pid_ssm].first),
-                          :class => 'collection_breadcrumb')
-      inst_link + connector + coll_link
+      coll_links = []
+      0.upto document[:collection_pid_ssm].length-1 do |index|
+        coll_links << link_to(document[blacklight_config.collection_field.to_sym][index],
+                              collection_path(:id => document[:collection_pid_ssm][index]),
+                              :class => 'collection_breadcrumb')
+      end
+      inst_link + connector + coll_links.join(' / ').html_safe
     end
   end
 
