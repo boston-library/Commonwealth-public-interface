@@ -31,7 +31,7 @@ gem 'libv8', '~> 3.16.14.3'
 gem 'therubyracer'
 
 # blacklight
-gem 'blacklight', '5.13.1'
+gem 'blacklight', '5.14.0'
 gem 'rsolr', '~> 1.0.6'
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
