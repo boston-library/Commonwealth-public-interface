@@ -5,8 +5,8 @@ gem 'rails', '4.2.0'
 gem 'sqlite3'
 gem 'pg'
 
-gem 'sass-rails',   '~> 4.0.1'
-gem 'coffee-rails', '~> 4.0.1'
+gem 'sass-rails',   '~> 5.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
@@ -36,11 +36,13 @@ gem 'rsolr', '~> 1.0.6'
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
 
+# can't use 3.3.5
+gem 'bootstrap-sass', '>=3.3.5.1'
 
 group :development, :test do
   gem 'rspec', '~> 3.2.0'
   gem 'rspec-rails', '~> 3.2.0'
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist', '>= 1.5.0'
   gem 'quiet_assets'
 end

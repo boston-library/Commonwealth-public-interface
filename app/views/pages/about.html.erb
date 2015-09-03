@@ -3,10 +3,9 @@
   <h2><%= t('blacklight.pages.about.title') %></h2>
 
   <ul class="page_list">
-    <% if CommonwealthVlrEngine.config[:content][:homepage][:about][:enabled] %>
-      <li><%= link_to CommonwealthVlrEngine.config[:content][:homepage][:about][:link_title], CommonwealthVlrEngine.config[:content][:homepage][:about][:link] %></li>
-    <% end %>
-    <li><%= link_to CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_title], CommonwealthVlrEngine.config[:content][:homepage][:news][:non_rss_link] %></li>
+    <li><%= link_to t('blacklight.pages.about_dc.title'), about_dc_path %></li>
+    <li><%= link_to t('blacklight.pages.news.title'), t('blacklight.home.context.news.blog_url'), :target => '_blank' %></li>
+    <li><%= link_to 'Member Directory', 'http://digitalcommonwealth.memberlodge.org/directory', :target => '_blank' %></li>
     <li><%= link_to t('blacklight.pages.copyright.title'), copyright_path %></li>
     <li><%= link_to t('blacklight.pages.partners.title'), partners_path %></li>
     <li><%= link_to t('blacklight.pages.contact.title'), feedback_path %></li>

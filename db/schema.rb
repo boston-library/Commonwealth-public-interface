@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150527000001) do
 
-  create_table "batch_uploads", force: :cascade do |t|
-    t.string   "upload_file_name"
-    t.string   "upload_content_type"
-    t.integer  "upload_file_size"
-    t.datetime "upload_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
     t.string   "document_id"
