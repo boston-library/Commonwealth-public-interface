@@ -45,6 +45,9 @@ CommonwealthPublicInterface::Application.configure do
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
+  # rolling logs, no more than 10 files, 100MB max size each
+  config.logger = Logger.new("#{Rails.root}/log/#{Rails.env}.log", 10, 104857600)
+
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
 
