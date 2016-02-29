@@ -52,10 +52,6 @@ en:
           interactions:
             institutions_search: 'View institutions from this location'
 
-    oai_objects:
-          link_to_item: 'View this item at %{institution_name}'
-          link_to_item_label: 'Link to Item'
-
     pages:
           about:
             title: 'About'

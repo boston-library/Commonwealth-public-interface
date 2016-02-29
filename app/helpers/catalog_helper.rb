@@ -19,7 +19,7 @@ module CatalogHelper
     if document[:note_tsim]
       inst_name = 'NOBLE Digital Heritage' if document[:note_tsim].join(' ').match(/NOBLE/)
     end
-    inst_name.presence || document[blacklight_config.institution_field.to_sym].first
+    inst_name.presence || document[blacklight_config.institution_field.to_sym].first || t('blacklight.oai_objects.default_inst_name')
   end
 
 end
