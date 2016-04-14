@@ -41,6 +41,7 @@ contact_emails.yml
 iiif_server.yml
 secrets.yml
 blacklight.yml
+bpl_api.yml
 
 # Files to ignore by default in Git #
 #####################################
