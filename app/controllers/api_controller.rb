@@ -3,10 +3,10 @@ class ApiController < ActionController::Base
   before_action :validate_pw, :except=>[:digital_stacks_login]
 
   def digital_stacks_create
-    request = JSON.parse(request.body.read)
+    request_json = JSON.parse(request.body.read)
     begin
-      if request["barcode"]["type"] == 'mbln'
-        barcode = request["barcode"]["value"]
+      if request_json["barcode"]["type"] == 'mbln'
+        barcode = request_json["barcode"]["value"]
 
         lookup = BplApi::Polaris.new
         lookup_response = lookup.get_user_data(barcode)
@@ -18,22 +18,22 @@ class ApiController < ActionController::Base
           @user = User.find_for_polaris_oauth(lookup_response)
 
 
-          target_folder = @user.folders.where(:title=>request["name"])
+          target_folder = @user.folders.where(:title=>request_json["name"])
           if target_folder.blank?
             target_folder = @user.folders.new
-            target_folder.title = request["name"][0..39]
-            target_folder.description = request["name"]
+            target_folder.title = request_json["name"][0..39]
+            target_folder.description = request_json["name"]
             target_folder.visibility = 'private'
             target_folder.save!
           else
             target_folder = target_folder.first
           end
-          request["items"].each do |item_to_add|
+          request_json["items"].each do |item_to_add|
             target_folder.folder_items.create!(:document_id => item_to_add) and target_folder.touch unless target_folder.has_folder_item(item_to_add)
           end
 
           respond_to do |format|
-            format.json { render json: {"result" => 'added to account', 'message' => "Added items to folder #{request["name"]}", 'contact'=> 'sanderson@bpl.org'}.as_json, status: 200 }
+            format.json { render json: {"result" => 'added to account', 'message' => "Added items to folder #{request_json["name"]}", 'contact'=> 'sanderson@bpl.org'}.as_json, status: 200 }
           end
         end
 
