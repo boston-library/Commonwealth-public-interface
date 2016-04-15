@@ -21,12 +21,14 @@ class ApiController < ActionController::Base
           target_folder = @user.folders.where(:title=>request_json["name"])
           if target_folder.blank?
             target_folder = @user.folders.new
+            target_folder.user = @user
             target_folder.title = request_json["name"][0..39]
             target_folder.description = request_json["name"]
             target_folder.visibility = 'private'
             target_folder.save!
           else
             target_folder = target_folder.first
+            target_folder.user = @user
           end
           request_json["items"].each do |item_to_add|
             target_folder.folder_items.create!(:document_id => item_to_add) and target_folder.touch unless target_folder.has_folder_item(item_to_add)
@@ -46,7 +48,7 @@ class ApiController < ActionController::Base
 
     rescue => error
       respond_to do |format|
-        format.json { render json: {"result" => 'Caught an error', 'message' => "#{error.message}", 'contact'=> 'sanderson@bpl.org'}.as_json, status: 500 }
+        format.json { render json: {"result" => 'Caught an error', 'message' => "#{error.message}. #{error.backtrace}", 'contact'=> 'sanderson@bpl.org'}.as_json, status: 500 }
       end
     end
   end
