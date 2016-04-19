@@ -69,6 +69,7 @@ class ApiController < ActionController::Base
     debug_user_logger = Logger.new('log/digital_stacks_create.log')
     debug_user_logger.level = Logger::DEBUG
     debug_user_logger.debug "------------------------------------"
+    debug_user_logger.debug "Body is: #{request.body.read.to_yaml}"
 
     request_json = nil
     begin
@@ -79,7 +80,7 @@ class ApiController < ActionController::Base
       end
     end
 
-    if pw != request_json["password"]
+    if request_json.blank? || pw != request_json["password"]
       debug_user_logger.debug "Full Request Content is: #{request_json.to_yaml}"
       respond_to do |format|
         format.json { render json: {"result" => 'Unauthorized', 'message' => 'Your password was incorrect', 'contact'=> 'sanderson@bpl.org'}.as_json, status: 401 }
