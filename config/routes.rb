@@ -34,6 +34,10 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'why_join' => redirect('http://digitalcommonwealth.memberlodge.org/why_join')
   get 'items/*all', :to => 'pages#items'
 
+  # Routes for the API
+  post '/api/digital_stacks/user_create', :to => 'api#digital_stacks_create', :as => 'digital_stacks_create'
+  get '/api/digital_stacks/saved_items/:id', :to => 'api#digital_stacks_login', :as => 'digital_stacks_login'
+
   # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
 
   # The priority is based upon order of creation:
