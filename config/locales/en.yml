@@ -21,7 +21,13 @@ en:
           form:
             topic:
               options:
-                membership: 'DC membership (library)'
+                repro:
+                  help_text: '<i aria-hidden=\"true\" class=\"fa fa-exclamation-triangle fa-2x\"></i> Please be sure to include a link to the image in your message.<br/><br/>Image reproduction requests may also be directed directly to the institution that contributed the item to Digital Commonwealth. The contributing institution can be found at the top left of the item detail page. Click the institution name to find more information, including a link to the institution web site.'
+                research:
+                  help_text: '<i aria-hidden=\"true\" class=\"fa fa-exclamation-triangle fa-2x\"></i> Please be advised we can only answer research questions pertaining to materials found on the Digital Commonwealth web site.<br/><br/>For local history or genealogy research questions, please contact your local public library.'
+                membership:
+                 option: 'DC membership (library)'
+                 help_text: 'More information on becoming a member can be found here: <a href=\"http://digitalcommonwealth.memberlodge.org/membership\">Membership</a>.<br/><br/>For information about applying for digitization services, see <a href=\"http://digitalcommonwealth.memberlodge.org/digitization\">Digitization &amp; Metadata Services</a>.'
           text:
             subject: 'Digital Commonwealth Repository: contact email [%{identifier}]'
 
