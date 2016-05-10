@@ -1,3 +1,5 @@
+@import 'commonwealth-vlr-engine/cmmnwlth_defaults';
+
 #footer {
 
   #footer_logo {
@@ -7,6 +9,30 @@
       -moz-opacity: 0.50;
       opacity: 0.50;
       -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    }
+
+  }
+
+  #footer_address {
+    color: $darker_gray;
+
+    #footer_social {
+      float: right;
+      padding-left: 10px;
+
+      .footer_social_icon {
+        padding-right: 0;
+
+        a {
+          color: $darker_gray;
+        }
+
+      }
+
+    }
+
+    #footer_address_text {
+      float: right;
     }
 
   }

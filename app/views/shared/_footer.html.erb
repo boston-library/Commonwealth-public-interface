@@ -1,0 +1,44 @@
+<div id="footer" class="container">
+  <div class="row">
+    <div id="footer_logo" class="col-sm-3 hidden-xs">
+      <%= link_to application_name, root_path, :id => 'footer_logo_link' %>
+    </div>
+    <div id="footer_address" class="col-sm-6">
+      <div id="footer_social">
+        <ul id="footer_social_icons" class="list-inline">
+          <li class="footer_social_icon">
+            <%= link_to 'https://www.instagram.com/digitalcommonwealth/',
+                        target: '_blank' do %>
+                <i aria-hidden="true" class="fa fa-instagram fa-3x"></i>
+            <% end %>
+          </li>
+          <li class="footer_social_icon">
+            <%= link_to 'https://www.facebook.com/Digital-Commonwealth-251547586721/',
+                        target: '_blank' do %>
+                <i aria-hidden="true" class="fa fa-facebook-square fa-3x"></i>
+            <% end %>
+          </li>
+          <li class="footer_social_icon">
+            <%= link_to 'https://twitter.com/digicomMA',
+                        target: '_blank' do %>
+                <i aria-hidden="true" class="fa fa-twitter-square fa-3x"></i>
+            <% end %>
+          </li>
+          <li class="footer_social_icon">
+            <%= link_to 'http://digitalcommonwealth.tumblr.com/',
+                        target: '_blank' do %>
+                <i aria-hidden="true" class="fa fa-tumblr-square fa-3x"></i>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div id="footer_address_text">
+        <strong><%= t('blacklight.application_name') %></strong><br />
+        <%= t('blacklight.footer.address') %><br />
+        <%= link_to t('blacklight.pages.contact.title'), feedback_path %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= debug(params) if Rails.env.development? %>
