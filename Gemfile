@@ -39,6 +39,9 @@ gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/common
 # can't use 3.3.5
 gem 'bootstrap-sass', '>=3.3.5.1'
 
+# stopgap until >=0.2.2 is released
+gem 'openseadragon', :git => 'https://github.com/IIIF/openseadragon-rails', :ref => '41283ac'
+
 group :development, :test do
   gem 'rspec', '~> 3.2.0'
   gem 'rspec-rails', '~> 3.2.0'
