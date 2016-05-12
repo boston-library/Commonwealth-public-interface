@@ -6,12 +6,11 @@ GIT
     openseadragon (0.2.1)
       rails (> 3.2.0)
 
-GIT
-  remote: https://github.com/boston-library/commonwealth-vlr-engine
-  revision: 21055eeb6681cf06a8597456b8a6f7dcc2a10321
+PATH
+  remote: /home/eenglish/boston-library/commonwealth-vlr-engine
   specs:
     commonwealth-vlr-engine (0.0.1)
-      blacklight (~> 5.14.0)
+      blacklight (~> 5.15.0)
       blacklight-gallery (= 0.4.0)
       blacklight-maps (= 0.4.0)
       blacklight_advanced_search (= 5.1.4)
@@ -72,7 +71,7 @@ GEM
       execjs
       json
     bcrypt (3.1.11)
-    blacklight (5.14.0)
+    blacklight (5.15.0)
       bootstrap-sass (~> 3.2)
       deprecation
       kaminari (>= 0.15)
@@ -315,7 +314,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  blacklight (= 5.14.0)
+  blacklight (= 5.15.0)
   bootstrap-sass (>= 3.3.5.1)
   capybara
   coffee-rails (~> 4.1.0)
