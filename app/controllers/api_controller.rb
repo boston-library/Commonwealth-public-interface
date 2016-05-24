@@ -1,6 +1,10 @@
 
 class ApiController < ActionController::Base
+  include Blacklight::Configurable
+  include Blacklight::TokenBasedUser
   #before_action :validate_pw, :except=>[:digital_stacks_login]
+
+  copy_blacklight_config_from(CatalogController)
 
   def digital_stacks_create
     debug_user_logger = Logger.new('log/digital_stacks_create.log')
@@ -109,11 +113,37 @@ class ApiController < ActionController::Base
   end
 
   def digital_stacks_login
+    current_or_guest_user.save! unless current_or_guest_user.persisted?
     #render html: "<b>You passed in login identifier: #{params[:id]}<b/>".html_safes
     @user = User.where(:provider => 'digital_stacks_temporary', :uid => params[:id]).first
-    flash[:notice] = "You are viewing your saved Digital Stacks items in a temporary account. To persist these in a full account, please click the following link (TBA)."
+
+
+
+    @user.folders.each do |folder|
+      target_folder = current_or_guest_user.folders.where(:title=>folder.title)
+      if target_folder.blank?
+        target_folder = current_or_guest_user.folders.create({title: folder.title, description: folder.description, visibility: folder.visibility})
+        target_folder.save! if current_user
+      else
+        target_folder = target_folder.first
+      end
+      folder.folder_items.each do |item_to_add|
+        unless target_folder.has_folder_item(item_to_add.document_id)
+          target_folder.folder_items.create(:document_id => item_to_add.document_id) and target_folder.touch
+          #current_or_guest_user.bookmarks.create({ document_id: item_to_add.document_id, document_type: blacklight_config.document_model.to_s })
+          target_folder.save! if current_user
+        end
+      end
+    end
+
+    if !current_user
+      flash[:notice] = "You are viewing your saved Digital Stacks items in a temporary account. To persist these in a full account, please click the \"Sign Up / Log In\" link in the upper right header of this page."
+    end
+    #current_or_guest_user.save!
+    #raise token_or_current_or_guest_user.folders.to_yaml
+
     #sign_in_and_redirect @user, :event => :authentication
-    sign_in @user, :event => :authentication
+    #sign_in @user, :event => :authentication
     redirect_to '/folders'
   end
 
