@@ -137,7 +137,7 @@ class ApiController < ActionController::Base
     end
 
     if !current_user
-      flash[:notice] = "You are viewing your saved Digital Stacks items in a temporary account. To persist these in a full account, please click the \"Sign Up / Log In\" link in the upper right header of this page."
+      flash[:notice] = %Q[You are viewing your saved Digital Stacks items in a temporary session. To persist these inside of a full account, please click the <a href="#{new_user_session_path}" title="Sign Up Link">Sign Up / Log In</a> link.]
     end
     #current_or_guest_user.save!
     #raise token_or_current_or_guest_user.folders.to_yaml
