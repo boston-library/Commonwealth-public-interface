@@ -144,7 +144,12 @@ class ApiController < ActionController::Base
 
     #sign_in_and_redirect @user, :event => :authentication
     #sign_in @user, :event => :authentication
-    redirect_to '/folders'
+    if current_or_guest_user.folders.length == 1
+      redirect_to "/folders/#{current_or_guest_user.folders.first.id}"
+    else
+      redirect_to '/folders'
+    end
+
   end
 
 end
