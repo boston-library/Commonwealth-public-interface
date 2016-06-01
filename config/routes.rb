@@ -8,8 +8,28 @@ CommonwealthPublicInterface::Application.routes.draw do
   # user authentication
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 
-  blacklight_for :catalog
-  
+  mount Blacklight::Engine => '/'
+
+  concern :searchable, Blacklight::Routes::Searchable.new
+
+  resource :catalog, only: [:index], path: '/search', controller: 'catalog' do
+    concerns :searchable
+  end
+
+  concern :exportable, Blacklight::Routes::Exportable.new
+
+  resources :solr_documents, only: [:show], path: '/search', controller: 'catalog' do
+    concerns :exportable
+  end
+
+  resources :bookmarks do
+    concerns :exportable
+
+    collection do
+      delete 'clear'
+    end
+  end
+
   get 'about_dc', :to => 'pages#about_dc', :as => 'about_dc'
   get 'for_libraries' => redirect('http://digitalcommonwealth.memberlodge.org/')
   get 'for_educators', :to => 'pages#lesson_plans', :as => 'for_educators'

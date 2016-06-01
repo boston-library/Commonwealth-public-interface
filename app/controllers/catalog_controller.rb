@@ -1,6 +1,4 @@
-# -*- encoding : utf-8 -*-
-require 'blacklight/catalog'
-
+# frozen_string_literal: true
 class CatalogController < ApplicationController
 
   include Blacklight::Catalog
@@ -8,13 +6,10 @@ class CatalogController < ApplicationController
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
-  # allow institutions in search results
-  CatalogController.search_params_logic.delete(:exclude_institutions)
-
   configure_blacklight do |config|
 
     # SearchBuilder contains logic for adding search params to Solr
-    config.search_builder_class = SearchBuilder
+    config.search_builder_class = CommonwealthSearchBuilder
 
     # deprecated, now set by CommonwealthVlrEngine::ControllerOverride
     #config.default_solr_params = {
@@ -98,6 +93,10 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
     config.spell_max = 5
+
+    # Configuration for autocomplete suggestor
+    config.autocomplete_enabled = true
+    config.autocomplete_path = 'suggest'
 
 
     # advanced search facet limits
