@@ -46,7 +46,7 @@ class PagesController < ApplicationController
   # redirect for legacy DC links
   def items
     flash[:notice] = t('blacklight.update.item')
-    redirect_to catalog_index_path
+    redirect_to search_catalog_path
   end
 
 end
