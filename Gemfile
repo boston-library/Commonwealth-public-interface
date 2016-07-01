@@ -29,6 +29,7 @@ gem 'jquery-rails'
 #various utilities
 gem 'libv8', '~> 3.16.14.3'
 gem 'therubyracer'
+gem 'jbuilder'
 
 # blacklight
 gem 'blacklight', '6.2.0'
