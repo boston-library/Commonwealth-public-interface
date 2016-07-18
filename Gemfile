@@ -37,6 +37,9 @@ gem 'rsolr', '~> 1.0.6'
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
 
+#gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
+gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
+
 # can't use 3.3.5
 gem 'bootstrap-sass', '>=3.3.5.1'
 

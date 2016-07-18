@@ -7,6 +7,18 @@ GIT
       rails (> 3.2.0)
 
 GIT
+  remote: https://github.com/boston-library/blacklight-maps
+  revision: 9eceda8a98bf531ce46554009c40e84aca815267
+  branch: fix-initialzoom-option
+  specs:
+    blacklight-maps (0.5.0)
+      blacklight (>= 6.1.0)
+      bootstrap-sass (~> 3.2)
+      leaflet-markercluster-rails
+      leaflet-rails
+      rails
+
+GIT
   remote: https://github.com/boston-library/commonwealth-vlr-engine
   revision: a67756cdab5fd672db616b4edc80783fd8b14437
   specs:
@@ -85,12 +97,6 @@ GEM
       blacklight (> 6.0.0.pre, < 7)
       bootstrap-sass (~> 3.0)
       openseadragon (>= 0.2.0)
-      rails
-    blacklight-maps (0.5.0)
-      blacklight (>= 6.1.0)
-      bootstrap-sass (~> 3.2)
-      leaflet-markercluster-rails
-      leaflet-rails
       rails
     blacklight_advanced_search (6.0.2)
       blacklight (~> 6.0, >= 6.0.1)
@@ -325,6 +331,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight (= 6.2.0)
+  blacklight-maps!
   bootstrap-sass (>= 3.3.5.1)
   capybara
   coffee-rails (~> 4.1.0)
