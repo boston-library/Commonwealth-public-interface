@@ -11,12 +11,15 @@ CommonwealthPublicInterface::Application.routes.draw do
   # bookmarks item actions
   put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
 
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+
   mount Blacklight::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], path: '/search', controller: 'catalog' do
     concerns :searchable
+    concerns :range_searchable
   end
 
   concern :exportable, Blacklight::Routes::Exportable.new
