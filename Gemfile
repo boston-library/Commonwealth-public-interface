@@ -32,7 +32,7 @@ gem 'therubyracer'
 gem 'jbuilder'
 
 # blacklight
-gem 'blacklight', '6.2.0'
+gem 'blacklight', '6.7.0'
 gem 'rsolr', '~> 1.0.6'
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/commonwealth-vlr-engine'
