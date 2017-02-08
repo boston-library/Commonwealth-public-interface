@@ -5,9 +5,9 @@ class Notifier < ActionMailer::Base
   private
 
   def route_email(topic)
-    if topic == t('blacklight.feedback.form.topic.options.membership')
+    if topic == t('blacklight.feedback.form.topic.options.membership.option')
       recipient_email = CONTACT_EMAILS['dc_admin']
-    elsif topic == t('blacklight.feedback.form.topic.options.repro')
+    elsif topic == t('blacklight.feedback.form.topic.options.repro.option')
       recipient_email = CONTACT_EMAILS['image_requests']
     else
       recipient_email = CONTACT_EMAILS['site_admin']
