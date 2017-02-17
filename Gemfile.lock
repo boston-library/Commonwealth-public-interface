@@ -356,6 +356,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   libv8 (~> 3.16.14.3)
+  omniauth (<= 1.4.0)
   pg
   poltergeist (>= 1.5.0)
   quiet_assets
