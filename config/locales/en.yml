@@ -9,6 +9,9 @@ en:
     application_name: 'Digital Commonwealth'
     application_desc: 'An online library of photographs, manuscripts, audio recordings, and other materials of historical interest from libraries, museums, archives, and historical societies across Massachusetts.'
 
+    downloads:
+          more_info: 'Find out more.'
+
     email:
           reply_to: 'admin@digitalcommonealth.org'
           record_mailer:
