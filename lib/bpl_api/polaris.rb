@@ -50,7 +50,7 @@ module BplApi
     end
 
     def auth_hash
-      if @auth_hash.blank? || Time.parse(@auth_hash[:experation]) <= Time.now.in_time_zone("EST") || @auth_hash[:force_reset]
+      if @auth_hash.blank? || Time.parse(@auth_hash[:expiration]) <= Time.now.in_time_zone("EST") || @auth_hash[:force_reset]
         url = "#{secure_uri}authenticator/staff"
         document = %{<AuthenticationData><Domain>#{domain}</Domain><Username>#{username}</Username><Password>#{password}</Password></AuthenticationData>}
 
@@ -63,7 +63,7 @@ module BplApi
         @auth_hash = {}
         @auth_hash[:token] = access_response["AuthenticationResult"]["AccessToken"]
         @auth_hash[:secret] = access_response["AuthenticationResult"]["AccessSecret"]
-        @auth_hash[:experation] = access_response["AuthenticationResult"]["AuthExpDate"].gsub(/T.+/, '')
+        @auth_hash[:expiration] = access_response["AuthenticationResult"]["AuthExpDate"].gsub(/T.+/, '')
         @auth_hash[:force_reset] = false
       end
       return @auth_hash
