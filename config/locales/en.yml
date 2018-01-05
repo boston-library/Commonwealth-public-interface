@@ -66,6 +66,8 @@ en:
             title: 'About'
           about_dc:
             title: 'About Digital Commonwealth'
+          api:
+            title: 'API'
           contact:
             title: 'Contact Us'
           copyright:

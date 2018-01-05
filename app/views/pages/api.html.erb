@@ -1,0 +1,108 @@
+<% @page_title = t('blacklight.pages.api.title') + " - " + application_name %>
+<div class="col-sm-9 about_content">
+  <h2><%= t('blacklight.pages.api.title') %></h2>
+
+  <p>
+    APIs (Application Programming Interface) provide programmatic machine-based interaction with metadata and image
+    content from items in the Digital Commonwealth collections, allowing this content to be used in other
+    applications and data services.
+  </p>
+
+  <p>
+    Please <%= link_to 'contact us', feedback_path %> with any questions or comments.
+  </p>
+
+  <h4 class="section_heading">OAI-PMH</h4>
+
+  <p>
+    Metadata records for all collections and items are accessible in the Digital
+    Commonwealth <%= link_to 'OAI-PMH',
+                             'https://www.openarchives.org/OAI/openarchivesprotocol.html',
+                             target: '_blank' %> feed.
+  </p>
+
+  <p>
+    Base URL:<br/>
+    <pre><%= FEDORA_URL['url'] %>/oaiprovider/?</pre>
+  </p>
+
+  <h4 class="section_heading">JSON</h4>
+
+  <p>
+    Search results and item detail pages are available as JSON. To retrieve a page as JSON, append
+    <code>.json</code> to the page url, as in the examples below:
+  </p>
+
+  <p>
+    Search results:<br/>
+    <pre>
+# normal, return HTML
+<%= search_catalog_url %>?q=Boston
+
+# return JSON
+<%= search_catalog_url %>.json?q=Boston</pre>
+  </p>
+
+  <p>
+    Item detail:<br/>
+  <pre>
+# normal, return HTML
+<%= search_catalog_url %>/commonwealth:abcd12345
+
+# return JSON
+<%= search_catalog_url %>/commonwealth:abcd12345.json</pre>
+  </p>
+
+  <h4 class="section_heading">IIIF</h4>
+
+  <p>
+    Digital Commonwealth supports the following
+    <%= link_to 'International Image Interoperability Framework',
+                'http://iiif.io/',
+                target: '_blank' %> APIs:
+  </p>
+
+  <h5 class="section_heading">Image 2.0</h5>
+
+  <p>
+    Base URL:<br/>
+  <pre><%= IIIF_SERVER['url'] %></pre>
+  </p>
+
+  <p>
+    To request a IIIF Image response, you will need the image identifier.
+    Images have different identifiers than the parent item. To find the image identifier,
+    right-click on the image in a browser window and view or copy the image URL. The
+    image identifier is part of the URL string, as in:
+    <pre><%= FEDORA_URL['url'] %>/objects/IMAGE_ID/datastreams/thumbnail300/content</pre>
+  </p>
+
+  <p>
+    The image identifier can then be used to construct a URL to create a valid IIIF Image request:
+    <pre>
+# image information request
+<%= IIIF_SERVER['url'] %>IMAGE_ID/info.json
+
+# full image, 50% size, as JPEG
+<%= IIIF_SERVER['url'] %>IMAGE_ID/full/pct:50/0/default.jpg
+</pre>
+  </p>
+
+  <h5 class="section_heading">Presentation 2.0</h5>
+
+  <p>
+    IIIF Presentation manifests in JSON-LD can be returned by appending <code>/manifest</code> to the
+    URL for the item detail page. (A 404 will be returned if no manifest is available.)
+  </p>
+
+  <p>
+  <pre>
+# normal, return HTML
+<%= search_catalog_url %>/commonwealth:abcd12345
+
+# return IIIF manifest
+<%= search_catalog_url %>/commonwealth:abcd12345/manifest</pre>
+  </p>
+
+
+</div>

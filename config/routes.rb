@@ -43,6 +43,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'copyright', :to => 'pages#copyright', :as => 'copyright'
   get 'partners', :to => 'pages#partners', :as => 'partners'
   get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), :as => 'blog'
+  get 'api', :to => 'pages#api', :as => 'api'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collections/show/:id', :to => 'pages#collection_tree'

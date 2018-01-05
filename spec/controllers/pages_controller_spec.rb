@@ -52,4 +52,12 @@ describe PagesController do
     end
   end
 
+  describe "GET 'api'" do
+    it 'should show the API page' do
+      get :api
+      expect(response).to be_success
+      expect(response.body).to have_selector('div.about_content')
+    end
+  end
+
 end

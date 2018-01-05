@@ -31,6 +31,10 @@ class PagesController < ApplicationController
     @nav_li_active = 'about'
   end
 
+  def api
+    @nav_li_active = 'about'
+  end
+
   # redirect for legacy DC links
   def collection_tree
     flash[:notice] = t('blacklight.update.new_url')
