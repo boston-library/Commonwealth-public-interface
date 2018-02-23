@@ -43,8 +43,7 @@ gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-map
 # can't use 3.3.5
 gem 'bootstrap-sass', '>=3.3.5.1'
 
-# omniauth >=1.5.0 requires ruby >=2.1.9
-gem 'omniauth', '<=1.4.0'
+gem 'devise', '~> 3.4.1'
 
 group :development, :test do
   gem 'rspec', '~> 3.2.0'
