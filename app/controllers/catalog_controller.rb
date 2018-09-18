@@ -3,10 +3,20 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
 
+  # CatalogController-scope behavior and configuration for BlacklightIiifSearch
+  include BlacklightIiifSearch::Controller
+
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
   configure_blacklight do |config|
+
+    # configuration for Blacklight IIIF Content Search
+    config.iiif_search = {
+      full_text_field: 'ocr_tsiv',
+      object_relation_field: 'is_image_of_ssim',
+      supported_params: %w[q page]
+    }
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder

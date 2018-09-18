@@ -40,6 +40,8 @@ gem 'commonwealth-vlr-engine', :git => 'https://github.com/boston-library/common
 #gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
 gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
 
+gem 'blacklight_iiif_search'
+
 # can't use 3.3.5
 gem 'bootstrap-sass', '>=3.3.5.1'
 

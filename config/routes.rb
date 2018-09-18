@@ -5,6 +5,8 @@ CommonwealthPublicInterface::Application.routes.draw do
   # routes for CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/'
 
+  concern :iiif_search, BlacklightIiifSearch::Routes.new
+
   # user authentication
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
 
@@ -26,6 +28,7 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   resources :solr_documents, only: [:show], path: '/search', controller: 'catalog' do
     concerns :exportable
+    concerns :iiif_search
   end
 
   resources :bookmarks do
