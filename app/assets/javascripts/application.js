@@ -11,10 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
-//= require jquery
-//= require jquery_ujs
-
+//= require rails-ujs
+//= require turbolinks
 // Required by Blacklight
+//= require jquery
+//= require jquery-ui
 //= require blacklight/blacklight
 
 // require bootstrap-dropdown
