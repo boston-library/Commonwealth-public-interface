@@ -1,5 +1,6 @@
 
 class ApiController < ActionController::Base
+  protect_from_forgery with: :null_session
   include Blacklight::Configurable
   include Blacklight::TokenBasedUser
   #before_action :validate_pw, :except=>[:digital_stacks_login]

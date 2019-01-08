@@ -20,6 +20,7 @@ class CatalogController < ApplicationController
 
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
+    config.fetch_many_document_params = { fl: '*' }
 
     # deprecated, now set by CommonwealthVlrEngine::ControllerOverride
     #config.default_solr_params = {
@@ -39,17 +40,17 @@ class CatalogController < ApplicationController
     # * If left unset, then all facet values returned by solr will be displayed.
     # * If set to an integer, then "f.somefield.facet.limit" will be added to
     # solr request, with actual solr request being +1 your configured limit --
-    # you configure the number of items you actually want _displayed_ in a page.    
+    # you configure the number of items you actually want _displayed_ in a page.
     # * If set to 'true', then no additional parameters will be sent to solr,
     # but any 'sniffed' request limit parameters will be used for paging, with
-    # paging at requested limit -1. Can sniff from facet.limit or 
+    # paging at requested limit -1. Can sniff from facet.limit or
     # f.specific_field.facet.limit solr request params. This 'true' config
     # can be used if you set limits in :default_solr_params, or as defaults
     # on the solr side in the request handler itself. Request handler defaults
     # sniffing requires solr requests to be made with "echoParams=all", for
-    # app code to actually have it echo'd back to see it.  
+    # app code to actually have it echo'd back to see it.
     #
-    # :show may be set to false if you don't want the facet to be drawn in the 
+    # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
 
     # IMPORTANT: most facets are set in CommonwealthVlrEngine::ControllerOverride
@@ -100,7 +101,7 @@ class CatalogController < ApplicationController
 
     # IMPORTANT: sort fields are set in CommonwealthVlrEngine::ControllerOverride
 
-    # If there are more than this many search results, no spelling ("did you 
+    # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
 
@@ -108,6 +109,10 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
+
+    if Rails.env.development?
+      config.advanced_search[:form_solr_parameters]['fq'] = '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
+    end
 
     # advanced search facet limits
     config.advanced_search[:form_solr_parameters]['facet.field'] = ['genre_basic_ssim', 'physical_location_ssim']
