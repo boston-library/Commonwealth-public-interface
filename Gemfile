@@ -43,7 +43,7 @@ gem 'mini_racer', platforms: :ruby
 
 # blacklight
 # gem 'blacklight', '6.7.0'
-# gem 'rsolr', '~> 1.0.6'
+
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: "update-engine-cart"
 #gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
@@ -55,14 +55,15 @@ gem 'blacklight_iiif_search', '~> 0.0.2.pre.alpha'
 gem 'bootstrap-sass', '>= 3.3.5.1', '< 4'
 
 # gem 'devise', '~> 3.4.1'
+gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
-  gem 'web-console', '~> 2.0'
   gem 'awesome_print'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'pry-stack_explorer'
+  gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.3', '>= 1.3.11'
   gem 'rspec-rails', '~> 3.8.0'
   gem 'capybara', '>= 2.15'
