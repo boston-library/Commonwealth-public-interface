@@ -39,15 +39,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'mini_racer', platforms: :ruby
 
-
-
 # blacklight
 # gem 'blacklight', '6.7.0'
 
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: "update-engine-cart"
 #gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
-# gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
+#gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
 
 gem 'blacklight_iiif_search', '~> 0.0.2.pre.alpha'
 
