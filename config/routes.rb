@@ -40,7 +40,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   end
 
   get 'about_dc', :to => 'pages#about_dc', :as => 'about_dc'
-  get 'for_libraries' => redirect('http://digitalcommonwealth.memberlodge.org/')
+  get 'for_libraries' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'for_educators', :to => 'pages#lesson_plans', :as => 'for_educators'
   get 'lesson_plans', :to => 'pages#lesson_plans', :as => 'lesson_plans'
   get 'copyright', :to => 'pages#copyright', :as => 'copyright'
@@ -51,17 +51,17 @@ CommonwealthPublicInterface::Application.routes.draw do
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collections/show/:id', :to => 'pages#collection_tree'
   get 'collection-tree', :to => 'pages#collection_tree'
-  get 'resources' => redirect('http://digitalcommonwealth.memberlodge.org/')
+  get 'resources' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'contact', :to => 'pages#contact'
   get 'gettingstarted' => redirect('http://blog.bpl.org/dcbpl/')
-  get 'faqs' => redirect('http://digitalcommonwealth.memberlodge.org/FAQ')
-  get 'memberfees' => redirect('http://digitalcommonwealth.memberlodge.org/membership')
-  get 'lstagrant' => redirect('http://blog.bpl.org/dcbpl/')
-  get 'board' => redirect('http://digitalcommonwealth.memberlodge.org/directors')
-  get 'conference_presentations_2013' => redirect('http://digitalcommonwealth.memberlodge.org/2013Presentations')
-  get 'annualconference' => redirect('http://digitalcommonwealth.memberlodge.org/conferences')
-  get 'members' => redirect('http://digitalcommonwealth.memberlodge.org/directory')
-  get 'why_join' => redirect('http://digitalcommonwealth.memberlodge.org/why_join')
+  get 'faqs' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'memberfees' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'lstagrant' => redirect('https://blog.bpl.org/dcbpl/')
+  get 'board' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'conference_presentations_2013' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'annualconference' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'members' => redirect('https://digitalcommonwealth.wildapricot.org')
+  get 'why_join' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'items/*all', :to => 'pages#items'
 
   # Routes for the API

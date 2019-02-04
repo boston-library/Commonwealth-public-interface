@@ -4,9 +4,11 @@
 
   <ul class="page_list">
     <li><%= link_to t('blacklight.pages.about_dc.title'), about_dc_path %></li>
-    <li><%= link_to t('blacklight.pages.news.title'), t('blacklight.home.context.news.blog_url'), :target => '_blank' %></li>
-    <li><%= link_to 'Member Directory', 'http://digitalcommonwealth.memberlodge.org/directory', :target => '_blank' %></li>
-    <li><%= link_to 'Frequently Asked Questions', 'http://digitalcommonwealth.memberlodge.org/FAQ', :target => '_blank' %></li>
+    <li><%= link_to t('blacklight.pages.news.title'),
+                    t('blacklight.home.context.news.blog_url') %></li>
+    <li><%= link_to 'Membership & Programming',
+                    'https://digitalcommonwealth.wildapricot.org',
+                    :target => '_blank' %></li>
     <li><%= link_to t('blacklight.pages.copyright.title'), copyright_path %></li>
     <li><%= link_to t('blacklight.pages.partners.title'), partners_path %></li>
     <li><%= link_to t('blacklight.pages.contact.title'), feedback_path %></li>
