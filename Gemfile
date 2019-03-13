@@ -43,7 +43,7 @@ gem 'mini_racer', platforms: :ruby
 # gem 'blacklight', '6.7.0'
 
 #gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
-gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: "update-engine-cart"
+gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
 #gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
 #gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
 
