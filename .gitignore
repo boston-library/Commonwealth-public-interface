@@ -42,6 +42,7 @@ iiif_server.yml
 secrets.yml
 blacklight.yml
 bpl_api.yml
+puma.rb
 
 # Files to ignore by default in Git #
 #####################################
