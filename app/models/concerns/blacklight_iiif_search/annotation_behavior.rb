@@ -16,12 +16,16 @@ module BlacklightIiifSearch
     # local implementation expected
     def coordinates
       return '' unless query
+      default = '#xywh=0,0,0,0'
       coords_url = datastream_disseminator_url(document[:id], 'djvuCoords')
       coords_json = Rails.cache.fetch("#{document[:id]}_djvuCoords", :expires_in => 1.day) do
-        JSON.parse(Typhoeus::Request.get(coords_url).body)
+        begin
+          JSON.parse(Typhoeus::Request.get(coords_url).body)
+        rescue JSON::ParserError
+          nil
+        end
       end
-      if coords_json
-        default = '#xywh=0,0,0,0'
+      if coords_json && coords_json['words']
         matches = coords_json['words'].select { |k, _v| k.downcase =~ /#{query.downcase}/ }
         return default unless matches
         djvu_coords_array = matches.values.flatten(1)[hl_index]
