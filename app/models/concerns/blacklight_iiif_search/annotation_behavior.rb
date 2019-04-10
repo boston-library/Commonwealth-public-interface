@@ -21,13 +21,16 @@ module BlacklightIiifSearch
         JSON.parse(Typhoeus::Request.get(coords_url).body)
       end
       if coords_json
+        default = '#xywh=0,0,0,0'
         matches = coords_json['words'].select { |k, _v| k.downcase =~ /#{query.downcase}/ }
+        return default unless matches
         djvu_coords_array = matches.values.flatten(1)[hl_index]
+        return default unless djvu_coords_array
         width = djvu_coords_array[2] - djvu_coords_array[0]
         height = djvu_coords_array[1] - djvu_coords_array[3]
         "#xywh=#{djvu_coords_array[0]},#{djvu_coords_array[3]},#{width},#{height}"
       else
-        '#xywh=0,0,0,0'
+        default
       end
     end
   end
