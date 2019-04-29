@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '5.2.2'
+gem 'rails', '5.2.2.1'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -65,8 +65,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3', '>= 1.3.11', "< 1.4.0"
   gem 'rspec-rails', '~> 3.8.0'
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   gem  'puma', '~> 3.11.4'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 3.0'
 end
