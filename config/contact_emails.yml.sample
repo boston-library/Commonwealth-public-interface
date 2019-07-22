@@ -4,13 +4,16 @@ development:
   site_admin: someone@example.org
   dc_admin: someone@example.org
   image_requests: someone@example.org
+  research_question: someone@example.org
 
 test:
   site_admin:
   dc_admin:
   image_requests:
+  research_question:
 
 production:
   site_admin:
   dc_admin:
   image_requests:
+  research_question:
