@@ -1,59 +1,49 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '5.2.2.1'
+gem 'rails', '6.0.3.4'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
-gem 'sass-rails',   '~> 5.0'
-gem 'coffee-rails', '~> 4.2'
-
-gem 'uglifier', '>= 1.3.0'
-
+# Use Puma as the app server
+gem 'puma', '>= 3.12.4', '< 5'
+# Use SCSS for stylesheets
+gem 'sass-rails', '>= 6'
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '~> 4.0'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.7'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 4.0'
+# Use Active Model has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
-gem 'bootsnap', '>= 1.1.0', require: false
+# Use Active Storage variant
+# gem 'image_processing', '~> 1.2'
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
+gem 'rsolr', '>= 1.0', '< 3'
+gem 'bootstrap', '~> 4.0'
+gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
+gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: 'update-everything'
+# gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
+gem 'bpluser', github: 'boston-library/bpluser', branch: 'rails-6-support'
 
-# To use Jbuilder templates for JSON
-gem 'jbuilder', '~> 2.5'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
-#various utilities
-# gem 'libv8', '~> 3.16.14.3'
-# gem 'therubyracer'
-
-gem 'mini_racer', platforms: :ruby
-
-# blacklight
-# gem 'blacklight', '6.7.0'
-
-#gem 'commonwealth-vlr-engine', :path => '/home/eenglish/boston-library/commonwealth-vlr-engine'
-gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
-#gem 'blacklight-maps', :path => '/home/eenglish/boston-library/blacklight-maps'
-#gem 'blacklight-maps', :git => 'https://github.com/boston-library/blacklight-maps', :branch => 'fix-initialzoom-option'
-
-gem 'blacklight_iiif_search', '~> 0.0.2.pre.alpha'
-
-# can't use 3.3.5
-gem 'bootstrap-sass', '>= 3.3.5.1', '< 4'
 gem 'rack-attack', '~> 6.3'
-# gem 'devise', '~> 3.4.1'
-gem 'web-console', '~> 2.0', group: :development
+
+gem 'dotenv-rails', '~> 2.7'
+# rubocop has to be loaded in production, or rake commands fail
+gem 'rubocop', '~> 0.75.1'
+gem 'rubocop-performance', '~> 1.5'
+gem 'rubocop-rails', '~> 2.4.2'
+gem 'rubocop-rspec'
 
 group :development, :test do
   gem 'awesome_print'
@@ -61,10 +51,9 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'sqlite3', '~> 1.3', '>= 1.3.11', "< 1.4.0"
-  gem 'rspec-rails', '~> 3.8.0'
-  gem 'capybara', '>= 2.15'
-  gem  'puma', '>= 3.12.4', '< 5'
+  gem 'sqlite3', '~> 1.4'
+  gem 'rspec-rails', '~> 3.9', '< 4.0'
+  gem 'capybara', '~> 3.0', '< 4'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers', '~> 3.0'
 end
