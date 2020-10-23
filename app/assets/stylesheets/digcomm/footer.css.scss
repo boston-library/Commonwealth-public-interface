@@ -1,4 +1,4 @@
-@import 'commonwealth-vlr-engine/cmmnwlth_defaults';
+// @import 'commonwealth-vlr-engine/cmmnwlth_defaults';
 
 #footer {
 
@@ -14,7 +14,7 @@
   }
 
   #footer_address {
-    color: $darker_gray;
+    color: darkgrey;
 
     #footer_social {
       float: right;
@@ -24,7 +24,7 @@
         padding-right: 0;
 
         a {
-          color: $darker_gray;
+          color: darkgrey;
         }
 
       }
@@ -36,5 +36,5 @@
     }
 
   }
-
+  
 }

@@ -11,15 +11,19 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
-//= require rails-ujs
-// Required by Blacklight
 //= require jquery
-//= require jquery-ui
+//= require jquery3
+//= require rails-ujs
+// require turbolinks
+//
+// Required by Blacklight
+//= require popper
+// Twitter Typeahead for autocomplete
+//= require twitter/typeahead
+//= require bootstrap
 //= require blacklight/blacklight
-
-// require bootstrap-dropdown
+// Required by Commonwealth-VLR-Engine
 //= require bootstrap/carousel
-
 //= require commonwealth-vlr-engine
 
 // WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
