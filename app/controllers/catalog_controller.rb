@@ -10,28 +10,17 @@ class CatalogController < ApplicationController
   include CommonwealthVlrEngine::ControllerOverride
 
   configure_blacklight do |config|
-
-    # configuration for Blacklight IIIF Content Search
-    config.iiif_search = {
-      full_text_field: 'ocr_tsiv',
-      object_relation_field: 'is_image_of_ssim',
-      supported_params: %w[q page]
-    }
-
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
     config.fetch_many_document_params = { fl: '*' }
 
-    # deprecated, now set by CommonwealthVlrEngine::ControllerOverride
-    #config.default_solr_params = {
-    #  :qt => 'search',
-    #  :rows => 20
-    #}
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
 
-    # deprecated, now set by CommonwealthVlrEngine
-    # solr field configuration for search results/index views
-    #config.index.title_field = 'title_info_primary_tsi'
-    #config.index.display_type_field = 'active_fedora_model_suffix_ssi'
+    config.add_show_tools_partial(:folder_items, partial: 'folder_item_control')
+    config.add_show_tools_partial(:email, partial: 'show_email_tools', callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -109,16 +98,9 @@ class CatalogController < ApplicationController
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
 
-
-    if Rails.env.development?
-      config.advanced_search[:form_solr_parameters]['fq'] = '+institution_pid_ssi:"' + CommonwealthVlrEngine.config[:institution][:pid] + '"'
-    end
-
     # advanced search facet limits
     config.advanced_search[:form_solr_parameters]['facet.field'] = ['genre_basic_ssim', 'physical_location_ssim']
     config.advanced_search[:form_solr_parameters]['f.physical_location_ssim.facet.limit'] = -1
     config.advanced_search[:form_solr_parameters]['f.physical_location_ssim.facet.sort'] = 'index'
-
   end
-
 end

@@ -1,5 +1,4 @@
 class Notifier < ActionMailer::Base
-
   include CommonwealthVlrEngine::Notifier
 
   private
@@ -16,5 +15,4 @@ class Notifier < ActionMailer::Base
     end
     recipient_email
   end
-
 end

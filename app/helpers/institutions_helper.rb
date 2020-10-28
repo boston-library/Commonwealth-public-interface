@@ -5,5 +5,4 @@ module InstitutionsHelper
   def should_render_inst_az?
     true
   end
-
 end

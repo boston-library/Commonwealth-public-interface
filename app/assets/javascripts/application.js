@@ -26,7 +26,9 @@
 //= require bootstrap/carousel
 //= require commonwealth-vlr-engine
 
-// WARNING: require tree disabled to avoid heavy JS files such as modernizr, openseadragon, etc.
+// WARNING: require tree disabled to avoid heavy JS files such as openseadragon, etc.
 // from being automatically included on pages that don't need them
 // WARNING: to require any further app-specific JS, you must use the 'require_directory' directive
 // require_tree .
+// TODO: header_nav_hover maybe unnecessary?, further testing on mobile needed
+// require header_nav_hover
