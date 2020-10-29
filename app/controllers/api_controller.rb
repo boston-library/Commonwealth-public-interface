@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # created as part of Digital Stacks project for Johnson building public diplays
 # allows user to transfer "favorites" from Digital Stacks interface to a DC user account
 class ApiController < ActionController::Base

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-class CatalogController < ApplicationController
 
+class CatalogController < ApplicationController
   include Blacklight::Catalog
 
   # CatalogController-scope behavior and configuration for BlacklightIiifSearch
@@ -48,11 +48,10 @@ class CatalogController < ApplicationController
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     # next line deprecated as of BL 3.7.0
-    #config.default_solr_params[:'facet.field'] = config.facet_fields.keys
+    # config.default_solr_params[:'facet.field'] = config.facet_fields.keys
     config.add_facet_fields_to_solr_request!
-    #use this instead if you don't want to query facets marked :show=>false
-    #config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
-
+    # use this instead if you don't want to query facets marked :show=>false
+    # config.default_solr_params[:'facet.field'] = config.facet_fields.select{ |k, v| v[:show] != false}.keys
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
@@ -64,7 +63,7 @@ class CatalogController < ApplicationController
 
     # IMPORTANT: show fields are set in
     # commonwealth-vlr-engine/app/views/_show_partials/_show_default_metadata
-    #config.add_show_field 'title_t', :label => 'Title:'
+    # config.add_show_field 'title_t', :label => 'Title:'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -81,7 +80,6 @@ class CatalogController < ApplicationController
     # or can be specified manually to be different.
 
     # IMPORTANT: search fields are set in CommonwealthVlrEngine::ControllerOverride
-
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and

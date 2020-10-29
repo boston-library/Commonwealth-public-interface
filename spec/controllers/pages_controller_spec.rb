@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe PagesController do
-
   render_views
 
   describe "GET 'home'" do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Notifier < ActionMailer::Base
   include CommonwealthVlrEngine::Notifier
 
@@ -9,8 +11,6 @@ class Notifier < ActionMailer::Base
                         CONTACT_EMAILS['dc_admin']
                       elsif topic == t('blacklight.feedback.form.topic.options.research.option')
                         CONTACT_EMAILS['research_question']
-                      else
-                        nil
                       end
     recipient_email || super
   end

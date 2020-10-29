@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommonwealthSearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder

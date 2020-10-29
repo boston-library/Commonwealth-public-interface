@@ -1,6 +1,7 @@
-CommonwealthPublicInterface::Application.routes.draw do
+# frozen_string_literal: true
 
-  root :to => 'pages#home'
+CommonwealthPublicInterface::Application.routes.draw do
+  root to: 'pages#home'
 
   # routes for CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/'
@@ -8,10 +9,12 @@ CommonwealthPublicInterface::Application.routes.draw do
   concern :iiif_search, BlacklightIiifSearch::Routes.new
 
   # user authentication
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations", :sessions => "users/sessions"}
+  devise_for :users,
+             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
+                            registrations: 'users/registrations', sessions: 'users/sessions' }
 
   # bookmarks item actions
-  put 'bookmarks/item_actions', :to => 'folder_items_actions#folder_item_actions', :as => 'selected_bookmarks_actions'
+  put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
@@ -39,20 +42,20 @@ CommonwealthPublicInterface::Application.routes.draw do
     end
   end
 
-  get 'about_dc', :to => 'pages#about_dc', :as => 'about_dc'
+  get 'about_dc', to: 'pages#about_dc', as: 'about_dc'
   get 'for_libraries' => redirect('https://digitalcommonwealth.wildapricot.org')
-  get 'for_educators', :to => 'pages#lesson_plans', :as => 'for_educators'
-  get 'lesson_plans', :to => 'pages#lesson_plans', :as => 'lesson_plans'
-  get 'copyright', :to => 'pages#copyright', :as => 'copyright'
-  get 'partners', :to => 'pages#partners', :as => 'partners'
-  get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), :as => 'blog'
-  get 'api', :to => 'pages#api', :as => 'api'
+  get 'for_educators', to: 'pages#lesson_plans', as: 'for_educators'
+  get 'lesson_plans', to: 'pages#lesson_plans', as: 'lesson_plans'
+  get 'copyright', to: 'pages#copyright', as: 'copyright'
+  get 'partners', to: 'pages#partners', as: 'partners'
+  get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), as: 'blog'
+  get 'api', to: 'pages#api', as: 'api'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
-  get 'collections/show/:id', :to => 'pages#collection_tree'
-  get 'collection-tree', :to => 'pages#collection_tree'
+  get 'collections/show/:id', to: 'pages#collection_tree'
+  get 'collection-tree', to: 'pages#collection_tree'
   get 'resources' => redirect('https://digitalcommonwealth.wildapricot.org')
-  get 'contact', :to => 'pages#contact'
+  get 'contact', to: 'pages#contact'
   get 'gettingstarted' => redirect('http://blog.bpl.org/dcbpl/')
   get 'faqs' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'memberfees' => redirect('https://digitalcommonwealth.wildapricot.org')
@@ -62,13 +65,11 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'annualconference' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'members' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'why_join' => redirect('https://digitalcommonwealth.wildapricot.org')
-  get 'items/*all', :to => 'pages#items'
+  get 'items/*all', to: 'pages#items'
 
   # Routes for the API
-  post '/api/digital_stacks/user_create', :to => 'api#digital_stacks_create', :as => 'digital_stacks_create'
-  get '/api/digital_stacks/saved_items/:id', :to => 'api#digital_stacks_login', :as => 'digital_stacks_login'
-
-  # match 'preview/:id', :to => "preview#show"  ## TODO: figure out why this doesn't work!
+  post '/api/digital_stacks/user_create', to: 'api#digital_stacks_create', as: 'digital_stacks_create'
+  get '/api/digital_stacks/saved_items/:id', to: 'api#digital_stacks_login', as: 'digital_stacks_login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

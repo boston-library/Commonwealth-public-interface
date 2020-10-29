@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   include CommonwealthVlrEngine::Pages
 
@@ -7,12 +9,10 @@ class PagesController < ApplicationController
     section_active_count = 0
     sections = ['maps', 'collections', 'institutions', 'formats']
     sections.each do |section|
-      if t("blacklight.home.browse.#{section}.enabled")
-        section_active_count += 1
-      end
+      section_active_count += 1 if t("blacklight.home.browse.#{section}.enabled")
     end
 
-    @middle_feature_columns = 12 /  section_active_count
+    @middle_feature_columns = 12 / section_active_count
   end
 
   def about_dc
@@ -52,5 +52,4 @@ class PagesController < ApplicationController
     flash[:notice] = t('blacklight.update.item')
     redirect_to search_catalog_path
   end
-
 end

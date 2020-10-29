@@ -53,6 +53,10 @@ group :development, :test do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 3.9', '< 4.0'
+  gem 'rubocop', '~> 0.75.1'
+  gem 'rubocop-performance', '~> 1.5'
+  gem 'rubocop-rails', '~> 2.4.2'
+  gem 'rubocop-rspec'
   gem 'capybara', '~> 3.0', '< 4'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers', '~> 3.0'
