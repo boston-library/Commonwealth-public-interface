@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CollectionsHelper
   include CommonwealthVlrEngine::CollectionsHelperBehavior
 
@@ -5,5 +7,4 @@ module CollectionsHelper
   def should_render_col_az?
     true
   end
-
 end

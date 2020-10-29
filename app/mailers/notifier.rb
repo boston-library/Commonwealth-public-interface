@@ -3,16 +3,15 @@ class Notifier < ActionMailer::Base
 
   private
 
+  # adds a few additional routing options
   def route_email(topic)
-    if topic == t('blacklight.feedback.form.topic.options.membership.option')
-      recipient_email = CONTACT_EMAILS['dc_admin']
-    elsif topic == t('blacklight.feedback.form.topic.options.repro.option')
-      recipient_email = CONTACT_EMAILS['image_requests']
-    elsif topic == t('blacklight.feedback.form.topic.options.research.option')
-      recipient_email = CONTACT_EMAILS['research_question']
-    else
-      recipient_email = CONTACT_EMAILS['site_admin']
-    end
-    recipient_email
+    recipient_email = if topic == t('blacklight.feedback.form.topic.options.membership.option')
+                        CONTACT_EMAILS['dc_admin']
+                      elsif topic == t('blacklight.feedback.form.topic.options.research.option')
+                        CONTACT_EMAILS['research_question']
+                      else
+                        nil
+                      end
+    recipient_email || super
   end
 end

@@ -1,4 +1,5 @@
-
+# created as part of Digital Stacks project for Johnson building public diplays
+# allows user to transfer "favorites" from Digital Stacks interface to a DC user account
 class ApiController < ActionController::Base
   protect_from_forgery with: :null_session
   include Blacklight::Configurable
@@ -191,7 +192,5 @@ class ApiController < ActionController::Base
     else
       redirect_to '/folders'
     end
-
   end
-
 end

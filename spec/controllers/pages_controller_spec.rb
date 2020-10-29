@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe PagesController do
@@ -59,5 +61,4 @@ describe PagesController do
       expect(response.body).to have_selector('div.about_content')
     end
   end
-
 end

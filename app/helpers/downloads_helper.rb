@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 module DownloadsHelper
   include CommonwealthVlrEngine::DownloadsHelperBehavior
 
-  # always return false, because we are seldom 100% sure, caution preferred
-  # therefore always show indemnification warning
+  # return false, unless we 100% assert no copyright
   def public_domain?(document)
+    return true if document[:rightsstatement_ss] == 'No Copyright - United States'
+
     false
   end
 

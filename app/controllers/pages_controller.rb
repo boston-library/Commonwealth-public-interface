@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include CommonwealthVlrEngine::Pages
 
   def home
-    @carousel_slides = CarouselSlide.where(:context=>'root').order(:sequence)
+    @carousel_slides = CarouselSlide.where(context: 'root').order(:sequence)
 
     section_active_count = 0
     sections = ['maps', 'collections', 'institutions', 'formats']
