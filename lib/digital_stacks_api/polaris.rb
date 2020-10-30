@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module BplApi
+module DigitalStacksApi
   class Polaris
     FIELD_MAPPINGS = {
       'barcode' => 'Barcode',
@@ -19,31 +19,31 @@ module BplApi
     end
 
     def secure_uri
-      @secure_uri ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['secure_uri']
+      @secure_uri ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['secure_uri']
     end
 
     def public_uri
-      @public_uri ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['public_uri']
+      @public_uri ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['public_uri']
     end
 
     def domain
-      @domain ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['domain']
+      @domain ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['domain']
     end
 
     def username
-      @username ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['username']
+      @username ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['username']
     end
 
     def password
-      @password ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['password']
+      @password ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['password']
     end
 
     def access_id
-      @access_id ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['access_id']
+      @access_id ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['access_id']
     end
 
     def access_key
-      @access_key ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['access_key']
+      @access_key ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['access_key']
     end
 
     def http_date

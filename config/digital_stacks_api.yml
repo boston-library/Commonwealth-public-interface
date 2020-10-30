@@ -1,0 +1,18 @@
+default: &default
+  secure_uri: <%= ENV.fetch('DIGSTACKS_API_SECURE_URI', '') %>
+  public_uri: <%= ENV.fetch('DIGSTACKS_API_PUBLIC_URI', '') %>
+  access_id: <%= ENV.fetch('DIGSTACKS_API_ACCESS_ID', '') %>
+  access_key: <%= ENV.fetch('DIGSTACKS_API_ACCESS_KEY', '') %>
+  username: <%= ENV.fetch('DIGSTACKS_API_USERNAME', '') %>
+  password: <%= ENV.fetch('DIGSTACKS_API_PASSWORD', '') %>
+  domain: <%= ENV.fetch('DIGSTACKS_API_DOMAIN', '') %>
+  api_password: <%= ENV.fetch('DIGSTACKS_API_API_PASSWORD', '') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

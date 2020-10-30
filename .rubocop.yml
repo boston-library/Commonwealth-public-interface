@@ -12,7 +12,7 @@ AllCops:
     - 'spec/internal/**/*'
     - 'spec/fixtures/**/'
     - 'vendor/**/*'
-    - 'app/controllers/api_controller.rb'
+    - 'app/controllers/digital_stacks_api_controller.rb'
     - 'config/puma.rb'
   DisplayCopNames: true
   DisabledByDefault: true

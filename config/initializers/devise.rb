@@ -235,14 +235,14 @@ Devise.setup do |config|
   # config.omniauth :password, :title => 'BPL local account login',
   #                 :login_field => :username
 
-  OMNIAUTH_POLARIS_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-polaris.yml'))[Rails.env]
+  OMNIAUTH_POLARIS_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-polaris.yml'))).result, aliases: true)[Rails.env]
   config.omniauth :polaris, title: OMNIAUTH_POLARIS_GLOBAL['title'],
                   http_uri: OMNIAUTH_POLARIS_GLOBAL['http_uri'],
                   access_key: OMNIAUTH_POLARIS_GLOBAL['access_key'],
                   access_id: OMNIAUTH_POLARIS_GLOBAL['access_id'],
                   method: OMNIAUTH_POLARIS_GLOBAL['method']
 
-  OMNIAUTH_FACEBOOK_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-facebook.yml'))[Rails.env]
+  OMNIAUTH_FACEBOOK_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-facebook.yml'))).result, aliases: true)[Rails.env]
   config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
                   OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
                   scope: OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']

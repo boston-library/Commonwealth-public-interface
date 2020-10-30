@@ -1,0 +1,15 @@
+default: &default
+  title: BPL Polaris Login
+  http_uri: <%= ENV.fetch('POLARIS_URI', '') %>
+  access_key: <%= ENV.fetch('POLARIS_KEY', '') %>
+  access_id: <%= ENV.fetch('POLARIS_ID', '') %>
+  method: GET
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

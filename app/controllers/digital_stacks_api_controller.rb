@@ -2,7 +2,7 @@
 
 # created as part of Digital Stacks project for Johnson building public diplays
 # allows user to transfer "favorites" from Digital Stacks interface to a DC user account
-class ApiController < ActionController::Base
+class DigitalStacksApiController < ActionController::Base
   protect_from_forgery with: :null_session
   include Blacklight::Configurable
   include Blacklight::TokenBasedUser
@@ -55,7 +55,7 @@ class ApiController < ActionController::Base
         barcode = request_json['barcode']['value']
         debug_user_logger.debug "Barcode (MBLN) is: #{barcode}"
 
-        lookup = BplApi::Polaris.new
+        lookup = DigitalStacksApi::Polaris.new
         lookup_response = lookup.get_user_data(barcode)
 
         if lookup_response.blank? || lookup_response.info[:valid_patron] == 'false'
@@ -155,7 +155,7 @@ class ApiController < ActionController::Base
   end
 
   def pw
-    @pw ||= YAML.load_file(Rails.root.join('config', 'bpl_api.yml'))[Rails.env]['api_password']
+    @pw ||= YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'digital_stacks_api.yml'))).result, aliases: true)[Rails.env]['api_password']
   end
 
   def digital_stacks_login

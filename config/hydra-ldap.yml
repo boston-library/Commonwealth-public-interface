@@ -1,0 +1,18 @@
+default: &default
+  host: <%= ENV.fetch('LDAP_HOST', '') %>
+  port: <%= ENV.fetch('LDAP_PORT', '') %>
+  # group_base: nil
+  base: <%= ENV.fetch('LDAP_BASE', '') %>
+  uid: <%= ENV.fetch('LDAP_UID', '') %>
+  username: <%= ENV.fetch('LDAP_USERNAME', '') %>
+  password: <%= ENV.fetch('LDAP_PASSWORD', '') %>
+  admin_base: <%= ENV.fetch('LDAP_ADMIN_BASE', '') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
