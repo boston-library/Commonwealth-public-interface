@@ -1,4 +1,4 @@
-class UserInstitutions < ActiveRecord::Migration
+class UserInstitutions < ActiveRecord::Migration[4.2]
   def up
     create_table :institutions do |t|
       t.string :name

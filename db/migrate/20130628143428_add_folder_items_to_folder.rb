@@ -1,4 +1,4 @@
-class AddFolderItemsToFolder < ActiveRecord::Migration
+class AddFolderItemsToFolder < ActiveRecord::Migration[4.2]
   def self.up
     create_table :bpluser_folder_items do |t|
       t.integer :folder_id

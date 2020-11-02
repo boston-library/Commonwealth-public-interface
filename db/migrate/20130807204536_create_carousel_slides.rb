@@ -1,4 +1,4 @@
-class CreateCarouselSlides < ActiveRecord::Migration
+class CreateCarouselSlides < ActiveRecord::Migration[4.2]
   def change
     create_table :carousel_slides do |t|
       t.integer :sequence

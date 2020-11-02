@@ -1,4 +1,4 @@
-class AddFoldersToUser < ActiveRecord::Migration
+class AddFoldersToUser < ActiveRecord::Migration[4.2]
   def self.up
     create_table :bpluser_folders do |t|
       t.string :title

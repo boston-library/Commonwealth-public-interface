@@ -1,5 +1,5 @@
 # -*- encoding : utf-8 -*-
-class AddFieldsToUser < ActiveRecord::Migration
+class AddFieldsToUser < ActiveRecord::Migration[4.2]
   def self.up
     add_column :users, :username, :string
     add_column :users, :provider, :string

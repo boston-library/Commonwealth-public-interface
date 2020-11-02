@@ -1,4 +1,4 @@
-class ChangeCarouselSlidesToIiif < ActiveRecord::Migration
+class ChangeCarouselSlidesToIiif < ActiveRecord::Migration[4.2]
   def change
 
     remove_column(:carousel_slides, :scale)

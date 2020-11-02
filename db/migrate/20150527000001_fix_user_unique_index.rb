@@ -1,4 +1,4 @@
-class FixUserUniqueIndex < ActiveRecord::Migration
+class FixUserUniqueIndex < ActiveRecord::Migration[4.2]
   def change
     remove_index :users, :email
     add_index :users, [:provider, :uid], :unique => true
