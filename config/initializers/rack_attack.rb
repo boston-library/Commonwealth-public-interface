@@ -3,16 +3,17 @@ Rack::Attack.safelist('allow from localhost') do |req|
   '127.0.0.1' == req.ip || '::1' == req.ip
 end
 
-Rack::Attack.throttle('download-requests-by-ip', limit: 10, period: 1.minute) do |req|
-  req.ip if req.path.include?('/start_download/')
+Rack::Attack.blocklist('allow2ban download scrapers') do |req|
+  Rack::Attack::Allow2Ban.filter(req.ip, maxretry: 10, findtime: 1.minute, bantime: 1.day) do
+    req.path.include?('/start_download/')
+  end
 end
 
-ActiveSupport::Notifications.subscribe("throttle.rack_attack") do |*args|
+ActiveSupport::Notifications.subscribe(/rack_attack/) do |*args|
   event = ActiveSupport::Notifications::Event.new(*args)
 
   Rails.logger.info '--------------------------------------------------------------'
-  Rails.logger.info 'Client Throttled after going over the download request limit'
-  Rails.logger.info 'Client Info:'
+  Rails.logger.info 'Request Info:'
   Rails.logger.info "<Request Name: #{event.name}; ID: #{event.transaction_id}; Duration: #{event.duration} />"
   Rails.logger.info "< #{event.payload.inspect} />"
   Rails.logger.info '--------------------------------------------------------------'
