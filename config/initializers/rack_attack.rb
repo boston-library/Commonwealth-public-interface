@@ -3,10 +3,21 @@ Rack::Attack.safelist('allow from localhost') do |req|
   '127.0.0.1' == req.ip || '::1' == req.ip
 end
 
-Rack::Attack.blocklist('allow2ban download scrapers') do |req|
-  Rack::Attack::Allow2Ban.filter(req.ip, maxretry: 10, findtime: 1.minute, bantime: 1.day) do
-    req.path.include?('/start_download/')
-  end
+Rack::Attack.throttled_response = lambda do |env|
+  match_data = env['rack.attack.match_data']
+  now = match_data[:epoch_time]
+
+  headers = {
+    'RateLimit-Limit' => match_data[:limit].to_s,
+    'RateLimit-Remaining' => '0',
+    'RateLimit-Reset' => (now + (match_data[:period] - now % match_data[:period])).to_s
+  }
+
+  [ 429, headers, ["Throttled\n"]]
+end
+
+Rack::Attack.throttle("requests by ip", limit: 10, period: 1.minute) do |request|
+  req.ip if req.path.include?('/start_download/')
 end
 
 ActiveSupport::Notifications.subscribe(/rack_attack/) do |*args|
