@@ -51,7 +51,7 @@ gem 'blacklight_iiif_search', '~> 0.0.2.pre.alpha'
 
 # can't use 3.3.5
 gem 'bootstrap-sass', '>= 3.3.5.1', '< 4'
-
+gem 'rack-attack', '~> 6.2.2'
 # gem 'devise', '~> 3.4.1'
 gem 'web-console', '~> 2.0', group: :development
 
@@ -60,12 +60,11 @@ group :development, :test do
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-rescue'
-  gem 'pry-stack_explorer'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.3', '>= 1.3.11', "< 1.4.0"
   gem 'rspec-rails', '~> 3.8.0'
   gem 'capybara', '>= 2.15'
-  gem  'puma', '~> 3.11.4'
+  gem  'puma', '>= 3.12.4', '< 5'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers', '~> 3.0'
 end
