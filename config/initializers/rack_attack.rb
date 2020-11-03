@@ -16,7 +16,7 @@ Rack::Attack.throttled_response = lambda do |env|
   [ 429, headers, ["Throttled\n"]]
 end
 
-Rack::Attack.throttle("requests by ip", limit: 10, period: 1.minute) do |request|
+Rack::Attack.throttle("requests by ip", limit: 10, period: 1.minute) do |req|
   req.ip if req.path.include?('/start_download/')
 end
 
