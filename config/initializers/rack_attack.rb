@@ -7,19 +7,19 @@ Rack::Attack.throttle("requests by ip", limit: 10, period: 1.minute) do |req|
   req.ip if req.path.include?('/start_download/')
 end
 
-Rack::Attack.throttled_response_retry_after_header = true
-
 Rack::Attack.throttled_response = lambda do |env|
   match_data = env['rack.attack.match_data']
   now = match_data[:epoch_time]
+  retry_after = match_data[:period] - (now % match_data[:period])
 
   headers = {
+    'Content-Type' => 'text/plain',
+    'Retry-After' => retry_after.to_s,
     'RateLimit-Limit' => match_data[:limit].to_s,
-    'RateLimit-Remaining' => '0',
-    'RateLimit-Reset' => (now + (match_data[:period] - now % match_data[:period])).to_s
+    'RateLimit-Remaining' => '0'
   }
 
-  [ 429, headers, ["Throttled\n"]]
+  [ 429, headers, ["Retry later\n"]]
 end
 
 ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |*args|
