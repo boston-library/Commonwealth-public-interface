@@ -51,7 +51,7 @@ gem 'blacklight_iiif_search', '~> 0.0.2.pre.alpha'
 
 # can't use 3.3.5
 gem 'bootstrap-sass', '>= 3.3.5.1', '< 4'
-gem 'rack-attack', '~> 6.2.2'
+gem 'rack-attack', '~> 6.3'
 # gem 'devise', '~> 3.4.1'
 gem 'web-console', '~> 2.0', group: :development
 
