@@ -17,5 +17,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  url: <%= ENV.fetch("COMMONWEALTH_DB", "") %>
-
+  database: <%= ENV.fetch('DB_NAME', '') %>
+  host: <%= ENV.fetch('DB_HOST', '') %>
+  username: <%= ENV.fetch('DB_USERNAME', '') %>
+  password: <%= ENV.fetch('DB_PASSWORD', '') %>
