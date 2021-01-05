@@ -1,3 +1,0 @@
-== Commonwealth-public-interface
-
-A Hydra head serving as a public (read-only) interface to the Digital Commonwealth repository.
