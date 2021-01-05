@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
   # Rails 4 upgrade
   config.secret_key = SECRETS['devise_secret_key']
 
@@ -30,7 +31,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.authentication_keys = [ :uid, :provider ]
-  config.authentication_keys = [ :uid ]
+  config.authentication_keys = [:uid]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -45,7 +46,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.case_insensitive_keys = [ :uid, :provider ]
-  config.case_insensitive_keys = [ :uid ]
+  config.case_insensitive_keys = [:uid]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
@@ -53,7 +54,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.strip_whitespace_keys = [ :uid, :provider ]
-  config.strip_whitespace_keys = [ :uid ]
+  config.strip_whitespace_keys = [:uid]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -222,27 +223,29 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  #config.omniauth :ldap, :title => 'BPL admin ldap',
-  #                :host => Hydra::LDAP.ldap_config[:host],
-  #                :base => Hydra::LDAP.ldap_config[:base],
-  #                :uid => Hydra::LDAP.ldap_config[:uid],
-  #                :port => Hydra::LDAP.ldap_config[:port],
-  #                :bind_dn => Hydra::LDAP.ldap_config[:username],
-  #                :password => Hydra::LDAP.ldap_config[:password]
+  # config.omniauth :ldap, :title => 'BPL admin ldap',
+  #                 :host => Hydra::LDAP.ldap_config[:host],
+  #                 :base => Hydra::LDAP.ldap_config[:base],
+  #                 :uid => Hydra::LDAP.ldap_config[:uid],
+  #                 :port => Hydra::LDAP.ldap_config[:port],
+  #                 :bind_dn => Hydra::LDAP.ldap_config[:username],
+  #                 :password => Hydra::LDAP.ldap_config[:password]
 
   # fix-login fix
-  #config.omniauth :password, :title => 'BPL local account login',
-  #                :login_field => :username
+  # config.omniauth :password, :title => 'BPL local account login',
+  #                 :login_field => :username
 
-  OMNIAUTH_POLARIS_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-polaris.yml'))[Rails.env]
-  config.omniauth :polaris, :title => OMNIAUTH_POLARIS_GLOBAL['title'],
-                  :http_uri => OMNIAUTH_POLARIS_GLOBAL['http_uri'],
-                  :access_key => OMNIAUTH_POLARIS_GLOBAL['access_key'],
-                  :access_id => OMNIAUTH_POLARIS_GLOBAL['access_id'],
-                  :method => OMNIAUTH_POLARIS_GLOBAL['method']
+  OMNIAUTH_POLARIS_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-polaris.yml'))).result, aliases: true)[Rails.env]
+  config.omniauth :polaris, title: OMNIAUTH_POLARIS_GLOBAL['title'],
+                  http_uri: OMNIAUTH_POLARIS_GLOBAL['http_uri'],
+                  access_key: OMNIAUTH_POLARIS_GLOBAL['access_key'],
+                  access_id: OMNIAUTH_POLARIS_GLOBAL['access_id'],
+                  method: OMNIAUTH_POLARIS_GLOBAL['method']
 
-  OMNIAUTH_FACEBOOK_GLOBAL = YAML.load_file(Rails.root.join('config', 'omniauth-facebook.yml'))[Rails.env]
-  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'], OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'], :scope=>OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
+  OMNIAUTH_FACEBOOK_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-facebook.yml'))).result, aliases: true)[Rails.env]
+  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
+                  OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
+                  scope: OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

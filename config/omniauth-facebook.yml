@@ -1,0 +1,13 @@
+default: &default
+  facebook_key: <%= ENV.fetch('FACEBOOK_KEY', '') %>
+  facebook_secret: <%= ENV.fetch('FACEBOOK_SECRET', '') %>
+  facebook_scope: <%= ENV.fetch('FACEBOOK_SCOPE', '') %>
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

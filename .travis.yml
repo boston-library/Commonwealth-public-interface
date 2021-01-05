@@ -1,0 +1,17 @@
+language: ruby
+sudo: false
+dist: bionic
+cache:
+  bundler: true
+before_install:
+- gem update --system 3.1.4
+- gem install bundler:2.1.4
+before_script:
+- RAILS_ENV=test bundle exec rails db:prepare
+rvm:
+- 2.6.6
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  matrix:
+  - RAILS_VERSION=6.0.3.4

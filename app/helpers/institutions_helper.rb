@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module InstitutionsHelper
   include CommonwealthVlrEngine::InstitutionsHelperBehavior
 
@@ -5,5 +7,4 @@ module InstitutionsHelper
   def should_render_inst_az?
     true
   end
-
 end

@@ -23,7 +23,7 @@
 
   <p>
     Base URL:<br/>
-    <pre><%= FEDORA_URL['url'] %>/oaiprovider/?</pre>
+    <pre><code><%= FEDORA_URL['url'] %>/oaiprovider/?</code></pre>
   </p>
 
   <h4 class="section_heading">JSON</h4>
@@ -35,22 +35,24 @@
 
   <p>
     Search results:<br/>
-    <pre>
+    <pre><code>
 # normal, return HTML
 <%= search_catalog_url %>?q=Boston
 
 # return JSON
-<%= search_catalog_url %>.json?q=Boston</pre>
+<%= search_catalog_url %>.json?q=Boston
+    </code></pre>
   </p>
 
   <p>
     Item detail:<br/>
-  <pre>
+  <pre><code>
 # normal, return HTML
 <%= search_catalog_url %>/commonwealth:abcd12345
 
 # return JSON
-<%= search_catalog_url %>/commonwealth:abcd12345.json</pre>
+<%= search_catalog_url %>/commonwealth:abcd12345.json
+  </code></pre>
   </p>
 
   <h4 class="section_heading">IIIF</h4>
@@ -66,7 +68,7 @@
 
   <p>
     Base URL:<br/>
-  <pre><%= IIIF_SERVER['url'] %></pre>
+  <pre><code><%= IIIF_SERVER['url'] %></code></pre>
   </p>
 
   <p>
@@ -79,13 +81,13 @@
 
   <p>
     The image identifier can then be used to construct a URL to create a valid IIIF Image request:
-    <pre>
+    <pre><code>
 # image information request
 <%= IIIF_SERVER['url'] %>IMAGE_ID/info.json
 
 # full image, 50% size, as JPEG
 <%= IIIF_SERVER['url'] %>IMAGE_ID/full/pct:50/0/default.jpg
-</pre>
+</code></pre>
   </p>
 
   <h5 class="section_heading">Presentation 2.0</h5>
@@ -96,13 +98,12 @@
   </p>
 
   <p>
-  <pre>
+  <pre><code>
 # normal, return HTML
 <%= search_catalog_url %>/commonwealth:abcd12345
 
 # return IIIF manifest
-<%= search_catalog_url %>/commonwealth:abcd12345/manifest</pre>
+<%= search_catalog_url %>/commonwealth:abcd12345/manifest
+  </code></pre>
   </p>
-
-
 </div>

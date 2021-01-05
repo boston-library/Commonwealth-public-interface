@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rack::Attack.safelist('allow from localhost') do |req|
   # Requests are allowed if the return value is truthy
   ['127.0.0.1', '::1'].include?(req.ip)
 end
 
-Rack::Attack.throttle("requests by ip", limit: 10, period: 1.minute) do |req|
+Rack::Attack.throttle('requests by ip', limit: 10, period: 1.minute) do |req|
   req.ip if req.path.include?('/start_download/')
 end
 
@@ -19,7 +21,7 @@ Rack::Attack.throttled_response = lambda do |env|
     'RateLimit-Remaining' => '0'
   }
 
-  [ 429, headers, ["Retry later\n"]]
+  [429, headers, ["Retry later\n"]]
 end
 
 ActiveSupport::Notifications.subscribe('throttle.rack_attack') do |*args|

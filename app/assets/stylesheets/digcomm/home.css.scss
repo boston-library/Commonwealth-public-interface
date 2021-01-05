@@ -1,0 +1,39 @@
+/* styles for home page view */
+
+#content_home {
+
+  #hero_search {
+    padding: 20px 50px;
+
+    #hero_search_headline {
+
+      h1 {
+        @media (min-width: 768px) and (max-width: 991px) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    #hero_search_form {
+
+      .search-q {
+
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 210px;
+        }
+
+      }
+
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      padding: 25px 28px;
+    }
+
+    @media (max-width: 767px) {
+      padding: 20px;
+    }
+
+  }
+
+}
