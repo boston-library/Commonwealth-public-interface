@@ -47,6 +47,7 @@ gem 'rubocop-rspec'
 
 group :development, :test do
   gem 'awesome_print'
+  gem 'coveralls', require: false
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-rescue'
