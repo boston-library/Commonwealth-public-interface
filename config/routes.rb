@@ -50,6 +50,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'partners', to: 'pages#partners', as: 'partners'
   get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), as: 'blog'
   get 'api', to: 'pages#api', as: 'api'
+  get 'harmful_content_statement', to: 'pages#content_statement', as: 'content_statement'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collections/show/:id', to: 'pages#collection_tree'

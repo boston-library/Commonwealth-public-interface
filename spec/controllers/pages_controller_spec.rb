@@ -60,4 +60,12 @@ describe PagesController do
       expect(response.body).to have_selector('div.about_content')
     end
   end
+
+  describe "GET 'content_statement'" do
+    it 'should show the content_statement page' do
+      get :content_statement
+      expect(response).to be_successful
+      expect(response.body).to have_selector('div.about_content')
+    end
+  end
 end

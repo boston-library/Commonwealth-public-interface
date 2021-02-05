@@ -1,0 +1,96 @@
+<% @page_title = t('blacklight.pages.content_statement.title') + " - " + application_name %>
+<div class="col-sm-9 about_content">
+  <h2><%= t('blacklight.pages.content_statement.title') %></h2>
+
+  <p>
+    <strong>Where content on this site comes from</strong><br>
+    This site provides access to images, documents, and other materials that have been digitized
+    by a statewide consortium of libraries, museums, archives, and historical societies from across
+    Massachusetts. The purpose of creating and sharing these collections is to make them available
+    to researchers, students, and the general public for the purposes of scholarship, education,
+    and entertainment. These institutions hold a shared belief in the value of making these materials
+    freely accessible, so that they may increase understanding of our society's cultural heritage and
+    contribute to the public good.
+  </p>
+
+  <p>
+    <strong>Why historical materials may be harmful</strong><br>
+    Objects in historical collections reflect the attitudes, ideas, and norms of the era and culture in
+    which they were created or collected. As such, some materials available on this site may contain
+    potentially offensive imagery, language, or opinions, including disparaging portrayals or descriptions
+    of persons based on characteristics such as race, gender, sexual orientation, national origin,
+    disability, or religion. Some materials may depict ceremonies, artifacts, or clothing from
+    historically marginalized cultures in a disrespectful or exploitative fashion. Additionally, this
+    site also contains some items with explicit imagery featuring sexual content or violence that may
+    not be appropriate for all audiences.
+
+  <p>
+    <strong>Why potentially offensive content is available on this site</strong><br>
+    These materials are presented for the purpose of preserving the historical record. Their presence
+    on this site does not constitute any endorsement of the viewpoints or sentiments expressed within
+    them by Digital Commonwealth or its contributing institutions, which strive to provide an inclusive,
+    welcoming, and respectful environment serving the information needs of all members of society.
+
+  <p>
+    <strong>How materials are described</strong><br>
+    In order to help viewers better understand the origins, context, and historical significance of the
+    materials in our collections, contributing institutions provide descriptive information (metadata)
+    to accompany all items such as titles, dates, author names, and notes on the item's history and
+    origins. Whenever possible, best practices established by library and archival professional
+    organizations are followed when creating these descriptions. Language from the original item is
+    typically transcribed directly and without redaction, especially for titles. Standardized topical
+    terms created by external sources (such as Library of Congress) are also used to provide better
+    searching and browsing of the collections.
+  </p>
+
+  <p>
+    However, adherence to these practices may sometimes result in harmful or outdated language appearing
+    in the descriptions for some materials, particularly in titles or topical headings.  We strive to
+    balance these practices with our goal of reducing the hurtful impact that these collections may have.
+  </p>
+
+  <p>
+    <strong>How potentially harmful materials are handled</strong><br>
+    Contributing institutions work to identify potentially offensive items as part of the digitization and
+    description process. Items are identified using a set of criteria collaboratively developed and refined
+    by Digital Commonwealth member institutions. If an item has been flagged as containing potentially
+    harmful, offensive, or inappropriate content or language, a warning about the sensitive nature of the
+    item may also be included with the item display to help visitors decide whether they want to view the
+    item, or links to additional resources providing further context may be provided.
+  </p>
+
+  <p>
+    <strong>Community standards and practices</strong><br>
+    These policies are consistent with established professional guidelines such as
+    <%= link_to 'Access to Digital Resources and Services',
+                'http://www.ala.org/advocacy/intfreedom/librarybill/interpretations/digital',
+                target: '_blank' %> from the American Library Association, the
+    <%= link_to 'ACRL Code of Ethics for Special Collections Librarians',
+                'http://rbms.info/standards/code_of_ethics/', target: '_blank' %>, and the
+    <%= link_to 'SAA Core Values Statement and Code of Ethics',
+                'https://www2.archivists.org/statements/saa-core-values-statement-and-code-of-ethics',
+                target: '_blank' %> from the Society of American Archivists.
+  </p>
+
+  <p>
+    This statement draws on the work of other institutions who have created similar statements for their
+    digital collections, including the
+    <%= link_to 'University of Wisconsin Milwaukee Libraries',
+                'https://uwm.edu/lib-collections/potentially-offensive-materials/',
+                target: '_blank' %>,
+    <%= link_to 'Temple University Libraries',
+                'https://library.temple.edu/policies/14', target: '_blank' %>, and the Digital Public Library of America's
+    <%= link_to "Black Women's Suffrage Digital Collection",
+                'https://blackwomenssuffrage.dp.la/harmful-language-statement', target: '_blank' %>.
+  </p>
+
+  <p>
+    <strong>How to contact us</strong><br>
+    Further information on how materials are selected for inclusion in this site can be found in the
+    <%= link_to 'Digital Commonwealth Collection Development Policy',
+                'https://digitalcommonwealth.wildapricot.org/page-1856226', target: '_blank' %>. If you
+    encounter images, language, or other content you consider harmful, offensive, or inappropriate, or
+    if you have questions or comments about the policies above, please
+    <%= link_to 'contact us', feedback_path %>.
+  </p>
+</div>

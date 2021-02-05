@@ -70,6 +70,9 @@ en:
             title: 'API'
           contact:
             title: 'Contact Us'
+          content_statement:
+            nav: 'Harmful Content Statement'
+            title: 'Statement on Potentially Offensive and Harmful Content'
           copyright:
             title: 'Copyright & Terms of Use'
           explore:
