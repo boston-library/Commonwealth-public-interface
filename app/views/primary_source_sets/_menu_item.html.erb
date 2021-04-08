@@ -1,0 +1,12 @@
+<div class="pss_menu_item masonry document col-6 col-sm-4 col-md-4">
+  <div class="thumbnail">
+    <%= link_to(image_tag(iiif_image_url(menu_item_data.fetch('thumbnail_id', ''),
+                                         { region: 'square', size: "300," }),
+                          alt: menu_item_data.fetch('title', '')),
+                primary_source_set_path(menu_item_data.fetch('path', ''))) %>
+    <div class="caption">
+      <%= link_to menu_item_data.fetch('title', ''),
+                  primary_source_set_path(menu_item_data.fetch('path', '')) %>
+    </div>
+  </div>
+</div>

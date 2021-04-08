@@ -44,13 +44,19 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   get 'about_dc', to: 'pages#about_dc', as: 'about_dc'
   get 'for_libraries' => redirect('https://digitalcommonwealth.wildapricot.org')
-  get 'for_educators', to: 'pages#lesson_plans', as: 'for_educators'
-  get 'lesson_plans', to: 'pages#lesson_plans', as: 'lesson_plans'
   get 'copyright', to: 'pages#copyright', as: 'copyright'
   get 'partners', to: 'pages#partners', as: 'partners'
   get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), as: 'blog'
   get 'api', to: 'pages#api', as: 'api'
   get 'harmful_content_statement', to: 'pages#content_statement', as: 'content_statement'
+
+  # EDUCATOR PAGES
+  get 'for_educators', to: 'pages#primary_sources', as: 'for_educators'
+  get 'lesson_plans', to: 'pages#lesson_plans', as: 'lesson_plans_old'
+  get 'for_educators/using_primary_sources', to: 'pages#primary_sources', as: 'primary_sources'
+  get 'for_educators/lesson_plans', to: 'pages#lesson_plans', as: 'lesson_plans'
+  get 'for_educators/searching_dc', to: 'pages#searching_dc', as: 'searching_dc'
+  resources :primary_source_sets, only: [:show, :index], path: '/for_educators/primary_source_sets'
 
   # ROUTES FOR OLD DIGITAL COMMONWEALTH PAGES
   get 'collections/show/:id', to: 'pages#collection_tree'

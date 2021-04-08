@@ -1,0 +1,53 @@
+<% @page_title = @set.title + " - " + application_name %>
+<div class="col-md-12 col-lg-9 about_content primary_source_set">
+
+  <div id="breadcrumb">
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <%= link_to(t('blacklight.pages.for_educators.primary_source_sets.title'),
+                    primary_source_sets_path) %>
+        <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+      </li>
+      <% if @set.parent %>
+        <li class="breadcrumb-item">
+          <%= link_to(@set.parent.fetch('title', ''),
+                      primary_source_set_path(@set.parent.fetch('path', ''))) %>
+          <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+        </li>
+      <% end %>
+      <li class="active breadcrumb-item">
+        <%= @set.title %>
+      </li>
+    </ul>
+  </div>
+
+  <h2><%= @set.title %></h2>
+
+  <p><%= @set.intro_text %></p>
+
+  <div id="documents_wrapper">
+    <h5 class="section_heading">Relevant items:</h5>
+    <%= render_document_index_with_view('gallery', @items) %>
+  </div>
+
+  <% if @set.subjects.present? %>
+    <div id="subjects">
+      <h5 class="section_heading">View more items related to:</h5>
+      <ul>
+        <% @set.subjects.each do |subject_term| %>
+          <li><%= link_to_facet(subject_term, 'subject_facet_ssim') %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="collections">
+    <h5 class="section_heading">Relevant collections:</h5>
+    <div id="primary_source_set_menu" class="row collections-gallery">
+      <%= render collection: @collections,
+                 as: :document,
+                 partial: 'catalog/index_collections_gallery',
+                 locals: { count: @collections.count } %>
+    </div>
+  </div>
+</div>

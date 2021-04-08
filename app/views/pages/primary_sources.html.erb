@@ -1,0 +1,61 @@
+<% @page_title = t('blacklight.pages.for_educators.primary_sources.title') + " - " + application_name %>
+<div class="col-md-12 col-lg-9 about_content">
+  <h2><%= t('blacklight.pages.for_educators.primary_sources.title') %></h2>
+
+  <div id="using_primary_sources_header_image">
+    <%# link_to iiif_image_tag('commonwealth:ht24zh146',
+                               { size: '300,',
+                                 alt: 'Abbot Academy students in classroom' }),
+                solr_document_path(id: 'commonwealth:ht24zh13x'),
+                target: '_blank' %>
+    <%= link_to iiif_image_tag('commonwealth:hd76s9584',
+                               { size: '800,',
+                                 alt: 'Classroom, students' }),
+                solr_document_path(id: 'commonwealth:hd76s957v'),
+                target: '_blank' %>
+    <div class="image_caption">
+      Classroom, students. Memories of Cambodia Collection, University of Massachusetts Lowell, Center for Lowell History
+    </div>
+  </div>
+  <p>
+    Primary sources are the building blocks of historical research. The Society of American Archivists'
+    <%= link_to 'Dictionary of Archives Terminology', 'https://dictionary.archivists.org/entry/primary-source.html', target: '_blank' %>
+    defines a primary source as "material that contains firsthand accounts of events and that was created contemporaneous to those events or later recalled by an eyewitness." Examples of primary sources include maps, photographs, correspondence, diaries, and government records.
+  </p>
+
+  <p>
+    Digital Commonwealth's primary source sets serve as an entry point to exploring primary sources from libraries, archives, museums, and cultural institutions throughout the Commonwealth of Massachusetts. Please see the links below for additional resources related to accessing and using primary sources in the classroom and beyond.
+  </p>
+
+  <h5 class="section_heading">Related resources:</h5>
+
+  <ul>
+    <li>
+      <%= link_to 'Library of Congress: Teaching with Primary Sources',
+                  'http://www.loc.gov/teachers/tps/', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'Library of Congress: Massachusetts Collections',
+                  'http://www.loc.gov/teachers/classroommaterials/primarysourcesets/states/massachusetts/index.html', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'Digital Public Library of America: Primary Source Sets',
+                  'https://dp.la/primary-source-sets/', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'National Archives: Docs Teach', 'https://www.docsteach.org/', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'American Library Association: Primary Sources on the Web: Finding, Evaluating, Using',
+                  'http://www.ala.org/rusa/sections/history/resources/primarysources', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'Accessing Archives: Teaching with Primary Sources in K-12 Classrooms',
+                  'https://americanarchivist.org/doi/full/10.17723/0360-9081.80.1.189', target: '_blank' %>
+    </li>
+    <li>
+      <%= link_to 'Primary Sources in K-12 Education: Opportunities for Archives',
+                  'https://doi.org/10.17723/aarc.70.1.v674024627315777', target: '_blank' %>
+    </li>
+  </ul>
+</div>

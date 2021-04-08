@@ -37,6 +37,22 @@ describe PagesController do
     end
   end
 
+  describe "GET 'using_primary_sources'" do
+    it 'should show the primary_sources page' do
+      get :primary_sources
+      expect(response).to be_successful
+      expect(response.body).to have_selector('.blacklight-pages-primary_sources')
+    end
+  end
+
+  describe "GET 'searching_dc'" do
+    it 'should show the searching_dc page' do
+      get :searching_dc
+      expect(response).to be_successful
+      expect(response.body).to have_selector('.blacklight-pages-searching_dc')
+    end
+  end
+
   describe "GET 'copyright'" do
     it 'should show the copyright page' do
       get :copyright

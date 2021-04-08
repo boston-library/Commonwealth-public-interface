@@ -1,0 +1,36 @@
+{
+  "title": "Culture",
+  "intro_text": "Through the study of culture and cultural diversity, learners understand how human beings create, learn, share, and adapt to the culture, and appreciate the role of culture in shaping their lives and society, as well as the lives and societies of others. In schools, this theme typically appears in units and courses dealing with geography, history, sociology, and anthropology, as well as multicultural topics across the curriculum.",
+  "menu_items": [
+    {
+      "title": "Indigenous",
+      "thumbnail_id": "commonwealth:5x21v877z",
+      "path": "indigenous"
+    },
+    {
+      "title": "Pilgrims",
+      "thumbnail_id": "commonwealth:1g05ff182",
+      "path": "pilgrims"
+    },
+    {
+      "title": "European",
+      "thumbnail_id": "commonwealth:rv0430066",
+      "path": "european"
+    },
+    {
+      "title": "Black",
+      "thumbnail_id": "commonwealth:fx71bn73b",
+      "path": "black"
+    },
+    {
+      "title": "Latin",
+      "thumbnail_id": "commonwealth:z890t408m",
+      "path": "latin"
+    },
+    {
+      "title": "Asian",
+      "thumbnail_id": "commonwealth:2r36vm517",
+      "path": "asian"
+    }
+  ]
+}
