@@ -1,0 +1,36 @@
+{
+  "title": "Asian",
+  "intro_text": "Through the study of culture and cultural diversity, students understand how human beings create, learn, share, and adapt to culture, and appreciate the role of culture in shaping their lives and society, as well the lives and societies of others.  In schools, this theme typically appears in units and courses dealing with geography, history, sociology, and anthropology, as well as multicultural topics across the curriculum.",
+  "item_ids": [
+    "commonwealth:cj82m4439",
+    "commonwealth:fn107c53c",
+    "commonwealth-oai:0r969566z",
+    "commonwealth-oai:c247g496z",
+    "commonwealth-oai:np193v49h",
+    "commonwealth-oai:dz013661z",
+    "commonwealth-oai:np193z28c",
+    "commonwealth-oai:1257c677d",
+    "commonwealth-oai:qr46rn82p",
+    "commonwealth-oai:qr46rp461"
+  ],
+  "subjects": [
+    "Asian",
+    "Asian Americans",
+    "Chinese Americans",
+    "Southeast Asia"
+  ],
+  "collections": [
+    "commonwealth:41688024w",
+    "commonwealth-oai:z603r1101",
+    "commonwealth-oai:qr46rb14p",
+    "commonwealth-oai:hd76sj81c",
+    "commonwealth-oai:1257c523w",
+    "commonwealth-oai:1257c697w",
+    "commonwealth-oai:1257c6411",
+    "commonwealth-oai:np193z230"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}

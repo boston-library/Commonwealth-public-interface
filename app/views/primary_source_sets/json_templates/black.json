@@ -1,0 +1,33 @@
+{
+  "title": "Black",
+  "intro_text": "Through the study of culture and cultural diversity, students understand how human beings create, learn, share, and adapt to culture, and appreciate the role of culture in shaping their lives and society, as well the lives and societies of others.",
+  "item_ids": [
+    "commonwealth-oai:1n79j0398",
+    "commonwealth-oai:r781x5172",
+    "commonwealth-oai:mc87q016p",
+    "commonwealth-oai:nc5810430",
+    "commonwealth:fx71bn722",
+    "commonwealth-oai:4b29gj68n",
+    "commonwealth:5138k206n",
+    "commonwealth-oai:h128p508k",
+    "commonwealth-oai:xw42nb827",
+    "commonwealth-oai:v118sx83f",
+    "commonwealth-oai:dz012f307",
+    "commonwealth-oai:8p58pw45f"
+  ],
+  "subjects": [
+    "African Americans",
+    "Segregation in education",
+    "United States. Army. Massachusetts Infantry Regiment, 54th (1863-1865)"
+  ],
+  "collections": [
+    "commonwealth-oai:1n79j033m",
+    "commonwealth-oai:z603r1187",
+    "commonwealth-oai:tm70tt792",
+    "commonwealth-oai:xk81k1804"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}

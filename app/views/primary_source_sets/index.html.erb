@@ -1,0 +1,28 @@
+<% @page_title = @set.title + " - " + application_name %>
+<div class="col-md-12 col-lg-9 primary_source_sets">
+
+  <% if @set.title == 'Culture' %>
+    <div id="breadcrumb">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+          <%= link_to(t('blacklight.pages.for_educators.primary_source_sets.title'),
+                      primary_source_sets_path) %>
+          <span class="divider"><%= t('blacklight.breadcrumb.separator') %></span>
+        </li>
+        <li class="active breadcrumb-item">
+          <%= @set.title %>
+        </li>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2><%= @set.title %></h2>
+
+  <p><%= @set.intro_text %></p>
+
+  <div id="primary_source_set_menu" class="row collections-gallery">
+    <%= render collection: @set.menu_items,
+               as: :menu_item_data,
+               partial: 'menu_item' %>
+  </div>
+</div>

@@ -6,3 +6,28 @@ pre {
   border: 1px solid lightgray;
   border-radius: 4px;
 }
+
+#using_primary_sources_header_image {
+  margin-bottom: 20px;
+  width: 100%;
+
+  .image_caption {
+    font-size: 12px;
+    padding-top: .3em;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.searching_dc_image {
+  width: 100%;
+  margin-bottom: 15px;
+
+  img {
+    border: 1px solid #CACACA;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+  }
+}

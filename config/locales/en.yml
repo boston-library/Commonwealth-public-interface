@@ -77,8 +77,16 @@ en:
             title: 'Copyright & Terms of Use'
           explore:
             title: 'Explore'
-          lesson_plans:
-            title: 'Lesson Plans'
+          for_educators:
+            title: 'For Educators'
+            lesson_plans:
+              title: 'Lesson Plans'
+            primary_source_sets:
+              title: 'Primary Source Sets'
+            primary_sources:
+              title: 'Using Primary Sources with K-12 Students'
+            searching_dc:
+              title: 'Searching Digital Commonwealth'
           news:
             title: 'News & Announcements'
           partners:

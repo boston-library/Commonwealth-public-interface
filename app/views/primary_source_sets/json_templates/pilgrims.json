@@ -1,0 +1,30 @@
+{
+  "title": "Pilgrims",
+  "intro_text": "Through the study of culture and cultural diversity, students understand how human beings create, learn, share, and adapt to culture, and appreciate the role of culture in shaping their lives and society, as well the lives and societies of others.",
+  "item_ids": [
+    "commonwealth:1g05ff17s",
+    "commonwealth-oai:pn89f2559",
+    "commonwealth-oai:vm412376z",
+    "commonwealth:8049gm65w",
+    "commonwealth:fn1076301",
+    "commonwealth-oai:br86br429",
+    "commonwealth:z316sk199",
+    "commonwealth-oai:k643bz72k",
+    "commonwealth:70795s59h",
+    "commonwealth:vh53xt41p",
+    "commonwealth:3f463950t",
+    "commonwealth-oai:mc87qf16c"
+  ],
+  "subjects": [
+    "Pilgrims",
+    "Mayflower (Ship)"
+  ],
+  "collections": [
+    "commonwealth:8049gm70r",
+    "commonwealth-oai:vm412353n"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}

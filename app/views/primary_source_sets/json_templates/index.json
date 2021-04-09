@@ -1,0 +1,56 @@
+{
+  "title": "Primary Source Sets",
+  "intro_text": "The primary source sets below are grouped by National Council for the Social Studies curriculum themes. Click on each theme for a selection of primary source documents and links to related Digital Commonwealth collections.",
+  "menu_items": [
+    {
+      "title": "Culture",
+      "thumbnail_id": "commonwealth:5x21v851t",
+      "path": "culture"
+    },
+    {
+      "title": "Time, Continuity, and Change",
+      "thumbnail_id": "commonwealth:s1784x416",
+      "path": "time_continuity_change"
+    },
+    {
+      "title": "People, Places, and Environments",
+      "thumbnail_id": "commonwealth:pc289w19d",
+      "path": "people_places_environments"
+    },
+    {
+      "title": "Individual Development and Identity",
+      "thumbnail_id": "commonwealth:0g354s40c",
+      "path": "individual_development_identity"
+    },
+    {
+      "title": "Individuals, Groups, and Institutions",
+      "thumbnail_id": "commonwealth:pv63g529v",
+      "path": "individuals_groups_institutions"
+    },
+    {
+      "title": "Power, Authority, and Governance",
+      "thumbnail_id": "commonwealth:cf95jj637",
+      "path": "power_authority_governance"
+    },
+    {
+      "title": "Production, Distribution, and Consumption",
+      "thumbnail_id": "commonwealth:fb494x002",
+      "path": "production_distribution_consumption"
+    },
+    {
+      "title": "Science, Technology, and Society",
+      "thumbnail_id": "commonwealth:rn301381c",
+      "path": "science_technology_society"
+    },
+    {
+      "title": "Global Connections",
+      "thumbnail_id": "commonwealth:q524n568s",
+      "path": "global_connections"
+    },
+    {
+      "title": "Civic Ideals and Practices",
+      "thumbnail_id": "commonwealth:3j333n193",
+      "path": "civic_ideals_practices"
+    }
+  ]
+}

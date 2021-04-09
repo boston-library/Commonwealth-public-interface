@@ -1,0 +1,33 @@
+{
+  "title": "European",
+  "intro_text": "Through the study of culture and cultural diversity, learners understand how human beings create, learn, share, and adapt to the culture, and appreciate the role of culture in shaping their lives and society, as well as the lives and societies of others. In schools, this theme typically appears in units and courses dealing with geography, history, sociology, and anthropology, as well as multicultural topics across the curriculum.",
+  "item_ids": [
+    "commonwealth:4m90fm79f",
+    "commonwealth-oai:qn59tm39v",
+    "commonwealth-oai:xd07mm554",
+    "commonwealth-oai:0k225c29r",
+    "commonwealth:5q47t0314",
+    "commonwealth-oai:dr26zf285",
+    "commonwealth:q524kv62x",
+    "commonwealth-oai:n8712171k",
+    "commonwealth-oai:dv141z84s",
+    "commonwealth-oai:pn89f243h",
+    "commonwealth:7h14bq795",
+    "commonwealth:vt150x058"
+  ],
+  "subjects": [
+    "World War, 1939-1945",
+    "Europe",
+    "Saint Patrick's Day"
+  ],
+  "collections": [
+    "commonwealth:41688024w",
+    "commonwealth-oai:xd07mm529",
+    "commonwealth-oai:dr26zd75b",
+    "commonwealth-oai:n8711z34v"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}

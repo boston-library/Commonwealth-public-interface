@@ -3,6 +3,9 @@
 class PagesController < ApplicationController
   include CommonwealthVlrEngine::Pages
 
+  before_action :set_nav_about, only: [:about_dc, :copyright, :partners, :api, :content_statement]
+  before_action :set_nav_educators, only: [:lesson_plans, :primary_sources, :searching_dc]
+
   def home
     @carousel_slides = CarouselSlide.where(context: 'root').order(:sequence)
 
@@ -16,27 +19,27 @@ class PagesController < ApplicationController
   end
 
   def about_dc
-    @nav_li_active = 'about'
   end
 
   def lesson_plans
-    @nav_li_active = 'for_educators'
+  end
+
+  def primary_sources
+  end
+
+  def searching_dc
   end
 
   def copyright
-    @nav_li_active = 'about'
   end
 
   def partners
-    @nav_li_active = 'about'
   end
 
   def api
-    @nav_li_active = 'about'
   end
 
   def content_statement
-    @nav_li_active = 'about'
   end
 
   # redirect for legacy DC links
@@ -55,5 +58,15 @@ class PagesController < ApplicationController
   def items
     flash[:notice] = t('blacklight.update.item')
     redirect_to search_catalog_path
+  end
+
+  private
+
+  def set_nav_about
+    @nav_li_active = 'about'
+  end
+
+  def set_nav_educators
+    @nav_li_active = 'for_educators'
   end
 end

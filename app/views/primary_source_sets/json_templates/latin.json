@@ -1,0 +1,35 @@
+{
+  "title": "Latin",
+  "intro_text": "Through the study of culture and cultural diversity, students understand how human beings create, learn, share, and adapt to culture, and appreciate the role of culture in shaping their lives and society, as well the lives and societies of others.  In schools, this theme typically appears in units and courses dealing with geography, history, sociology, and anthropology, as well as multicultural topics across the curriculum.",
+  "item_ids": [
+    "commonwealth:02872472b",
+    "commonwealth-oai:dr26zf36v",
+    "commonwealth:st74cx405",
+    "commonwealth:kk91fq84f",
+    "commonwealth-oai:v118tt26c",
+    "commonwealth:mk61t1571",
+    "commonwealth:z890t407b",
+    "commonwealth-oai:1n79kr322",
+    "commonwealth-oai:2514xg30b",
+    "commonwealth-oai:h702r014d"  
+  ],
+  "subjects": [
+    "Hispanic Americans",
+    "Latino",
+    "Portuguese"
+  ],
+  "collections": [
+    "commonwealth:41688024w",
+    "commonwealth:4q77fw06j",
+    "commonwealth-oai:c534gg02f",
+    "commonwealth-oai:1n79k5211",
+    "commonwealth-oai:qr46rb14p",
+    "commonwealth-oai:1n79mx19q",
+    "commonwealth-oai:v118s024p",
+    "commonwealth-oai:1n79j0487"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}

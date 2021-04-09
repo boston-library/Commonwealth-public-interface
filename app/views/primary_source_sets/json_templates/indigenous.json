@@ -1,0 +1,32 @@
+{
+  "title": "Indigenous",
+  "intro_text": "Through the study of culture and cultural diversity, learners understand how human beings create, learn, share, and adapt to the culture, and appreciate the role of culture in shaping their lives and society, as well as the lives and societies of others. In schools, this theme typically appears in units and courses dealing with geography, history, sociology, and anthropology, as well as multicultural topics across the curriculum.",
+  "item_ids": [
+    "commonwealth:z890tb90t",
+    "commonwealth:fx71dw12d",
+    "commonwealth:5x21v9422",
+    "commonwealth-oai:5712pc43j",
+    "commonwealth-oai:mc87q432w",
+    "commonwealth-oai:xw42nr08f",
+    "commonwealth-oai:v118vt789",
+    "commonwealth-oai:dv141d658",
+    "commonwealth-oai:v118w754c",
+    "commonwealth:vh53xt23r"
+    
+  ],
+  "subjects": [
+    "Indians of North America",
+    "Indigenous peoples",
+    "Trans-Mississippi and International Exposition (1898 : Omaha, Neb.)",
+    "Wampanoag Indians"
+  ],
+  "collections": [
+    "commonwealth-oai:5712pb76w",
+    "commonwealth:gm80j208x",
+    "commonwealth:2j62s484w"
+  ],
+  "parent": {
+    "title": "Culture",
+    "path": "culture"
+  }
+}
