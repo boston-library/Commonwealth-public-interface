@@ -26,15 +26,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'rsolr', '>= 1.0', '< 3'
 gem 'bootstrap', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
 # gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
-gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: 'update-everything'
+gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
 # gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
-gem 'bpluser', github: 'boston-library/bpluser', branch: 'rails-6-support'
+gem 'bpluser', github: 'boston-library/bpluser'
 
 gem 'rack-attack', '~> 6.3'
 
