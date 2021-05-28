@@ -31,7 +31,7 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
 # gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
-gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
+gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine', branch: 'dc3'
 # gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
 gem 'bpluser', github: 'boston-library/bpluser'
 

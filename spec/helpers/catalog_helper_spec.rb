@@ -7,10 +7,10 @@ describe CatalogHelper do
   let(:collection_pid) { 'bpl-dev:h702q636h' }
   let(:institution_pid) { 'bpl-dev:abcd12345' }
   let(:document) do
-    { institution_name_ssim: ['Boston Public Library'],
-      institution_pid_ssi: institution_pid,
+    { institution_name_ssi: 'Boston Public Library',
+      institution_ark_id_ssi: institution_pid,
       collection_name_ssim: ['Carte de Visite Collection'],
-      collection_pid_ssm: [collection_pid] }
+      collection_ark_id_ssim: [collection_pid] }
   end
 
   before(:each) do

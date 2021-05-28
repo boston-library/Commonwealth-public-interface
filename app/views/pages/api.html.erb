@@ -12,19 +12,22 @@
     Please <%= link_to 'contact us', feedback_path %> with any questions or comments.
   </p>
 
+  <!-- TODO: OAI currently unavailable in DC3, re-enable this when it's working again -->
+  <!--
   <h4 class="section_heading">OAI-PMH</h4>
 
   <p>
     Metadata records for all collections and items are accessible in the Digital
-    Commonwealth <%= link_to 'OAI-PMH',
+    Commonwealth <%# link_to 'OAI-PMH',
                              'https://www.openarchives.org/OAI/openarchivesprotocol.html',
                              target: '_blank' %> feed.
   </p>
 
   <p>
     Base URL:<br/>
-    <pre><code><%= FEDORA_URL['url'] %>/oaiprovider/?</code></pre>
+    <pre><code><%# OAI_URL['url'] %>/oaiprovider/?</code></pre>
   </p>
+  -->
 
   <h4 class="section_heading">JSON</h4>
 
@@ -76,7 +79,7 @@
     Images have different identifiers than the parent item. To find the image identifier,
     right-click on the image in a browser window and view or copy the image URL. The
     image identifier is part of the URL string, as in:
-    <pre><%= FEDORA_URL['url'] %>/objects/IMAGE_ID/datastreams/thumbnail300/content</pre>
+    <pre><%= ASSET_STORE['url'] %>/derivatives/images/IMAGE_ID/image_thumbnail_300.jpg</pre>
   </p>
 
   <p>
