@@ -9,7 +9,7 @@ before_install:
 before_script:
 - RAILS_ENV=test bundle exec rails db:prepare
 rvm:
-- 2.6.6
+- 2.6.7
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
