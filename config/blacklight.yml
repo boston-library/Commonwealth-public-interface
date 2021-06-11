@@ -1,12 +1,16 @@
 # formerly known as solr.yml in Blacklight <=5.9.*
+default: &default
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
 
 development:
-  adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
-test: &test
-  adapter: solr
-  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/blacklight-core" %>
-production:
-  adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  <<: *default
 
+test: &test
+  url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8888}/solr/blacklight-core" %>
+
+staging:
+  <<: *default
+
+production:
+  <<: *default

@@ -25,7 +25,6 @@ pickle-email-*.html
 
 # Specific configuration files #
 ################################
-puma.rb
 .env
 .env.*
 !.env.example
