@@ -1,17 +1,18 @@
 # formerly known as solr.yml in Blacklight <=5.9.*
-default: &default
-  adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+# note: blacklight doesn't support using aliases in this file
 
 development:
-  <<: *default
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
 
 test: &test
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8984/solr/blacklight-core" %>
 
 staging:
-  <<: *default
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
 
 production:
-  <<: *default
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
