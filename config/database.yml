@@ -13,6 +13,15 @@ test:
   pool: 5
   timeout: 5000
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: <%= ENV.fetch('DB_NAME', '') %>
+  host: <%= ENV.fetch('DB_HOST', '') %>
+  username: <%= ENV.fetch('DB_USERNAME', '') %>
+  password: <%= ENV.fetch('DB_PASSWORD', '') %>
+
 production:
   adapter: postgresql
   encoding: unicode
