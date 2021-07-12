@@ -14,3 +14,5 @@ IIIF_SERVER = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'iiif_s
 GEOJSON_STATIC_FILE = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'geojson_static_file.yml'))).result, aliases: true)[Rails.env]
 
 SECRETS = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'secrets.yml'))).result, aliases: true)[Rails.env]
+
+CURATOR = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'curator.yml'))).result, aliases: true)[Rails.env]
