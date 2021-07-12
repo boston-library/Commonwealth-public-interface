@@ -1,0 +1,24 @@
+default: &default
+  secure_uri: <%= ENV.fetch('DIGSTACKS_API_SECURE_URI', '') %>
+  public_uri: <%= ENV.fetch('DIGSTACKS_API_PUBLIC_URI', '') %>
+  access_id: <%= ENV.fetch('DIGSTACKS_API_ACCESS_ID', '') %>
+  access_key: <%= ENV.fetch('DIGSTACKS_API_ACCESS_KEY', '') %>
+  username: <%= ENV.fetch('DIGSTACKS_API_USERNAME', '') %>
+  password: <%= ENV.fetch('DIGSTACKS_API_PASSWORD', '') %>
+  domain: <%= ENV.fetch('DIGSTACKS_API_DOMAIN', '') %>
+  api_password: <%= ENV.fetch('DIGSTACKS_API_API_PASSWORD', '') %>
+
+development:
+  <<: *default
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+
+staging:
+  <<: *default
+
+production:
+  <<: *default
