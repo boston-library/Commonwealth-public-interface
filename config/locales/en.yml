@@ -91,6 +91,8 @@ en:
             title: 'News & Announcements'
           partners:
             title: 'Partners'
+          privacy:
+            title: 'Privacy Policy'
 
     search:
           form:

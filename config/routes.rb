@@ -49,6 +49,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'blog' => redirect('http://blog.digitalcommonwealth.org/'), as: 'blog'
   get 'api', to: 'pages#api', as: 'api'
   get 'harmful_content_statement', to: 'pages#content_statement', as: 'content_statement'
+  get 'privacy', to: 'pages#privacy', as: 'privacy'
 
   # EDUCATOR PAGES
   get 'for_educators', to: 'pages#primary_sources', as: 'for_educators'
