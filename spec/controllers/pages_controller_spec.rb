@@ -84,4 +84,12 @@ describe PagesController do
       expect(response.body).to have_selector('div.about_content')
     end
   end
+
+  describe "GET 'privacy'" do
+    it 'should show the privacy page' do
+      get :privacy
+      expect(response).to be_successful
+      expect(response.body).to have_selector('div.about_content')
+    end
+  end
 end

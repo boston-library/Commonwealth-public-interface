@@ -39,6 +39,9 @@ class PagesController < ApplicationController
   def api
   end
 
+  def privacy
+  end
+
   def content_statement
   end
 

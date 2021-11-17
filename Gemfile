@@ -44,6 +44,8 @@ gem 'rubocop-performance', '~> 1.5'
 gem 'rubocop-rails', '~> 2.4.2'
 gem 'rubocop-rspec'
 
+gem 'sprockets-rails', '3.3.0'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'coveralls', require: false
