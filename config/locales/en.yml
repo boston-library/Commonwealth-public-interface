@@ -85,8 +85,24 @@ en:
               title: 'Primary Source Sets'
             primary_sources:
               title: 'Using Primary Sources with K-12 Students'
+            primary_sources_nav:
+              title: 'Using Primary Sources'
             searching_dc:
               title: 'Searching Digital Commonwealth'
+          for_institutions:
+            join_dc:
+              title: 'Join Digital Commonwealth'
+            conferences:
+              title: 'Conferences, Trainings, & Events'
+            contribute:
+              title: 'How to Contribute Collections'
+            digitization:
+              title: 'Digitization Services'
+            board:
+              title: 'Board & Committees'
+            faq:
+              title: 'Frequently Asked Questions'
+
           news:
             title: 'News & Announcements'
           partners:
