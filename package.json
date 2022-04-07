@@ -1,8 +1,9 @@
 {
   "dependencies": {
-    "@rails/webpacker": "4.3.0"
+    "@rails/webpacker": "5.4.3",
+    "node-sass": "^7.0.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "4.7.4"
   }
 }
