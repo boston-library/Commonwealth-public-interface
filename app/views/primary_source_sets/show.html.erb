@@ -23,7 +23,7 @@
 
   <h2><%= @set.title %></h2>
 
-  <p><%= @set.intro_text %></p>
+  <p><%= @set.intro_text&.html_safe %></p>
 
   <div id="documents_wrapper">
     <h5 class="section_heading">Relevant items:</h5>

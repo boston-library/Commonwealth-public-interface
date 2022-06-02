@@ -1,21 +1,26 @@
 {
   "title": "Primary Source Sets",
-  "intro_text": "The primary source sets below are grouped by National Council for the Social Studies curriculum themes. Click on each theme for a selection of primary source documents and links to related Digital Commonwealth collections.",
+  "intro_text": "The primary source sets below provide a curated, thematic selection of primary source documents and links to related Digital Commonwealth collections. Many are grouped by National Council for the Social Studies curriculum themes.",
   "menu_items": [
+    {
+      "title": "Activism in Boston Over Time",
+      "thumbnail_id": "commonwealth:1v53k259q",
+      "path": "activism_in_boston_over_time"
+    },
+    {
+      "title": "Civic Ideals and Practices",
+      "thumbnail_id": "commonwealth:3j333n193",
+      "path": "civic_ideals_practices"
+    },
     {
       "title": "Culture",
       "thumbnail_id": "commonwealth:5x21v851t",
       "path": "culture"
     },
     {
-      "title": "Time, Continuity, and Change",
-      "thumbnail_id": "commonwealth:s1784x416",
-      "path": "time_continuity_change"
-    },
-    {
-      "title": "People, Places, and Environments",
-      "thumbnail_id": "commonwealth:pc289w19d",
-      "path": "people_places_environments"
+      "title": "Global Connections",
+      "thumbnail_id": "commonwealth:q524n568s",
+      "path": "global_connections"
     },
     {
       "title": "Individual Development and Identity",
@@ -26,6 +31,11 @@
       "title": "Individuals, Groups, and Institutions",
       "thumbnail_id": "commonwealth:pv63g529v",
       "path": "individuals_groups_institutions"
+    },
+    {
+      "title": "People, Places, and Environments",
+      "thumbnail_id": "commonwealth:pc289w19d",
+      "path": "people_places_environments"
     },
     {
       "title": "Power, Authority, and Governance",
@@ -43,14 +53,9 @@
       "path": "science_technology_society"
     },
     {
-      "title": "Global Connections",
-      "thumbnail_id": "commonwealth:q524n568s",
-      "path": "global_connections"
-    },
-    {
-      "title": "Civic Ideals and Practices",
-      "thumbnail_id": "commonwealth:3j333n193",
-      "path": "civic_ideals_practices"
+      "title": "Time, Continuity, and Change",
+      "thumbnail_id": "commonwealth:s1784x416",
+      "path": "time_continuity_change"
     }
   ]
 }

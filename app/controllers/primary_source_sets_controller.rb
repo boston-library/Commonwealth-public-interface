@@ -16,7 +16,7 @@ class PrimarySourceSetsController < CatalogController
 
     @items = @set.item_documents
     @collections = @set.collection_documents
-    render :index if params[:id] == 'culture'
+    render :index if @set.menu_items.present?
   end
 
   protected

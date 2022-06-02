@@ -1,0 +1,26 @@
+{
+  "title": "Activism in Boston Over Time",
+  "intro_text": "This collection was assembled by the Norman B. Leventhal Map & Education Center as part of their <a href=\"https://www.leventhalmap.org/education/k12/maptivists/\" target=\"blank\">Maptivists</a> initiative with Boston Public Schools. Each set represents a location-based case study and includes a variety of maps, images and other primary sources that reveal change over time in different Boston neighborhoods and the role of activism in creating that change.<br/><br/>Linked <a href=\"https://docs.google.com/presentation/d/1PUi7o35Y-6EPGe0dOq8wi9jmj5C78Md7qrLn6ZVoIOE/edit#slide=id.p\" target=\"_blank\">here</a> is a lesson that incorporates many of these sources as well as others that can be used with students in grades 8-12. Students compare two maps to uncover how the location changed and then investigate additional resources to learn about the individuals and organizations that came together to fight highway building, create affordable housing, etc. Massachusetts students are required to complete a civics action project by the time they graduate. These historical examples speak to different locations in Boston that students might pass by or live near.<br/><br/>Additional resources featured here but not used in the lesson could be used to further research the history of each case study.",
+  "menu_items": [
+    {
+      "title": "Southwest Corridor",
+      "thumbnail_id": "commonwealth:1v53k259q",
+      "path": "southwest_corridor"
+    },
+    {
+      "title": "Tent City",
+      "thumbnail_id": "commonwealth:9g54z6789",
+      "path": "tent_city"
+    },
+    {
+      "title": "Dudley Triangle",
+      "thumbnail_id": "commonwealth:7h14cw26b",
+      "path": "dudley_triangle"
+    },
+    {
+      "title": "Parcel C Protests",
+      "thumbnail_id": "commonwealth-oai:nk323f23x",
+      "path": "parcel_c"
+    }
+  ]
+}

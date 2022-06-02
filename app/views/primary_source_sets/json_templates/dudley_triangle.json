@@ -1,0 +1,23 @@
+{
+  "title": "Dudley Triangle",
+  "intro_text": "In 1984, Dudley residents formed the Dudley Street Neighborhood Initiative in hopes of reclaiming and revitalizing their neighborhood. In the following years, the DSNI launched a Community Land Trust––Dudley Neighbors, Incorporated––and established community control over 1,300 parcels of vacant land. Now known as the Dudley Triangle, the land holds 225 affordable homes, urban farm sites, a community greenhouse, playgrounds, gardens, and more.<br/><br/>Here, you will find maps, comprehensive plans, and reports of the neighborhood, as well as meeting materials, flyers, and neighborhood interviews by the DSNI.",
+  "item_ids": [
+    "commonwealth:1257c431c",
+    "commonwealth:7h14cw252",
+    "commonwealth-oai:1n79nh13r",
+    "commonwealth-oai:1n79ng79n"
+  ],
+  "subjects": [
+    "La Alianza Hispana (Boston, Mass.). Board of Directors",
+    "Dudley Street Neighborhood Initiative",
+    "Roxbury (Boston, Mass.)--Maps"
+  ],
+  "collections": [
+    "commonwealth:41688024w",
+    "commonwealth-oai:1n79mx19q"
+  ],
+  "parent": {
+    "title": "Activism in Boston Over Time",
+    "path": "activism_in_boston_over_time"
+  }
+}

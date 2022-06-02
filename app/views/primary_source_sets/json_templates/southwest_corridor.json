@@ -1,0 +1,27 @@
+{
+  "title": "Southwest Corridor",
+  "intro_text": "The Southwest Expressway and Inner Belt Highway projects were both proposed in the Master Highway Plan for the Boston Metropolitan Area in 1948. Designed to span through densely-populated areas inside and outside of Boston, both projects were eventually halted and abandoned in the early 1970s.<br><br>Here, you will find maps of land use, proposed routes, alternate routes, as well as photographs of 1960s protests that may help students contextualize and visualize the history of the two projects.",
+  "item_ids": [
+    "commonwealth:1v53k258f",
+    "commonwealth:1v53k260g",
+    "commonwealth:5138kc545",
+    "commonwealth:7h14cv973",
+    "commonwealth:cn69pp161",
+    "commonwealth:fn107c17h",
+    "commonwealth:7h14cv59p",
+    "commonwealth:7h14d598d"
+  ],
+  "subjects": [
+    "Southwest Corridor (Boston, Mass.)--Maps",
+    "Demonstrations",
+    "Land use"
+],
+  "collections": [
+    "commonwealth:1v53jx931",
+    "commonwealth:41688024w"
+  ],
+  "parent": {
+    "title": "Activism in Boston Over Time",
+    "path": "activism_in_boston_over_time"
+  }
+}

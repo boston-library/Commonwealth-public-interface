@@ -1,0 +1,25 @@
+{
+  "title": "Tent City",
+  "intro_text": "On April 27, 1968, hundreds of demonstrators erected a four-day tent city on the lot of a proposed parking garage to protest urban renewal projects in Boston’s South End. Support for the protest forced the Boston Redevelopment Authority (BRA) to abandon their building plans, and over 20 years later, the lot now houses 269 units of mixed-income housing.<br><br>Here, you will find maps of the original lot and buildings that existed there before, proposals from the BRA, as well as news segments documenting the construction and opening of the Tent City Housing Complex.",
+  "item_ids": [
+    "commonwealth:9g54z6771",
+    "commonwealth:7h14cx94p",
+    "commonwealth-oai:vq27zx414",
+    "commonwealth:s1785510t"
+  ],
+  "subjects": [
+    "Housing",
+    "Demonstrations",
+    "Public housing",
+    "Urban renewal",
+    "Back Bay (Boston, Mass.)--Maps"
+],
+  "collections": [
+    "commonwealth:41688024w",
+    "commonwealth-oai:vq27zv88m"
+  ],
+  "parent": {
+    "title": "Activism in Boston Over Time",
+    "path": "activism_in_boston_over_time"
+  }
+}
