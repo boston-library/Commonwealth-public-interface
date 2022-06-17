@@ -41,7 +41,7 @@ gem 'rack-attack', '~> 6.6'
 
 gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 
-gem 'sprockets-rails', '3.4'
+gem 'sprockets-rails', '~> 3.4'
 
 group :development, :test do
   gem 'awesome_print'
