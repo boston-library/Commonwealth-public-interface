@@ -4,7 +4,9 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'rails', '6.0.3.4'
+ruby '2.6.10'
+
+gem 'rails', '~> 6.0.5', '< 6.1'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -35,16 +37,11 @@ gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
 # gem 'bpluser', path: '/Users/eben/Documents/Work/BPL/boston-library/bpluser'
 gem 'bpluser', github: 'boston-library/bpluser'
 
-gem 'rack-attack', '~> 6.3'
+gem 'rack-attack', '~> 6.6'
 
-gem 'dotenv-rails', '~> 2.7'
-# rubocop has to be loaded in production, or rake commands fail
-gem 'rubocop', '~> 0.75.1'
-gem 'rubocop-performance', '~> 1.5'
-gem 'rubocop-rails', '~> 2.4.2'
-gem 'rubocop-rspec'
+gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 
-gem 'sprockets-rails', '3.3.0'
+gem 'sprockets-rails', '3.4'
 
 group :development, :test do
   gem 'awesome_print'
@@ -58,4 +55,8 @@ group :development, :test do
   gem 'capybara', '~> 3.0', '< 4'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'webdrivers', '~> 3.0'
+  gem 'rubocop', '~> 0.75.1', require: false
+  gem 'rubocop-performance', '~> 1.5', require: false
+  gem 'rubocop-rails', '~> 2.4.2', require: false
+  gem 'rubocop-rspec', require: false
 end
