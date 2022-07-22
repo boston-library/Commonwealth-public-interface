@@ -13,4 +13,6 @@ IIIF_SERVER = Rails.application.config_for('iiif_server')
 
 GEOJSON_STATIC_FILE = Rails.application.config_for('geojson_static_file')
 
+SECRETS = Rails.application.config_for('secrets')
+
 CURATOR = Rails.application.config_for('curator')

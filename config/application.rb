@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 module CommonwealthPublicInterface
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
     config.middleware.use Rack::Attack unless Rails.env.test?
 
@@ -19,5 +19,8 @@ module CommonwealthPublicInterface
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # fix for YAML loading, see discussion: https://github.com/rails/rails/pull/45584
+    config.active_record.yaml_column_permitted_classes = [Symbol, Hash, Array, ActiveSupport::HashWithIndifferentAccess]
   end
 end
