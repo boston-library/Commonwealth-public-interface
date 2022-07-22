@@ -13,7 +13,7 @@ module CommonwealthPublicInterface
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
     config.autoloader = :classic
-    
+
     config.middleware.use Rack::Attack unless Rails.env.test?
 
     # Settings in config/environments/* take precedence over those specified here.
