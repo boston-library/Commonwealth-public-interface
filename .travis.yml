@@ -15,4 +15,4 @@ env:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - IIIF_URL=https://iiifserver.example.org/
   matrix:
-  - RAILS_VERSION=6.0.5
+  - RAILS_VERSION=6.0.5.1
