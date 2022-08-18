@@ -1,5 +1,27 @@
 # See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
 #
 # To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
+User-Agent: *
 # Disallow: /
+Crawl-Delay: 5
+
+# "more facets"
+Disallow: /search/facet/
+Disallow: /collections/facet/
+Disallow: /institutions/facet/
+# range-limit page normally only requested by AJAX for loading range limit info.
+Disallow: /search/range_limit
+Disallow: /collections/range_limit
+Disallow: /institutions/range_limit
+# "View larger" link for range limit.
+Disallow: /search/range_limit_panel
+Disallow: /collections/range_limit_panel
+Disallow: /institutions/range_limit_panel
+# disallow search results that include facet limits
+# to try to prevent these crawlers from tree-walking every possible facet limit combination. 'nofollow' on the links would be my first choice
+# Unclear if the [ should be %-encoded here, spec says yes,
+# google robots.txt-validator suggests no, so list both.
+Disallow: /search*f%5B
+Disallow: /search*f[
+Disallow: /collections*f%5B
+Disallow: /collections*f[
