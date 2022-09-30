@@ -4,14 +4,14 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.10'
+ruby '2.7.6'
 
-gem 'rails', '~> 6.0.5.1', '< 6.1'
+gem 'rails', '~> 6.0.6', '< 6.1'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
 # Use Puma as the app server
-gem 'puma', '>= 3.12.4', '< 5'
+gem 'puma', '~> 5.6.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

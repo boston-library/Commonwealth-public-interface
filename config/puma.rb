@@ -18,14 +18,39 @@ environment rails_env
 
 worker_timeout 3600 if rails_env == 'development'
 
+preload_app!
+# New feature that reduces latency https://github.com/puma/puma/blob/master/5.0-Upgrade.md#lower-latency-better-throughput
+wait_for_less_busy_worker 0.002
+
+# New feature that runs garbage collector when forking workers https://github.com/puma/puma/blob/master/5.0-Upgrade.md#nakayoshi_fork
+nakayoshi_fork
+
+on_restart do
+   puts "Refreshing Gemfile at #{app_dir}/Gemfile"
+   ENV["BUNDLE_GEMFILE"] = "#{app_dir}/Gemfile"
+end
+
+# Best Practice is to reconnect any Non Active Record Connections on boot in clustered mode
+on_worker_boot do
+  puts 'Extablishing Active Record Connection...'
+  ActiveSupport.on_load(:active_record) do
+    ActiveRecord::Base.establish_connection
+  end
+end
+
+before_fork do
+  ActiveRecord::Base.connection_pool.disconnect!
+end
+
 if %w(staging production).member?(rails_env)
   bind "unix://#{app_dir}/tmp/sockets/commonwealth_public_puma.sock"
   stdout_redirect("#{app_dir}/log/puma.stdout.log", "#{app_dir}/log/puma.stderr.log", true)
   pidfile "#{app_dir}/tmp/pids/commonwealth_public_puma_server.pid"
   state_path "#{app_dir}/tmp/pids/commonwealth_public_puma_server.state"
+  activate_control_app "unix://#{app_dir}/tmp/sockets/commonwealth_public_pumactl.sock"
 else
-  ENV.fetch('PORT') { 3000 }
-  # stdout_redirect('/dev/stdout', '/dev/stderr', true)
+  port 3000
+  stdout_redirect('/dev/stdout', '/dev/stderr')
   pidfile "#{app_dir}/tmp/pids/server.pid"
   state_path "#{app_dir}/tmp/pids/server.state"
   plugin :tmp_restart
