@@ -43,6 +43,8 @@ gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
 
 gem 'sprockets-rails', '~> 3.4'
 
+gem 'sd_notify', group: [:production, :staging]
+
 group :development, :test do
   gem 'awesome_print'
   gem 'coveralls', require: false
