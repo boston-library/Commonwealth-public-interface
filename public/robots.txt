@@ -25,3 +25,6 @@ Disallow: /search*f%5B
 Disallow: /search*f[
 Disallow: /collections*f%5B
 Disallow: /collections*f[
+# disallow download pages
+Disallow: /downloads/
+Disallow: /start_download/
