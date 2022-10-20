@@ -528,6 +528,8 @@ Rails/TimeZone:
 
 Rails/UnknownEnv:
   Enabled: true
+  Exclude:
+    - 'config/initializers/deprecation.rb'
 
 Rails/Validation:
   Enabled: true
