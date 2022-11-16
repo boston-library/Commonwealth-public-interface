@@ -16,17 +16,17 @@ test:
 staging:
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  database: <%= ENV.fetch('DB_NAME', '') %>
-  host: <%= ENV.fetch('DB_HOST', '') %>
-  username: <%= ENV.fetch('DB_USERNAME', '') %>
-  password: <%= ENV.fetch('DB_PASSWORD', '') %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  database: <%= ENV.fetch('DB_NAME') { Rails.application.credentials.dig(:postgres, :database) } %>
+  host: <%= ENV.fetch('DB_HOST') { Rails.application.credentials.dig(:postgres, :host) } %>
+  username: <%= ENV.fetch('DB_USERNAME') { Rails.application.credentials.dig(:postgres, :username) } %>
+  password: <%= ENV.fetch('DB_PASSWORD') { Rails.application.credentials.dig(:postgres, :password) } %>
 
 production:
   adapter: postgresql
   encoding: unicode
-  pool: 5
-  database: <%= ENV.fetch('DB_NAME', '') %>
-  host: <%= ENV.fetch('DB_HOST', '') %>
-  username: <%= ENV.fetch('DB_USERNAME', '') %>
-  password: <%= ENV.fetch('DB_PASSWORD', '') %>
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+  database: <%= ENV.fetch('DB_NAME') { Rails.application.credentials.dig(:postgres, :database) } %>
+  host: <%= ENV.fetch('DB_HOST') { Rails.application.credentials.dig(:postgres, :host) } %>
+  username: <%= ENV.fetch('DB_USERNAME') { Rails.application.credentials.dig(:postgres, :username) } %>
+  password: <%= ENV.fetch('DB_PASSWORD') { Rails.application.credentials.dig(:postgres, :password) } %>
