@@ -1,7 +1,7 @@
 # stores cloud storage url
 
 default: &default
-  url: <%= ENV.fetch('AZURE_STORAGE_ACCOUNT_ENDPOINT', '') %>
+  url: <%= ENV.fetch('AZURE_STORAGE_ACCOUNT_ENDPOINT') { Rails.application.credentials.dig(:azure, :storage_account_endpoint).to_s } %>
 
 development:
   <<: *default

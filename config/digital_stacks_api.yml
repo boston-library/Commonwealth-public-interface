@@ -1,12 +1,12 @@
 default: &default
-  secure_uri: <%= ENV.fetch('DIGSTACKS_API_SECURE_URI', '') %>
-  public_uri: <%= ENV.fetch('DIGSTACKS_API_PUBLIC_URI', '') %>
-  access_id: <%= ENV.fetch('DIGSTACKS_API_ACCESS_ID', '') %>
-  access_key: <%= ENV.fetch('DIGSTACKS_API_ACCESS_KEY', '') %>
-  username: <%= ENV.fetch('DIGSTACKS_API_USERNAME', '') %>
-  password: <%= ENV.fetch('DIGSTACKS_API_PASSWORD', '') %>
-  domain: <%= ENV.fetch('DIGSTACKS_API_DOMAIN', '') %>
-  api_password: <%= ENV.fetch('DIGSTACKS_API_API_PASSWORD', '') %>
+  secure_uri: <%= ENV.fetch('DIGSTACKS_API_SECURE_URI') { Rails.application.credentials.dig(:digistacks_api, :secure_uri).to_s } %>
+  public_uri: <%= ENV.fetch('DIGSTACKS_API_PUBLIC_URI') { Rails.application.credentials.dig(:digistacks_api, :public_uri).to_s } %>
+  access_id: <%= ENV.fetch('DIGSTACKS_API_ACCESS_ID') { Rails.application.credentials.dig(:digistacks_api, :access_id).to_s } %>
+  access_key: <%= ENV.fetch('DIGSTACKS_API_ACCESS_KEY') { Rails.application.credentials.dig(:digistacks_api, :access_key).to_s } %>
+  username: <%= ENV.fetch('DIGSTACKS_API_USERNAME') { Rails.application.credentials.dig(:digistacks_api, :username).to_s } %>
+  password: <%= ENV.fetch('DIGSTACKS_API_PASSWORD') { Rails.application.credentials.dig(:digistacks_api, :password).to_s } %>
+  domain: <%= ENV.fetch('DIGSTACKS_API_DOMAIN') { Rails.application.credentials.dig(:digistacks_api, :domain).to_s } %>
+  api_password: <%= ENV.fetch('DIGSTACKS_API_API_PASSWORD') { Rails.application.credentials.dig(:digistacks_api, :api_password).to_s } %>
 
 development:
   <<: *default

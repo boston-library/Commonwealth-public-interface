@@ -4,7 +4,7 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
   # Rails 4 upgrade
-  config.secret_key = SECRETS['devise_secret_key']
+  config.secret_key = ENV.fetch('DEVISE_SECRET_KEY') { Rails.application.credentials[:devise_secret_key] || 'yourdevisesecretkey123456789abcdefghijklmnopqrstuvwxyz' }
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -235,14 +235,12 @@ Devise.setup do |config|
   # config.omniauth :password, :title => 'BPL local account login',
   #                 :login_field => :username
 
-  OMNIAUTH_POLARIS_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-polaris.yml'))).result, aliases: true)[Rails.env]
   config.omniauth :polaris, title: OMNIAUTH_POLARIS_GLOBAL['title'],
                   http_uri: OMNIAUTH_POLARIS_GLOBAL['http_uri'],
                   access_key: OMNIAUTH_POLARIS_GLOBAL['access_key'],
                   access_id: OMNIAUTH_POLARIS_GLOBAL['access_id'],
                   method: OMNIAUTH_POLARIS_GLOBAL['method']
 
-  OMNIAUTH_FACEBOOK_GLOBAL = YAML.safe_load(ERB.new(File.read(Rails.root.join('config', 'omniauth-facebook.yml'))).result, aliases: true)[Rails.env]
   config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
                   OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
                   scope: OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']

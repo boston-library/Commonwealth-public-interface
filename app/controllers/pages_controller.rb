@@ -37,6 +37,7 @@ class PagesController < ApplicationController
   end
 
   def api
+    @oai_url = ENV.fetch('OAI_URL') { Rails.application.credentials[:oai_url].to_s }
   end
 
   def privacy
