@@ -11,8 +11,8 @@ test: &test
 
 staging:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  url: <%= ENV.fetch('SOLR_URL') { Rails.application.credentials[:solr_url].to_s } %>
 
 production:
   adapter: solr
-  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  url: <%= ENV.fetch('SOLR_URL') { Rails.application.credentials[:solr_url].to_s } %>

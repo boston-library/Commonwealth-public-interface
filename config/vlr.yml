@@ -1,9 +1,9 @@
 # stores VLR settings
 
 default: &default
-  site: <%= ENV.fetch('VLR_SITE_ID', '') %>
+  site: <%= ENV.fetch('VLR_SITE_ID') { Rails.application.credentials.dig(:vlr, :site_id).to_s } %>
   institution:
-    pid: <%= ENV.fetch('VLR_INSTITUTION_PID', '') %>
+    pid: <%= ENV.fetch('VLR_INSTITUTION_PID') { Rails.application.credentials.dig(:vlr, :institution_pid).to_s } %>
 
 development:
   <<: *default

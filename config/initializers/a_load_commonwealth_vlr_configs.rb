@@ -13,6 +13,8 @@ IIIF_SERVER = Rails.application.config_for('iiif_server')
 
 GEOJSON_STATIC_FILE = Rails.application.config_for('geojson_static_file')
 
-SECRETS = Rails.application.config_for('secrets')
-
 CURATOR = Rails.application.config_for('curator')
+
+OMNIAUTH_POLARIS_GLOBAL = Rails.application.config_for('omniauth-polaris')
+
+OMNIAUTH_FACEBOOK_GLOBAL = Rails.application.config_for('omniauth-facebook')

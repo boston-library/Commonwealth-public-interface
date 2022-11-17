@@ -1,12 +1,12 @@
 default: &default
-  host: <%= ENV.fetch('LDAP_HOST', '') %>
-  port: <%= ENV.fetch('LDAP_PORT', '') %>
+  host: <%= ENV.fetch('LDAP_HOST') { Rails.application.credentials.dig(:ldap, :host).to_s } %>
+  port: <%= ENV.fetch('LDAP_PORT') { Rails.application.credentials.dig(:ldap, :port) } %>
   # group_base: nil
-  base: <%= ENV.fetch('LDAP_BASE', '') %>
-  uid: <%= ENV.fetch('LDAP_UID', '') %>
-  username: <%= ENV.fetch('LDAP_USERNAME', '') %>
-  password: <%= ENV.fetch('LDAP_PASSWORD', '') %>
-  admin_base: <%= ENV.fetch('LDAP_ADMIN_BASE', '') %>
+  base: <%= ENV.fetch('LDAP_BASE') { Rails.application.credentials.dig(:ldap, :base).to_s } %>
+  uid: <%= ENV.fetch('LDAP_UID') { Rails.application.credentials.dig(:ldap, :uid).to_s } %>
+  username: <%= ENV.fetch('LDAP_USERNAME') { Rails.application.credentials.dig(:ldap, :username).to_s } %>
+  password: <%= ENV.fetch('LDAP_PASSWORD') { Rails.application.credentials.dig(:ldap, :password).to_s } %>
+  admin_base: <%= ENV.fetch('LDAP_ADMIN_BASE') { Rails.application.credentials.dig(:ldap, :admin_base).to_s } %>
 
 development:
   <<: *default

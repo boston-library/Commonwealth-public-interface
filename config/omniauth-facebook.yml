@@ -1,7 +1,7 @@
 default: &default
-  facebook_key: <%= ENV.fetch('FACEBOOK_KEY', '') %>
-  facebook_secret: <%= ENV.fetch('FACEBOOK_SECRET', '') %>
-  facebook_scope: <%= ENV.fetch('FACEBOOK_SCOPE', '') %>
+  facebook_key: <%= ENV.fetch('FACEBOOK_KEY') { Rails.application.credentials.dig(:facebook, :key).to_s } %>
+  facebook_secret: <%= ENV.fetch('FACEBOOK_SECRET') { Rails.application.credentials.dig(:facebook, :secret).to_s } %>
+  facebook_scope: <%= ENV.fetch('FACEBOOK_SCOPE') { Rails.application.credentials.dig(:facebook, :scope).to_s } %>
 
 development:
   <<: *default

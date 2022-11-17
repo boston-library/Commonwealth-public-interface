@@ -1,7 +1,7 @@
 # stores Curator API url
 
 default: &default
-  url: <%= ENV.fetch('CURATOR_API_URL', '') %>
+  url: <%= ENV.fetch('CURATOR_API_URL') { Rails.application.credentials[:curator_api_url].to_s } %>
 
 development:
   <<: *default
@@ -14,4 +14,3 @@ staging:
 
 production:
   <<: *default
-

@@ -4,7 +4,7 @@ default: &default
   site_admin: <%= ENV.fetch('EMAIL_SITE_ADMIN') { Rails.application.credentials.dig(:email, :site_admin) || 'site_admin@example.org' } %>
   dc_admin: <%= ENV.fetch('EMAIL_DC_ADMIN') { Rails.application.credentials.dig(:email, :dc_admin) || 'dc_admin@example.org' } %>
   image_requests: <%= ENV.fetch('EMAIL_IMAGE_REQUEST') { Rails.application.credentials.dig(:email, :image_request) || 'image_request@example.org' } %>
-  research_question: <%= ENV.fetch('EMAIL_RESEARCH')  { Rails.application.credentials.dig(:email, :research) || 'research@example.org') %>
+  research_question: <%= ENV.fetch('EMAIL_RESEARCH')  { Rails.application.credentials.dig(:email, :research) || 'research@example.org' } %>
 
 development:
   <<: *default

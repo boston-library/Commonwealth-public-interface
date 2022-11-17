@@ -27,7 +27,7 @@ nakayoshi_fork
 
 on_restart do
    puts "Refreshing Gemfile at #{app_dir}/Gemfile"
-   ENV["BUNDLE_GEMFILE"] = "#{app_dir}/Gemfile"
+   ENV['BUNDLE_GEMFILE'] = "#{app_dir}/Gemfile"
 end
 
 # Best Practice is to reconnect any Non Active Record Connections on boot in clustered mode

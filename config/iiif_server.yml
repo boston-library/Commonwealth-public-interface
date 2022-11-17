@@ -1,7 +1,7 @@
 # stores IIIF image server url
 
 default: &default
-  url: <%= ENV.fetch('IIIF_URL', '') %>
+  url: <%= ENV.fetch('IIIF_URL') { Rails.application.credentials[:iiif_url].to_s } %>
 
 development:
   <<: *default

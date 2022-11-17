@@ -73,6 +73,7 @@ describe PagesController do
     it 'should show the API page' do
       get :api
       expect(response).to be_successful
+      expect(assigns(:oai_url)).not_to be_nil
       expect(response.body).to have_selector('div.about_content')
     end
   end
