@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.6'
+ruby '2.7.7'
 
 gem 'rails', '~> 6.0.6', '< 6.1'
 
@@ -39,8 +39,6 @@ gem 'bpluser', github: 'boston-library/bpluser'
 
 gem 'rack-attack', '~> 6.6'
 
-gem 'dotenv-rails', '~> 2.7', require: 'dotenv/rails-now'
-
 gem 'sprockets-rails', '~> 3.4'
 
 gem 'sd_notify', group: [:production, :staging]
@@ -48,6 +46,7 @@ gem 'sd_notify', group: [:production, :staging]
 group :development, :test do
   gem 'awesome_print'
   gem 'coveralls', require: false
+  gem 'dotenv-rails', '~> 2.8', require: 'dotenv/rails-now'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-rescue'
