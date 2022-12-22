@@ -2,7 +2,7 @@
 # Rails.root.to_s + '/' must be appended by methods calling this value (makes specs easier)
 
 default: &default
-  filepath: <%= ENV.fetch('GEOJSON_PATH') { Rails.application.credentials.dig(:geo_json, :file_path).to_s } %>
+  filepath: <%= ENV.fetch('GEOJSON_PATH') { Rails.application.credentials.dig(:geojson_static_file, :filepath).to_s } %>
 
 development:
   <<: *default
