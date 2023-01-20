@@ -39,7 +39,7 @@ en:
 
     home:
           banner:
-            center_text: 'Explore Daniel Miao historical collections from libraries, museums, and archives across Massachusetts'
+            center_text: 'Explore Worcester historical collections from libraries, museums, and archives across Massachusetts'
           browse:
             maps:
               enabled: true
