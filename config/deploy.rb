@@ -57,13 +57,15 @@ namespace :boston_library do
     end
   end
 
-  # desc 'Install Webpacker'
-  # task :webpacker_install do
-  #   on roles(:app) do
-  #     # execute("#{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do ./bin/rails webpacker:install")
-  #     execute("rails webpacker:install -f")
-  #   end
-  # end
+  desc 'Copy Gemfile and Gemfile.lock to shared directory'
+  task :upload_gemfile do
+    on roles(:app) do
+      %w( Gemfile Gemfile.lock ).each do |f|
+        ## PWD=/var/lib/jenkins/workspace/Commonwealth-public-interface_testing_capistrano
+        upload! ENV['PWD'] + '/' + f, "#{shared_path}/" + f
+      end
+    end
+  end
 
   desc "#{fetch(:application)} restart #{fetch(:application)}_puma service"
   task :"restart_#{fetch(:application)}_puma" do
@@ -84,6 +86,6 @@ end
 after :'bundler:config', :'boston_library:gem_update'
 after :'boston_library:gem_update', :'boston_library:rvm_install_ruby'
 after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
-# after :'bundler:install', :'boston_library:webpacker_install'
+before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :"boston_library:restart_#{fetch(:application)}_puma"
 after :"boston_library:restart_#{fetch(:application)}_puma", :'boston_library:restart_nginx'
