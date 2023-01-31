@@ -26,7 +26,10 @@ set :pty, true
 ## When running tasks against staging server, some tasks defined in it needs to be available.
 ## config/deploy/staging.rb cannot be removed from <project>/shared/ directory, because it is temporarily not forcibly using ssl.
 ## Otherwise "curl server_IP" returns 301....
-append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb', 'bin/puma', 'bin/pumactl'
+## As bin/puma, bin/pumactl are sensitive to current project directory, it is better not to use a symlink 
+append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb'
+# append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb', 'bin/puma', 'bin/pumactl'
+
 append :linked_dirs, 'log', 'tmp/cache', 'tmp/pids', 'tmp/sockets', 'bundle'
 
 # Default value for keep_releases is 5
