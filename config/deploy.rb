@@ -8,8 +8,8 @@ set :use_sudo, false
 
 # If staging_case is set to "testing", capistrano deploys app to testing server.
 # switch :stage_case to "staging" when moving to staging enviroment
-# set :stage_case, 'staging'
-set :stage_case, 'testing'
+set :stage_case, 'staging'
+# set :stage_case, 'testing'
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
