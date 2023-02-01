@@ -101,4 +101,4 @@ after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
 before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :'boston_library:binstubs_bundler'
 after :'boston_library:binstubs_bundler', :"boston_library:restart_#{fetch(:application)}_puma"
-# after :"boston_library:restart_#{fetch(:application)}_puma", :'boston_library:restart_nginx'
+after :"boston_library:restart_#{fetch(:application)}_puma", :'boston_library:restart_nginx'
