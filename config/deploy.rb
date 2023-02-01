@@ -6,8 +6,9 @@ require File.expand_path('./environment', __dir__)
 
 set :use_sudo, false
 
-# If staging_case is set to "testing", capistrano deploys app to testing server.
-# switch :stage_case to "staging" when moving to staging enviroment
+# If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
+# switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
+# switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
 set :stage_case, 'qc'
 # set :stage_case, 'staging'
 # set :stage_case, 'testing'
@@ -29,7 +30,6 @@ set :pty, true
 ## Otherwise "curl server_IP" returns 301....
 ## As bin/puma, bin/pumactl are sensitive to current project directory, it is better not to use a symlink
 append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb'
-# append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb', 'bin/puma', 'bin/pumactl'
 
 append :linked_dirs, 'log', 'tmp/cache', 'tmp/pids', 'tmp/sockets', 'bundle'
 
