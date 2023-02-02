@@ -16,7 +16,15 @@ set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 #m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
 ## Make user home path dynamic.
-set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
+
+set :my_user, ->{ fetch(:deploy_user) }
+
+set :deploy_to, "/home/#{fetch(:my_user)}/railsApps/#{fetch(:application)}"
+
+puts "Worcester"
+puts "#{fetch(:my_user)}, #{fetch(:deploy_to)}, #{fetch(:ssh_key)}"
+puts "#{fetch(:application)}"
+puts "Worcester"
 
 set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
 set :rvm_ruby_version, File.read(File.expand_path('./../.ruby-version', __dir__)).strip
