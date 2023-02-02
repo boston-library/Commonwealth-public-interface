@@ -14,7 +14,7 @@ set :use_sudo, false
 ## # set :stage_case, 'testing'
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
-set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+#m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
 ## Make user home path dynamic.
 set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
 
