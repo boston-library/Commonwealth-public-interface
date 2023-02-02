@@ -9,9 +9,9 @@ set :use_sudo, false
 # If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
 # switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
 # switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
-set :stage_case, 'qc'
+# set :stage_case, 'qc'
 # set :stage_case, 'staging'
-# set :stage_case, 'testing'
+set :stage_case, 'testing'
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
