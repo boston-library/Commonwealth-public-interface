@@ -109,6 +109,8 @@ end
 after :'bundler:config', :'boston_library:gem_update'
 after :'boston_library:gem_update', :'boston_library:rvm_install_ruby'
 after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
+after :'boston_library:install_bundler', :'bundler:config'
+before :'bundler:config', :'bundle:install'
 before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :'boston_library:binstubs_bundler'
 after :'boston_library:binstubs_bundler', :"boston_library:restart_#{fetch(:application)}_puma"
