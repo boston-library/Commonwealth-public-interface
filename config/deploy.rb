@@ -19,7 +19,9 @@ set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 
 set :my_user, ->{ fetch(:deploy_user) }
 
-set :deploy_to, "/home/#{fetch(:my_user)}/railsApps/#{fetch(:application)}"
+# set :deploy_to, "/home/#{fetch(:my_user)}/railsApps/#{fetch(:application)}"
+set :deploy_to, "/home/deployer/railsApps/#{fetch(:application)}"
+
 
 puts "Worcester"
 puts "#{fetch(:my_user)}, #{fetch(:deploy_to)}, #{fetch(:ssh_key)}"
