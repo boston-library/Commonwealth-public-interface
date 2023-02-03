@@ -23,10 +23,10 @@ set :my_user, ->{ fetch(:deploy_user) }
 set :deploy_to, "/home/deployer/railsApps/#{fetch(:application)}"
 
 
-puts "Worcester"
-puts "#{fetch(:my_user)}, #{fetch(:deploy_to)}, #{fetch(:ssh_key)}"
-puts "#{fetch(:application)}"
-puts "Worcester"
+#puts "Worcester"
+#puts "#{fetch(:my_user)}, #{fetch(:deploy_to)}, #{fetch(:ssh_key)}"
+#puts "#{fetch(:application)}"
+#puts "Worcester"
 
 # set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
 set :rvm_installed, "/home/deployer/.rvm/bin/rvm"
