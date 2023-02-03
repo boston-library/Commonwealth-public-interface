@@ -4,19 +4,19 @@
 # ======================
 
 # stage_case means different deployment environment: staging, testing...
-
-## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
-## set :staging_server_ip , Rails
-# set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,  :server)
-set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym,  :server)
-set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
-
 # If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
 # switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
 # switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
 # set :stage_case, 'qc'
 set :stage_case, 'staging'
 # set :stage_case, 'testing'
+
+## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
+## set :staging_server_ip , Rails
+# set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,  :server)
+set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym,  :server)
+set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
 
 # set :branch, 'master'
 set :branch, 'capistrano'
@@ -42,7 +42,7 @@ SSHKit.config.command_map[:rm] = 'sudo rm'
 # For security reason, here uses ssh key.
 
 server fetch(:qc_server_ip).to_s, {
-  :user => fetch(:qc_user).to_s,
+  :user => fetch(:user).to_s,
   :role => %w(app db web),
   :ssh_options => {
     :keys => fetch(:ssh_key).to_s
