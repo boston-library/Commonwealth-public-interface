@@ -11,7 +11,7 @@
 set :stage_case, 'testing'
 
 set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
-set :deploy_user, "deployer"
+# set :deploy_user, "deployer"
 # stage_case means different deployment environment: staging, testing...
 set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :server)
 set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
