@@ -7,7 +7,8 @@
 
 ## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
 ## set :staging_server_ip , Rails
-set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,,  :server)
+# set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,  :server)
+set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym,  :server)
 set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
 
 # If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
