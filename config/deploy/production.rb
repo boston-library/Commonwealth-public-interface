@@ -2,12 +2,24 @@
 
 # server-based syntax
 # ======================
-# Defines a single server with a list of roles and multiple properties.
-# You can define all roles on a single server, or split them:
 
-# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
-# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
-# server "db.example.com", user: "deploy", roles: %w{db}
+# stage_case means different deployment environment: staging, testing...
+# If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
+# switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
+# switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
+set :stage_case, 'qc'
+# set :stage_case, 'staging'
+# set :stage_case, 'testing'
+
+## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
+## set :staging_server_ip , Rails
+# set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,  :server)
+set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym,  :server)
+set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
+
+# set :branch, 'master'
+set :branch, 'capistrano'
 
 # role-based syntax
 # ==================
@@ -17,41 +29,23 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-# role :app, %w{deploy@example.com}, my_property: :my_value
-# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
-# role :db,  %w{deploy@example.com}
+role :app, ["#{fetch(:user)}@#{fetch(:server_ip)}"]
+role :web, ["#{fetch(:user)}@#{fetch(:server_ip)}"]
+role :db,  ["#{fetch(:user)}@#{fetch(:server_ip)}"]
 
-# Configuration
-# =============
-# You can set any configuration variable like in config/deploy.rb
-# These variables are then only loaded and set in this stage.
-# For available Capistrano configuration variables see the documentation page.
-# http://capistranorb.com/documentation/getting-started/configuration/
-# Feel free to add new variables to customise your setup.
+## When Capistrano tries to delete old release, puma socket/id can be removed only by sudo user.
+## Allow current user to run it with sudo priviledge.
+SSHKit.config.command_map[:rm] = 'sudo rm'
 
 # Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult the Net::SSH documentation.
-# http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
-#
-# Global options
-# --------------
-#  set :ssh_options, {
-#    keys: %w(/home/user_name/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# The server-based syntax can be used to override options:
-# ------------------------------------
-# server "example.com",
-#   user: "user_name",
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: "user_name", # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: "please use keys"
-#   }
+# SSH to remote server uses username/password.
+# For security reason, here uses ssh key.
+
+server fetch(:server_ip).to_s, {
+  :user => fetch(:user).to_s,
+  :role => %w(app db web),
+  :ssh_options => {
+    :keys => fetch(:ssh_key).to_s
+  }
+}
+
