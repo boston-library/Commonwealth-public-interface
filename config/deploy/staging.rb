@@ -17,8 +17,8 @@
 set :stage_case, ENV['STAGE_NAME']
 
 puts "Daniel Miao"
-puts "#{stage_case}"
-# puts "#{fetch(:stage_case)}"
+# puts "#{stage_case}"
+puts "#{fetch(:stage_case)}"
 # puts "#{fetch(:stage_case)}"
 puts "Daniel Miao"
 
