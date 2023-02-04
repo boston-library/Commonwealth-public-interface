@@ -12,7 +12,9 @@
 # set :stage_case, 'testing'
 #m# stage_case = ENV['PWD']
 #m# stage_case = ENV['JOB_NAME']
-stage_case = ENV['STAGE_NAME']
+#m# stage_case = ENV['STAGE_NAME']
+
+set :stage_case, ENV['STAGE_NAME']
 
 puts "Daniel Miao"
 puts "#{stage_case}"
