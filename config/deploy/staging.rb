@@ -8,8 +8,8 @@
 # switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
 # switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
 # set :stage_case, 'qc'
-set :stage_case, 'staging'
-# set :stage_case, 'testing'
+# set :stage_case, 'staging'
+set :stage_case, 'testing'
 
 ## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
 ## set :staging_server_ip , Rails
