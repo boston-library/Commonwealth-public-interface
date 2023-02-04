@@ -14,7 +14,7 @@
 #m# stage_case = ENV['PWD']
 #m# stage_case = ENV['JOB_NAME']
 #m# stage_case = ENV['STAGE_NAME']
-
+## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing" 
 set :stage_case, ENV['STAGE_NAME']
 
 # puts "Daniel Miao"
