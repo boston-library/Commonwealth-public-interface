@@ -7,8 +7,9 @@
 # If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
 # switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
 # switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
+
 # set :stage_case, 'qc'
-#m# set :stage_case, 'staging'
+# set :stage_case, 'staging'
 # set :stage_case, 'testing'
 #m# stage_case = ENV['PWD']
 #m# stage_case = ENV['JOB_NAME']
@@ -16,11 +17,11 @@
 
 set :stage_case, ENV['STAGE_NAME']
 
-puts "Daniel Miao"
-# puts "#{stage_case}"
-puts "#{fetch(:stage_case)}"
+# puts "Daniel Miao"
+# # puts "#{stage_case}"
 # puts "#{fetch(:stage_case)}"
-puts "Daniel Miao"
+# # puts "#{fetch(:stage_case)}"
+# puts "Daniel Miao"
 
 ## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
 ## set :staging_server_ip , Rails
