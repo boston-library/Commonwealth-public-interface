@@ -24,12 +24,6 @@ set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].
 
 # role-based syntax
 # ==================
-
-# Defines a role with one or multiple servers. The primary server in each
-# group is considered to be the first unless any hosts have the primary
-# property set. Specify the username and a domain or IP for the server.
-# Don't use `:all`, it's a meta role.
-
 role :app, ["#{fetch(:user)}@#{fetch(:server_ip)}"]
 role :web, ["#{fetch(:user)}@#{fetch(:server_ip)}"]
 role :db,  ["#{fetch(:user)}@#{fetch(:server_ip)}"]
