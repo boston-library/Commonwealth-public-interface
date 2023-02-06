@@ -91,6 +91,9 @@ namespace :boston_library do
 end
 
 after :'deploy:updating', :'boston_library:gem_update'
+puts "Worcester"
+puts "ENV[PWD]"
+puts "Worcester"
 after :'boston_library:gem_update', :'boston_library:rvm_install_ruby'
 after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
 after :'boston_library:install_bundler', :'bundler:config'
