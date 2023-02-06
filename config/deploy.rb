@@ -17,7 +17,7 @@ set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
 # set :deploy_to, "/home/deployer/railsApps/#{fetch(:application)}"
 
-# set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
+set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
 # set :rvm_installed, '/home/deployer/.rvm/bin/rvm'
 set :rvm_ruby_version, File.read(File.expand_path('./../.ruby-version', __dir__)).strip
 set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].strip
