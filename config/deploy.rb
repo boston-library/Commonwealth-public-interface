@@ -8,14 +8,14 @@ set :use_sudo, false
 
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
-#m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+# m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
 ###### Make user home path dynamic.
 
 # set :deploy_to, "/home/#{fetch(:my_user)}/railsApps/#{fetch(:application)}"
 set :deploy_to, "/home/deployer/railsApps/#{fetch(:application)}"
 
 # set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
-set :rvm_installed, "/home/deployer/.rvm/bin/rvm"
+set :rvm_installed, '/home/deployer/.rvm/bin/rvm'
 set :rvm_ruby_version, File.read(File.expand_path('./../.ruby-version', __dir__)).strip
 set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].strip
 

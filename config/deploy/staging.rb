@@ -11,14 +11,14 @@
 # set :stage_case, 'qc'
 # set :stage_case, 'staging'
 # set :stage_case, 'testing'
-## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing" 
+## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing"
 set :stage_case, ENV['STAGE_NAME']
 
 ## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
 ## set :staging_server_ip , Rails
 # set :server_ip, Rails.application.credentials.dig(:deploy,"#{fetch(:stage_case)}".to_sym,  :server)
 set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
-set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym,  :server)
+set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :server)
 set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
 
 # set :branch, 'master'
