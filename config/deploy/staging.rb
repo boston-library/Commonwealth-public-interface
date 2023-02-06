@@ -19,8 +19,8 @@ set :branch, 'capistrano'
 
 set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
 # set :rvm_installed, '/home/deployer/.rvm/bin/rvm'
-set :rvm_ruby_version, File.read(File.expand_path('./../.ruby-version', __dir__)).strip
-set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].strip
+set :rvm_ruby_version, File.read(File.expand_path('./../../.ruby-version', __dir__)).strip
+set :rvm_bundle_version, File.read(File.expand_path('./../Gemfile.lock'))[-10..-1].strip
 
 # role-based syntax
 # ==================
