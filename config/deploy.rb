@@ -5,6 +5,7 @@ lock '~> 3.17.1'
 require File.expand_path('./environment', __dir__)
 
 set :use_sudo, false
+## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing"
 set :stage_case, ENV['STAGE_NAME']
 
 set :application, 'Commonwealth-public-interface'
