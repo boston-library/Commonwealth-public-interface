@@ -69,7 +69,6 @@ namespace :boston_library do
   task :upload_gemfile do
     on roles(:app) do
       %w( Gemfile Gemfile.lock ).each do |f|
-        ## PWD=/var/lib/jenkins/workspace/Commonwealth-public-interface_testing_capistrano
         upload! ENV['PWD'] + '/' + f, "#{shared_path}/" + f
       end
     end
