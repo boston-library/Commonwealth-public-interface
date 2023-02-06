@@ -96,6 +96,7 @@ after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
 after :'boston_library:install_bundler', :'bundler:config'
 after :'bundler:config', :'bundler:install'
 before :'deploy:cleanup', :'boston_library:upload_gemfile'
-after :'deploy:cleanup', :'boston_library:binstubs_bundler'
-after :'boston_library:binstubs_bundler', :"boston_library:restart_#{fetch(:application)}_puma"
+#m# after :'deploy:cleanup', :'boston_library:binstubs_bundler'
+#m# after :'boston_library:binstubs_bundler', :"boston_library:restart_#{fetch(:application)}_puma"
+after :'deploy:cleanup', :"boston_library:restart_#{fetch(:application)}_puma"
 after :"boston_library:restart_#{fetch(:application)}_puma", :'boston_library:restart_nginx'
