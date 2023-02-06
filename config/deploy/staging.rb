@@ -17,8 +17,8 @@ set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
 # set :branch, 'master'
 set :branch, 'capistrano'
 
-# set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
-set :rvm_installed, '/home/deployer/.rvm/bin/rvm'
+set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
+# set :rvm_installed, '/home/deployer/.rvm/bin/rvm'
 set :rvm_ruby_version, File.read(File.expand_path('./../.ruby-version', __dir__)).strip
 set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].strip
 
@@ -43,7 +43,6 @@ server fetch(:server_ip).to_s, {
     :keys => fetch(:ssh_key).to_s
   }
 }
-
 
 # Costomized tasks that restart our services
 namespace :boston_library do
