@@ -6,27 +6,13 @@ require File.expand_path('./environment', __dir__)
 
 set :use_sudo, false
 
-## # If staging_case is set to "testing", capistrano deploys Commonwealth-public-interface to "testing" server.
-## # switch :stage_case to "staging" when deploying Commonwealth-public-interface to staging enviroment
-## # switch :stage_case to "qc" when deploying Commonwealth-public-interface to QC server
-## set :stage_case, 'qc'
-## # set :stage_case, 'staging'
-## # set :stage_case, 'testing'
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
 #m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
-## Make user home path dynamic.
-
-set :my_user, ->{ fetch(:deploy_user) }
+###### Make user home path dynamic.
 
 # set :deploy_to, "/home/#{fetch(:my_user)}/railsApps/#{fetch(:application)}"
 set :deploy_to, "/home/deployer/railsApps/#{fetch(:application)}"
-
-
-#puts "Worcester"
-#puts "#{fetch(:my_user)}, #{fetch(:deploy_to)}, #{fetch(:ssh_key)}"
-#puts "#{fetch(:application)}"
-#puts "Worcester"
 
 # set :rvm_installed, "/home/#{fetch(:user)}/.rvm/bin/rvm"
 set :rvm_installed, "/home/deployer/.rvm/bin/rvm"
@@ -41,7 +27,6 @@ set :pty, true
 ## Otherwise "curl server_IP" returns 301....
 ## As bin/puma, bin/pumactl are sensitive to current project directory, it is better not to use a symlink
 append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb', 'config/credentials/production.key'
-
 append :linked_dirs, 'log', 'tmp/cache', 'tmp/pids', 'tmp/sockets', 'bundle'
 
 # Default value for keep_releases is 5

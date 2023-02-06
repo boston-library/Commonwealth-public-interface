@@ -11,17 +11,8 @@
 # set :stage_case, 'qc'
 # set :stage_case, 'staging'
 # set :stage_case, 'testing'
-#m# stage_case = ENV['PWD']
-#m# stage_case = ENV['JOB_NAME']
-#m# stage_case = ENV['STAGE_NAME']
 ## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing" 
 set :stage_case, ENV['STAGE_NAME']
-
-# puts "Daniel Miao"
-# # puts "#{stage_case}"
-# puts "#{fetch(:stage_case)}"
-# # puts "#{fetch(:stage_case)}"
-# puts "Daniel Miao"
 
 ## set :qc_server_ip, Rails.application.credentials.dig(:deploy,:qc,:server)
 ## set :staging_server_ip , Rails
