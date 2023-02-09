@@ -10,7 +10,6 @@ set :stage_case, ENV['STAGE_NAME']
 
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
-#m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
 set :user, ENV['DEPLOY_USER']
 ###### Make user home path dynamic.
 set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
