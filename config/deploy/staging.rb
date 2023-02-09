@@ -7,7 +7,7 @@ set :ssh_key, ENV['SSH_KEY']
 
 # set :branch, 'master'
 #m# set :branch, 'capistrano'
-set :branch, ENV['BRANCH']
+set :branch, ENV['BRANCH_NAME']
 
 # role-based syntax
 # ==================
