@@ -509,7 +509,6 @@ DEPENDENCIES
   commonwealth-vlr-engine!
   coveralls
   dotenv-rails (~> 2.8)
-  i18n (~> 1.12)
   jbuilder (~> 2.7)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
