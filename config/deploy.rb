@@ -2,7 +2,7 @@
 
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.17.1'
-require File.expand_path('./environment', __dir__)
+# require File.expand_path('./environment', __dir__)
 
 set :use_sudo, false
 ## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing"
@@ -10,7 +10,8 @@ set :stage_case, ENV['STAGE_NAME']
 
 set :application, 'Commonwealth-public-interface'
 set :repo_url, "https://github.com/boston-library/#{fetch(:application)}.git"
-set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+#m# set :user, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :user)
+set :user, ENV['DEPLOY_USER']
 ###### Make user home path dynamic.
 set :deploy_to, "/home/#{fetch(:user)}/railsApps/#{fetch(:application)}"
 
