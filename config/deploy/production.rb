@@ -2,11 +2,10 @@
 
 # server-based syntax
 # ======================
-set :server_ip, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :server)
-set :ssh_key, Rails.application.credentials.dig("deploy_#{fetch(:stage_case)}".to_sym, :ssh_key)
+set :server_ip, ENV['SERVER_IP']
+set :ssh_key, ENV['SSH_KEY']
 
-# set :branch, 'master'
-set :branch, 'capistrano'
+set :branch, ENV['BRANCH_NAME']
 
 # role-based syntax
 # ==================
