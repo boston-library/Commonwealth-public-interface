@@ -20,9 +20,6 @@ set :rvm_bundle_version, File.read(File.expand_path('./Gemfile.lock'))[-10..-1].
 # Default value for :pty is false
 set :pty, true
 
-## When running tasks against staging server, some tasks defined in it needs to be available.
-## config/deploy/staging.rb cannot be removed from <project>/shared/ directory, because it is temporarily not forcibly using ssl.
-## Otherwise "curl server_IP" returns 301....
 ## As bin/puma, bin/pumactl are sensitive to current project directory, it is better not to use a symlink
 append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/credentials/production.key'
 append :linked_dirs, 'log', 'tmp/cache', 'tmp/pids', 'tmp/sockets', 'bundle'
