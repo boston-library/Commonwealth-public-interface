@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootstrap', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
+gem 'mail', '2.8.1'
 
 # gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
