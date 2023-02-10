@@ -241,7 +241,7 @@ GEM
       nokogiri (>= 1.5.9)
     madison (0.5.0)
       json
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
