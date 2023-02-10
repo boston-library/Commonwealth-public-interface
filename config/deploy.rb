@@ -2,7 +2,6 @@
 
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.17.1'
-# require File.expand_path('./environment', __dir__)
 
 set :use_sudo, false
 ## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing"
@@ -25,7 +24,6 @@ set :pty, true
 ## config/deploy/staging.rb cannot be removed from <project>/shared/ directory, because it is temporarily not forcibly using ssl.
 ## Otherwise "curl server_IP" returns 301....
 ## As bin/puma, bin/pumactl are sensitive to current project directory, it is better not to use a symlink
-# append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/environments/staging.rb', 'config/credentials/production.key'
 append :linked_files, 'config/database.yml', 'config/credentials/staging.key', 'config/credentials/production.key'
 append :linked_dirs, 'log', 'tmp/cache', 'tmp/pids', 'tmp/sockets', 'bundle'
 
