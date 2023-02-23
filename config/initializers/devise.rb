@@ -29,9 +29,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
 
-  # fix-login fix!
-  # config.authentication_keys = [ :uid, :provider ]
-  config.authentication_keys = [:uid]
+  config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -46,7 +44,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.case_insensitive_keys = [ :uid, :provider ]
-  config.case_insensitive_keys = [:uid]
+  config.case_insensitive_keys = [:email, :uid]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
@@ -54,7 +52,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.strip_whitespace_keys = [ :uid, :provider ]
-  config.strip_whitespace_keys = [:uid]
+  config.strip_whitespace_keys = [:email, :uid]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -240,10 +238,6 @@ Devise.setup do |config|
                   access_key: OMNIAUTH_POLARIS_GLOBAL['access_key'],
                   access_id: OMNIAUTH_POLARIS_GLOBAL['access_id'],
                   method: OMNIAUTH_POLARIS_GLOBAL['method']
-
-  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
-                  OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
-                  scope: OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

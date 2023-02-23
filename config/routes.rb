@@ -8,11 +8,6 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   concern :iiif_search, BlacklightIiifSearch::Routes.new
 
-  # user authentication
-  devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                            registrations: 'users/registrations', sessions: 'users/sessions' }
-
   # bookmarks item actions
   put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
