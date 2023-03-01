@@ -57,7 +57,7 @@ namespace :boston_library do
   task :update_service_ruby do
     on roles(:app) do
       execute("sudo rm /etc/systemd/system/\"#{fetch(:application)}\"_puma.service.d/override.conf | true
-              SERVICE_RUBY_VERSION=`cat /home/deployer/railsApps/\"#{fetch(:application)}\"/current/.ruby-version`
+              SERVICE_RUBY_VERSION=`cat /home/\"#{fetch(:user)}\"/railsApps/\"#{fetch(:application)}\"/current/.ruby-version`
               echo \"SERVICE_RUBY_VERSION IS: \" ${SERVICE_RUBY_VERSION}              
               echo '[Service]' > override.conf
               echo \"Environment=SERVICE_RUBY_VERSION=${SERVICE_RUBY_VERSION}\" >> override.conf
