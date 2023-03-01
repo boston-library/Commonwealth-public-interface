@@ -175,7 +175,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  config.reset_password_within = 3.months
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
@@ -220,18 +220,6 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  # config.omniauth :ldap, :title => 'BPL admin ldap',
-  #                 :host => Hydra::LDAP.ldap_config[:host],
-  #                 :base => Hydra::LDAP.ldap_config[:base],
-  #                 :uid => Hydra::LDAP.ldap_config[:uid],
-  #                 :port => Hydra::LDAP.ldap_config[:port],
-  #                 :bind_dn => Hydra::LDAP.ldap_config[:username],
-  #                 :password => Hydra::LDAP.ldap_config[:password]
-
-  # fix-login fix
-  # config.omniauth :password, :title => 'BPL local account login',
-  #                 :login_field => :username
 
   config.omniauth :polaris, title: OMNIAUTH_POLARIS_GLOBAL['title'],
                   http_uri: OMNIAUTH_POLARIS_GLOBAL['http_uri'],

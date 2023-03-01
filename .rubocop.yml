@@ -386,6 +386,8 @@ Style/RedundantSelf:
 
 Style/RescueStandardError:
   Enabled: true
+  Exclude:
+    - 'lib/tasks/users.rake'
 
 Style/SignalException:
   Enabled: true
