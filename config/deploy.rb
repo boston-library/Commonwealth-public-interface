@@ -53,18 +53,18 @@ namespace :boston_library do
   end
 
   ## Update ruby version for systemd service
-  desc "Update ruby version for systemd service"
+  desc 'Update ruby version for systemd service'
   task :update_service_ruby do
     on roles(:app) do
       execute("sudo rm /etc/systemd/system/\"#{fetch(:application)}\"_puma.service.d/override.conf | true
               SERVICE_RUBY_VERSION=`cat /home/\"#{fetch(:user)}\"/railsApps/\"#{fetch(:application)}\"/current/.ruby-version`
-              echo \"SERVICE_RUBY_VERSION IS: \" ${SERVICE_RUBY_VERSION}              
+              echo \"SERVICE_RUBY_VERSION IS: \" ${SERVICE_RUBY_VERSION}
               echo '[Service]' > override.conf
               echo \"Environment=SERVICE_RUBY_VERSION=${SERVICE_RUBY_VERSION}\" >> override.conf
               sudo mv override.conf /etc/systemd/system/\"#{fetch(:application)}\"_puma.service.d/override.conf
               sudo /bin/systemctl daemon-reload")
     end
-  end 
+  end
 
   desc 'Copy Gemfile and Gemfile.lock to shared directory'
   task :upload_gemfile do
