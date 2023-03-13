@@ -16,5 +16,3 @@ GEOJSON_STATIC_FILE = Rails.application.config_for('geojson_static_file')
 CURATOR = Rails.application.config_for('curator')
 
 OMNIAUTH_POLARIS_GLOBAL = Rails.application.config_for('omniauth-polaris')
-
-OMNIAUTH_FACEBOOK_GLOBAL = Rails.application.config_for('omniauth-facebook')

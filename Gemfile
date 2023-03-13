@@ -52,7 +52,6 @@ group :development, :test do
   gem 'dotenv-rails', '~> 2.8', require: 'dotenv/rails-now'
   gem 'pry'
   gem 'pry-rails'
-  gem 'pry-rescue'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 3.9', '< 4.0'

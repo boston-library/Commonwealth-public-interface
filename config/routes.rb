@@ -70,10 +70,6 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'why_join' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'items/*all', to: 'pages#items'
 
-  # Routes for the API
-  post '/api/digital_stacks/user_create', to: 'digital_stacks_api#digital_stacks_create', as: 'digital_stacks_create'
-  get '/api/digital_stacks/saved_items/:id', to: 'digital_stacks_api#digital_stacks_login', as: 'digital_stacks_login'
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
