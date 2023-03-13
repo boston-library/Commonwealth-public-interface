@@ -8,6 +8,8 @@ class IiifSearchBuilder < Blacklight::SearchBuilder
 
   # set params for ocr field searching
   def ocr_search_params(solr_parameters = {})
+    solr_parameters[:qf] = '${fulltext_qf}'
+    solr_parameters[:pf] = '${fulltext_pf}'
     solr_parameters[:facet] = false
     solr_parameters[:hl] = true
     solr_parameters[:'hl.fl'] = blacklight_config.iiif_search[:full_text_field]
