@@ -47,12 +47,6 @@
         </div>
 
       <% end %>
-
-      <div id="alt_signins">
-        <%= link_to(image_tag('commonwealth-vlr-engine/facebookLoginButton.png',
-                              alt: 'Log in with Facebook',
-                              class: 'alt_signin_btn'),
-                    omniauth_authorize_path(resource_name, 'facebook'), method: :post) %>
         <%= link_to(image_tag('commonwealth-vlr-engine/bplLoginButton.png',
                               alt: 'Log in with your BPL library card',
                               class: 'alt_signin_btn'),
