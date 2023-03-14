@@ -29,9 +29,7 @@ Devise.setup do |config|
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
 
-  # fix-login fix!
-  # config.authentication_keys = [ :uid, :provider ]
-  config.authentication_keys = [:uid]
+  config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -46,7 +44,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.case_insensitive_keys = [ :uid, :provider ]
-  config.case_insensitive_keys = [:uid]
+  config.case_insensitive_keys = [:email, :uid]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
@@ -54,7 +52,7 @@ Devise.setup do |config|
 
   # fix-login fix!
   # config.strip_whitespace_keys = [ :uid, :provider ]
-  config.strip_whitespace_keys = [:uid]
+  config.strip_whitespace_keys = [:email, :uid]
 
   # Tell if authentication through request.params is enabled. True by default.
   # It can be set to an array that will enable params authentication only for the
@@ -177,7 +175,7 @@ Devise.setup do |config|
   # Time interval you can reset your password with a reset password key.
   # Don't put a too small interval or your users won't have the time to
   # change their passwords.
-  config.reset_password_within = 6.hours
+  config.reset_password_within = 3.months
 
   # ==> Configuration for :encryptable
   # Allow you to use another encryption algorithm besides bcrypt (default). You can use
@@ -222,28 +220,12 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  # config.omniauth :ldap, :title => 'BPL admin ldap',
-  #                 :host => Hydra::LDAP.ldap_config[:host],
-  #                 :base => Hydra::LDAP.ldap_config[:base],
-  #                 :uid => Hydra::LDAP.ldap_config[:uid],
-  #                 :port => Hydra::LDAP.ldap_config[:port],
-  #                 :bind_dn => Hydra::LDAP.ldap_config[:username],
-  #                 :password => Hydra::LDAP.ldap_config[:password]
-
-  # fix-login fix
-  # config.omniauth :password, :title => 'BPL local account login',
-  #                 :login_field => :username
 
   config.omniauth :polaris, title: OMNIAUTH_POLARIS_GLOBAL['title'],
                   http_uri: OMNIAUTH_POLARIS_GLOBAL['http_uri'],
                   access_key: OMNIAUTH_POLARIS_GLOBAL['access_key'],
                   access_id: OMNIAUTH_POLARIS_GLOBAL['access_id'],
                   method: OMNIAUTH_POLARIS_GLOBAL['method']
-
-  config.omniauth :facebook, OMNIAUTH_FACEBOOK_GLOBAL['facebook_key'],
-                  OMNIAUTH_FACEBOOK_GLOBAL['facebook_secret'],
-                  scope: OMNIAUTH_FACEBOOK_GLOBAL['facebook_scope']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -7,5 +7,7 @@ class ApplicationController < ActionController::Base
   # adds some site-wide behavior into the application controller
   include CommonwealthVlrEngine::Controller
 
+  include Bpluser::Controller
+
   layout :determine_layout if respond_to? :layout
 end

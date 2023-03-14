@@ -8,11 +8,6 @@ CommonwealthPublicInterface::Application.routes.draw do
 
   concern :iiif_search, BlacklightIiifSearch::Routes.new
 
-  # user authentication
-  devise_for :users,
-             controllers: { omniauth_callbacks: 'users/omniauth_callbacks',
-                            registrations: 'users/registrations', sessions: 'users/sessions' }
-
   # bookmarks item actions
   put 'bookmarks/item_actions', to: 'folder_items_actions#folder_item_actions', as: 'selected_bookmarks_actions'
 
@@ -74,10 +69,6 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'members' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'why_join' => redirect('https://digitalcommonwealth.wildapricot.org')
   get 'items/*all', to: 'pages#items'
-
-  # Routes for the API
-  post '/api/digital_stacks/user_create', to: 'digital_stacks_api#digital_stacks_create', as: 'digital_stacks_create'
-  get '/api/digital_stacks/saved_items/:id', to: 'digital_stacks_api#digital_stacks_login', as: 'digital_stacks_login'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

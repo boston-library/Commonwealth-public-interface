@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_215557) do
+ActiveRecord::Schema.define(version: 2023_02_23_162716) do
 
   create_table "admin_statistics", force: :cascade do |t|
     t.string "pid"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_215557) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "visibility"
+    t.index ["user_id"], name: "index_bpluser_folders_on_user_id"
   end
 
   create_table "carousel_slides", force: :cascade do |t|
@@ -61,18 +62,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_215557) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string "size"
-  end
-
-  create_table "institutions", force: :cascade do |t|
-    t.string "name"
-    t.string "pid"
-  end
-
-  create_table "institutions_users", id: false, force: :cascade do |t|
-    t.integer "institution_id"
-    t.integer "user_id"
-    t.index ["institution_id", "user_id"], name: "index_institutions_users_on_institution_id_and_user_id"
-    t.index ["user_id", "institution_id"], name: "index_institutions_users_on_user_id_and_institution_id"
   end
 
   create_table "polaris_barcodes", force: :cascade do |t|
@@ -93,17 +82,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_215557) do
     t.index ["bibID"], name: "index_polaris_lookups_on_bibID", unique: true
     t.index ["horizonID"], name: "index_polaris_lookups_on_horizonID", unique: true
     t.index ["itemID"], name: "index_polaris_lookups_on_itemID", unique: true
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-  end
-
-  create_table "roles_users", id: false, force: :cascade do |t|
-    t.integer "role_id"
-    t.integer "user_id"
-    t.index ["role_id", "user_id"], name: "index_roles_users_on_role_id_and_user_id"
-    t.index ["user_id", "role_id"], name: "index_roles_users_on_user_id_and_role_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -141,5 +119,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_215557) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider"
   end
 
+  add_foreign_key "bpluser_folder_items", "bpluser_folders", column: "folder_id"
+  add_foreign_key "bpluser_folders", "users"
   add_foreign_key "polaris_barcodes", "polaris_lookups"
 end
