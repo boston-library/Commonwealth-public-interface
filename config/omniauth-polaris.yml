@@ -3,7 +3,7 @@ default: &default
   http_uri: <%= ENV.fetch('POLARIS_URI') { Rails.application.credentials.dig(:polaris, :uri).to_s } %>
   access_key: <%= ENV.fetch('POLARIS_KEY') { Rails.application.credentials.dig(:polaris, :key).to_s } %>
   access_id: <%= ENV.fetch('POLARIS_ID') { Rails.application.credentials.dig(:polaris, :id).to_s } %>
-  method: GET
+  method: POST
 
 development:
   <<: *default
