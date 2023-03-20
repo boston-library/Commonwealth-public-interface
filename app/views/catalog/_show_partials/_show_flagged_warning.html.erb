@@ -1,7 +1,7 @@
 <div id="show_content_warning" class="alert alert-warning">
   <%= t('blacklight.flagged.warning') %>
-  This material has been collected as part of <%= document[blacklight_config.institution_field].first %>'s
-  mission to preserve the historic record; Digital Commonwealth and <%= document[blacklight_config.institution_field].first %>
+  This material has been collected as part of <%= document[blacklight_config.institution_field] %>'s
+  mission to preserve the historic record; Digital Commonwealth and <%= document[blacklight_config.institution_field] %>
   do not necessarily endorse the viewpoints expressed within. For more information, please view the
   <%= link_to document[blacklight_config.collection_field].first, collection_path(document['collection_ark_id_ssim'].first) %>
   collection description, and our
