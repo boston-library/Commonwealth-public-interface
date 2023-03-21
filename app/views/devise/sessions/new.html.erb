@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-sm-12 col-md-6">
     <h2>User sign in</h2>
-
     <div id="signin_wrapper">
 
       <%= form_for(resource,
@@ -26,17 +25,19 @@
               </span>
           </div>
         </div>
+
         <% if devise_mapping.rememberable? -%>
           <div class="form-group row">
-            <div class="form-check offset-sm-2 col-sm-6">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="form-check col-sm-6">
               <%= f.check_box :remember_me, class: 'form-check-input' %>
               <label id="remember_me" class="form-check-label">
                 Remember me on this device
               </label>
             </div>
           </div>
-
         <% end -%>
+
         <div class="form-group row">
           <div class="offset-sm-2 col-sm-4">
             <%# f.submit "Sign in" %>
@@ -45,17 +46,18 @@
             </button>
           </div>
         </div>
-
       <% end %>
+
+      <div id="alt_signins">
         <%= link_to(image_tag('commonwealth-vlr-engine/bplLoginButton.png',
                               alt: 'Log in with your BPL library card',
                               class: 'alt_signin_btn'),
-                    omniauth_authorize_path(resource_name, 'polaris', authenticity_token: form_authenticity_token), method: :post) %>
+                    omniauth_authorize_path(resource_name, 'polaris', authenticity_token: form_authenticity_token),
+                    method: :post) %>
         <%# omniauth_authorize_path(resource_name, provider) %>
       </div>
 
       <%= render 'devise/shared/links' %>
-
     </div>
   </div>
   <div class="col-md-3 col-sm-6">
