@@ -50,4 +50,31 @@ namespace :users do
 
     puts 'End Task'
   end
+
+  desc 'Clear guest users rake task'
+  task clear_guest_users: :environment do
+    puts 'Preparing to clear guest users older than 90 days'
+    users = User.where(guest: true).where('updated_at <= ?', 90.days.ago)
+    if users.present?
+      puts "Found #{users.count} Users"
+      folder_items = Bpluser::FolderItem.joins(:folder).where(bpluser_folders: { user_id: users.pluck(:id) })
+      if folder_items.present?
+        puts "Deleting #{folder_items.count} folder items..."
+        folder_items.destroy_all
+        puts 'Deleted Folders successfully'
+      end
+
+      folders = Bpluser::Folder.where(user_id: users.pluck(:id))
+      if folders.present?
+        puts "Deleting #{folders.count} folders..."
+        folders.destroy_all
+        puts 'Deleted folders successfully'
+      end
+      users.reload.destroy_all
+      puts 'Deleted users successfully'
+    else
+      puts 'No guest users older than 90 days found!'
+    end
+    puts 'End Task'
+  end
 end
