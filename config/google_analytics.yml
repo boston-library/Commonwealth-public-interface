@@ -1,6 +1,7 @@
 # GA web property id
 default: &default
   web_property_id: <%= ENV.fetch('GA_PROPERTY_ID') { Rails.application.credentials.dig(:ga, :property_id).to_s } %>
+  web_property_id_ua_DEPRECATED: <%= ENV.fetch('GA_PROPERTY_ID_UA_DEPRECATED') { Rails.application.credentials.dig(:ga, :web_property_id_ua_DEPRECATED).to_s } %>
 
 development:
   <<: *default
