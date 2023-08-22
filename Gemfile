@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.8'
+ruby '3.0.6'
 
-gem 'rails', '~> 6.0.6.1', '< 6.1'
+gem 'rails', '~> 6.1.7.4'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
@@ -31,11 +31,12 @@ gem 'bootstrap', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
-# gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
+# gem 'commonwealth-vlr-engine', path: '/path/to/local/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
-gem 'bpluser', '~> 0.2'
-gem 'net-http' # NOTE this is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
+gem 'bpluser', '~> 0.3'
+# NOTE: net-http is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
 # Issue is described here https://github.com/ruby/net-imap/issues/16#issuecomment-1423676522
+gem 'net-http'
 gem 'rack-attack', '~> 6.6'
 
 gem 'sprockets-rails', '~> 3.4'
@@ -54,14 +55,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.4'
-  gem 'rspec-rails', '~> 3.9', '< 4.0'
+  gem 'rspec-rails', '~> 6.0.3'
   gem 'capybara', '~> 3.0', '< 4'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'webdrivers', '~> 3.0'
-  gem 'rubocop', '~> 0.75.1', require: false
-  gem 'rubocop-performance', '~> 1.5', require: false
-  gem 'rubocop-rails', '~> 2.4.2', require: false
-  gem 'rubocop-rspec', require: false
+  gem 'selenium-webdriver', '~> 4.10'
+  gem 'rubocop', '~> 1.36', require: false
+  gem 'rubocop-performance', '~> 1.15', require: false
+  gem 'rubocop-rails', '~> 2.16', require: false
+  gem 'rubocop-rspec', '~> 2.16', require: false
 end
 
 group :test do
