@@ -66,6 +66,20 @@ namespace :boston_library do
     end
   end
 
+
+  # rubocop:disable Layout/LineLength
+  desc 'Run a console command to test -rails console-'
+  task :rails_console_runner do
+    on roles(:app), in: :sequence, wait: 5 do
+      as fetch(:user) do
+        within release_path do
+          puts capture("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails runner -e staging \"puts 'rails console works'\"")
+        end
+      end
+    end
+  end
+  # rubocop:enable Layout/LineLength
+
   desc 'Copy Gemfile and Gemfile.lock to shared directory'
   task :upload_gemfile do
     on roles(:app) do
@@ -87,6 +101,13 @@ namespace :boston_library do
   task :restart_nginx do
     on roles(:app), in: :sequence, wait: 5 do
       execute 'sudo /bin/systemctl reload nginx.service'
+    end
+  end
+
+  desc 'List current releases'
+  task :list_releases do
+    on roles(:app) do
+      execute "ls -alt #{fetch(:deploy_to)}/releases"
     end
   end
 end
