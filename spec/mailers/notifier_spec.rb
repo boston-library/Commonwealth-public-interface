@@ -11,7 +11,7 @@ describe Notifier do
     end
     let(:test_feedback_email) { described_class.feedback(email_params) }
 
-    before do
+    before(:each) do
       CONTACT_EMAILS['dc_admin'] = recipient_email
     end
 
