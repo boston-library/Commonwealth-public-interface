@@ -2,7 +2,7 @@ require:
   - rubocop-rspec
   - rubocop-rails
   - rubocop-performance
-
+  - rubocop-capybara
 AllCops:
   Exclude:
     - 'bin/*'
@@ -29,7 +29,7 @@ Gemspec/OrderedDependencies:
   Enabled: true
 
 ####################### LAYOUT ###############################
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Enabled: true
 
 Layout/BlockAlignment:
@@ -41,7 +41,7 @@ Layout/CaseIndentation:
 Layout/CommentIndentation:
   Enabled: true
 
-Layout/AlignArguments:
+Layout/ArgumentAlignment:
   Enabled: true
 
 Layout/ClosingParenthesisIndentation:
@@ -80,7 +80,7 @@ Layout/EndAlignment:
 Layout/ExtraSpacing:
   Enabled: true
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: true
   EnforcedStyle: consistent
 
@@ -90,7 +90,7 @@ Layout/IndentationConsistency:
 Layout/IndentationWidth:
   Enabled: true
 
-Layout/LeadingBlankLines:
+Layout/LeadingEmptyLines:
   Enabled: true
 
 Layout/LeadingCommentSpace:
@@ -161,7 +161,7 @@ Lint/DuplicateCaseCondition:
 Lint/DuplicateMethods:
   Enabled: true
 
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Enabled: true
 
 Lint/EachWithObjectArgument:
@@ -183,7 +183,7 @@ Lint/EmptyInterpolation:
 Lint/EmptyWhen:
   Enabled: true
 
-Lint/EndInMethod:
+Style/EndBlock:
   Enabled: true
 
 Lint/EnsureReturn:
@@ -198,7 +198,7 @@ Lint/FloatOutOfRange:
 Lint/FormatParameterMismatch:
   Enabled: true
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: true
 
 Lint/ImplicitStringConcatenation:
@@ -219,7 +219,7 @@ Lint/LiteralInInterpolation:
 Lint/Loop:
   Enabled: true
 
-Lint/MultipleCompare:
+Lint/MultipleComparison:
   Enabled: true
 
 Lint/NestedMethodDefinition:
@@ -258,7 +258,7 @@ Lint/ShadowedException:
 Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Enabled: true
 
 Lint/UnderscorePrefixedVariableName:
@@ -267,7 +267,7 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: true
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: true
 
 Lint/UnusedMethodArgument:
@@ -285,7 +285,7 @@ Lint/UselessAccessModifier:
 Lint/UselessAssignment:
   Enabled: true
 
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
   Enabled: true
 
 Lint/UselessElseWithoutRescue:
@@ -409,7 +409,7 @@ Style/SymbolArray:
 Style/WordArray:
   Enabled: false
 
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Enabled: true
 
 ####################### METRICS ###############################
@@ -438,7 +438,7 @@ Metrics/MethodLength:
   Enabled: true
   Max: 100
 
-Metrics/LineLength:
+Layout/LineLength:
   Enabled: true
   Max: 500
 
@@ -677,9 +677,6 @@ RSpec/HooksBeforeExamples:
 
 RSpec/InstanceVariable:
   Enabled: false
-
-RSpec/InvalidPredicateMatcher:
-  Enabled: true
 
 RSpec/ItBehavesLike:
   Enabled: true
