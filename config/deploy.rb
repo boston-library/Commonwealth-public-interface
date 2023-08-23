@@ -66,7 +66,6 @@ namespace :boston_library do
     end
   end
 
-
   # rubocop:disable Layout/LineLength
   desc 'Run a console command to test -rails console-'
   task :rails_console_runner do
