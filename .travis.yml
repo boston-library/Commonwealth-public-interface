@@ -16,4 +16,4 @@ env:
   - IIIF_URL=https://iiifserver.example.org/
   - OAI_URL=https://oaiprovider.example.org/
   matrix:
-  - RAILS_VERSION=6.1.7.4
+  - RAILS_VERSION=6.1.7.6
