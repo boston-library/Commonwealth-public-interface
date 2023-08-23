@@ -67,6 +67,7 @@ namespace :boston_library do
   end
 
   # rubocop:disable Layout/LineLength
+  # rubocop:disable Rails/Output
   desc 'Run a console command to test -rails console-'
   task :rails_console_runner do
     on roles(:app), in: :sequence, wait: 5 do
@@ -78,6 +79,7 @@ namespace :boston_library do
     end
   end
   # rubocop:enable Layout/LineLength
+  # rubocop:enable Rails/Output
 
   desc 'Copy Gemfile and Gemfile.lock to shared directory'
   task :upload_gemfile do
