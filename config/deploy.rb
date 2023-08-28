@@ -66,6 +66,21 @@ namespace :boston_library do
     end
   end
 
+  # rubocop:disable Layout/LineLength
+  # rubocop:disable Rails/Output
+  desc 'Run a console command to test -rails console-'
+  task :rails_console_runner do
+    on roles(:app), in: :sequence, wait: 5 do
+      as fetch(:user) do
+        within release_path do
+          puts capture("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails runner -e #{fetch(:stage_case)} \"puts 'rails console works'\"")
+        end
+      end
+    end
+  end
+  # rubocop:enable Layout/LineLength
+  # rubocop:enable Rails/Output
+
   desc 'Copy Gemfile and Gemfile.lock to shared directory'
   task :upload_gemfile do
     on roles(:app) do
@@ -89,6 +104,13 @@ namespace :boston_library do
       execute 'sudo /bin/systemctl reload nginx.service'
     end
   end
+
+  desc 'List current releases'
+  task :list_releases do
+    on roles(:app) do
+      execute "ls -alt #{fetch(:deploy_to)}/releases"
+    end
+  end
 end
 
 after :'deploy:updating', :'boston_library:gem_update'
@@ -100,3 +122,4 @@ before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :'boston_library:update_service_ruby'
 after :'boston_library:update_service_ruby', :"boston_library:restart_#{fetch(:application)}_puma"
 after :"boston_library:restart_#{fetch(:application)}_puma", :'boston_library:restart_nginx'
+after :'boston_library:restart_nginx', :'boston_library:list_releases'
