@@ -22,6 +22,10 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:email, partial: 'show_email_tools', callback: :email_action, validator: :validate_email_params)
     config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
 
+    # remove and re-add :iiif_manifest so it displays in the desired order
+    config.show.document_actions.delete(:iiif_manifest)
+    config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
+
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     #
