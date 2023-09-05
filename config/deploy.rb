@@ -90,11 +90,13 @@ namespace :boston_library do
     end
   end
 
+  ## ~/.rvm/bin/rvm 3.0.6 do bundle exec rake assets:precompile
   desc 'Run assets:clean and assets:precompile'
   task :rails_assets_precompile do
     on roles(:app), in: :sequence, wait: 5 do
       as fetch(:user) do
         within release_path do
+          echo "cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:clean"
           execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:clean")
           execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:precompile")     
         end
