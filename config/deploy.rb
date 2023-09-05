@@ -90,7 +90,7 @@ namespace :boston_library do
     end
   end
 
-  ## ~/.rvm/bin/rvm 3.0.6 do bundle exec rake assets:precompile
+  ###### ~/.rvm/bin/rvm 3.0.6 do bundle exec rake assets:precompile
   desc 'Run assets:clean and assets:precompile'
   task :rails_assets_precompile do
     on roles(:app), in: :sequence, wait: 5 do
