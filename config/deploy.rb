@@ -96,7 +96,7 @@ namespace :boston_library do
     on roles(:app), in: :sequence, wait: 5 do
       as fetch(:user) do
         within release_path do
-          echo "cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:clean"
+          puts capture("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do ruby --version")
           execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:clean")
           execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:precompile")     
         end
