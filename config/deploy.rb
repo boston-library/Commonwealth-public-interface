@@ -97,8 +97,10 @@ namespace :boston_library do
       as fetch(:user) do
         within release_path do
           puts capture("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do ruby --version")
-          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do RAILS_ENV=#{fetch(:stage_case)} bin/rails assets:clean")
-          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do RAILS_ENV=#{fetch(:stage_case)} bin/rails assets:precompile")     
+          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do rake assets:clean")
+          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do rake assets:precompile")
+          # execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do RAILS_ENV=#{fetch(:stage_case)} bin/rails assets:clean")
+          # execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do RAILS_ENV=#{fetch(:stage_case)} bin/rails assets:precompile")
         end
       end
     end
