@@ -90,6 +90,18 @@ namespace :boston_library do
     end
   end
 
+  desc 'Run assets:clean and assets:precompile'
+  task :rails_assets_precompile do
+    on roles(:app), in: :sequence, wait: 5 do
+      as fetch(:user) do
+        within release_path do
+          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:clean")
+          execute("cd #{release_path}; #{fetch(:rvm_installed)} #{fetch(:rvm_ruby_version)} do #{release_path}/bin/rails assets:precompile")     
+        end
+      end
+    end
+  end
+
   desc "#{fetch(:application)} restart #{fetch(:application)}_puma service"
   task :"restart_#{fetch(:application)}_puma" do
     on roles(:app), in: :sequence, wait: 5 do
@@ -118,6 +130,7 @@ after :'boston_library:gem_update', :'boston_library:rvm_install_ruby'
 after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
 after :'boston_library:install_bundler', :'bundler:config'
 after :'bundler:config', :'bundler:install'
+before :"boston_library:upload_gemfile", :"boston_library:boston_library:rails_assets_precompile"
 before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :'boston_library:update_service_ruby'
 after :'boston_library:update_service_ruby', :"boston_library:restart_#{fetch(:application)}_puma"
