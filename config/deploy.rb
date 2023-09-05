@@ -132,7 +132,7 @@ after :'boston_library:gem_update', :'boston_library:rvm_install_ruby'
 after :'boston_library:rvm_install_ruby', :'boston_library:install_bundler'
 after :'boston_library:install_bundler', :'bundler:config'
 after :'bundler:config', :'bundler:install'
-before :"boston_library:upload_gemfile", :"boston_library:boston_library:rails_assets_precompile"
+before :"boston_library:upload_gemfile", :"boston_library:rails_assets_precompile"
 before :'deploy:cleanup', :'boston_library:upload_gemfile'
 after :'deploy:cleanup', :'boston_library:update_service_ruby'
 after :'boston_library:update_service_ruby', :"boston_library:restart_#{fetch(:application)}_puma"
