@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/boston-library/commonwealth-vlr-engine.git
-  revision: 2b3bd8b9efd2d07f2253afe1810c5ba0efdbd2b2
+PATH
+  remote: ../commonwealth-vlr-engine
   specs:
     commonwealth-vlr-engine (0.1.0)
       blacklight (~> 7.19.0)
@@ -539,4 +538,4 @@ RUBY VERSION
    ruby 3.0.6p216
 
 BUNDLED WITH
-   2.3.26
+   2.4.19
