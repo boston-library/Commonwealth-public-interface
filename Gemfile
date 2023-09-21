@@ -31,11 +31,12 @@ gem 'bootstrap', '~> 4.0'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
-# gem 'commonwealth-vlr-engine', path: '/Users/eben/Documents/Work/BPL/boston-library/commonwealth-vlr-engine'
+# gem 'commonwealth-vlr-engine', path: '/path/to/local/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
-gem 'bpluser', '~> 0.2'
-gem 'net-http' # NOTE this is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
+gem 'bpluser', '~> 0.3'
+# NOTE: net-http is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
 # Issue is described here https://github.com/ruby/net-imap/issues/16#issuecomment-1423676522
+gem 'net-http'
 gem 'rack-attack', '~> 6.6'
 
 gem 'sprockets-rails', '~> 3.4'
