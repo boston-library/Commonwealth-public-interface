@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boston-library/commonwealth-vlr-engine.git
-  revision: 76127d423769111d27c1d4777a4e5f0e7f2fd1b5
+  revision: d6aac6b3ce803e71af9f1d7298b70a832e80093b
   specs:
     commonwealth-vlr-engine (0.1.0)
       blacklight (~> 7.19.0)
@@ -191,7 +191,8 @@ GEM
     ethon (0.16.0)
       ffi (>= 1.15.0)
     execjs (2.8.1)
-    faraday (2.7.10)
+    faraday (2.7.11)
+      base64
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
