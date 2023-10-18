@@ -1,15 +1,6 @@
 /* this file imports the styles for commonwealth-vlr-engine */
 
-<%
-header_logo_images = {
-  "production" => 'dc-logo_tagline_sm.png',
-  "staging" => 'dc-logo_tagline_sm_search-STAGING.png',
-  "test" => 'dc-logo_tagline_sm_search-QC.png',
-  "development" => 'dc-logo_tagline_sm_search-dev.png'
-}
-%>
-
-$header_logo_image: '<%= header_logo_images[Rails.env] %>';
+$header_logo_image: '<%= "dc-logo_tagline_sm_search-#{Rails.env}" %>';
 $footer_logo_image: 'dc-logo_notag_xsm_bw.png';
 
 @import 'commonwealth-vlr-engine/commonwealth-vlr-engine';
