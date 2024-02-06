@@ -31,6 +31,8 @@ en:
                 membership:
                  option: 'DC membership (library)'
                  help_text: 'More information on becoming a member can be found here: <a href=\"https://digitalcommonwealth.wildapricot.org\" target=\"_blank\">Membership & Programming</a>.<br/><br/>For information about applying for digitization services, see <a href=\"https://digitalcommonwealth.wildapricot.org/page-1856198\" target=\"_blank\">Digitization &amp; Metadata Services</a>.'
+          item:
+            title: 'Send Us a Question or Comment About This Item'
           text:
             subject: 'Digital Commonwealth Repository: contact email [%{identifier}]'
 

@@ -18,12 +18,14 @@ class CatalogController < ApplicationController
     config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)
 
+    # remove tools and re-add below so display is in desired order
+    config.show.document_actions.delete(:item_feedback)
+    config.show.document_actions.delete(:iiif_manifest)
+
     config.add_show_tools_partial(:folder_items, partial: 'folder_item_control')
+    config.add_show_tools_partial :item_feedback, partial: 'show_item_feedback_tools', if: :render_item_feedback?
     config.add_show_tools_partial(:email, partial: 'show_email_tools', callback: :email_action, validator: :validate_email_params)
     config.add_show_tools_partial(:citation, partial: 'show_cite_tools')
-
-    # remove and re-add :iiif_manifest so it displays in the desired order
-    config.show.document_actions.delete(:iiif_manifest)
     config.add_show_tools_partial :iiif_manifest, partial: 'show_iiif_manifest', if: :render_manifest_link?
 
     # solr fields that will be treated as facets by the blacklight application

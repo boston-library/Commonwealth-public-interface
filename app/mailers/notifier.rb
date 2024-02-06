@@ -7,11 +7,8 @@ class Notifier < ActionMailer::Base
 
   # adds a few additional routing options
   def route_email(topic)
-    recipient_email = if topic == t('blacklight.feedback.form.topic.options.membership.option')
-                        CONTACT_EMAILS['dc_admin']
-                      elsif topic == t('blacklight.feedback.form.topic.options.research.option')
-                        CONTACT_EMAILS['research_question']
-                      end
-    recipient_email || super
+    return CONTACT_EMAILS['dc_admin'] if topic == t('blacklight.feedback.form.topic.options.membership.option')
+
+    super
   end
 end
