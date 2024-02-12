@@ -116,6 +116,9 @@ en:
           form:
             institution: "Search this institution's collections..."
 
+    tools:
+          citation: 'Cite This Item'
+
     update:
           item: 'Our site has recently changed! Please use the search form below to find the item you are looking for.'
           new_url: 'Our site has recently changed! Please make a note of the updated URL for this page.'
