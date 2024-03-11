@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.1.4'
 
 gem 'rails', '~> 6.1.7.7'
 
@@ -15,7 +15,7 @@ gem 'puma', '~> 5.6.8'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -33,7 +33,7 @@ gem 'jquery-rails'
 
 # gem 'commonwealth-vlr-engine', path: '/path/to/local/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
-gem 'bpluser', '~> 0.3'
+gem 'bpluser', '~> 0.4'
 # NOTE: net-http is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
 # Issue is described here https://github.com/ruby/net-imap/issues/16#issuecomment-1423676522
 gem 'net-http'
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano-rvm'
   gem 'coveralls', require: false
+  gem 'debug', platforms: %i(mri mingw x64_mingw)
   gem 'dotenv-rails', '~> 2.8', require: 'dotenv/rails-now'
   gem 'pry'
   gem 'pry-rails'
