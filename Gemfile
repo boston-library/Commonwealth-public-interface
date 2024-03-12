@@ -52,8 +52,6 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'debug', platforms: %i(mri mingw x64_mingw)
   gem 'dotenv-rails', '~> 2.8', require: 'dotenv/rails-now'
-  gem 'pry'
-  gem 'pry-rails'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'sqlite3', '~> 1.4'
   gem 'rspec-rails', '~> 6.0.3'
