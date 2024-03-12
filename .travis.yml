@@ -1,15 +1,15 @@
 language: ruby
 sudo: false
-dist: bionic
+dist: focal
 cache:
   bundler: true
 before_install:
 - gem update --system --no-document
-- gem install bundler:2.3.26 --no-document
+- gem install bundler:2.4.22 --no-document
 before_script:
 - RAILS_ENV=test bundle exec rails db:prepare
 rvm:
-- 3.0.6
+- 3.1.4
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
