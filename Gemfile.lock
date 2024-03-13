@@ -132,7 +132,7 @@ GEM
       omniauth-rails_csrf_protection (~> 1.0)
       rails (~> 6.1.7.4)
     builder (3.2.4)
-    capistrano (3.18.1)
+    capistrano (3.17.3)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -520,7 +520,7 @@ DEPENDENCIES
   awesome_print
   bootstrap (~> 4.0)
   bpluser (~> 0.4)
-  capistrano (~> 3.17)
+  capistrano (~> 3.17.3)
   capistrano-rails (~> 1.4)
   capistrano-rvm
   capistrano3-puma
