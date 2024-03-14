@@ -43,6 +43,8 @@ gem 'sprockets-rails', '~> 3.4'
 
 gem 'sd_notify', group: [:production, :staging]
 
+gem 'postmark-rails'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'capistrano', '~> 3.17.3', require: false
