@@ -43,7 +43,7 @@ gem 'sprockets-rails', '~> 3.4'
 
 gem 'sd_notify', group: [:production, :staging]
 
-gem 'postmark-rails'
+gem 'postmark-rails', '~> 0.22'
 
 group :development, :test do
   gem 'awesome_print'
