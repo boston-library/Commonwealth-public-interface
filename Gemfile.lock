@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boston-library/commonwealth-vlr-engine.git
-  revision: 01bd7664403c577b53d393b650a7867ed3140d3e
+  revision: b8ca81b4c5d77f4614c42c4afa1a663a6e138ab2
   specs:
     commonwealth-vlr-engine (0.1.0)
       blacklight (~> 7.19.0)
@@ -380,7 +380,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
-    rsolr (2.5.0)
+    rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
     rspec-core (3.13.0)
