@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boston-library/commonwealth-vlr-engine.git
-  revision: b8ca81b4c5d77f4614c42c4afa1a663a6e138ab2
+  revision: 3351130c1ae739afe6d3fa0e0a943aaf72c65757
   specs:
     commonwealth-vlr-engine (0.1.0)
       blacklight (~> 7.19.0)
@@ -200,7 +200,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    font-awesome-sass (6.5.1)
+    font-awesome-sass (6.5.2)
       sassc (~> 2.0)
     geo_coord (0.2.0)
     globalid (1.2.1)
