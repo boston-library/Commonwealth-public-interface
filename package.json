@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "5.4.3",
+    "@rails/webpacker": "5.4.4",
     "node-sass": "7.0.3"
   },
   "devDependencies": {
