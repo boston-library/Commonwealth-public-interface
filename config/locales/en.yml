@@ -55,8 +55,8 @@ en:
             about:
               text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
             news:
-              rss_link: 'http://blog.digitalcommonwealth.org/?feed=rss2'
-              blog_url: 'https://www.digitalcommonwealth.org/blog'
+              rss_link: 'https://blog.digitalcommonwealth.org/?feed=rss2'
+              blog_url: 'https://blog.digitalcommonwealth.org/'
               blog_title: 'Digital Commonwealth News & Announcements'
 
     maps:
