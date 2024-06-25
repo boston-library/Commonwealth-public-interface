@@ -33,7 +33,7 @@ gem 'jquery-rails'
 
 # gem 'commonwealth-vlr-engine', path: '/path/to/local/boston-library/commonwealth-vlr-engine'
 gem 'commonwealth-vlr-engine', github: 'boston-library/commonwealth-vlr-engine'
-gem 'bpluser', '~> 0.4'
+gem 'bpluser', '~> 0.5'
 # NOTE: net-http is needed for a workaround due to seeing 'warning: already initialized constant Net::ProtocRetryError'
 # Issue is described here https://github.com/ruby/net-imap/issues/16#issuecomment-1423676522
 gem 'net-http'
