@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boston-library/commonwealth-vlr-engine.git
-  revision: dd9b3c8cc4a206c8ebe8d6fb2ece9f0d6290441f
+  revision: 30ccb31511deb5f5571e5ab8779180a55d67e1c4
   specs:
     commonwealth-vlr-engine (0.1.0)
       blacklight (~> 7.19.0)
