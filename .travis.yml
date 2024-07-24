@@ -9,11 +9,11 @@ before_install:
 before_script:
 - RAILS_ENV=test bundle exec rails db:prepare
 rvm:
-- 3.1.5
+- 3.1.6
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - IIIF_URL=https://iiifserver.example.org/
   - OAI_URL=https://oaiprovider.example.org/
   matrix:
-  - RAILS_VERSION=6.1.7.7
+  - RAILS_VERSION=6.1.7.8
