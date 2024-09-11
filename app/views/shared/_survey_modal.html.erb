@@ -1,0 +1,47 @@
+<div class="modal fade" id="survey_modal" tabindex="-1" role="dialog" aria-labelledby="survey_modal_title">
+  <div class="modal-dialog" style="position: fixed; right: 0; bottom: 0;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="survey_modal_title">Howdy neighbor!</h3>
+        <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="flagged_warning_text" class="modal-body">
+        Would you be interested in taking a short survey about Digital Commonwealth?
+        There is no reward except your own satisfaction.
+      </div>
+      <div class="modal-footer">
+        <%= link_to "OK, sure", 'https://survey.alchemer.com/s3/7935189/Digital-Commonwealth-Survey',
+                    class: 'btn btn-primary', target: '_blank' #,
+            # data: { dismiss: 'modal' }
+        %>
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Maybe later</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">No thanks</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    // fire the survey modal
+    setTimeout(() => {
+        $('#survey_modal').modal({
+            backdrop: false
+        });
+    }, 2000);
+
+    // $(".modal-backdrop").css("opacity",".95");
+</script>
+<!--
+Page loads
+Wait 5 seconds
+Popup modal appears
+Modal has two buttons:
+ - take the survey
+   - opens survey link in new tab
+   - sets dc_survey_taken=1 cookie, which expires in 2 weeks
+   - closes modal
+ - no thanks
+   - sets dc_survey_dismissed=1 cookie, which expires in 1 week
+   - closes modal
+-->
