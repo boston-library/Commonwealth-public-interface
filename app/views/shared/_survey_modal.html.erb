@@ -2,22 +2,19 @@
   <div class="modal-dialog" style="position: fixed; right: 0; bottom: 0;">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="survey_modal_title">Howdy neighbor!</h3>
+        <h3 class="modal-title" id="survey_modal_title">We'd love your feedback!</h3>
         <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div id="flagged_warning_text" class="modal-body">
         Would you be interested in taking a short survey about Digital Commonwealth?
-        There is no reward except your own satisfaction.
       </div>
       <div class="modal-footer">
         <%= link_to "OK, sure", 'https://survey.alchemer.com/s3/7935189/Digital-Commonwealth-Survey',
-                    class: 'btn btn-primary', target: '_blank' #,
-            # data: { dismiss: 'modal' }
-        %>
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Maybe later</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No thanks</button>
+                    class: 'btn btn-info', target: '_blank', id: 'survey_modal_agree' %>
+        <button id="survey_modal_later" type="button" class="btn btn-secondary" data-dismiss="modal">Maybe later</button>
+        <button id="survey_modal_decline" type="button" class="btn btn-outline-dark" data-dismiss="modal">No thanks</button>
       </div>
     </div>
   </div>
@@ -27,21 +24,33 @@
     setTimeout(() => {
         $('#survey_modal').modal({
             backdrop: false
-        });
+        }).on('hide.bs.modal', setSurveySeenCookie('mid'));;
     }, 2000);
 
-    // $(".modal-backdrop").css("opacity",".95");
+    // $('#survey_modal').modal({
+    //     backdrop: false
+    // }).on('hide.bs.modal', setSurveySeenCookie('mid'));
+
+    function setSurveySeenCookie(expires) {
+        if (expires == 'max') {
+            var cookieExpDate = (new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)).toUTCString();
+        } else if (expires == 'mid') {
+            var cookieExpDate = (new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).toUTCString();
+        } else {
+            var cookieExpDate = (new Date(Date.now() + 60 * 60 * 1000)).toUTCString();
+        }
+        document.cookie = 'dc_survey_seen=1;expires=' + cookieExpDate + ';path=/;Secure;SameSite=Lax';
+    }
+
+    $('#survey_modal_agree').on('click', function() {
+        setSurveySeenCookie('max');
+        $('#survey_modal').modal('hide');
+    });
+    $('#survey_modal_later').click(setSurveySeenCookie('min'));
+    $('#survey_modal_decline').click(setSurveySeenCookie('mid'));
 </script>
 <!--
-Page loads
-Wait 5 seconds
-Popup modal appears
-Modal has two buttons:
- - take the survey
-   - opens survey link in new tab
-   - sets dc_survey_taken=1 cookie, which expires in 2 weeks
-   - closes modal
- - no thanks
-   - sets dc_survey_dismissed=1 cookie, which expires in 1 week
-   - closes modal
+How many seconds before popup ??
+Popup style
+popup disables background navigation
 -->
