@@ -39,8 +39,6 @@
     <%# uncomment lines below to display maintenance or announcement flash messages on all pages %>
     <%# render partial: 'shared/flash_msg_announcement' %>
     <%# render partial: 'shared/flash_msg_maintenance' %>
-    <%= "COOKIE = #{cookies[:dc_survey_seen]}" %>
-    <%= render partial: 'shared/survey_modal' if render_survey_modal? %>
 
     <div class="row">
       <%= content_for?(:content) ? yield(:content) : yield %>
@@ -49,5 +47,6 @@
 
   <%= render partial: 'shared/footer' %>
   <%= render partial: 'shared/modal' %>
+  <%= render partial: 'shared/survey_modal' if render_survey_modal? %>
   </body>
 <% end %>
