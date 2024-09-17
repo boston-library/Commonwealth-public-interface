@@ -1,0 +1,22 @@
+<div class="modal fade" id="survey_modal" tabindex="-1" role="dialog" aria-labelledby="survey_modal_title">
+  <div class="modal-dialog modal-sm shadow" id="survey_modal_dialog">
+    <div class="modal-content border border-info">
+      <div class="modal-header">
+        <h5 class="modal-title" id="survey_modal_title">We'd love your feedback!</h5>
+        <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Would you be interested in taking a short survey about Digital Commonwealth?
+      </div>
+      <div class="modal-footer">
+        <%= link_to 'Yes', 'https://survey.alchemer.com/s3/7935189/Digital-Commonwealth-Survey',
+                    class: 'btn btn-info', target: '_blank', id: 'survey_modal_agree' %>
+        <button id="survey_modal_later" type="button" class="btn btn-secondary" data-dismiss="modal">Maybe later</button>
+        <button id="survey_modal_decline" type="button" class="btn btn-outline-dark" data-dismiss="modal">No thanks</button>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag 'survey_modal' %>

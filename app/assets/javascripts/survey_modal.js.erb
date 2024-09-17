@@ -1,0 +1,34 @@
+/* behavior for survey popup modal */
+
+setTimeout(() => {
+    $('#survey_modal').modal({
+        backdrop: false
+    })
+    $('body').removeClass('modal-open'); // allows background to be scrollable
+    $(document).off('focusin.modal'); // allows background form elements to be clickable
+}, 3000);
+
+function setSurveySeenCookie(expires) {
+    if (expires == 'max') {
+        var cookieExpDate = (new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)).toUTCString();
+    } else if (expires == 'mid') {
+        var cookieExpDate = (new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)).toUTCString();
+    } else {
+        var cookieExpDate = (new Date(Date.now() + 60 * 60 * 1000)).toUTCString();
+    }
+    document.cookie = '<%= ApplicationController.helpers.survey_cookie_name %>' + '=1;expires=' + cookieExpDate + ';path=/;Secure;SameSite=Lax';
+}
+
+$('#survey_modal_agree').on('click', function() {
+    setSurveySeenCookie('max');
+    $('#survey_modal').modal('hide');
+});
+$('#survey_modal_later').on('click', function() {
+    setSurveySeenCookie('min');
+});
+$('#survey_modal_decline').on('click', function() {
+    setSurveySeenCookie('mid');
+});
+$('#survey_modal').on('hide.bs.modal', function() {
+    setSurveySeenCookie('min');
+});
