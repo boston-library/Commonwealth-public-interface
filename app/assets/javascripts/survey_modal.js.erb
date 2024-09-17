@@ -9,7 +9,6 @@ setTimeout(() => {
 }, 3000);
 
 function setSurveySeenCookie(expires) {
-    console.log('setSurveySeenCookie firing');
     if (expires == 'max') {
         var cookieExpDate = (new Date(Date.now() + 14 * 24 * 60 * 60 * 1000)).toUTCString();
     } else if (expires == 'mid') {
@@ -18,7 +17,6 @@ function setSurveySeenCookie(expires) {
         var cookieExpDate = (new Date(Date.now() + 60 * 60 * 1000)).toUTCString();
     }
     document.cookie = '<%= ApplicationController.helpers.survey_cookie_name %>' + '=1;expires=' + cookieExpDate + ';path=/;Secure;SameSite=Lax';
-    console.log('setSurveySeenCookie cookie set!');
 }
 
 $('#survey_modal_agree').on('click', function() {
@@ -34,5 +32,3 @@ $('#survey_modal_decline').on('click', function() {
 $('#survey_modal').on('hide.bs.modal', function() {
     setSurveySeenCookie('min');
 });
-// for some reason syntax below causes setSurveySeenCookie to fire before click ??
-//$('#survey_modal_later').click(setSurveySeenCookie('min'));
