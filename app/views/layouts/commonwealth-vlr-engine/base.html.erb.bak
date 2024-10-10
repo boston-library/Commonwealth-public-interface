@@ -47,6 +47,7 @@
 
   <%= render partial: 'shared/footer' %>
   <%= render partial: 'shared/modal' %>
-  <%= render partial: 'shared/survey_modal' if render_survey_modal? %>
+  <%# uncomment line below to display survey popup on all pages %>
+  <%# render partial: 'shared/survey_modal' if render_survey_modal? %>
   </body>
 <% end %>
