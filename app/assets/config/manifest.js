@@ -2,4 +2,5 @@
 //= link_directory ../stylesheets .css
 
 //= link application.js
-//= link survey_modal.js
+// uncomment line below when reactivating survey
+// link survey_modal.js

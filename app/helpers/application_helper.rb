@@ -6,6 +6,7 @@ module ApplicationHelper
   end
 
   def render_survey_modal?
-    cookies[survey_cookie_name].nil?
+    # cookies[survey_cookie_name].nil?
+    false
   end
 end
