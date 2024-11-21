@@ -28,3 +28,13 @@ Disallow: /collections*f[
 # disallow download pages
 Disallow: /downloads/
 Disallow: /start_download/
+# disallow saved searches
+Disallow: /saved_searches/
+# disallow folders and bookmarks
+Disallow: /folders*
+Disallow: /bookmarks
+# disallow user pages
+Disallow: /users*
+# disallow feedback form
+Disallow: /feedback
+Disallow: /item_feedback
