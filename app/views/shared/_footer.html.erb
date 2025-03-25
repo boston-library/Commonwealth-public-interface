@@ -8,27 +8,27 @@
         <ul id="footer_social_icons" class="list-inline">
           <li class="footer_social_icon list-inline-item">
             <%= link_to(icon('fab', 'instagram-square', class: 'fa-3x', aria: { hidden: true }),
-                        'https://www.instagram.com/digitalcommonwealth/',
+                        'https://www.instagram.com/bplboston/',
                         target: '_blank',
-                        aria: { label: 'Digital Commonwealth Instagram' }) %>
+                        aria: { label: 'Boston Public Library Instagram' }) %>
           </li>
           <li class="footer_social_icon list-inline-item">
             <%= link_to(icon('fab', 'facebook-square', class: 'fa-3x', aria: { hidden: true }),
-                        'https://www.facebook.com/Digital-Commonwealth-251547586721/',
+                        'https://www.facebook.com/bostonpubliclibrary/',
                         target: '_blank',
-                        aria: { label: 'Digital Commonwealth Facebook' }) %>
+                        aria: { label: 'Boston Public Library Facebook' }) %>
           </li>
           <li class="footer_social_icon list-inline-item">
             <%= link_to(icon('fab', 'twitter-square', class: 'fa-3x', aria: { hidden: true }),
-                        'https://twitter.com/digicomMA',
+                        'https://twitter.com/bplboston',
                         target: '_blank',
-                        aria: { label: 'Digital Commonwealth Twitter' }) %>
+                        aria: { label: 'Boston Public Library Twitter' }) %>
           </li>
         </ul>
       </div>
       <div id="footer_address_text">
         <strong><%= t('blacklight.application_name') %></strong><br />
-        <%= t('blacklight.footer.address') %><br />
+        <%# t('blacklight.footer.address') %><br />
         <%= link_to t('blacklight.pages.contact.title'), feedback_path %>  &nbsp; <%= link_to t('blacklight.pages.privacy.title'), privacy_path %>
       </div>
     </div>

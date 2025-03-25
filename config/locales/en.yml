@@ -53,7 +53,7 @@ en:
               enabled: true
           context:
             about:
-              text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by members of Digital Commonwealth, a statewide consortium of libraries, museums, archives, and historical societies from across Massachusetts.'
+              text: 'This site provides access to photographs, manuscripts, books, audio recordings, and other materials of historical interest that have been digitized and made available by libraries, museums, archives, and historical societies from across Massachusetts. This effort is supported by the Boston Public Library through the Library for the Commonwealth program.'
             news:
               rss_link: 'https://blog.digitalcommonwealth.org/?feed=rss2'
               blog_url: 'https://blog.digitalcommonwealth.org/'
@@ -94,6 +94,8 @@ en:
           for_institutions:
             join_dc:
               title: 'Join Digital Commonwealth'
+            coldev:
+              title: 'Collection Development Policy'
             conferences:
               title: 'Conferences, Trainings, & Events'
             contribute:
