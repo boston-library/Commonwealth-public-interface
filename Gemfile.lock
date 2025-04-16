@@ -545,7 +545,7 @@ DEPENDENCIES
   postmark-rails (~> 0.22)
   puma (~> 5.6.9)
   rack-attack (~> 6.6)
-  rails (~> 6.1.7.7)
+  rails (~> 6.1.7.10)
   rails-controller-testing
   rspec-rails (~> 6.0.3)
   rubocop (~> 1.36)
@@ -562,7 +562,7 @@ DEPENDENCIES
   webpacker (~> 5.4)
 
 RUBY VERSION
-   ruby 3.1.6p260
+   ruby 3.1.7p261
 
 BUNDLED WITH
-   2.5.9
+   2.6.8

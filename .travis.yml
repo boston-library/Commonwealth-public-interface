@@ -5,15 +5,15 @@ cache:
   bundler: true
 before_install:
 - gem update --system --no-document
-- gem install bundler:2.5.9 --no-document
+- gem install bundler:2.6.8 --no-document
 before_script:
 - RAILS_ENV=test bundle exec rails db:prepare
 rvm:
-- 3.1.6
+- 3.1.7
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - IIIF_URL=https://iiifserver.example.org/
   - OAI_URL=https://oaiprovider.example.org/
   matrix:
-  - RAILS_VERSION=6.1.7.8
+  - RAILS_VERSION=6.1.7.10
