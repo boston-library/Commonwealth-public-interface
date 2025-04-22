@@ -9,6 +9,19 @@ Rack::Attack.throttle('requests by ip', limit: 10, period: 1.minute) do |req|
   req.ip if req.path.include?('/start_download/')
 end
 
+Rack::Attack.blocklist('block ips') do |req|
+  Rails.cache.read("saved-search-bot:#{req.ip}")
+end
+
+Rack::Attack.blocklist('block ips going to GET /saved_searches/save/') do |req|
+  if req.get? && req.path.include?('/saved_searches/save/')
+    Rails.cache.write("saved-search-bot:#{req.ip}", true)
+    true
+  else
+    false
+  end
+end
+
 Rack::Attack.throttled_responder = lambda do |env|
   match_data = env['rack.attack.match_data']
   now = match_data[:epoch_time]
