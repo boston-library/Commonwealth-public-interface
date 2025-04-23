@@ -16,6 +16,7 @@ end
 Rack::Attack.blocklist('block ips going to GET /saved_searches/save/') do |req|
   if req.get? && req.path.include?('/saved_searches/save/')
     Rails.cache.write("saved-search-bot:#{req.ip}", true)
+    File.write(Rails.root.join('log/saved_search_bots_request.log').to_s, "[#{DateTime.now.strftime('%Y-%m-%dT%H:%M:%S')}] - #{req.ip} added to saved_search bot blocklist\n", mode: 'a')
     true
   else
     false
