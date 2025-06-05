@@ -47,8 +47,7 @@ gem 'postmark-rails', '~> 0.22'
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'capistrano', '~> 3.17.3', require: false
-  gem 'capistrano3-puma'
+  gem 'capistrano', '~> 3.19.2', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano-rvm'
   gem 'coveralls', require: false

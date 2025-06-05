@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # config valid for current version and patch releases of Capistrano
-lock '~> 3.17.1'
+lock '~> 3.19.2'
 
 set :use_sudo, false
 ## STAGE_NAME is a paramter from Jenkins job: "staging", "qc", and "testing"
