@@ -112,9 +112,11 @@ pipeline {
                     ruby --version
 
                     echo "and bundle version is ${BUNDLE_VER}"
+
+                    export LD_PRELOAD=/lib/x86_64-linux-gnu/libjemalloc.so.2
                     export BUNDLE_GEMFILE=$PWD/Gemfile                
                     gem update --system --no-document
-                    gem install bundler:${BUNDLE_VER}
+                    gem install bundler:${BUNDLE_VER} --force --no-document
                     
                     ## Because previous capistrano deployment creates a new production.rb that
                     ## cannot pass the CI tests. Remove it if we are in test/staging environment
@@ -198,7 +200,7 @@ pipeline {
                     
                     rvm use ${EXPECTED_RUBY} --default
                     
-                    RAILS_ENV=test bundle exec rake ci
+                    RAILS_ENV=test bundle exec rake
                 '''
             }
         }
@@ -210,57 +212,57 @@ pipeline {
                     return env.JOB_NAME.contains('deploy')
                 }
             } 
-            steps {               
-                script {
-                    sh """#!/bin/bash --login
-                        set -x
+            // steps {               
+            //     script {
+            //         sh """#!/bin/bash --login
+            //             set -x
                         
-                        # STAGE_NAME=\$stage_name_password
-                        # SERVER_IP=\$server_ip_password
-                        # DEPLOY_USER=\$deploy_user_password
-                        # SSH_KEY=\$ssh_key_password
-                        # TESTING_SUDO_PASSWORD=\$sudo_pass_password
-                        # GIT_HTTP_USERNAME=\$GIT_HTTP_USERNAME_password
-                        # GIT_HTTP_PASSWORD=\$GIT_HTTP_PASSWORD_password
+            //             # STAGE_NAME=\$stage_name_password
+            //             # SERVER_IP=\$server_ip_password
+            //             # DEPLOY_USER=\$deploy_user_password
+            //             # SSH_KEY=\$ssh_key_password
+            //             # TESTING_SUDO_PASSWORD=\$sudo_pass_password
+            //             # GIT_HTTP_USERNAME=\$GIT_HTTP_USERNAME_password
+            //             # GIT_HTTP_PASSWORD=\$GIT_HTTP_PASSWORD_password
     
 
-                        EXPECTED_RUBY=`cat .ruby-version`
-                        echo "EXPECTED_RUBY is \$EXPECTED_RUBY"
+            //             EXPECTED_RUBY=`cat .ruby-version`
+            //             echo "EXPECTED_RUBY is \$EXPECTED_RUBY"
                             
-                        set +x
+            //             set +x
                         
-                        if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
-                            source /var/lib/jenkins/.rvm/bin/rvm
-                        else 
-                            exit
-                        fi    
+            //             if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
+            //                 source /var/lib/jenkins/.rvm/bin/rvm
+            //             else 
+            //                 exit
+            //             fi    
                         
 
-                        rvm list
-                        rvm install "\$EXPECTED_RUBY"
-                        rvm use "\$EXPECTED_RUBY" --default
-                        whereis ruby
-                        ruby --version
+            //             rvm list
+            //             rvm install "\$EXPECTED_RUBY"
+            //             rvm use "\$EXPECTED_RUBY" --default
+            //             whereis ruby
+            //             ruby --version
 
-                        RAILS_ENV=staging cap staging install --trace
-                        RAILS_ENV=staging cap -T
+            //             RAILS_ENV=staging cap staging install --trace
+            //             RAILS_ENV=staging cap -T
                         
                         
-                        ## If using GIT_HTTP_USERNAME/PASSWORD from Jenkins level, 
-                        ## Capistrano breaks here!
-                        RAILS_ENV=staging cap staging deploy:check
-                        RAILS_ENV=staging cap staging deploy --dry-run --trace
-                        RAILS_ENV=staging cap staging deploy --trace
+            //             ## If using GIT_HTTP_USERNAME/PASSWORD from Jenkins level, 
+            //             ## Capistrano breaks here!
+            //             RAILS_ENV=staging cap staging deploy:check
+            //             RAILS_ENV=staging cap staging deploy --dry-run --trace
+            //             RAILS_ENV=staging cap staging deploy --trace
                         
-                        if [[ -f ./config/deploy/production.rb ]]; then 
-                            echo "There is ./config/deploy/production.rb created!"
-                            ls -alt ./config/deploy/production.rb
-                        else 
-                            echo "There is NO ./config/deploy/production.rb yet"
-                        fi   
-                    """
-                }            
-            }
+            //             if [[ -f ./config/deploy/production.rb ]]; then 
+            //                 echo "There is ./config/deploy/production.rb created!"
+            //                 ls -alt ./config/deploy/production.rb
+            //             else 
+            //                 echo "There is NO ./config/deploy/production.rb yet"
+            //             fi   
+            //         """
+            //     }            
+            // }
         }
     }
 
