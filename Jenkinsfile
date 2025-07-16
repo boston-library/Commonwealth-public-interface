@@ -49,7 +49,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git credentialsId: 'bplwebmaster',
-                    url: 'https://github.com/boston-library/Commonwealth_3.git',
+                    url: 'https://github.com/boston-library/Commonwealth-public-interface.git',
                     // branch: [[name: '*/${BRANCH_NAME}']]
                     branch: "jenkinsfile"
             }
@@ -176,7 +176,7 @@ pipeline {
         }
 
         stage('CI') {
-            // When JOB_NAME doesn't contain
+            // When JOB_NAME doesn't contain "deploy"
             when {
                 expression {
                     // Only trigger following CI steps if JOB_NAME DOES NOT contain "deploy"
@@ -262,35 +262,18 @@ pipeline {
                 }            
             }
         }
+    }
 
-        // Following trigger works. Trying to trigger after build is successful.
-        // stage('Trigger Downstream') {
-        //     when {
-        //         expression {
-        //             // Only trigger if JOB_NAME contains "trigger-me"
-        //             return !env.JOB_NAME.contains('deploy')
-        //         }
-        //     }
-        //     steps {
-        //         script {
+    post {
+        // success {
+        //     script {
+        //         if (!env.JOB_NAME.contains('deploy')) {
         //             echo 'Triggering other projects...'
         //             build job: 'Commonwealth_3_jenkinsfile_deploy_test_capistrano', wait: false
         //             build job: 'Commonwealth_3_jenkinsfile_deploy_STAGING_capistrano', wait: false
         //         }
         //     }
         // }
-    }
-
-    post {
-        success {
-            script {
-                if (!env.JOB_NAME.contains('deploy')) {
-                    echo 'Triggering other projects...'
-                    build job: 'Commonwealth_3_jenkinsfile_deploy_test_capistrano', wait: false
-                    build job: 'Commonwealth_3_jenkinsfile_deploy_STAGING_capistrano', wait: false
-                }
-            }
-        }
 
         failure {
             emailext (
