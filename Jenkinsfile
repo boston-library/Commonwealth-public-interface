@@ -7,20 +7,20 @@ pipeline {
 
     // These parameters come from Jenkins job configurations. 
     // We need manually provide them for every time. .
-    parameters {
-        // string(name: 'branch', defaultValue: 'jenkinsfile', description: 'checkout branch')
-        string(name: 'OAUTH_APP_URL', defaultValue: 'http://localhost:3000', description: 'OAUTH_APP_URL')
-        string(name: 'OAUTH_USER_APP_ID', defaultValue: 'xY_D****Q', description: 'OAUTH_USER_APP_ID')
-        string(name: 'OAUTH_USER_APP_SECRET', defaultValue: '6f40***1a54', description: 'OAUTH_USER_APP_SECRET')
-    }
+    // parameters {
+    //     // string(name: 'branch', defaultValue: 'jenkinsfile', description: 'checkout branch')
+    //     string(name: 'OAUTH_APP_URL', defaultValue: 'http://localhost:3000', description: 'OAUTH_APP_URL')
+    //     string(name: 'OAUTH_USER_APP_ID', defaultValue: 'xY_D****Q', description: 'OAUTH_USER_APP_ID')
+    //     string(name: 'OAUTH_USER_APP_SECRET', defaultValue: '6f40***1a54', description: 'OAUTH_USER_APP_SECRET')
+    // }
     
     stages {
         stage('Show parameters') {
             steps {
                 // echo "branch: ${params.branch}"
-                echo "OAUTH_APP_URL: ${params.OAUTH_APP_URL}"
-                echo "OAUTH_USER_APP_ID: ${params.OAUTH_USER_APP_ID}"
-                echo "OAUTH_USER_APP_SECRET: ${params.OAUTH_USER_APP_SECRET}"
+                // echo "OAUTH_APP_URL: ${params.OAUTH_APP_URL}"
+                // echo "OAUTH_USER_APP_ID: ${params.OAUTH_USER_APP_ID}"
+                // echo "OAUTH_USER_APP_SECRET: ${params.OAUTH_USER_APP_SECRET}"
                 // echo "credentialsId: ${params.}"
                 echo "WORKSPACE_TMP: ${env.WORKSPACE_TMP}"
                 echo "JOB_DISPLAY_URL: ${env.JOB_DISPLAY_URL}"
@@ -83,19 +83,13 @@ pipeline {
             steps {
                 sh '''#!/bin/bash --login
   
-                    sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/15/main/postgresql.conf
-                    #sudo cp /etc/postgresql/{9.3,15}/main/pg_hba.conf
-                    sudo pg_ctlcluster 15 main restart
+
                     
                     export RAILS_ENV=test
                     
-                    export PGVER=15
-                    export PGHOST=127.0.0.1
-                    export PGUSER=postgres
-                    export PGPASSWORD=postgres
-                    export PGPORT=5432
                     export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-                    export RAILS_VERSION=6.0.5
+                    export IIIF_URL=https://iiifserver.example.org/
+                    export RAILS_VERSION=6.0.6
     
                     EXPECTED_RUBY=`cat .ruby-version`
                     BUNDLE_VER=$(tail -1 ./Gemfile.lock | xargs)
@@ -171,7 +165,7 @@ pipeline {
                     set -x
                     
                     RAILS_ENV=${RAILS_ENV} bundle exec rails db:prepare
-                    RAILS_ENV=${RAILS_ENV} bundle exec rails db:migrate
+                    # RAILS_ENV=${RAILS_ENV} bundle exec rails db:migrate
                     
                 '''
             }
@@ -201,6 +195,7 @@ pipeline {
                     rvm use ${EXPECTED_RUBY} --default
                     
                     RAILS_ENV=test bundle exec rake
+                    RAILS_ENV=test bundle clean
                 '''
             }
         }
