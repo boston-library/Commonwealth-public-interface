@@ -196,7 +196,7 @@ pipeline {
                     rvm use ${EXPECTED_RUBY} --default
                     
                     RAILS_ENV=test bundle exec rake
-                    ## RAILS_ENV=test bundle clean
+                    RAILS_ENV=test bundle clean
                 '''
             }
         }
