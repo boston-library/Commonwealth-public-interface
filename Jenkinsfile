@@ -82,11 +82,9 @@ pipeline {
         stage('Preparation') {
             steps {
                 sh '''#!/bin/bash --login
-  
-
-                    
+                      
                     export RAILS_ENV=test
-                    
+                   
                     export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
                     export IIIF_URL=https://iiifserver.example.org/
                     export RAILS_VERSION=6.0.6
@@ -264,8 +262,8 @@ pipeline {
         //     script {
         //         if (!env.JOB_NAME.contains('deploy')) {
         //             echo 'Triggering other projects...'
-        //             build job: 'Commonwealth_3_jenkinsfile_deploy_test_capistrano', wait: false
-        //             build job: 'Commonwealth_3_jenkinsfile_deploy_STAGING_capistrano', wait: false
+        //             build job: 'Commonwealth-Public-Interface_jenkinsfile_deploy_test_capistrano', wait: false
+        //             build job: 'Commonwealth_Public-Interface_jenkinsfile_deploy_STAGING_capistrano', wait: false
         //         }
         //     }
         // }
