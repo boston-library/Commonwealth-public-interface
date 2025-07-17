@@ -185,6 +185,7 @@ pipeline {
                     set +x
 
                     EXPECTED_RUBY=`cat .ruby-version`
+                    export IIIF_URL=https://iiifserver.example.org/
     
                     if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
                         source /var/lib/jenkins/.rvm/bin/rvm
