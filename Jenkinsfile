@@ -81,46 +81,48 @@ pipeline {
         
         stage('Preparation') {
             steps {
-                sh '''#!/bin/bash --login
-                      
-                    export RAILS_ENV=test
-                   
-                    export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-                    export IIIF_URL=https://iiifserver.example.org/
-                    export RAILS_VERSION=6.0.6
-    
-                    EXPECTED_RUBY=`cat .ruby-version`
-                    BUNDLE_VER=$(tail -1 ./Gemfile.lock | xargs)
-    
-                    if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
-                        source /var/lib/jenkins/.rvm/bin/rvm
-                    else 
-                        exit
-                    fi
-    
-                    set -e
-    
-                    rvm use ${EXPECTED_RUBY} --default
-                    ruby --version
+                lock('cpi-rvm-use') { 
+                    sh '''#!/bin/bash --login
+                          
+                        export RAILS_ENV=test
+                       
+                        export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+                        export IIIF_URL=https://iiifserver.example.org/
+                        export RAILS_VERSION=6.0.6
+        
+                        EXPECTED_RUBY=`cat .ruby-version`
+                        BUNDLE_VER=$(tail -1 ./Gemfile.lock | xargs)
+        
+                        if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
+                            source /var/lib/jenkins/.rvm/bin/rvm
+                        else 
+                            exit
+                        fi
+        
+                        set -e
+        
+                        rvm use ${EXPECTED_RUBY} --default
+                        ruby --version
 
-                    echo "and bundle version is ${BUNDLE_VER}"
+                        echo "and bundle version is ${BUNDLE_VER}"
 
-                    export LD_PRELOAD=/lib/x86_64-linux-gnu/libjemalloc.so.2
-                    export BUNDLE_GEMFILE=$PWD/Gemfile                
-                    gem update --system --no-document
-                    gem install bundler:${BUNDLE_VER} --force --no-document
-                    
-                    ## Because previous capistrano deployment creates a new production.rb that
-                    ## cannot pass the CI tests. Remove it if we are in test/staging environment
-                    ## If in production environment, it should be passed by CI.
-                    if [[ -f ./config/deploy/production.rb ]]; then 
-                        ls -alt ./config/deploy/production.rb
-                        git clean -f config/deploy/production.rb
-                    else 
-                        echo "There is NO ./config/deploy/production.rb yet"
-                    fi 
+                        export LD_PRELOAD=/lib/x86_64-linux-gnu/libjemalloc.so.2
+                        export BUNDLE_GEMFILE=$PWD/Gemfile                
+                        gem update --system --no-document
+                        gem install bundler:${BUNDLE_VER} --force --no-document
+                        
+                        ## Because previous capistrano deployment creates a new production.rb that
+                        ## cannot pass the CI tests. Remove it if we are in test/staging environment
+                        ## If in production environment, it should be passed by CI.
+                        if [[ -f ./config/deploy/production.rb ]]; then 
+                            ls -alt ./config/deploy/production.rb
+                            git clean -f config/deploy/production.rb
+                        else 
+                            echo "There is NO ./config/deploy/production.rb yet"
+                        fi 
 
-                '''
+                    '''
+                }
             }
         }
         
