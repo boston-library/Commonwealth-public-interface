@@ -143,12 +143,6 @@ pipeline {
 
         stage("Deploy application to target servers") {
 
-            // When branch is 'JFK_Capis', skip this stage
-            // All other branches do deployment, for example 'master'
-            // when {
-            //     branch 'JFK_Capis'
-            // }
-
             when {
                 expression {
                     return env.DEPLOY_OR_NOT == 'True' || env.DEPLOY_OR_NOT == 'true'
@@ -168,26 +162,6 @@ pipeline {
             }
 
         }
-
-
-        // It turns out to trigger another jobs endlessly, becauase it builds `JKF_Capis`
-        // Following trigger work!
-        //
-        // stage('Trigger Downstream') {
-        //     when {
-        //         expression {
-        //             // Only trigger if JOB_NAME contains "deploy"
-        //             return !env.JOB_NAME.contains('deploy')
-        //         }
-        //     }
-        //     steps {
-        //         script {
-        //             echo 'Triggering other projects...'
-        //             build job: 'Commonwealth_3_jenkinsfile_deploy_test_capistrano', wait: false
-        //             build job: 'Commonwealth_3_jenkinsfile_deploy_STAGING_capistrano', wait: false
-        //         }
-        //     }
-        // }
 
     }
 
