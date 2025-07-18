@@ -103,7 +103,7 @@ pipeline {
                     // it may skip
                     if ( (env.DEPLOY_ENV != 'staging') &&  ( env.DEPLOY_ENV != 'production')) {
                         echo "In Jenkins phase: running CI testing "                   
-                        bpl_tool.RunCI_C3() 
+                        bpl_tool.RunCI() 
                     }else{
                         echo "No need run rspec tests in staging/production. Skipping... "
                     }
