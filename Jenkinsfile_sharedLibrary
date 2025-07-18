@@ -97,46 +97,46 @@ pipeline {
         // }
 
         stage('CI') {
-            // steps {
-            //     script {  
-            //         // staging/production still do a rspec testing for ruby codes.
-            //         // it may skip
-            //         if ( (env.DEPLOY_ENV != 'staging') &&  ( env.DEPLOY_ENV != 'production')) {
-            //             echo "In Jenkins phase: running CI testing "                   
-            //             // bpl_tool.RunCI()
+            steps {
+                script {  
+                    // staging/production still do a rspec testing for ruby codes.
+                    // it may skip
+                    if ( (env.DEPLOY_ENV != 'staging') &&  ( env.DEPLOY_ENV != 'production')) {
+                        echo "In Jenkins phase: running CI testing "                   
+                        bpl_tool.RunCI()
 
-            //         }else{
-            //             echo "No need run rspec tests in staging/production. Skipping... "
-            //         }
-            //     }
-            // }
-            // When JOB_NAME doesn't contain "deploy"
-            when {
-                expression {
-                    // Only trigger following CI steps if JOB_NAME DOES NOT contain "deploy"
-                    // That means if in deployment job, don't do CI tests.
-                    return !env.JOB_NAME.contains('deploy')
+                    }else{
+                        echo "No need run rspec tests in staging/production. Skipping... "
+                    }
                 }
             }
-            steps {
-                sh '''#!/bin/bash --login
-                    set +x
+            // When JOB_NAME doesn't contain "deploy"
+            // when {
+            //     expression {
+            //         // Only trigger following CI steps if JOB_NAME DOES NOT contain "deploy"
+            //         // That means if in deployment job, don't do CI tests.
+            //         return !env.JOB_NAME.contains('deploy')
+            //     }
+            // }
+            // steps {
+            //     sh '''#!/bin/bash --login
+            //         set +x
 
-                    EXPECTED_RUBY=`cat .ruby-version`
-                    export IIIF_URL=https://iiifserver.example.org/
+            //         EXPECTED_RUBY=`cat .ruby-version`
+            //         export IIIF_URL=https://iiifserver.example.org/
     
-                    if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
-                        source /var/lib/jenkins/.rvm/bin/rvm
-                    else 
-                        exit
-                    fi    
+            //         if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
+            //             source /var/lib/jenkins/.rvm/bin/rvm
+            //         else 
+            //             exit
+            //         fi    
                     
-                    rvm use ${EXPECTED_RUBY} --default
+            //         rvm use ${EXPECTED_RUBY} --default
                     
-                    RAILS_ENV=test bundle exec rake
-                    ## RAILS_ENV=test bundle clean
-                '''
-            }
+            //         RAILS_ENV=test bundle exec rake
+            //         ## RAILS_ENV=test bundle clean
+            //     '''
+            // }
 
         }
 
