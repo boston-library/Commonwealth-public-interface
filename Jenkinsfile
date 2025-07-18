@@ -81,6 +81,8 @@ pipeline {
         
         stage('Preparation') {
             steps {
+                // Sometimes `rvm use 3.1.6 --default` got stuck by other Jenkins jobs.
+                // Add this lock to wait for resources. Otherwise job will fail
                 lock('cpi-rvm-use') { 
                     sh '''#!/bin/bash --login
                           
