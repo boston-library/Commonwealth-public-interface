@@ -89,7 +89,7 @@ pipeline {
                         export RAILS_ENV=test
                        
                         export NOKOGIRI_USE_SYSTEM_LIBRARIES=true
-                        ## export IIIF_URL=https://iiifserver.example.org/
+                        export IIIF_URL=https://iiifserver.example.org/
                         export RAILS_VERSION=6.0.6
         
                         EXPECTED_RUBY=`cat .ruby-version`
