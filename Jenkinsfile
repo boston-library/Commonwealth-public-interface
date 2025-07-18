@@ -262,15 +262,15 @@ pipeline {
     }
 
     post {
-        // success {
-        //     script {
-        //         if (!env.JOB_NAME.contains('deploy')) {
-        //             echo 'Triggering other projects...'
-        //             build job: 'Commonwealth-Public-Interface_jenkinsfile_deploy_test_capistrano', wait: false
-        //             build job: 'Commonwealth_Public-Interface_jenkinsfile_deploy_STAGING_capistrano', wait: false
-        //         }
-        //     }
-        // }
+        success {
+            script {
+                if (!env.JOB_NAME.contains('deploy')) {
+                    echo 'Triggering other projects...'
+                    build job: 'Commonwealth-Public-Interface_jenkinsfile_deploy_test_capistrano', wait: false
+                    // build job: 'Commonwealth_Public-Interface_jenkinsfile_deploy_STAGING_capistrano', wait: false
+                }
+            }
+        }
 
         failure {
             emailext (
