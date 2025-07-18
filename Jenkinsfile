@@ -57,26 +57,35 @@ pipeline {
 
                 
         stage ('Install new ruby'){
-            steps {
-                sh '''#!/bin/bash --login
-                    set +x
+            // steps {
+            //     sh '''#!/bin/bash --login
+            //         set +x
    
-                    if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
-                        source /var/lib/jenkins/.rvm/bin/rvm
-                    else 
-                        exit
-                    fi
+            //         if [ -s /var/lib/jenkins/.rvm/bin/rvm ]; then 
+            //             source /var/lib/jenkins/.rvm/bin/rvm
+            //         else 
+            //             exit
+            //         fi
                     
-                    EXPECTED_RUBY=`cat .ruby-version`
-                                ## /var/lib/jenkins/.rvm/bin/rvm list
-                    echo "EXPECTED_RUBY is $EXPECTED_RUBY"
-                    set -x
-                    rvm list
-                    rvm use ${EXPECTED_RUBY} --default
-                    ruby --version
+            //         EXPECTED_RUBY=`cat .ruby-version`
+            //                     ## /var/lib/jenkins/.rvm/bin/rvm list
+            //         echo "EXPECTED_RUBY is $EXPECTED_RUBY"
+            //         set -x
+            //         rvm list
+            //         rvm use ${EXPECTED_RUBY} --default
+            //         ruby --version
                     
-                '''
-            }
+            //     '''
+            // }
+            steps {
+                script {  
+                    echo "In Jenkins phase: Install new ruby" 
+                    def EXPECTED_RUBY = sh(returnStdout: true, script: 'cat .ruby-version')
+                    // EXPECTED_RUBY = '3.2.5'
+                    echo "EXPECTED_RUBY is $EXPECTED_RUBY"                    
+                    bpl_tool.InstallNewRuby(EXPECTED_RUBY) 
+                }
+            }            
         }
         
         stage('Preparation') {
