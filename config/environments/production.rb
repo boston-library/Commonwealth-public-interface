@@ -106,7 +106,7 @@ Rails.application.configure do
 
   config.session_store :redis_store,
                        url: "#{ENV.fetch('REDIS_CACHE_URL', 'redis://127.0.0.1:6379')}/0/session",
-                       expire_after: 1.days,
+                       expire_after: 5.days,
                        key: '_Commonwealth-public-interface_session',
                        domain: 'localhost',
                        threadsafe: true,
