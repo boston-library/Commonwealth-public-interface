@@ -108,7 +108,7 @@ Rails.application.configure do
                        url: "#{ENV.fetch('REDIS_CACHE_URL', 'redis://127.0.0.1:6379')}/0/session",
                        expire_after: 5.days,
                        key: '_Commonwealth-public-interface_session',
-                       domain: 'localhost',
+                       domain: ENV.fetch('COMMONWEALTH_PUBLIC_DOMAIN_NAME') { Rails.application.credentials.dig(:session_domain) || 'localhost' },
                        threadsafe: true,
                        secure: true,
                        same_site: :lax,
