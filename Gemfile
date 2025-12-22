@@ -46,8 +46,8 @@ gem 'sd_notify', group: [:production, :staging]
 gem 'postmark-rails', '~> 0.22'
 
 # use redis for session_store in staging and production
-gem "redis", "~> 5.0"
-gem "redis-actionpack", "~> 5.4"
+gem 'redis', '~> 5.0'
+gem 'redis-actionpack', '~> 5.4'
 
 group :development, :test do
   gem 'awesome_print'
