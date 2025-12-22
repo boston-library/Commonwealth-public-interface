@@ -104,6 +104,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  config.session_store :redis_store,
+                       url: "#{ENV.fetch('REDIS_CACHE_URL', 'redis://127.0.0.1:6379')}/0/session",
+                       expire_after: 5.days,
+                       key: '_Commonwealth-public-interface_session',
+                       domain: 'localhost',
+                       threadsafe: true,
+                       secure: true,
+                       same_site: :lax,
+                       httponly: true
+
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
