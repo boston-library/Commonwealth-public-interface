@@ -9,20 +9,6 @@ class CatalogController < ApplicationController
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
-  ##
-  # HOTFIX for InvalidAuthenticityToken errors caused by migration of session_store config
-  # (see: c836da9bd919d4b8f94638000c36c075f35c0a6a)
-  # override Blacklight::Catalog#track to rescue error and reset session
-  def track
-    begin
-      super
-    rescue ActionController::InvalidAuthenticityToken => _e
-      Rails.logger.error 'RESCUE SESSION ERROR in CatalogController#track'
-      reset_session
-      super
-    end
-  end
-
   configure_blacklight do |config|
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
