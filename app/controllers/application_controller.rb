@@ -18,11 +18,10 @@ class ApplicationController < ActionController::Base
 
   def rescue_authtoken_error
     Rails.logger.error "RESCUING SESSION ERROR from #{controller_name}##{action_name}"
-    if controller_name == 'catalog' && action_name == 'track'
-      reset_session
-      redirect_to solr_document_path(params[:id]) # can't redirect to catalog#track, only POST allowed
-    else
-      raise ActionController::InvalidAuthenticityToken
-    end
+    raise ActionController::InvalidAuthenticityToken unless controller_name == 'catalog' && action_name == 'track'
+
+    reset_session
+    redirect_to solr_document_path(params[:id]) # can't redirect to catalog#track, only POST allowed
+
   end
 end
