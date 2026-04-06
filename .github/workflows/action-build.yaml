@@ -1,9 +1,6 @@
 name: Build branches 
 
-on: 
-  push: 
-    branches:
-      - action-ci
+on: [push, pull_request]
 
     # Define environment variables globally for the job
     env:
