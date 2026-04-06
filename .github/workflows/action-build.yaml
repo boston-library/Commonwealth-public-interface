@@ -14,7 +14,7 @@ on:
 
 jobs:
 
-  build-without-docker:
+  build-on-branches:
 
     runs-on: ubuntu-22.04
 
