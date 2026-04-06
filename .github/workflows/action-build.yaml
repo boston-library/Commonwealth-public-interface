@@ -2,13 +2,6 @@ name: Build branches
 
 on: [push, pull_request]
 
-    # Define environment variables globally for the job
-    env:
-      NOKOGIRI_USE_SYSTEM_LIBRARIES: true
-      IIIF_URL: https://iiifserver.example.org/
-      OAI_URL: https://oaiprovider.example.org/
-
-
 jobs:
 
   build-on-branches:
@@ -23,6 +16,8 @@ jobs:
       PGPASSWORD: postgres
       PGPORT: 5432
       NOKOGIRI_USE_SYSTEM_LIBRARIES: true
+      IIIF_URL: https://iiifserver.example.org/
+      OAI_URL: https://oaiprovider.example.org/
 
     # Services start sidecar containers (Postgres) automatically
     services:
