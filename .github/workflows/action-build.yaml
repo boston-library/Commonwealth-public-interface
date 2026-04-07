@@ -44,7 +44,6 @@ jobs:
         run: |
           echo "NOKOGIRI_USE_SYSTEM_LIBRARIES=true" > .env
           echo "IIIF_URL=https://iiifserver.example.org/" >> .env
-          # echo "RAILS_VERSION=6.1.7.10" >> .env
           
           # Debugging: Print .env (Note: Secrets will be masked as ***)
           cat .env
