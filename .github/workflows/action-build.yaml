@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
 
-  build-on-branches:
+  build on branches:
 
     runs-on: ubuntu-22.04
 
