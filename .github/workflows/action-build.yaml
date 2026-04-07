@@ -54,7 +54,7 @@ jobs:
         with:
           # Automatically reads the .ruby-version file
           ruby-version: '.ruby-version'
-          # Automatically runs 'bundle install' and caches gems
+          # Automatically runs 'bundle install' and  caches gems
           bundler-cache: true
 
       - name: Database Setup
