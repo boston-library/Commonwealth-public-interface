@@ -65,6 +65,9 @@ en:
             title: 'About'
           about_dc:
             title: 'About Digital Commonwealth'
+          accessibility:
+            title: 'Accessibility Statement'
+            nav: 'Accessibility'
           api:
             title: 'API'
           contact:

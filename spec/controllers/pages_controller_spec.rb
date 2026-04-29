@@ -21,6 +21,13 @@ describe PagesController do
     end
   end
 
+  describe "GET 'accessibility'" do
+    it 'should show the accessibility page' do
+      get :accessibility
+      expect(response).to be_successful
+    end
+  end
+
   describe "GET 'about_dc'" do
     it 'should show the about_dc page' do
       get :about_dc

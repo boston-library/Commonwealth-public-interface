@@ -45,6 +45,7 @@ CommonwealthPublicInterface::Application.routes.draw do
   get 'api', to: 'pages#api', as: 'api'
   get 'harmful_content_statement', to: 'pages#content_statement', as: 'content_statement'
   get 'privacy', to: 'pages#privacy', as: 'privacy'
+  get 'accessibility', to: 'pages#accessibility', as: 'accessibility'
 
   # EDUCATOR PAGES
   get 'for_educators', to: 'pages#primary_sources', as: 'for_educators'

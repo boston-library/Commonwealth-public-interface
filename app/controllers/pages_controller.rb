@@ -21,6 +21,9 @@ class PagesController < ApplicationController
   def about_dc
   end
 
+  def accessibility
+  end
+
   def lesson_plans
   end
 
