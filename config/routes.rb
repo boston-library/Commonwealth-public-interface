@@ -6,6 +6,12 @@ CommonwealthPublicInterface::Application.routes.draw do
   # routes for CommonwealthVlrEngine
   mount CommonwealthVlrEngine::Engine => '/'
 
+  # BEGIN HOTFIX FOR DC3006 MIGRATION
+  resources :folders, to: 'pages#home'
+  resources :users, to: 'pages#home'
+  resources :search_history, to: 'pages#home'
+  # END HOTFIX FOR DC3006 MIGRATION
+
   concern :iiif_search, BlacklightIiifSearch::Routes.new
 
   # bookmarks item actions
@@ -29,13 +35,15 @@ CommonwealthPublicInterface::Application.routes.draw do
     concerns :iiif_search
   end
 
-  resources :bookmarks do
-    concerns :exportable
-
-    collection do
-      delete 'clear'
-    end
-  end
+  # BEGIN HOTFIX FOR DC3006 MIGRATION
+  # resources :bookmarks do
+  #   concerns :exportable
+  #
+  #   collection do
+  #     delete 'clear'
+  #   end
+  # end
+  # END HOTFIX FOR DC3006 MIGRATION
 
   get 'about_dc', to: 'pages#about_dc', as: 'about_dc'
   get 'for_libraries' => redirect('https://digitalcommonwealth.wildapricot.org')

@@ -24,4 +24,18 @@ class ApplicationController < ActionController::Base
     redirect_to solr_document_path(params[:id]) # can't redirect to catalog#track, only POST allowed
 
   end
+
+  # BEGIN HOTFIX FOR DC3006 MIGRATION
+  def current_user
+    false
+  end
+
+  def current_or_guest_user
+    false
+  end
+
+  def has_user_authentication_provider?
+    false
+  end
+  # END HOTFIX FOR DC3006 MIGRATION
 end
