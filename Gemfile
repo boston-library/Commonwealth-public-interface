@@ -11,7 +11,7 @@ gem 'rails', '~> 6.1.7.10'
 gem 'pg', '>= 0.18', '< 2.0'
 
 # Use Puma as the app server
-gem 'puma', '~> 5.6.9'
+gem 'puma', '~> 7.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -41,8 +41,6 @@ gem 'rack-attack', '~> 6.6'
 
 gem 'sprockets-rails', '~> 3.4'
 
-gem 'sd_notify', group: [:production, :staging]
-
 gem 'postmark-rails', '~> 0.22'
 
 # use redis for session_store in staging and production
@@ -50,7 +48,6 @@ gem 'redis', '~> 5.0'
 gem 'redis-actionpack', '~> 5.4'
 
 group :development, :test do
-  gem 'awesome_print'
   gem 'capistrano', '~> 3.19.2', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'capistrano-rvm'

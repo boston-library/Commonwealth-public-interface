@@ -7,7 +7,7 @@
 # and maximum; this matches the default thread size of Active Record.
 #
 rails_env = ENV.fetch('RAILS_ENV') { 'development' }
-max_threads_count = ENV.fetch('RAILS_MAX_THREADS') { 5 }
+max_threads_count = ENV.fetch('RAILS_MAX_THREADS') { 3 }
 min_threads_count = ENV.fetch('RAILS_MIN_THREADS') { max_threads_count }
 app_dir = File.expand_path('..', __dir__)
 
@@ -16,30 +16,25 @@ workers ENV.fetch('WEB_CONCURRENCY') { 2 }
 
 environment rails_env
 
-worker_timeout 3600 if rails_env == 'development'
+worker_timeout rails_env == 'development' ? 3600 : 60
 
 preload_app!
 # New feature that reduces latency https://github.com/puma/puma/blob/master/5.0-Upgrade.md#lower-latency-better-throughput
 wait_for_less_busy_worker 0.002
 
-# New feature that runs garbage collector when forking workers https://github.com/puma/puma/blob/master/5.0-Upgrade.md#nakayoshi_fork
-nakayoshi_fork
-
-on_restart do
+before_restart do
    puts "Refreshing Gemfile at #{app_dir}/Gemfile"
    ENV['BUNDLE_GEMFILE'] = "#{app_dir}/Gemfile"
 end
 
 # Best Practice is to reconnect any Non Active Record Connections on boot in clustered mode
-on_worker_boot do
-  puts 'Extablishing Active Record Connection...'
-  ActiveSupport.on_load(:active_record) do
-    ActiveRecord::Base.establish_connection
-  end
+before_worker_boot do
+  puts 'Establishing Active Record Connection...'
+  ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
 end
 
 before_fork do
-  ActiveRecord::Base.connection_pool.disconnect!
+  ActiveRecord::Base.connection_pool.disconnect! if defined?(ActiveRecord)
 end
 
 if %w(staging production).member?(rails_env)
