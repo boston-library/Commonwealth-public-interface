@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'awesome_print'
 if ENV['COVERAGE'] == 'true'
   require 'simplecov'
   SimpleCov.start do
