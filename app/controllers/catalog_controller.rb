@@ -108,4 +108,21 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]['f.physical_location_ssim.facet.limit'] = -1
     config.advanced_search[:form_solr_parameters]['f.physical_location_ssim.facet.sort'] = 'index'
   end
+
+  # override from c-vlr-e to try and eliminate potentially expensive mlt queries
+  def mlt_search
+    return unless controller_name == 'catalog'
+
+    if params[:mlt_id] ||
+      (current_search_session && current_search_session.query_params[:mlt_id].present?)
+      # blacklight_config.search_builder_class = CommonwealthMltSearchBuilder
+
+      flash[:alert] = '"More like this" search functionality is temporarily unavailable, please try again later.'
+      respond_to do |format|
+        format.html do
+          redirect_to search_catalog_path
+        end
+      end
+    end
+  end
 end
