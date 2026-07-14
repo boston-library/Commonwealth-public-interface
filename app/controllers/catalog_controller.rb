@@ -9,6 +9,8 @@ class CatalogController < ApplicationController
   # CatalogController-scope behavior and configuration for CommonwealthVlrEngine
   include CommonwealthVlrEngine::ControllerOverride
 
+  before_action :limit_page_count, only: [:index]
+
   configure_blacklight do |config|
     # SearchBuilder contains logic for adding search params to Solr
     config.search_builder_class = CommonwealthSearchBuilder
@@ -121,6 +123,19 @@ class CatalogController < ApplicationController
       respond_to do |format|
         format.html do
           redirect_to search_catalog_path
+        end
+      end
+    end
+  end
+
+  def limit_page_count
+    return unless controller_name == 'catalog' && params[:page]
+
+    if params[:page].to_i > 25_000
+      flash[:alert] = 'Page count too high, please refine your search.'
+      respond_to do |format|
+        format.html do
+          redirect_to search_catalog_path(search_state.params_for_search.except(:page))
         end
       end
     end
