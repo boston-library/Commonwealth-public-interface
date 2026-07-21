@@ -131,12 +131,12 @@ class CatalogController < ApplicationController
   def limit_page_count
     return unless controller_name == 'catalog' && params[:page]
 
-    if params[:page].to_i > 25_000
-      flash[:alert] = 'Page count too high, please refine your search.'
-      respond_to do |format|
-        format.html do
-          redirect_to search_catalog_path(search_state.params_for_search.except(:page))
-        end
+    return unless params[:page].to_i > 25_000
+
+    flash[:alert] = 'Page count too high, please refine your search.'
+    respond_to do |format|
+      format.html do
+        redirect_to search_catalog_path(search_state.params_for_search.except(:page))
       end
     end
   end
