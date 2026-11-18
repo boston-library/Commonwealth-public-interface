@@ -94,7 +94,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcrypt (3.1.22)
     blacklight (7.19.2)
       deprecation
@@ -208,7 +208,8 @@ GEM
     geo_coord (0.2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hashie (5.0.0)
+    hashie (6.0.0)
+      logger
     http (5.2.0)
       addressable (~> 2.8)
       base64 (~> 0.1)
@@ -295,8 +296,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
-    omniauth (2.1.2)
+    omniauth (2.1.4)
       hashie (>= 3.4.6)
+      logger
       rack (>= 2.2.3)
       rack-protection
     omniauth-polaris (1.1.1)
@@ -325,7 +327,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (6.0.2)
-    puma (7.2.1)
+    puma (7.2.3)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.25)
